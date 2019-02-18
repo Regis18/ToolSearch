@@ -4,5 +4,5 @@ import java.io.File;
 
 public interface Searchable {
 
-    File[] search(String path);
+    File[] searchByPath(String path);
 }
