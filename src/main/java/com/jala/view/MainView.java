@@ -1,5 +1,5 @@
 /**
- * @(#)File.java Copyright (c) 2019 Jala Foundation.
+ * @(#)MainView.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  * This software is the confidential and proprietary information of
@@ -19,113 +19,140 @@ import javax.swing.JPanel;
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+
 /*
 class of the View main
  */
-
 public class MainView extends JFrame {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced;
+    private JPanelCentral pCentral;
+    private JPanelSouth pSouth;
 
-    /*
-    Constructor
+    /**
+     * Constructor
      */
     public MainView() {
         setTitle("View Main");
     }
-    /*
-    get MenuConverter
-     */
 
+    /**
+     * @return menuConverter
+     */
     public JMenu getMenuConverter() {
         return menuConverter;
     }
-    /*
-    set MenuConverter
-     */
 
+    /**
+     * @param menuConverter
+     */
     public void setMenuConverter(JMenu menuConverter) {
         this.menuConverter = menuConverter;
     }
 
-    /*
-    get MenuItemExit
+    /**
+     * @return menuItemExit
      */
     public JMenuItem getMenuItemExit() {
         return menuItemExit;
     }
 
-    /*
-    setMenuItemExit
+    /**
+     * @param menuItemExit
      */
     public void setMenuItemExit(JMenuItem menuItemExit) {
         this.menuItemExit = menuItemExit;
     }
 
-    /*
-    get MenuItemGeneral
+    /**
+     * @return pCentral
+     */
+    public JPanelCentral getpCentral() {
+        return pCentral;
+    }
+
+    /**
+     * @param pCentral
+     */
+    public void setpCentral(JPanelCentral pCentral) {
+        this.pCentral = pCentral;
+    }
+
+    /**
+     * @return pSouth
+     */
+    public JPanelSouth getpSouth() {
+        return pSouth;
+    }
+
+    /**
+     * @param pSouth
+     */
+    public void setpSouth(JPanelSouth pSouth) {
+        this.pSouth = pSouth;
+    }
+
+    /**
+     * @return menuItemGeneral
      */
     public JMenuItem getMenuItemGeneral() {
         return menuItemGeneral;
     }
 
-    /*
-    set MenuItemGeneral
+    /**
+     * @param menuItemGeneral
      */
     public void setMenuItemGeneral(JMenuItem menuItemGeneral) {
         this.menuItemGeneral = menuItemGeneral;
     }
 
-    /*
-    get MenuItemAdvanced
+    /**
+     * @return menuItemAdvanced
      */
     public JMenuItem getMenuItemAdvanced() {
         return menuItemAdvanced;
     }
 
-    /*
-    set MenuItemAdvanced
+    /**
+     * @param menuItemAdvanced
      */
     public void setMenuItemAdvanced(JMenuItem menuItemAdvanced) {
         this.menuItemAdvanced = menuItemAdvanced;
     }
 
-    /*
-    Initialize the main window
+    /**
+     * Initialize the main window
      */
     public void init() {
         Container content = getContentPane();
         content.setLayout(new BorderLayout());
+        initComponent();
         setSize(400, 300);
         setLocationRelativeTo(null);
     }
 
-    /*
-    Initialize the public void initComponent() {
-
+    /**
+     * Initialize the components
      */
-    public void initComponent() {
+    private void initComponent() {
         Container content = getContentPane();
-        //create panels
-        JPanel pNorth = _createPNorth();
-        content.add(pNorth, BorderLayout.NORTH);
+        createMenu();
 
-        JPanel pCentral = _createPCentral();
+        //create panels
+
+        pCentral = new JPanelCentral(new BorderLayout());
         content.add(pCentral, BorderLayout.CENTER);
 
-        JPanel pSouth = _createPSouth();
+        pSouth = new JPanelSouth(new BorderLayout());
         content.add(pSouth, BorderLayout.SOUTH);
-
-        // setVisible(true);
     }
 
-    /*
-    Create Panel North
+    /**
+     * create menu
      */
-    private JPanel _createPNorth() {
-        JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    private void createMenu() {
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 
@@ -144,24 +171,6 @@ public class MainView extends JFrame {
 
         menuConverter = new JMenu("Converter");
         menuBar.add(menuConverter);
-        return p;
-
-    }
-
-    /*
-    Create Panel Central
-     */
-    private JPanel _createPCentral() {
-        JPanel p = new JPanel(new BorderLayout());
-        return p;
-    }
-
-    /*
-    Create Panel South
-     */
-    private JPanel _createPSouth() {
-        JPanel p = new JPanel(new FlowLayout());
-        return p;
     }
 
 }
