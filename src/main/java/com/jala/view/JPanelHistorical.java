@@ -15,14 +15,14 @@ import javax.swing.JPanel;
 import java.awt.LayoutManager;
 
 /**
- * class JPanelCentral
+ * class JPanelHistorical
  */
-public class JPanelCentral extends JPanel {
+public class JPanelHistorical extends JPanel {
     /**
-     * 
+     *
      * @param layout
      */
-    public JPanelCentral(LayoutManager layout) {
+    public JPanelHistorical(LayoutManager layout) {
         super(layout);
     }
 }

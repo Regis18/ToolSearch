@@ -15,10 +15,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.Container;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 
 /*
 class of the View main
@@ -28,8 +26,7 @@ public class MainView extends JFrame {
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced;
-    private JPanelCentral pCentral;
-    private JPanelSouth pSouth;
+    private JPanelHistorical pHistorical;
 
     /**
      * Constructor
@@ -67,31 +64,17 @@ public class MainView extends JFrame {
     }
 
     /**
-     * @return pCentral
+     * @return pHistorical
      */
-    public JPanelCentral getpCentral() {
-        return pCentral;
+    public JPanelHistorical getpHistorical() {
+        return pHistorical;
     }
 
     /**
      * @param pCentral
      */
-    public void setpCentral(JPanelCentral pCentral) {
-        this.pCentral = pCentral;
-    }
-
-    /**
-     * @return pSouth
-     */
-    public JPanelSouth getpSouth() {
-        return pSouth;
-    }
-
-    /**
-     * @param pSouth
-     */
-    public void setpSouth(JPanelSouth pSouth) {
-        this.pSouth = pSouth;
+    public void setpHistorical(JPanelHistorical pCentral) {
+        this.pHistorical = pHistorical;
     }
 
     /**
@@ -142,11 +125,9 @@ public class MainView extends JFrame {
 
         //create panels
 
-        pCentral = new JPanelCentral(new BorderLayout());
-        content.add(pCentral, BorderLayout.CENTER);
+        pHistorical = new JPanelHistorical(new BorderLayout());
+        content.add(pHistorical, BorderLayout.CENTER);
 
-        pSouth = new JPanelSouth(new BorderLayout());
-        content.add(pSouth, BorderLayout.SOUTH);
     }
 
     /**
