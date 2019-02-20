@@ -1,5 +1,5 @@
 /**
- * @(#)File.java Copyright (c) 2019 Jala Foundation.
+ * @(#)SearchFile.java Copyright (c) 2019 Jala Foundation.
 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 All rights reserved.
  *
@@ -19,7 +19,7 @@ import java.io.File;
  * @version 0.0.1
  * @author Areliez Vargas
  */
-public class SearchFile implements Searchable{
+public class SearchFile implements ISearchable {
 
     /**
      * This method return files that content the folder of a path.
@@ -30,11 +30,12 @@ public class SearchFile implements Searchable{
     public File[] searchByPath(String path){
         File folder = new File(path);
         File[] findFiles = new File[0];
+        File file;
         if (folder.exists()){
             findFiles = folder.listFiles();
             for (int i = 0; i < findFiles.length; i++) {
                 if(findFiles[i].isDirectory() || findFiles[i].isFile()) {
-                    findFiles[i].getAbsoluteFile();
+                    file = findFiles[i].getAbsoluteFile();
                 }
             }
         }

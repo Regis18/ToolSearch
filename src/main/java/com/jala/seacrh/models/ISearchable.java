@@ -1,5 +1,5 @@
 /**
- * @(#)File.java Copyright (c) 2019 Jala Foundation.
+ * @(#)ISearchable.java Copyright (c) 2019 Jala Foundation.
 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 All rights reserved.
  *
@@ -15,11 +15,11 @@ package com.jala.seacrh.models;
 import java.io.File;
 
 /**
- * Searchable interface to multiples type search.
+ * ISearchable interface to multiples type search.
  * @version 0.0.1
  * @author Areliez Vargas
  */
-public interface Searchable {
+public interface ISearchable {
 
     /**
      *
