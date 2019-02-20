@@ -2,10 +2,10 @@
 package com.jala.data;
 import java.sql.*;
 
-public class Query {
+public class QueryGeneral {
 
     private Connection connection;
-    public Query() throws SQLException, ClassNotFoundException {
+    public QueryGeneral() throws SQLException, ClassNotFoundException {
         connection = ConnectionDB.getInstance().getConnection();
     }
 
