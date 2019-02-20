@@ -40,7 +40,7 @@ public class Logs {
      * file is in the folder resources
      * @return Logger
      */
-    public static Logs getInstance(){
+    public static Logs getInstance() {
         if (instance == null) {
             instance = new Logs();
             PropertyConfigurator.configure("../ToolSearch/src/main/java/com/jala/resources/log4j.properties");
