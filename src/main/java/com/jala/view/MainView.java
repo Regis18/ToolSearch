@@ -18,9 +18,13 @@ import javax.swing.JFrame;
 import java.awt.Container;
 import java.awt.BorderLayout;
 
-/*
-class of the View main
+/**
+ * Module view, ui/mainview
+ *
+ * @version 0.0.1
+ * @autor Melvi Caballero M.
  */
+
 public class MainView extends JFrame {
 
     private JMenuBar menuBar;

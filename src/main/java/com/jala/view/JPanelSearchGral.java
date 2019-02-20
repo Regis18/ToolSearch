@@ -25,7 +25,10 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 /**
- * class JPanelSearchGral
+ * Module view, ui/JPanelSearchGral
+ *
+ * @version 0.0.1
+ * @autor Melvi Caballero M.
  */
 public class JPanelSearchGral extends JPanel {
     private JLabel lblSearch, lblPath, lblList;
@@ -102,8 +105,6 @@ public class JPanelSearchGral extends JPanel {
      * El metodo init va inicializar el panel
      */
     public void init() {
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search");
-        this.setBorder(titleBorder);
         initComponent();
     }
 
@@ -113,14 +114,14 @@ public class JPanelSearchGral extends JPanel {
      */
     private void initComponent() {
 
-        JPanel pNorte = pNorth();
-        this.add(pNorte, BorderLayout.NORTH);
+        JPanel pNorth = pNorth();
+        this.add(pNorth(), BorderLayout.NORTH);
 
         JPanel pCentral = pCentral();
         this.add(pCentral, BorderLayout.CENTER);
 
-        JPanel pSur = pSouth();
-        this.add(pSur, BorderLayout.SOUTH);
+        JPanel pSouth = pSouth();
+        this.add(pSouth, BorderLayout.SOUTH);
     }
 
     /**
