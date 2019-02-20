@@ -48,4 +48,13 @@ public class Logs {
         }
         return instance;
     }
+
+    /**
+     * getLog
+     * return Logger log to do our loggers
+     * @return
+     */
+    public Logger getLog() {
+        return log;
+    }
 }
