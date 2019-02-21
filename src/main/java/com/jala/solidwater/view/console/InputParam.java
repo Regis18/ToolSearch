@@ -32,32 +32,6 @@ public class InputParam {
         System.out.println(message);
     }
 
-    private boolean doValidCommands(List<String> inputCommand) {
-        boolean dotheyValid = false;
-        if (validCommands.size() == inputCommand.size()) {
-            for (int i = 0; i < inputCommand.size(); i++) {
-                if (existCommand((String) inputCommand.get(i), validCommands)) {
-                    dotheyValid = true;
-                } else {
-                    dotheyValid = false;
-                    indexNotCommand = i;
-                    i = inputCommand.size();
-                }
-            }
-        }
-        return dotheyValid;
-    }
-
-    private String invalidCommand(List<String> inputCommand, int indexNotCommand) {
-        String message = "Error: ";
-        if (inputCommand.size() == validCommands.size()) {
-            message = "doesn't valid command : " + inputCommand.get(indexNotCommand);
-        } else {
-            message += "You shall manage " + validCommands.size() + " commands.";
-        }
-        return  message;
-    }
-
     private boolean existCommand(String command, List<String> commands) {
         boolean exist = true;
         for (int j = 0 ; j < commands.size() ; j++) {
@@ -73,5 +47,29 @@ public class InputParam {
             }
         }
         return exist;
+    }
+
+    private boolean doValidCommands(List<String> inputCommand) {
+        boolean doTheyValid = false;
+        for (int i = 0; i < inputCommand.size(); i++) {
+            if (existCommand((String) inputCommand.get(i), validCommands)) {
+                doTheyValid = true;
+            } else {
+                doTheyValid = false;
+                indexNotCommand = i;
+                i = inputCommand.size();
+            }
+        }
+        return doTheyValid;
+    }
+
+    private String invalidCommand(List<String> inputCommand, int indexNotCommand) {
+        String message = "";
+        try {
+            message = "Error: doesn't valid command : " + inputCommand.get(indexNotCommand);
+        } catch (Exception e) {
+            System.out.println("The index: " + indexNotCommand + "isn't valid.");
+        }
+        return message;
     }
 }
