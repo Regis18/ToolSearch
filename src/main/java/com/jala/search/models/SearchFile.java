@@ -10,9 +10,12 @@ accordance with the terms of the license agreement you entered into
 with Jala Foundation.
  */
 
-package com.jala.seacrh.models;
+package com.jala.search.models;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * SearchFile class
@@ -33,12 +36,32 @@ public class SearchFile implements ISearchable {
         File file;
         if (folder.exists()){
             findFiles = folder.listFiles();
-            for (int i = 0; i < findFiles.length; i++) {
-                if(findFiles[i].isDirectory() || findFiles[i].isFile()) {
-                    file = findFiles[i].getAbsoluteFile();
-                }
-            }
         }
         return findFiles;
     }
+
+    @Override
+    public List<File> searchByName(String name) {
+        File folder = new File("C:\\hola");
+
+        List<File> filesByName = new ArrayList<>();
+        if (folder.exists()){
+            File[] findFiles = folder.listFiles();
+            List<File> filesOfDir = Arrays.asList(findFiles);
+            for (int i = 0; i < filesOfDir.size(); i++) {
+                File file = findFiles[i];
+                if(file.isFile() && file.getName().contains(name)) {
+                    file = findFiles[i];
+                    filesByName.add(file);
+                    filesByName = filesByName;
+                } else {
+                  //  searchByName(file.getName());
+                    //filesByName.addAll(searchByName(file.getName()));
+                    filesByName = filesByName;
+                }
+            }
+        }
+        return filesByName;
+    }
+
 }

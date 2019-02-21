@@ -10,9 +10,10 @@ accordance with the terms of the license agreement you entered into
 with Jala Foundation.
  */
 
-package com.jala.seacrh.models;
+package com.jala.search.models;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * ISearchable interface to multiples type search.
@@ -27,4 +28,6 @@ public interface ISearchable {
      * @return an array of files.
      */
     File[] searchByPath(String path);
+
+    List<File> searchByName(String name);
 }
