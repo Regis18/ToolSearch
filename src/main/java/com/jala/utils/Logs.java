@@ -1,5 +1,5 @@
 /**
- * @(#)File.java Copyright (c) 2019 Jala Foundation.
+ * @(#)Log.java Copyright (c) 2019 Jala Foundation.
 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
 All rights reserved.
  *
@@ -16,7 +16,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 /**
- * Logs
  * This is the Class created to have a unique object log
  * in order to centralize our logs
  */
@@ -25,19 +24,17 @@ public class Logs {
     protected final static Logger log = Logger.getLogger(Logs.class);
 
     /**
-     * Logs
-     * Is the private constructor of our Singleton class
+     * Is the private constructor of our Singleton class, it will instance just one
      */
     private Logs(){
         super();
     }
 
     /**
-     * getInstance
-     * In this method, a instance is created at the beginning and
+     * A instance is created at the beginning and
      * if it just was created, returns just the object created
      * It has a log4j.properties to config the syntax's logs. That
-     * file is in the folder resources
+     * file is in the folder resources.
      * @return Logger
      */
     public static Logs getInstance() {
@@ -50,9 +47,8 @@ public class Logs {
     }
 
     /**
-     * getLog
-     * return Logger log to do our loggers
-     * @return
+     * Return Logger log to do our loggers.
+     * @return log
      */
     public Logger getLog() {
         return log;
