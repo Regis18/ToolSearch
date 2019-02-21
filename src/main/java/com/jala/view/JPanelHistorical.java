@@ -30,6 +30,7 @@ import javax.swing.JTable;
  */
 public class JPanelHistorical extends JPanel {
     private JList lstHistorical;
+    private JTable tbHistorical;
     private Border border;
 
     /**
@@ -38,6 +39,20 @@ public class JPanelHistorical extends JPanel {
     public JPanelHistorical(LayoutManager layout) {
         super(layout);
         init();
+    }
+
+    /**
+     * @return tbHistorical, get Historical table.
+     */
+    public JTable getTbHistorical() {
+        return tbHistorical;
+    }
+
+    /**
+     * @param tbHistorical, set Historical table.
+     */
+    public void setTbHistorical(JTable tbHistorical) {
+        this.tbHistorical = tbHistorical;
     }
 
     /**
@@ -79,8 +94,8 @@ public class JPanelHistorical extends JPanel {
         };
 
         // Create table with data.
-        JTable table = new JTable(data, columns);
-        JScrollPane scroll = new JScrollPane(table);
+        tbHistorical = new JTable(data, columns);
+        JScrollPane scroll = new JScrollPane(tbHistorical);
         this.add(scroll, BorderLayout.CENTER);
     }
 

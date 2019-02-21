@@ -36,6 +36,7 @@ public class JPanelSearchGral extends JPanel {
     private JTextField txtPath;
     private JButton btnSearch, btnSearchAdvanced;
     private JList lstSearched;
+    private JTable tbSearched;
     private Border border;
 
     /**
@@ -44,6 +45,20 @@ public class JPanelSearchGral extends JPanel {
     public JPanelSearchGral(LayoutManager layout) {
         super(layout);
         init();
+    }
+
+    /**
+     * @return tbSearched, get searched table.
+     */
+    public JTable getTbSearched() {
+        return tbSearched;
+    }
+
+    /**
+     * @param tbSearched, set searched table.
+     */
+    public void setTbSearched(JTable tbSearched) {
+        this.tbSearched = tbSearched;
     }
 
     /**
@@ -179,11 +194,12 @@ public class JPanelSearchGral extends JPanel {
         };
 
         // Create table with data.
-        JTable table = new JTable(data, columns);
-        JScrollPane scroll = new JScrollPane(table);
+        tbSearched = new JTable(data, columns);
+        JScrollPane scroll = new JScrollPane(tbSearched);
         p.add(scroll, BorderLayout.CENTER);
         return p;
     }
+
 }
 
 

@@ -140,7 +140,6 @@ public class MainView extends JFrame implements ActionListener {
         Container content = getContentPane();
         content.setLayout(new BorderLayout());
         initComponent();
-        setSize(400, 300);
         setLocationRelativeTo(null);
     }
 
