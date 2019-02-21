@@ -20,6 +20,7 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  * Module view, ui/JPanelHistorical
@@ -65,8 +66,23 @@ public class JPanelHistorical extends JPanel {
      * iniciamoa los componentes de este panel pList
      */
     private void initComponent() {
-        JPanel pList = pList();
-        this.add(pList, BorderLayout.CENTER);
+//headers for the table
+        String[] columns = new String[] {
+                "Id", "Name", "Hourly Rate", "Part Time"
+        };
+
+        //actual data for the table in a 2d array
+        Object[][] data = new Object[][] {
+                {1, "John", 40.0, false },
+                {2, "Rambo", 70.0, false },
+                {3, "Zorro", 60.0, true },
+        };
+        //create table with data
+        JTable table = new JTable(data, columns);
+        JScrollPane scroll = new JScrollPane(table);
+        this.add(scroll, BorderLayout.CENTER);
+       //JPanel pList = pList();
+      // this.add(table, BorderLayout.CENTER);
     }
 
     /**

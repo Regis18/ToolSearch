@@ -17,6 +17,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JFrame;
 import java.awt.Container;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Module view, ui/mainview
@@ -25,18 +27,28 @@ import java.awt.BorderLayout;
  * @autor Melvi Caballero M.
  */
 
-public class MainView extends JFrame {
+public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced;
     private JPanelHistorical pHistorical;
-
+    private JPanelSearchGral pSearchGral;
+    private String currentPanel;
     /**
      * Constructor
      */
     public MainView() {
         setTitle("View Main");
+
+    }
+
+    public JPanelSearchGral getpSearchGral() {
+        return pSearchGral;
+    }
+
+    public void setpSearchGral(JPanelSearchGral pSearchGral) {
+        this.pSearchGral = pSearchGral;
     }
 
     /**
@@ -131,7 +143,7 @@ public class MainView extends JFrame {
 
         pHistorical = new JPanelHistorical(new BorderLayout());
         content.add(pHistorical, BorderLayout.CENTER);
-
+           currentPanel = "Historical";
     }
 
     /**
@@ -148,6 +160,7 @@ public class MainView extends JFrame {
         menuFile.add(menuSearch);
         menuItemGeneral = new JMenuItem("General");
         menuSearch.add(menuItemGeneral);
+        menuItemGeneral.addActionListener(this);
         menuItemAdvanced = new JMenuItem("Advanced");
         menuSearch.add(menuItemAdvanced);
 
@@ -158,4 +171,19 @@ public class MainView extends JFrame {
         menuBar.add(menuConverter);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Container content = getContentPane();
+       if(e.getSource()== menuItemGeneral){
+           if(currentPanel != "SearchGral") {
+               pSearchGral = new JPanelSearchGral(new BorderLayout());
+               content.removeAll();
+
+               content.add(pSearchGral, BorderLayout.CENTER);
+               currentPanel = "SearchGral";
+               this.validate();
+               this.repaint();
+           }
+       }
+    }
 }

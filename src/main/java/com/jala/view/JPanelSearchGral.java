@@ -23,6 +23,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.LayoutManager;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import javax.swing.JTable;
 
 /**
  * Module view, ui/JPanelSearchGral
@@ -137,10 +138,10 @@ public class JPanelSearchGral extends JPanel {
         lblPath = new JLabel("Path: ");
         p.add(lblPath);
 
-        txtPath = new JTextField(15);
+        txtPath = new JTextField(100);
         p.add(txtPath);
 
-        btnSearch = new JButton("...");
+        btnSearch = new JButton("Search");
         p.add(btnSearch);
         return p;
     }
@@ -164,11 +165,26 @@ public class JPanelSearchGral extends JPanel {
      * @return P
      */
     private JPanel pSouth() {
-        JPanel p = new JPanel(new FlowLayout());
+        JPanel p = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List");
         p.setBorder(titleBorder);
-        lstSearched = new JList();
-        JScrollPane scroll = new JScrollPane(lstSearched);
+        //
+        //headers for the table
+        String[] columns = new String[] {
+                "Id", "Name", "Hourly Rate", "Part Time"
+        };
+
+        //actual data for the table in a 2d array
+        Object[][] data = new Object[][] {
+                {1, "John", 40.0, false },
+                {2, "Rambo", 70.0, false },
+                {3, "Zorro", 60.0, true },
+        };
+        //create table with data
+        JTable table = new JTable(data, columns);
+        //
+       // lstSearched = new JList();
+        JScrollPane scroll = new JScrollPane(table);
         p.add(scroll, BorderLayout.CENTER);
         return p;
     }
