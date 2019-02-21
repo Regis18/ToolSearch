@@ -3,12 +3,12 @@
  **/
 package com.jala.solidwater.view.console;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputParam {
     List<String> validCommands = new ArrayList<>();
+    int indexNotCommand;
 
     public InputParam(String[] commands) {
         validCommands.add("-p");
@@ -19,24 +19,52 @@ public class InputParam {
 
     private void validateCommands(String[] commands) {
         String message = "";
-        Boolean areValidCommands = true;
+        List<String> inputCommand = new ArrayList<>();
         for (int i = 0; i < commands.length; i += 2) {
-            if (existCommand(commands[i]) == false) {
-                message += "doesn't valid command : " + commands[i];
-                areValidCommands = false;
-                i = commands.length;
-            }
+            inputCommand.add(commands[i]);
         }
-        message = areValidCommands ? " Valid commands" : "Error " + message;
+        if (existCommand("-p", inputCommand)) {
+            message = doValidCommands(inputCommand) ?
+                        "Valid Commands!!" : invalidCommand(inputCommand,indexNotCommand);
+        } else {
+            message = "The command (-p) is required";
+        }
         System.out.println(message);
     }
-    private boolean existCommand(String command) {
+
+    private boolean doValidCommands(List<String> inputCommand) {
+        boolean dotheyValid = false;
+        if (validCommands.size() == inputCommand.size()) {
+            for (int i = 0; i < inputCommand.size(); i++) {
+                if (existCommand((String) inputCommand.get(i), validCommands)) {
+                    dotheyValid = true;
+                } else {
+                    dotheyValid = false;
+                    indexNotCommand = i;
+                    i = inputCommand.size();
+                }
+            }
+        }
+        return dotheyValid;
+    }
+
+    private String invalidCommand(List<String> inputCommand, int indexNotCommand) {
+        String message = "Error: ";
+        if (inputCommand.size() == validCommands.size()) {
+            message = "doesn't valid command : " + inputCommand.get(indexNotCommand);
+        } else {
+            message += "You shall manage " + validCommands.size() + " commands.";
+        }
+        return  message;
+    }
+
+    private boolean existCommand(String command, List<String> commands) {
         boolean exist = true;
-        for (int j = 0 ; j < validCommands.size() ; j++) {
+        for (int j = 0 ; j < commands.size() ; j++) {
             try {
-                if (validCommands.get(j).equals(command)) {
+                if (commands.get(j).equals(command)) {
                     exist = true;
-                    j = validCommands.size();
+                    j = commands.size();
                 } else {
                     exist = false;
                 }
@@ -46,6 +74,4 @@ public class InputParam {
         }
         return exist;
     }
-
-
 }
