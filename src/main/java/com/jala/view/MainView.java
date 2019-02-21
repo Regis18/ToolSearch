@@ -21,12 +21,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Module view, ui/mainview
+ * Module view, ui/mainview.
  *
- * @version 0.0.1
+ * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
-
 public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
@@ -35,94 +34,107 @@ public class MainView extends JFrame implements ActionListener {
     private JPanelHistorical pHistorical;
     private JPanelSearchGral pSearchGral;
     private String currentPanel;
+
     /**
-     * Constructor
+     * Constructor.
      */
     public MainView() {
         setTitle("View Main");
 
     }
 
+    /**
+     * Return the panel where is the Search General.
+     *
+     * @return pSearchGral .
+     */
     public JPanelSearchGral getpSearchGral() {
         return pSearchGral;
     }
 
+    /**
+     * setter of the panel where is the Search General.
+     *
+     * @param pSearchGral .
+     */
     public void setpSearchGral(JPanelSearchGral pSearchGral) {
         this.pSearchGral = pSearchGral;
     }
 
     /**
-     * @return menuConverter
+     * Return the Converter menu.
+     *
+     * @return menuConverter .
      */
     public JMenu getMenuConverter() {
         return menuConverter;
     }
 
     /**
-     * @param menuConverter
+     * @param menuConverter , set the Converter menu.
      */
     public void setMenuConverter(JMenu menuConverter) {
         this.menuConverter = menuConverter;
     }
 
     /**
-     * @return menuItemExit
+     * @return menuItemExit, get the Exit menu item.
      */
     public JMenuItem getMenuItemExit() {
         return menuItemExit;
     }
 
     /**
-     * @param menuItemExit
+     * @param menuItemExit, set the Exit menu item.
      */
     public void setMenuItemExit(JMenuItem menuItemExit) {
         this.menuItemExit = menuItemExit;
     }
 
     /**
-     * @return pHistorical
+     * @return pHistorical, get the last searches.
      */
     public JPanelHistorical getpHistorical() {
         return pHistorical;
     }
 
     /**
-     * @param pCentral
+     * @param pCentral, set the last searches.
      */
     public void setpHistorical(JPanelHistorical pCentral) {
         this.pHistorical = pHistorical;
     }
 
     /**
-     * @return menuItemGeneral
+     * @return menuItemGeneral, get to General menu item for Search menu.
      */
     public JMenuItem getMenuItemGeneral() {
         return menuItemGeneral;
     }
 
     /**
-     * @param menuItemGeneral
+     * @param menuItemGeneral, set to General menu item of the Search menu.
      */
     public void setMenuItemGeneral(JMenuItem menuItemGeneral) {
         this.menuItemGeneral = menuItemGeneral;
     }
 
     /**
-     * @return menuItemAdvanced
+     * @return menuItemAdvanced, get option Advanced menu item of the Search menu.
      */
     public JMenuItem getMenuItemAdvanced() {
         return menuItemAdvanced;
     }
 
     /**
-     * @param menuItemAdvanced
+     * @param menuItemAdvanced, set option Advanced menu item of the Search menu.
      */
     public void setMenuItemAdvanced(JMenuItem menuItemAdvanced) {
         this.menuItemAdvanced = menuItemAdvanced;
     }
 
     /**
-     * Initialize the main window
+     * Initialize the main window.
      */
     public void init() {
         Container content = getContentPane();
@@ -133,21 +145,20 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * Initialize the components
+     * Initialize the components.
      */
     private void initComponent() {
         Container content = getContentPane();
         createMenu();
 
-        //create panels
-
+        //Create panels.
         pHistorical = new JPanelHistorical(new BorderLayout());
         content.add(pHistorical, BorderLayout.CENTER);
-           currentPanel = "Historical";
+        currentPanel = "Historical";
     }
 
     /**
-     * create menu
+     * Create menu.
      */
     private void createMenu() {
         menuBar = new JMenuBar();
@@ -171,19 +182,24 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuConverter);
     }
 
+    /**
+     * The method actionPerformed receives the event of MenuItem Search General.
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Container content = getContentPane();
-       if(e.getSource()== menuItemGeneral){
-           if(currentPanel != "SearchGral") {
-               pSearchGral = new JPanelSearchGral(new BorderLayout());
-               content.removeAll();
+        if (e.getSource() == menuItemGeneral) {
+            if (currentPanel != "SearchGral") {
+                pSearchGral = new JPanelSearchGral(new BorderLayout());
+                content.removeAll();
 
-               content.add(pSearchGral, BorderLayout.CENTER);
-               currentPanel = "SearchGral";
-               this.validate();
-               this.repaint();
-           }
-       }
+                content.add(pSearchGral, BorderLayout.CENTER);
+                currentPanel = "SearchGral";
+                this.validate();
+                this.repaint();
+            }
+        }
     }
 }

@@ -23,7 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 /**
- * Module view, ui/JPanelHistorical
+ * Module view, ui/JPanelHistorical.
  *
  * @version 0.0.1
  * @autor Melvi Caballero M.
@@ -33,7 +33,7 @@ public class JPanelHistorical extends JPanel {
     private Border border;
 
     /**
-     * @param layout
+     * @param layout, add the layout in this panel.
      */
     public JPanelHistorical(LayoutManager layout) {
         super(layout);
@@ -41,7 +41,7 @@ public class JPanelHistorical extends JPanel {
     }
 
     /**
-     * @return lstHistorical
+     * @return lstHistorical, get
      */
     public JList getLstHistorical() {
         return lstHistorical;
@@ -55,38 +55,37 @@ public class JPanelHistorical extends JPanel {
     }
 
     /**
-     *
+     * Method init call to initComponent method.
      */
-
     public void init() {
         initComponent();
     }
 
     /**
-     * iniciamoa los componentes de este panel pList
+     * Start the components of this panel pList.
      */
     private void initComponent() {
-//headers for the table
-        String[] columns = new String[] {
-                "Id", "Name", "Hourly Rate", "Part Time"
+
+        // Headers for the table.
+        String[] columns = new String[]{
+                "Id", "Path", "File Name", "Ext.", "Size"
         };
 
-        //actual data for the table in a 2d array
-        Object[][] data = new Object[][] {
-                {1, "John", 40.0, false },
-                {2, "Rambo", 70.0, false },
-                {3, "Zorro", 60.0, true },
+        // Actual data for the table in a 2d array.
+        Object[][] data = new Object[][]{
+                {1, "c:github", "Test", "java", "98 bytes"},
+
+
         };
-        //create table with data
+
+        // Create table with data.
         JTable table = new JTable(data, columns);
         JScrollPane scroll = new JScrollPane(table);
         this.add(scroll, BorderLayout.CENTER);
-       //JPanel pList = pList();
-      // this.add(table, BorderLayout.CENTER);
     }
 
     /**
-     * Devuelve la instancia del panel pList en el objeto p
+     * Return the instance of panel pList in the object p.
      *
      * @return p
      */

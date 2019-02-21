@@ -26,9 +26,9 @@ import java.awt.FlowLayout;
 import javax.swing.JTable;
 
 /**
- * Module view, ui/JPanelSearchGral
+ * Module view, ui/JPanelSearchGral.
  *
- * @version 0.0.1
+ * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
 public class JPanelSearchGral extends JPanel {
@@ -39,7 +39,7 @@ public class JPanelSearchGral extends JPanel {
     private Border border;
 
     /**
-     * @param layout
+     * @param layout ,define the layout main.
      */
     public JPanelSearchGral(LayoutManager layout) {
         super(layout);
@@ -47,71 +47,70 @@ public class JPanelSearchGral extends JPanel {
     }
 
     /**
-     * @return txtPath
+     * @return txtPath, get the location of file to search.
      */
     public JTextField getTxtPath() {
         return txtPath;
     }
 
     /**
-     * @param txtPath
+     * @param txtPath, set the location of file to search.
      */
     public void setTxtPath(JTextField txtPath) {
         this.txtPath = txtPath;
     }
 
     /**
-     * @return btnSearch
+     * @return btnSearch, get the Search button.
      */
     public JButton getBtnSearch() {
         return btnSearch;
     }
 
     /**
-     * @param btnSearch
+     * @param btnSearch, set the Search button.
      */
     public void setBtnSearch(JButton btnSearch) {
         this.btnSearch = btnSearch;
     }
 
     /**
-     * @return btnSearchAdvanced
+     * @return btnSearchAdvanced, get the Advanced Search button.
      */
     public JButton getBtnSearchAdvanced() {
         return btnSearchAdvanced;
     }
 
     /**
-     * @param btnSearchAdvanced
+     * @param btnSearchAdvanced, set the Advanced Search button.
      */
     public void setBtnSearchAdvanced(JButton btnSearchAdvanced) {
         this.btnSearchAdvanced = btnSearchAdvanced;
     }
 
     /**
-     * @return lstSearched
+     * @return lstSearched, get the list searched.
      */
     public JList getLstSearched() {
         return lstSearched;
     }
 
     /**
-     * @param lstSearched
+     * @param lstSearched, set the list searched.
      */
     public void setLstSearched(JList lstSearched) {
         this.lstSearched = lstSearched;
     }
 
     /**
-     * El metodo init va inicializar el panel
+     * The init method will initialize this panel.
      */
     public void init() {
         initComponent();
     }
 
     /**
-     * el metodo initComponent va a inicializar los componetes que creamos
-     * que estan divididos en tres areas
+     * The initComponent method will initialize the components.
      */
     private void initComponent() {
 
@@ -126,7 +125,7 @@ public class JPanelSearchGral extends JPanel {
     }
 
     /**
-     * devuelve la instancia del panel central en el objeto p
+     * Return the instance of panel central with the path and the Search button.
      *
      * @return p
      */
@@ -147,7 +146,7 @@ public class JPanelSearchGral extends JPanel {
     }
 
     /**
-     * devuelve la instancia del panel derecho en el objeto p
+     * Return the instance of center panel with the Advanced button.
      *
      * @return p
      */
@@ -160,7 +159,7 @@ public class JPanelSearchGral extends JPanel {
     }
 
     /**
-     * devuelve la instancia del panel norte en el objeto p
+     * Return the instance of south panel with the table of file founds .
      *
      * @return P
      */
@@ -168,22 +167,19 @@ public class JPanelSearchGral extends JPanel {
         JPanel p = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List");
         p.setBorder(titleBorder);
-        //
-        //headers for the table
-        String[] columns = new String[] {
-                "Id", "Name", "Hourly Rate", "Part Time"
+
+        // Headers for the table.
+        String[] columns = new String[]{
+                "Id", "Path", "File Name", "Ext.", "Size"
         };
 
-        //actual data for the table in a 2d array
-        Object[][] data = new Object[][] {
-                {1, "John", 40.0, false },
-                {2, "Rambo", 70.0, false },
-                {3, "Zorro", 60.0, true },
+        // Actual data for the table in a 2d array.
+        Object[][] data = new Object[][]{
+                {1, "c:github", "Test", "java", "98 bytes"},
         };
-        //create table with data
+
+        // Create table with data.
         JTable table = new JTable(data, columns);
-        //
-       // lstSearched = new JList();
         JScrollPane scroll = new JScrollPane(table);
         p.add(scroll, BorderLayout.CENTER);
         return p;
