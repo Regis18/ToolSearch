@@ -31,7 +31,7 @@ public class CriteriaSearch {
 
     /**
      * Constructor that setting the path for then do a search.
-     * @param path
+     * @param path of the directory.
      */
     public CriteriaSearch(String path) {
         this.path = path;
