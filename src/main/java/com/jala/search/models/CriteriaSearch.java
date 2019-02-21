@@ -12,6 +12,8 @@
 
 package com.jala.search.models;
 
+import java.util.Collection;
+
 /**
  * The CriteriaSearch class is to set and get the criterias to search.
  * @version 0.0.1
@@ -28,6 +30,11 @@ public class CriteriaSearch {
      * Criteria for the file name of the directory.
      */
     private String fileName;
+
+    /**
+     * Criteri for extension of file.
+     */
+    private String extension;
 
     /**
      * Constructor that setting the path for then do a search.
@@ -67,5 +74,13 @@ public class CriteriaSearch {
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getExtension() {
+        return extension;
+    }
+
+    public void setExtension(String extension) {
+        this.extension = extension;
     }
 }
