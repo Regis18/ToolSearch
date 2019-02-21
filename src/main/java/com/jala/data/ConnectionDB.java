@@ -1,16 +1,16 @@
-/**
- * @(#)ConnectionDB.java Copyright (c) 2019 Jala Foundation.
-2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
-All rights reserved.
+/*
+ * @(#) ConnectionDB.java Copyright (c) 2019 Jala Foundation.
+ * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+ * All rights reserved.
  *
  * This software is the confidential and proprietary information of
-Jala Foundation, ("Confidential Information").  You shall not
-disclose such Confidential Information and shall use it only in
-accordance with the terms of the license agreement you entered into
-with Jala Foundation.
+ * Jala Foundation, ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jala Foundation.
  */
-package com.jala.data;
 
+package com.jala.data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,7 +21,6 @@ import java.sql.Statement;
  * @author by Cristian Lujan
  * @Version 21/02/2019/C
  */
-
 
 public class ConnectionDB {
 
@@ -39,7 +38,7 @@ public class ConnectionDB {
 
     /**
      * Method that returns the connection to the database
-     * @return Connection of Data Base
+     * @return Connectionqwe of Data Base
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -59,7 +58,7 @@ public class ConnectionDB {
         Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection("jdbc:sqlite:dataSearch.db");
         Statement state = connection.createStatement();
-        state.execute("CREATE TABLE if not exist criteriaSearch (id integer," + "criteria varchar(200)," + "primary key(id));");
+        state.execute("CREATE TABLE if not exists criteriaSearch (id integer,criteria varchar(200), primary key(id));");
     }
 
     /**
