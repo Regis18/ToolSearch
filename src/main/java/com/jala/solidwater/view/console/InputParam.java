@@ -1,53 +1,51 @@
 /**
- * InputParam class receive all params for the init the SolidWater app
+ * InputParam class receive all params for the init the SolidWater app for validate them
  **/
 package com.jala.solidwater.view.console;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputParam {
-    private Map<String, String> validCommands = new HashMap<>();
-    public InputParam(String[] commands) {
-         validCommands.put("-p", "c://java/test.class");
-         validCommands.put("-ex", ".mp3");
-         validateInputParam(commands);
+    List<String> validCommands = new ArrayList<>();
 
+    public InputParam(String[] commands) {
+        validCommands.add("-p");
+        validCommands.add("-ex");
+        validCommands.add("-fn");
+        validateCommands(commands);
     }
-    private void validateInputParam(String[] commands) {
+
+    private void validateCommands(String[] commands) {
         String message = "";
-        Map<String, String> posibleCommand = new HashMap<>();
-        int pos = 0;
-        for (int i = 0; i < commands.length ; i = i + 2) {
-            pos = i;
-            String command = commands[pos];
-            String commandValue = commands[++pos];
-            if (isValidCommand(command)) {
-                posibleCommand.put(command, commandValue);
-                System.out.println(posibleCommand.size());
-                message += "The command: " + command + " is valid.";
-            } else {
-                message += "The command: " + command + " isn't valid.";
+        Boolean areValidCommands = true;
+        for (int i = 0; i < commands.length; i += 2) {
+            if (existCommand(commands[i]) == false) {
+                message += "doesn't valid command : " + commands[i];
+                areValidCommands = false;
+                i = commands.length;
             }
         }
+        message = areValidCommands ? " Valid commands" : "Error " + message;
         System.out.println(message);
-        validateCommands(posibleCommand);
     }
-    private boolean isValidCommand(String command) {
-        return command.charAt(0) == '-' ? true : false;
-    }
-    private void validateCommands(Map<String, String> posibleCommands) {
-            String message = "";
-        for (String commandName: posibleCommands.keySet()) {
-            if (!validCommands.isEmpty()){
-                if (validCommands.containsKey(commandName)) {
-                    message += "The command: " + commandName + " exist.";
+    private boolean existCommand(String command) {
+        boolean exist = true;
+        for (int j = 0 ; j < validCommands.size() ; j++) {
+            try {
+                if (validCommands.get(j).equals(command)) {
+                    exist = true;
+                    j = validCommands.size();
                 } else {
-                    message += "The command: " + commandName + " doesn't exist.";
+                    exist = false;
                 }
+            } catch (Exception e) {
+                System.out.println(e);
             }
         }
-        System.out.println(message);
+        return exist;
     }
+
 
 }
