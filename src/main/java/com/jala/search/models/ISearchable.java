@@ -23,9 +23,10 @@ import java.util.List;
 public interface ISearchable {
 
     /**
-     *
+     * This method search the files of a directory by criteria.
+     * It should not be called without first have the path criteria.
      * @param criteria to do the search.
-     * @return a list of files.
+     * @return a list of files of a directory.
      */
     List<File> search(CriteriaSearch criteria);
 }
