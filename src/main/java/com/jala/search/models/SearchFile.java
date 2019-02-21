@@ -33,7 +33,6 @@ public class SearchFile implements ISearchable {
     public File[] searchByPath(String path){
         File folder = new File(path);
         File[] findFiles = new File[0];
-        File file;
         if (folder.exists()){
             findFiles = folder.listFiles();
         }
