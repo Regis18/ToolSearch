@@ -56,13 +56,16 @@ public class JPanelSearchGral extends JPanel {
     }
 
     /**
-     * Sets the Searched Results table
-     * @param tbSearched, the searched table to set.
+     //* Sets the Searched Results table
+    // * @param tbSearched, the searched table to set.
      */
-    public void setTbSearched(JTable tbSearched) {
+  /*  public void setTbSearched(JTable tbSearched) {
         this.tbSearched = tbSearched;
     }
+*/
+  public void setFiles(int x,int y, String value){
 
+  }
     /**
      * Gets the Path of the location to search.
      * @return txtPath, the location of file to search.
@@ -145,8 +148,8 @@ public class JPanelSearchGral extends JPanel {
         JPanel pnlCentral = pnlNorth();
         this.add(pnlCentral, BorderLayout.CENTER);
 
-        JPanel pSouth = pSouth();
-        this.add(pnlCentral, BorderLayout.SOUTH);
+        JPanel pnlSouth = pnlSouth();
+        this.add(pnlSouth, BorderLayout.SOUTH);
     }
 
     /**
@@ -189,7 +192,7 @@ public class JPanelSearchGral extends JPanel {
         JPanel pnlTable = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List");
         pnlTable.setBorder(titleBorder);
-
+/*
         // Headers for the table.
         String[] columns = new String[]{
                 "Id", "Path", "File Name", "Ext.", "Size"
@@ -199,10 +202,11 @@ public class JPanelSearchGral extends JPanel {
         Object[][] data = new Object[][]{
                 {1, "c:github", "Test", "java", "98 bytes"},
         };
-
+*/
         // Create table with data.
-        tbSearched = new JTable(data, columns);
-        JScrollPane scroll = new JScrollPane(tbSearched);
+       // tbSearched = new JTable(data, columns);
+        lstSearched = new JList();
+        JScrollPane scroll = new JScrollPane(lstSearched);
         pnlTable.add(scroll, BorderLayout.CENTER);
         return pnlTable;
     }
