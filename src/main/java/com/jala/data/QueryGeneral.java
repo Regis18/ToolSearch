@@ -52,9 +52,8 @@ public class QueryGeneral {
      * @throws SQLException
      */
     public void addCriteria(String criteriaJson) throws SQLException {
-        PreparedStatement prepared = connection.prepareStatement("INSERT INTO criteriaSearch(id, criteria) values(null,?);");
-        //prepared.setInt(1, 7);
-        prepared.setString(2, criteriaJson);
+        PreparedStatement prepared = connection.prepareStatement("INSERT INTO criteriaSearchDB(criteria) values(?);");
+        prepared.setString(1, criteriaJson);
         prepared.execute();
     }
 
