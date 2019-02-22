@@ -24,7 +24,6 @@ import javax.swing.JTable;
 
 /**
  * Module view, ui/JPanelHistorical.
- *
  * @version 0.0.1
  * @autor Melvi Caballero M.
  */
@@ -42,7 +41,8 @@ public class JPanelHistorical extends JPanel {
     }
 
     /**
-     * @return tbHistorical, get Historical table.
+     * Gets the historical table.
+     * @return tbHistorical, get Historical table of the last searches.
      */
     public JTable getTbHistorical() {
         return tbHistorical;
@@ -56,14 +56,15 @@ public class JPanelHistorical extends JPanel {
     }
 
     /**
-     * @return lstHistorical, get
+     * Gets the historical list.
+     * @return lstHistorical, list of the last searches.
      */
     public JList getLstHistorical() {
         return lstHistorical;
     }
 
     /**
-     * @param lstHistorical
+     * @param lstHistorical, set search historical´s list.
      */
     public void setLstHistorical(JList lstHistorical) {
         this.lstHistorical = lstHistorical;
@@ -89,8 +90,6 @@ public class JPanelHistorical extends JPanel {
         // Actual data for the table in a 2d array.
         Object[][] data = new Object[][]{
                 {1, "c:github", "Test", "java", "98 bytes"},
-
-
         };
 
         // Create table with data.
@@ -100,17 +99,16 @@ public class JPanelHistorical extends JPanel {
     }
 
     /**
-     * Return the instance of panel pList in the object p.
-     *
-     * @return p
+     * Return the instance of panel pList in the object pnlHistorical.
+     * @return pnlHistorical
      */
-    private JPanel pList() {
-        JPanel p = new JPanel(new FlowLayout());
+    private JPanel pnlList() {
+        JPanel pnlHistorical = new JPanel(new FlowLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Historical");
-        p.setBorder(titleBorder);
+        pnlHistorical.setBorder(titleBorder);
         lstHistorical = new JList();
         JScrollPane scroll = new JScrollPane(lstHistorical);
-        p.add(scroll, BorderLayout.CENTER);
-        return p;
+        pnlHistorical.add(scroll, BorderLayout.CENTER);
+        return pnlHistorical;
     }
 }

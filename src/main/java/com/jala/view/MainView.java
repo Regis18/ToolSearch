@@ -45,16 +45,14 @@ public class MainView extends JFrame implements ActionListener {
 
     /**
      * Return the panel where is the Search General.
-     *
-     * @return pSearchGral .
+     * @return General Search Panel .
      */
     public JPanelSearchGral getpSearchGral() {
         return pSearchGral;
     }
 
     /**
-     * setter of the panel where is the Search General.
-     *
+     * Sets the General Search Panel.
      * @param pSearchGral .
      */
     public void setpSearchGral(JPanelSearchGral pSearchGral) {
@@ -62,72 +60,80 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * Return the Converter menu.
-     *
-     * @return menuConverter .
+     * Gets the Converter Menu.
+     * @return the Menu option Converter
      */
     public JMenu getMenuConverter() {
         return menuConverter;
     }
 
     /**
-     * @param menuConverter , set the Converter menu.
+     * Sets the Converte menu option.
+     * @param menuConverter , The menu to set as Converter.
      */
     public void setMenuConverter(JMenu menuConverter) {
         this.menuConverter = menuConverter;
     }
 
     /**
-     * @return menuItemExit, get the Exit menu item.
+     * Gets the Exit Menu option.
+     * @return menuItemExit, the Exit menu item.
      */
     public JMenuItem getMenuItemExit() {
         return menuItemExit;
     }
 
     /**
-     * @param menuItemExit, set the Exit menu item.
+     * Set the menu for the Exit option.
+     * @param menuItemExit, the Exit menu item to set.
      */
     public void setMenuItemExit(JMenuItem menuItemExit) {
         this.menuItemExit = menuItemExit;
     }
 
     /**
-     * @return pHistorical, get the last searches.
+     * Gets the Historical Panel.
+     * @return pHistorical, the last searches history Panel.
      */
     public JPanelHistorical getpHistorical() {
         return pHistorical;
     }
 
     /**
-     * @param pCentral, set the last searches.
+     * Set the Historical Panel.
+     * @param pCentral, set the last searches history panel.
      */
     public void setpHistorical(JPanelHistorical pCentral) {
         this.pHistorical = pHistorical;
     }
 
     /**
-     * @return menuItemGeneral, get to General menu item for Search menu.
+     * Gets the General Search Menu option.
+     * @return menuItemGeneral, the General Search menu item from the Search menu.
      */
     public JMenuItem getMenuItemGeneral() {
         return menuItemGeneral;
     }
 
     /**
-     * @param menuItemGeneral, set to General menu item of the Search menu.
+     * Sets the General Search Menu option.
+     * @param menuItemGeneral, the General menu item of the Search menu.
      */
     public void setMenuItemGeneral(JMenuItem menuItemGeneral) {
         this.menuItemGeneral = menuItemGeneral;
     }
 
     /**
-     * @return menuItemAdvanced, get option Advanced menu item of the Search menu.
+     * Gets the advanced Search menu option.
+     * @return menuItemAdvanced, the option Advanced menu item of the Search menu.
      */
     public JMenuItem getMenuItemAdvanced() {
         return menuItemAdvanced;
     }
 
     /**
-     * @param menuItemAdvanced, set option Advanced menu item of the Search menu.
+     * Gets the Advanced Search menu option.
+     * @param menuItemAdvanced, the Advanced menu item of the Search menu.
      */
     public void setMenuItemAdvanced(JMenuItem menuItemAdvanced) {
         this.menuItemAdvanced = menuItemAdvanced;
@@ -183,8 +189,7 @@ public class MainView extends JFrame implements ActionListener {
 
     /**
      * The method actionPerformed receives the event of MenuItem Search General.
-     *
-     * @param e
+     * @param e, evento del MenuItem.
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -193,7 +198,6 @@ public class MainView extends JFrame implements ActionListener {
             if (currentPanel != "SearchGral") {
                 pSearchGral = new JPanelSearchGral(new BorderLayout());
                 content.removeAll();
-
                 content.add(pSearchGral, BorderLayout.CENTER);
                 currentPanel = "SearchGral";
                 this.validate();
