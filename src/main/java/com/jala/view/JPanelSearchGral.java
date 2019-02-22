@@ -31,8 +31,8 @@ import javax.swing.JTable;
  * @autor Melvi Caballero M.
  */
 public class JPanelSearchGral extends JPanel {
-    private JLabel lblSearch, lblPath, lblList;
-    private JTextField txtPath;
+    private JLabel lblSearch, lblPath, lblFileName, lblExt, lblList;
+    private JTextField txtPath, txtFileName, txtExt;
     private JButton btnSearch, btnSearchAdvanced;
     private JList lstSearched;
     private JTable tbSearched;
@@ -45,6 +45,22 @@ public class JPanelSearchGral extends JPanel {
     public JPanelSearchGral(LayoutManager layout) {
         super(layout);
         init();
+    }
+
+    public JTextField getTxtFileName() {
+        return txtFileName;
+    }
+
+    public void setTxtFileName(JTextField txtFileName) {
+        this.txtFileName = txtFileName;
+    }
+
+    public JTextField getTxtExt() {
+        return txtExt;
+    }
+
+    public void setTxtExt(JTextField txtExt) {
+        this.txtExt = txtExt;
     }
 
     /**
@@ -164,8 +180,20 @@ public class JPanelSearchGral extends JPanel {
         lblPath = new JLabel("Path: ");
         pnlPath.add(lblPath);
 
-        txtPath = new JTextField(100);
+        txtPath = new JTextField(20);
         pnlPath.add(txtPath);
+
+        lblFileName = new JLabel("File Name: ");
+        pnlPath.add(lblFileName);
+
+        txtFileName = new JTextField(10);
+        pnlPath.add(txtFileName);
+
+        lblExt = new JLabel("Extension: ");
+        pnlPath.add(lblExt);
+
+        txtExt = new JTextField(10);
+        pnlPath.add(txtExt);
 
         btnSearch = new JButton("Search");
         pnlPath.add(btnSearch);
