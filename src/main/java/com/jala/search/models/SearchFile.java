@@ -40,29 +40,36 @@ public class SearchFile implements ISearchable {
         if (folder.exists()) {
             File[] findFiles = folder.listFiles();
             List<File> files = Arrays.asList(findFiles);
-            for (int i = 0; i < files.size(); i++) {
-                File file = files.get(i);
-                if (file.isFile()) {
-                    String extensionFile = FilenameUtils.getExtension(file.getName());
-                    if (!criteria.getFileName().isEmpty() && criteria.getExtension().isEmpty()) {
-                        if (file.getName().contains(criteria.getFileName())) {
+            try {
+                for (int i = 0; i < files.size(); i++) {
+                    File file = files.get(i);
+                    if (file.isFile()) {
+                        String nameFile = file.getName();
+                        String extensionFile = FilenameUtils.getExtension(nameFile);
+                        String nameCriteria = criteria.getFileName();
+                        String extensionCriteria = criteria.getExtension();
+                        if (!nameCriteria.isEmpty() && extensionCriteria.isEmpty()) {
+                            if (nameFile.contains(nameCriteria)) {
+                                filesResult.add(file);
+                            }
+                        } else if (!extensionCriteria.isEmpty() && nameCriteria.isEmpty()) {
+                            if (extensionFile.equals(extensionCriteria)) {
+                                filesResult.add(file);
+                            }
+                        } else if (!extensionCriteria.isEmpty() && !nameCriteria.isEmpty()) {
+                            if (nameFile.contains(nameCriteria) && extensionFile.equals(extensionCriteria)) {
+                                filesResult.add(file);
+                            }
+                        } else {
                             filesResult.add(file);
                         }
-                    } else if (!criteria.getExtension().isEmpty() && criteria.getFileName().isEmpty()) {
-                        if (extensionFile.equals(criteria.getExtension())) {
-                            filesResult.add(file);
-                        }
-                    } else  if (!criteria.getExtension().isEmpty() && !criteria.getFileName().isEmpty()) {
-                        if (file.getName().contains(criteria.getFileName()) && extensionFile.equals(criteria.getExtension())) {
-                            filesResult.add(file);
-                        }
-                    } else {
+                    } else if (file.isDirectory()) {
+                        //TODO recursion to get files of folder
                         filesResult = filesResult;
                     }
-                } else {
-                    //TODO recursion to get files of folder
-                    filesResult = filesResult;
                 }
+            } catch (Exception e) {
+                System.out.println(e);
             }
         }
         return filesResult;
