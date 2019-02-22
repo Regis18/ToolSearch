@@ -19,9 +19,8 @@ import java.sql.Statement;
 /**
  * This class defines the connection and creation of the database
  * @author by Cristian Lujan
- * @Version 21/02/2019/C
+ * @Version 0.0.1
  */
-
 public class ConnectionDB {
 
     private static Connection connection;

@@ -20,9 +20,8 @@ import java.sql.PreparedStatement;
 /**
  * This class defines the Querys Generals for the database
  * @author by Cristian Lujan
- * @Version 21/02/2019/C
+ * @Version 0.0.1
  */
-
 public class QueryGeneral {
 
     private Connection connection;
@@ -37,41 +36,44 @@ public class QueryGeneral {
     }
 
     /**
-     * Method
+     * Method to select an element from the database
      * @return
      * @throws SQLException
      */
     public ResultSet displayData() throws SQLException {
         Statement state = connection.createStatement();
-        ResultSet resSet = ((Statement) state).executeQuery("SELECT id, criteria fileName FROM criteriaSearch");
-        return resSet;
+        ResultSet resultset = ((Statement) state).executeQuery("SELECT id, criteria fileName FROM criteriaSearch");
+        return resultset;
     }
 
     /**
-     *
+     * Method to add an element from the database
      * @param criteriaJson
      * @throws SQLException
      */
     public void addCriteria(String criteriaJson) throws SQLException {
-        PreparedStatement prepared = connection.prepareStatement("INSERT INTO criteriaSearch(id, criteria) values(?,?);");
-        prepared.setInt(1, 1);
+        PreparedStatement prepared = connection.prepareStatement("INSERT INTO criteriaSearch(id, criteria) values(null,?);");
+        //prepared.setInt(1, 7);
         prepared.setString(2, criteriaJson);
         prepared.execute();
     }
 
     /**
-     *
-     * @param criteriaJson
+     * Method to update an element from the database
+     * @param idUpdate
      * @throws SQLException
      */
-    public void updateCriteria(String criteriaJson) throws SQLException {
-        PreparedStatement prepared = connection.prepareStatement("UPDATE criteriaSearch SET criteria = ? ");
-        prepared.setString(2, criteriaJson);
-        prepared.executeUpdate();
+    public void updateCriteria(int idUpdate) throws SQLException {
+        ResultSet criteria;
+        criteria = displayData();
+        PreparedStatement prepared = connection.prepareStatement("UPDATE criteriaSearch SET criteria = ? WHERE id = ?");
+        prepared.setString(2, String.valueOf(criteria));
+        prepared.setInt(1, idUpdate);
+        prepared.execute();
     }
 
     /**
-     *
+     * Method to remove an element from the database
      * @param idCriteria
      * @throws SQLException
      */
