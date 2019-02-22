@@ -37,7 +37,7 @@ public class QueryGeneral {
 
     /**
      * Method to select an element from the database
-     * @return
+     * @return resultset
      * @throws SQLException
      */
     public ResultSet displayData() throws SQLException {
@@ -58,20 +58,6 @@ public class QueryGeneral {
     }
 
     /**
-     * Method to update an element from the database
-     * @param idUpdate
-     * @throws SQLException
-     */
-    public void updateCriteria(int idUpdate) throws SQLException {
-        ResultSet criteria;
-        criteria = displayData();
-        PreparedStatement prepared = connection.prepareStatement("UPDATE criteriaSearch SET criteria = ? WHERE id = ?");
-        prepared.setString(2, String.valueOf(criteria));
-        prepared.setInt(1, idUpdate);
-        prepared.execute();
-    }
-
-    /**
      * Method to remove an element from the database
      * @param idCriteria
      * @throws SQLException
@@ -81,4 +67,5 @@ public class QueryGeneral {
         prepared.setInt(1,idCriteria);
         prepared.execute();
     }
+    //TODO implement the update method
 }

@@ -57,13 +57,13 @@ public class ConnectionDB {
         Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection("jdbc:sqlite:dataSearch.db");
         Statement state = connection.createStatement();
-        state.execute("CREATE TABLE if not exists criteriaSearch (id integer,criteria varchar(200), primary key(id));");
+        state.execute("CREATE TABLE if not exists criteriaSearch (id integer primary key autoincrement,criteria varchar(200));");
     }
 
     /**
      * @return The connection
      */
-    public Connection getConnection(){
+    public Connection getConnection() {
         return connection;
     }
 }
