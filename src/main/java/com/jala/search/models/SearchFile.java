@@ -12,6 +12,8 @@
 
 package com.jala.search.models;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,13 +21,15 @@ import java.util.List;
 
 /**
  * SearchFile class
- * @version 0.0.1
+ *
  * @author Areliez Vargas
+ * @version 0.0.1
  */
 public class SearchFile implements ISearchable {
 
     /**
      * This method return a file list by attributes of criteria.
+     *
      * @param criteria to do the search with the path is required and other attributes are optional.
      * @return a list of the files that content the folder set in the path of criteria.
      */
@@ -39,8 +43,17 @@ public class SearchFile implements ISearchable {
             for (int i = 0; i < files.size(); i++) {
                 File file = files.get(i);
                 if (file.isFile()) {
-                    if (!criteria.getFileName().isEmpty()) {
+                    String extensionFile = FilenameUtils.getExtension(file.getName());
+                    if (!criteria.getFileName().isEmpty() && criteria.getExtension().isEmpty()) {
                         if (file.getName().contains(criteria.getFileName())) {
+                            filesResult.add(file);
+                        }
+                    } else if (!criteria.getExtension().isEmpty() && criteria.getFileName().isEmpty()) {
+                        if (extensionFile.equals(criteria.getExtension())) {
+                            filesResult.add(file);
+                        }
+                    } else  if (!criteria.getExtension().isEmpty() && !criteria.getFileName().isEmpty()) {
+                        if (file.getName().contains(criteria.getFileName()) && extensionFile.equals(criteria.getExtension())) {
                             filesResult.add(file);
                         }
                     } else {
