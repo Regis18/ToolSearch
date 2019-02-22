@@ -27,7 +27,7 @@ public class CriteriaSearch {
     private String path;
 
     /**
-     * Criteria for the file name of the directory.
+     * Criteria for the file name.
      */
     private String fileName;
 
@@ -62,7 +62,7 @@ public class CriteriaSearch {
 
     /**
      * Return the value of file name as string.
-     * @return the string of the filename.
+     * @return file name as string.
      */
     public String getFileName() {
         return fileName;
@@ -70,16 +70,24 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the file name sending a string.
-     * @param fileName of the directory.
+     * @param fileName of the file.
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
+    /**
+     * Return the value of extension of a file.
+     * @return the extension as string.
+     */
     public String getExtension() {
         return extension;
     }
 
+    /**
+     * This method allows to set the file extension sending a string.
+     * @param extension of the file.
+     */
     public void setExtension(String extension) {
         this.extension = extension;
     }
