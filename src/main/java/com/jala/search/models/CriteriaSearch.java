@@ -12,8 +12,6 @@
 
 package com.jala.search.models;
 
-import java.util.Collection;
-
 /**
  * The CriteriaSearch class is to set and get the criterias to search.
  * @version 0.0.1
