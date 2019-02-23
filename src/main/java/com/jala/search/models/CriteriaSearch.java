@@ -30,7 +30,7 @@ public class CriteriaSearch {
     private String fileName;
 
     /**
-     * Criteri for extension of file.
+     * Criteria for extension of file.
      */
     private String extension;
 
