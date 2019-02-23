@@ -2,6 +2,7 @@
  * @(#)JPanelSearchGral.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
+ * <p>
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
@@ -15,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
@@ -23,19 +23,17 @@ import javax.swing.border.TitledBorder;
 import java.awt.LayoutManager;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import javax.swing.JTable;
 
 /**
- * Module view, ui/JPanelSearchGral.
+ * Module view, ui/JPanelSearchAdvanced.
  * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
 public class JPanelSearchGral extends JPanel {
-    private JLabel lblSearch, lblPath, lblFileName, lblExt, lblList;
-    private JTextField txtPath, txtFileName, txtExt;
+    private JLabel lblSearch, lblPath, lblList;
+    private JTextField txtPath;
     private JButton btnSearch, btnSearchAdvanced;
-    private JList lstSearched;
-    private JTable tbSearched;
+    private JTableResult tbSearchGral;
     private Border border;
 
     /**
@@ -47,41 +45,22 @@ public class JPanelSearchGral extends JPanel {
         init();
     }
 
-    public JTextField getTxtFileName() {
-        return txtFileName;
-    }
-
-    public void setTxtFileName(JTextField txtFileName) {
-        this.txtFileName = txtFileName;
-    }
-
-    public JTextField getTxtExt() {
-        return txtExt;
-    }
-
-    public void setTxtExt(JTextField txtExt) {
-        this.txtExt = txtExt;
+    /**
+     *  Get the table with the general search.
+     * @return tbSearchGral the table with the general search.
+     */
+    public JTableResult getTbSearchGral() {
+        return tbSearchGral;
     }
 
     /**
-     * Gets the Searched Results Table
-     * @return tbSearched, the searched table.
+     * Sets the Searched Results table.
+     * @param tbSearchGral the searched table to set.
      */
-    public JTable getTbSearched() {
-        return tbSearched;
+    public void setTbSearchGral(JTableResult tbSearchGral) {
+        this.tbSearchGral = tbSearchGral;
     }
 
-    /**
-     //* Sets the Searched Results table
-    // * @param tbSearched, the searched table to set.
-     */
-  /*  public void setTbSearched(JTable tbSearched) {
-        this.tbSearched = tbSearched;
-    }
-*/
-  public void setFiles(int x,int y, String value){
-
-  }
     /**
      * Gets the Path of the location to search.
      * @return txtPath, the location of file to search.
@@ -131,22 +110,6 @@ public class JPanelSearchGral extends JPanel {
     }
 
     /**
-     * Gets the Search List.
-     * @return lstSearched, the list of searches.
-     */
-    public JList getLstSearched() {
-        return lstSearched;
-    }
-
-    /**
-     * Sets the List for searches.
-     * @param lstSearched, the list searched.
-     */
-    public void setLstSearched(JList lstSearched) {
-        this.lstSearched = lstSearched;
-    }
-
-    /**
      * The init method will initialize this panel.
      */
     public void init() {
@@ -158,21 +121,21 @@ public class JPanelSearchGral extends JPanel {
      */
     private void initComponent() {
 
-        JPanel pnlNorth = pnlNorth();
-        this.add(pnlNorth(), BorderLayout.NORTH);
+        JPanel pnlNorth = pnlCriteria();
+        this.add(pnlNorth, BorderLayout.NORTH);
 
-        JPanel pnlCentral = pnlNorth();
+        JPanel pnlCentral = pnlButtonAdvanced();
         this.add(pnlCentral, BorderLayout.CENTER);
 
-        JPanel pnlSouth = pnlSouth();
+        JPanel pnlSouth = pnlTableResult();
         this.add(pnlSouth, BorderLayout.SOUTH);
     }
 
     /**
-     * Return the instance of panel central with the path and the Search button.
-     * @return p
+     * Return the instance of panel central with the path, file name, extension and Search button.
+     * @return pnlCriteria  the panel with path, file name, extension.
      */
-    private JPanel pnlNorth() {
+    private JPanel pnlCriteria() {
 
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search");
@@ -180,20 +143,8 @@ public class JPanelSearchGral extends JPanel {
         lblPath = new JLabel("Path: ");
         pnlPath.add(lblPath);
 
-        txtPath = new JTextField(20);
+        txtPath = new JTextField(50);
         pnlPath.add(txtPath);
-
-        lblFileName = new JLabel("File Name: ");
-        pnlPath.add(lblFileName);
-
-        txtFileName = new JTextField(10);
-        pnlPath.add(txtFileName);
-
-        lblExt = new JLabel("Extension: ");
-        pnlPath.add(lblExt);
-
-        txtExt = new JTextField(10);
-        pnlPath.add(txtExt);
 
         btnSearch = new JButton("Search");
         pnlPath.add(btnSearch);
@@ -202,9 +153,9 @@ public class JPanelSearchGral extends JPanel {
 
     /**
      * Return the instance of center panel with the Advanced button.
-     * @return p the Central panel.
+     * @return pnlButtonAdvanced the Advanced button panel.
      */
-    private JPanel pnlCentral() {
+    private JPanel pnlButtonAdvanced() {
 
         JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnSearchAdvanced = new JButton("Advanced");
@@ -213,32 +164,19 @@ public class JPanelSearchGral extends JPanel {
     }
 
     /**
-     * Return the instance of south panel with the table of file founds .
-     * @return the south panel of Pnl
+     * Return the instance of south panel with the table of file founds.
+     * @return pnlTableResult the south panel with the table of file founds.
      */
-    private JPanel pnlSouth() {
-        JPanel pnlTable = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List");
-        pnlTable.setBorder(titleBorder);
-/*
-        // Headers for the table.
-        String[] columns = new String[]{
-                "Id", "Path", "File Name", "Ext.", "Size"
-        };
+    private JPanel pnlTableResult() {
+        JPanel pnlSearchGral = new JPanel(new  BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search General");
+        pnlSearchGral.setBorder(titleBorder);
 
-        // Actual data for the table in a 2d array.
-        Object[][] data = new Object[][]{
-                {1, "c:github", "Test", "java", "98 bytes"},
-        };
-*/
-        // Create table with data.
-       // tbSearched = new JTable(data, columns);
-        lstSearched = new JList();
-        JScrollPane scroll = new JScrollPane(lstSearched);
-        pnlTable.add(scroll, BorderLayout.CENTER);
-        return pnlTable;
+        tbSearchGral = new JTableResult();
+        JScrollPane scroll = new JScrollPane(tbSearchGral);
+        pnlSearchGral.add(scroll, BorderLayout.CENTER);
+        return pnlSearchGral;
     }
-
 }
 
 

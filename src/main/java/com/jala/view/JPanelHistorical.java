@@ -16,11 +16,8 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.awt.LayoutManager;
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import javax.swing.JPanel;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
 /**
  * Module view, ui/JPanelHistorical.
@@ -28,8 +25,7 @@ import javax.swing.JTable;
  * @autor Melvi Caballero M.
  */
 public class JPanelHistorical extends JPanel {
-    private JList lstHistorical;
-    private JTable tbHistorical;
+    private JTableResult tbHistorical;
     private Border border;
 
     /**
@@ -44,30 +40,15 @@ public class JPanelHistorical extends JPanel {
      * Gets the historical table.
      * @return tbHistorical, get Historical table of the last searches.
      */
-    public JTable getTbHistorical() {
+    public JTableResult getTbHistorical() {
         return tbHistorical;
     }
 
     /**
      * @param tbHistorical, set Historical table.
      */
-    public void setTbHistorical(JTable tbHistorical) {
+    public void setTbHistorical(JTableResult tbHistorical) {
         this.tbHistorical = tbHistorical;
-    }
-
-    /**
-     * Gets the historical list.
-     * @return lstHistorical, list of the last searches.
-     */
-    public JList getLstHistorical() {
-        return lstHistorical;
-    }
-
-    /**
-     * @param lstHistorical, set search historical´s list.
-     */
-    public void setLstHistorical(JList lstHistorical) {
-        this.lstHistorical = lstHistorical;
     }
 
     /**
@@ -81,34 +62,15 @@ public class JPanelHistorical extends JPanel {
      * Start the components of this panel pList.
      */
     private void initComponent() {
-
-        // Headers for the table.
-        String[] columns = new String[]{
-                "Id", "Path", "File Name", "Ext.", "Size"
-        };
-
-        // Actual data for the table in a 2d array.
-        Object[][] data = new Object[][]{
-                {1, "c:github", "Test", "java", "98 bytes"},
-        };
-
-        // Create table with data.
-        tbHistorical = new JTable(data, columns);
-        JScrollPane scroll = new JScrollPane(tbHistorical);
-        this.add(scroll, BorderLayout.CENTER);
-    }
-
-    /**
-     * Return the instance of panel pList in the object pnlHistorical.
-     * @return pnlHistorical
-     */
-    private JPanel pnlList() {
-        JPanel pnlHistorical = new JPanel(new FlowLayout());
+        JPanel pnlHistorical = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Historical");
         pnlHistorical.setBorder(titleBorder);
-        lstHistorical = new JList();
-        JScrollPane scroll = new JScrollPane(lstHistorical);
+
+        // Create table with data.
+        tbHistorical = new JTableResult();
+        JScrollPane scroll = new JScrollPane(tbHistorical);
         pnlHistorical.add(scroll, BorderLayout.CENTER);
-        return pnlHistorical;
+
+        this.add(pnlHistorical,BorderLayout.CENTER);
     }
 }

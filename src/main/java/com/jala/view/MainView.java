@@ -11,18 +11,19 @@
 
 package com.jala.view;
 
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.border.Border;
 
 /**
  * Module view, ui/mainview.
- *
+ * MainView class.
  * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
@@ -31,16 +32,17 @@ public class MainView extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced;
-    private JPanelHistorical pHistorical;
-    private JPanelSearchGral pSearchGral;
+    private JPanelHistorical pnlHistorical;
+    private JPanelSearchGral pnlSearchGral;
+    private JPanelSearchAdvanced pnlSearchAdvanced;
     private String currentPanel;
+    private Border border;
 
     /**
      * Constructor.
      */
     public MainView() {
         setTitle("View Main");
-
     }
 
     /**
@@ -48,7 +50,7 @@ public class MainView extends JFrame implements ActionListener {
      * @return General Search Panel .
      */
     public JPanelSearchGral getpSearchGral() {
-        return pSearchGral;
+        return pnlSearchGral;
     }
 
     /**
@@ -56,7 +58,7 @@ public class MainView extends JFrame implements ActionListener {
      * @param pSearchGral .
      */
     public void setpSearchGral(JPanelSearchGral pSearchGral) {
-        this.pSearchGral = pSearchGral;
+        this.pnlSearchGral = pSearchGral;
     }
 
     /**
@@ -96,7 +98,7 @@ public class MainView extends JFrame implements ActionListener {
      * @return pHistorical, the last searches history Panel.
      */
     public JPanelHistorical getpHistorical() {
-        return pHistorical;
+        return pnlHistorical;
     }
 
     /**
@@ -104,7 +106,7 @@ public class MainView extends JFrame implements ActionListener {
      * @param pCentral, set the last searches history panel.
      */
     public void setpHistorical(JPanelHistorical pCentral) {
-        this.pHistorical = pHistorical;
+        this.pnlHistorical = pnlHistorical;
     }
 
     /**
@@ -157,8 +159,8 @@ public class MainView extends JFrame implements ActionListener {
         createMenu();
 
         //Create panels.
-        pHistorical = new JPanelHistorical(new BorderLayout());
-        content.add(pHistorical, BorderLayout.CENTER);
+        pnlHistorical = new JPanelHistorical(new BorderLayout());
+        content.add(pnlHistorical, BorderLayout.CENTER);
         currentPanel = "Historical";
     }
 
@@ -177,8 +179,10 @@ public class MainView extends JFrame implements ActionListener {
         menuItemGeneral = new JMenuItem("General");
         menuSearch.add(menuItemGeneral);
         menuItemGeneral.addActionListener(this);
+
         menuItemAdvanced = new JMenuItem("Advanced");
         menuSearch.add(menuItemAdvanced);
+        menuItemAdvanced.addActionListener(this);
 
         menuItemExit = new JMenuItem("Exit");
         menuFile.add(menuItemExit);
@@ -196,10 +200,21 @@ public class MainView extends JFrame implements ActionListener {
         Container content = getContentPane();
         if (e.getSource() == menuItemGeneral) {
             if (currentPanel != "SearchGral") {
-                pSearchGral = new JPanelSearchGral(new BorderLayout());
+                pnlSearchGral = new JPanelSearchGral(new BorderLayout());
+
                 content.removeAll();
-                content.add(pSearchGral, BorderLayout.CENTER);
+                content.add(pnlSearchGral, BorderLayout.CENTER);
                 currentPanel = "SearchGral";
+                this.validate();
+                this.repaint();
+            }
+        }
+        if (e.getSource() == menuItemAdvanced) {
+            if (currentPanel != "SearchAdvanced") {
+                pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
+                content.removeAll();
+                content.add(pnlSearchAdvanced, BorderLayout.CENTER);
+                currentPanel = "SearchAdvanced";
                 this.validate();
                 this.repaint();
             }
