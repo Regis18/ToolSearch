@@ -74,10 +74,18 @@ public class CriteriaSearch {
         this.fileName = fileName;
     }
 
+    /**
+     * Return the value of extension of a file.
+     * @return the extension as string.
+     */
     public String getExtension() {
         return extension;
     }
 
+    /**
+     * This method allows to set the file extension sending a string.
+     * @param extension of the file.
+     */
     public void setExtension(String extension) {
         this.extension = extension;
     }
