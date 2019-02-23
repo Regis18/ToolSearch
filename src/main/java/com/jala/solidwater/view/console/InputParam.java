@@ -1,16 +1,41 @@
 /**
- * InputParam class receive all params for the init the SolidWater app for validate them
- **/
+ * @(#)CriteriaSearch.java Copyright (c) 2019 Jala Foundation.
+ * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+ * All rights reserved.
+ * <p>
+ * This software is the confidential and proprietary information of
+ * Jala Foundation, ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jala Foundation.
+ */
 package com.jala.solidwater.view.console;
+
+import com.jala.search.models.CriteriaSearch;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * InputParam class receive all params for the init the SolidWater app for validate them
+ * @version 0.0.1
+ * @author Raul Choque
+ */
 public class InputParam {
+
+    /**
+     * List for the all commands valid
+     */
     List<String> validCommands = new ArrayList<>();
-    int indexNotCommand;
+
+    /**
+     * List of the all commands not valid
+     */
+    String notValidCommands = "";
 
     public InputParam(String[] commands) {
+
         validCommands.add("-p");
         validCommands.add("-ex");
         validCommands.add("-fn");
@@ -22,10 +47,18 @@ public class InputParam {
         List<String> inputCommand = new ArrayList<>();
         for (int i = 0; i < commands.length; i += 2) {
             inputCommand.add(commands[i]);
+            //System.out.println(i++);
         }
         if (existCommand("-p", inputCommand)) {
-            message = doValidCommands(inputCommand) ?
-                        "Valid Commands!!" : invalidCommand(inputCommand,indexNotCommand);
+            /*message = doValidCommands(inputCommand) ?
+                        "Valid Commands!!" : invalidCommand(inputCommand,indexNotCommand);*/
+            if (doValidCommands(inputCommand)) {
+                message = "Valid Commands!!";
+               // createCriteria(commands);
+
+            } else {
+                message = invalidCommand(notValidCommands);
+            }
         } else {
             message = "The command (-p) is required";
         }
@@ -52,24 +85,27 @@ public class InputParam {
     private boolean doValidCommands(List<String> inputCommand) {
         boolean doTheyValid = false;
         for (int i = 0; i < inputCommand.size(); i++) {
-            if (existCommand((String) inputCommand.get(i), validCommands)) {
+            String comand = (String) inputCommand.get(i);
+            if (existCommand(comand, validCommands)) {
                 doTheyValid = true;
             } else {
                 doTheyValid = false;
-                indexNotCommand = i;
+                notValidCommands =comand;
                 i = inputCommand.size();
             }
         }
         return doTheyValid;
     }
 
-    private String invalidCommand(List<String> inputCommand, int indexNotCommand) {
-        String message = "";
-        try {
+    private String invalidCommand(String notCommand) {
+           return  "Error: doesn't valid command : " + notCommand;
+        /*try {
             message = "Error: doesn't valid command : " + inputCommand.get(indexNotCommand);
         } catch (Exception e) {
             System.out.println("The index: " + indexNotCommand + "isn't valid.");
-        }
-        return message;
+        }*/
+    }
+    private CriteriaSearch createCriteria(Map<String, String> validCommand) {
+        return new CriteriaSearch("");
     }
 }
