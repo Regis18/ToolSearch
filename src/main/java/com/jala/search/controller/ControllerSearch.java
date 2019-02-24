@@ -86,7 +86,6 @@ public class ControllerSearch implements ActionListener {
         log.info("Information sending and waiting answers");
         for (int i = 0; i < results.size(); i++) {
             File data = results.get(i);
-            System.out.println(results.get(i));
             viewSearch.getTbSearchGral().AddResultRow(Integer.toString(i),data.getAbsolutePath(),data.getName(),
                     FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKB(data.length())));
         }
