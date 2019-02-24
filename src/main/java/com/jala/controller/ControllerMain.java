@@ -24,15 +24,15 @@ import java.awt.event.ActionEvent;
 
 /**
  * ControllerMain
- *
+ * It controls the MainView
  * @version 0.0.1
  * @author Regis Humana
  */
 public class ControllerMain implements ActionListener {
-    /*It controls the MainView*/
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
+
     /** ViewApp: create a pointer of MainView, the object will provide other class.*/
     private MainView viewApp;
 
@@ -83,11 +83,11 @@ public class ControllerMain implements ActionListener {
 
     /**
      * This method listens the an action that was performed
-     * @param e
+     * @param event
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == viewApp.getMenuItemExit()) {
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == viewApp.getMenuItemExit()) {
             log.info("Item Exit was pressed and Program exits");
             log.info("Program Exits");
             System.exit(0);

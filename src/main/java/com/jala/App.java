@@ -18,7 +18,7 @@ package com.jala;
  * @author Regis Humana
  */
 public class App {
-    /* It's responsible to run the program building the constructor of the run.java*/
+
     /** Create a variable of Run*/
     private static Run runApp;
 

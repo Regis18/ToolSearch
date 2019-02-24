@@ -25,19 +25,18 @@ import java.util.List;
 
 /**
  * ControllerSearch
- *
+ * It controls the JPanelSearchGral and SearchFile
  * @version 0.0.1
  * @author Regis Humana
  */
 public class ControllerSearch implements ActionListener {
-    /*It controls the JPanelSearchGral and SearchFile*/
 
-    /** It creates to follow up the instruction of the class*/
+     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
     /** ViewSearch: create a pointer of JPanelSearchGral the object will provide other class.*/
     private JPanelSearchGral viewSearch;
     /** This is temporal, it is just for calculate a size of the file.*/
-    private final static double fB = 1024.0;
+    private final static double BYTES = 1024.0;
 
     /**
      * Create a constructor of this class and initialize the actions listener of the buttons
@@ -86,7 +85,7 @@ public class ControllerSearch implements ActionListener {
         log.info("Information sending and waiting answers");
         for (int i = 0; i < results.size(); i++) {
             File data = results.get(i);
-            viewSearch.getTbSearchGral().AddResultRow(Integer.toString(i),data.getAbsolutePath(),data.getName(),
+            viewSearch.getTbSearchGral().AddResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
                     FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKB(data.length())));
         }
         log.info("Results implemented in the JTable of the UI");
@@ -99,7 +98,7 @@ public class ControllerSearch implements ActionListener {
      */
     private double getFileSizeInKB (double fileLength) {
         log.info("Returns the size of the file");
-        fileLength = fileLength / fB;
+        fileLength = fileLength / BYTES;
         int fs = (int) Math.pow(10,2);
         return Math.rint(fileLength*fs)/fs;
     }

@@ -16,13 +16,12 @@ import com.jala.view.MainView;
 
 /**
  * Run
+ * Establish the sequence of the running program.
  *
  * @version 0.0.1
  * @author Regis Humana
  */
 public class Run {
-    /* Establish the sequence of the running program*/
-
     /**
      * Build a constructor to do run the program and arise the main controller
      */

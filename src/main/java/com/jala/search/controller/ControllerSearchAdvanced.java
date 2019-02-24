@@ -24,19 +24,18 @@ import java.awt.event.ActionListener;
 
 /**
  * ControllerSearchAdvanced
- *
+ * It controls the JPanelSearchAdvanced and SearchFile
  * @version 0.0.1
  * @author Regis Humana
  */
-public class ControllerSearchAdvanced implements ActionListener{
-    /*It controls the JPanelSearchAdvanced and SearchFile*/
+public class ControllerSearchAdvanced implements ActionListener {
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
     /** ViewAdvanced: create a pointer of JPanelSearchAdvanced, the object will provide other class.*/
     private JPanelSearchAdvanced viewAdvanced;
     /** This is temporal, it is just for calculate a size of the file.*/
-    private final static double fB = 1024.0;
+    private final static double BYTES = 1024.0;
     /** To save the values of the UI and send to SearchFile*/
     private CriteriaSearch criteriaSearch;
 
@@ -96,7 +95,7 @@ public class ControllerSearchAdvanced implements ActionListener{
         log.info("Information sending and waiting answers");
         for (int i = 0; i < results.size(); i++) {
             File data = results.get(i);
-            viewAdvanced.getTbSearchAdvanced().AddResultRow(Integer.toString(i),data.getAbsolutePath(),data.getName(),
+            viewAdvanced.getTbSearchAdvanced().AddResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
                     FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKB(data.length())));
         }
         log.info("Results implemented in the JTable of the UI");
@@ -109,7 +108,7 @@ public class ControllerSearchAdvanced implements ActionListener{
      */
     private double getFileSizeInKB (double fileLength) {
         log.info("Returns the size of the file");
-        fileLength = fileLength / fB;
+        fileLength = fileLength / BYTES;
         int fs = (int) Math.pow(10,2);
         return Math.rint(fileLength*fs)/fs;
     }
