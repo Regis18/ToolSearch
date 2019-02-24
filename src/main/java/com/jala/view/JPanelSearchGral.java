@@ -53,15 +53,7 @@ public class JPanelSearchGral extends JPanel {
         return tbSearchGral;
     }
 
-    /**
-     * Sets the Searched Results table.
-     * @param tbSearchGral the searched table to set.
-     */
-    public void setTbSearchGral(JTableResult tbSearchGral) {
-        this.tbSearchGral = tbSearchGral;
-    }
-
-    /**
+     /**
      * Gets the Path of the location to search.
      * @return txtPath, the location of file to search.
      */
@@ -85,15 +77,7 @@ public class JPanelSearchGral extends JPanel {
         return btnSearch;
     }
 
-    /**
-     * Sets the Search Button.
-     * @param btnSearch, the Search button.
-     */
-    public void setBtnSearch(JButton btnSearch) {
-        this.btnSearch = btnSearch;
-    }
-
-    /**
+     /**
      * Gets the advanced search button.
      * @return btnSearchAdvanced, the Advanced Search button.
      */
@@ -101,15 +85,7 @@ public class JPanelSearchGral extends JPanel {
         return btnSearchAdvanced;
     }
 
-    /**
-     * Sets the advanced search button.
-     * @param btnSearchAdvanced, the Advanced Search button.
-     */
-    public void setBtnSearchAdvanced(JButton btnSearchAdvanced) {
-        this.btnSearchAdvanced = btnSearchAdvanced;
-    }
-
-    /**
+     /**
      * The init method will initialize this panel.
      */
     public void init() {

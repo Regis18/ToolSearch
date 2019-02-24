@@ -33,7 +33,7 @@ import java.awt.Dimension;
 public class JPanelSearchAdvanced extends JPanel {
     private JLabel lblSearch, lblPath, lblFileName, lblExt, lblList;
     private JTextField txtPath, txtFileName, txtExt;
-    private JButton btnSearch, btnSearchAdvanced;
+    private JButton btnSearch;
     private JTableResult tbSearchAdvanced;
     private Border border;
 
@@ -54,15 +54,7 @@ public class JPanelSearchAdvanced extends JPanel {
         return tbSearchAdvanced;
     }
 
-    /**
-     * Tis method allow set the result table.
-     * @param tbSearchAdvanced result table.
-     */
-    public void setTbSearchAdvanced(JTableResult tbSearchAdvanced) {
-        this.tbSearchAdvanced = tbSearchAdvanced;
-    }
-
-    /**
+     /**
      * Return the value of file name.
      * @return txtFileName the criteria File Name.
      */
@@ -114,30 +106,6 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     public JButton getBtnSearch() {
         return btnSearch;
-    }
-
-    /**
-     * Sets the Search Button.
-     * @param btnSearch, the Search button.
-     */
-    public void setBtnSearch(JButton btnSearch) {
-        this.btnSearch = btnSearch;
-    }
-
-    /**
-     * Gets the advanced search button.
-     * @return btnSearchAdvanced, the Advanced Search button.
-     */
-    public JButton getBtnSearchAdvanced() {
-        return btnSearchAdvanced;
-    }
-
-    /**
-     * Sets the advanced search button.
-     * @param btnSearchAdvanced, the Advanced Search button.
-     */
-    public void setBtnSearchAdvanced(JButton btnSearchAdvanced) {
-        this.btnSearchAdvanced = btnSearchAdvanced;
     }
 
     /**
@@ -202,7 +170,6 @@ public class JPanelSearchAdvanced extends JPanel {
         pnlSearchAd.add(pnlExt, BorderLayout.SOUTH);
 
         return pnlSearchAd;
-
     }
 
     /**

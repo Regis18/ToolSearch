@@ -54,27 +54,11 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * Sets the General Search Panel.
-     * @param pSearchGral .
-     */
-    public void setpSearchGral(JPanelSearchGral pSearchGral) {
-        this.pnlSearchGral = pSearchGral;
-    }
-
-    /**
      * Gets the Converter Menu.
      * @return the Menu option Converter
      */
     public JMenu getMenuConverter() {
         return menuConverter;
-    }
-
-    /**
-     * Sets the Converte menu option.
-     * @param menuConverter , The menu to set as Converter.
-     */
-    public void setMenuConverter(JMenu menuConverter) {
-        this.menuConverter = menuConverter;
     }
 
     /**
@@ -86,27 +70,11 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * Set the menu for the Exit option.
-     * @param menuItemExit, the Exit menu item to set.
-     */
-    public void setMenuItemExit(JMenuItem menuItemExit) {
-        this.menuItemExit = menuItemExit;
-    }
-
-    /**
      * Gets the Historical Panel.
      * @return pHistorical, the last searches history Panel.
      */
     public JPanelHistorical getpHistorical() {
         return pnlHistorical;
-    }
-
-    /**
-     * Set the Historical Panel.
-     * @param pCentral, set the last searches history panel.
-     */
-    public void setpHistorical(JPanelHistorical pCentral) {
-        this.pnlHistorical = pnlHistorical;
     }
 
     /**
@@ -118,27 +86,11 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * Sets the General Search Menu option.
-     * @param menuItemGeneral, the General menu item of the Search menu.
-     */
-    public void setMenuItemGeneral(JMenuItem menuItemGeneral) {
-        this.menuItemGeneral = menuItemGeneral;
-    }
-
-    /**
      * Gets the advanced Search menu option.
      * @return menuItemAdvanced, the option Advanced menu item of the Search menu.
      */
     public JMenuItem getMenuItemAdvanced() {
         return menuItemAdvanced;
-    }
-
-    /**
-     * Gets the Advanced Search menu option.
-     * @param menuItemAdvanced, the Advanced menu item of the Search menu.
-     */
-    public void setMenuItemAdvanced(JMenuItem menuItemAdvanced) {
-        this.menuItemAdvanced = menuItemAdvanced;
     }
 
     /**
@@ -201,7 +153,6 @@ public class MainView extends JFrame implements ActionListener {
         if (e.getSource() == menuItemGeneral) {
             if (currentPanel != "SearchGral") {
                 pnlSearchGral = new JPanelSearchGral(new BorderLayout());
-
                 content.removeAll();
                 content.add(pnlSearchGral, BorderLayout.CENTER);
                 currentPanel = "SearchGral";

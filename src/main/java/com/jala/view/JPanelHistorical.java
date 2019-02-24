@@ -45,13 +45,6 @@ public class JPanelHistorical extends JPanel {
     }
 
     /**
-     * @param tbHistorical, set Historical table.
-     */
-    public void setTbHistorical(JTableResult tbHistorical) {
-        this.tbHistorical = tbHistorical;
-    }
-
-    /**
      * Method init call to initComponent method.
      */
     public void init() {

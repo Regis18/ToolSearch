@@ -22,7 +22,6 @@ import javax.swing.table.DefaultTableModel;
  * @autor Melvi Caballero M.
  */
 public class JTableResult extends JTable {
-
     DefaultTableModel dtm = new DefaultTableModel(0, 0);
 
     // add header of the table
@@ -34,6 +33,7 @@ public class JTableResult extends JTable {
     public JTableResult() {
         super();
         dtm.setColumnIdentifiers(header);
+
         //set model into the table object
         this.setModel(dtm);
         this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
@@ -45,11 +45,12 @@ public class JTableResult extends JTable {
     }
 
     /**
+     * Add a row to the table.
      * @param id       identifier.
-     * @param path     criteria of search.
-     * @param fileName criteria of search.
-     * @param ext      criteria of search.
-     * @param size     criteria of search.
+     * @param path     file path.
+     * @param fileName file name.
+     * @param ext      file extension.
+     * @param size     file size.
      */
     public void AddResultRow(String id, String path, String fileName, String ext, String size) {
         dtm.addRow(new Object[]{id, path, fileName, ext, size});
