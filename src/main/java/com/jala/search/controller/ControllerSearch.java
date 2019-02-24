@@ -76,10 +76,12 @@ public class ControllerSearch implements ActionListener {
      * Send path to SearchFile, receive a list of results, and print the results in the UI table.
      * @param Path, that is save in the CriteriaSearch object and send to SearchFile
      */
-    private void sendPathToSearch(String Path){
+    private void sendPathToSearch(String path){
         log.info("Preparing to send criteria to SearchFile");
         SearchFile search = new SearchFile();
-        CriteriaSearch criteria = new CriteriaSearch(Path);
+        CriteriaSearch criteria = new CriteriaSearch(path);
+        criteria.setFileName("");
+        criteria.setExtension("");
         List<File> results = search.search(criteria);
         log.info("Information sending and waiting answers");
         for (int i = 0; i < results.size(); i++) {
