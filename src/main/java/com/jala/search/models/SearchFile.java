@@ -12,6 +12,7 @@
 
 package com.jala.search.models;
 
+import com.jala.utils.Logs;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
@@ -67,8 +68,8 @@ public class SearchFile implements ISearchable {
                         filesResult = filesResult;
                     }
                 }
-            } catch (Exception e) {
-                System.out.println(e);
+            } catch (NullPointerException e) {
+                Logs.getInstance().getLog().error("The criteria values shouldn't be null",e);
             }
         }
         return filesResult;
