@@ -74,7 +74,7 @@ public class ControllerSearch implements ActionListener {
 
     /**
      * Send path to SearchFile, receive a list of results, and print the results in the UI table.
-     * @param Path, that is save in the CriteriaSearch object and send to SearchFile
+     * @param path, that is save in the CriteriaSearch object and send to SearchFile
      */
     private void sendPathToSearch(String path){
         log.info("Preparing to send criteria to SearchFile");
@@ -86,6 +86,7 @@ public class ControllerSearch implements ActionListener {
         log.info("Information sending and waiting answers");
         for (int i = 0; i < results.size(); i++) {
             File data = results.get(i);
+            System.out.println(results.get(i));
             viewSearch.getTbSearchGral().AddResultRow(Integer.toString(i),data.getAbsolutePath(),data.getName(),
                     FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKB(data.length())));
         }
