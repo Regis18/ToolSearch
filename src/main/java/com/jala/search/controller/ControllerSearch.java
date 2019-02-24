@@ -13,7 +13,11 @@ package com.jala.search.controller;
 
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
+import com.jala.utils.Logs;
+import com.jala.view.JPanelSearchGral;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -28,6 +32,8 @@ import java.util.List;
 public class ControllerSearch implements ActionListener {
     /*It controls the JPanelSearchGral and SearchFile*/
 
+    /** It creates to follow up the instruction of the class*/
+    private Logger log = Logs.getInstance().getLog();
     /** ViewSearch: create a pointer of JPanelSearchGral the object will provide other class.*/
     private JPanelSearchGral viewSearch;
     /** This is temporal, it is just for calculate a size of the file.*/
@@ -39,6 +45,7 @@ public class ControllerSearch implements ActionListener {
      * @param viewSearch
      */
     public ControllerSearch(JPanelSearchGral viewSearch) {
+        log.info("Initialize the Control of Search General");
         this.viewSearch = viewSearch;
         actionsListener();
     }
@@ -47,7 +54,9 @@ public class ControllerSearch implements ActionListener {
      * Initialize the action listener of the btnSearch button.
      */
     private void actionsListener(){
+        log.info("Initialize the adding of listener for the buttons in Search General");
         viewSearch.getBtnSearch().addActionListener(this);
+        log.info("Finish the actionListener");
     }
 
     /**
@@ -56,7 +65,9 @@ public class ControllerSearch implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        log.info("Action Detected");
         if (e.getSource() == viewSearch.getBtnSearch()) {
+            log.info("BtnSearch from Search General was pressed");
             sendPathToSearch(viewSearch.getTxtPath().getText());
         }
     }
@@ -66,14 +77,17 @@ public class ControllerSearch implements ActionListener {
      * @param Path, that is save in the CriteriaSearch object and send to SearchFile
      */
     private void sendPathToSearch(String Path){
+        log.info("Preparing to send criteria to SearchFile");
         SearchFile search = new SearchFile();
         CriteriaSearch criteria = new CriteriaSearch(Path);
         List<File> results = search.search(criteria);
+        log.info("Information sending and waiting answers");
         for (int i = 0; i < results.size(); i++) {
             File data = results.get(i);
             viewSearch.getTbSearchGral().AddResultRow(Integer.toString(i),data.getAbsolutePath(),data.getName(),
                     FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKB(data.length())));
         }
+        log.info("Results implemented in the JTable of the UI");
     }
 
     /**
@@ -82,6 +96,7 @@ public class ControllerSearch implements ActionListener {
      * @return Size of files in KiloBytes
      */
     private double getFileSizeInKB (double fileLength) {
+        log.info("Returns the size of the file");
         fileLength = fileLength / fB;
         int fs = (int) Math.pow(10,2);
         return Math.rint(fileLength*fs)/fs;

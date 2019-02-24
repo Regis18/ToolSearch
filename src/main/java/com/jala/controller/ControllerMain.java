@@ -9,11 +9,14 @@
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
-package com.jala.search.controller;
+package com.jala.controller;
 
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
+import com.jala.search.controller.ControllerSearch;
+import com.jala.search.controller.ControllerSearchAdvanced;
 import com.jala.utils.Logs;
+import com.jala.view.MainView;
 import org.apache.log4j.Logger;
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -38,6 +41,7 @@ public class ControllerMain implements ActionListener {
      * @param viewApp
      */
     public ControllerMain(MainView viewApp){
+        log.info("Initialize the Controller of MainView");
         this.viewApp = viewApp;
     }
 
@@ -45,26 +49,29 @@ public class ControllerMain implements ActionListener {
      * Loading the UI and Initialize the listener of the menu items
      */
     public void initView(){
+        log.info("Loading of the MainView from Controller");
         viewApp.init();
-        log.info("Loading MainView form");
         viewApp.setExtendedState(JFrame.MAXIMIZED_BOTH);
         viewApp.setVisible(true);
         actionsListener();
+        log.info("Finished the loading");
     }
 
     /**
      * Initialize the action listener of the menu item of exit and item general, and Container Listener
      */
     private void actionsListener(){
+        log.info("Initialize actions listener in ControllerMain");
         viewApp.getMenuItemExit().addActionListener(this);
         viewApp.getMenuItemGeneral().addActionListener(this);
         viewApp.getContentPane().addContainerListener(new ContainerListener() {
             @Override
             public void componentAdded(ContainerEvent e) {
-                System.out.println(viewApp.getContentPane().getComponent(0));
                 if (viewApp.getContentPane().getComponent(0) == viewApp.getpSearchGral()) {
+                    log.info("Loading Search General Form");
                     new ControllerSearch(viewApp.getpSearchGral());
                 } else if (viewApp.getContentPane().getComponent(0) == viewApp.getpSearchAdvanced()) {
+                    log.info("Loading Search Advanced Form");
                     new ControllerSearchAdvanced(viewApp.getpSearchAdvanced());
                 }
             }
@@ -81,6 +88,8 @@ public class ControllerMain implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == viewApp.getMenuItemExit()) {
+            log.info("Item Exit was pressed and Program exits");
+            log.info("Program Exits");
             System.exit(0);
         }
     }
