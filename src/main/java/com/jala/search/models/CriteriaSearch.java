@@ -25,7 +25,7 @@ public class CriteriaSearch {
     private String path;
 
     /**
-     * Criteria for the file name of the directory.
+     * Criteria for the file name.
      */
     private String fileName;
 
@@ -60,7 +60,7 @@ public class CriteriaSearch {
 
     /**
      * Return the value of file name as string.
-     * @return the string of the filename.
+     * @return file name as string.
      */
     public String getFileName() {
         return fileName;
@@ -68,7 +68,7 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the file name sending a string.
-     * @param fileName of the directory.
+     * @param fileName of the file.
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
