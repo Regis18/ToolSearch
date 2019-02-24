@@ -12,6 +12,8 @@
 
 package com.jala.search.models;
 
+import org.apache.commons.io.FilenameUtils;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,8 +21,9 @@ import java.util.List;
 
 /**
  * SearchFile class
- * @version 0.0.1
+ *
  * @author Areliez Vargas
+ * @version 0.0.1
  */
 public class SearchFile implements ISearchable {
 
@@ -32,11 +35,35 @@ public class SearchFile implements ISearchable {
     @Override
     public List<File> search(CriteriaSearch criteria) {
         File folder = new File(criteria.getPath());
-        List<File> files = new ArrayList<>();
+        List<File> filesResult = new ArrayList<>();
         if (folder.exists()) {
             File[] findFiles = folder.listFiles();
-            files = Arrays.asList(findFiles);
+            List<File> files = Arrays.asList(findFiles);
+            for (int i = 0; i < files.size(); i++) {
+                File file = files.get(i);
+                if (file.isFile()) {
+                    String extensionFile = FilenameUtils.getExtension(file.getName());
+                    if (!criteria.getFileName().isEmpty() && criteria.getExtension().isEmpty()) {
+                        if (file.getName().contains(criteria.getFileName())) {
+                            filesResult.add(file);
+                        }
+                    } else if (!criteria.getExtension().isEmpty() && criteria.getFileName().isEmpty()) {
+                        if (extensionFile.equals(criteria.getExtension())) {
+                            filesResult.add(file);
+                        }
+                    } else  if (!criteria.getExtension().isEmpty() && !criteria.getFileName().isEmpty()) {
+                        if (file.getName().contains(criteria.getFileName()) && extensionFile.equals(criteria.getExtension())) {
+                            filesResult.add(file);
+                        }
+                    } else {
+                        filesResult = filesResult;
+                    }
+                } else {
+                    //TODO recursion to get files of folder
+                    filesResult = filesResult;
+                }
+            }
         }
-        return files;
+        return filesResult;
     }
 }
