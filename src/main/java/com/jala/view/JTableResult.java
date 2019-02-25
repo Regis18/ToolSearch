@@ -59,7 +59,7 @@ public class JTableResult extends JTable {
     /**
      * Clean the table.
      */
-    public void resultResultRow() {
+    public void removeRow() {
         int rowCount = dtm.getRowCount();
 
         //Remove rows one by one from the end of the table.
