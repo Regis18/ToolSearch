@@ -18,7 +18,6 @@ import com.jala.search.controller.ControllerSearchAdvanced;
 import com.jala.utils.Logs;
 import com.jala.view.MainView;
 import org.apache.log4j.Logger;
-import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -51,7 +50,6 @@ public class ControllerMain implements ActionListener {
     public void initView(){
         log.info("Loading of the MainView from Controller");
         viewApp.init();
-        viewApp.setExtendedState(JFrame.MAXIMIZED_BOTH);
         viewApp.setVisible(true);
         actionsListener();
         log.info("Finished the loading");
