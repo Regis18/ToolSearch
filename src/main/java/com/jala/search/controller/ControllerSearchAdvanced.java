@@ -96,9 +96,10 @@ public class ControllerSearchAdvanced implements ActionListener {
         SearchFile searchFile = new SearchFile();
         List<File> results = searchFile.search(criteriaSearch);
         log.info("Information sending and waiting answers");
+        viewAdvanced.getTbSearchAdvanced().removeRow();
         for (int i = 0; i < results.size(); i++) {
             File data = results.get(i);
-            viewAdvanced.getTbSearchAdvanced().AddResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
+            viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
                     FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKb(data.length())));
         }
         log.info("Results implemented in the JTable of the UI");

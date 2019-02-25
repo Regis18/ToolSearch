@@ -84,9 +84,10 @@ public class ControllerSearch implements ActionListener {
         criteria.setExtension("");
         List<File> results = search.search(criteria);
         log.info("Information sending and waiting answers");
+        viewSearch.getTbSearchGral().removeRow();
         for (int i = 0; i < results.size(); i++) {
             File data = results.get(i);
-            viewSearch.getTbSearchGral().AddResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
+            viewSearch.getTbSearchGral().addResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
                     FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKb(data.length())));
         }
         log.info("Results implemented in the JTable of the UI");
