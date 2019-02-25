@@ -12,6 +12,7 @@
 
 package com.jala.search.models;
 
+import com.jala.utils.Logs;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
@@ -29,7 +30,6 @@ public class SearchFile implements ISearchable {
 
     /**
      * This method return a file list by attributes of criteria.
-     *
      * @param criteria to do the search with the path is required and other attributes are optional.
      * @return a list of the files that content the folder set in the path of criteria.
      */
@@ -68,8 +68,8 @@ public class SearchFile implements ISearchable {
                         filesResult = filesResult;
                     }
                 }
-            } catch (Exception e) {
-                System.out.println(e);
+            } catch (NullPointerException e) {
+                Logs.getInstance().getLog().error("The criteria values shouldn't be null",e);
             }
         }
         return filesResult;
