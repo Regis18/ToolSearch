@@ -136,7 +136,10 @@ public class JPanelSearchGral extends JPanel {
         JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         btnSearchAdvanced = new JButton("Advanced");
         pnlSearchAdvanced.add(btnSearchAdvanced);
+        btnSearchAdvanced.setVisible(false);
         return pnlSearchAdvanced;
+        
+        //TODO implement the add actionListener to this button.
     }
 
     /**
