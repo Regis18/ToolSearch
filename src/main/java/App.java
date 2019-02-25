@@ -1,4 +1,5 @@
-import com.jala.solidwater.view.console.InputParam;
+import com.jala.solidwater.view.console.InputParameter;
+import com.jala.solidwater.view.console.ViewConsole;
 
 public class App {
 
@@ -8,6 +9,10 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-        InputParam validator = new InputParam(args);
+
+        InputParameter validator = new InputParameter();
+        validator.validateCommands(args);
+        ViewConsole viewConsole = new ViewConsole();
+        viewConsole.testShow();
     }
 }
