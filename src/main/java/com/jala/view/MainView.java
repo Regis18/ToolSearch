@@ -54,6 +54,13 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
+     * Return the panel where is the Search Advanced.
+     * @return Advanced Search Panel .
+     */
+    public JPanelSearchAdvanced getpSearchAdvanced() {
+        return pnlSearchAdvanced;
+    }
+    /**
      * Gets the Converter Menu.
      * @return the Menu option Converter
      */
