@@ -39,7 +39,7 @@ public class ControllerMain implements ActionListener {
      * Create a constructor of Main Controller
      * @param viewApp
      */
-    public ControllerMain(MainView viewApp){
+    public ControllerMain(MainView viewApp) {
         log.info("Initialize the Controller of MainView");
         this.viewApp = viewApp;
     }
@@ -47,7 +47,7 @@ public class ControllerMain implements ActionListener {
     /**
      * Loading the UI and Initialize the listener of the menu items
      */
-    public void initView(){
+    public void initView() {
         log.info("Loading of the MainView from Controller");
         viewApp.init();
         viewApp.setVisible(true);
@@ -58,13 +58,13 @@ public class ControllerMain implements ActionListener {
     /**
      * Initialize the action listener of the menu item of exit and item general, and Container Listener
      */
-    private void actionsListener(){
+    private void actionsListener() {
         log.info("Initialize actions listener in ControllerMain");
         viewApp.getMenuItemExit().addActionListener(this);
         viewApp.getMenuItemGeneral().addActionListener(this);
         viewApp.getContentPane().addContainerListener(new ContainerListener() {
             @Override
-            public void componentAdded(ContainerEvent e) {
+            public void componentAdded(ContainerEvent event) {
                 if (viewApp.getContentPane().getComponent(0) == viewApp.getpSearchGral()) {
                     log.info("Loading Search General Form");
                     new ControllerSearch(viewApp.getpSearchGral());
@@ -74,7 +74,7 @@ public class ControllerMain implements ActionListener {
                 }
             }
             @Override
-            public void componentRemoved(ContainerEvent e) {
+            public void componentRemoved(ContainerEvent event) {
             }
         });
     }
