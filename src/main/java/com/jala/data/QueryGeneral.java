@@ -25,12 +25,12 @@ import java.sql.PreparedStatement;
 public class QueryGeneral {
 
     /**
-     * attribute to create the connection
+     * Attribute to create the connection.
      */
     private Connection connection;
 
     /**
-     * Constructor to initialize the connection
+     * Constructor to initialize the connection.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -39,7 +39,7 @@ public class QueryGeneral {
     }
 
     /**
-     * Method to select an element from the database
+     * Method to select an element from the database.
      * @return resultset
      * @throws SQLException
      */
@@ -61,7 +61,7 @@ public class QueryGeneral {
     }
 
     /**
-     * Method to remove an element from the database
+     * Method to remove an element from the database.
      * @param idCriteria
      * @throws SQLException
      */

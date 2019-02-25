@@ -24,17 +24,17 @@ import java.sql.Statement;
 public class ConnectionDB {
 
     /**
-     * attribute to create the connection
+     * Attribute to create the connection.
      */
     private static Connection connection;
 
     /**
-     * attribute for database connection
+     * Attribute for database connection.
      */
     private static ConnectionDB connectDB;
 
     /**
-     * Constructor to initialize the database connection
+     * Constructor to initialize the database connection.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -43,8 +43,8 @@ public class ConnectionDB {
     }
 
     /**
-     * Method that returns the connection to the database
-     * @return Connection of Data Base
+     * Method that returns the connection to the database.
+     * @return Connection of Data Base.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -56,7 +56,7 @@ public class ConnectionDB {
     }
 
     /**
-     * Method where the connection to the database is generated and created
+     * Method where the connection to the database is generated and created.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -68,7 +68,7 @@ public class ConnectionDB {
     }
 
     /**
-     * Method of connecting to the class
+     * Method of connecting to the class.
      * @return The connection
      */
     public Connection getConnection() {
