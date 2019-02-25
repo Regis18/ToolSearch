@@ -52,7 +52,19 @@ public class JTableResult extends JTable {
      * @param ext      file extension.
      * @param size     file size.
      */
-    public void AddResultRow(String id, String path, String fileName, String ext, String size) {
+    public void addResultRow(String id, String path, String fileName, String ext, String size) {
         dtm.addRow(new Object[]{id, path, fileName, ext, size});
+    }
+
+    /**
+     * Clean the table.
+     */
+    public void resultResultRow() {
+        int rowCount = dtm.getRowCount();
+
+        //Remove rows one by one from the end of the table.
+        for (int index = rowCount - 1; index >= 0; index--) {
+            dtm.removeRow(index);
+        }
     }
 }
