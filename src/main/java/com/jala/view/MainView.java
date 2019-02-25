@@ -106,7 +106,9 @@ public class MainView extends JFrame implements ActionListener {
     public void init() {
         Container content = getContentPane();
         content.setLayout(new BorderLayout());
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponent();
+
         setLocationRelativeTo(null);
     }
 
