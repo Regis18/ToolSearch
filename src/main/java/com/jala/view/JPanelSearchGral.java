@@ -138,8 +138,8 @@ public class JPanelSearchGral extends JPanel {
         pnlSearchAdvanced.add(btnSearchAdvanced);
         btnSearchAdvanced.setVisible(false);
         return pnlSearchAdvanced;
-
-        // Todo, implement the add actionListener to this button.
+        
+        //TODO implement the add actionListener to this button.
     }
 
     /**
