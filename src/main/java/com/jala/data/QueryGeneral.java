@@ -24,6 +24,9 @@ import java.sql.PreparedStatement;
  */
 public class QueryGeneral {
 
+    /**
+     * attribute to create the connection
+     */
     private Connection connection;
 
     /**

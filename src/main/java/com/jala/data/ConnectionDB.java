@@ -23,7 +23,14 @@ import java.sql.Statement;
  */
 public class ConnectionDB {
 
+    /**
+     * attribute to create the connection
+     */
     private static Connection connection;
+
+    /**
+     * attribute for database connection
+     */
     private static ConnectionDB connectDB;
 
     /**
@@ -37,7 +44,7 @@ public class ConnectionDB {
 
     /**
      * Method that returns the connection to the database
-     * @return Connectionqwe of Data Base
+     * @return Connection of Data Base
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -61,6 +68,7 @@ public class ConnectionDB {
     }
 
     /**
+     * Method of connecting to the class
      * @return The connection
      */
     public Connection getConnection() {
