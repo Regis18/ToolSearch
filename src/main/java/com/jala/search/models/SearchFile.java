@@ -49,32 +49,25 @@ public class SearchFile implements ISearchable {
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
                         boolean hiddenCriteria = criteria.isHidden();
-                        boolean hiddenYN = true;
 
-                        if (hiddenCriteria && !file.isHidden()) {
-                            hiddenYN=false;
+                       // var auxiliar.
+                        boolean hidden = true;
+                        if (hiddenCriteria && !file.isHidden() || !hiddenCriteria && file.isHidden()) {
+                            hidden=false;
                         }
-
-                        if (!hiddenCriteria && file.isHidden()) {
-                            hiddenYN=false;
-                        }
-
                         if (!nameCriteria.isEmpty()) {
                             if (!nameFile.contains(nameCriteria)) {
-                                hiddenYN = false;
+                                hidden = false;
                             }
                         }
-
                         if (!extensionCriteria.isEmpty()) {
                             if (!extensionFile.equals(extensionCriteria)) {
-                                hiddenYN = false;
+                                hidden = false;
                             }
                         }
-
-                        if (hiddenYN) {
+                        if (hidden) {
                             filesResult.add(file);
                         }
-
                     } else if (file.isDirectory()) {
                         //TODO recursion to get files of folder
                         filesResult = filesResult;
