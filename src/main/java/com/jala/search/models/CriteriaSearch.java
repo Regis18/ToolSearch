@@ -33,10 +33,12 @@ public class CriteriaSearch {
      * Criteria for extension of file.
      */
     private String extension;
+
     /**
      * Criteria for hidden of file;
      */
     private boolean hidden;
+    
     /**
      * Constructor that setting the path for then do a search.
      * @param path of the directory.
