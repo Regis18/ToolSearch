@@ -49,7 +49,6 @@ public class SearchFile implements ISearchable {
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
                         boolean hiddenCriteria = criteria.isHidden();
-
                        // var auxiliar.
                         boolean hidden = true;
                         if (hiddenCriteria && !file.isHidden() || !hiddenCriteria && file.isHidden()) {
