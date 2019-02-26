@@ -48,21 +48,33 @@ public class SearchFile implements ISearchable {
                         String extensionFile = FilenameUtils.getExtension(nameFile);
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
-                        if (!nameCriteria.isEmpty() && extensionCriteria.isEmpty()) {
-                            if (nameFile.contains(nameCriteria)) {
-                                filesResult.add(file);
+                        boolean hiddenCriteria = criteria.isHidden();
+                        boolean hiddenYN = true;
+
+                        if (hiddenCriteria && !file.isHidden()) {
+                            hiddenYN=false;
+                        }
+
+                        if (!hiddenCriteria && file.isHidden()) {
+                            hiddenYN=false;
+                        }
+
+                        if (!nameCriteria.isEmpty()) {
+                            if (!nameFile.contains(nameCriteria)) {
+                                hiddenYN = false;
                             }
-                        } else if (!extensionCriteria.isEmpty() && nameCriteria.isEmpty()) {
-                            if (extensionFile.equals(extensionCriteria)) {
-                                filesResult.add(file);
+                        }
+
+                        if (!extensionCriteria.isEmpty()) {
+                            if (!extensionFile.equals(extensionCriteria)) {
+                                hiddenYN = false;
                             }
-                        } else if (!extensionCriteria.isEmpty() && !nameCriteria.isEmpty()) {
-                            if (nameFile.contains(nameCriteria) && extensionFile.equals(extensionCriteria)) {
-                                filesResult.add(file);
-                            }
-                        } else {
+                        }
+
+                        if (hiddenYN) {
                             filesResult.add(file);
                         }
+
                     } else if (file.isDirectory()) {
                         //TODO recursion to get files of folder
                         filesResult = filesResult;

@@ -33,7 +33,10 @@ public class CriteriaSearch {
      * Criteria for extension of file.
      */
     private String extension;
-
+    /**
+     * Criteria for hidden of file;
+     */
+    private boolean hidden;
     /**
      * Constructor that setting the path for then do a search.
      * @param path of the directory.
@@ -88,5 +91,21 @@ public class CriteriaSearch {
      */
     public void setExtension(String extension) {
         this.extension = extension;
+    }
+
+    /**
+     * Return the values of hidden of a file.
+     * @return the hidden property of the file.
+     */
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    /**
+     * This method allows to set the hidden criteria for the file search.
+     * @param hidden the value to use of the search.
+     */
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
     }
 }
