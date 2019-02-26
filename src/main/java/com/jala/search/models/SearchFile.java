@@ -55,15 +55,11 @@ public class SearchFile implements ISearchable {
                         if (hiddenCriteria && !file.isHidden() || !hiddenCriteria && file.isHidden()) {
                             hidden=false;
                         }
-                        if (!nameCriteria.isEmpty()) {
-                            if (!nameFile.contains(nameCriteria)) {
-                                hidden = false;
-                            }
+                        if (!nameCriteria.isEmpty() && !nameFile.contains(nameCriteria)) {
+                            hidden = false;
                         }
-                        if (!extensionCriteria.isEmpty()) {
-                            if (!extensionFile.equals(extensionCriteria)) {
-                                hidden = false;
-                            }
+                        if (!extensionCriteria.isEmpty() && !extensionFile.equals(extensionCriteria) ) {
+                            hidden = false;
                         }
                         if (hidden) {
                             filesResult.add(file);
