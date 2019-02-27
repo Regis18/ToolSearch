@@ -14,8 +14,9 @@ package com.jala.search.models;
 
 /**
  * The CriteriaSearch class is to set and get the criterias to search.
- * @version 0.0.1
+ *
  * @author Areliez Vargas
+ * @version 0.0.1
  */
 public class CriteriaSearch {
 
@@ -37,10 +38,15 @@ public class CriteriaSearch {
     /**
      * Criteria for hidden of file;
      */
-    private boolean hidden;
-    
+    private TernaryBooleanEnum hidden;
+    /**
+     *
+     */
+    private int type;
+
     /**
      * Constructor that setting the path for then do a search.
+     *
      * @param path of the directory.
      */
     public CriteriaSearch(String path) {
@@ -49,6 +55,7 @@ public class CriteriaSearch {
 
     /**
      * Return the path of the directory as string.
+     *
      * @return the string of the path.
      */
     public String getPath() {
@@ -57,6 +64,7 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the path sending a string.
+     *
      * @param path of the directory.
      */
     public void setPath(String path) {
@@ -65,6 +73,7 @@ public class CriteriaSearch {
 
     /**
      * Return the value of file name as string.
+     *
      * @return file name as string.
      */
     public String getFileName() {
@@ -73,6 +82,7 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the file name sending a string.
+     *
      * @param fileName of the file.
      */
     public void setFileName(String fileName) {
@@ -81,6 +91,7 @@ public class CriteriaSearch {
 
     /**
      * Return the value of extension of a file.
+     *
      * @return the extension as string.
      */
     public String getExtension() {
@@ -89,6 +100,7 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the file extension sending a string.
+     *
      * @param extension of the file.
      */
     public void setExtension(String extension) {
@@ -97,17 +109,33 @@ public class CriteriaSearch {
 
     /**
      * Return the values of hidden of a file.
+     *
      * @return the hidden property of the file.
      */
-    public boolean isHidden() {
+    public TernaryBooleanEnum getHidden() {
         return hidden;
     }
 
     /**
      * This method allows to set the hidden criteria for the file search.
+     *
      * @param hidden the value to use of the search.
      */
-    public void setHidden(boolean hidden) {
+     public void setHidden(TernaryBooleanEnum hidden) {
         this.hidden = hidden;
+    }
+
+    /**
+     * @return
+     */
+    public int getType() {
+        return type;
+    }
+
+    /**
+     * @param type
+     */
+    public void setType(int type) {
+        this.type = type;
     }
 }

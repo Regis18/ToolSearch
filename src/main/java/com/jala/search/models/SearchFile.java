@@ -20,8 +20,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.jala.utils.AssetFactory;
+
 /**
- * SearchFile class
+ * SearchFile class.
  *
  * @author Areliez Vargas
  * @version 0.0.1
@@ -29,49 +31,71 @@ import java.util.List;
 public class SearchFile implements ISearchable {
 
     /**
-     * This method return a file list by attributes of criteria.
+     * This method return a IAsset list by attributes of criteria.
      * @param criteria to do the search with the path is required and other attributes are optional.
      * @return a list of the files that content the folder set in the path of criteria.
      */
     @Override
-    public List<File> search(CriteriaSearch criteria) {
+    public List<IAsset> search(CriteriaSearch criteria) {
+        List<IAsset> result = new ArrayList<>();
         File folder = new File(criteria.getPath());
-        List<File> filesResult = new ArrayList<>();
         if (folder.exists()) {
             File[] findFiles = folder.listFiles();
             List<File> files = Arrays.asList(findFiles);
+
             try {
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
                     if (file.isFile()) {
-                        String nameFile = file.getName();
+                        //convert of a file to asset.
+                        IAsset asset = AssetFactory.GetAsset(criteria, file);
+
+                        String nameFile = ((Asset) asset).getFileName();
                         String extensionFile = FilenameUtils.getExtension(nameFile);
+
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
-                        boolean hiddenCriteria = criteria.isHidden();
-                       // var auxiliar.
-                        boolean hidden = true;
-                        if (hiddenCriteria && !file.isHidden() || !hiddenCriteria && file.isHidden()) {
-                            hidden=false;
+                        // var aux.
+                        boolean addFileToResults = true;
+
+                        if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
+                            addFileToResults = false;
                         }
-                        if (!nameCriteria.isEmpty() && !nameFile.contains(nameCriteria)) {
-                            hidden = false;
+
+                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && ((Asset) asset).isHidden()) {
+                            addFileToResults = false;
                         }
-                        if (!extensionCriteria.isEmpty() && !extensionFile.equals(extensionCriteria) ) {
-                            hidden = false;
+
+                        if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
+                            addFileToResults = false;
                         }
-                        if (hidden) {
-                            filesResult.add(file);
+
+                        if (addFileToResults && (!extensionCriteria.isEmpty()) && (!extensionFile.equals(extensionCriteria))) {
+                            addFileToResults = false;
+
                         }
+
+                        //video
+                        if (criteria.getType() == 1) {
+                            //verificar que es extension de video si no false
+
+                            //((AssetVideo) asset).getVideoCodec());
+                        }
+                        //audio
+
+                        if (addFileToResults) {
+                            result.add(asset);
+
+                        }
+
                     } else if (file.isDirectory()) {
                         //TODO recursion to get files of folder
-                        filesResult = filesResult;
                     }
                 }
             } catch (NullPointerException e) {
-                Logs.getInstance().getLog().error("The criteria values shouldn't be null",e);
+                Logs.getInstance().getLog().error("The criteria values shouldn't be null", e);
             }
         }
-        return filesResult;
+        return result;
     }
 }
