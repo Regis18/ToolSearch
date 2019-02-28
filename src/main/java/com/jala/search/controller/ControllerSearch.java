@@ -11,6 +11,7 @@
  */
 package com.jala.search.controller;
 
+import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
 import com.jala.utils.Logs;
@@ -80,16 +81,15 @@ public class ControllerSearch implements ActionListener {
         log.info("Preparing to send criteria to SearchFile");
         SearchFile search = new SearchFile();
         CriteriaSearch criteria = new CriteriaSearch(path);
-        criteria.setFileName("");
-        criteria.setExtension("");
-        List<File> results = search.search(criteria);
+        List<Asset> results = search.search(criteria);
         log.info("Information sending and waiting answers");
         viewSearch.getTbSearchGral().removeRow();
         for (int i = 0; i < results.size(); i++) {
-            File data = results.get(i);
-            viewSearch.getTbSearchGral().addResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
-                    FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKb(data.length())));
+            Asset data = results.get(i);
+            viewSearch.getTbSearchGral().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
+                    data.getExtension(), "50");
         }
+        //TODO fix the size of the cycle for
         log.info("Results implemented in the JTable of the UI");
     }
 
