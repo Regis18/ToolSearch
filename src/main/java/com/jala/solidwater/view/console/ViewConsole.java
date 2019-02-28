@@ -14,6 +14,11 @@
 
 package com.jala.solidwater.view.console;
 
+import org.apache.commons.io.FilenameUtils;
+
+import java.io.File;
+import java.util.List;
+
 /**
  * ViewConsole class
  *
@@ -25,26 +30,27 @@ public class ViewConsole {
     /**
      * @param files are all files for be displayed into a table for console.
      */
-    /*public void testShow (List<File> files){
+    public void testShow (List<File> files){
 
         for (int i = 0; i < files.size() ; i++) {
 
+            File file = files.get(i);
             String path = files.get(i).getAbsolutePath();
             String name = files.get(i).getName();
             String extension = FilenameUtils.getExtension(files.get(i).getAbsolutePath());
 
-            System.out.format("%d | %s | %s | %s%n", i, path, name, extension);
+            System.out.format("%d | %s | %s | %s%n", i, file.getName(), name, extension);
 
         }
-    }*/
+    }
 
 
     /**
      * Test method for show a simulate of table.
      */
-    public void testShow () {
+   /* public void testShow () {
         for (int i = 0; i < 10 ; i++) {
             System.out.format("%d | %s | %s | %s%n", i, "path", "name", "extension");
         }
-    }
+    }*/
 }

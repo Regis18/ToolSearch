@@ -15,7 +15,8 @@
 package com.jala.solidwater.view.console;
 
 import com.jala.search.models.CriteriaSearch;
-//import com.jala.search.models.SearchFile;
+import com.jala.search.models.SearchFile;
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -46,6 +47,9 @@ public class InputParameter {
      * Constructor method of InputParameter.
      * This method create a instance of InputParameter.
      */
+
+    List<File> listFileSearch = new ArrayList<>();
+
     public InputParameter() {
 
         validCommands.add("-p");
@@ -66,8 +70,9 @@ public class InputParameter {
         if (existCommand("-p", inputCommand)) {
             if (areCommandsValid(inputCommand)) {
                 message = "Valid Commands!!";
-                //getSearch(createMap(commands));
-
+                System.out.println("antes");
+                getSearch(createMap(commands));
+                System.out.println("despues");
             } else {
                 message = invalidCommand();
             }
@@ -145,12 +150,28 @@ public class InputParameter {
      * @param validCommand is a Map with all valid commands.
      * @return a file list with the criteria of search.
      */
-   /* private List<File> getSearch(Map<String, String> validCommand) {
+    private List<File> getSearch(Map<String, String> validCommand) {
+
+        System.out.println("value> " + validCommand.get("-p"));
         CriteriaSearch criteria = new CriteriaSearch(validCommand.get("-p"));
-        criteria.setPath(validCommand.get("-p"));
+        /*criteria.setPath(validCommand.get("-p"));
         criteria.setFileName(validCommand.get("-fn"));
-        criteria.setExtension("-ex");
+        criteria.setExtension("-ex");*/
+        criteria.setFileName("");
+        criteria.setExtension("");
         SearchFile searchFile = new SearchFile();
+        try {
+            listFileSearch = new ArrayList<>(searchFile.search(criteria));
+            System.out.println(listFileSearch + " : la lista  ");
+        } catch (Exception e) {
+            System.out.println("error : " + e);
+        }
+
+        System.out.println(" files > " + searchFile.search(criteria));
         return searchFile.search(criteria);
-    }*/
+    }
+
+    public List<File> getListFileSearch() {
+        return listFileSearch;
+    }
 }

@@ -12,8 +12,11 @@
  * with Jala Foundation.
  */
 
+import com.jala.search.models.CriteriaSearch;
 import com.jala.solidwater.view.console.InputParameter;
 import com.jala.solidwater.view.console.ViewConsole;
+
+import java.util.List;
 
 public class App {
 
@@ -26,14 +29,22 @@ public class App {
 
         /* Created a validator instance */
         InputParameter validator = new InputParameter();
+        CriteriaSearch criteriaSearch;
 
         /* Use the method validateCommand for validate the input commands. */
-        validator.validateCommands(args);
+        String [] listTest = {"-p", "C:\\Test"};
+        validator.validateCommands(listTest);
 
         /* Created a viewCommand instance */
         ViewConsole viewConsole = new ViewConsole();
         
         /* Use the testShow to simulate the create of a table with files as data. */
-        viewConsole.testShow();
+        viewConsole.testShow( validator.getListFileSearch());
+
+        /*for (String valiue:args
+             ) {
+            System.out.println("input parameters : " + valiue);
+        }*/
+
     }
 }
