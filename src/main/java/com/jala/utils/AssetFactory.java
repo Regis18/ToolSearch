@@ -27,6 +27,7 @@ import java.io.File;
  * @version 0.0.1
  */
 public class AssetFactory {
+    private final static double BYTES = 1024.0;
 
     /**
      * Asset Factory.
@@ -48,6 +49,17 @@ public class AssetFactory {
     }
 
     /**
+     * Receive the size of the files and send in Kilobytes
+     * @param fileLength
+     * @return Size of files in KiloBytes
+     */
+    private static double getFileSizeInKb(double fileLength) {
+        fileLength = fileLength / BYTES;
+        int fs = (int) Math.pow(10,2);
+        return Math.rint(fileLength*fs)/fs;
+    }
+
+    /**
      * Load Asset class of File class.
      * @param asset as Asset.
      * @param file  as File.
@@ -58,6 +70,8 @@ public class AssetFactory {
         asset.setHidden(file.isHidden());
         asset.setReadOnly(!file.canWrite());
         asset.setExtension(FilenameUtils.getExtension(file.getName()));
+        asset.setSizeView(Double.toString(getFileSizeInKb(file.length())));
+        asset.setSize(Double.toString(file.length()));
     }
 
     /**
