@@ -28,5 +28,5 @@ public interface ISearchable {
      * @param criteria to do the search.
      * @return a list of files of a directory.
      */
-    List<IAsset> search(CriteriaSearch criteria);
+    List<Asset> search(CriteriaSearch criteria);
 }

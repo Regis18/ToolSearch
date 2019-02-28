@@ -177,11 +177,6 @@ public class Asset implements IAsset {
     /**
      * @param file of the File class of java.
      */
-    @Override
-    public void loadFile(File file) {
-        fileName = file.getName();
-        path = file.getPath();
-        hidden = file.isHidden();
 
-    }
+
 }

@@ -20,37 +20,37 @@ import java.io.File;
  * @version 0.0.1
  */
 public class AssetVideo extends Asset implements IAsset {
-    private String videoCode;
-    private String AudioCodic;
+    private String videoCodec;
+    private String AudioCodec;
     private String frameRaate;
     private String aspecRatio;
 
     /**
      * @return videoCode as a property of videos.
      */
-    public String getVideoCode() {
-        return videoCode;
+    public String getVideoCodec() {
+        return videoCodec;
     }
 
     /**
      * @param videoCode as String.
      */
-    public void setVideoCode(String videoCode) {
-        this.videoCode = videoCode;
+    public void setVideoCodec(String videoCode) {
+        this.videoCodec = videoCode;
     }
 
     /**
      * @return AudioCodic as a property of video.
      */
-    public String getAudioCodic() {
-        return AudioCodic;
+    public String getAudioCodec() {
+        return AudioCodec;
     }
 
     /**
-     * @param audioCodic as String.
+     * @param audioCodec as String.
      */
-    public void setAudioCodic(String audioCodic) {
-        AudioCodic = audioCodic;
+    public void setAudioCodic(String audioCodec) {
+        AudioCodec = audioCodec;
     }
 
     /**
@@ -81,15 +81,5 @@ public class AssetVideo extends Asset implements IAsset {
         this.aspecRatio = aspecRatio;
     }
 
-    /**
-     * The File class is an abstract representation of file and directory
-     * pathnames and properties file.
-     * @param file as File.
-     */
-    public void loadFile(File file) {
-        super.loadFile(file);
-        //TODO load the common properties file.
 
-
-    }
 }

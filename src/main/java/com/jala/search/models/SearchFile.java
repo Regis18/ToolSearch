@@ -36,8 +36,8 @@ public class SearchFile implements ISearchable {
      * @return a list of the files that content the folder set in the path of criteria.
      */
     @Override
-    public List<IAsset> search(CriteriaSearch criteria) {
-        List<IAsset> result = new ArrayList<>();
+    public List<Asset> search(CriteriaSearch criteria) {
+        List<Asset> result = new ArrayList<>();
         File folder = new File(criteria.getPath());
         if (folder.exists()) {
             File[] findFiles = folder.listFiles();
@@ -48,7 +48,7 @@ public class SearchFile implements ISearchable {
                     File file = files.get(i);
                     if (file.isFile()) {
                         //convert of a file to asset.
-                        IAsset asset = AssetFactory.GetAsset(criteria, file);
+                        Asset asset = AssetFactory.GetAsset(criteria, file);
 
                         String nameFile = ((Asset) asset).getFileName();
                         String extensionFile = FilenameUtils.getExtension(nameFile);

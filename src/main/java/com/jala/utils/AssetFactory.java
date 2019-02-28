@@ -31,17 +31,35 @@ public class AssetFactory {
      * @param file class abstract.
      * @return an asset object.
      */
-    public static IAsset GetAsset(CriteriaSearch criteria, File file) {
+    public static Asset GetAsset(CriteriaSearch criteria, File file) {
         if (criteria.getType() == 0) {
             Asset newAsset = new Asset();
-            newAsset.loadFile(file);
+            loadFile(newAsset,file);
             return newAsset;
         } else if (criteria.getType() == 1) {
             AssetVideo newAsset = new AssetVideo();
-            newAsset.loadFile(file);
+            loadFileVideo(newAsset,file);
             return newAsset;
         } else
             return new Asset();
+
+    }
+    public static void loadFile(Asset asset,File file) {
+        asset.setFileName(file.getName());
+        asset.setPath(file.getPath());
+        asset.setHidden(file.isHidden());
+
+    }
+
+    /**
+     * The File class is an abstract representation of file and directory
+     * pathnames and properties file.
+     * @param file as File.
+     */
+    public static void loadFileVideo(AssetVideo assetVideo,File file) {
+        loadFile(assetVideo, file);
+        //TODO load the common properties file.
+
 
     }
 }
