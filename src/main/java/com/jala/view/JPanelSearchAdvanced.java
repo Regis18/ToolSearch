@@ -24,6 +24,7 @@ import java.awt.LayoutManager;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Dimension;
+import javax.swing.*;
 
 /**
  * Module view, ui/JPanelSearchAdvanced.
@@ -31,7 +32,8 @@ import java.awt.Dimension;
  * @autor Melvi Caballero M.
  */
 public class JPanelSearchAdvanced extends JPanel {
-    private JLabel lblSearch, lblPath, lblFileName, lblExt, lblList;
+    private JLabel lblSearch, lblPath, lblFileName, lblExt, lblList, lblReadOnly, lblHidden;
+    private JComboBox cmbHidden, cmbReadOnly;
     private JTextField txtPath, txtFileName, txtExt;
     private JButton btnSearch;
     private JTableResult tbSearchAdvanced;
@@ -136,7 +138,7 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private JPanel pnlCriteria() {
 
-        JPanel pnlSearchAd, pnlPath, pnlFileName, pnlExt;
+        JPanel pnlSearchAd, pnlPath, pnlFileName, pnlExt, pnlReadOnly, pnlHidden;;
         pnlSearchAd = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search Advanced");
         pnlSearchAd.setBorder(titleBorder);
@@ -164,6 +166,26 @@ public class JPanelSearchAdvanced extends JPanel {
 
         btnSearch = new JButton("Search");
         pnlExt.add(btnSearch);
+
+        pnlReadOnly = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        lblReadOnly = new JLabel("Read Only: ");
+        pnlExt.add(lblReadOnly);
+
+        cmbReadOnly = new JComboBox();
+        cmbReadOnly.addItem("No Hidden");
+        cmbReadOnly.addItem("Hidden");
+        cmbReadOnly.addItem("All");
+        pnlExt.add(cmbReadOnly);
+
+        pnlHidden = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        lblHidden = new JLabel("Hidden: ");
+        pnlExt.add(lblHidden);
+
+        cmbHidden = new JComboBox();
+        cmbHidden.addItem("No Read only");
+        cmbHidden.addItem("Read Only");
+        cmbHidden.addItem("All");
+        pnlExt.add(cmbHidden);
 
         pnlSearchAd.add(pnlPath, BorderLayout.NORTH);
         pnlSearchAd.add(pnlFileName, BorderLayout.WEST);
