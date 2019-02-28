@@ -43,7 +43,11 @@ public class CriteriaSearch {
     /**
      * Criteria for read only of file.
      */
-    private TernaryBooleanEnum readOnly;
+    private TernaryBooleanEnum readonly;
+    /**
+     * Criteria for size of file.
+     */
+    private String size;
 
     /**
      * Type of criteria (video, audi, image, common, etc).
@@ -56,11 +60,6 @@ public class CriteriaSearch {
      */
     public CriteriaSearch(String path) {
         this.path = path;
-        fileName = "";
-        extension = "";
-        setHidden(TernaryBooleanEnum.ALL);
-        setReadonly(TernaryBooleanEnum.ALL);
-        type = 0;
     }
 
     /**
@@ -128,7 +127,7 @@ public class CriteriaSearch {
     }
 
     /**
-     * Get the type of search
+     * Get the type of search.
      * @return The type of search used
      */
     public int getType() {
@@ -136,8 +135,8 @@ public class CriteriaSearch {
     }
 
     /**
-     * Set the type of search perfomed.
-     * @param type The type of search used
+     * Set the type of search performed.
+     * @param type The type of search used.
      */
     public void setType(int type) {
         this.type = type;
@@ -145,17 +144,33 @@ public class CriteriaSearch {
 
     /**
      * Get the Readonly file status criteria.
-     * @return the readonly criteria used
+     * @return the readonly criteria used.
      */
     public TernaryBooleanEnum getReadonly() {
-        return readOnly;
+        return readonly;
     }
 
     /**
      * Set the readonly file status criteria.
-     * @param readOnly the redonly criteria used
+     * @param readonly the readonly criteria used.
      */
-    public void setReadonly(TernaryBooleanEnum readOnly) {
-        this.readOnly = readOnly;
+    public void setReadonly(TernaryBooleanEnum readonly) {
+        this.readonly = readonly;
+    }
+
+    /**
+     * Get the size file status criteria.
+     * @return the size criteria used.
+     */
+    public String getSize() {
+        return size;
+    }
+
+    /**
+     * Set the size file status criteria.
+     * @param size the size criteria used.
+     */
+    public void setSize(String size) {
+        this.size = size;
     }
 }
