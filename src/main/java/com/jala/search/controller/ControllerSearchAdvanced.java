@@ -11,6 +11,7 @@
  */
 package com.jala.search.controller;
 
+import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
 import com.jala.utils.Logs;
@@ -94,13 +95,13 @@ public class ControllerSearchAdvanced implements ActionListener {
     private void sendCriteriaToFile() {
         log.info("Preparing to send criteria to SearchFile");
         SearchFile searchFile = new SearchFile();
-        List<File> results = searchFile.search(criteriaSearch);
+        List<Asset> results = searchFile.search(criteriaSearch);
         log.info("Information sending and waiting answers");
         viewAdvanced.getTbSearchAdvanced().removeRow();
         for (int i = 0; i < results.size(); i++) {
-            File data = results.get(i);
-            viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
-                    FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKb(data.length())));
+            Asset data = results.get(i);
+            viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
+                    data.getExtension(), "50");
         }
         log.info("Results implemented in the JTable of the UI");
     }

@@ -43,7 +43,7 @@ public class CriteriaSearch {
     /**
      * Criteria for read only of file.
      */
-    private TernaryBooleanEnum readonly;
+    private TernaryBooleanEnum readOnly;
 
     /**
      * Type of criteria (video, audi, image, common, etc).
@@ -56,6 +56,11 @@ public class CriteriaSearch {
      */
     public CriteriaSearch(String path) {
         this.path = path;
+        fileName = "";
+        extension = "";
+        setHidden(TernaryBooleanEnum.ALL);
+        setReadonly(TernaryBooleanEnum.ALL);
+        type = 0;
     }
 
     /**
@@ -143,14 +148,14 @@ public class CriteriaSearch {
      * @return the readonly criteria used
      */
     public TernaryBooleanEnum getReadonly() {
-        return readonly;
+        return readOnly;
     }
 
     /**
      * Set the readonly file status criteria.
-     * @param readonly the redonly criteria used
+     * @param readOnly the redonly criteria used
      */
-    public void setReadonly(TernaryBooleanEnum readonly) {
-        this.readonly = readonly;
+    public void setReadonly(TernaryBooleanEnum readOnly) {
+        this.readOnly = readOnly;
     }
 }
