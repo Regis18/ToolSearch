@@ -20,23 +20,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.jala.utils.AssetFactory;
+
 /**
- * SearchFile class
- *
+ * SearchFile class.
  * @author Areliez Vargas
  * @version 0.0.1
  */
 public class SearchFile implements ISearchable {
 
     /**
-     * This method return a file list by attributes of criteria.
+     * This method return a IAsset list by attributes of criteria.
      * @param criteria to do the search with the path is required and other attributes are optional.
      * @return a list of the files that content the folder set in the path of criteria.
      */
     @Override
-    public List<File> search(CriteriaSearch criteria) {
+    public List<Asset> search(CriteriaSearch criteria) {
+        List<Asset> result = new ArrayList<>();
         File folder = new File(criteria.getPath());
-        List<File> filesResult = new ArrayList<>();
         if (folder.exists()) {
             File[] findFiles = folder.listFiles();
             List<File> files = Arrays.asList(findFiles);
@@ -44,34 +45,47 @@ public class SearchFile implements ISearchable {
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
                     if (file.isFile()) {
-                        String nameFile = file.getName();
+                        //convert of a file to asset.
+                        Asset asset = AssetFactory.GetAsset(criteria, file);
+                        String nameFile = ((Asset) asset).getFileName();
                         String extensionFile = FilenameUtils.getExtension(nameFile);
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
-                        if (!nameCriteria.isEmpty() && extensionCriteria.isEmpty()) {
-                            if (nameFile.contains(nameCriteria)) {
-                                filesResult.add(file);
-                            }
-                        } else if (!extensionCriteria.isEmpty() && nameCriteria.isEmpty()) {
-                            if (extensionFile.equals(extensionCriteria)) {
-                                filesResult.add(file);
-                            }
-                        } else if (!extensionCriteria.isEmpty() && !nameCriteria.isEmpty()) {
-                            if (nameFile.contains(nameCriteria) && extensionFile.equals(extensionCriteria)) {
-                                filesResult.add(file);
-                            }
-                        } else {
-                            filesResult.add(file);
+                        // var aux.
+                        boolean addFileToResults = true;
+                        if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!extensionCriteria.isEmpty()) && (!extensionFile.equals(extensionCriteria))) {
+                            addFileToResults = false;
+                        }
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()) {
+                            addFileToResults = false;
+                        }
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()) {
+                            addFileToResults = false;
+                        }
+                        //video.
+                        if (criteria.getType() == 1) {
+                            //TODO verify video extension.
+                        }
+                        if (addFileToResults) {
+                            result.add(asset);
                         }
                     } else if (file.isDirectory()) {
-                        //TODO recursion to get files of folder
-                        filesResult = filesResult;
+                        //TODO recursion to get files of folder.
                     }
                 }
             } catch (NullPointerException e) {
-                Logs.getInstance().getLog().error("The criteria values shouldn't be null",e);
+                Logs.getInstance().getLog().error("The criteria values shouldn't be null", e);
             }
         }
-        return filesResult;
+        return result;
     }
 }
