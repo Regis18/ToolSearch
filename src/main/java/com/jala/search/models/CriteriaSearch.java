@@ -36,23 +36,22 @@ public class CriteriaSearch {
     private String extension;
 
     /**
-     * Criteria for hidden of file;
+     * Criteria for hidden of file.
      */
     private TernaryBooleanEnum hidden;
 
     /**
-     *
+     * Criteria for read only of file.
      */
     private TernaryBooleanEnum readonly;
 
     /**
-     *
+     * Type of criteria (video, audi, image, common, etc).
      */
     private int type;
 
     /**
      * Constructor that setting the path for then do a search.
-     *
      * @param path of the directory.
      */
     public CriteriaSearch(String path) {
@@ -61,7 +60,6 @@ public class CriteriaSearch {
 
     /**
      * Return the path of the directory as string.
-     *
      * @return the string of the path.
      */
     public String getPath() {
@@ -70,7 +68,6 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the path sending a string.
-     *
      * @param path of the directory.
      */
     public void setPath(String path) {
@@ -79,7 +76,6 @@ public class CriteriaSearch {
 
     /**
      * Return the value of file name as string.
-     *
      * @return file name as string.
      */
     public String getFileName() {
@@ -88,7 +84,6 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the file name sending a string.
-     *
      * @param fileName of the file.
      */
     public void setFileName(String fileName) {
@@ -97,7 +92,6 @@ public class CriteriaSearch {
 
     /**
      * Return the value of extension of a file.
-     *
      * @return the extension as string.
      */
     public String getExtension() {
@@ -106,7 +100,6 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the file extension sending a string.
-     *
      * @param extension of the file.
      */
     public void setExtension(String extension) {
@@ -115,7 +108,6 @@ public class CriteriaSearch {
 
     /**
      * Return the values of hidden of a file.
-     *
      * @return the hidden property of the file.
      */
     public TernaryBooleanEnum getHidden() {
@@ -124,7 +116,6 @@ public class CriteriaSearch {
 
     /**
      * This method allows to set the hidden criteria for the file search.
-     *
      * @param hidden the value to use of the search.
      */
      public void setHidden(TernaryBooleanEnum hidden) {
@@ -162,6 +153,4 @@ public class CriteriaSearch {
     public void setReadonly(TernaryBooleanEnum readonly) {
         this.readonly = readonly;
     }
-
-    
 }

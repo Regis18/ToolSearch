@@ -80,6 +80,4 @@ public class AssetVideo extends Asset {
     public void setAspecRatio(String aspecRatio) {
         this.aspecRatio = aspecRatio;
     }
-
-
 }

@@ -24,7 +24,6 @@ import com.jala.utils.AssetFactory;
 
 /**
  * SearchFile class.
- *
  * @author Areliez Vargas
  * @version 0.0.1
  */
@@ -42,59 +41,45 @@ public class SearchFile implements ISearchable {
         if (folder.exists()) {
             File[] findFiles = folder.listFiles();
             List<File> files = Arrays.asList(findFiles);
-
             try {
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
                     if (file.isFile()) {
                         //convert of a file to asset.
                         Asset asset = AssetFactory.GetAsset(criteria, file);
-
                         String nameFile = ((Asset) asset).getFileName();
                         String extensionFile = FilenameUtils.getExtension(nameFile);
-
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
                         // var aux.
                         boolean addFileToResults = true;
-
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
                             addFileToResults = false;
                         }
-
-                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()){
+                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()) {
                             addFileToResults = false;
                         }
-
                         if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
                             addFileToResults = false;
                         }
-
                         if (addFileToResults && (!extensionCriteria.isEmpty()) && (!extensionFile.equals(extensionCriteria))) {
                             addFileToResults = false;
                         }
-
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()){
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()) {
                             addFileToResults = false;
                         }
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()){
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()) {
                             addFileToResults = false;
                         }
-                        //video
+                        //video.
                         if (criteria.getType() == 1) {
-                            //verificar que es extension de video si no false
-
-                            //((AssetVideo) asset).getVideoCodec());
+                            //TODO verify video extension.
                         }
-                        //audio
-
                         if (addFileToResults) {
                             result.add(asset);
-
                         }
-
                     } else if (file.isDirectory()) {
-                        //TODO recursion to get files of folder
+                        //TODO recursion to get files of folder.
                     }
                 }
             } catch (NullPointerException e) {

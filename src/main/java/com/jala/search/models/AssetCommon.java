@@ -16,6 +16,7 @@ import java.io.File;
 
 /**
  * AssetCommon class.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -34,17 +35,5 @@ public class AssetCommon extends Asset {
      */
     public void setDirectory(boolean directory) {
         isDirectory = directory;
-    }
-
-    /**
-     * the File class is an abstract representation of file and directory
-     * pathnames and properties file.
-     * @param file as File.
-     */
-    public void loadFile(File file) {
-        super.loadFile(file);
-        //TODO load the common properties file.
-
-
     }
 }

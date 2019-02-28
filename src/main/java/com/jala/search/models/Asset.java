@@ -174,9 +174,4 @@ public class Asset {
         this.lastDate = lastDate;
     }
 
-    /**
-     * @param file of the File class of java.
-     */
-
-
 }

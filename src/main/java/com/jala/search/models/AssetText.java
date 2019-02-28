@@ -19,7 +19,7 @@ import java.io.File;
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class AssetText extends Asset implements IAsset {
+public class AssetText extends Asset {
     private String contain;
 
     /**
@@ -34,15 +34,5 @@ public class AssetText extends Asset implements IAsset {
      */
     public void setContain(String contain) {
         this.contain = contain;
-    }
-
-    /**
-     * The File class is an abstract representation of file and directory
-     * pathnames and properties file.
-     * @param file as File.
-     */
-    public void loadFile(File file) {
-        super.loadFile(file);
-        //TODO load the text properties file.
     }
 }
