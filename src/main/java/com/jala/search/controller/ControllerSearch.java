@@ -87,9 +87,8 @@ public class ControllerSearch implements ActionListener {
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
             viewSearch.getTbSearchGral().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
-                    data.getExtension(), "50");
+                    data.getExtension(), data.getSize());
         }
-        //TODO fix the size of the cycle for
         log.info("Results implemented in the JTable of the UI");
     }
 
