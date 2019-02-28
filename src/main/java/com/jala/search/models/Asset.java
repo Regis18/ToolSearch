@@ -33,6 +33,22 @@ public class Asset {
     private String lastDate;
 
     /**
+     * Contructor of the class Asset
+     */
+    public void Asset() {
+        path = "";
+        fileName = "";
+        extension = "";
+        hidden = false;
+        owner = "";
+        size = "";
+        readOnly = false;
+        creationDate = "";
+        modificationDate = "";
+        lastDate = "";
+    }
+
+    /**
      * Return the value of path as string.
      *
      * @return path as String.

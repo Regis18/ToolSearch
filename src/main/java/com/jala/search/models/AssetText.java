@@ -16,11 +16,19 @@ import java.io.File;
 
 /**
  * AssetText class.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
 public class AssetText extends Asset {
     private String contain;
+
+    /**
+     * Constructor of AssetText class.
+     */
+    public void AssetText() {
+        contain = "";
+    }
 
     /**
      * @return contain of a file.

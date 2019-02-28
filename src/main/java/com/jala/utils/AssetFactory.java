@@ -17,6 +17,7 @@ import com.jala.search.models.AssetVideo;
 import com.jala.search.models.AssetCommon;
 import com.jala.search.models.AssetText;
 import com.jala.search.models.CriteriaSearch;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 
@@ -49,19 +50,20 @@ public class AssetFactory {
     /**
      * Load Asset class of File class.
      * @param asset as Asset.
-     * @param file as File.
+     * @param file  as File.
      */
     public static void loadFile(Asset asset, File file) {
         asset.setFileName(file.getName());
         asset.setPath(file.getPath());
         asset.setHidden(file.isHidden());
         asset.setReadOnly(!file.canWrite());
+        asset.setExtension(FilenameUtils.getExtension(file.getName()));
     }
 
     /**
      * Load Asset Video of File class.
      * @param assetVideo as AssetVideo.
-     * @param file as File.
+     * @param file       as File.
      */
     public static void loadFileVideo(AssetVideo assetVideo, File file) {
         loadFile(assetVideo, file);
@@ -71,7 +73,7 @@ public class AssetFactory {
     /**
      * Load Asset Common of File class.
      * @param assetCommon as AssetCommon.
-     * @param file as File.
+     * @param file        as File.
      */
     public void loadFileCommon(AssetCommon assetCommon, File file) {
         loadFile(assetCommon, file);
@@ -81,7 +83,7 @@ public class AssetFactory {
     /**
      * Load Asset Text of Text class.
      * @param assetText as AssetText.
-     * @param file as File.
+     * @param file      as File.
      */
     public void loadFileText(AssetText assetText, File file) {
         loadFile(assetText, file);

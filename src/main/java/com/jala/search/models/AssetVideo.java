@@ -16,14 +16,25 @@ import java.io.File;
 
 /**
  * AssetVideo class.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
 public class AssetVideo extends Asset {
     private String videoCodec;
-    private String AudioCodec;
-    private String frameRaate;
+    private String audioCodec;
+    private String frameRate;
     private String aspecRatio;
+
+    /**
+     * Constructor of AssetVideo class
+     */
+    public void AssetVideo() {
+        videoCodec = "";
+        audioCodec = "";
+        frameRate = "";
+        aspecRatio = "";
+    }
 
     /**
      * @return videoCode as a property of videos.
@@ -33,38 +44,38 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     * @param videoCode as String.
+     * @param videoCodec as String.
      */
-    public void setVideoCodec(String videoCode) {
-        this.videoCodec = videoCode;
+    public void setVideoCodec(String videoCodec) {
+        this.videoCodec = videoCodec;
     }
 
     /**
-     * @return AudioCodic as a property of video.
+     * @return audioCodec as a property of video.
      */
     public String getAudioCodec() {
-        return AudioCodec;
+        return audioCodec;
     }
 
     /**
      * @param audioCodec as String.
      */
-    public void setAudioCodic(String audioCodec) {
-        AudioCodec = audioCodec;
+    public void setAudioCodec(String audioCodec) {
+        this.audioCodec = audioCodec;
     }
 
     /**
-     * @return frameRaate as a property of video.
+     * @return frameRate as a property of video.
      */
-    public String getFrameRaate() {
-        return frameRaate;
+    public String getFrameRate() {
+        return frameRate;
     }
 
     /**
-     * @param frameRaate as String.
+     * @param frameRate as String.
      */
-    public void setFrameRaate(String frameRaate) {
-        this.frameRaate = frameRaate;
+    public void setFrameRate(String frameRate) {
+        this.frameRate = frameRate;
     }
 
     /**

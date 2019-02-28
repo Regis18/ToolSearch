@@ -48,7 +48,7 @@ public class SearchFile implements ISearchable {
                         //convert of a file to asset.
                         Asset asset = AssetFactory.GetAsset(criteria, file);
                         String nameFile = ((Asset) asset).getFileName();
-                        String extensionFile = FilenameUtils.getExtension(nameFile);
+                        String extensionFile = ((Asset)asset).getExtension();
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
                         // var aux.

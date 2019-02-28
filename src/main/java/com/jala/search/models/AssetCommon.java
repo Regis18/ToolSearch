@@ -24,6 +24,13 @@ public class AssetCommon extends Asset {
     private boolean isDirectory;
 
     /**
+     * Constructor of AssetCommon class.
+     */
+    public void AssetCommon() {
+        isDirectory = false;
+    }
+
+    /**
      * @return isDirectory as boolean value.
      */
     public boolean isDirectory() {
