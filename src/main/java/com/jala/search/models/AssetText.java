@@ -1,8 +1,8 @@
-/**
- * @(#)ISearchable.java Copyright (c) 2019 Jala Foundation.
+/*
+ * @(#) AssetText.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
- * <p>
+ *
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
@@ -13,20 +13,26 @@
 package com.jala.search.models;
 
 import java.io.File;
-import java.util.List;
 
 /**
- * ISearchable interface to search by criteria.
+ * AssetText class.
+ * @author Melvi Caballero.
  * @version 0.0.1
- * @author Areliez Vargas
  */
-public interface ISearchable {
+public class AssetText extends Asset {
+    private String contain;
 
     /**
-     * This method search the files of a directory by criteria.
-     * It should not be called without first have the path criteria.
-     * @param criteria to do the search.
-     * @return a list of files of a directory.
+     * @return contain of a file.
      */
-    List<Asset> search(CriteriaSearch criteria);
+    public String getContain() {
+        return contain;
+    }
+
+    /**
+     * @param contain as String  for search in the file text.
+     */
+    public void setContain(String contain) {
+        this.contain = contain;
+    }
 }
