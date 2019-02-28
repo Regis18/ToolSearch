@@ -44,6 +44,10 @@ public class CriteriaSearch {
      * Criteria for read only of file.
      */
     private TernaryBooleanEnum readonly;
+    /**
+     * Criteria for size of file.
+     */
+    private String size;
 
     /**
      * Type of criteria (video, audi, image, common, etc).
@@ -118,12 +122,12 @@ public class CriteriaSearch {
      * This method allows to set the hidden criteria for the file search.
      * @param hidden the value to use of the search.
      */
-     public void setHidden(TernaryBooleanEnum hidden) {
+    public void setHidden(TernaryBooleanEnum hidden) {
         this.hidden = hidden;
     }
 
     /**
-     * Get the type of search
+     * Get the type of search.
      * @return The type of search used
      */
     public int getType() {
@@ -131,8 +135,8 @@ public class CriteriaSearch {
     }
 
     /**
-     * Set the type of search perfomed.
-     * @param type The type of search used
+     * Set the type of search performed.
+     * @param type The type of search used.
      */
     public void setType(int type) {
         this.type = type;
@@ -140,7 +144,7 @@ public class CriteriaSearch {
 
     /**
      * Get the Readonly file status criteria.
-     * @return the readonly criteria used
+     * @return the readonly criteria used.
      */
     public TernaryBooleanEnum getReadonly() {
         return readonly;
@@ -148,9 +152,25 @@ public class CriteriaSearch {
 
     /**
      * Set the readonly file status criteria.
-     * @param readonly the redonly criteria used
+     * @param readonly the readonly criteria used.
      */
     public void setReadonly(TernaryBooleanEnum readonly) {
         this.readonly = readonly;
+    }
+
+    /**
+     * Get the size file status criteria.
+     * @return the size criteria used.
+     */
+    public String getSize() {
+        return size;
+    }
+
+    /**
+     * Set the size file status criteria.
+     * @param size the size criteria used.
+     */
+    public void setSize(String size) {
+        this.size = size;
     }
 }

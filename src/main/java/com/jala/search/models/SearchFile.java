@@ -48,12 +48,17 @@ public class SearchFile implements ISearchable {
                         //convert of a file to asset.
                         Asset asset = AssetFactory.GetAsset(criteria, file);
                         String nameFile = ((Asset) asset).getFileName();
-                        String extensionFile = FilenameUtils.getExtension(nameFile);
+                        String extensionFile = ((Asset)asset).getExtension();
+                        String sizeFile = ((Asset)asset).getSize();
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
+                        String sizeCriteria = criteria.getSize();
                         // var aux.
                         boolean addFileToResults = true;
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!sizeCriteria.isEmpty()) && (!sizeFile.equals(sizeCriteria))) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()) {

@@ -27,10 +27,28 @@ public class Asset {
     private boolean hidden;
     private String owner;
     private String size;
+    private String sizeView;
     private boolean readOnly;
     private String creationDate;
     private String modificationDate;
     private String lastDate;
+
+    /**
+     * Contructor of the class Asset
+     */
+    public void Asset() {
+        path = "";
+        fileName = "";
+        extension = "";
+        hidden = false;
+        owner = "";
+        size = "";
+        sizeView = "";
+        readOnly = false;
+        creationDate = "";
+        modificationDate = "";
+        lastDate = "";
+    }
 
     /**
      * Return the value of path as string.
@@ -116,6 +134,20 @@ public class Asset {
      */
     public void setSize(String size) {
         this.size = size;
+    }
+
+    /**
+     * @return size view of the size file of show in the table view.
+     */
+    public String getSizeView() {
+        return sizeView;
+    }
+
+    /**
+     * @param sizeView as String value.
+     */
+    public void setSizeView(String sizeView) {
+        this.sizeView = sizeView;
     }
 
     /**
