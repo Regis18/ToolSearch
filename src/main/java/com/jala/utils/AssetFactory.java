@@ -15,7 +15,6 @@ package com.jala.utils;
 import com.jala.search.models.Asset;
 import com.jala.search.models.AssetVideo;
 import com.jala.search.models.CriteriaSearch;
-import com.jala.search.models.IAsset;
 
 import java.io.File;
 
@@ -48,6 +47,7 @@ public class AssetFactory {
         asset.setFileName(file.getName());
         asset.setPath(file.getPath());
         asset.setHidden(file.isHidden());
+        asset.setReadOnly(!file.canWrite());
 
     }
 

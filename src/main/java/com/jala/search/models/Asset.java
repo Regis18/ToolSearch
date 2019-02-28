@@ -20,7 +20,7 @@ import java.io.File;
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class Asset implements IAsset {
+public class Asset {
     private String path;
     private String fileName;
     private String extension;

@@ -39,6 +39,12 @@ public class CriteriaSearch {
      * Criteria for hidden of file;
      */
     private TernaryBooleanEnum hidden;
+
+    /**
+     *
+     */
+    private TernaryBooleanEnum readonly;
+
     /**
      *
      */
@@ -126,16 +132,36 @@ public class CriteriaSearch {
     }
 
     /**
-     * @return
+     * Get the type of search
+     * @return The type of search used
      */
     public int getType() {
         return type;
     }
 
     /**
-     * @param type
+     * Set the type of search perfomed.
+     * @param type The type of search used
      */
     public void setType(int type) {
         this.type = type;
     }
+
+    /**
+     * Get the Readonly file status criteria.
+     * @return the readonly criteria used
+     */
+    public TernaryBooleanEnum getReadonly() {
+        return readonly;
+    }
+
+    /**
+     * Set the readonly file status criteria.
+     * @param readonly the redonly criteria used
+     */
+    public void setReadonly(TernaryBooleanEnum readonly) {
+        this.readonly = readonly;
+    }
+
+    
 }

@@ -62,7 +62,7 @@ public class SearchFile implements ISearchable {
                             addFileToResults = false;
                         }
 
-                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && ((Asset) asset).isHidden()) {
+                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()){
                             addFileToResults = false;
                         }
 
@@ -72,9 +72,14 @@ public class SearchFile implements ISearchable {
 
                         if (addFileToResults && (!extensionCriteria.isEmpty()) && (!extensionFile.equals(extensionCriteria))) {
                             addFileToResults = false;
-
                         }
 
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()){
+                            addFileToResults = false;
+                        }
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()){
+                            addFileToResults = false;
+                        }
                         //video
                         if (criteria.getType() == 1) {
                             //verificar que es extension de video si no false

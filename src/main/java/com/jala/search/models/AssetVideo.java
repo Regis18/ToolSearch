@@ -19,7 +19,7 @@ import java.io.File;
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class AssetVideo extends Asset implements IAsset {
+public class AssetVideo extends Asset {
     private String videoCodec;
     private String AudioCodec;
     private String frameRaate;
