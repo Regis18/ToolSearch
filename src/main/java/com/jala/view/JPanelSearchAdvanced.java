@@ -80,6 +80,22 @@ public class JPanelSearchAdvanced extends JPanel {
     }
 
     /**
+     * Gets the hidden type from the file.
+     * @return cmbReadOnly, the type of search for hidden.
+     */
+    public String getComboReadOnly() {
+        return cmbReadOnly.getSelectedItem().toString();
+    }
+
+    /**
+     * Gets the ReadOnly type from the file.
+     * @return cmbHidden, the type of search for hidden.
+     */
+    public String getComboHidden() {
+        return cmbHidden.getSelectedItem().toString();
+    }
+
+    /**
      * @param txtExt the criteria Extension for the search.
      */
     public void setTxtExt(JTextField txtExt) {
