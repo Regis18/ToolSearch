@@ -27,9 +27,9 @@ public class CriteriaConvertor extends Criteria {
     private String pathDestiny;
 
     /**
-     * Criteria for path of Image Magick.
+     * It is characteristic for add a new file name to the converted stuff
      */
-    private final String PATHIMAGEMAGICK = " ";
+    private String newFileName;
 
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
@@ -39,6 +39,7 @@ public class CriteriaConvertor extends Criteria {
     public CriteriaConvertor(String pathOrigin, String pathDestiny) {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
+        newFileName = "";
     }
 
     /**
@@ -52,17 +53,23 @@ public class CriteriaConvertor extends Criteria {
     /**
      * This method allows you to set the path of the destination by sending a string..
      * @param pathDestiny of the directory.
-     *
      */
     public void setPathDestiny(String pathDestiny) {
         this.pathDestiny = pathDestiny;
     }
 
     /**
-     * Return the path absolute of the directory as string.
-     * @return PATHIMAGEMAGICK as string.
+     * @return the content of newFileName
      */
-    public String getPATHIMAGEMAGICK() {
-        return PATHIMAGEMAGICK;
+    public String getNewFileName() {
+        return newFileName;
+    }
+
+    /**
+     * Set the new file with configuration of the user
+     * @param newFileName
+     */
+    public void setNewFileName(String newFileName) {
+        this.newFileName = newFileName;
     }
 }

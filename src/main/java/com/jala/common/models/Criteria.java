@@ -13,7 +13,7 @@
 package com.jala.common.models;
 
 /**
- * The Criteria class .
+ * The Criteria class.
  * @version 0.0.1
  * @author Luis Guardia
  */
@@ -27,7 +27,7 @@ public abstract class Criteria {
     /**
      * Criteria for the new file name.
      */
-    private String newFileName;
+    private String fileName;
 
     /**
      * Constructor that sets the absolute path of the file .
