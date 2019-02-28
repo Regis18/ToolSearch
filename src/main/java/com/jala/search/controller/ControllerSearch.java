@@ -81,8 +81,6 @@ public class ControllerSearch implements ActionListener {
         log.info("Preparing to send criteria to SearchFile");
         SearchFile search = new SearchFile();
         CriteriaSearch criteria = new CriteriaSearch(path);
-        criteria.setFileName("");
-        criteria.setExtension("");
         List<Asset> results = search.search(criteria);
         log.info("Information sending and waiting answers");
         viewSearch.getTbSearchGral().removeRow();

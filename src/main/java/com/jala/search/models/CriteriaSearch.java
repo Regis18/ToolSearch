@@ -123,7 +123,7 @@ public class CriteriaSearch {
      * This method allows to set the hidden criteria for the file search.
      * @param hidden the value to use of the search.
      */
-     public void setHidden(TernaryBooleanEnum hidden) {
+    public void setHidden(TernaryBooleanEnum hidden) {
         this.hidden = hidden;
     }
 
