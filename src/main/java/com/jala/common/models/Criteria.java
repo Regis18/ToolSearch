@@ -74,4 +74,12 @@ public abstract class Criteria {
     public void setExtension(String extension) {
         this.extension = extension;
     }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 }

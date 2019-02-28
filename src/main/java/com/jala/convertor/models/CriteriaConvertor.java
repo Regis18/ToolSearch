@@ -31,15 +31,17 @@ public class CriteriaConvertor extends Criteria {
      */
     private String newFileName;
 
+    private String newExtension;
+
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
+     *
      * @param pathOrigin of the file.
      * @param pathDestiny of the file.
      */
-    public CriteriaConvertor(String pathOrigin, String pathDestiny) {
+    public CriteriaConvertor( String pathOrigin, String pathDestiny) {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
-        newFileName = "";
     }
 
     /**
@@ -71,5 +73,13 @@ public class CriteriaConvertor extends Criteria {
      */
     public void setNewFileName(String newFileName) {
         this.newFileName = newFileName;
+    }
+
+    public String getNewExtension() {
+        return newExtension;
+    }
+
+    public void setNewExtension(String newExtension) {
+        this.newExtension = newExtension;
     }
 }
