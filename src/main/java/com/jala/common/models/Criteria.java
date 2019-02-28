@@ -25,9 +25,14 @@ public abstract class Criteria {
     private String pathOrigin;
 
     /**
-     * Criteria for the new file name.
+     * Criteria for the file name.
      */
     private String fileName;
+
+    /**
+     * Criteria Extension of the file.
+     */
+    private String extension;
 
     /**
      * Constructor that sets the absolute path of the file .
@@ -36,5 +41,37 @@ public abstract class Criteria {
      */
     public Criteria(String pathOrigin) {
         this.pathOrigin = pathOrigin;
+    }
+
+    /**
+     * Return the path of the file.
+     * @return path origin as string.
+     */
+    public String getPathOrigin() {
+        return pathOrigin;
+    }
+
+    /**
+     * This method allows set the path origin of the file.
+     * @param pathOrigin of file.
+     */
+    public void setPathOrigin(String pathOrigin) {
+        this.pathOrigin = pathOrigin;
+    }
+
+    /**
+     * Return the extension of the file.
+     * @return extension as string.
+     */
+    public String getExtension() {
+        return extension;
+    }
+
+    /**
+     * This method allows set the extension of the file.
+     * @param extension of file.
+     */
+    public void setExtension(String extension) {
+        this.extension = extension;
     }
 }
