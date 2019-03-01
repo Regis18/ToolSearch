@@ -18,8 +18,17 @@ import com.jala.search.models.AssetCommon;
 import com.jala.search.models.AssetText;
 import com.jala.search.models.CriteriaSearch;
 import org.apache.commons.io.FilenameUtils;
-
+import java.io.IOException;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.FileOwnerAttributeView;
+import java.nio.file.attribute.UserPrincipal;
 
 /**
  * AssetFactory class.
@@ -49,14 +58,90 @@ public class AssetFactory {
     }
 
     /**
-     * Receive the size of the files and send in Kilobytes
+     * Receive the size of the files and send in Kilobytes.     *
      * @param fileLength
      * @return Size of files in KiloBytes
      */
     private static double getFileSizeInKb(double fileLength) {
         fileLength = fileLength / BYTES;
-        int fs = (int) Math.pow(10,2);
-        return Math.rint(fileLength*fs)/fs;
+        int fs = (int) Math.pow(10, 2);
+        return Math.rint(fileLength * fs) / fs;
+    }
+
+    /**
+     * Get the file creation date.
+     * @param filePath as String.
+     * @return the file creation  date.
+     */
+    public static String fileCreationDate(String filePath){
+        File file = new File( filePath );
+        BasicFileAttributes attrs;
+        try {
+            attrs = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            FileTime time = attrs.creationTime();
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String formatted = simpleDateFormat.format( new Date( time.toMillis() ) );
+            return formatted;
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Get the file last access date.
+     * @param filePath as String.
+     * @return the file date last access date.
+     */
+    public static String fileLastAccessDate(String filePath){
+        File file = new File( filePath );
+        BasicFileAttributes attrs;
+        try {
+            attrs = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            FileTime time = attrs.lastAccessTime();
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String formatted = simpleDateFormat.format( new Date( time.toMillis() ) );
+            return formatted ;
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Get the file last modified date.
+     * @param filePath as String.
+     * @return the date of file the las modified date.
+     */
+    public static String fileLastModifiedDate(String filePath){
+        File file = new File( filePath );
+        BasicFileAttributes attrs;
+        try {
+            attrs = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            FileTime time = attrs.lastModifiedTime();
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String formatted = simpleDateFormat.format( new Date( time.toMillis() ) );
+            return formatted ;
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Get file owner.
+     * @param filePath as String.
+     * @return the owner file.
+     */
+    public static String fileOwner(String filePath) {
+        Path path = Paths.get(filePath);
+        FileOwnerAttributeView ownerAttributeView = Files.getFileAttributeView(path, FileOwnerAttributeView.class);
+        try{
+            UserPrincipal owner = ownerAttributeView.getOwner();
+            return owner.getName();
+        }catch(java.io.IOException e){
+            return "";
+        }
     }
 
     /**
@@ -72,6 +157,10 @@ public class AssetFactory {
         asset.setExtension(FilenameUtils.getExtension(file.getName()));
         asset.setSizeView(Double.toString(getFileSizeInKb(file.length())));
         asset.setSize(Double.toString(file.length()));
+        asset.setOwner(fileOwner(file.getPath()));
+        asset.setCreationDate(fileCreationDate(file.getPath()));
+        asset.setModificationDate(fileLastModifiedDate(file.getPath()));
+        asset.setLastDate(fileLastAccessDate(file.getPath()));
     }
 
     /**

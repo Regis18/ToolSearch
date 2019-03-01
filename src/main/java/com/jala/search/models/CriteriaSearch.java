@@ -13,8 +13,7 @@
 package com.jala.search.models;
 
 /**
- * The CriteriaSearch class is to set and get the criterias to search.
- *
+ * The CriteriaSearch class is to set and get the criteria to search.
  * @author Areliez Vargas
  * @version 0.0.1
  */
@@ -44,10 +43,28 @@ public class CriteriaSearch {
      * Criteria for read only of file.
      */
     private TernaryBooleanEnum readonly;
+
     /**
      * Criteria for size of file.
      */
     private String size;
+
+    /**
+     * Criteria for owner of file.
+     */
+    private String owner;
+    /**
+     * Criteria for creation date file.
+     */
+    private String CreationDate;
+    /**
+     * Criteria for modification date file.
+     */
+    private String ModificationDate;
+    /**
+     * Criteria for last date file.
+     */
+    private String LastDate;
 
     /**
      * Type of criteria (video, audi, image, common, etc).
@@ -128,7 +145,7 @@ public class CriteriaSearch {
 
     /**
      * Get the type of search.
-     * @return The type of search used
+     * @return The type of search used.
      */
     public int getType() {
         return type;
@@ -172,5 +189,69 @@ public class CriteriaSearch {
      */
     public void setSize(String size) {
         this.size = size;
+    }
+
+    /**
+     * Get the owner file status criteria.
+     * @return the owner criteria used.
+     */
+    public String getOwner() {
+        return owner;
+    }
+
+    /**
+     * Set the owner file criteria.
+     * @param owner the owner of file.
+     */
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * Get creation date file.
+     * @return the creation date file.
+     */
+    public String getCreationDate() {
+        return CreationDate;
+    }
+
+    /**
+     * Set creation date file.
+     * @param creationDate as String the creation date file.
+     */
+    public void setCreationDate(String creationDate) {
+        CreationDate = creationDate;
+    }
+
+    /**
+     * Get modification date file.
+     * @return the modification data file.
+     */
+    public String getModificationDate() {
+        return ModificationDate;
+    }
+
+    /**
+     * Set the modification date file.
+     * @param modificationDate as String the modification data file.
+     */
+    public void setModificationDate(String modificationDate) {
+        ModificationDate = modificationDate;
+    }
+
+    /**
+     * Get  last access date file.
+     * @return the las access date file.
+     */
+    public String getLastDate() {
+        return LastDate;
+    }
+
+    /**
+     * Set the last access date file.
+     * @param lastDate as String the last access date file.
+     */
+    public void setLastDate(String lastDate) {
+        LastDate = lastDate;
     }
 }
