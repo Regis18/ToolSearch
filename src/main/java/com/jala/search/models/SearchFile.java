@@ -13,13 +13,10 @@
 package com.jala.search.models;
 
 import com.jala.utils.Logs;
-import org.apache.commons.io.FilenameUtils;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import com.jala.utils.AssetFactory;
 
 /**
@@ -28,7 +25,7 @@ import com.jala.utils.AssetFactory;
  * @version 0.0.1
  */
 public class SearchFile implements ISearchable {
-
+   
     /**
      * This method return a IAsset list by attributes of criteria.
      * @param criteria to do the search with the path is required and other attributes are optional.
@@ -53,9 +50,29 @@ public class SearchFile implements ISearchable {
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
                         String sizeCriteria = criteria.getSize();
+                        String ownerFile = ((Asset)asset).getOwner();
+                        String ownerCriteria = criteria.getOwner();
+                        String createDateFile = ((Asset)asset).getCreationDate();
+                        String createDateFileCriteria = criteria.getCreationDate();
+                        String modificationDateFile = ((Asset)asset).getModificationDate();
+                        String modificationDateFileCriteria = criteria.getModificationDate();
+                        String lastDateFile = ((Asset)asset).getLastDate();
+                        String lastDateFileCriteria = criteria.getLastDate();
                         // var aux.
                         boolean addFileToResults = true;
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!createDateFile.isEmpty()) && (!createDateFile.equals(createDateFileCriteria))) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!modificationDateFile.isEmpty()) && (!modificationDateFile.equals(modificationDateFileCriteria))) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!lastDateFile.isEmpty()) && (!lastDateFile.equals(lastDateFileCriteria))) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!ownerCriteria.isEmpty()) && (!ownerFile.equals(ownerCriteria))) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!sizeCriteria.isEmpty()) && (!sizeFile.equals(sizeCriteria))) {

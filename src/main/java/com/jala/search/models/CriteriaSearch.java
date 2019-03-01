@@ -12,6 +12,8 @@
 
 package com.jala.search.models;
 
+import com.jala.common.models.Criteria;
+
 /**
  * The CriteriaSearch class is to set and get the criteria to search.
  * @author Areliez Vargas
@@ -37,12 +39,12 @@ public class CriteriaSearch {
     /**
      * Criteria for hidden of file.
      */
-    private TernaryBooleanEnum hidden;
+    public TernaryBooleanEnum hidden;
 
     /**
      * Criteria for read only of file.
      */
-    private TernaryBooleanEnum readonly;
+    public TernaryBooleanEnum readonly;
 
     /**
      * Criteria for size of file.
@@ -53,14 +55,17 @@ public class CriteriaSearch {
      * Criteria for owner of file.
      */
     private String owner;
+
     /**
      * Criteria for creation date file.
      */
     private String CreationDate;
+
     /**
      * Criteria for modification date file.
      */
     private String ModificationDate;
+
     /**
      * Criteria for last date file.
      */
