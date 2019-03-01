@@ -70,9 +70,7 @@ public class InputParameter {
         if (existCommand("-p", inputCommand)) {
             if (areCommandsValid(inputCommand)) {
                 message = "Valid Commands!!";
-                System.out.println("antes");
                 getSearch(createMap(commands));
-                System.out.println("despues");
             } else {
                 message = invalidCommand();
             }
@@ -152,7 +150,6 @@ public class InputParameter {
      */
     private List<File> getSearch(Map<String, String> validCommand) {
 
-        System.out.println("value> " + validCommand.get("-p"));
         CriteriaSearch criteria = new CriteriaSearch(validCommand.get("-p"));
         /*criteria.setPath(validCommand.get("-p"));
         criteria.setFileName(validCommand.get("-fn"));
@@ -162,12 +159,9 @@ public class InputParameter {
         SearchFile searchFile = new SearchFile();
         try {
             listFileSearch = new ArrayList<>(searchFile.search(criteria));
-            System.out.println(listFileSearch + " : la lista  ");
         } catch (Exception e) {
             System.out.println("error : " + e);
         }
-
-        System.out.println(" files > " + searchFile.search(criteria));
         return searchFile.search(criteria);
     }
 

@@ -29,11 +29,10 @@ public class App {
 
         /* Created a validator instance */
         InputParameter validator = new InputParameter();
-        CriteriaSearch criteriaSearch;
 
         /* Use the method validateCommand for validate the input commands. */
-        String [] listTest = {"-p", "C:\\Test"};
-        validator.validateCommands(listTest);
+        //String [] listTest = {"-p", "C:\\Test"};
+        validator.validateCommands(args);
 
         /* Created a viewCommand instance */
         ViewConsole viewConsole = new ViewConsole();
@@ -41,9 +40,9 @@ public class App {
         /* Use the testShow to simulate the create of a table with files as data. */
         viewConsole.testShow( validator.getListFileSearch());
 
-        /*for (String valiue:args
+        /*for (String value:args
              ) {
-            System.out.println("input parameters : " + valiue);
+            System.out.println("input parameters : " + value);
         }*/
 
     }

@@ -35,15 +35,13 @@ public class ViewConsole {
         for (int i = 0; i < files.size() ; i++) {
 
             File file = files.get(i);
-            String path = files.get(i).getAbsolutePath();
+            File path = files.get(i);
             String name = files.get(i).getName();
             String extension = FilenameUtils.getExtension(files.get(i).getAbsolutePath());
 
-            System.out.format("%d | %s | %s | %s%n", i, file.getName(), name, extension);
-
+            System.out.format("%d | %s | %s | %s%n", i, file.getName(), path, extension);
         }
     }
-
 
     /**
      * Test method for show a simulate of table.
