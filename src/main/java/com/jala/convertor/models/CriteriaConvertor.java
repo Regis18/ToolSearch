@@ -33,15 +33,20 @@ public class CriteriaConvertor extends Criteria {
 
     private String newExtension;
 
+    private int horizontal;
+
+    private int vertical;
+
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
      *
      * @param pathOrigin of the file.
      * @param pathDestiny of the file.
      */
-    public CriteriaConvertor( String pathOrigin, String pathDestiny) {
+    public CriteriaConvertor( String pathOrigin, String pathDestiny, String newExtension) {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
+        this.newExtension = newExtension;
     }
 
     /**
@@ -81,5 +86,21 @@ public class CriteriaConvertor extends Criteria {
 
     public void setNewExtension(String newExtension) {
         this.newExtension = newExtension;
+    }
+
+    public int getHorizontal() {
+        return horizontal;
+    }
+
+    public void setHorizontal(int horizontal) {
+        this.horizontal = horizontal;
+    }
+
+    public int getVertical() {
+        return vertical;
+    }
+
+    public void setVertical(int vertical) {
+        this.vertical = vertical;
     }
 }
