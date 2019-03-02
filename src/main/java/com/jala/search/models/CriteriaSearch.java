@@ -77,7 +77,7 @@ public class CriteriaSearch {
     private int type;
 
     /**
-     *
+     * Constructor of class CriteriaSearch.
      */
     public void CriteriaSearch() {
     this.setHidden(TernaryBooleanEnum.ALL);

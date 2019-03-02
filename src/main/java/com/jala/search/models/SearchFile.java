@@ -35,10 +35,9 @@ public class SearchFile implements ISearchable {
     public List<Asset> search(CriteriaSearch criteria) {
         List<Asset> result = new ArrayList<>();
         File folder = new File(criteria.getPath());
-
         if (folder.exists()) {
-            File[] findFiles = folder.listFiles();
-            List<File> files = Arrays.asList(findFiles);
+            List<File> files = new ArrayList<File>();
+            GetAllFiles(criteria.getPath(),files);
             try {
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
@@ -110,5 +109,23 @@ public class SearchFile implements ISearchable {
             }
         }
         return result;
+    }
+
+    /**
+     * Search files recursively.
+     * @param path origin path.
+     * @param result list of files.
+     */
+    private void GetAllFiles(String path, List<File> result){
+        File file = new File(path);
+        if (file.isFile()) {
+            result.add(file);
+        }else{
+           File[] findFiles = file.listFiles();
+            List<File> files = Arrays.asList(findFiles);
+            for (int i = 0; i < files.size(); i++) {
+                GetAllFiles(files.get(i).getPath() , result);
+            }
+        }
     }
 }
