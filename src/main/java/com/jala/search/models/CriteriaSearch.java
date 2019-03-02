@@ -77,10 +77,25 @@ public class CriteriaSearch {
     private int type;
 
     /**
+     *
+     */
+    public void CriteriaSearch() {
+    this.setHidden(TernaryBooleanEnum.ALL);
+    this.setReadonly(TernaryBooleanEnum.ALL);
+    this.setSize("");
+    this.setCreationDate("");
+    this.setModificationDate("");
+    this.setLastDate("");
+    this.setOwner("");
+    this.setFileName("");
+    this.setExtension("");
+}
+    /**
      * Constructor that setting the path for then do a search.
      * @param path of the directory.
      */
     public CriteriaSearch(String path) {
+        this.CriteriaSearch();
         this.path = path;
     }
 

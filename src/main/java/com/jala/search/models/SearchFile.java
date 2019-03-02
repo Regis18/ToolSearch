@@ -35,6 +35,7 @@ public class SearchFile implements ISearchable {
     public List<Asset> search(CriteriaSearch criteria) {
         List<Asset> result = new ArrayList<>();
         File folder = new File(criteria.getPath());
+
         if (folder.exists()) {
             File[] findFiles = folder.listFiles();
             List<File> files = Arrays.asList(findFiles);
@@ -63,22 +64,22 @@ public class SearchFile implements ISearchable {
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
                             addFileToResults = false;
                         }
-                        if (addFileToResults && (!createDateFile.isEmpty()) && (!createDateFile.equals(createDateFileCriteria))) {
+                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()) {
                             addFileToResults = false;
                         }
-                        if (addFileToResults && (!modificationDateFile.isEmpty()) && (!modificationDateFile.equals(modificationDateFileCriteria))) {
+                        if (addFileToResults && (!createDateFileCriteria.isEmpty()) && (!createDateFile.equals(createDateFileCriteria))) {
                             addFileToResults = false;
                         }
-                        if (addFileToResults && (!lastDateFile.isEmpty()) && (!lastDateFile.equals(lastDateFileCriteria))) {
+                        if (addFileToResults && (!modificationDateFileCriteria.isEmpty()) && (!modificationDateFile.equals(modificationDateFileCriteria))) {
+                            addFileToResults = false;
+                        }
+                        if (addFileToResults && (!lastDateFileCriteria.isEmpty()) && (!lastDateFile.equals(lastDateFileCriteria))) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!ownerCriteria.isEmpty()) && (!ownerFile.equals(ownerCriteria))) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!sizeCriteria.isEmpty()) && (!sizeFile.equals(sizeCriteria))) {
-                            addFileToResults = false;
-                        }
-                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
