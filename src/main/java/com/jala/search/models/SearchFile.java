@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.jala.utils.AssetFactory;
+import org.apache.log4j.Logger;
 
 /**
  * SearchFile class.
@@ -25,7 +26,10 @@ import com.jala.utils.AssetFactory;
  * @version 0.0.1
  */
 public class SearchFile implements ISearchable {
-   
+
+    /** It creates to follow up the instruction of the class*/
+    private Logger log = Logs.getInstance().getLog();
+
     /**
      * This method return a IAsset list by attributes of criteria.
      * @param criteria to do the search with the path is required and other attributes are optional.
@@ -33,11 +37,12 @@ public class SearchFile implements ISearchable {
      */
     @Override
     public List<Asset> search(CriteriaSearch criteria) {
+    log.info("Searching on "+criteria.getPath());
         List<Asset> result = new ArrayList<>();
         File folder = new File(criteria.getPath());
         if (folder.exists()) {
             List<File> files = new ArrayList<File>();
-            GetAllFiles(criteria.getPath(),files);
+            GetAllFiles(folder,files);
             try {
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
@@ -100,12 +105,11 @@ public class SearchFile implements ISearchable {
                         if (addFileToResults) {
                             result.add(asset);
                         }
-                    } else if (file.isDirectory()) {
-                        //TODO recursion to get files of folder.
                     }
                 }
             } catch (NullPointerException e) {
-                Logs.getInstance().getLog().error("The criteria values shouldn't be null", e);
+               // Logs.getInstance().getLog().error("The criteria values shouldn't be null", e);
+                log.error("The criteria values shouldn't be null", e);
             }
         }
         return result;
@@ -113,18 +117,18 @@ public class SearchFile implements ISearchable {
 
     /**
      * Search files recursively.
-     * @param path origin path.
+     * @param currentFile the starting file.
      * @param result list of files.
      */
-    private void GetAllFiles(String path, List<File> result){
-        File file = new File(path);
-        if (file.isFile()) {
-            result.add(file);
+    private void GetAllFiles(File currentFile, List<File> result){
+        //File file = new File(path);
+        if (currentFile.isFile()) {
+            result.add(currentFile);
         }else{
-           File[] findFiles = file.listFiles();
+           File[] findFiles = currentFile.listFiles();
             List<File> files = Arrays.asList(findFiles);
             for (int i = 0; i < files.size(); i++) {
-                GetAllFiles(files.get(i).getPath() , result);
+                GetAllFiles(files.get(i) , result);
             }
         }
     }

@@ -33,7 +33,7 @@ public class Asset {
     private String lastDate;
 
     /**
-     * Constructor of the class Asset.
+     * Constructor Asset class.
      */
     public void Asset() {
         path = "";
