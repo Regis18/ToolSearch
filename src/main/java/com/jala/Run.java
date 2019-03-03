@@ -26,7 +26,7 @@ public class Run {
      * Build a constructor to do run the program and arise the main controller
      */
     public Run() {
-        MainView mainView =  new MainView();
+        MainView mainView = new MainView();
         ControllerMain controllerMain = new ControllerMain(mainView);
         controllerMain.initView();
     }

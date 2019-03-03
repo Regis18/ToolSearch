@@ -11,6 +11,7 @@
  */
 package com.jala.search.controller;
 
+import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
 import com.jala.utils.Logs;
@@ -32,10 +33,13 @@ public class ControllerSearchAdvanced implements ActionListener {
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
+
     /** ViewAdvanced: create a pointer of JPanelSearchAdvanced, the object will provide other class.*/
     private JPanelSearchAdvanced viewAdvanced;
+
     /** This is temporal, it is just for calculate a size of the file.*/
     private final static double BYTES = 1024.0;
+
     /** To save the values of the UI and send to SearchFile*/
     private CriteriaSearch criteriaSearch;
 
@@ -44,7 +48,7 @@ public class ControllerSearchAdvanced implements ActionListener {
      * the actionListener of that Panel.
      * @param viewAdvanced receive the object of the main frame.
      */
-    public ControllerSearchAdvanced (JPanelSearchAdvanced viewAdvanced) {
+    public ControllerSearchAdvanced(JPanelSearchAdvanced viewAdvanced) {
         log.info("Initialize the Control of Search Advanced");
         this.viewAdvanced = viewAdvanced;
         actionListener();
@@ -53,7 +57,7 @@ public class ControllerSearchAdvanced implements ActionListener {
     /**
      * Initialize the action listener of the btnSearch button.
      */
-    private void actionListener () {
+    private void actionListener() {
         log.info("Initialize the adding of listener for the buttons in Search Advanced ");
         viewAdvanced.getBtnSearch().addActionListener(this);
         log.info("Finish the actionListener");
@@ -61,12 +65,12 @@ public class ControllerSearchAdvanced implements ActionListener {
 
     /**
      * It is override the method of ActionListener and the objective is listen if button is pressed
-     * @param e this activates when a button is  pressed
+     * @param event this activates when a button is  pressed
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
         log.info("Action Detected");
-        if (e.getSource() == viewAdvanced.getBtnSearch()) {
+        if (event.getSource() == viewAdvanced.getBtnSearch()) {
             log.info("BtnSearch from Search Advanced was pressed");
             saveCriteria();
             sendCriteriaToFile();
@@ -88,15 +92,16 @@ public class ControllerSearchAdvanced implements ActionListener {
      * Send criteriaSearch to SearchFile to search files like the filename or extension, receive a list of
      * results, and print the results in the UI table.
      */
-    private void sendCriteriaToFile () {
+    private void sendCriteriaToFile() {
         log.info("Preparing to send criteria to SearchFile");
         SearchFile searchFile = new SearchFile();
-        List<File> results = searchFile.search(criteriaSearch);
+        List<Asset> results = searchFile.search(criteriaSearch);
         log.info("Information sending and waiting answers");
+        viewAdvanced.getTbSearchAdvanced().removeRow();
         for (int i = 0; i < results.size(); i++) {
-            File data = results.get(i);
-            viewAdvanced.getTbSearchAdvanced().AddResultRow(Integer.toString(i), data.getAbsolutePath(), data.getName(),
-                    FilenameUtils.getExtension(data.getAbsolutePath()), Double.toString(getFileSizeInKB(data.length())));
+            Asset data = results.get(i);
+            viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
+                    data.getExtension(), data.getSize());
         }
         log.info("Results implemented in the JTable of the UI");
     }
@@ -106,7 +111,7 @@ public class ControllerSearchAdvanced implements ActionListener {
      * @param fileLength
      * @return Size of files in KiloBytes
      */
-    private double getFileSizeInKB (double fileLength) {
+    private double getFileSizeInKb(double fileLength) {
         log.info("Returns the size of the file");
         fileLength = fileLength / BYTES;
         int fs = (int) Math.pow(10,2);

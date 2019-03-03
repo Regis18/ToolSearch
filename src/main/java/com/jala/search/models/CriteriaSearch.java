@@ -14,8 +14,9 @@ package com.jala.search.models;
 
 /**
  * The CriteriaSearch class is to set and get the criterias to search.
- * @version 0.0.1
+ *
  * @author Areliez Vargas
+ * @version 0.0.1
  */
 public class CriteriaSearch {
 
@@ -33,6 +34,25 @@ public class CriteriaSearch {
      * Criteria for extension of file.
      */
     private String extension;
+
+    /**
+     * Criteria for hidden of file.
+     */
+    private TernaryBooleanEnum hidden;
+
+    /**
+     * Criteria for read only of file.
+     */
+    private TernaryBooleanEnum readonly;
+    /**
+     * Criteria for size of file.
+     */
+    private String size;
+
+    /**
+     * Type of criteria (video, audi, image, common, etc).
+     */
+    private int type;
 
     /**
      * Constructor that setting the path for then do a search.
@@ -88,5 +108,69 @@ public class CriteriaSearch {
      */
     public void setExtension(String extension) {
         this.extension = extension;
+    }
+
+    /**
+     * Return the values of hidden of a file.
+     * @return the hidden property of the file.
+     */
+    public TernaryBooleanEnum getHidden() {
+        return hidden;
+    }
+
+    /**
+     * This method allows to set the hidden criteria for the file search.
+     * @param hidden the value to use of the search.
+     */
+    public void setHidden(TernaryBooleanEnum hidden) {
+        this.hidden = hidden;
+    }
+
+    /**
+     * Get the type of search.
+     * @return The type of search used
+     */
+    public int getType() {
+        return type;
+    }
+
+    /**
+     * Set the type of search performed.
+     * @param type The type of search used.
+     */
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    /**
+     * Get the Readonly file status criteria.
+     * @return the readonly criteria used.
+     */
+    public TernaryBooleanEnum getReadonly() {
+        return readonly;
+    }
+
+    /**
+     * Set the readonly file status criteria.
+     * @param readonly the readonly criteria used.
+     */
+    public void setReadonly(TernaryBooleanEnum readonly) {
+        this.readonly = readonly;
+    }
+
+    /**
+     * Get the size file status criteria.
+     * @return the size criteria used.
+     */
+    public String getSize() {
+        return size;
+    }
+
+    /**
+     * Set the size file status criteria.
+     * @param size the size criteria used.
+     */
+    public void setSize(String size) {
+        this.size = size;
     }
 }
