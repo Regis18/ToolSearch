@@ -52,6 +52,11 @@ public class CriteriaSearch {
     private String size;
 
     /**
+     * Criteria for size greater than or less than.
+     */
+    private boolean sizeCompareOption;
+
+    /**
      * Criteria for owner of file.
      */
     private String owner;
@@ -217,6 +222,24 @@ public class CriteriaSearch {
      */
     public String getOwner() {
         return owner;
+    }
+
+    /**
+     * Get the size greater or less than.
+     * @return a boolean value is es true is greater than and is
+     * false is less than.
+     */
+    public boolean isSizeCompareOption() {
+        return sizeCompareOption;
+    }
+
+    /**
+     * Set de boolean value for size compare option.
+     * @param sizeCompareOption can be true for is greater than and is
+     * false for less than.
+     */
+    public void setSizeCompareOption(boolean sizeCompareOption) {
+        this.sizeCompareOption = sizeCompareOption;
     }
 
     /**
