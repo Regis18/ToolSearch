@@ -14,6 +14,7 @@ package com.jala.search.models;
 
 import com.jala.utils.Logs;
 import java.io.File;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -58,12 +59,9 @@ public class SearchFile implements ISearchable {
                         String ownerFile = ((Asset)asset).getOwner();
                         String ownerCriteria = criteria.getOwner();
                         String createDateFile = ((Asset)asset).getCreationDate();
-                        String createDateFileCriteria = criteria.getCreationDate();
                         String modificationDateFile = ((Asset)asset).getModificationDate();
-                        String modificationDateFileCriteria = criteria.getModificationDate();
                         String lastDateFile = ((Asset)asset).getLastDate();
-                        String lastDateFileCriteria = criteria.getLastDate();
-                        // var aux.
+                       // var aux.
                         boolean addFileToResults = true;
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
                             addFileToResults = false;
@@ -71,14 +69,23 @@ public class SearchFile implements ISearchable {
                         if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()) {
                             addFileToResults = false;
                         }
-                        if (addFileToResults && (!createDateFileCriteria.isEmpty()) && (!createDateFile.equals(createDateFileCriteria))) {
-                            addFileToResults = false;
+                        if (addFileToResults && (!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
+                                if(  ( Date.valueOf(createDateFile).before(Date.valueOf(criteria.getCreationDateFrom()) ))
+                                ||  ( Date.valueOf(createDateFile).after(Date.valueOf(criteria.getCreationDateTo()) ))
+                                )
+                                addFileToResults = false;
                         }
-                        if (addFileToResults && (!modificationDateFileCriteria.isEmpty()) && (!modificationDateFile.equals(modificationDateFileCriteria))) {
-                            addFileToResults = false;
+                        if (addFileToResults && (!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
+                            if(  ( Date.valueOf(modificationDateFile).before(Date.valueOf(criteria.getModificationDateFrom()) ))
+                                    ||  ( Date.valueOf(modificationDateFile).after(Date.valueOf(criteria.getModificationDateTo()) ))
+                            )
+                                addFileToResults = false;
                         }
-                        if (addFileToResults && (!lastDateFileCriteria.isEmpty()) && (!lastDateFile.equals(lastDateFileCriteria))) {
-                            addFileToResults = false;
+                        if (addFileToResults && (!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
+                            if(  ( Date.valueOf(lastDateFile).before(Date.valueOf(criteria.getLastDateFrom()) ))
+                                    ||  ( Date.valueOf(lastDateFile).after(Date.valueOf(criteria.getLastDateTo()) ))
+                            )
+                                addFileToResults = false;
                         }
                         if (addFileToResults && (!ownerCriteria.isEmpty()) && (!ownerFile.equals(ownerCriteria))) {
                             addFileToResults = false;

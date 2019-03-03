@@ -64,17 +64,20 @@ public class CriteriaSearch {
     /**
      * Criteria for creation date file.
      */
-    private String CreationDate;
+    private String CreationDateFrom;
+    private String CreationDateTo;
 
     /**
      * Criteria for modification date file.
      */
-    private String ModificationDate;
+    private String ModificationDateFrom;
+    private String ModificationDateTo;
 
     /**
      * Criteria for last date file.
      */
-    private String LastDate;
+    private String LastDateFrom;
+    private String LastDateTo;
 
     /**
      * Type of criteria (video, audi, image, common, etc).
@@ -88,9 +91,12 @@ public class CriteriaSearch {
     this.setHidden(TernaryBooleanEnum.ALL);
     this.setReadonly(TernaryBooleanEnum.ALL);
     this.setSize("");
-    this.setCreationDate("");
-    this.setModificationDate("");
-    this.setLastDate("");
+    this.setCreationDateFrom("");
+    this.setCreationDateTo("");
+    this.setModificationDateFrom("");
+    this.setModificationDateTo("");
+    this.setLastDateFrom("");
+    this.setLastDateTo("");
     this.setOwner("");
     this.setFileName("");
     this.setExtension("");
@@ -251,50 +257,98 @@ public class CriteriaSearch {
     }
 
     /**
-     * Get creation date file.
-     * @return the creation date file.
+     * Get creation date Initial of search file.
+     * @return the date initial for a Search a creation date.
      */
-    public String getCreationDate() {
-        return CreationDate;
+    public String getCreationDateFrom() {
+        return CreationDateFrom;
     }
 
     /**
-     * Set creation date file.
-     * @param creationDate as String the creation date file.
+     * Set creation date Initial of search file.
+     * @param creationDateFrom the date initial for a Search a creation date.
      */
-    public void setCreationDate(String creationDate) {
-        CreationDate = creationDate;
+    public void setCreationDateFrom(String creationDateFrom) {
+        CreationDateFrom = creationDateFrom;
     }
 
     /**
-     * Get modification date file.
-     * @return the modification data file.
+     * Get creation date Final of search file.
+     * @return the date final for a Search a creation date.
      */
-    public String getModificationDate() {
-        return ModificationDate;
+    public String getCreationDateTo() {
+        return CreationDateTo;
     }
 
     /**
-     * Set the modification date file.
-     * @param modificationDate as String the modification data file.
+     * Set creation date final of search file.
+     * @param creationDateTo the date final for a Search a creation date.
      */
-    public void setModificationDate(String modificationDate) {
-        ModificationDate = modificationDate;
+    public void setCreationDateTo(String creationDateTo) {
+        CreationDateTo = creationDateTo;
     }
 
     /**
-     * Get  last access date file.
-     * @return the las access date file.
+     * Get the date for a search of file with modification date initial.
+     * @return The date initial for a modification date of file.
      */
-    public String getLastDate() {
-        return LastDate;
+    public String getModificationDateFrom() {
+        return ModificationDateFrom;
     }
 
     /**
-     * Set the last access date file.
-     * @param lastDate as String the last access date file.
+     * Set the date for a search of file with modification date initial.
+     * @param modificationDateFrom the date for initial modification date of file.
      */
-    public void setLastDate(String lastDate) {
-        LastDate = lastDate;
+    public void setModificationDateFrom(String modificationDateFrom) {
+        ModificationDateFrom = modificationDateFrom;
+    }
+
+    /**
+     * Get the date for a search of file with modification date final.
+     * @return The date final for a modification date of file.
+     */
+    public String getModificationDateTo() {
+        return ModificationDateTo;
+    }
+
+    /**
+     * Set the date for a search of file with modification date final.
+     * @param modificationDateTo the date for final modification date of file.
+     */
+    public void setModificationDateTo(String modificationDateTo) {
+        ModificationDateTo = modificationDateTo;
+    }
+
+    /**
+     * Get the last date initial for a search of file.
+     * @return the last date initial.
+     */
+    public String getLastDateFrom() {
+        return LastDateFrom;
+    }
+
+    /**
+     * Set the last date initial for a search of file.
+     * @param lastDateFrom the last date initial.
+     */
+    public void setLastDateFrom(String lastDateFrom) {
+        LastDateFrom = lastDateFrom;
+    }
+
+    /**
+     * Get the last date final for a search of file.
+     * @return the last date final of file.
+     */
+    public String getLastDateTo() {
+        return LastDateTo;
+    }
+
+    /**
+     * Set the last date final for a search of file.
+     * @param lastDateTo the last date final.
+     */
+    public void setLastDateTo(String lastDateTo) {
+        LastDateTo = lastDateTo;
     }
 }

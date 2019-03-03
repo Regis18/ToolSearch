@@ -135,7 +135,8 @@ public class SearchFileTest {
     @Test
     public void searchCreationDate() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Search");
-        cr.setCreationDate("2019-03-02");
+        cr.setCreationDateFrom("2019-03-01");
+        cr.setCreationDateTo("2019-03-03");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(3, assetList.size());
@@ -147,7 +148,8 @@ public class SearchFileTest {
     @Test
     public void searchModificationDate() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Search");
-        cr.setModificationDate("2019-03-02");
+        cr.setModificationDateFrom("2019-03-01");
+        cr.setModificationDateTo("2019-03-03");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(3, assetList.size());
@@ -159,7 +161,8 @@ public class SearchFileTest {
     @Test
     public void searchLastDate() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Search");
-        cr.setLastDate("2019-03-02");
+        cr.setLastDateFrom("2019-03-01");
+        cr.setLastDateTo("2019-03-03");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(3, assetList.size());
