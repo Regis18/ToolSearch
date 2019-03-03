@@ -36,7 +36,7 @@ public class JPanelSearchAdvanced extends JPanel {
     private JButton btnSearch;
     private JTableResult tbSearchAdvanced;
     private Border border;
-
+    private JPanelAdvanced panelSearchAdvanced;
     /**
      * Class constructor.
      * @param layout define the main layout.
@@ -44,6 +44,12 @@ public class JPanelSearchAdvanced extends JPanel {
     public JPanelSearchAdvanced(LayoutManager layout) {
         super(layout);
         init();
+    }
+
+
+    //coment
+    public JPanelAdvanced getJPanelAdvanced(){
+        return panelSearchAdvanced;
     }
 
     /**
@@ -54,7 +60,7 @@ public class JPanelSearchAdvanced extends JPanel {
         return tbSearchAdvanced;
     }
 
-     /**
+    /**
      * Return the value of file name.
      * @return txtFileName the criteria File Name.
      */
@@ -84,7 +90,7 @@ public class JPanelSearchAdvanced extends JPanel {
         this.txtExt = txtExt;
     }
 
-     /**
+    /**
      * Gets the Path of the location to search.
      * @return txtPath, the location of file to search.
      */
@@ -120,8 +126,11 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private void initComponent() {
 
-        JPanel pnlNorth = pnlCriteria();
+        /*JPanel pnlNorth = pnlCriteria();
         this.add(pnlNorth, BorderLayout.NORTH);
+*/
+        panelSearchAdvanced = new JPanelAdvanced();
+        this.add(panelSearchAdvanced, BorderLayout.NORTH);
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.CENTER);
@@ -166,8 +175,8 @@ public class JPanelSearchAdvanced extends JPanel {
         pnlExt.add(btnSearch);
 
         pnlSearchAd.add(pnlPath, BorderLayout.NORTH);
-        pnlSearchAd.add(pnlFileName, BorderLayout.WEST);
-        pnlSearchAd.add(pnlExt, BorderLayout.SOUTH);
+        /*pnlSearchAd.add(pnlFileName, BorderLayout.WEST);
+        pnlSearchAd.add(pnlExt, BorderLayout.SOUTH);*/
 
         return pnlSearchAd;
     }
