@@ -83,8 +83,11 @@ public class SearchFile implements ISearchable {
                         if (addFileToResults && (!ownerCriteria.isEmpty()) && (!ownerFile.equals(ownerCriteria))) {
                             addFileToResults = false;
                         }
-                        if (addFileToResults && (!sizeCriteria.isEmpty()) && (!sizeFile.equals(sizeCriteria))) {
-                            addFileToResults = false;
+                        if (addFileToResults && (!sizeCriteria.isEmpty())) {
+                            if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > Double.parseDouble(sizeFile) ))
+                                addFileToResults = false;
+                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) < Double.parseDouble(sizeFile) ))
+                                addFileToResults = false;
                         }
                         if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
                             addFileToResults = false;
