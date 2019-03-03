@@ -19,8 +19,6 @@ import com.jala.search.models.TernaryBooleanEnum;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert.*;
-
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -36,7 +34,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test the correct filename is returned.
      */
     @Test
     public void searchFileName() {
@@ -48,7 +46,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test the correct extension is returned.
      */
     @Test
     public void searchExtension() {
@@ -60,7 +58,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return the first hidden and not hidden file.
      */
     @Test
     public void searchHiddenAll() {
@@ -72,19 +70,19 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return the first file read only.
      */
     @Test
     public void searchHiddenOnlyTrue() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
-        cr.setHidden(TernaryBooleanEnum.OnlyTrue);
+        cr.setReadonly(TernaryBooleanEnum.OnlyTrue);
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(0, assetList.size());
     }
 
     /**
-     *
+     * Test return the number of files, readonly  and not readonly files.
      */
     @Test
     public void searchReadOnlyAll() {
@@ -96,7 +94,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return the number of files, with correct owner.
      */
    @Test
     public void searchOwner() {
@@ -108,7 +106,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return the number of files with the same size.
      */
    @Test
     public void searchSize() {
@@ -120,7 +118,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return number the file with size equal to zero.
      */
     @Test
     public void searchSizeCero() {
@@ -132,7 +130,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return the number of file with the a creation date.
      */
     @Test
     public void searchCreationDate() {
@@ -144,7 +142,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return the number of file with the a modification date.
      */
     @Test
     public void searchModificationDate() {
@@ -156,7 +154,7 @@ public class SearchFileTest {
     }
 
     /**
-     *
+     * Test return the number of file with the a last date.
      */
     @Test
     public void searchLastDate() {
