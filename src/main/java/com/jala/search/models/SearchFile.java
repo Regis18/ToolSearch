@@ -118,8 +118,7 @@ public class SearchFile implements ISearchable {
                     }
                 }
             } catch (NullPointerException e) {
-               // Logs.getInstance().getLog().error("The criteria values shouldn't be null", e);
-                log.error("The criteria values shouldn't be null", e);
+               log.error("The criteria values shouldn't be null", e);
             }
         }
         return result;
