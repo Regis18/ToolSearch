@@ -31,11 +31,20 @@ public class CriteriaConvertor extends Criteria {
      */
     private String newFileName;
 
+    /**
+     * The extension for the image to convert.
+     */
     private String newExtension;
 
-    private int horizontal;
+    /**
+     * The new width for the image file to convert.
+     */
+    private int width;
 
-    private int vertical;
+    /**
+     * The new height for the image file to convert.
+     */
+    private int height = -1;
 
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
@@ -47,6 +56,7 @@ public class CriteriaConvertor extends Criteria {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
         this.newExtension = newExtension;
+        //height = -1;
     }
 
     /**
@@ -66,6 +76,7 @@ public class CriteriaConvertor extends Criteria {
     }
 
     /**
+     * This method return the new file name to convert.
      * @return the content of newFileName
      */
     public String getNewFileName() {
@@ -80,27 +91,51 @@ public class CriteriaConvertor extends Criteria {
         this.newFileName = newFileName;
     }
 
+    /**
+     * This method return the new extension to convert an image.
+     * @return the extension for the new image file.
+     */
     public String getNewExtension() {
         return newExtension;
     }
 
+    /**
+     * Set the new extension to convert the image file.
+     * @param newExtension for the new image file.
+     */
     public void setNewExtension(String newExtension) {
         this.newExtension = newExtension;
     }
 
-    public int getHorizontal() {
-        return horizontal;
+    /**
+     * This method return the new width for the new image file.
+     * @return the width of the image.
+     */
+    public int getWidth() {
+        return width;
     }
 
-    public void setHorizontal(int horizontal) {
-        this.horizontal = horizontal;
+    /**
+     * Set the new width for the new image file.
+     * @param width of the new image file.
+     */
+    public void setWidth(int width) {
+        this.width = width;
     }
 
-    public int getVertical() {
-        return vertical;
+    /**
+     * This method return the new height of the new image file.
+     * @return the height of the new image file.
+     */
+    public int getHeight() {
+        return height;
     }
 
-    public void setVertical(int vertical) {
-        this.vertical = vertical;
+    /**
+     * set the new height  for the new image file.
+     * @param height for the new image file.
+     */
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
