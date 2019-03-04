@@ -15,8 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import java.awt.Container;
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.Border;
@@ -31,10 +30,11 @@ public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
-    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced;
+    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
+    private JPanelConverter panelConverterImage;
     private String currentPanel;
     private Border border;
 
@@ -60,6 +60,15 @@ public class MainView extends JFrame implements ActionListener {
     public JPanelSearchAdvanced getpSearchAdvanced() {
         return pnlSearchAdvanced;
     }
+
+    /**
+     * Return the panel where is the Search Advanced.
+     * @return Advanced Search Panel .
+     */
+    public JPanelConverter getpConverterImage() {
+        return panelConverterImage;
+    }
+
     /**
      * Gets the Converter Menu.
      * @return the Menu option Converter
@@ -101,6 +110,14 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
+     * Gets the Converter menu option.
+     * @return menuItemConverter, the option Advanced menu item of the Converter menu.
+     */
+    public JMenuItem getMenuItemConverter() {
+        return menuItemConverter;
+    }
+
+    /**
      * Initialize the main window.
      */
     public void init() {
@@ -108,6 +125,7 @@ public class MainView extends JFrame implements ActionListener {
         content.setLayout(new BorderLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setMinimumSize(new Dimension(500, 400));
         initComponent();
 
         setLocationRelativeTo(null);
@@ -119,8 +137,6 @@ public class MainView extends JFrame implements ActionListener {
     private void initComponent() {
         Container content = getContentPane();
         createMenu();
-
-        //Create panels.
         pnlHistorical = new JPanelHistorical(new BorderLayout());
         content.add(pnlHistorical, BorderLayout.CENTER);
         currentPanel = "Historical";
@@ -151,6 +167,10 @@ public class MainView extends JFrame implements ActionListener {
 
         menuConverter = new JMenu("Converter");
         menuBar.add(menuConverter);
+
+        menuItemConverter = new JMenuItem("Converter Image");
+        menuConverter.add(menuItemConverter);
+        menuItemConverter.addActionListener(this);
     }
 
     /**
@@ -179,6 +199,14 @@ public class MainView extends JFrame implements ActionListener {
                 this.validate();
                 this.repaint();
             }
+        }
+        if (e.getSource() == menuItemConverter) {
+            panelConverterImage = new JPanelConverter(new BorderLayout());
+            content.removeAll();
+            content.add(panelConverterImage, BorderLayout.CENTER);
+            currentPanel = "ConverterImage";
+            this.validate();
+            this.repaint();
         }
     }
 }

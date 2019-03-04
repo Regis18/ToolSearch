@@ -129,7 +129,9 @@ public class JPanelSearchAdvanced extends JPanel {
         /*JPanel pnlNorth = pnlCriteria();
         this.add(pnlNorth, BorderLayout.NORTH);
 */
-        panelSearchAdvanced = new JPanelAdvanced();
+        panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        panelSearchAdvanced.setBorder(titleBorder);
         this.add(panelSearchAdvanced, BorderLayout.NORTH);
 
         JPanel pnlCentral = pnlTableResult();
@@ -145,40 +147,14 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private JPanel pnlCriteria() {
 
-        JPanel pnlSearchAd, pnlPath, pnlFileName, pnlExt;
-        pnlSearchAd = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search Advanced");
-        pnlSearchAd.setBorder(titleBorder);
+        JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        pnlSearchAdvanced.setBorder(titleBorder);
 
-        pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        lblPath = new JLabel("Path: ");
-        pnlPath.add(lblPath);
-
-        txtPath = new JTextField(50);
-        pnlPath.add(txtPath);
-
-        pnlFileName = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        lblFileName = new JLabel("File Name: ");
-        pnlFileName.add(lblFileName);
-
-        txtFileName = new JTextField(15);
-        pnlFileName.add(txtFileName);
-
-        pnlExt = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        lblExt = new JLabel("Extension: ");
-        pnlExt.add(lblExt);
-
-        txtExt = new JTextField(10);
-        pnlExt.add(txtExt);
-
-        btnSearch = new JButton("Search");
-        pnlExt.add(btnSearch);
-
-        pnlSearchAd.add(pnlPath, BorderLayout.NORTH);
-        /*pnlSearchAd.add(pnlFileName, BorderLayout.WEST);
-        pnlSearchAd.add(pnlExt, BorderLayout.SOUTH);*/
-
-        return pnlSearchAd;
+        tbSearchAdvanced = new JTableResult();
+        JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
+        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+        return pnlSearchAdvanced;
     }
 
     /**

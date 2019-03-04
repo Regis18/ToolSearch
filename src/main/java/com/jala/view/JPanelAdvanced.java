@@ -20,68 +20,144 @@ import java.awt.event.ActionListener;
 
 public class JPanelAdvanced extends JPanel{
 
-    private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblTest ,lblOwner,lblSeparatorEmpty,lblSeparatorEmpty2;
+    private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblTest , lblOwner, lblSeparatorEmpty, lblSeparatorEmpty2, lblSizeFile;
     private JLabel lblDateCreateStar, lblDateCreateEnd, lblDateLastModBegin, lblDateLastModEnd, lblDateLatterAccesBegin, lblDateLatterAccesEnd;
     private JTextField txtPath, txtFileName, txtExtension, txtOwner;
     private JButton getBtnSearch, btnPathSearch;
-    private JComboBox cmbHidden,comboReadOnly;
+    private JComboBox cmbHidden, comboReadOnly, comboTypeSizeFile;
     private JDateChooser dateCreateStar, dateCreateEnd, dateLastModBegin, dateLastModEnd, dateLatterAccesBegin, dateLatterAccesEnd;
     private GridBagLayout esquema;
     private GridBagConstraints constraints;
+    private JSpinner spinControlSizeFile;
+    private JCheckBox fileMajors;
 
-
+    /**
+     * Gets the content from txtPath.
+     * @return txtPath, the content of the txtPath text field.
+     */
     public String getTxtPath() {
         return txtPath.getText().toString();
     }
 
+    /**
+     * Gets the content from txtFileName.
+     * @return txtFileName, the content of the txtFileName text field.
+     */
     public String getTxtFileName() {
         return txtFileName.getText().toString();
     }
 
+    /**
+     * Gets the content from txtExtension.
+     * @return txtExtension, the content of the txtExtension text field.
+     */
     public String getTxtExtension() {
         return txtExtension.getText().toString();
     }
 
+    /**
+     * Gets the content from txtOwner.
+     * @return txtOwner, the content of the txtOwner text field.
+     */
     public String getTxtOwner() {
         return txtOwner.getText().toString();
     }
-/*
+
+    /**
+     * Gets the content from cmbHidden.
+     * @return cmbHidden, the content of the cmbHidden comboBox.
+     */
     public String getCmbHidden() {
-        return cmbHidden;
+        return cmbHidden.getSelectedItem().toString();
     }
 
+    /**
+     * Gets the content from comboReadOnly.
+     * @return comboReadOnly, the content of the comboReadOnly comboBox.
+     */
     public String getComboReadOnly() {
-        return comboReadOnly;
+        return comboReadOnly.getSelectedItem().toString();
     }
 
+    /**
+     * Gets the content from dateCreateStar.
+     * @return dateCreateStar, the content of the dateCreateStar Date.
+     */
     public String getDateCreateStar() {
-        return dateCreateStar;
+        return dateCreateStar.getDateFormatString();
     }
 
+    /**
+     * Gets the content from dateCreateEnd.
+     * @return dateCreateEnd, the content of the dateCreateEnd Date.
+     */
     public String getDateCreateEnd() {
-        return dateCreateEnd;
+        return dateCreateEnd.getDateFormatString();
     }
 
+    /**
+     * Gets the content from comboTypeSizeFile.
+     * @return comboTypeSizeFile, the content of the comboTypeSizeFile comboBox.
+     */
+    public String getComboTypeSizeFile() {
+        return comboTypeSizeFile.getSelectedItem().toString();
+    }
+
+    /**
+     * Gets the content from SpinControlSizeFile.
+     * @return SpinControlSizeFile, the content of the SpinControlSizeFile JSpinner.
+     */
+    public String getSpinControlSizeFile() {
+        return spinControlSizeFile.getValue().toString();
+    }
+
+    /**
+     * Gets the status from FileMajors.
+     * @return boolean value, true if checkBox is active and false if not activated.
+     */
+    public boolean getFileMajors() {
+        if( fileMajors.isSelected()){ return true; }
+        else{ return false; }
+    }
+
+
+    /**
+     * Gets the content from dateLastModBegin.
+     * @return dateLastModBegin, the content of the dateLastModBegin Date.
+     */
     public String getDateLastModBegin() {
-        return dateLastModBegin;
+        return dateLastModBegin.getDateFormatString();
     }
 
+    /**
+     * Gets the content from dateLastModEnd.
+     * @return dateLastModEnd, the content of the dateLastModEnd Date.
+     */
     public String getDateLastModEnd() {
-        return dateLastModEnd;
+        return dateLastModEnd.getDateFormatString();
     }
 
+    /**
+     * Gets the content from dateLatterAccesBegin.
+     * @return dateLatterAccesBegin, the content of the dateLatterAccesBegin Date.
+     */
     public String getDateLatterAccesBegin() {
-        return dateLatterAccesBegin;
+        return dateLatterAccesBegin.getDateFormatString();
     }
 
+    /**
+     * Gets the content from dateLatterAccesEnd.
+     * @return dateLatterAccesEnd, the content of the dateLatterAccesEnd Date.
+     */
     public String getDateLatterAccesEnd() {
-        return dateLatterAccesEnd;
-    }*/
+        return dateLatterAccesEnd.getDateFormatString();
+    }
 
     /**
      * Class constructor.
+     * @param borderLayout
      */
-    public JPanelAdvanced(){
+    public JPanelAdvanced(BorderLayout borderLayout){
         esquema= new GridBagLayout();
         constraints = new GridBagConstraints();
         setLayout(esquema);
@@ -127,10 +203,13 @@ public class JPanelAdvanced extends JPanel{
         addComponent(lblDateLatterAccesEnd, 3, 5, 1, 1);
 
         lblOwner = new JLabel("Owner: ");
-        addComponent(lblOwner, 0, 6, 1, 1);
+        addComponent(lblOwner, 0, 7, 1, 1);
+
+        lblSizeFile = new JLabel("Size File: ");
+        addComponent(lblSizeFile, 0, 6, 1, 1);
 
         txtPath = new JTextField("");
-        addComponent(txtPath, 1, 0, 3, 1);
+        addComponent(txtPath, 1, 0, 5, 1);
 
         txtFileName = new JTextField("");
         txtFileName.setSize(200, 20);
@@ -140,50 +219,67 @@ public class JPanelAdvanced extends JPanel{
         addComponent(txtExtension, 5, 1, 1, 1);
 
         txtOwner = new JTextField();
-        addComponent(txtOwner, 1, 6, 1, 1);
+        addComponent(txtOwner, 1, 7, 3, 1);
 
         cmbHidden = new JComboBox();
-        cmbHidden.addItem(" Hidden ");
-        cmbHidden.addItem(" Not Hidden   ");
-        cmbHidden.addItem(" All ");
+        cmbHidden.addItem("Not Hidden");
+        cmbHidden.addItem("Hidden");
+        cmbHidden.addItem("All");
         addComponent(cmbHidden, 1, 2, 1, 1);
 
         comboReadOnly = new JComboBox();
-        comboReadOnly.addItem(" Not Read Only");
-        comboReadOnly.addItem(" Read Only ");
-        comboReadOnly.addItem(" All ");
+        comboReadOnly.addItem("Not Read Only");
+        comboReadOnly.addItem("Read Only");
+        comboReadOnly.addItem("All");
         addComponent(comboReadOnly, 5, 2, 1, 1);
 
-        getBtnSearch = new JButton("Search");
-        addComponent(getBtnSearch, 6, 0, 1, 1);
+        comboTypeSizeFile = new JComboBox();
+        comboTypeSizeFile.addItem("Kb");
+        comboTypeSizeFile.addItem("Mb");
+        comboTypeSizeFile.addItem("Gb");
+        addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
-        btnPathSearch = new JButton("Folder Address");
+        getBtnSearch = new JButton("Search");
+        addComponent(getBtnSearch, 5, 7, 1, 1);
+
+        btnPathSearch = new JButton(" .... ");
         //btnPathSearch.addActionListener(this);
-        addComponent(btnPathSearch, 5, 0, 1, 1);
+        addComponent(btnPathSearch, 6, 0, 1, 1);
 
         dateCreateStar = new JDateChooser();
+        dateCreateStar.setDateFormatString("yyyy-MM-dd");
         addComponent(dateCreateStar, 1, 3, 1, 1);
 
         dateCreateEnd = new JDateChooser();
+        dateCreateEnd.setDateFormatString("yyyy-MM-dd");
         addComponent(dateCreateEnd, 5, 3, 1, 1);
 
         dateLastModBegin = new JDateChooser();
+        dateLastModBegin.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLastModBegin, 1, 4, 1, 1);
 
         dateLastModEnd = new JDateChooser();
+        dateLastModEnd.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLastModEnd, 5, 4, 1, 1);
 
         dateLatterAccesBegin = new JDateChooser();
+        dateLatterAccesBegin.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLatterAccesBegin, 1, 5, 1, 1);
 
         dateLatterAccesEnd = new JDateChooser();
+        dateLatterAccesEnd.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLatterAccesEnd, 5, 5, 1, 1);
+
+        spinControlSizeFile = new JSpinner(new SpinnerNumberModel( 0 , 0 , 100000 , 1));
+        addComponent(spinControlSizeFile, 1, 6, 1, 1);
+
+        fileMajors = new JCheckBox("Major", true);
+        addComponent(fileMajors, 5, 6, 1, 1);
     }
 
     /**
      * Method that adds components to the GridBagConstraints.
      */
-
     public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY){
         constraints.gridx = sizeX;
         constraints.gridy = sizeY;
@@ -202,11 +298,8 @@ public class JPanelAdvanced extends JPanel{
             chooser.setAcceptAllFileFilterUsed(false);
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 txtPath.setText("" + chooser.getSelectedFile());
-            } else {
-                System.out.println("");
             }
         }
     }*/
-
 }
 
