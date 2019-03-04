@@ -48,7 +48,6 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
-     *
      * @param pathOrigin of the file.
      * @param pathDestiny of the file.
      */
@@ -56,7 +55,6 @@ public class CriteriaConvertor extends Criteria {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
         this.newExtension = newExtension;
-        //height = -1;
     }
 
     /**
@@ -68,7 +66,7 @@ public class CriteriaConvertor extends Criteria {
     }
 
     /**
-     * This method allows you to set the path of the destination by sending a string..
+     * This method allows you to set the path of the destination by sending a string.
      * @param pathDestiny of the directory.
      */
     public void setPathDestiny(String pathDestiny) {
@@ -84,7 +82,7 @@ public class CriteriaConvertor extends Criteria {
     }
 
     /**
-     * Set the new file with configuration of the user
+     * Set the new file with configuration of the user.
      * @param newFileName
      */
     public void setNewFileName(String newFileName) {

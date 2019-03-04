@@ -75,10 +75,18 @@ public abstract class Criteria {
         this.extension = extension;
     }
 
+    /**
+     * Return the file name.
+     * @return extension as string.
+     */
     public String getFileName() {
         return fileName;
     }
 
+    /**
+     * This method allows to set the file name.
+     * @param fileName for the name of the file.
+     */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
