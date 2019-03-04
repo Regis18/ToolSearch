@@ -12,9 +12,10 @@
 
 package com.jala.search.models;
 
+import com.jala.common.models.Criteria;
+
 /**
- * The CriteriaSearch class is to set and get the criterias to search.
- *
+ * The CriteriaSearch class is to set and get the criteria to search.
  * @author Areliez Vargas
  * @version 0.0.1
  */
@@ -38,16 +39,45 @@ public class CriteriaSearch {
     /**
      * Criteria for hidden of file.
      */
-    private TernaryBooleanEnum hidden;
+    public TernaryBooleanEnum hidden;
 
     /**
      * Criteria for read only of file.
      */
-    private TernaryBooleanEnum readonly;
+    public TernaryBooleanEnum readonly;
+
     /**
      * Criteria for size of file.
      */
     private String size;
+
+    /**
+     * Criteria for size greater than or less than.
+     */
+    private boolean sizeCompareOption;
+
+    /**
+     * Criteria for owner of file.
+     */
+    private String owner;
+
+    /**
+     * Criteria for creation date file.
+     */
+    private String CreationDateFrom;
+    private String CreationDateTo;
+
+    /**
+     * Criteria for modification date file.
+     */
+    private String ModificationDateFrom;
+    private String ModificationDateTo;
+
+    /**
+     * Criteria for last date file.
+     */
+    private String LastDateFrom;
+    private String LastDateTo;
 
     /**
      * Type of criteria (video, audi, image, common, etc).
@@ -55,10 +85,28 @@ public class CriteriaSearch {
     private int type;
 
     /**
+     * Constructor of class CriteriaSearch.
+     */
+    public void CriteriaSearch() {
+    this.setHidden(TernaryBooleanEnum.ALL);
+    this.setReadonly(TernaryBooleanEnum.ALL);
+    this.setSize("");
+    this.setCreationDateFrom("");
+    this.setCreationDateTo("");
+    this.setModificationDateFrom("");
+    this.setModificationDateTo("");
+    this.setLastDateFrom("");
+    this.setLastDateTo("");
+    this.setOwner("");
+    this.setFileName("");
+    this.setExtension("");
+}
+    /**
      * Constructor that setting the path for then do a search.
      * @param path of the directory.
      */
     public CriteriaSearch(String path) {
+        this.CriteriaSearch();
         this.path = path;
     }
 
@@ -128,7 +176,7 @@ public class CriteriaSearch {
 
     /**
      * Get the type of search.
-     * @return The type of search used
+     * @return The type of search used.
      */
     public int getType() {
         return type;
@@ -172,5 +220,135 @@ public class CriteriaSearch {
      */
     public void setSize(String size) {
         this.size = size;
+    }
+
+    /**
+     * Get the owner file status criteria.
+     * @return the owner criteria used.
+     */
+    public String getOwner() {
+        return owner;
+    }
+
+    /**
+     * Get the size greater or less than.
+     * @return a boolean value is es true is greater than and is
+     * false is less than.
+     */
+    public boolean isSizeCompareOption() {
+        return sizeCompareOption;
+    }
+
+    /**
+     * Set de boolean value for size compare option.
+     * @param sizeCompareOption can be true for is greater than and is
+     * false for less than.
+     */
+    public void setSizeCompareOption(boolean sizeCompareOption) {
+        this.sizeCompareOption = sizeCompareOption;
+    }
+
+    /**
+     * Set the owner file criteria.
+     * @param owner the owner of file.
+     */
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    /**
+     * Get creation date Initial of search file.
+     * @return the date initial for a Search a creation date.
+     */
+    public String getCreationDateFrom() {
+        return CreationDateFrom;
+    }
+
+    /**
+     * Set creation date Initial of search file.
+     * @param creationDateFrom the date initial for a Search a creation date.
+     */
+    public void setCreationDateFrom(String creationDateFrom) {
+        CreationDateFrom = creationDateFrom;
+    }
+
+    /**
+     * Get creation date Final of search file.
+     * @return the date final for a Search a creation date.
+     */
+    public String getCreationDateTo() {
+        return CreationDateTo;
+    }
+
+    /**
+     * Set creation date final of search file.
+     * @param creationDateTo the date final for a Search a creation date.
+     */
+    public void setCreationDateTo(String creationDateTo) {
+        CreationDateTo = creationDateTo;
+    }
+
+    /**
+     * Get the date for a search of file with modification date initial.
+     * @return The date initial for a modification date of file.
+     */
+    public String getModificationDateFrom() {
+        return ModificationDateFrom;
+    }
+
+    /**
+     * Set the date for a search of file with modification date initial.
+     * @param modificationDateFrom the date for initial modification date of file.
+     */
+    public void setModificationDateFrom(String modificationDateFrom) {
+        ModificationDateFrom = modificationDateFrom;
+    }
+
+    /**
+     * Get the date for a search of file with modification date final.
+     * @return The date final for a modification date of file.
+     */
+    public String getModificationDateTo() {
+        return ModificationDateTo;
+    }
+
+    /**
+     * Set the date for a search of file with modification date final.
+     * @param modificationDateTo the date for final modification date of file.
+     */
+    public void setModificationDateTo(String modificationDateTo) {
+        ModificationDateTo = modificationDateTo;
+    }
+
+    /**
+     * Get the last date initial for a search of file.
+     * @return the last date initial.
+     */
+    public String getLastDateFrom() {
+        return LastDateFrom;
+    }
+
+    /**
+     * Set the last date initial for a search of file.
+     * @param lastDateFrom the last date initial.
+     */
+    public void setLastDateFrom(String lastDateFrom) {
+        LastDateFrom = lastDateFrom;
+    }
+
+    /**
+     * Get the last date final for a search of file.
+     * @return the last date final of file.
+     */
+    public String getLastDateTo() {
+        return LastDateTo;
+    }
+
+    /**
+     * Set the last date final for a search of file.
+     * @param lastDateTo the last date final.
+     */
+    public void setLastDateTo(String lastDateTo) {
+        LastDateTo = lastDateTo;
     }
 }
