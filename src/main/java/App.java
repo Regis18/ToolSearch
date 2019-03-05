@@ -31,8 +31,8 @@ public class App {
         InputParameter validator = new InputParameter();
 
         /* Use the method validateCommand for validate the input commands. */
-        //String [] listTest = {"-p", "C:\\Test"};
-        validator.validateCommands(args);
+        String [] listTest = {"-p", "D:\\Fundacion-Jala"};
+        validator.validateCommands(listTest);
 
         /* Created a viewCommand instance */
         ViewConsole viewConsole = new ViewConsole();
