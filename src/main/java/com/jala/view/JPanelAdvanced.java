@@ -202,7 +202,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
      * Class constructor.
      * @param borderLayout
      */
-    public JPanelAdvanced(BorderLayout borderLayout){
+    public JPanelAdvanced(BorderLayout borderLayout) {
         esquema= new GridBagLayout();
         constraints = new GridBagConstraints();
         setLayout(esquema);
@@ -229,22 +229,22 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         lblReadOnly = new JLabel("ReadOnly: ");
         addComponent(lblReadOnly, 3, 2, 1, 1);
 
-        lblDateCreateStar = new JLabel("Date Creation: ");
+        lblDateCreateStar = new JLabel("Creation Date From: ");
         addComponent(lblDateCreateStar, 0, 3, 1, 1);
 
-        lblDateCreateEnd = new JLabel("Date end: ");
+        lblDateCreateEnd = new JLabel("To: ");
         addComponent(lblDateCreateEnd, 3, 3, 1, 1);
 
-        lblDateLastModBegin = new JLabel("Last Modification Begin:  ");
+        lblDateLastModBegin = new JLabel("Modification Date From:  ");
         addComponent(lblDateLastModBegin, 0, 4, 1, 1);
 
-        lblDateLastModEnd = new JLabel("Last Modification End:  ");
+        lblDateLastModEnd = new JLabel("To: ");
         addComponent(lblDateLastModEnd, 3, 4, 1, 1);
 
-        lblDateLatterAccesBegin = new JLabel("Date Latter Begin:  ");
+        lblDateLatterAccesBegin = new JLabel("Last Date From: ");
         addComponent(lblDateLatterAccesBegin, 0, 5, 1, 1);
 
-        lblDateLatterAccesEnd = new JLabel("Date Latter End: ");
+        lblDateLatterAccesEnd = new JLabel("To: ");
         addComponent(lblDateLatterAccesEnd, 3, 5, 1, 1);
 
         lblOwner = new JLabel("Owner: ");
@@ -325,7 +325,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     /**
      * Method that adds components to the GridBagConstraints.
      */
-    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY){
+    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY) {
         constraints.gridx = sizeX;
         constraints.gridy = sizeY;
         constraints.gridwidth = sizeFieldX;
@@ -338,8 +338,8 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     /**
      * method that adds action to a button
      */
-    public void actionPerformed(ActionEvent e){
-        if( e.getSource().equals(btnPathSearch) ){
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(btnPathSearch)) {
             JFileChooser chooser = new JFileChooser();
             chooser.setCurrentDirectory(new java.io.File("."));
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);

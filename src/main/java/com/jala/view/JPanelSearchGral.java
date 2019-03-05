@@ -12,7 +12,6 @@
 
 package com.jala.view;
 
-import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.LayoutManager;
@@ -20,6 +19,14 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
+import javax.swing.JFileChooser;
+
 
 /**
  * Module view, ui/JPanelSearchAdvanced.

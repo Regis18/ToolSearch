@@ -15,10 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.Border;
+import java.awt.Container;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 /**
  * Module view, ui/mainview.

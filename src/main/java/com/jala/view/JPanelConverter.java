@@ -33,7 +33,7 @@ public class JPanelConverter extends JPanel {
      * Gets the panel panelConverterImage
      * @return panelConverterImage
      */
-    public JPanelConverterImage getJPanelAdvanced(){
+    public JPanelConverterImage getJPanelAdvanced() {
         return panelConverterImage;
     }
 
@@ -41,7 +41,7 @@ public class JPanelConverter extends JPanel {
      * Class constructor.
      * @param LayoutManager
      */
-    public JPanelConverter(LayoutManager layout){
+    public JPanelConverter(LayoutManager layout) {
         super(layout);
         init();
     }

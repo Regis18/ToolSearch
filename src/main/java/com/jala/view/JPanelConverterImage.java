@@ -34,7 +34,7 @@ import javax.swing.JTextField;
  * @version 0.0.1.
  * @autor Luis Guardia.
  */
-public class JPanelConverterImage extends JPanel implements ActionListener{
+public class JPanelConverterImage extends JPanel implements ActionListener {
 
     private JLabel lblPathFileOrigin, lblPathFolderDestiny, lblFileName, lblExtension, lblSizeWidth, lblSizeHeight;
     private JLabel lblChangeSize, lblSeparatorSpace, lblSeparatorSpace2, lblMaintainProportion, lblOwmer;
@@ -108,8 +108,11 @@ public class JPanelConverterImage extends JPanel implements ActionListener{
      * @return boolean value, true if radioButton is active and false if not activated.
      */
     public boolean isPixeles() {
-        if( resizePixeles.isSelected()){ return true; }
-        else{ return false; }
+        if( resizePixeles.isSelected()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -117,15 +120,18 @@ public class JPanelConverterImage extends JPanel implements ActionListener{
      * @return boolean value, true if checkBox is active and false if not activated.
      */
     public boolean isProprotion() {
-        if( chekMaintainProportion.isSelected()){ return true; }
-        else{ return false; }
+        if( chekMaintainProportion.isSelected()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
      * Class constructor.
      * @param borderLayout
      */
-    public JPanelConverterImage(BorderLayout borderLayout){
+    public JPanelConverterImage(BorderLayout borderLayout) {
         esquema= new GridBagLayout();
         constraints = new GridBagConstraints();
         setLayout(esquema);
@@ -203,7 +209,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener{
     /**
      * Method that adds components to the GridBagConstraints.
      */
-    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY){
+    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY) {
         constraints.gridx = sizeX;
         constraints.gridy = sizeY;
         constraints.gridwidth = sizeFieldX;
@@ -216,8 +222,8 @@ public class JPanelConverterImage extends JPanel implements ActionListener{
     /**
      * Method that adds action to the buttons.
      */
-    public void actionPerformed(ActionEvent e){
-        if( e.getSource().equals(btnPathOriginFile) ){
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(btnPathOriginFile)) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             int result = fileChooser.showOpenDialog(this);
@@ -228,17 +234,16 @@ public class JPanelConverterImage extends JPanel implements ActionListener{
                     txtPathFileOrigin.setText("...");
                 } else {
                     txtPathFileOrigin.setText(fileName.getAbsolutePath());
-
                 }
             }
         }
         if (e.getSource() == btnPathFolderDestiny) {
-            if( e.getSource().equals(btnPathFolderDestiny) ){
+            if(e.getSource().equals(btnPathFolderDestiny)) {
                 JFileChooser chooser = new JFileChooser();
                 chooser.setCurrentDirectory(new java.io.File("."));
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 chooser.setAcceptAllFileFilterUsed(false);
-                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     txtFolderDestiny.setText("" + chooser.getSelectedFile());
                 } else {
                     System.out.println("");

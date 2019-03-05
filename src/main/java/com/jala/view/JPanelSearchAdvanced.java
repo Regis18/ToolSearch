@@ -48,7 +48,7 @@ public class JPanelSearchAdvanced extends JPanel {
      * Gets the panel getJPanelAdvanced.
      * @return panelSearchAdvanced.
      */
-    public JPanelAdvanced getJPanelAdvanced(){
+    public JPanelAdvanced getJPanelAdvanced() {
         return panelSearchAdvanced;
     }
 
