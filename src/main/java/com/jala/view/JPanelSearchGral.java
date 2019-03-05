@@ -12,27 +12,31 @@
 
 package com.jala.view;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
 import javax.swing.border.Border;
-import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
 import java.awt.LayoutManager;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.BorderFactory;
+import javax.swing.JScrollPane;
+import javax.swing.JFileChooser;
+
 
 /**
  * Module view, ui/JPanelSearchAdvanced.
  * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
-public class JPanelSearchGral extends JPanel {
+public class JPanelSearchGral extends JPanel implements ActionListener {
     private JLabel lblSearch, lblPath, lblList;
     private JTextField txtPath;
-    private JButton btnSearch, btnSearchAdvanced;
+    private JButton btnSearch, btnSearchAdvanced, btnPathFolder;
     private JTableResult tbSearchGral;
     private Border border;
 
@@ -122,6 +126,10 @@ public class JPanelSearchGral extends JPanel {
         txtPath = new JTextField(50);
         pnlPath.add(txtPath);
 
+        btnPathFolder = new JButton("...");
+        btnPathFolder.addActionListener(this);
+        pnlPath.add(btnPathFolder);
+
         btnSearch = new JButton("Search");
         pnlPath.add(btnSearch);
         return pnlPath;
@@ -155,6 +163,21 @@ public class JPanelSearchGral extends JPanel {
         JScrollPane scroll = new JScrollPane(tbSearchGral);
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
         return pnlSearchGral;
+    }
+
+    /**
+     * method that adds action to a button
+     */
+    public void actionPerformed(ActionEvent e){
+        if( e.getSource().equals(btnPathFolder) ){
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new java.io.File("."));
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                txtPath.setText("" + chooser.getSelectedFile());
+            }
+        }
     }
 }
 
