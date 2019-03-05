@@ -12,11 +12,8 @@
  * with Jala Foundation.
  */
 
-import com.jala.search.models.CriteriaSearch;
 import com.jala.solidwater.view.console.InputParameter;
 import com.jala.solidwater.view.console.ViewConsole;
-
-import java.util.List;
 
 public class App {
 
