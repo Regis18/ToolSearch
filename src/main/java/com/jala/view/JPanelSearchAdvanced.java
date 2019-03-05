@@ -38,6 +38,7 @@ public class JPanelSearchAdvanced extends JPanel {
     private JButton btnSearch;
     private JTableResult tbSearchAdvanced;
     private Border border;
+    private JPanelAdvanced panelSearchAdvanced;
 
     /**
      * Class constructor.
@@ -46,6 +47,14 @@ public class JPanelSearchAdvanced extends JPanel {
     public JPanelSearchAdvanced(LayoutManager layout) {
         super(layout);
         init();
+    }
+
+    /**
+     * Gets the panel getJPanelAdvanced.
+     * @return panelSearchAdvanced.
+     */
+    public JPanelAdvanced getJPanelAdvanced() {
+        return panelSearchAdvanced;
     }
 
     /**
@@ -137,9 +146,10 @@ public class JPanelSearchAdvanced extends JPanel {
      * The initComponent method will initialize the components.
      */
     private void initComponent() {
-
-        JPanel pnlNorth = pnlCriteria();
-        this.add(pnlNorth, BorderLayout.NORTH);
+        panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        panelSearchAdvanced.setBorder(titleBorder);
+        this.add(panelSearchAdvanced, BorderLayout.NORTH);
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.CENTER);

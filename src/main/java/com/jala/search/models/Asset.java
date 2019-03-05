@@ -16,7 +16,6 @@ import java.io.File;
 
 /**
  * Asset class.
- *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
@@ -34,7 +33,7 @@ public class Asset {
     private String lastDate;
 
     /**
-     * Contructor of the class Asset
+     * Constructor Asset class.
      */
     public void Asset() {
         path = "";
@@ -51,44 +50,43 @@ public class Asset {
     }
 
     /**
-     * Return the value of path as string.
-     *
-     * @return path as String.
+     * Return the value of path as string.     *
+     * @return path get path file.
      */
     public String getPath() {
         return path;
     }
 
     /**
-     * @param path as String.
+     * @param path set path file.
      */
     public void setPath(String path) {
         this.path = path;
     }
 
     /**
-     * @return fileName of the file.
+     * @return fileName get file name.
      */
     public String getFileName() {
         return fileName;
     }
 
     /**
-     * @param fileName as String.
+     * @param fileName set file name file.
      */
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
     /**
-     * @return extension of the file.
+     * @return extension get extension file.
      */
     public String getExtension() {
         return extension;
     }
 
     /**
-     * @param extension as String.
+     * @param extension set extension file as String value.
      */
     public void setExtension(String extension) {
         this.extension = extension;
@@ -102,35 +100,35 @@ public class Asset {
     }
 
     /**
-     * @param hidden as boolean value.
+     * @param hidden set hidden boolean value.
      */
     public void setHidden(boolean hidden) {
         this.hidden = hidden;
     }
 
     /**
-     * @return owner of the file.
+     * @return owner get file.
      */
     public String getOwner() {
         return owner;
     }
 
     /**
-     * @param owner as String value.
+     * @param owner set owner file.
      */
     public void setOwner(String owner) {
         this.owner = owner;
     }
 
     /**
-     * @return size of the file.
+     * @return size get size of the file.
      */
     public String getSize() {
         return size;
     }
 
     /**
-     * @param size as String value.
+     * @param size as String value set size file.
      */
     public void setSize(String size) {
         this.size = size;
@@ -144,66 +142,65 @@ public class Asset {
     }
 
     /**
-     * @param sizeView as String value.
+     * @param sizeView as String value set size for ui.
      */
     public void setSizeView(String sizeView) {
         this.sizeView = sizeView;
     }
 
     /**
-     * @return readOnly as a property of file.
+     * @return readOnly set read only file a property of file.
      */
     public boolean isReadOnly() {
         return readOnly;
     }
 
     /**
-     * @param readOnly as boolean value.
+     * @param readOnly as boolean value set read only file.
      */
     public void setReadOnly(boolean readOnly) {
         this.readOnly = readOnly;
     }
 
     /**
-     * @return creationDate as a property of file.
+     * @return creationDate get creation date property of file.
      */
     public String getCreationDate() {
         return creationDate;
     }
 
     /**
-     * @param creationDate as String.
+     * @param creationDate as String set creation date.
      */
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
     /**
-     * @return modificationDate as a property of file.
+     * @return modificationDate get modification date property of file.
      */
     public String getModificationDate() {
         return modificationDate;
     }
 
     /**
-     * @param modificationDate as String.
+     * @param modificationDate as String set modification date.
      */
     public void setModificationDate(String modificationDate) {
         this.modificationDate = modificationDate;
     }
 
     /**
-     * @return lastDate as a property of file.
+     * @return lastDate get this property of file.
      */
     public String getLastDate() {
         return lastDate;
     }
 
     /**
-     * @param lastDate as String.
+     * @param lastDate as String set last date.
      */
     public void setLastDate(String lastDate) {
         this.lastDate = lastDate;
     }
-
 }
