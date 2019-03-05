@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
+
 import uk.co.caprica.vlcj.binding.LibVlcConst;
 import uk.co.caprica.vlcj.filter.swing.SwingFileFilterFactory;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
@@ -46,6 +47,7 @@ import java.util.concurrent.TimeUnit;
  * @author Regis Humana
  */
 public class PlayerControlPanel extends JPanel implements ActionListener {
+
     private static final int SKIP_TIME_MS = 10 * 1000;
     private final EmbeddedMediaPlayerComponent mediaPlayer;
 
@@ -314,27 +316,29 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
     }
 
     /**
-     *
+     *If the slider is modified by the user, that value will change in the media player too, changing the way of the video.
      */
     private void setSliderBasedPosition() {
-        if(!mediaPlayer.getMediaPlayer().isSeekable()) {
+        if (!mediaPlayer.getMediaPlayer().isSeekable()) {
             return;
         }
         float positionValue = positionSlider.getValue() / 1000.0f;
-        if(positionValue > 0.99f) {
+        if (positionValue > 0.99f) {
             positionValue = 0.99f;
         }
         mediaPlayer.getMediaPlayer().setPosition(positionValue);
     }
 
+    /**
+     * Update the info of the UI about the progress of the video.
+     */
     private void updateUIState() {
-        if(!mediaPlayer.getMediaPlayer().isPlaying()) {
-            if(!mousePressedPlaying) {
+        if (!mediaPlayer.getMediaPlayer().isPlaying()) {
+            if (!mousePressedPlaying) {
                 try {
                     Thread.sleep(500);
-                }
-                catch(InterruptedException e) {
-                    // Don't care if unblocked early
+                } catch(InterruptedException e) {
+                    //TODO LOGS
                 }
                 mediaPlayer.getMediaPlayer().pause();
             }
@@ -353,7 +357,7 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
      * @param skipTime int
      */
     private void skip(int skipTime) {
-        if(mediaPlayer.getMediaPlayer().getLength() > 0) {
+        if (mediaPlayer.getMediaPlayer().getLength() > 0) {
             mediaPlayer.getMediaPlayer().skip(skipTime);
             updateUIState();
         }
