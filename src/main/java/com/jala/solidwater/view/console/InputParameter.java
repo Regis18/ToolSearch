@@ -115,7 +115,7 @@ public class InputParameter {
                 doTheyValid = true;
             } else {
                 doTheyValid = false;
-                notValidCommands =command;
+                notValidCommands = command;
                 i = inputCommand.size();
             }
         }
