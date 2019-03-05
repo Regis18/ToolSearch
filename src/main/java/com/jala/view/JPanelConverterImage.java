@@ -12,14 +12,29 @@
 
 package com.jala.view;
 
-import com.toedter.calendar.JDateChooser;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.awt.BorderLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.border.Border;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
-public class JPanelConverterImage extends JPanel{
+/**
+ * Module view, ui/JPanelConverterImage.
+ * @version 0.0.1.
+ * @autor Luis Guardia.
+ */
+public class JPanelConverterImage extends JPanel implements ActionListener{
 
     private JLabel lblPathFileOrigin, lblPathFolderDestiny, lblFileName, lblExtension, lblSizeWidth, lblSizeHeight;
     private JLabel lblChangeSize, lblSeparatorSpace, lblSeparatorSpace2, lblMaintainProportion, lblOwmer;
@@ -78,6 +93,32 @@ public class JPanelConverterImage extends JPanel{
      */
     public String getTxtSizeHeight() {
         return txtSizeHeight.getText();
+    }
+
+    /**
+     * Gets the button btnConvertFile
+     * @return btnConvertFile
+     */
+    public JButton getBtnConvert() {
+        return btnConvertFile;
+    }
+
+    /**
+     * Gets the status from resizePixeles.
+     * @return boolean value, true if radioButton is active and false if not activated.
+     */
+    public boolean isPixeles() {
+        if( resizePixeles.isSelected()){ return true; }
+        else{ return false; }
+    }
+
+    /**
+     * Gets the status from chekMaintainProportion.
+     * @return boolean value, true if checkBox is active and false if not activated.
+     */
+    public boolean isProprotion() {
+        if( chekMaintainProportion.isSelected()){ return true; }
+        else{ return false; }
     }
 
     /**
@@ -148,11 +189,11 @@ public class JPanelConverterImage extends JPanel{
         typeOfResize.add(resizePercentage);
 
         btnPathOriginFile = new JButton("Search File");
-        //btnPathOriginFile.addActionListener(this);
+        btnPathOriginFile.addActionListener(this);
         addComponent(btnPathOriginFile, 6, 0, 1, 1);
 
         btnPathFolderDestiny = new JButton("Destiny");
-        //btnPathFolderDestiny.addActionListener(this);
+        btnPathFolderDestiny.addActionListener(this);
         addComponent(btnPathFolderDestiny, 6, 1, 1, 1);
 
         btnConvertFile = new JButton("Convert");
@@ -170,6 +211,40 @@ public class JPanelConverterImage extends JPanel{
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weighty = 1.0;
         this.add (Component , constraints);
+    }
+
+    /**
+     * Method that adds action to the buttons.
+     */
+    public void actionPerformed(ActionEvent e){
+        if( e.getSource().equals(btnPathOriginFile) ){
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            int result = fileChooser.showOpenDialog(this);
+            if (result != JFileChooser.CANCEL_OPTION) {
+                File fileName = fileChooser.getSelectedFile();
+
+                if ((fileName == null) || (fileName.getName().equals(""))) {
+                    txtPathFileOrigin.setText("...");
+                } else {
+                    txtPathFileOrigin.setText(fileName.getAbsolutePath());
+
+                }
+            }
+        }
+        if (e.getSource() == btnPathFolderDestiny) {
+            if( e.getSource().equals(btnPathFolderDestiny) ){
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new java.io.File("."));
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setAcceptAllFileFilterUsed(false);
+                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    txtFolderDestiny.setText("" + chooser.getSelectedFile());
+                } else {
+                    System.out.println("");
+                }
+            }
+        }
     }
 }
 

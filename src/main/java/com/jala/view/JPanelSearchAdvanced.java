@@ -31,12 +31,10 @@ import java.awt.Dimension;
  * @autor Melvi Caballero M.
  */
 public class JPanelSearchAdvanced extends JPanel {
-    private JLabel lblSearch, lblPath, lblFileName, lblExt, lblList;
-    private JTextField txtPath, txtFileName, txtExt;
-    private JButton btnSearch;
     private JTableResult tbSearchAdvanced;
     private Border border;
     private JPanelAdvanced panelSearchAdvanced;
+
     /**
      * Class constructor.
      * @param layout define the main layout.
@@ -46,8 +44,10 @@ public class JPanelSearchAdvanced extends JPanel {
         init();
     }
 
-
-    //coment
+    /**
+     * Gets the panel getJPanelAdvanced.
+     * @return panelSearchAdvanced.
+     */
     public JPanelAdvanced getJPanelAdvanced(){
         return panelSearchAdvanced;
     }
@@ -61,60 +61,6 @@ public class JPanelSearchAdvanced extends JPanel {
     }
 
     /**
-     * Return the value of file name.
-     * @return txtFileName the criteria File Name.
-     */
-    public JTextField getTxtFileName() {
-        return txtFileName;
-    }
-
-    /**
-     * @param txtFileName the criteria File name for the search.
-     */
-    public void setTxtFileName(JTextField txtFileName) {
-        this.txtFileName = txtFileName;
-    }
-
-    /**
-     * Return the value of extension.
-     * @return txtExt the criteria Extension for tha search.
-     */
-    public JTextField getTxtExt() {
-        return txtExt;
-    }
-
-    /**
-     * @param txtExt the criteria Extension for the search.
-     */
-    public void setTxtExt(JTextField txtExt) {
-        this.txtExt = txtExt;
-    }
-
-    /**
-     * Gets the Path of the location to search.
-     * @return txtPath, the location of file to search.
-     */
-    public JTextField getTxtPath() {
-        return txtPath;
-    }
-
-    /**
-     * Sets the path field for the search location.
-     * @param txtPath, the location where to search.
-     */
-    public void setTxtPath(JTextField txtPath) {
-        this.txtPath = txtPath;
-    }
-
-    /**
-     * Gets the search button.
-     * @return btnSearch, the Search button.
-     */
-    public JButton getBtnSearch() {
-        return btnSearch;
-    }
-
-    /**
      * The init method will initialize this panel.
      */
     public void init() {
@@ -125,10 +71,6 @@ public class JPanelSearchAdvanced extends JPanel {
      * The initComponent method will initialize the components.
      */
     private void initComponent() {
-
-        /*JPanel pnlNorth = pnlCriteria();
-        this.add(pnlNorth, BorderLayout.NORTH);
-*/
         panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
         panelSearchAdvanced.setBorder(titleBorder);

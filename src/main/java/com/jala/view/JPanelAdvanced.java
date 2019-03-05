@@ -13,17 +13,31 @@
 package com.jala.view;
 
 import com.toedter.calendar.JDateChooser;
-
-import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JCheckBox;
 
-public class JPanelAdvanced extends JPanel{
+/**
+ * Module view, ui/JPanelAdvanced.
+ * @version 0.0.1.
+ * @autor Luis Guardia.
+ */
+public class JPanelAdvanced extends JPanel implements ActionListener{
 
     private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblTest , lblOwner, lblSeparatorEmpty, lblSeparatorEmpty2, lblSizeFile;
     private JLabel lblDateCreateStar, lblDateCreateEnd, lblDateLastModBegin, lblDateLastModEnd, lblDateLatterAccesBegin, lblDateLatterAccesEnd;
     private JTextField txtPath, txtFileName, txtExtension, txtOwner;
-    private JButton getBtnSearch, btnPathSearch;
+    private JButton btnSearchAdvanced, btnPathSearch;
     private JComboBox cmbHidden, comboReadOnly, comboTypeSizeFile;
     private JDateChooser dateCreateStar, dateCreateEnd, dateLastModBegin, dateLastModEnd, dateLatterAccesBegin, dateLatterAccesEnd;
     private GridBagLayout esquema;
@@ -84,7 +98,11 @@ public class JPanelAdvanced extends JPanel{
      * @return dateCreateStar, the content of the dateCreateStar Date.
      */
     public String getDateCreateStar() {
-        return dateCreateStar.getDateFormatString();
+        if(dateCreateStar.getDate() == null) {
+            return "";
+        } else {
+            return dateCreateStar.getCalendar().get(Calendar.YEAR) + "-" + (dateCreateStar.getCalendar().get(Calendar.MONTH) + 1) + "-" + dateCreateStar.getCalendar().get(Calendar.DAY_OF_MONTH);
+        }
     }
 
     /**
@@ -92,7 +110,11 @@ public class JPanelAdvanced extends JPanel{
      * @return dateCreateEnd, the content of the dateCreateEnd Date.
      */
     public String getDateCreateEnd() {
-        return dateCreateEnd.getDateFormatString();
+        if(dateCreateEnd.getDate() == null) {
+            return "";
+        } else {
+            return dateCreateEnd.getCalendar().get(Calendar.YEAR) + "-" + (dateCreateEnd.getCalendar().get(Calendar.MONTH) + 1) + "-" + dateCreateEnd.getCalendar().get(Calendar.DAY_OF_MONTH);
+        }
     }
 
     /**
@@ -115,18 +137,21 @@ public class JPanelAdvanced extends JPanel{
      * Gets the status from FileMajors.
      * @return boolean value, true if checkBox is active and false if not activated.
      */
-    public boolean getFileMajors() {
+    public boolean isMajorThanFile() {
         if( fileMajors.isSelected()){ return true; }
         else{ return false; }
     }
-
 
     /**
      * Gets the content from dateLastModBegin.
      * @return dateLastModBegin, the content of the dateLastModBegin Date.
      */
     public String getDateLastModBegin() {
-        return dateLastModBegin.getDateFormatString();
+        if(dateLastModBegin.getDate() == null) {
+            return "";
+        } else {
+            return dateLastModBegin.getCalendar().get(Calendar.YEAR) + "-" + (dateLastModBegin.getCalendar().get(Calendar.MONTH) + 1) + "-" + dateLastModBegin.getCalendar().get(Calendar.DAY_OF_MONTH);
+        }
     }
 
     /**
@@ -134,7 +159,11 @@ public class JPanelAdvanced extends JPanel{
      * @return dateLastModEnd, the content of the dateLastModEnd Date.
      */
     public String getDateLastModEnd() {
-        return dateLastModEnd.getDateFormatString();
+        if(dateLastModEnd.getDate() == null) {
+            return "";
+        } else {
+            return dateLastModEnd.getCalendar().get(Calendar.YEAR) + "-" + (dateLastModEnd.getCalendar().get(Calendar.MONTH) + 1) + "-" + dateLastModEnd.getCalendar().get(Calendar.DAY_OF_MONTH);
+        }
     }
 
     /**
@@ -142,7 +171,11 @@ public class JPanelAdvanced extends JPanel{
      * @return dateLatterAccesBegin, the content of the dateLatterAccesBegin Date.
      */
     public String getDateLatterAccesBegin() {
-        return dateLatterAccesBegin.getDateFormatString();
+        if(dateLatterAccesBegin.getDate() == null) {
+            return "";
+        } else {
+            return dateLatterAccesBegin.getCalendar().get(Calendar.YEAR) + "-" + (dateLatterAccesBegin.getCalendar().get(Calendar.MONTH) + 1) + "-" + dateLatterAccesBegin.getCalendar().get(Calendar.DAY_OF_MONTH);
+        }
     }
 
     /**
@@ -150,7 +183,19 @@ public class JPanelAdvanced extends JPanel{
      * @return dateLatterAccesEnd, the content of the dateLatterAccesEnd Date.
      */
     public String getDateLatterAccesEnd() {
-        return dateLatterAccesEnd.getDateFormatString();
+        if(dateLatterAccesEnd.getDate() == null) {
+            return "";
+        } else {
+            return dateLatterAccesEnd.getCalendar().get(Calendar.YEAR) + "-" + (dateLatterAccesEnd.getCalendar().get(Calendar.MONTH) + 1) + "-" + dateLatterAccesEnd.getCalendar().get(Calendar.DAY_OF_MONTH);
+        }
+    }
+
+    /**
+     * Gets the btnSearchAdvanced button.
+     * @return btnSearchAdvanced button.
+     */
+    public JButton getBtnSearch() {
+        return btnSearchAdvanced;
     }
 
     /**
@@ -239,11 +284,11 @@ public class JPanelAdvanced extends JPanel{
         comboTypeSizeFile.addItem("Gb");
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
-        getBtnSearch = new JButton("Search");
-        addComponent(getBtnSearch, 5, 7, 1, 1);
+        btnSearchAdvanced = new JButton("Search");
+        addComponent(btnSearchAdvanced, 5, 7, 1, 1);
 
         btnPathSearch = new JButton(" .... ");
-        //btnPathSearch.addActionListener(this);
+        btnPathSearch.addActionListener(this);
         addComponent(btnPathSearch, 6, 0, 1, 1);
 
         dateCreateStar = new JDateChooser();
@@ -289,7 +334,10 @@ public class JPanelAdvanced extends JPanel{
         constraints.weighty = 1.0;
         this.add (Component , constraints);
     }
-    /*
+
+    /**
+     * method that adds action to a button
+     */
     public void actionPerformed(ActionEvent e){
         if( e.getSource().equals(btnPathSearch) ){
             JFileChooser chooser = new JFileChooser();
@@ -300,6 +348,5 @@ public class JPanelAdvanced extends JPanel{
                 txtPath.setText("" + chooser.getSelectedFile());
             }
         }
-    }*/
+    }
 }
-

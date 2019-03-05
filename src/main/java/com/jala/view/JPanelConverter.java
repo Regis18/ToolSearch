@@ -12,16 +12,35 @@
 
 package com.jala.view;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+import javax.swing.BorderFactory;
+import java.awt.LayoutManager;
+import java.awt.BorderLayout;
 
-public class JPanelConverter extends JPanel{
+/**
+ * Module view, ui/JPanelConverter.
+ * @version 0.0.1.
+ * @autor Luis Guardia.
+ */
+public class JPanelConverter extends JPanel {
 
     private JPanelConverterImage panelConverterImage;
     private Border border;
 
+    /**
+     * Gets the panel panelConverterImage
+     * @return panelConverterImage
+     */
+    public JPanelConverterImage getJPanelAdvanced(){
+        return panelConverterImage;
+    }
+
+    /**
+     * Class constructor.
+     * @param LayoutManager
+     */
     public JPanelConverter(LayoutManager layout){
         super(layout);
         init();
@@ -39,7 +58,7 @@ public class JPanelConverter extends JPanel{
      */
     private void initComponent() {
         panelConverterImage = new JPanelConverterImage(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Options Convert");
         panelConverterImage.setBorder(titleBorder);
         this.add(panelConverterImage, BorderLayout.NORTH);
     }
