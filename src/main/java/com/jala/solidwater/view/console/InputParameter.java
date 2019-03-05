@@ -14,11 +14,11 @@
 
 package com.jala.solidwater.view.console;
 
+import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
 
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +48,7 @@ public class InputParameter {
      * This method create a instance of InputParameter.
      */
 
-    List<File> listFileSearch = new ArrayList<>();
+    ArrayList<Asset> listFileSearch = new ArrayList<>();
 
     public InputParameter() {
 
@@ -148,14 +148,9 @@ public class InputParameter {
      * @param validCommand is a Map with all valid commands.
      * @return a file list with the criteria of search.
      */
-    private List<File> getSearch(Map<String, String> validCommand) {
+    private List<Asset> getSearch(Map<String, String> validCommand) {
 
         CriteriaSearch criteria = new CriteriaSearch(validCommand.get("-p"));
-        /*criteria.setPath(validCommand.get("-p"));
-        criteria.setFileName(validCommand.get("-fn"));
-        criteria.setExtension("-ex");*/
-        criteria.setFileName("");
-        criteria.setExtension("");
         SearchFile searchFile = new SearchFile();
         try {
             listFileSearch = new ArrayList<>(searchFile.search(criteria));
@@ -165,7 +160,7 @@ public class InputParameter {
         return searchFile.search(criteria);
     }
 
-    public List<File> getListFileSearch() {
+    public ArrayList<Asset> getListFileSearch() {
         return listFileSearch;
     }
 }
