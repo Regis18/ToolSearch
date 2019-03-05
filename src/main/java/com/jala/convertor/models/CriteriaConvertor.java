@@ -75,7 +75,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return the new file name to convert.
-     * @return the content of newFileName
+     * @return the content of newFileName.
      */
     public String getNewFileName() {
         return newFileName;
@@ -83,7 +83,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Set the new file with configuration of the user.
-     * @param newFileName
+     * @param newFileName for name of new image file.
      */
     public void setNewFileName(String newFileName) {
         this.newFileName = newFileName;
