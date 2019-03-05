@@ -77,7 +77,7 @@ public abstract class Criteria {
 
     /**
      * Return the file name.
-     * @return extension as string.
+     * @return file name as string.
      */
     public String getFileName() {
         return fileName;
