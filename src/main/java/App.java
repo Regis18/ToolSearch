@@ -12,8 +12,12 @@
  * with Jala Foundation.
  */
 
+import com.jala.search.models.Asset;
+import com.jala.solidwater.view.console.ModelConsole;
 import com.jala.solidwater.view.console.InputParameter;
 import com.jala.solidwater.view.console.ViewConsole;
+
+import java.util.List;
 
 public class App {
 
@@ -28,19 +32,18 @@ public class App {
         InputParameter validator = new InputParameter();
 
         /* Use the method validateCommand for validate the input commands. */
-        String [] listTest = {"-p", "D:\\Fundacion-Jala"};
+        String [] listTest = {"-p", "D:\\Fundacion-Jala", "ex", "mp3"};
         validator.validateCommands(listTest);
-
-        /* Created a viewCommand instance */
         ViewConsole viewConsole = new ViewConsole();
-        
-        /* Use the testShow to simulate the create of a table with files as data. */
-        viewConsole.testShow( validator.getListFileSearch());
+        ModelConsole modelConsole = new ModelConsole();
+        InputParameter inputParameter = new InputParameter();
 
-        /*for (String value:args
-             ) {
-            System.out.println("input parameters : " + value);
-        }*/
+        if (inputParameter.validateCommands(listTest)) {
+            List<Asset> assets = modelConsole.getSearch(listTest);
+            // viewConsole.showAssets(assets);
+        } else {
+            viewConsole.errorPrint(inputParameter.notValidCommands);
+        }
 
     }
 }
