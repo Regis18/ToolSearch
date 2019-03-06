@@ -42,7 +42,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertFile;
     private ButtonGroup typeOfResize;
     private JRadioButton resizePercentage, resizePixeles;
-    private JCheckBox chekMaintainProportion;
+    private JCheckBox chekMaintainProportion, checkResizeImage;
     private GridBagLayout esquema;
     private GridBagConstraints constraints;
     private Border border;
@@ -128,6 +128,18 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
     }
 
     /**
+     * Gets the status from chekResizeImage.
+     * @return boolean value, true if checkBox is active and false if not activated.
+     */
+    public boolean isResize() {
+        if (checkResizeImage.isSelected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Class constructor.
      * @param borderLayout
      */
@@ -189,6 +201,9 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
         chekMaintainProportion = new JCheckBox("Maintain Proportion", true);
         addComponent(chekMaintainProportion, 4, 3, 1, 1);
+
+        checkResizeImage = new JCheckBox("Resize", true);
+        addComponent(checkResizeImage, 6, 4, 1, 1);
 
         typeOfResize = new ButtonGroup();
         typeOfResize.add(resizePixeles);
