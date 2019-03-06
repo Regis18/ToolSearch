@@ -49,6 +49,11 @@ public class ConvertorImage implements IConvertible {
         try {
             IMOperation convertImage = new IMOperation();
             convertImage.addImage(criteriaConvertor.getPathOrigin());
+            if (criteriaConvertor.isResize() == true && criteriaConvertor.isPercentage() == false) {
+                convertByPixel(criteriaConvertor, convertImage);
+            } else if (criteriaConvertor.isResize() == true && criteriaConvertor.isPercentage() == true) {
+                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "%");
+            }
             convertImage.addImage(pathAbsoluteNewImage);
             convertCmd.run(convertImage);
         } catch (InterruptedException interruptedException) {
@@ -57,6 +62,14 @@ public class ConvertorImage implements IConvertible {
             Logs.getInstance().getLog().error("The conversion was interrupted", iM4JavaException);
         } catch (IOException e) {
             Logs.getInstance().getLog().error("There is some null data", e);
+        }
+    }
+
+    private void convertByPixel(CriteriaConvertor criteriaConvertor, IMOperation convertImage) {
+        if (criteriaConvertor.getWidth() >0 && criteriaConvertor.getHeight() == -1) {
+            convertImage.sample(criteriaConvertor.getWidth());
+        } else if (criteriaConvertor.getWidth() >0 && criteriaConvertor.getHeight() > 0) {
+            convertImage.sample(criteriaConvertor.getWidth(), criteriaConvertor.getHeight());
         }
     }
 

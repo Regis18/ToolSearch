@@ -46,6 +46,10 @@ public class CriteriaConvertor extends Criteria {
      */
     private int height;
 
+    private boolean percentage;
+
+    private boolean resize;
+
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
      * @param pathOrigin of the file.
@@ -56,6 +60,8 @@ public class CriteriaConvertor extends Criteria {
         this.pathDestiny = pathDestiny;
         this.newExtension = newExtension;
         height = -1;
+        percentage = false;
+        resize = false;
     }
 
     /**
@@ -136,5 +142,21 @@ public class CriteriaConvertor extends Criteria {
      */
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public boolean isPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(boolean percentage) {
+        this.percentage = percentage;
+    }
+
+    public boolean isResize() {
+        return resize;
+    }
+
+    public void setResize(boolean resize) {
+        this.resize = resize;
     }
 }
