@@ -2,7 +2,7 @@
  * @(#) ConvertorImage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
- *
+ * <p>
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
@@ -23,8 +23,8 @@ import java.io.IOException;
 /**
  * ConvertorImage class allows to do a conversion the images.
  *
- * @version 0.0.1
  * @author Areliez Vargas
+ * @version 0.0.1
  */
 public class ConvertorImage implements IConvertible {
 
@@ -43,18 +43,15 @@ public class ConvertorImage implements IConvertible {
         ConvertCmd convertCmd = new ConvertCmd();
         convertCmd.setSearchPath(IMAGE_MAGICK_PATH);
         existNewFileName(criteriaConvertor);
-
-        String pathAbsoluteNewImage = criteriaConvertor.getPathDestiny()
-                + criteriaConvertor.getNewFileName() + criteriaConvertor.getNewExtension();
         try {
             IMOperation convertImage = new IMOperation();
             convertImage.addImage(criteriaConvertor.getPathOrigin());
             if (criteriaConvertor.isResize() == true && criteriaConvertor.isPercentage() == false) {
                 convertByPixel(criteriaConvertor, convertImage);
             } else if (criteriaConvertor.isResize() == true && criteriaConvertor.isPercentage() == true) {
-                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "%");
+                convertByPercentage(criteriaConvertor, convertImage);
             }
-            convertImage.addImage(pathAbsoluteNewImage);
+            convertImage.addImage(criteriaConvertor.getPathAbsoluteNewFile());
             convertCmd.run(convertImage);
         } catch (InterruptedException interruptedException) {
             Logs.getInstance().getLog().error("The conversion was interrupted", interruptedException);
@@ -65,11 +62,41 @@ public class ConvertorImage implements IConvertible {
         }
     }
 
+    /**
+     * This method allows to resize the image file by percentage.
+     * @param criteriaConvertor criteria to resize.
+     * @param convertImage operation to convert image.
+     */
+    private void convertByPercentage(CriteriaConvertor criteriaConvertor, IMOperation convertImage) {
+        if (criteriaConvertor.isMaintainProportion()) {
+            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() == -1) {
+                criteriaConvertor.setHeight(criteriaConvertor.getWidth());
+                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "%");
+            }
+        } else if (!criteriaConvertor.isMaintainProportion()) {
+            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() > 0) {
+                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "%");
+            }
+        }
+    }
+
+    /**
+     * This method allows to resize the image file by pixels maintain the proportion or
+     * without maintain the proportion.
+     * @param criteriaConvertor criteria to resize.
+     * @param convertImage operation to convert image.
+     */
     private void convertByPixel(CriteriaConvertor criteriaConvertor, IMOperation convertImage) {
-        if (criteriaConvertor.getWidth() >0 && criteriaConvertor.getHeight() == -1) {
-            convertImage.sample(criteriaConvertor.getWidth());
-        } else if (criteriaConvertor.getWidth() >0 && criteriaConvertor.getHeight() > 0) {
-            convertImage.sample(criteriaConvertor.getWidth(), criteriaConvertor.getHeight());
+        if (criteriaConvertor.isMaintainProportion()) {
+            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() == -1) {
+                convertImage.sample(criteriaConvertor.getWidth());
+            } else if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() > 0) {
+                convertImage.sample(criteriaConvertor.getWidth(), criteriaConvertor.getHeight());
+            }
+        } else if (!criteriaConvertor.isMaintainProportion()) {
+            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() > 0) {
+                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "!");
+            }
         }
     }
 

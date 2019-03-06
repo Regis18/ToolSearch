@@ -74,7 +74,7 @@ public class CriteriaConvertor extends Criteria {
         height = -1;
         percentage = false;
         resize = false;
-        maintainProportion = true;
+        maintainProportion = false;
     }
 
     /**
