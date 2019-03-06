@@ -44,17 +44,18 @@ public class CriteriaConvertor extends Criteria {
     /**
      * The new height for the image file to convert.
      */
-    private int height = -1;
+    private int height;
 
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
      * @param pathOrigin of the file.
      * @param pathDestiny of the file.
      */
-    public CriteriaConvertor( String pathOrigin, String pathDestiny, String newExtension) {
+    public CriteriaConvertor(String pathOrigin, String pathDestiny, String newExtension) {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
         this.newExtension = newExtension;
+        height = -1;
     }
 
     /**
