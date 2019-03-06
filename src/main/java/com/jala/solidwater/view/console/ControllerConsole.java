@@ -55,9 +55,9 @@ public class ControllerConsole {
 
         if (inputParameter.validateCommands(parameters)) {
             List<Asset> assets = modelConsole.getSearch(parameters);
-           // viewConsole.showAssets(assets);
+           //viewConsole.showAssets(assets);
         } else {
-            viewConsole.errorPrint(inputParameter.notValidCommands);
+            viewConsole.printMessage(inputParameter.getMessage());
         }
     }
 }

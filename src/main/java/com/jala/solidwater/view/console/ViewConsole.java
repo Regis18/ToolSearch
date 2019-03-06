@@ -14,6 +14,8 @@
 
 package com.jala.solidwater.view.console;
 
+import com.jala.search.models.Asset;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,12 @@ public class ViewConsole {
     /**
      * This list is the size for each column
      */
-    private List<Integer> sizeColums = new ArrayList<>();
+    private List<Integer> sizeColumns = new ArrayList<>();
+
+    /**
+     * This is the list with the titles of tha table
+     */
+    private List<String> titleHead = new ArrayList<>();
 
     /**
      * This is the counter of each row
@@ -39,23 +46,28 @@ public class ViewConsole {
      * The constructor method of the ViewConsole class to build an instance
      */
     public ViewConsole() {
-        sizeColums.add(0);
-        sizeColums.add(0);
-        sizeColums.add(0);
-        sizeColums.add(0);
-        sizeColums.add(0);
+        sizeColumns.add(6);
+        sizeColumns.add(6);
+        sizeColumns.add(11);
+        sizeColumns.add(11);
+        sizeColumns.add(6);
         counterOfRow = 0;
+        titleHead.add("Nº");
+        titleHead.add("Path");
+        titleHead.add("File Name");
+        titleHead.add("Extension");
+        titleHead.add("Size");
     }
 
     /**
      * Section of getter and setter methods
      */
-    public List<Integer> getSizeColums() {
-        return sizeColums;
+    public List<Integer> getSizeColumns() {
+        return sizeColumns;
     }
 
-    public void setSizeColums(List<Integer> sizeColums) {
-        this.sizeColums = sizeColums;
+    public void setSizeColumns(List<Integer> sizeColumns) {
+        this.sizeColumns = sizeColumns;
     }
 
     public int getCounterOfRow() {
@@ -71,66 +83,56 @@ public class ViewConsole {
      * @param row is a new data to add a table
      */
     private void addRow(List<String> row) {
-        setSizeColums(updateSize(row));
-        String topLine = horizontalLine(getSizeColums());
-        String lowerLine = topLine;
+        String lowerLine = printhorizontalLine(sizeColumns);
         String leftJustifying = "| %-4d |";
-        for (int i = 0; i < row.size(); i++) {
-            leftJustifying += " %-" + row.get(i).length() + "s |";
+        for (int i = 1; i < sizeColumns.size(); i++) {
+            leftJustifying += " %-" + (sizeColumns.get(i) - 2) + "s |";
         }
         leftJustifying += "%n";
         String path = row.get(0);
         String fileName = row.get(1);
         String extension = row.get(2);
         String size = row.get(3);
-        System.out.println(topLine);
         System.out.format(leftJustifying, getCounterOfRow(), path, fileName, extension, size);
         System.out.println(lowerLine);
     }
 
     /**
      * @param rows is a list with the new row of data
-     * @return a list with the new size of the column
      */
-    private List<Integer> updateSize(List<String> rows) {
-        List<Integer> updateSizeColumns = new ArrayList<>();
-        updateSizeColumns.add(0, 6);
+    private void updateSize(List<String> rows) {
         for (int i = 0; i < rows.size(); i++) {
             int newSizeColumn = (rows.get(i).length()) + 2;
             int counterRow = i + 1;
-            if (newSizeColumn > sizeColums.get(counterRow)) {
-                updateSizeColumns.add(counterRow, newSizeColumn);
-            } else {
-                updateSizeColumns.add(counterRow, sizeColums.get(counterRow));
+            if (newSizeColumn > sizeColumns.get(counterRow)) {
+                sizeColumns.remove(counterRow);
+                sizeColumns.add(counterRow, newSizeColumn);
             }
         }
-        return updateSizeColumns;
     }
 
     /**
      * This method print a message of error
      * @param message is a value to print.
      */
-    public void errorPrint(String message) {
-        String error = "Error: " + message + ".";
-        int sizeWithSpace = error.length() + 2;
+    public void printMessage(String message) {
+        int sizeWithSpace = message.length() + 2;
         List<Integer> sizeHorizontalLine = new ArrayList<>();
         sizeHorizontalLine.add(sizeWithSpace);
-        String topLine = horizontalLine(sizeHorizontalLine);
+        String topLine = printhorizontalLine(sizeHorizontalLine);
         String lowerLine = topLine;
-        String leftJustifying = "| %-" + error.length() + "s |%n";
+        String leftJustifying = "| %-" + message.length() + "s |%n";
         System.out.println(topLine);
-        System.out.format(leftJustifying, error);
-        System.out.print(lowerLine);
+        System.out.format(leftJustifying, message);
+        System.out.println(lowerLine);
     }
 
     /**
      * This method create a line with divisions
-     * @param divisionSize is a array of values for divide a line horizontal
      */
-    private String horizontalLine (List<Integer> divisionSize) {
+    private String printhorizontalLine(List<Integer> size ) {
         String border = "+";
-        for (Integer division : divisionSize
+        for (Integer division : size
                 ) {
             for (int i = 0; i <= division; i++) {
                 border += (i == division) ? "+" : "-";
@@ -138,4 +140,37 @@ public class ViewConsole {
         }
         return border;
     }
+
+    /**
+     * @param assets are data that have to show
+     */
+    public void showAssets(List<Asset> assets) {
+
+        for ( Asset asset : assets
+             ) {
+            updateSize(convertToString(asset));
+        }
+        addTitles();
+        for ( Asset asset : assets
+                ) {
+            addRow(convertToString(asset));
+        }
+    }
+
+    private void addTitles() {
+
+    }
+
+    /**
+     * @param asset is a data that will be converter on a list
+     * @return a string list
+     */
+    private List<String> convertToString(Asset asset) {
+        List<String> row = new ArrayList<>();
+        row.add(asset.getPath());
+        row.add(asset.getFileName());
+        row.add(asset.getExtension());
+        row.add(asset.getSize());
+        return row;
+     }
 }

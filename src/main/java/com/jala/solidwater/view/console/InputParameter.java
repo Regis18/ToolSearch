@@ -34,7 +34,12 @@ public class InputParameter {
     /**
      * Criteria for not valid command.
      */
-    public String notValidCommands = "";
+    private String notValidCommands = "";
+
+    /**
+     * Criteria for show text.
+     */
+    private String message = "";
 
     /**
      * Constructor method of InputParameter.
@@ -48,27 +53,32 @@ public class InputParameter {
     }
 
     /**
+     * @return a test to shows
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
      * The validateCommands method verify whether input commands exist.
      * @param commands are the input commands to evaluate.
      */
     public boolean validateCommands(String[] commands) {
         boolean areValid = false;
-        String message = "";
         List<String> inputCommand = new ArrayList<>();
         for (int i = 0; i < commands.length; i += 2) {
             inputCommand.add(commands[i]);
         }
         if (existCommand("-p", inputCommand)) {
             if (areCommandsValid(inputCommand)) {
-                message = "Valid Commands!!";
+                message = "SUCCESSFUL: Valid Commands!!";
                 areValid = true;
             } else {
-                message = "The command " + "'" +  notValidCommands + "'" + " is not valid";
+                message = "ERROR: The command " + "'" +  notValidCommands + "'" + " is not valid.";
             }
         } else {
-            message = "The command '-p' is required";
+            message = "ERROR: The command '-p' is required.";
         }
-        notValidCommands = message;
         return areValid;
     }
 
