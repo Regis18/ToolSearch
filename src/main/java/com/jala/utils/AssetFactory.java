@@ -46,7 +46,7 @@ public class AssetFactory {
      * @param file the file to the load.
      * @return the file to convert to asset.
      */
-    public static Asset GetAsset(CriteriaSearch criteria, File file) {
+    public static Asset getAsset(CriteriaSearch criteria, File file) {
         if (criteria.getType() == 0) {
             Asset newAsset = new Asset();
             loadFile(newAsset, file);
@@ -55,8 +55,9 @@ public class AssetFactory {
             AssetVideo newAsset = new AssetVideo();
             loadFileVideo(newAsset, file);
             return newAsset;
-        } else
+        } else {
             return new Asset();
+        }
     }
 
     /**

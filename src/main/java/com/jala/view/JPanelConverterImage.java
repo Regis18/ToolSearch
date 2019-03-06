@@ -1,5 +1,5 @@
 /*
- * @(#) JPanelAdvanced.java Copyright (c) 2019 Jala Foundation.
+ * @(#) JPanelConverterImage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -108,7 +108,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
      * @return boolean value, true if radioButton is active and false if not activated.
      */
     public boolean isPixeles() {
-        if( resizePixeles.isSelected()) {
+        if (resizePixeles.isSelected()) {
             return true;
         } else {
             return false;
@@ -120,7 +120,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
      * @return boolean value, true if checkBox is active and false if not activated.
      */
     public boolean isProprotion() {
-        if( chekMaintainProportion.isSelected()) {
+        if (chekMaintainProportion.isSelected()) {
             return true;
         } else {
             return false;
@@ -181,7 +181,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         txtSizeHeight = new JTextField();
         addComponent(txtSizeHeight, 4, 4, 1, 1);
 
-        resizePixeles = new JRadioButton("Pixeles      ",true);
+        resizePixeles = new JRadioButton("Pixels      ",true);
         addComponent(resizePixeles, 1, 3, 1, 1);
 
         resizePercentage = new JRadioButton("Percentage",false);
@@ -216,14 +216,14 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weighty = 1.0;
-        this.add (Component , constraints);
+        this.add(Component , constraints);
     }
 
     /**
      * Method that adds action to the buttons.
      */
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(btnPathOriginFile)) {
+        if (e.getSource().equals(btnPathOriginFile)) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             int result = fileChooser.showOpenDialog(this);
@@ -238,12 +238,12 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
             }
         }
         if (e.getSource() == btnPathFolderDestiny) {
-            if(e.getSource().equals(btnPathFolderDestiny)) {
+            if (e.getSource().equals(btnPathFolderDestiny)) {
                 JFileChooser chooser = new JFileChooser();
                 chooser.setCurrentDirectory(new java.io.File("."));
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 chooser.setAcceptAllFileFilterUsed(false);
-                if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     txtFolderDestiny.setText("" + chooser.getSelectedFile());
                 } else {
                     System.out.println("");
