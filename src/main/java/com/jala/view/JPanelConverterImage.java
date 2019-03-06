@@ -202,6 +202,9 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         chekMaintainProportion = new JCheckBox("Maintain Proportion", true);
         addComponent(chekMaintainProportion, 4, 3, 1, 1);
 
+        checkResizeImage = new JCheckBox("Resize", true);
+        addComponent(checkResizeImage, 6, 4, 1, 1);
+
         typeOfResize = new ButtonGroup();
         typeOfResize.add(resizePixeles);
         typeOfResize.add(resizePercentage);
