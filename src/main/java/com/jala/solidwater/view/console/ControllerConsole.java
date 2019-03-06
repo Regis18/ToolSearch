@@ -55,7 +55,7 @@ public class ControllerConsole {
 
         if (inputParameter.validateCommands(parameters)) {
             List<Asset> assets = modelConsole.getSearch(parameters);
-           //viewConsole.showAssets(assets);
+           viewConsole.showAssets(assets);
         } else {
             viewConsole.printMessage(inputParameter.getMessage());
         }

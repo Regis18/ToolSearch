@@ -16,6 +16,7 @@ package com.jala.solidwater.view.console;
 
 import com.jala.search.models.Asset;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -158,7 +159,21 @@ public class ViewConsole {
     }
 
     private void addTitles() {
-
+        String lowerLine = printhorizontalLine(sizeColumns);
+        String topLine = lowerLine;
+        String leftJustifying = "|";
+        for (int i = 0; i < sizeColumns.size(); i++) {
+            leftJustifying += " %-" + (sizeColumns.get(i) - 2) + "s |";
+        }
+        leftJustifying += "%n";
+        String nro = titleHead.get(0);
+        String path = titleHead.get(1);
+        String fileName = titleHead.get(2);
+        String extension = titleHead.get(3);
+        String size = titleHead.get(4);
+        System.out.println(topLine);
+        System.out.format(leftJustifying,nro , path, fileName, extension, size);
+        System.out.println(lowerLine);
     }
 
     /**

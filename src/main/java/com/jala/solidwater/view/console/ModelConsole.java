@@ -127,6 +127,10 @@ public class ModelConsole {
 
         ArrayList<Asset> listFileSearch = new ArrayList<>();
         CriteriaSearch criteria = new CriteriaSearch(validCommand.get("-p"));
+        criteria.setFileName(validCommand.get("-fn"));
+        criteria.setExtension(validCommand.get("-ex"));
+        criteria.setSize(validCommand.get("-s"));
+        System.out.println("value: "  + criteria);
         SearchFile searchFile = new SearchFile();
         try {
             listFileSearch = new ArrayList<>(searchFile.search(criteria));

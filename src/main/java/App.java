@@ -13,6 +13,7 @@
  */
 
 import com.jala.search.models.Asset;
+import com.jala.solidwater.view.console.ControllerConsole;
 import com.jala.solidwater.view.console.ModelConsole;
 import com.jala.solidwater.view.console.InputParameter;
 import com.jala.solidwater.view.console.ViewConsole;
@@ -30,11 +31,11 @@ public class App {
     public static void main(String[] args) {
 
         /* Created a validator instance */
-        InputParameter validator = new InputParameter();
 
         /* Use the method validateCommand for validate the input commands. */
-        String [] listTest = {"-p", "D:\\Fundacion-Jala", "-ex", "mp3"};
-        validator.validateCommands(listTest);
+        //String [] listTest = {"-p", "C:\\test"};
+        ControllerConsole controllerConsole = new ControllerConsole(args);
+        /*validator.validateCommands(listTest);
         ViewConsole viewConsole = new ViewConsole();
         ModelConsole modelConsole = new ModelConsole();
         InputParameter inputParameter = new InputParameter();
@@ -53,7 +54,7 @@ public class App {
         asset.setSize("12MB");
         Asset asset1 = new Asset();
         asset1.setPath("c:/test");
-        asset1.setFileName("test1");
+        asset1.setFileName("test1234562342");
         asset1.setExtension("mp3");
         asset1.setSize("12MB");
         Asset asset2 = new Asset();
@@ -66,7 +67,7 @@ public class App {
         assets.add(asset1);
         assets.add(asset2);
         //ViewConsole viewConsole = new ViewConsole();
-        viewConsole.showAssets(assets);
+        viewConsole.showAssets(assets);*/
         //viewConsole.printHeadTable();
 
         /*List<String> rowFile = new ArrayList<>();

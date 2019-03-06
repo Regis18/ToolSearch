@@ -50,6 +50,7 @@ public class InputParameter {
         validCommands.add("-p");
         validCommands.add("-ex");
         validCommands.add("-fn");
+        validCommands.add("-s");
     }
 
     /**
