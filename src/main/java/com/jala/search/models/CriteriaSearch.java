@@ -12,8 +12,6 @@
 
 package com.jala.search.models;
 
-import com.jala.common.models.Criteria;
-
 /**
  * The CriteriaSearch class is to set and get the criteria to search.
  * @author Areliez Vargas
@@ -64,20 +62,20 @@ public class CriteriaSearch {
     /**
      * Criteria for creation date file.
      */
-    private String CreationDateFrom;
-    private String CreationDateTo;
+    private String creationDateFrom;
+    private String creationDateTo;
 
     /**
      * Criteria for modification date file.
      */
-    private String ModificationDateFrom;
-    private String ModificationDateTo;
+    private String modificationDateFrom;
+    private String modificationDateTo;
 
     /**
      * Criteria for last date file.
      */
-    private String LastDateFrom;
-    private String LastDateTo;
+    private String lastDateFrom;
+    private String lastDateTo;
 
     /**
      * Type of criteria (video, audi, image, common, etc).
@@ -261,7 +259,7 @@ public class CriteriaSearch {
      * @return the date initial for a Search a creation date.
      */
     public String getCreationDateFrom() {
-        return CreationDateFrom;
+        return creationDateFrom;
     }
 
     /**
@@ -269,7 +267,7 @@ public class CriteriaSearch {
      * @param creationDateFrom the date initial for a Search a creation date.
      */
     public void setCreationDateFrom(String creationDateFrom) {
-        CreationDateFrom = creationDateFrom;
+        this.creationDateFrom = creationDateFrom;
     }
 
     /**
@@ -277,7 +275,7 @@ public class CriteriaSearch {
      * @return the date final for a Search a creation date.
      */
     public String getCreationDateTo() {
-        return CreationDateTo;
+        return creationDateTo;
     }
 
     /**
@@ -285,7 +283,7 @@ public class CriteriaSearch {
      * @param creationDateTo the date final for a Search a creation date.
      */
     public void setCreationDateTo(String creationDateTo) {
-        CreationDateTo = creationDateTo;
+        this.creationDateTo = creationDateTo;
     }
 
     /**
@@ -293,7 +291,7 @@ public class CriteriaSearch {
      * @return The date initial for a modification date of file.
      */
     public String getModificationDateFrom() {
-        return ModificationDateFrom;
+        return modificationDateFrom;
     }
 
     /**
@@ -301,7 +299,7 @@ public class CriteriaSearch {
      * @param modificationDateFrom the date for initial modification date of file.
      */
     public void setModificationDateFrom(String modificationDateFrom) {
-        ModificationDateFrom = modificationDateFrom;
+        this.modificationDateFrom = modificationDateFrom;
     }
 
     /**
@@ -309,7 +307,7 @@ public class CriteriaSearch {
      * @return The date final for a modification date of file.
      */
     public String getModificationDateTo() {
-        return ModificationDateTo;
+        return modificationDateTo;
     }
 
     /**
@@ -317,7 +315,7 @@ public class CriteriaSearch {
      * @param modificationDateTo the date for final modification date of file.
      */
     public void setModificationDateTo(String modificationDateTo) {
-        ModificationDateTo = modificationDateTo;
+        this.modificationDateTo = modificationDateTo;
     }
 
     /**
@@ -325,7 +323,7 @@ public class CriteriaSearch {
      * @return the last date initial.
      */
     public String getLastDateFrom() {
-        return LastDateFrom;
+        return lastDateFrom;
     }
 
     /**
@@ -333,7 +331,7 @@ public class CriteriaSearch {
      * @param lastDateFrom the last date initial.
      */
     public void setLastDateFrom(String lastDateFrom) {
-        LastDateFrom = lastDateFrom;
+        this.lastDateFrom = lastDateFrom;
     }
 
     /**
@@ -341,7 +339,7 @@ public class CriteriaSearch {
      * @return the last date final of file.
      */
     public String getLastDateTo() {
-        return LastDateTo;
+        return lastDateTo;
     }
 
     /**
@@ -349,6 +347,7 @@ public class CriteriaSearch {
      * @param lastDateTo the last date final.
      */
     public void setLastDateTo(String lastDateTo) {
-        LastDateTo = lastDateTo;
+        this.lastDateTo = lastDateTo;
     }
+
 }
