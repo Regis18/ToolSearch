@@ -13,9 +13,6 @@
 package com.jala.view;
 
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
@@ -32,12 +29,16 @@ import javax.swing.*;
  * @autor Melvi Caballero M.
  */
 public class JPanelSearchAdvanced extends JPanel {
+<<<<<<< HEAD
     private JLabel lblSearch, lblPath, lblFileName, lblExt, lblList, lblReadOnly, lblHidden;
     private JComboBox cmbHidden, cmbReadOnly;
     private JTextField txtPath, txtFileName, txtExt;
     private JButton btnSearch;
+=======
+>>>>>>> 8f9e8e19e5263e816fc99eeb416817099fd53d00
     private JTableResult tbSearchAdvanced;
     private Border border;
+    private JPanelAdvanced panelSearchAdvanced;
 
     /**
      * Class constructor.
@@ -49,6 +50,7 @@ public class JPanelSearchAdvanced extends JPanel {
     }
 
     /**
+<<<<<<< HEAD
      * Returns the table with the Advanced Search information.
      * @return the result table.
      */
@@ -105,25 +107,21 @@ public class JPanelSearchAdvanced extends JPanel {
      /**
      * Gets the Path of the location to search.
      * @return txtPath, the location of file to search.
+=======
+     * Gets the panel getJPanelAdvanced.
+     * @return panelSearchAdvanced.
+>>>>>>> 8f9e8e19e5263e816fc99eeb416817099fd53d00
      */
-    public JTextField getTxtPath() {
-        return txtPath;
+    public JPanelAdvanced getJPanelAdvanced() {
+        return panelSearchAdvanced;
     }
 
     /**
-     * Sets the path field for the search location.
-     * @param txtPath, the location where to search.
+     * Returns the table with the Advanced Search information.
+     * @return the result table.
      */
-    public void setTxtPath(JTextField txtPath) {
-        this.txtPath = txtPath;
-    }
-
-    /**
-     * Gets the search button.
-     * @return btnSearch, the Search button.
-     */
-    public JButton getBtnSearch() {
-        return btnSearch;
+    public JTableResult getTbSearchAdvanced() {
+        return tbSearchAdvanced;
     }
 
     /**
@@ -137,9 +135,10 @@ public class JPanelSearchAdvanced extends JPanel {
      * The initComponent method will initialize the components.
      */
     private void initComponent() {
-
-        JPanel pnlNorth = pnlCriteria();
-        this.add(pnlNorth, BorderLayout.NORTH);
+        panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        panelSearchAdvanced.setBorder(titleBorder);
+        this.add(panelSearchAdvanced, BorderLayout.NORTH);
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.CENTER);
@@ -154,6 +153,7 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private JPanel pnlCriteria() {
 
+<<<<<<< HEAD
         JPanel pnlSearchAd, pnlPath, pnlFileName, pnlExt, pnlReadOnly, pnlHidden;;
         pnlSearchAd = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search Advanced");
@@ -206,8 +206,16 @@ public class JPanelSearchAdvanced extends JPanel {
         pnlSearchAd.add(pnlPath, BorderLayout.NORTH);
         pnlSearchAd.add(pnlFileName, BorderLayout.WEST);
         pnlSearchAd.add(pnlExt, BorderLayout.SOUTH);
+=======
+        JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        pnlSearchAdvanced.setBorder(titleBorder);
+>>>>>>> 8f9e8e19e5263e816fc99eeb416817099fd53d00
 
-        return pnlSearchAd;
+        tbSearchAdvanced = new JTableResult();
+        JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
+        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+        return pnlSearchAdvanced;
     }
 
     /**

@@ -21,49 +21,51 @@ import javax.swing.JScrollPane;
 
 /**
  * Module view, ui/JPanelHistorical.
+ *
  * @version 0.0.1
  * @autor Melvi Caballero M.
  */
 public class JPanelHistorical extends JPanel {
-    private JTableResult tbHistorical;
-    private Border border;
+	private JTableResult tbHistorical;
+	private Border border;
 
-    /**
-     * @param layout, add the layout in this panel.
-     */
-    public JPanelHistorical(LayoutManager layout) {
-        super(layout);
-        init();
-    }
+	/**
+	 * @param layout, add the layout in this panel.
+	 */
+	public JPanelHistorical(LayoutManager layout) {
+		super(layout);
+		init();
+	}
 
-    /**
-     * Gets the historical table.
-     * @return tbHistorical, get Historical table of the last searches.
-     */
-    public JTableResult getTbHistorical() {
-        return tbHistorical;
-    }
+	/**
+	 * Gets the historical table.
+	 *
+	 * @return tbHistorical, get Historical table of the last searches.
+	 */
+	public JTableResult getTbHistorical() {
+		return tbHistorical;
+	}
 
-    /**
-     * Method init call to initComponent method.
-     */
-    public void init() {
-        initComponent();
-    }
+	/**
+	 * Method init call to initComponent method.
+	 */
+	public void init() {
+		initComponent();
+	}
 
-    /**
-     * Start the components of this panel pList.
-     */
-    private void initComponent() {
-        JPanel pnlHistorical = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Historical");
-        pnlHistorical.setBorder(titleBorder);
+	/**
+	 * Start the components of this panel pList.
+	 */
+	private void initComponent() {
+		JPanel pnlHistorical = new JPanel(new BorderLayout());
+		TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Historical");
+		pnlHistorical.setBorder(titleBorder);
 
-        // Create table with data.
-        tbHistorical = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tbHistorical);
-        pnlHistorical.add(scroll, BorderLayout.CENTER);
+		// Create table with data.
+		tbHistorical = new JTableResult();
+		JScrollPane scroll = new JScrollPane(tbHistorical);
+		pnlHistorical.add(scroll, BorderLayout.CENTER);
 
-        this.add(pnlHistorical,BorderLayout.CENTER);
-    }
+		this.add(pnlHistorical, BorderLayout.CENTER);
+	}
 }
