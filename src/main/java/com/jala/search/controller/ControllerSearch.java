@@ -64,8 +64,7 @@ public class ControllerSearch implements ActionListener {
      * It is override the method of ActionListener and the objective is listen if button is pressed
      * @param event this activates when a button is  pressed
      */
-    @Override
-    public void actionPerformed(ActionEvent event) {
+    @Override    public void actionPerformed(ActionEvent event) {
         log.info("Action Detected");
         if (event.getSource() == viewSearch.getBtnSearch()) {
             log.info("BtnSearch from Search General was pressed");
@@ -87,7 +86,7 @@ public class ControllerSearch implements ActionListener {
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
             viewSearch.getTbSearchGral().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
-                    data.getExtension(), data.getSize());
+                    data.getExtension(), getFileSizeInKb(data.getSize()));
         }
         log.info("Results implemented in the JTable of the UI");
     }
@@ -95,13 +94,14 @@ public class ControllerSearch implements ActionListener {
     /**
      * Receive the size of the files and send in Kilobytes
      * @param fileLength
-     * @return Size of files in KiloBytes
+     * @return TernaryBooleanEnum.
      */
-    private double getFileSizeInKb(double fileLength) {
+    private String getFileSizeInKb(String fileLength) {
+        Double file = Double.parseDouble(fileLength);
         log.info("Returns the size of the file");
-        fileLength = fileLength / BYTES;
+        file = file / BYTES;
         int fs = (int) Math.pow(10,2);
-        return Math.rint(fileLength*fs)/fs;
+        return Double.toString(Math.rint(file * fs)/fs);
     }
 }
 

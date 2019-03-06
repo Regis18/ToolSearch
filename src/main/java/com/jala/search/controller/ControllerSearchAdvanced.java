@@ -113,7 +113,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
             viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
-                    data.getExtension(), data.getSize());
+                    data.getExtension(), getFileSizeInKb(data.getSize()));
         }
         log.info("Results implemented in the JTable of the UI");
     }
@@ -123,11 +123,12 @@ public class ControllerSearchAdvanced implements ActionListener {
      * @param fileLength
      * @return TernaryBooleanEnum.
      */
-    private double getFileSizeInKb(double fileLength) {
+    private String getFileSizeInKb(String fileLength) {
+        Double file = Double.parseDouble(fileLength);
         log.info("Returns the size of the file");
-        fileLength = fileLength / BYTES;
+        file = file / BYTES;
         int fs = (int) Math.pow(10,2);
-        return Math.rint(fileLength*fs)/fs;
+        return Double.toString(Math.rint(file * fs)/fs);
     }
 
     /**

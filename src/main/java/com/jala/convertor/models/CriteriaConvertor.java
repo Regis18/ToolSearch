@@ -72,6 +72,7 @@ public class CriteriaConvertor extends Criteria {
         this.newExtension = newExtension;
         newFileName = "";
         height = -1;
+        width = -1;
         percentage = false;
         resize = false;
         maintainProportion = false;
