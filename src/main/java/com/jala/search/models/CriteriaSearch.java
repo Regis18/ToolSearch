@@ -12,8 +12,6 @@
 
 package com.jala.search.models;
 
-import com.jala.common.models.Criteria;
-
 /**
  * The CriteriaSearch class is to set and get the criteria to search.
  * @author Areliez Vargas
@@ -269,7 +267,7 @@ public class CriteriaSearch {
      * @param creationDateFrom the date initial for a Search a creation date.
      */
     public void setCreationDateFrom(String creationDateFrom) {
-        creationDateFrom = creationDateFrom;
+        this.creationDateFrom = creationDateFrom;
     }
 
     /**
@@ -285,7 +283,7 @@ public class CriteriaSearch {
      * @param creationDateTo the date final for a Search a creation date.
      */
     public void setCreationDateTo(String creationDateTo) {
-        creationDateTo = creationDateTo;
+        this.creationDateTo = creationDateTo;
     }
 
     /**
@@ -301,7 +299,7 @@ public class CriteriaSearch {
      * @param modificationDateFrom the date for initial modification date of file.
      */
     public void setModificationDateFrom(String modificationDateFrom) {
-        modificationDateFrom = modificationDateFrom;
+        this.modificationDateFrom = modificationDateFrom;
     }
 
     /**
@@ -317,7 +315,7 @@ public class CriteriaSearch {
      * @param modificationDateTo the date for final modification date of file.
      */
     public void setModificationDateTo(String modificationDateTo) {
-        modificationDateTo = modificationDateTo;
+        this.modificationDateTo = modificationDateTo;
     }
 
     /**
@@ -333,7 +331,7 @@ public class CriteriaSearch {
      * @param lastDateFrom the last date initial.
      */
     public void setLastDateFrom(String lastDateFrom) {
-        lastDateFrom = lastDateFrom;
+        this.lastDateFrom = lastDateFrom;
     }
 
     /**
@@ -349,7 +347,7 @@ public class CriteriaSearch {
      * @param lastDateTo the last date final.
      */
     public void setLastDateTo(String lastDateTo) {
-        lastDateTo = lastDateTo;
+        this.lastDateTo = lastDateTo;
     }
 
 }
