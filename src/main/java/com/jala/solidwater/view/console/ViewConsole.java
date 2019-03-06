@@ -14,6 +14,8 @@
 
 package com.jala.solidwater.view.console;
 
+import com.jala.search.models.Asset;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,5 +139,18 @@ public class ViewConsole {
             }
         }
         return border;
+    }
+
+    public void testShow (List<Asset> files){
+
+        for (int i = 0; i < files.size() ; i++) {
+
+            Asset file = files.get(i);
+            Asset path = files.get(i);
+            String name = files.get(i).getFileName();
+            String extension = files.get(i).getExtension();
+
+            System.out.format("%d | %s | %s | %s%n", i, file.getFileName(), path, extension);
+        }
     }
 }

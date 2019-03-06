@@ -32,17 +32,17 @@ public class App {
         InputParameter validator = new InputParameter();
 
         /* Use the method validateCommand for validate the input commands. */
-        String [] listTest = {"-p", "D:\\Fundacion-Jala", "ex", "mp3"};
-        validator.validateCommands(listTest);
+        String [] listTest = {"-p", "D:\\Cxrisstian"};
+        //validator.validateCommands(listTest);
         ViewConsole viewConsole = new ViewConsole();
         ModelConsole modelConsole = new ModelConsole();
-        InputParameter inputParameter = new InputParameter();
+        //InputParameter inputParameter = new InputParameter();
 
-        if (inputParameter.validateCommands(listTest)) {
-            List<Asset> assets = modelConsole.getSearch(listTest);
-            // viewConsole.showAssets(assets);
+        if (validator.validateCommands(listTest)) {
+
+            viewConsole.testShow(modelConsole.getSearch(listTest));
         } else {
-            viewConsole.errorPrint(inputParameter.notValidCommands);
+            viewConsole.errorPrint(validator.notValidCommands);
         }
 
     }
