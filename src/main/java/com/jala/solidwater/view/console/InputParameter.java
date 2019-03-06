@@ -14,15 +14,8 @@
 
 package com.jala.solidwater.view.console;
 
-import com.jala.search.models.Asset;
-import com.jala.search.models.CriteriaSearch;
-import com.jala.search.models.SearchFile;
-
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * InputParameter class, validates the input parameters for console.
@@ -41,15 +34,12 @@ public class InputParameter {
     /**
      * Criteria for not valid command.
      */
-    String notValidCommands = "";
+    public String notValidCommands = "";
 
     /**
      * Constructor method of InputParameter.
      * This method create a instance of InputParameter.
      */
-
-    ArrayList<Asset> listFileSearch = new ArrayList<>();
-
     public InputParameter() {
 
         validCommands.add("-p");
@@ -61,7 +51,8 @@ public class InputParameter {
      * The validateCommands method verify whether input commands exist.
      * @param commands are the input commands to evaluate.
      */
-    public void validateCommands(String[] commands) {
+    public boolean validateCommands(String[] commands) {
+        boolean areValid = false;
         String message = "";
         List<String> inputCommand = new ArrayList<>();
         for (int i = 0; i < commands.length; i += 2) {
@@ -70,14 +61,15 @@ public class InputParameter {
         if (existCommand("-p", inputCommand)) {
             if (areCommandsValid(inputCommand)) {
                 message = "Valid Commands!!";
-                getSearch(createMap(commands));
+                areValid = true;
             } else {
-                message = invalidCommand();
+                message = "The command " + "'" +  notValidCommands + "'" + " is not valid";
             }
         } else {
-            message = "The command (-p) is required";
+            message = "The command '-p' is required";
         }
-        System.out.println(message);
+        notValidCommands = message;
+        return areValid;
     }
 
     /**
@@ -115,52 +107,10 @@ public class InputParameter {
                 doTheyValid = true;
             } else {
                 doTheyValid = false;
-                notValidCommands =command;
+                notValidCommands = command;
                 i = inputCommand.size();
             }
         }
         return doTheyValid;
-    }
-
-    /**
-     * @return a string with the message and value of the invalid command.
-     */
-    private String invalidCommand() {
-        return  "Error: doesn't valid command : " + notValidCommands;
-    }
-
-    /**
-     * @param inputCommands are all commands valid
-     * @return a Map with the key = command and value = value command.
-     */
-    private Map<String, String> createMap(String[] inputCommands) {
-        Map<String, String> validCommandsInMap = new HashMap<>();
-        int positionKey, positionValue = 0;
-        for (int i = 0; i < inputCommands.length ; i += 2) {
-            positionKey = i;
-            positionValue = positionKey + 1;
-            validCommandsInMap.put(inputCommands[positionKey], inputCommands[positionValue]);
-        }
-        return validCommandsInMap;
-    }
-
-    /**
-     * @param validCommand is a Map with all valid commands.
-     * @return a file list with the criteria of search.
-     */
-    private List<Asset> getSearch(Map<String, String> validCommand) {
-
-        CriteriaSearch criteria = new CriteriaSearch(validCommand.get("-p"));
-        SearchFile searchFile = new SearchFile();
-        try {
-            listFileSearch = new ArrayList<>(searchFile.search(criteria));
-        } catch (Exception e) {
-            System.out.println("error : " + e);
-        }
-        return searchFile.search(criteria);
-    }
-
-    public ArrayList<Asset> getListFileSearch() {
-        return listFileSearch;
     }
 }
