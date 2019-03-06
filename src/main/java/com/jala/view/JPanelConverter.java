@@ -39,7 +39,7 @@ public class JPanelConverter extends JPanel {
 
     /**
      * Class constructor.
-     * @param LayoutManager
+     * @param layout
      */
     public JPanelConverter(LayoutManager layout) {
         super(layout);
