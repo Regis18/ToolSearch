@@ -13,9 +13,6 @@
 package com.jala.view;
 
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;

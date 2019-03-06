@@ -34,7 +34,7 @@ import javax.swing.JFileChooser;
  * @autor Melvi Caballero M.
  */
 public class JPanelSearchGral extends JPanel implements ActionListener {
-    private JLabel lblSearch, lblPath, lblList;
+    private JLabel lblPath;
     private JTextField txtPath;
     private JButton btnSearch, btnSearchAdvanced, btnPathFolder;
     private JTableResult tbSearchGral;
@@ -169,7 +169,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      * method that adds action to a button
      */
     public void actionPerformed(ActionEvent e){
-        if( e.getSource().equals(btnPathFolder) ){
+        if (e.getSource().equals(btnPathFolder)) {
             JFileChooser chooser = new JFileChooser();
             chooser.setCurrentDirectory(new java.io.File("."));
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
