@@ -87,8 +87,8 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setFileName(viewAdvanced.getJPanelAdvanced().getTxtFileName());
         criteriaSearch.setExtension(viewAdvanced.getJPanelAdvanced().getTxtExtension());
         criteriaSearch.setOwner(viewAdvanced.getJPanelAdvanced().getTxtOwner());
-        criteriaSearch.setHidden(getEnumHidden(viewAdvanced.getJPanelAdvanced().getCmbHidden()));
-        criteriaSearch.setReadonly(getEnumReadOnly(viewAdvanced.getJPanelAdvanced().getComboReadOnly()));
+        criteriaSearch.setHidden(getEnumHidden());
+        criteriaSearch.setReadonly(getEnumReadOnly());
         criteriaSearch.setCreationDateFrom(viewAdvanced.getJPanelAdvanced().getDateCreateStar());
         criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
         criteriaSearch.setModificationDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
@@ -131,11 +131,10 @@ public class ControllerSearchAdvanced implements ActionListener {
     }
 
     /**
-     * Method that returns a TernaryBooleanEnum value
-     * @param hidden String
+     * Method that returns a TernaryBooleanEnum value.
      * @return TernaryBooleanEnum.
      */
-    private TernaryBooleanEnum getEnumHidden(String hidden) {
+    private TernaryBooleanEnum getEnumHidden() {
         if(viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Not Hidden")) {
             return TernaryBooleanEnum.OnlyFalse;
         } else if(viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Hidden")) {
@@ -146,14 +145,13 @@ public class ControllerSearchAdvanced implements ActionListener {
     }
 
     /**
-     * Method that returns a TernaryBooleanEnum value
-     * @param readOnly String
+     * Method that returns a TernaryBooleanEnum value.
      * @return TernaryBooleanEnum.
      */
-    private TernaryBooleanEnum getEnumReadOnly(String readOnly) {
+    private TernaryBooleanEnum getEnumReadOnly() {
         if(viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Not Read Only")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Read Only")) {
+        } else if(viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Read Only")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else  {
             return TernaryBooleanEnum.ALL;
