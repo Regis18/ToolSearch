@@ -37,7 +37,6 @@ public abstract class Criteria {
     /**
      * Constructor that sets the absolute path of the file .
      * @param pathOrigin of the file.
-     *
      */
     public Criteria(String pathOrigin) {
         this.pathOrigin = pathOrigin;
