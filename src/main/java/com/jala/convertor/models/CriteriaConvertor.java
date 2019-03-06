@@ -32,14 +32,30 @@ public class CriteriaConvertor extends Criteria {
     private String newFileName;
 
     /**
+     * The extension for the image to convert.
+     */
+    private String newExtension;
+
+    /**
+     * The new width for the image file to convert.
+     */
+    private int width;
+
+    /**
+     * The new height for the image file to convert.
+     */
+    private int height;
+
+    /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
      * @param pathOrigin of the file.
      * @param pathDestiny of the file.
      */
-    public CriteriaConvertor(String pathOrigin, String pathDestiny) {
+    public CriteriaConvertor(String pathOrigin, String pathDestiny, String newExtension) {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
-        newFileName = "";
+        this.newExtension = newExtension;
+        height = -1;
     }
 
     /**
@@ -51,7 +67,7 @@ public class CriteriaConvertor extends Criteria {
     }
 
     /**
-     * This method allows you to set the path of the destination by sending a string..
+     * This method allows you to set the path of the destination by sending a string.
      * @param pathDestiny of the directory.
      */
     public void setPathDestiny(String pathDestiny) {
@@ -59,17 +75,66 @@ public class CriteriaConvertor extends Criteria {
     }
 
     /**
-     * @return the content of newFileName
+     * This method return the new file name to convert.
+     * @return the content of newFileName.
      */
     public String getNewFileName() {
         return newFileName;
     }
 
     /**
-     * Set the new file with configuration of the user
-     * @param newFileName
+     * Set the new file with configuration of the user.
+     * @param newFileName for name of new image file.
      */
     public void setNewFileName(String newFileName) {
         this.newFileName = newFileName;
+    }
+
+    /**
+     * This method return the new extension to convert an image.
+     * @return the extension for the new image file.
+     */
+    public String getNewExtension() {
+        return newExtension;
+    }
+
+    /**
+     * Set the new extension to convert the image file.
+     * @param newExtension for the new image file.
+     */
+    public void setNewExtension(String newExtension) {
+        this.newExtension = newExtension;
+    }
+
+    /**
+     * This method return the new width for the new image file.
+     * @return the width of the image.
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * Set the new width for the new image file.
+     * @param width of the new image file.
+     */
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    /**
+     * This method return the new height of the new image file.
+     * @return the height of the new image file.
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * set the new height  for the new image file.
+     * @param height for the new image file.
+     */
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

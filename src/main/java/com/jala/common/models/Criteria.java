@@ -37,7 +37,6 @@ public abstract class Criteria {
     /**
      * Constructor that sets the absolute path of the file .
      * @param pathOrigin of the file.
-     *
      */
     public Criteria(String pathOrigin) {
         this.pathOrigin = pathOrigin;
@@ -73,5 +72,21 @@ public abstract class Criteria {
      */
     public void setExtension(String extension) {
         this.extension = extension;
+    }
+
+    /**
+     * Return the file name.
+     * @return file name as string.
+     */
+    public String getFileName() {
+        return fileName;
+    }
+
+    /**
+     * This method allows to set the file name.
+     * @param fileName for the name of the file.
+     */
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
