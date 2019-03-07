@@ -13,6 +13,8 @@ package com.jala.controller;
 
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
+
+import com.jala.convertor.controller.ControllerConvert;
 import com.jala.search.controller.ControllerSearch;
 import com.jala.search.controller.ControllerSearchAdvanced;
 import com.jala.utils.Logs;
@@ -71,6 +73,9 @@ public class ControllerMain implements ActionListener {
                 } else if (viewApp.getContentPane().getComponent(0) == viewApp.getpSearchAdvanced()) {
                     log.info("Loading Search Advanced Form");
                     new ControllerSearchAdvanced(viewApp.getpSearchAdvanced());
+                } else if (viewApp.getContentPane().getComponent(0) == viewApp.getpConverterImage()) {
+                    log.info("Loading Converter Image Form");
+                    new ControllerConvert(viewApp.getpConverterImage());
                 }
             }
             @Override

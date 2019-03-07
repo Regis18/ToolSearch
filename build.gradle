@@ -20,4 +20,5 @@ dependencies {
     compile group: 'uk.co.caprica', name: 'vlcj', version: '3.12.1'
     compile group: 'org.apache.cassandra', name: 'cassandra-all', version: '3.11.2'
     testCompile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+    compile group: 'com.toedter', name: 'jcalendar', version: '1.4'
 }

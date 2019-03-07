@@ -14,6 +14,7 @@ package com.jala.search.controller;
 import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
+import com.jala.search.models.TernaryBooleanEnum;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelSearchAdvanced;
 import org.apache.commons.io.FilenameUtils;
@@ -59,7 +60,7 @@ public class ControllerSearchAdvanced implements ActionListener {
      */
     private void actionListener() {
         log.info("Initialize the adding of listener for the buttons in Search Advanced ");
-        viewAdvanced.getBtnSearch().addActionListener(this);
+        viewAdvanced.getJPanelAdvanced().getBtnSearch().addActionListener(this);
         log.info("Finish the actionListener");
     }
 
@@ -70,7 +71,7 @@ public class ControllerSearchAdvanced implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         log.info("Action Detected");
-        if (event.getSource() == viewAdvanced.getBtnSearch()) {
+        if (event.getSource() == viewAdvanced.getJPanelAdvanced().getBtnSearch()) {
             log.info("BtnSearch from Search Advanced was pressed");
             saveCriteria();
             sendCriteriaToFile();
@@ -82,9 +83,20 @@ public class ControllerSearchAdvanced implements ActionListener {
      */
     private void saveCriteria() {
         log.info("Saving data of Path, File Name and Extension in Criteria");
-        criteriaSearch = new CriteriaSearch(viewAdvanced.getTxtPath().getText());
-        criteriaSearch.setFileName(viewAdvanced.getTxtFileName().getText());
-        criteriaSearch.setExtension(viewAdvanced.getTxtExt().getText());
+        criteriaSearch = new CriteriaSearch(viewAdvanced.getJPanelAdvanced().getTxtPath());
+        criteriaSearch.setFileName(viewAdvanced.getJPanelAdvanced().getTxtFileName());
+        criteriaSearch.setExtension(viewAdvanced.getJPanelAdvanced().getTxtExtension());
+        criteriaSearch.setOwner(viewAdvanced.getJPanelAdvanced().getTxtOwner());
+        criteriaSearch.setHidden(getEnumHidden());
+        criteriaSearch.setReadonly(getEnumReadOnly());
+        criteriaSearch.setCreationDateFrom(viewAdvanced.getJPanelAdvanced().getDateCreateStar());
+        criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
+        criteriaSearch.setModificationDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
+        criteriaSearch.setModificationDateTo(viewAdvanced.getJPanelAdvanced().getDateLastModEnd());
+        criteriaSearch.setLastDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
+        criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLastModEnd());
+        criteriaSearch.setSize(convertSize());
+        criteriaSearch.setSizeCompareOption(!viewAdvanced.getJPanelAdvanced().isMajorThanFile());
         log.info("Information saved");
     }
 
@@ -101,7 +113,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
             viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
-                    data.getExtension(), data.getSize());
+                    data.getExtension(), getFileSizeInKb(data.getSize()));
         }
         log.info("Results implemented in the JTable of the UI");
     }
@@ -109,12 +121,59 @@ public class ControllerSearchAdvanced implements ActionListener {
     /**
      * Receive the size of the files and send in Kilobytes
      * @param fileLength
-     * @return Size of files in KiloBytes
+     * @return TernaryBooleanEnum.
      */
-    private double getFileSizeInKb(double fileLength) {
+    private String getFileSizeInKb(String fileLength) {
+        Double file = Double.parseDouble(fileLength);
         log.info("Returns the size of the file");
-        fileLength = fileLength / BYTES;
+        file = file / BYTES;
         int fs = (int) Math.pow(10,2);
-        return Math.rint(fileLength*fs)/fs;
+        return Double.toString(Math.rint(file * fs)/fs);
+    }
+
+    /**
+     * Method that returns a TernaryBooleanEnum value.
+     * @return TernaryBooleanEnum.
+     */
+    private TernaryBooleanEnum getEnumHidden() {
+        if(viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Not Hidden")) {
+            return TernaryBooleanEnum.OnlyFalse;
+        } else if(viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Hidden")) {
+            return TernaryBooleanEnum.OnlyTrue;
+        } else  {
+            return TernaryBooleanEnum.ALL;
+        }
+    }
+
+    /**
+     * Method that returns a TernaryBooleanEnum value.
+     * @return TernaryBooleanEnum.
+     */
+    private TernaryBooleanEnum getEnumReadOnly() {
+        if(viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Not Read Only")) {
+            return TernaryBooleanEnum.OnlyFalse;
+        } else if(viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Read Only")) {
+            return TernaryBooleanEnum.OnlyTrue;
+        } else  {
+            return TernaryBooleanEnum.ALL;
+        }
+    }
+
+    /**
+     * method that performs the conversion to Kb, Mb and Gb
+     */
+    private String convertSize() {
+         double value;
+         if(viewAdvanced.getJPanelAdvanced().getComboTypeSizeFile().equals("Kb")) {
+            value = Double.parseDouble(viewAdvanced.getJPanelAdvanced().getSpinControlSizeFile());
+            value = value * 1024;
+         } else if (viewAdvanced.getJPanelAdvanced().getComboTypeSizeFile().equals("Mb")) {
+             value = Double.parseDouble(viewAdvanced.getJPanelAdvanced().getSpinControlSizeFile());
+             value = value * 1024 * 1024;
+         } else {
+             value = Double.parseDouble(viewAdvanced.getJPanelAdvanced().getSpinControlSizeFile());
+             value = value * 1024 * 1024 * 1024;
+         }
+         return Double.toString(value);
     }
 }
