@@ -12,12 +12,14 @@
 
 package com.jala.search.models;
 
+import com.jala.common.models.Criteria;
+
 /**
  * The CriteriaSearch class is to set and get the criteria to search.
  * @author Areliez Vargas
  * @version 0.0.1
  */
-public class CriteriaSearch {
+public class CriteriaSearch extends Criteria {
 
     /**
      * Criteria for path of the directory.
@@ -78,14 +80,20 @@ public class CriteriaSearch {
     private String lastDateTo;
 
     /**
-     * Type of criteria (video, audi, image, common, etc).
+     * Type of criteria (video, audio, image, common, etc).
      */
     private int type;
 
     /**
-     * Constructor of class CriteriaSearch.
+     * Constructor of the CriteriaSearch class.
      */
-    public void CriteriaSearch() {
+    public CriteriaSearch() {
+        LoadCriteria();
+    }
+    /**
+     * Load Criteria Search goes to init the empty values.
+     */
+    public void LoadCriteria() {
     this.setHidden(TernaryBooleanEnum.ALL);
     this.setReadonly(TernaryBooleanEnum.ALL);
     this.setSize("");
@@ -104,7 +112,7 @@ public class CriteriaSearch {
      * @param path of the directory.
      */
     public CriteriaSearch(String path) {
-        this.CriteriaSearch();
+        this.LoadCriteria();
         this.path = path;
     }
 

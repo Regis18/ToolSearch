@@ -43,6 +43,11 @@ public abstract class Criteria {
     }
 
     /**
+     * Constructor Criteria class, without arguments.
+     */
+    public Criteria(){};
+
+    /**
      * Return the path of the file.
      * @return path origin as string.
      */
