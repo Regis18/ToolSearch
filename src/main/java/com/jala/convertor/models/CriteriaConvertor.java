@@ -47,6 +47,21 @@ public class CriteriaConvertor extends Criteria {
     private int height;
 
     /**
+     * Value that define if the conversion will be by percentage or pixel.
+     */
+    private boolean percentage;
+
+    /**
+     * Value that define if the conversion will apply resize.
+     */
+    private boolean resize;
+
+    /**
+     * Value that define if the resize will maintain the proportion.
+     */
+    private boolean maintainProportion;
+
+    /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
      * @param pathOrigin of the file.
      * @param pathDestiny of the file.
@@ -55,7 +70,12 @@ public class CriteriaConvertor extends Criteria {
         super(pathOrigin);
         this.pathDestiny = pathDestiny;
         this.newExtension = newExtension;
+        newFileName = "";
         height = -1;
+        width = -1;
+        percentage = false;
+        resize = false;
+        maintainProportion = false;
     }
 
     /**
@@ -137,4 +157,63 @@ public class CriteriaConvertor extends Criteria {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    /**
+     * This method return if resize will be by percentage.
+     * @return true to apply resize by percentage and false to apply resize by pixel.
+     */
+    public boolean isPercentage() {
+        return percentage;
+    }
+
+    /**
+     * Set if the resize will be by percentage.
+     * @param percentage to convert by percentage.
+     */
+    public void setPercentage(boolean percentage) {
+        this.percentage = percentage;
+    }
+
+    /**
+     * This method return if the conversion will be resize.
+     * @return true to resize the image, and false to doesn't resize.
+     */
+    public boolean isResize() {
+        return resize;
+    }
+
+    /**
+     * Set if the conversion will be the resize.
+     * @param resize to change the resize.
+     */
+    public void setResize(boolean resize) {
+        this.resize = resize;
+    }
+
+    /**
+     * Return if the resize will maintain the proportion.
+     * @return true to maintain the aspect ratio and resize and
+     * false to disregard aspect ratio and resize to exact/specific dimensions.
+     */
+    public boolean isMaintainProportion() {
+        return maintainProportion;
+    }
+
+    /**
+     * Set if aspect ratio and resize will change to exact/specific dimensions.
+     * @param maintainProportion for maintain the proportion.
+     */
+    public void setMaintainProportion(boolean maintainProportion) {
+        this.maintainProportion = maintainProportion;
+    }
+
+    /**
+     * This method return the path absolute for the new image file.
+     * @return the path absolute for new image file as string.
+     */
+    public String getPathAbsoluteNewFile() {
+        String pathAbsoluteNewImage = getPathDestiny() + getNewFileName() + getNewExtension();
+        return pathAbsoluteNewImage;
+    }
+
 }
