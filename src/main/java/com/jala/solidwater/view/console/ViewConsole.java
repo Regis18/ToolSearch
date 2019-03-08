@@ -16,7 +16,6 @@ package com.jala.solidwater.view.console;
 
 import com.jala.search.models.Asset;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +113,7 @@ public class ViewConsole {
 
     /**
      * This method print a message of error
+     *
      * @param message is a value to print.
      */
     public void printMessage(String message) {
@@ -131,10 +131,10 @@ public class ViewConsole {
     /**
      * This method create a line with divisions
      */
-    private String printhorizontalLine(List<Integer> size ) {
+    private String printhorizontalLine(List<Integer> size) {
         String border = "+";
         for (Integer division : size
-                ) {
+        ) {
             for (int i = 0; i <= division; i++) {
                 border += (i == division) ? "+" : "-";
             }
@@ -147,13 +147,11 @@ public class ViewConsole {
      */
     public void showAssets(List<Asset> assets) {
 
-        for ( Asset asset : assets
-             ) {
+        for (Asset asset : assets) {
             updateSize(convertToString(asset));
         }
         addTitles();
-        for ( Asset asset : assets
-                ) {
+        for (Asset asset : assets) {
             addRow(convertToString(asset));
         }
     }
@@ -172,7 +170,7 @@ public class ViewConsole {
         String extension = titleHead.get(3);
         String size = titleHead.get(4);
         System.out.println(topLine);
-        System.out.format(leftJustifying,nro , path, fileName, extension, size);
+        System.out.format(leftJustifying, nro, path, fileName, extension, size);
         System.out.println(lowerLine);
     }
 
@@ -187,5 +185,5 @@ public class ViewConsole {
         row.add(asset.getExtension());
         row.add(asset.getSize());
         return row;
-     }
+    }
 }

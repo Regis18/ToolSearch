@@ -31,6 +31,11 @@ import java.util.Map;
  */
 public class ModelConsole {
 
+    private static final String EMPTY_VALUE_FOR_SET_IN_ATTIBUTES_OF_CRITERIA = "";
+    private static final String FILE_NAME_COMMAND = "-fn";
+    private static final String EXTENSION_COMMAND = "-ex";
+    private static final String SIZE_COMMAND = "-s";
+
     /**
      * Criterias for the acronym, name, description of a command.
      */
@@ -104,13 +109,14 @@ public class ModelConsole {
     public List<Asset> getSearch(String[] validCommands){
         return getAsset(createMap(validCommands));
     }
+
     /**
      * @param inputCommands are all commands valid
      * @return a Map with the key = command and value = value command.
      */
     private Map<String, String> createMap(String[] inputCommands) {
         Map<String, String> validCommandsInMap = new HashMap<>();
-        int positionKey, positionValue = 0;
+        int positionKey, positionValue;
         for (int i = 0; i < inputCommands.length ; i += 2) {
             positionKey = i;
             positionValue = positionKey + 1;
@@ -127,10 +133,9 @@ public class ModelConsole {
 
         ArrayList<Asset> listFileSearch = new ArrayList<>();
         CriteriaSearch criteria = new CriteriaSearch(validCommand.get("-p"));
-        //criteria.setFileName(validCommand.get("-fn"));
-        criteria.setExtension(validCommand.get("-ex"));
-        //criteria.setSize(validCommand.get("-s"));
-        System.out.println("value: "  + criteria);
+        isCommandValueNull(validCommand, criteria, FILE_NAME_COMMAND);
+        isCommandValueNull(validCommand, criteria, EXTENSION_COMMAND);
+        isCommandValueNull(validCommand, criteria, SIZE_COMMAND);
         SearchFile searchFile = new SearchFile();
         try {
             listFileSearch = new ArrayList<>(searchFile.search(criteria));
@@ -138,5 +143,25 @@ public class ModelConsole {
             System.out.println("error : " + e);
         }
         return listFileSearch;
+    }
+
+    private void isCommandValueNull(Map<String, String> validCommand, CriteriaSearch criteria, String command) {
+        if (validCommand.get(command) == null) {
+            if (command.equals(FILE_NAME_COMMAND)) {
+                criteria.setFileName(EMPTY_VALUE_FOR_SET_IN_ATTIBUTES_OF_CRITERIA);
+            }else if (command.equals(EXTENSION_COMMAND)) {
+                criteria.setExtension(EMPTY_VALUE_FOR_SET_IN_ATTIBUTES_OF_CRITERIA);
+            } else if (command.equals(SIZE_COMMAND)) {
+                criteria.setSize(EMPTY_VALUE_FOR_SET_IN_ATTIBUTES_OF_CRITERIA);
+            }
+        } else {
+            if (command.equals(FILE_NAME_COMMAND)) {
+                criteria.setFileName(validCommand.get(command));
+            } else if (command.equals(EXTENSION_COMMAND)) {
+                criteria.setExtension(validCommand.get(command));
+            } else if (command.equals(SIZE_COMMAND)) {
+                criteria.setSize(validCommand.get(command));
+            }
+        }
     }
 }
