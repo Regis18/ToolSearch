@@ -16,10 +16,21 @@ import com.jala.common.models.Criteria;
 
 /**
  * The CriteriaSearch class is to set and get the criteria to search.
+ *
  * @author Areliez Vargas
  * @version 0.0.1
  */
 public class CriteriaSearch extends Criteria {
+
+    /**
+     * Criteria for hidden of file.
+     */
+    public TernaryBooleanEnum hidden;
+
+    /**
+     * Criteria for read only of file.
+     */
+    public TernaryBooleanEnum readonly;
 
     /**
      * Criteria for path of the directory.
@@ -35,16 +46,6 @@ public class CriteriaSearch extends Criteria {
      * Criteria for extension of file.
      */
     private String extension;
-
-    /**
-     * Criteria for hidden of file.
-     */
-    public TernaryBooleanEnum hidden;
-
-    /**
-     * Criteria for read only of file.
-     */
-    public TernaryBooleanEnum readonly;
 
     /**
      * Criteria for size of file.
@@ -90,25 +91,10 @@ public class CriteriaSearch extends Criteria {
     public CriteriaSearch() {
         LoadCriteria();
     }
-    /**
-     * Load Criteria Search goes to init the empty values.
-     */
-    public void LoadCriteria() {
-    this.setHidden(TernaryBooleanEnum.ALL);
-    this.setReadonly(TernaryBooleanEnum.ALL);
-    this.setSize("");
-    this.setCreationDateFrom("");
-    this.setCreationDateTo("");
-    this.setModificationDateFrom("");
-    this.setModificationDateTo("");
-    this.setLastDateFrom("");
-    this.setLastDateTo("");
-    this.setOwner("");
-    this.setFileName("");
-    this.setExtension("");
-}
+
     /**
      * Constructor that setting the path for then do a search.
+     *
      * @param path of the directory.
      */
     public CriteriaSearch(String path) {
@@ -117,7 +103,26 @@ public class CriteriaSearch extends Criteria {
     }
 
     /**
+     * Load Criteria Search goes to init the empty values.
+     */
+    public void LoadCriteria() {
+        this.setHidden(TernaryBooleanEnum.ALL);
+        this.setReadonly(TernaryBooleanEnum.ALL);
+        this.setSize("");
+        this.setCreationDateFrom("");
+        this.setCreationDateTo("");
+        this.setModificationDateFrom("");
+        this.setModificationDateTo("");
+        this.setLastDateFrom("");
+        this.setLastDateTo("");
+        this.setOwner("");
+        this.setFileName("");
+        this.setExtension("");
+    }
+
+    /**
      * Return the path of the directory as string.
+     *
      * @return the string of the path.
      */
     public String getPath() {
@@ -126,6 +131,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * This method allows to set the path sending a string.
+     *
      * @param path of the directory.
      */
     public void setPath(String path) {
@@ -134,6 +140,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Return the value of file name as string.
+     *
      * @return file name as string.
      */
     public String getFileName() {
@@ -142,6 +149,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * This method allows to set the file name sending a string.
+     *
      * @param fileName of the file.
      */
     public void setFileName(String fileName) {
@@ -150,6 +158,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Return the value of extension of a file.
+     *
      * @return the extension as string.
      */
     public String getExtension() {
@@ -158,6 +167,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * This method allows to set the file extension sending a string.
+     *
      * @param extension of the file.
      */
     public void setExtension(String extension) {
@@ -166,6 +176,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Return the values of hidden of a file.
+     *
      * @return the hidden property of the file.
      */
     public TernaryBooleanEnum getHidden() {
@@ -174,6 +185,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * This method allows to set the hidden criteria for the file search.
+     *
      * @param hidden the value to use of the search.
      */
     public void setHidden(TernaryBooleanEnum hidden) {
@@ -182,6 +194,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the type of search.
+     *
      * @return The type of search used.
      */
     public int getType() {
@@ -190,6 +203,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set the type of search performed.
+     *
      * @param type The type of search used.
      */
     public void setType(int type) {
@@ -198,6 +212,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the Readonly file status criteria.
+     *
      * @return the readonly criteria used.
      */
     public TernaryBooleanEnum getReadonly() {
@@ -206,6 +221,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set the readonly file status criteria.
+     *
      * @param readonly the readonly criteria used.
      */
     public void setReadonly(TernaryBooleanEnum readonly) {
@@ -214,6 +230,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the size file status criteria.
+     *
      * @return the size criteria used.
      */
     public String getSize() {
@@ -222,6 +239,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set the size file status criteria.
+     *
      * @param size the size criteria used.
      */
     public void setSize(String size) {
@@ -230,6 +248,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the owner file status criteria.
+     *
      * @return the owner criteria used.
      */
     public String getOwner() {
@@ -237,7 +256,17 @@ public class CriteriaSearch extends Criteria {
     }
 
     /**
+     * Set the owner file criteria.
+     *
+     * @param owner the owner of file.
+     */
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    /**
      * Get the size greater or less than.
+     *
      * @return a boolean value is es true is greater than and is
      * false is less than.
      */
@@ -247,23 +276,17 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set de boolean value for size compare option.
+     *
      * @param sizeCompareOption can be true for is greater than and is
-     * false for less than.
+     *                          false for less than.
      */
     public void setSizeCompareOption(boolean sizeCompareOption) {
         this.sizeCompareOption = sizeCompareOption;
     }
 
     /**
-     * Set the owner file criteria.
-     * @param owner the owner of file.
-     */
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    /**
      * Get creation date Initial of search file.
+     *
      * @return the date initial for a Search a creation date.
      */
     public String getCreationDateFrom() {
@@ -272,6 +295,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set creation date Initial of search file.
+     *
      * @param creationDateFrom the date initial for a Search a creation date.
      */
     public void setCreationDateFrom(String creationDateFrom) {
@@ -280,6 +304,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get creation date Final of search file.
+     *
      * @return the date final for a Search a creation date.
      */
     public String getCreationDateTo() {
@@ -288,6 +313,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set creation date final of search file.
+     *
      * @param creationDateTo the date final for a Search a creation date.
      */
     public void setCreationDateTo(String creationDateTo) {
@@ -296,6 +322,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the date for a search of file with modification date initial.
+     *
      * @return The date initial for a modification date of file.
      */
     public String getModificationDateFrom() {
@@ -304,6 +331,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set the date for a search of file with modification date initial.
+     *
      * @param modificationDateFrom the date for initial modification date of file.
      */
     public void setModificationDateFrom(String modificationDateFrom) {
@@ -312,6 +340,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the date for a search of file with modification date final.
+     *
      * @return The date final for a modification date of file.
      */
     public String getModificationDateTo() {
@@ -320,6 +349,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set the date for a search of file with modification date final.
+     *
      * @param modificationDateTo the date for final modification date of file.
      */
     public void setModificationDateTo(String modificationDateTo) {
@@ -328,6 +358,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the last date initial for a search of file.
+     *
      * @return the last date initial.
      */
     public String getLastDateFrom() {
@@ -336,6 +367,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set the last date initial for a search of file.
+     *
      * @param lastDateFrom the last date initial.
      */
     public void setLastDateFrom(String lastDateFrom) {
@@ -344,6 +376,7 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Get the last date final for a search of file.
+     *
      * @return the last date final of file.
      */
     public String getLastDateTo() {
@@ -352,10 +385,10 @@ public class CriteriaSearch extends Criteria {
 
     /**
      * Set the last date final for a search of file.
+     *
      * @param lastDateTo the last date final.
      */
     public void setLastDateTo(String lastDateTo) {
         this.lastDateTo = lastDateTo;
     }
-
 }

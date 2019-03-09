@@ -14,15 +14,16 @@ package com.jala.common.models;
 
 /**
  * The Criteria class.
- * @version 0.0.1
+ *
  * @author Luis Guardia
+ * @version 0.0.1
  */
 public abstract class Criteria {
 
     /**
      * Criteria for the absolute path of the file.
      */
-    private String pathOrigin;
+    private String path;
 
     /**
      * Criteria for the file name.
@@ -34,37 +35,43 @@ public abstract class Criteria {
      */
     private String extension;
 
+
     /**
      * Constructor that sets the absolute path of the file .
-     * @param pathOrigin of the file.
+     *
+     * @param path of the file.
      */
-    public Criteria(String pathOrigin) {
-        this.pathOrigin = pathOrigin;
+    public Criteria(String path) {
+        this.path = path;
     }
 
     /**
      * Constructor Criteria class, without arguments.
      */
-    public Criteria(){};
+    public Criteria() {
+    }
 
     /**
      * Return the path of the file.
+     *
      * @return path origin as string.
      */
-    public String getPathOrigin() {
-        return pathOrigin;
+    public String getPath() {
+        return path;
     }
 
     /**
      * This method allows set the path origin of the file.
-     * @param pathOrigin of file.
+     *
+     * @param path of file.
      */
-    public void setPathOrigin(String pathOrigin) {
-        this.pathOrigin = pathOrigin;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     /**
      * Return the extension of the file.
+     *
      * @return extension as string.
      */
     public String getExtension() {
@@ -73,6 +80,7 @@ public abstract class Criteria {
 
     /**
      * This method allows set the extension of the file.
+     *
      * @param extension of file.
      */
     public void setExtension(String extension) {
@@ -81,6 +89,7 @@ public abstract class Criteria {
 
     /**
      * Return the file name.
+     *
      * @return file name as string.
      */
     public String getFileName() {
@@ -89,6 +98,7 @@ public abstract class Criteria {
 
     /**
      * This method allows to set the file name.
+     *
      * @param fileName for the name of the file.
      */
     public void setFileName(String fileName) {
