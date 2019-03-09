@@ -12,14 +12,14 @@
 
 package com.jala.search.models;
 
-import java.io.File;
-
 /**
  * Asset class.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
 public class Asset {
+
     private String path;
     private String fileName;
     private String extension;
@@ -31,11 +31,12 @@ public class Asset {
     private String creationDate;
     private String modificationDate;
     private String lastDate;
+    private boolean isDirectory;
 
     /**
-     * Constructor Asset class.
+     * Constructor of Asset class.
      */
-    public void Asset() {
+    public void AssetCommon() {
         path = "";
         fileName = "";
         extension = "";
@@ -47,12 +48,9 @@ public class Asset {
         creationDate = "";
         modificationDate = "";
         lastDate = "";
+        isDirectory = false;
     }
 
-    /**
-     * Return the value of path as string.     *
-     * @return path get path file.
-     */
     public String getPath() {
         return path;
     }
@@ -202,5 +200,18 @@ public class Asset {
      */
     public void setLastDate(String lastDate) {
         this.lastDate = lastDate;
+    }
+    /**
+     * @return isDirectory as boolean value.
+     */
+    public boolean isDirectory() {
+        return isDirectory;
+    }
+
+    /**
+     * @param directory as boolean value for know if the file is directory.
+     */
+    public void setDirectory(boolean directory) {
+        isDirectory = directory;
     }
 }

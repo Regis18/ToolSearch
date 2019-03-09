@@ -12,8 +12,6 @@
 
 package com.jala.search.models;
 
-import java.io.File;
-
 /**
  * AssetText class.
  *

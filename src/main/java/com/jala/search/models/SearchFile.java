@@ -12,6 +12,8 @@
 
 package com.jala.search.models;
 
+import com.jala.utils.FileExtra;
+
 import com.jala.utils.Logs;
 import java.io.File;
 import java.sql.Date;
@@ -38,7 +40,7 @@ public class SearchFile implements ISearchable {
      */
     @Override
     public List<Asset> search(CriteriaSearch criteria) {
-    log.info("Searching on "+criteria.getPath());
+    log.info("Searching on " + criteria.getPath());
         List<Asset> result = new ArrayList<>();
         File folder = new File(criteria.getPath());
         if (folder.exists()) {
@@ -49,7 +51,9 @@ public class SearchFile implements ISearchable {
                     File file = files.get(i);
                     if (file.isFile()) {
                         //convert of a file to asset.
-                        Asset asset = AssetFactory.getAsset(criteria, file);
+                        Asset asset = (Asset) AssetFactory.getAsset("Common", file, criteria.getPath(), criteria.getFileName(),
+                                criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
+                                criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
                         String nameFile = ((Asset) asset).getFileName();
                         String extensionFile = ((Asset)asset).getExtension();
                         String sizeFile = ((Asset)asset).getSize();
