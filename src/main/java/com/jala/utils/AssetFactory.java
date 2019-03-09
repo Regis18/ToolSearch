@@ -14,7 +14,9 @@ package com.jala.utils;
 
 import com.jala.search.models.*;
 import java.io.File;
-import static com.jala.utils.FileExtra.loadFile;
+
+import static com.jala.utils.FileCharge.loadFile;
+
 
 /**
  * AssetFactory class.
