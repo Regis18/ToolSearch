@@ -12,8 +12,6 @@
 
 package com.jala.search.models;
 
-import com.jala.utils.FileExtra;
-
 import com.jala.utils.Logs;
 import java.io.File;
 import java.sql.Date;

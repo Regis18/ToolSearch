@@ -13,20 +13,7 @@
 package com.jala.utils;
 
 import com.jala.search.models.*;
-import org.apache.commons.io.FilenameUtils;
-
-import java.io.IOException;
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.FileOwnerAttributeView;
-import java.nio.file.attribute.UserPrincipal;
-
 import static com.jala.utils.FileExtra.loadFile;
 
 /**
@@ -37,10 +24,20 @@ import static com.jala.utils.FileExtra.loadFile;
 public class AssetFactory {
 
     /**
-     * Asset Factory.
-     *
-     * @param file the file to the load.
-     * @return the file to convert to asset.
+     * Constructor that create the type Asset Common
+     * @param type type of asset to be created
+     * @param file the file to the load
+     * @param path of the file
+     * @param fileName Name of the file
+     * @param extension of the file
+     * @param hidden of the file
+     * @param owner of the file
+     * @param size of the file
+     * @param readOnly of the file
+     * @param creationDate of the file
+     * @param modificationDate of the file
+     * @param lastDate of the file
+     * @return file convert a new asset
      */
     public static Asset getAsset(String type, File file, String path, String fileName, String extension,
                                  TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
@@ -54,6 +51,26 @@ public class AssetFactory {
         return newAsset;
     }
 
+    /**
+     * Constructor that create the type Asset Video
+     * @param type type of asset to be created
+     * @param file the file to the load
+     * @param path of the file
+     * @param fileName Name of the file
+     * @param extension of the file
+     * @param hidden of the file
+     * @param owner of the file
+     * @param size of the file
+     * @param readOnly of the file
+     * @param creationDate of the file
+     * @param modificationDate of the file
+     * @param lastDate of the file
+     * @param videoCodec of the video
+     * @param audioCodec of the video
+     * @param frameRate of the video
+     * @param aspecRatio of the video
+     * @return file convert a new asset
+     */
     public static Asset getAsset(String type, File file, String path, String fileName, String extension,
                                  TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
                                  String creationDate, String modificationDate, String lastDate, String videoCodec,
@@ -67,6 +84,23 @@ public class AssetFactory {
         return newAsset;
     }
 
+    /**
+     * Constructor that create the type Asset Document
+     * @param type type of asset to be created
+     * @param file the file to the load
+     * @param path of the file
+     * @param fileName Name of the file
+     * @param extension of the file
+     * @param hidden of the file
+     * @param owner of the file
+     * @param size of the file
+     * @param readOnly of the file
+     * @param creationDate of the file
+     * @param modificationDate of the file
+     * @param lastDate of the file
+     * @param contain of the Document
+     * @return file convert a new asset
+     */
     public static Asset getAsset(String type, File file, String path, String fileName, String extension,
                                  TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
                                  String creationDate, String modificationDate, String lastDate, String contain) {
