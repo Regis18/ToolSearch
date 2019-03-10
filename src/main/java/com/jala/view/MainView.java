@@ -38,8 +38,6 @@ public class MainView extends JFrame implements ActionListener {
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelConverter panelConverterImage;
-   // private String currentPanel;
-    //private Border border;
 
     /**
      * Constructor.

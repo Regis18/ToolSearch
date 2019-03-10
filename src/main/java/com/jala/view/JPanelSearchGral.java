@@ -104,11 +104,8 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlNorth = pnlCriteria();
         this.add(pnlNorth, BorderLayout.NORTH);
 
-        JPanel pnlCentral = pnlButtonAdvanced();
-        this.add(pnlCentral, BorderLayout.CENTER);
-
         JPanel pnlSouth = pnlTableResult();
-        this.add(pnlSouth, BorderLayout.SOUTH);
+        this.add(pnlSouth, BorderLayout.CENTER);
     }
 
     /**
@@ -133,21 +130,6 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         btnSearch = new JButton("Search");
         pnlPath.add(btnSearch);
         return pnlPath;
-    }
-
-    /**
-     * Return the instance of center panel with the Advanced button.
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlButtonAdvanced() {
-
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btnSearchAdvanced = new JButton("Advanced");
-        pnlSearchAdvanced.add(btnSearchAdvanced);
-        btnSearchAdvanced.setVisible(false);
-        return pnlSearchAdvanced;
-        
-        //TODO implement the add actionListener to this button.
     }
 
     /**
