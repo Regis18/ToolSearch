@@ -30,6 +30,7 @@ import java.awt.Dimension;
  */
 public class MainView extends JFrame implements ActionListener {
 
+
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter;
@@ -37,14 +38,14 @@ public class MainView extends JFrame implements ActionListener {
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelConverter panelConverterImage;
-    private String currentPanel;
-    private Border border;
+   // private String currentPanel;
+    //private Border border;
 
     /**
      * Constructor.
      */
     public MainView() {
-        setTitle("View Main");
+        setTitle("SolidWater");
     }
 
     /**
@@ -141,7 +142,6 @@ public class MainView extends JFrame implements ActionListener {
         createMenu();
         pnlHistorical = new JPanelHistorical(new BorderLayout());
         content.add(pnlHistorical, BorderLayout.CENTER);
-        currentPanel = "Historical";
     }
 
     /**
@@ -182,34 +182,20 @@ public class MainView extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Container content = getContentPane();
+        content.removeAll();
         if (e.getSource() == menuItemGeneral) {
-            if (currentPanel != "SearchGral") {
                 pnlSearchGral = new JPanelSearchGral(new BorderLayout());
-                content.removeAll();
                 content.add(pnlSearchGral, BorderLayout.CENTER);
-                currentPanel = "SearchGral";
-                this.validate();
-                this.repaint();
-            }
         }
         if (e.getSource() == menuItemAdvanced) {
-            if (currentPanel != "SearchAdvanced") {
                 pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
-                content.removeAll();
                 content.add(pnlSearchAdvanced, BorderLayout.CENTER);
-                currentPanel = "SearchAdvanced";
-                this.validate();
-                this.repaint();
-            }
         }
         if (e.getSource() == menuItemConverter) {
             panelConverterImage = new JPanelConverter(new BorderLayout());
-            content.removeAll();
             content.add(panelConverterImage, BorderLayout.CENTER);
-            currentPanel = "ConverterImage";
-            this.validate();
-            this.repaint();
         }
+        this.validate();
+        this.repaint();
     }
 }
-
