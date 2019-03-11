@@ -36,22 +36,22 @@ public class ConvertorImage implements IConvertible {
 
     /**
      * This method changes an image by criteria format set.
-     * @param criteriaConvertor for convert an image.
+     * @param criteriaConverter for convert an image.
      */
     @Override
-    public void convert(CriteriaConvertor criteriaConvertor) {
+    public void convert(CriteriaConverterImage criteriaConverter) {
         ConvertCmd convertCmd = new ConvertCmd();
         convertCmd.setSearchPath(IMAGE_MAGICK_PATH);
-        existNewFileName(criteriaConvertor);
+        existNewFileName(criteriaConverter);
         try {
             IMOperation convertImage = new IMOperation();
-            convertImage.addImage(criteriaConvertor.getPathOrigin());
-            if (criteriaConvertor.isResize() == true && criteriaConvertor.isPercentage() == false) {
-                convertByPixel(criteriaConvertor, convertImage);
-            } else if (criteriaConvertor.isResize() == true && criteriaConvertor.isPercentage() == true) {
-                convertByPercentage(criteriaConvertor, convertImage);
+            convertImage.addImage(criteriaConverter.getPath());
+            if (criteriaConverter.isResize() == true && criteriaConverter.isPercentage() == false) {
+                convertByPixel(criteriaConverter, convertImage);
+            } else if (criteriaConverter.isResize() == true && criteriaConverter.isPercentage() == true) {
+                convertByPercentage(criteriaConverter, convertImage);
             }
-            convertImage.addImage(criteriaConvertor.getPathAbsoluteNewFile());
+            convertImage.addImage(criteriaConverter.getPathAbsoluteNewFile());
             convertCmd.run(convertImage);
         } catch (InterruptedException interruptedException) {
             Logs.getInstance().getLog().error("The conversion was interrupted", interruptedException);
@@ -64,18 +64,18 @@ public class ConvertorImage implements IConvertible {
 
     /**
      * This method allows to resize the image file by percentage.
-     * @param criteriaConvertor criteria to resize.
+     * @param criteriaConverter criteria to resize.
      * @param convertImage operation to convert image.
      */
-    private void convertByPercentage(CriteriaConvertor criteriaConvertor, IMOperation convertImage) {
-        if (criteriaConvertor.isMaintainProportion()) {
-            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() == -1) {
-                criteriaConvertor.setHeight(criteriaConvertor.getWidth());
-                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "%");
+    private void convertByPercentage(CriteriaConverterImage criteriaConverter, IMOperation convertImage) {
+        if (criteriaConverter.isMaintainProportion()) {
+            if (criteriaConverter.getWidth() > 0 && criteriaConverter.getHeight() == -1) {
+                criteriaConverter.setHeight(criteriaConverter.getWidth());
+                convertImage.resize(criteriaConverter.getWidth(), criteriaConverter.getHeight(), "%");
             }
-        } else if (!criteriaConvertor.isMaintainProportion()) {
-            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() > 0) {
-                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "%");
+        } else if (!criteriaConverter.isMaintainProportion()) {
+            if (criteriaConverter.getWidth() > 0 && criteriaConverter.getHeight() > 0) {
+                convertImage.resize(criteriaConverter.getWidth(), criteriaConverter.getHeight(), "%");
             }
         }
     }
@@ -83,19 +83,19 @@ public class ConvertorImage implements IConvertible {
     /**
      * This method allows to resize the image file by pixels maintain the proportion or
      * without maintain the proportion.
-     * @param criteriaConvertor criteria to resize.
+     * @param criteriaConverter criteria to resize.
      * @param convertImage operation to convert image.
      */
-    private void convertByPixel(CriteriaConvertor criteriaConvertor, IMOperation convertImage) {
-        if (criteriaConvertor.isMaintainProportion()) {
-            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() == -1) {
-                convertImage.sample(criteriaConvertor.getWidth());
-            } else if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() > 0) {
-                convertImage.sample(criteriaConvertor.getWidth(), criteriaConvertor.getHeight());
+    private void convertByPixel(CriteriaConverterImage criteriaConverter, IMOperation convertImage) {
+        if (criteriaConverter.isMaintainProportion()) {
+            if (criteriaConverter.getWidth() > 0 && criteriaConverter.getHeight() == -1) {
+                convertImage.sample(criteriaConverter.getWidth());
+            } else if (criteriaConverter.getWidth() > 0 && criteriaConverter.getHeight() > 0) {
+                convertImage.sample(criteriaConverter.getWidth(), criteriaConverter.getHeight());
             }
-        } else if (!criteriaConvertor.isMaintainProportion()) {
-            if (criteriaConvertor.getWidth() > 0 && criteriaConvertor.getHeight() > 0) {
-                convertImage.resize(criteriaConvertor.getWidth(), criteriaConvertor.getHeight(), "!");
+        } else if (!criteriaConverter.isMaintainProportion()) {
+            if (criteriaConverter.getWidth() > 0 && criteriaConverter.getHeight() > 0) {
+                convertImage.resize(criteriaConverter.getWidth(), criteriaConverter.getHeight(), "!");
             }
         }
     }
@@ -103,12 +103,12 @@ public class ConvertorImage implements IConvertible {
     /**
      * This method set the new file name for the new image file
      * by the file name of the image to convert if the user didn't set.
-     * @param criteriaConvertor to set the file name.
+     * @param criteriaConverter to set the file name.
      */
-    private void existNewFileName(CriteriaConvertor criteriaConvertor) {
-        File imageToChange = new File(criteriaConvertor.getPathOrigin());
-        if (criteriaConvertor.getNewFileName().isEmpty()) {
-            criteriaConvertor.setNewFileName(imageToChange.getName());
+    private void existNewFileName(CriteriaConverterImage criteriaConverter) {
+        File imageToChange = new File(criteriaConverter.getPath());
+        if (criteriaConverter.getNewFileName().isEmpty()) {
+            criteriaConverter.setNewFileName(imageToChange.getName());
         }
     }
 }

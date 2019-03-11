@@ -12,8 +12,6 @@
 
 package com.jala.search.models;
 
-import java.io.File;
-
 /**
  * AssetVideo class.
  *
@@ -24,7 +22,12 @@ public class AssetVideo extends Asset {
     private String videoCodec;
     private String audioCodec;
     private String frameRate;
-    private String aspecRatio;
+    private String aspectRatio;
+    private String dimentionWidth;
+    private String dimentionHeight;
+    private String audioSampleRate;
+    private String duration;
+
 
     /**
      * Constructor of AssetVideo class
@@ -33,7 +36,11 @@ public class AssetVideo extends Asset {
         videoCodec = "";
         audioCodec = "";
         frameRate = "";
-        aspecRatio = "";
+        aspectRatio = "";
+        dimentionWidth = "";
+        dimentionHeight = "";
+        audioSampleRate = "";
+        duration = "";
     }
 
     /**
@@ -44,7 +51,7 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     * @param videoCodec as String.
+     * @param videoCodec this is the video codec an attribute of audio for the advanced searched.
      */
     public void setVideoCodec(String videoCodec) {
         this.videoCodec = videoCodec;
@@ -58,7 +65,7 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     * @param audioCodec as String.
+     * @param audioCodec this is the audio codec an attribute of audio for the advanced searched.
      */
     public void setAudioCodec(String audioCodec) {
         this.audioCodec = audioCodec;
@@ -72,23 +79,88 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     * @param frameRate as String.
+     * @param frameRate this is the frame rate an attribute of audio for the advanced searched.
      */
     public void setFrameRate(String frameRate) {
         this.frameRate = frameRate;
     }
 
     /**
-     * @return aspecRatio as a property of video.
+     * @return aspectRatio as a property of video.
      */
-    public String getAspecRatio() {
-        return aspecRatio;
+    public String getAspectRatio() {
+        return aspectRatio;
     }
 
     /**
-     * @param aspecRatio as String.
+     * @param aspectRatio as String.
      */
-    public void setAspecRatio(String aspecRatio) {
-        this.aspecRatio = aspecRatio;
+    public void setAspectRatio(String aspectRatio) {
+        this.aspectRatio = aspectRatio;
+    }
+
+    /**
+     *
+     * @return dimentionWidth as a property of video.
+     */
+    public String getDimentionWidth() {
+        return dimentionWidth;
+    }
+
+    /**
+     *
+     * @param dimentionWidth this is the dimention with an attribute of video for the advanced searched.
+     */
+    public void setDimentionWidth(String dimentionWidth) {
+        this.dimentionWidth = dimentionWidth;
+    }
+
+    /**
+     *
+     * @return dimentionHeight as a property of video.
+     */
+    public String getDimentionHeight() {
+        return dimentionHeight;
+    }
+
+    /**
+     *
+     * @param dimentionHeight this is the dimention height an attribute of audio for the advanced searched.
+     */
+    public void setDimentionHeight(String dimentionHeight) {
+        this.dimentionHeight = dimentionHeight;
+    }
+
+    /**
+     *
+     * @return audioSampleRate as a property of video.
+     */
+    public String getAudioSampleRate() {
+        return audioSampleRate;
+    }
+
+    /**
+     *
+     * @param audioSampleRate this is the audio samples rate an attribute of audio for the advanced searched.
+     */
+    public void setAudioSampleRate(String audioSampleRate) {
+        this.audioSampleRate = audioSampleRate;
+    }
+
+    /**
+     *
+     * @return duration as a property of video.
+     */
+    public String getDuration() {
+        return duration;
+    }
+
+    /**
+     *
+     * @param duration this is the duration an attribute of audio for the advanced searched.
+     */
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 }
+
