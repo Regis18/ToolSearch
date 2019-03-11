@@ -14,6 +14,7 @@ package com.jala.convertor.models;
 
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.FFmpeg;
+import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 
 /**
  * ConvertVideo
@@ -33,15 +34,14 @@ public class ConvertVideo {
 
 		FFmpeg fmpeg = new FFmpeg("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffmpeg.exe");
 		FFmpegBuilder builder = new FFmpegBuilder();
-		pathDestination = criteria.getPathDestination() + criteria.getFileName() + criteria.getExtension();
-		builder.addInput(criteria.getPathOrigin()).overrideOutputFiles(true);
+		pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
+		builder.addInput(criteria.getPath()).overrideOutputFiles(true);
 		if (!criteria.getIsAdvanced()) {
 			builder.addOutput(pathDestination);
 			fmpeg.run(builder);
 		} else {
-			convertAdvanced(criteria, builder,fmpeg);
+			convertAdvanced(criteria, builder, fmpeg);
 		}
-
 	}
 
 	/**
@@ -52,13 +52,19 @@ public class ConvertVideo {
 	 * @throws Exception
 	 */
 	private void convertAdvanced(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg) throws Exception {
-		int channel = criteria.getAudioChannel() == "Mono" ? FFmpeg.AUDIO_MONO : FFmpeg.AUDIO_STEREO;
-		builder.addOutput(pathDestination)
-				.setVideoResolution(criteria.getVideoResolution())
-				.setVideoFrameRate(criteria.getFrameRate())
-				.setAudioChannels(channel)
-				//.setVideoBitRate(256000)
-				.done();
+		FFmpegOutputBuilder outputBuilder = new FFmpegOutputBuilder();
+		outputBuilder.setFilename(pathDestination);
+		if (!criteria.getAudioChannel().isEmpty()) {
+			int channel = criteria.getAudioChannel() == "Mono" ? FFmpeg.AUDIO_MONO : FFmpeg.AUDIO_STEREO;
+			outputBuilder.setAudioChannels(channel);
+		}
+		if (criteria.getFrameRate() != 0) {
+			outputBuilder.setVideoFrameRate(criteria.getFrameRate());
+		}
+		if (!criteria.getVideoResolution().isEmpty()){
+			outputBuilder.setVideoResolution(criteria.getVideoResolution());
+		}
+		builder.addOutput(outputBuilder);
 		fmpeg.run(builder);
 	}
 }

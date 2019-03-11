@@ -87,13 +87,13 @@ public class SearchFile implements ISearchable {
                             )
                                 addFileToResults = false;
                         }
-                        if (addFileToResults && (!ownerCriteria.isEmpty()) && (!ownerFile.equals(ownerCriteria))) {
+                        if (addFileToResults && (!ownerCriteria.isEmpty()) && (!ownerFile.contains(ownerCriteria))) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!sizeCriteria.isEmpty())) {
                             if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > Double.parseDouble(sizeFile) ))
                                 addFileToResults = false;
-                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) < Double.parseDouble(sizeFile) ))
+                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) <= Double.parseDouble(sizeFile) ))
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
@@ -103,7 +103,7 @@ public class SearchFile implements ISearchable {
                             addFileToResults = false;
                         }
                         if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()) {
-                            addFileToResults = false;
+                                addFileToResults = false;
                         }
                         if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()) {
                             addFileToResults = false;

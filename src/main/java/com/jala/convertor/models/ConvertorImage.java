@@ -45,7 +45,7 @@ public class ConvertorImage implements IConvertible {
         existNewFileName(criteriaConverter);
         try {
             IMOperation convertImage = new IMOperation();
-            convertImage.addImage(criteriaConverter.getPathOrigin());
+            convertImage.addImage(criteriaConverter.getPath());
             if (criteriaConverter.isResize() == true && criteriaConverter.isPercentage() == false) {
                 convertByPixel(criteriaConverter, convertImage);
             } else if (criteriaConverter.isResize() == true && criteriaConverter.isPercentage() == true) {
@@ -106,7 +106,7 @@ public class ConvertorImage implements IConvertible {
      * @param criteriaConverter to set the file name.
      */
     private void existNewFileName(CriteriaConverterImage criteriaConverter) {
-        File imageToChange = new File(criteriaConverter.getPathOrigin());
+        File imageToChange = new File(criteriaConverter.getPath());
         if (criteriaConverter.getNewFileName().isEmpty()) {
             criteriaConverter.setNewFileName(imageToChange.getName());
         }

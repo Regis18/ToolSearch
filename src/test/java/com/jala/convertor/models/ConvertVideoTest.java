@@ -18,17 +18,34 @@ import static org.junit.Assert.*;
 
 public class ConvertVideoTest {
 	private String path = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\Marvel.mp4";
-	private String pathDestination = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\marvelita.flv";
+	private String pathDestination = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos";
 
 	/**
-	 * Convert MP4 to FLV
+	 * Convert MP4 to FLV basic
 	 */
 	@Test
-	public void convert() {
+	public void convert_ReturnFlvFile_WhenSentBasicMP4File() {
 
 		ConvertVideo convert = new ConvertVideo();
 		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination + "\\",".flv");
+		criteria.setFileName("marvelita");
+		try {
+			convert.convert(criteria);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	/**
+	 * Convert MP4 to FLV basic
+	 */
+	@Test
+	public void convert_ReturnFlvFile_WhenSentAdvancedSentMP4File() {
 
+		ConvertVideo convert = new ConvertVideo();
+		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination + "\\",".flv");
+		criteria.setNewFileName("mAdvanced");
+		criteria.setIsAdvanced(true);
+		criteria.setAudioChannel("Mono");
 		try {
 			convert.convert(criteria);
 		} catch (Exception e) {
