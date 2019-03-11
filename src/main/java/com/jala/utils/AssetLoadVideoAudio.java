@@ -24,11 +24,13 @@ import java.io.File;
  * @version 0.0.1
  */
 public class AssetLoadVideoAudio {
+    
     /**
      * Constant for the path of ffprobe.
      */
     private final String FFPROBE_PATH = getClass().getClassLoader()
             .getResource("ThirdParty/ffmpeg/bin").getPath() + "ffprobe";
+
     /**
      * Load Asset of the Video.
      * @param assetVideo the asset for video feature.
@@ -36,7 +38,7 @@ public class AssetLoadVideoAudio {
      */
     public void loadFileVideo(AssetVideo assetVideo, File file) {
         loadFileVideo(assetVideo, file);
-        try{
+        try {
             FFprobe ffprobe = new FFprobe(FFPROBE_PATH);
             FFmpegProbeResult ffprobeResult;
             ffprobeResult = ffprobe.probe(file.getPath());
@@ -59,7 +61,7 @@ public class AssetLoadVideoAudio {
      */
     public void loadFileAudio(AssetAudio assetAudio, File file) {
         loadFileAudio(assetAudio, file);
-        try{
+        try {
             FFprobe ffprobe = new FFprobe(FFPROBE_PATH);
             FFmpegProbeResult ffprobeResult;
             ffprobeResult = ffprobe.probe(file.getPath());
