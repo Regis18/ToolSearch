@@ -34,9 +34,9 @@ public class Asset {
     private boolean isDirectory;
 
     /**
-     * Constructor of Asset class.
+     * Constructor Asset class.
      */
-    public void AssetCommon() {
+    public void Asset() {
         path = "";
         fileName = "";
         extension = "";
@@ -51,6 +51,9 @@ public class Asset {
         isDirectory = false;
     }
 
+    /**
+     * @return path get path
+     */
     public String getPath() {
         return path;
     }

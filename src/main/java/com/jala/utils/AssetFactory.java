@@ -12,7 +12,12 @@
 
 package com.jala.utils;
 
-import com.jala.search.models.*;
+
+import com.jala.search.models.Asset;
+import com.jala.search.models.AssetText;
+import com.jala.search.models.AssetVideo;
+import com.jala.search.models.TernaryBooleanEnum;
+
 import java.io.File;
 
 import static com.jala.utils.FileCharge.loadFile;

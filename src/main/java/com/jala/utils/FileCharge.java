@@ -16,7 +16,6 @@ import com.jala.search.models.Asset;
 import com.jala.search.models.AssetText;
 import com.jala.search.models.AssetVideo;
 import org.apache.commons.io.FilenameUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -48,7 +47,7 @@ public class FileCharge {
      * @param filePath the path of the file.
      * @return the creation date of the file.
      */
-    public static String fileCreationDate(String filePath){
+    public static String fileCreationDate(String filePath) {
         File file = new File( filePath );
         BasicFileAttributes attrs;
         try {
@@ -56,7 +55,7 @@ public class FileCharge {
             FileTime time = attrs.creationTime();
             String pattern = "yyyy-MM-dd";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            String formatted = simpleDateFormat.format( new Date( time.toMillis() ) );
+            String formatted = simpleDateFormat.format( new Date( time.toMillis()));
             return formatted;
         } catch (IOException e) {
             return "";
@@ -68,7 +67,7 @@ public class FileCharge {
      * @param filePath the path of the file.
      * @return the file date last access date.
      */
-    public static String fileLastAccessDate(String filePath){
+    public static String fileLastAccessDate(String filePath) {
         File file = new File( filePath );
         BasicFileAttributes attrs;
         try {
@@ -76,7 +75,7 @@ public class FileCharge {
             FileTime time = attrs.lastAccessTime();
             String pattern = "yyyy-MM-dd";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            String formatted = simpleDateFormat.format( new Date( time.toMillis() ) );
+            String formatted = simpleDateFormat.format( new Date( time.toMillis()));
             return formatted ;
         } catch (IOException e) {
             return "";
@@ -88,7 +87,7 @@ public class FileCharge {
      * @param filePath the path of the file.
      * @return the date of file the las modified date.
      */
-    public static String fileLastModifiedDate(String filePath){
+    public static String fileLastModifiedDate(String filePath) {
         File file = new File( filePath );
         BasicFileAttributes attrs;
         try {
@@ -96,7 +95,7 @@ public class FileCharge {
             FileTime time = attrs.lastModifiedTime();
             String pattern = "yyyy-MM-dd";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            String formatted = simpleDateFormat.format( new Date( time.toMillis() ) );
+            String formatted = simpleDateFormat.format( new Date( time.toMillis()));
             return formatted ;
         } catch (IOException e) {
             return "";

@@ -53,16 +53,16 @@ public class SearchFile implements ISearchable {
                                 criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
                                 criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
                         String nameFile = ((Asset) asset).getFileName();
-                        String extensionFile = ((Asset)asset).getExtension();
-                        String sizeFile = ((Asset)asset).getSize();
+                        String extensionFile = ((Asset) asset).getExtension();
+                        String sizeFile = ((Asset) asset).getSize();
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
                         String sizeCriteria = criteria.getSize();
-                        String ownerFile = ((Asset)asset).getOwner();
+                        String ownerFile = ((Asset) asset).getOwner();
                         String ownerCriteria = criteria.getOwner();
-                        String createDateFile = ((Asset)asset).getCreationDate();
-                        String modificationDateFile = ((Asset)asset).getModificationDate();
-                        String lastDateFile = ((Asset)asset).getLastDate();
+                        String createDateFile = ((Asset) asset).getCreationDate();
+                        String modificationDateFile = ((Asset) asset).getModificationDate();
+                        String lastDateFile = ((Asset) asset).getLastDate();
                        // var aux.
                         boolean addFileToResults = true;
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
