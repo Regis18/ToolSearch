@@ -84,7 +84,7 @@ public class JPanelSearchAdvanced extends JPanel {
      * Return the instance of panel north with the path, file name, extension and the Search button.
      * @return pnlSearchAd the panel with the criteria of the advanced Search.
      */
-    private JPanel pnlCriteria() {
+    /*private JPanel pnlCriteria() {
 
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
@@ -94,7 +94,7 @@ public class JPanelSearchAdvanced extends JPanel {
         JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
-    }
+    }*/
 
     /**
      * Return the instance of center panel with the Table Result.
