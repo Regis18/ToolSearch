@@ -12,10 +12,8 @@
 
 package com.jala.view;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
 import java.awt.LayoutManager;
 import java.awt.BorderLayout;
@@ -31,6 +29,7 @@ public class JPanelSearchAdvanced extends JPanel {
     private JTableResult tbSearchAdvanced;
     private Border border;
     private JPanelAdvanced panelSearchAdvanced;
+    private JTabbedPane jtabpSearchAdvenced;
 
     /**
      * Class constructor.
@@ -69,15 +68,21 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private void initComponent() {
         panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
-        panelSearchAdvanced.setBorder(titleBorder);
-        this.add(panelSearchAdvanced, BorderLayout.NORTH);
+
+        jtabpSearchAdvenced = new JTabbedPane();
+        jtabpSearchAdvenced.addTab("General", panelSearchAdvanced);
+        jtabpSearchAdvenced.addTab("Video", panelSearchAdvanced);
+        jtabpSearchAdvenced.addTab("Audio", panelSearchAdvanced);
+
+        this.add(jtabpSearchAdvenced, BorderLayout.NORTH);
+        this.add(panelSearchAdvanced, BorderLayout.CENTER);
+
 
         JPanel pnlCentral = pnlTableResult();
-        this.add(pnlCentral, BorderLayout.CENTER);
+        this.add(pnlCentral, BorderLayout.SOUTH);
 
-        JPanel pnlSouth = pnlMessages();
-        this.add(pnlSouth, BorderLayout.SOUTH);
+        /*JPanel pnlSouth = pnlMessages();
+        this.add(pnlSouth, BorderLayout.SOUTH);*/
     }
 
     /**
@@ -107,7 +112,7 @@ public class JPanelSearchAdvanced extends JPanel {
 
         tbSearchAdvanced = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
-        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+        pnlSearchAdvanced.add(scroll, BorderLayout.SOUTH);
         return pnlSearchAdvanced;
     }
 

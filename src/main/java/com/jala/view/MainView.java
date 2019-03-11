@@ -33,17 +33,29 @@ public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
-    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter;
+    private JMenuItem menuItemExit;
+    private JMenuItem menuItemGeneral;
+    private JMenuItem menuItemAdvanced;
+    private JMenuItem menuItemConverter;
+
+
+
+    private JMenuItem mIAdvanced;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelConverter panelConverterImage;
+    private JPSearchAdvanced pSearchAdvanced;
 
     /**
      * Constructor.
      */
     public MainView() {
         setTitle("SolidWater");
+    }
+
+    public JMenuItem getmIAdvanced() {
+        return mIAdvanced;
     }
 
     /**
@@ -161,6 +173,9 @@ public class MainView extends JFrame implements ActionListener {
         menuItemAdvanced = new JMenuItem("Advanced");
         menuSearch.add(menuItemAdvanced);
         menuItemAdvanced.addActionListener(this);
+        mIAdvanced = new JMenuItem("Advance");
+        menuSearch.add(mIAdvanced);
+        mIAdvanced.addActionListener(this);
 
         menuItemExit = new JMenuItem("Exit");
         menuFile.add(menuItemExit);
@@ -192,6 +207,11 @@ public class MainView extends JFrame implements ActionListener {
         if (e.getSource() == menuItemConverter) {
             panelConverterImage = new JPanelConverter(new BorderLayout());
             content.add(panelConverterImage, BorderLayout.CENTER);
+        }
+        if (e.getSource() == mIAdvanced) {
+            pSearchAdvanced = new JPSearchAdvanced();
+            setContentPane(pSearchAdvanced);
+            //content.add(pSearchAdvanced, BorderLayout.CENTER);
         }
         this.validate();
         this.repaint();

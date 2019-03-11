@@ -21,15 +21,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Component;
 import java.util.Calendar;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JCheckBox;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 /**
  * Module view, ui/JPanelAdvanced.
@@ -48,6 +42,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     private GridBagConstraints constraints;
     private JSpinner spinControlSizeFile;
     private JCheckBox fileMajors;
+    private Border border;
 
     /**
      * Gets the content from txtPath.
@@ -209,6 +204,8 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     public JPanelAdvanced(BorderLayout borderLayout) {
         esquema= new GridBagLayout();
         constraints = new GridBagConstraints();
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        setBorder(titleBorder);
         setLayout(esquema);
 
         lblPath = new JLabel("Path: ");
