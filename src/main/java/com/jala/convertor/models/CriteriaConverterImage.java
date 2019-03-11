@@ -12,6 +12,12 @@
 
 package com.jala.convertor.models;
 
+/**
+ * CriteriaConverterImage
+ *
+ * @version 0.0.3
+ * @author Regis Humana
+ */
 public class CriteriaConverterImage extends CriteriaConverter {
 
     /**
