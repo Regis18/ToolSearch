@@ -1,5 +1,11 @@
 package com.jala.solidwater.view.console;
 
+/**
+ * This class allows to create a command customized.
+ *
+ * @author Areliez Vargas.
+ * @version 0.0.1
+ */
 public class Command {
     /**
      * Acronym of a command.
@@ -16,14 +22,18 @@ public class Command {
      */
     private String description;
 
-    public Command() {}
+    /**
+     * this method creates a command without to send parameters.
+     */
+    public Command() {
+    }
 
     /**
      * Constructor method of Command class.
      * This method create a instance of Command.
      *
-     * @param acronym for the command
-     * @param name for the  command
+     * @param acronym     for the command
+     * @param name        for the  command
      * @param description for the  command
      */
     public Command(String acronym, String name, String description) {
