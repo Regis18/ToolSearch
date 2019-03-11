@@ -35,73 +35,7 @@ public class ModelConsole {
     private static final String FILE_NAME_COMMAND = "-fn";
     private static final String EXTENSION_COMMAND = "-ex";
     private static final String SIZE_COMMAND = "-s";
-
-    /**
-     * Criterias for the acronym, name, description of a command.
-     */
-    private String acronym, name, description;
-
-    /**
-     * Constructor method of ModelConsole class.
-     * This method create a instance of ModelConsole
-     *
-     * @param acronym of a command
-     * @param name of a command
-     * @param description of a command
-     */
-    public ModelConsole(String acronym, String name, String description) {
-        this.acronym = acronym;
-        this.name = name;
-        this.description = description;
-    }
-    /**
-     * This method create a instance of ModelConsole class
-     */
-    public ModelConsole() {
-    }
-
-    /**
-     * @return acronym as string
-     */
-    public String getAcronym() {
-        return acronym;
-    }
-
-    /**
-     * @param acronym set up.
-     */
-    public void setAcronym(String acronym) {
-        this.acronym = acronym;
-    }
-
-    /**
-     * @return name as string
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name set up
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return description as string
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description set up
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    
     /**
      * @param validCommands are valid data for the search
      * @return a Asset list that were find
