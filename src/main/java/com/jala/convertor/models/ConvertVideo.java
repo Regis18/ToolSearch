@@ -11,47 +11,41 @@
  */
 
 package com.jala.convertor.models;
-import net.bramp.ffmpeg.FFprobe;
+import com.google.common.base.Joiner;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
-import net.bramp.ffmpeg.options.VideoEncodingOptions;
-import ws.schild.jave.AudioAttributes;
-import ws.schild.jave.Encoder;
-
 import net.bramp.ffmpeg.FFmpeg;
-import net.bramp.ffmpeg.options.EncodingOptions;
-import net.bramp.ffmpeg.options.AudioEncodingOptions;
 
-import java.beans.XMLEncoder;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import ws.schild.jave.MultimediaObject;
 public class ConvertVideo {
 
 
 	private static String AUDIO_MP3_CODEC = "libmp3lame";
-
+	private static String pathOrigin;
+	private static String pathDestination;
 
 	public static void main(String [] args) throws Exception {
-		/*FFprobe probe  = new FFprobe("C:\\Users\\Admin\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffprobe.exe");
-		probe.probe("C:\\Users\\Admin\\Desktop\\o\\hola.mp3");
-		List<String> ff = new ArrayList<>();
-		probe.run(ff);
-		EncodingOptions sss = new EncodingOptions();
-		AudioEncodingOptions audioEncodingOptions = new AudioEncodingOptions();
-		VideoEncodingOptions a = new VideoEncodingOptions();*/
-		FFmpeg ss = new FFmpeg("C:\\Users\\Admin\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffmpeg.exe");
-		FFmpegBuilder rr = new FFmpegBuilder();
+		pathOrigin = "C:\\Users\\Usuario\\Desktop\\JALA\\Prog02\\Videos\\try1.mp4";
+		pathDestination = "C:\\Users\\Usuario\\Desktop\\JALA\\Prog02\\Videos\\try123.3gp";
+		FFmpeg fmpeg = new FFmpeg("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffmpeg.exe");
+		FFmpegBuilder builder = new FFmpegBuilder();
 
-		rr.addInput("C:\\Users\\Admin\\Desktop\\o\\hola.mp4");
-		rr.addOutput("C:\\Users\\Admin\\Desktop\\o\\hola.mp3")
+		builder.addInput(pathOrigin)
+					.overrideOutputFiles(true)
+					.addOutput(pathDestination)
+					.setVideoResolution("qcif")
+					.setAudioChannels(FFmpeg.AUDIO_MONO)
+					.setVideoBitRate(256000)
+					.done();/*.
+				setAudioChannels(FFmpeg.AUDIO_STEREO).
+				setVideoFrameRate(FFmpeg.FPS_29_97).
+				setVideoResolution("svga");
+		/*builder.addOutput("C:\\Users\\Admin\\Desktop\\o\\hola.mp3").setAudioCodec("libmp3lane")
 				.setAudioChannels(FFmpeg.AUDIO_MONO)
 				.setAudioBitRate(FFmpeg.AUDIO_SAMPLE_48000)
 				.setAudioSampleRate(FFmpeg.AUDIO_SAMPLE_16000)
-				.done();
-
-		ss.run(rr);
+				.done();*/
+		String actual = Joiner.on(" ").join(fmpeg.path(builder.build()));
+		System.out.println(actual);
+		fmpeg.run(builder);
 
 	}
 }

@@ -22,7 +22,7 @@ public interface IConvertible {
 
     /**
      * This method allows changes an image by criteria set.
-     * @param criteriaConvertor to convert.
+     * @param criteriaConverter to convert.
      */
-    void convert(CriteriaConvertor criteriaConvertor);
+    void convert(CriteriaConverterImage criteriaConverter);
 }

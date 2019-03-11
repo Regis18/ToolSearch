@@ -13,7 +13,8 @@
 package com.jala.convertor.controller;
 
 import com.jala.convertor.models.ConvertorImage;
-import com.jala.convertor.models.CriteriaConvertor;
+import com.jala.convertor.models.CriteriaConverter;
+import com.jala.convertor.models.CriteriaConverterImage;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelConverter;
 import org.apache.log4j.Logger;
@@ -28,7 +29,7 @@ public class ControllerConvert implements ActionListener {
 	/** ViewConvert: create a pointer of JPanelSearchGral the object will provide other class.*/
 	private JPanelConverter viewConvert;
 
-	private CriteriaConvertor criteriaConvertor;
+	private CriteriaConverterImage criteriaConverter;
 
 	/**
 	 * This constructor
@@ -63,11 +64,11 @@ public class ControllerConvert implements ActionListener {
 		log.info("Preparing to send criteria converter to ConvertImage");
 		ConvertorImage convertorImage = new ConvertorImage();
 		saveCriteria();
-		convertorImage.convert(criteriaConvertor);
+		convertorImage.convert(criteriaConverter);
 	}
 
 	/**
-	 * Save the information that the Ui provides into CriteriaConvertor to send Converter
+	 * Save the information that the Ui provides into CriteriaConverter to send Converter
 	 */
 	private void saveCriteria() {
 		String pathOrigin = viewConvert.getJPanelAdvanced().getTxtPathFileOrigin();
@@ -79,16 +80,16 @@ public class ControllerConvert implements ActionListener {
 		boolean isMaintain = viewConvert.getJPanelAdvanced().isProprotion();
 		boolean isPercentage = !viewConvert.getJPanelAdvanced().isPixeles();
 		boolean isResize = viewConvert.getJPanelAdvanced().isResize();
-		criteriaConvertor = new CriteriaConvertor(pathOrigin, pathDestiny + "\\", "." + extension);
-		criteriaConvertor.setNewFileName(fileName);
+		criteriaConverter = new CriteriaConverterImage(pathOrigin, pathDestiny + "\\", "." + extension);
+		criteriaConverter.setNewFileName(fileName);
 		if (!sizeHeight.isEmpty()) {
-			criteriaConvertor.setHeight(Integer.parseInt(sizeHeight));
+			criteriaConverter.setHeight(Integer.parseInt(sizeHeight));
 		}
 		if (!sizeWidth.isEmpty()) {
-			criteriaConvertor.setWidth(Integer.parseInt(sizeWidth));
+			criteriaConverter.setWidth(Integer.parseInt(sizeWidth));
 		}
-		criteriaConvertor.setMaintainProportion(isMaintain);
-		criteriaConvertor.setPercentage(isPercentage);
-		criteriaConvertor.setResize(isResize);
+		criteriaConverter.setMaintainProportion(isMaintain);
+		criteriaConverter.setPercentage(isPercentage);
+		criteriaConverter.setResize(isResize);
 	}
 }
