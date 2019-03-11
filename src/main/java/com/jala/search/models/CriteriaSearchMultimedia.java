@@ -65,7 +65,7 @@ public class CriteriaSearchMultimedia extends CriteriaSearch {
      */
     public CriteriaSearchMultimedia() {
         super();
-        LoadVideoCriteria();
+        loadVideoCriteria();
     }
 
     /**
@@ -75,13 +75,13 @@ public class CriteriaSearchMultimedia extends CriteriaSearch {
      */
     public CriteriaSearchMultimedia(String path) {
         super(path);
-        this.LoadVideoCriteria();
+        this.loadVideoCriteria();
     }
 
     /**
      * Load video criteria goes to init the empty values.
      */
-    private void LoadVideoCriteria() {
+    private void loadVideoCriteria() {
         this.setVideoCodec("");
         this.setAudioCodec("");
         this.setFrameRate("");

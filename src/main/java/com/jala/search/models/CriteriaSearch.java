@@ -89,7 +89,7 @@ public class CriteriaSearch extends Criteria {
      * Constructor of the CriteriaSearch class.
      */
     public CriteriaSearch() {
-        LoadCriteria();
+        loadCriteria();
     }
 
     /**
@@ -98,14 +98,14 @@ public class CriteriaSearch extends Criteria {
      * @param path of the directory.
      */
     public CriteriaSearch(String path) {
-        this.LoadCriteria();
+        this.loadCriteria();
         this.path = path;
     }
 
     /**
      * Load Criteria Search goes to init the empty values.
      */
-    public void LoadCriteria() {
+    public void loadCriteria() {
         this.setHidden(TernaryBooleanEnum.ALL);
         this.setReadonly(TernaryBooleanEnum.ALL);
         this.setSize("");
