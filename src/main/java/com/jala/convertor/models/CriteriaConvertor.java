@@ -16,10 +16,16 @@ import com.jala.common.models.Criteria;
 
 /**
  * The CriteriaConvertor class is used to establish and obtain the conversion criteria.
- * @version 0.0.1
+ *
  * @author Luis Guardia
+ * @version 0.0.1
  */
 public class CriteriaConvertor extends Criteria {
+
+    /**
+     * Criteria for the absolute path of the file.
+     */
+    private String pathOrigin;
 
     /**
      * Criteria for path destiny of the file.
@@ -63,7 +69,8 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Constructor that establishes the source and destination path of the file to perform a conversion.
-     * @param pathOrigin of the file.
+     *
+     * @param pathOrigin  of the file.
      * @param pathDestiny of the file.
      */
     public CriteriaConvertor(String pathOrigin, String pathDestiny, String newExtension) {
@@ -79,7 +86,26 @@ public class CriteriaConvertor extends Criteria {
     }
 
     /**
+     * Return the value of the path origin file for convert.
+     *
+     * @return pathOrigin path file for convert.
+     */
+    public String getPathOrigin() {
+        return pathOrigin;
+    }
+
+    /**
+     * This method allows you to set the path origin file for convert.
+     *
+     * @param pathOrigin set file path for convert.
+     */
+    public void setPathOrigin(String pathOrigin) {
+        this.pathOrigin = pathOrigin;
+    }
+
+    /**
      * Returns the value of the file's destination path as a string.
+     *
      * @return path destiny as string.
      */
     public String getPathDestiny() {
@@ -88,6 +114,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method allows you to set the path of the destination by sending a string.
+     *
      * @param pathDestiny of the directory.
      */
     public void setPathDestiny(String pathDestiny) {
@@ -96,6 +123,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return the new file name to convert.
+     *
      * @return the content of newFileName.
      */
     public String getNewFileName() {
@@ -104,6 +132,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Set the new file with configuration of the user.
+     *
      * @param newFileName for name of new image file.
      */
     public void setNewFileName(String newFileName) {
@@ -112,6 +141,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return the new extension to convert an image.
+     *
      * @return the extension for the new image file.
      */
     public String getNewExtension() {
@@ -120,6 +150,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Set the new extension to convert the image file.
+     *
      * @param newExtension for the new image file.
      */
     public void setNewExtension(String newExtension) {
@@ -128,6 +159,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return the new width for the new image file.
+     *
      * @return the width of the image.
      */
     public int getWidth() {
@@ -136,6 +168,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Set the new width for the new image file.
+     *
      * @param width of the new image file.
      */
     public void setWidth(int width) {
@@ -144,6 +177,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return the new height of the new image file.
+     *
      * @return the height of the new image file.
      */
     public int getHeight() {
@@ -152,6 +186,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * set the new height  for the new image file.
+     *
      * @param height for the new image file.
      */
     public void setHeight(int height) {
@@ -160,6 +195,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return if resize will be by percentage.
+     *
      * @return true to apply resize by percentage and false to apply resize by pixel.
      */
     public boolean isPercentage() {
@@ -168,6 +204,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Set if the resize will be by percentage.
+     *
      * @param percentage to convert by percentage.
      */
     public void setPercentage(boolean percentage) {
@@ -176,6 +213,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return if the conversion will be resize.
+     *
      * @return true to resize the image, and false to doesn't resize.
      */
     public boolean isResize() {
@@ -184,6 +222,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Set if the conversion will be the resize.
+     *
      * @param resize to change the resize.
      */
     public void setResize(boolean resize) {
@@ -192,6 +231,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Return if the resize will maintain the proportion.
+     *
      * @return true to maintain the aspect ratio and resize and
      * false to disregard aspect ratio and resize to exact/specific dimensions.
      */
@@ -201,6 +241,7 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * Set if aspect ratio and resize will change to exact/specific dimensions.
+     *
      * @param maintainProportion for maintain the proportion.
      */
     public void setMaintainProportion(boolean maintainProportion) {
@@ -209,11 +250,11 @@ public class CriteriaConvertor extends Criteria {
 
     /**
      * This method return the path absolute for the new image file.
+     *
      * @return the path absolute for new image file as string.
      */
     public String getPathAbsoluteNewFile() {
         String pathAbsoluteNewImage = getPathDestiny() + getNewFileName() + getNewExtension();
         return pathAbsoluteNewImage;
     }
-
 }
