@@ -23,7 +23,7 @@ public enum VideoFormat {
     flv,
     dv,
     mpeg,
-    Gif,
+    gif,
     mp4,
     divx,
     DVD,
