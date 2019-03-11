@@ -62,7 +62,8 @@ public class ControllerSearch implements ActionListener {
      * It is override the method of ActionListener and the objective is listen if button is pressed
      * @param event this activates when a button is  pressed
      */
-    @Override    public void actionPerformed(ActionEvent event) {
+    @Override
+    public void actionPerformed(ActionEvent event) {
         log.info("Action Detected");
         if (event.getSource() == viewSearch.getBtnSearch()) {
             log.info("BtnSearch from Search General was pressed");
