@@ -28,7 +28,7 @@ public class AssetLoadVideoAudio {
      * Constant for the path of ffprobe.
      */
     private final String FFPROBE_PATH = getClass().getClassLoader()
-            .getResource("ThirdParty/ImageMagick-7.0.8-28-portable-Q16-x64").getPath()+"ffprobe";
+            .getResource("ThirdParty/ffmpeg/bin").getPath() + "ffprobe";
     /**
      * Load Asset of the Video.
      * @param assetVideo the asset for video feature.
@@ -48,7 +48,7 @@ public class AssetLoadVideoAudio {
             assetVideo.setDimentionHeight(String.valueOf(ffprobeResult.getStreams().get(0).height));
             assetVideo.setAudioSampleRate(ffprobeResult.getStreams().get(0).sample_aspect_ratio);
             assetVideo.setDuration(String.valueOf(ffprobeResult.getStreams().get(0).duration));
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             //log error
         }
     }
@@ -68,7 +68,7 @@ public class AssetLoadVideoAudio {
             assetAudio.setChannel(ffprobeResult.getStreams().get(0).channel_layout);
             assetAudio.setAudioSampleRate(String.valueOf(ffprobeResult.getStreams().get(0).sample_rate));
             assetAudio.setDuration(String.valueOf(ffprobeResult.getStreams().get(0).duration));
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             //log error
         }
     }
