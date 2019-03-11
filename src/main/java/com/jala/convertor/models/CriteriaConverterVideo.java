@@ -26,7 +26,7 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     private String videoResolution;
 
     /**
-     * Audio channel can be stereo or mono
+     * Audio channel can be Stereo or Mono
      */
     private String audioChannel;
 
@@ -34,10 +34,12 @@ public class CriteriaConverterVideo extends CriteriaConverter {
      * The frame rate can be 30, 60, 29.97, 24, 24.976 fps
      */
     private double frameRate;
+
     /**
-     *
+     * Determinate if the converter is advanced.
      */
     private boolean isAdvanced;
+
     /**
      * Accepts criteria path origin, destination and extension.
      * @param path

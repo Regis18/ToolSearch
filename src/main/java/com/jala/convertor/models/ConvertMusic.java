@@ -1,5 +1,5 @@
 /*
- * @(#) ConvertVideo.java Copyright (c) 2019 Jala Foundation.
+ * @(#) ConvertMusic.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -12,18 +12,11 @@
 
 package com.jala.convertor.models;
 
-import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.FFmpeg;
+import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 
-/**
- * ConvertVideo
- *
- * @version 0.0.3
- * @author Regis Humana
- */
-public class ConvertVideo {
-
+public class ConvertMusic {
 	private String pathDestination;
 
 	/**
@@ -31,14 +24,13 @@ public class ConvertVideo {
 	 * @param criteria
 	 * @throws Exception
 	 */
-	public void convert(CriteriaConverterVideo criteria) throws Exception {
+	public void convert(CriteriaConverterAudio criteria) throws Exception {
 
 		FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin").getPath());
 		FFmpegBuilder builder = new FFmpegBuilder();
 		pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
 		builder.addInput(criteria.getPath()).overrideOutputFiles(true);
-		if (!criteria.getIsAdvanced()) {
-
+		if (!criteria.isAdvanced()) {
 			builder.addOutput(pathDestination);
 			fmpeg.run(builder);
 		} else {
@@ -53,7 +45,7 @@ public class ConvertVideo {
 	 * @param fmpeg
 	 * @throws Exception
 	 */
-	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg) throws Exception {
+	private void convertAdvancedVideo(CriteriaConverterAudio criteria, FFmpegBuilder builder, FFmpeg fmpeg) throws Exception {
 		FFmpegOutputBuilder outputBuilder = new FFmpegOutputBuilder();
 		outputBuilder.setFilename(pathDestination);
 		if (!criteria.getAudioChannel().isEmpty()) {
@@ -61,10 +53,11 @@ public class ConvertVideo {
 			outputBuilder.setAudioChannels(channel);
 		}
 		if (criteria.getFrameRate() != 0) {
-			outputBuilder.setVideoFrameRate(criteria.getFrameRate());
+			outputBuilder.setVideoFrameRate(criteria.getFrameRate())
+						.setAudioSampleRate(FFmpeg.);
 		}
 		if (!criteria.getVideoResolution().isEmpty()) {
-			outputBuilder.setVideoResolution(criteria.getVideoResolution()).setVIdeo;
+			outputBuilder.setVideoResolution(criteria.getVideoResolution());
 		}
 		builder.addOutput(outputBuilder);
 		fmpeg.run(builder);
