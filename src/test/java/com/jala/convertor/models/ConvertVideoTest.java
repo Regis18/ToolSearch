@@ -27,7 +27,8 @@ public class ConvertVideoTest {
 	public void convert() {
 
 		ConvertVideo convert = new ConvertVideo();
-		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination,"flv");
+		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination + "\\",".flv");
+
 		try {
 			convert.convert(criteria);
 		} catch (Exception e) {

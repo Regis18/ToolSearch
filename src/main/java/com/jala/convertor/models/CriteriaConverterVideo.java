@@ -33,8 +33,11 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     /**
      * The frame rate can be 30, 60, 29.97, 24, 24.976 fps
      */
-    private String frameRate;
-
+    private double frameRate;
+    /**
+     *
+     */
+    private boolean isAdvanced;
     /**
      * Accepts criteria path origin, destination and extension.
      * @param path
@@ -43,6 +46,10 @@ public class CriteriaConverterVideo extends CriteriaConverter {
      */
     public CriteriaConverterVideo(String path, String destinationPath, String extension) {
         super(path, destinationPath, extension);
+        isAdvanced = false;
+        frameRate = 0;
+        audioChannel = "";
+        videoResolution = "";
     }
 
     /**
@@ -78,7 +85,7 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     /**
      * @return frameRate
      */
-    public String getFrameRate() {
+    public Double getFrameRate() {
         return frameRate;
     }
 
@@ -86,7 +93,22 @@ public class CriteriaConverterVideo extends CriteriaConverter {
      * Set frameRate
      * @param frameRate
      */
-    public void setFrameRate(String frameRate) {
+    public void setFrameRate(Double frameRate) {
         this.frameRate = frameRate;
+    }
+
+    /**
+     * Establish if the ConverterVIDEO is advanced
+     * @param isAdvanced
+     */
+    public void setIsAdvanced(Boolean isAdvanced) {
+        this.isAdvanced = isAdvanced;
+    }
+    /**
+     * Return is the Advanced Converter
+     * @return
+     */
+    public Boolean getIsAdvanced() {
+        return isAdvanced;
     }
 }
