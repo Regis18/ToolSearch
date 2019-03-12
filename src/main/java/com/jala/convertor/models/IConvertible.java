@@ -18,11 +18,11 @@ package com.jala.convertor.models;
  * @version 0.0.1
  * @author Areliez Vargas
  */
-public interface IConvertible {
+public interface IConvertible <T> {
 
     /**
      * This method allows changes an image by criteria set.
      * @param criteriaConverter to convert.
      */
-    void convert(CriteriaConverterImage criteriaConverter);
+    <T> void convert(T criteriaConverter);
 }

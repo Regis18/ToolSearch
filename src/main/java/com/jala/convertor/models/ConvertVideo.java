@@ -12,9 +12,11 @@
 
 package com.jala.convertor.models;
 
+import com.jala.utils.Logs;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
+import org.apache.log4j.Logger;
 
 /**
  * ConvertVideo
@@ -22,51 +24,63 @@ import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
  * @version 0.0.3
  * @author Regis Humana
  */
-public class ConvertVideo {
-
+public class ConvertVideo implements IConvertible{
+	private Logger log = Logs.getInstance().getLog();
 	private String pathDestination;
 
 	/**
 	 * Convert formats of video into another extension - basic.
-	 * @param criteria
-	 * @throws Exception
+	 * @param criteriaObject
 	 */
-	public void convert(CriteriaConverterVideo criteria) throws Exception {
-
-		FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin").getPath());
-		FFmpegBuilder builder = new FFmpegBuilder();
-		pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
-		builder.addInput(criteria.getPath()).overrideOutputFiles(true);
-		if (!criteria.getIsAdvanced()) {
-
-			builder.addOutput(pathDestination);
-			fmpeg.run(builder);
-		} else {
-			convertAdvancedVideo(criteria, builder, fmpeg);
+	public void convert(Object criteriaObject) {
+		CriteriaConverterVideo criteria = (CriteriaConverterVideo)criteriaObject;
+		try {
+			FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe");
+			FFmpegBuilder builder = new FFmpegBuilder();
+			pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
+			builder.addInput(criteria.getPath()).overrideOutputFiles(true);
+			if (! criteria.getIsAdvanced()) {
+				builder.addOutput(pathDestination);
+				fmpeg.run(builder);
+			} else {
+				convertAdvancedVideo(criteria, builder, fmpeg);
+			}
+		} catch (Exception error) {
+			log.error("Error in ConvertVideo", error);
 		}
 	}
 
 	/**
-	 * Convert with advanced parameters.
+	 * Convert the video with advances parameters like audioChannel, BitRate, SampleRate, Frame rate & Video resolution.
 	 * @param criteria
 	 * @param builder
 	 * @param fmpeg
 	 * @throws Exception
 	 */
-	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg) throws Exception {
-		FFmpegOutputBuilder outputBuilder = new FFmpegOutputBuilder();
-		outputBuilder.setFilename(pathDestination);
-		if (!criteria.getAudioChannel().isEmpty()) {
-			int channel = criteria.getAudioChannel() == "Mono" ? FFmpeg.AUDIO_MONO : FFmpeg.AUDIO_STEREO;
-			outputBuilder.setAudioChannels(channel);
+	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
+		try {
+			FFmpegOutputBuilder outputBuilder = new FFmpegOutputBuilder();
+			outputBuilder.setFilename(pathDestination);
+			if (! criteria.getAudioChannel().isEmpty()) {
+				int channel = criteria.getAudioChannel() == "Mono" ? FFmpeg.AUDIO_MONO : FFmpeg.AUDIO_STEREO;
+				outputBuilder.setAudioChannels(channel);
+			}
+			if (criteria.getFrameRate() != 0) {
+				outputBuilder.setVideoFrameRate(criteria.getFrameRate());
+			}
+			if (! criteria.getVideoResolution().isEmpty()) {
+				outputBuilder.setVideoResolution(criteria.getVideoResolution());
+			}
+			if (criteria.getBitRate() != 0) {
+				outputBuilder.setAudioBitRate(criteria.getBitRate());
+			}
+			if (criteria.getSampleRate() != 0) {
+				outputBuilder.setAudioSampleRate(criteria.getSampleRate());
+			}
+			builder.addOutput(outputBuilder);
+			fmpeg.run(builder);
+		} catch (Exception error) {
+			log.error("Error in ConvertAdvancedAudio", error);
 		}
-		if (criteria.getFrameRate() != 0) {
-			outputBuilder.setVideoFrameRate(criteria.getFrameRate());
-		}
-		if (!criteria.getVideoResolution().isEmpty()) {
-			outputBuilder.setVideoResolution(criteria.getVideoResolution()).setVIdeo;
-		}
-		builder.addOutput(outputBuilder);
-		fmpeg.run(builder);
 	}
 }

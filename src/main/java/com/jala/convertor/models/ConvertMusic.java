@@ -12,54 +12,75 @@
 
 package com.jala.convertor.models;
 
+import com.jala.utils.Logs;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
+import org.apache.log4j.Logger;
 
-public class ConvertMusic {
+/**
+ * ConvertMusic
+ *
+ * @author Regis Humana
+ * @version 0.0.3
+ */
+public class ConvertMusic implements IConvertible {
+
+	/**Save the real path destination to send to FFMPEG*/
 	private String pathDestination;
 
+	/** It creates to follow up the instruction of the class*/
+	private Logger log = Logs.getInstance().getLog();
+
 	/**
-	 * Convert formats of video into another extension - basic.
-	 * @param criteria
+	 * Convert formats of music into another extension - basic.
+	 * @param criteriaObject
 	 * @throws Exception
 	 */
-	public void convert(CriteriaConverterAudio criteria) throws Exception {
-
-		FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin").getPath());
-		FFmpegBuilder builder = new FFmpegBuilder();
-		pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
-		builder.addInput(criteria.getPath()).overrideOutputFiles(true);
-		if (!criteria.isAdvanced()) {
-			builder.addOutput(pathDestination);
-			fmpeg.run(builder);
-		} else {
-			convertAdvancedVideo(criteria, builder, fmpeg);
+	@Override
+	public void convert(Object criteriaObject) {
+		CriteriaConverterAudio criteria = (CriteriaConverterAudio) criteriaObject;
+		try {
+			FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe");
+			FFmpegBuilder builder = new FFmpegBuilder();
+			pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
+			builder.addInput(criteria.getPath()).overrideOutputFiles(true);
+			if (! criteria.isAdvanced()) {
+				builder.addOutput(pathDestination);
+				fmpeg.run(builder);
+			} else {
+				convertAdvancedMusic(criteria, builder, fmpeg);
+			}
+		} catch (Exception error) {
+			log.error("Error in ConvertMusic", error);
 		}
 	}
 
 	/**
-	 * Convert with advanced parameters.
+	 * Convert the music with advances parameters like audioChannel, BitRate and SampleRate.
 	 * @param criteria
 	 * @param builder
 	 * @param fmpeg
 	 * @throws Exception
 	 */
-	private void convertAdvancedVideo(CriteriaConverterAudio criteria, FFmpegBuilder builder, FFmpeg fmpeg) throws Exception {
-		FFmpegOutputBuilder outputBuilder = new FFmpegOutputBuilder();
-		outputBuilder.setFilename(pathDestination);
-		if (!criteria.getAudioChannel().isEmpty()) {
-			int channel = criteria.getAudioChannel() == "Mono" ? FFmpeg.AUDIO_MONO : FFmpeg.AUDIO_STEREO;
-			outputBuilder.setAudioChannels(channel);
+	private void convertAdvancedMusic(CriteriaConverterAudio criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
+		try {
+			FFmpegOutputBuilder outputBuilder = new FFmpegOutputBuilder();
+			outputBuilder.setFilename(pathDestination);
+			if (! criteria.getAudioChannel().isEmpty()) {
+				int channel = criteria.getAudioChannel() == "Mono" ? FFmpeg.AUDIO_MONO : FFmpeg.AUDIO_STEREO;
+				outputBuilder.setAudioChannels(channel);
+			}
+			if (criteria.getBitRate() != 0) {
+				outputBuilder.setAudioBitRate(criteria.getBitRate());
+			}
+			if (criteria.getSampleRate() != 0) {
+				outputBuilder.setAudioSampleRate(criteria.getSampleRate());
+			}
+			builder.addOutput(outputBuilder);
+			fmpeg.run(builder);
+		} catch (Exception error) {
+			log.error("Error in ConvertAdvancedMusic", error);
 		}
-		if (criteria.getFrameRate() != 0) {
-			outputBuilder.setVideoFrameRate(criteria.getFrameRate())
-						.setAudioSampleRate(FFmpeg.);
-		}
-		if (!criteria.getVideoResolution().isEmpty()) {
-			outputBuilder.setVideoResolution(criteria.getVideoResolution());
-		}
-		builder.addOutput(outputBuilder);
-		fmpeg.run(builder);
 	}
 }

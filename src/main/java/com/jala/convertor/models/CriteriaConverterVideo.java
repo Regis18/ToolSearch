@@ -35,6 +35,10 @@ public class CriteriaConverterVideo extends CriteriaConverter {
      */
     private double frameRate;
 
+    private long bitRate;
+
+    private int sampleRate;
+
     /**
      * Determinate if the converter is advanced.
      */
@@ -52,6 +56,8 @@ public class CriteriaConverterVideo extends CriteriaConverter {
         frameRate = 0;
         audioChannel = "";
         videoResolution = "";
+        bitRate = 0;
+        sampleRate = 0;
     }
 
     /**
@@ -113,4 +119,21 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     public Boolean getIsAdvanced() {
         return isAdvanced;
     }
+
+    public long getBitRate() {
+        return bitRate;
+    }
+
+    public void setBitRate(long bitRate) {
+        this.bitRate = bitRate;
+    }
+
+    public int getSampleRate() {
+        return sampleRate;
+    }
+
+    public void setSampleRate(int sampleRate) {
+        this.sampleRate = sampleRate;
+    }
+
 }

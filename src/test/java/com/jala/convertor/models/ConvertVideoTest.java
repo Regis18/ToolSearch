@@ -31,7 +31,7 @@ public class ConvertVideoTest {
 
 		ConvertVideo convert = new ConvertVideo();
 		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination + "\\",".wmv");
-		criteria.setNewFileName("marvelit");
+		criteria.setNewFileName("Ver");
 		try {
 			convert.convert(criteria);
 			verifyWithFfmpegProbe(pathDestination + "\\" + criteria.getNewFileName() + ".wmv");
@@ -228,6 +228,42 @@ public class ConvertVideoTest {
 		}
 	}
 
+	/**
+	 * Convert MP4 to mp3 advanced with only resolution
+	 */
+	@Test
+	public void convert_ReturnMP3File_WhenSentBasicSentMP4File() {
+
+		ConvertVideo convert = new ConvertVideo();
+		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination + "\\",".aac");
+		criteria.setNewFileName("mAAC");
+		criteria.setIsAdvanced(false);
+		criteria.setFrameRate(60.0);
+		try {
+			convert.convert(criteria);
+			verifyWithFfmpegProbe(pathDestination + "\\" + criteria.getNewFileName() + ".aac");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	/**
+	 * Convert MP4 to mp3 advanced with only resolution
+	 */
+	@Test
+	public void convert_ReturnMP4File_WhenSentBasicSentMP3File() {
+		path = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\mMP3.mp3";
+		ConvertVideo convert = new ConvertVideo();
+		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination + "\\",".mp4");
+		criteria.setNewFileName("pruebaMp3toMp4");
+		criteria.setIsAdvanced(false);
+		criteria.setFrameRate(60.0);
+		try {
+			convert.convert(criteria);
+			verifyWithFfmpegProbe(pathDestination + "\\" + criteria.getNewFileName() + ".mp4");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
 	public void verifyWithFfmpegProbe(String path) throws IOException {
 		FFprobe ffprobe = new FFprobe("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffprobe.exe");
 		System.out.println("Duracion: " + ffprobe.probe(path).getStreams().get(0).duration);
