@@ -72,20 +72,20 @@ public class SearchFile implements ISearchable {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                                if(  ( Date.valueOf(createDateFile).before(Date.valueOf(criteria.getCreationDateFrom()) ))
-                                ||  ( Date.valueOf(createDateFile).after(Date.valueOf(criteria.getCreationDateTo()) ))
+                                if((Date.valueOf(createDateFile).before(Date.valueOf(criteria.getCreationDateFrom())))
+                                ||  (Date.valueOf(createDateFile).after(Date.valueOf(criteria.getCreationDateTo())))
                                 )
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                            if(  ( Date.valueOf(modificationDateFile).before(Date.valueOf(criteria.getModificationDateFrom()) ))
-                                    ||  ( Date.valueOf(modificationDateFile).after(Date.valueOf(criteria.getModificationDateTo()) ))
+                            if((Date.valueOf(modificationDateFile).before(Date.valueOf(criteria.getModificationDateFrom())))
+                                    ||  (Date.valueOf(modificationDateFile).after(Date.valueOf(criteria.getModificationDateTo())))
                             )
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                            if(  ( Date.valueOf(lastDateFile).before(Date.valueOf(criteria.getLastDateFrom()) ))
-                                    ||  ( Date.valueOf(lastDateFile).after(Date.valueOf(criteria.getLastDateTo()) ))
+                            if((Date.valueOf(lastDateFile).before(Date.valueOf(criteria.getLastDateFrom())))
+                                    ||  (Date.valueOf(lastDateFile).after(Date.valueOf(criteria.getLastDateTo())))
                             )
                                 addFileToResults = false;
                         }
@@ -93,9 +93,9 @@ public class SearchFile implements ISearchable {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!sizeCriteria.isEmpty())) {
-                            if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > Double.parseDouble(sizeFile) ))
+                            if (criteria.isSizeCompareOption() && !(Double.parseDouble(sizeCriteria) > Double.parseDouble(sizeFile)))
                                 addFileToResults = false;
-                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) <= Double.parseDouble(sizeFile) ))
+                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble(sizeCriteria) <= Double.parseDouble(sizeFile)))
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
@@ -104,10 +104,10 @@ public class SearchFile implements ISearchable {
                         if (addFileToResults && (!extensionCriteria.isEmpty()) && (!extensionFile.equals(extensionCriteria))) {
                             addFileToResults = false;
                         }
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()) {
+                        if (addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()) {
                                 addFileToResults = false;
                         }
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()) {
+                        if (addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()) {
                             addFileToResults = false;
                         }
                         //video.

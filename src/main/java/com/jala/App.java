@@ -11,6 +11,8 @@
  */
 package com.jala;
 
+import com.jala.utils.AssetLoadVideoAudio;
+
 /**
  * App
  *
@@ -27,6 +29,8 @@ public class App {
      * @param args
      */
     public static void main(String [] args) {
-        runApp = new Run();
+        //runApp = new Run();
+        AssetLoadVideoAudio test = new AssetLoadVideoAudio();
+        test.loadFileVideo(123, );
     }
 }

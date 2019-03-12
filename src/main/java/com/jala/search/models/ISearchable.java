@@ -12,6 +12,7 @@
 
 package com.jala.search.models;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,5 +28,5 @@ public interface ISearchable {
      * @param criteria to do the search.
      * @return a list of files of a directory.
      */
-    List<Asset> search(CriteriaSearch criteria);
+    List<Asset> search(CriteriaSearch criteria) throws IOException;
 }
