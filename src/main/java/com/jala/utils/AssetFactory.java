@@ -15,7 +15,7 @@ package com.jala.utils;
 import com.jala.search.models.*;
 import java.io.File;
 
-import static com.jala.utils.FileCharge.loadFile;
+import static com.jala.utils.ExtractMetaDatas.*;
 
 
 /**
@@ -27,7 +27,6 @@ public class AssetFactory {
 
     /**
      * Constructor that create the type Asset Common
-     * @param type type of asset to be created
      * @param file the file to the load
      * @param path of the file
      * @param fileName Name of the file
@@ -41,21 +40,16 @@ public class AssetFactory {
      * @param lastDate of the file
      * @return file convert a new asset
      */
-    public static Asset getAsset(String type, File file, String path, String fileName, String extension,
+    public static Asset getAsset(File file, String path, String fileName, String extension,
                                  TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
                                  String creationDate, String modificationDate, String lastDate) {
-        Asset newAsset = new Asset();
-        if (type.equals("Common")) {
-            Asset newAssetVerify = new Asset();
-            loadFile(newAssetVerify, file);
-            newAsset = newAssetVerify;
-        }
-        return newAsset;
+        Asset newAssetVerify = new Asset();
+        loadFile(newAssetVerify, file);
+        return newAssetVerify;
     }
 
     /**
      * Constructor that create the type Asset Video
-     * @param type type of asset to be created
      * @param file the file to the load
      * @param path of the file
      * @param fileName Name of the file
@@ -73,22 +67,17 @@ public class AssetFactory {
      * @param aspecRatio of the video
      * @return file convert a new asset
      */
-    public static Asset getAsset(String type, File file, String path, String fileName, String extension,
+    public static Asset getAsset(File file, String path, String fileName, String extension,
                                  TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
                                  String creationDate, String modificationDate, String lastDate, String videoCodec,
                                  String audioCodec, String frameRate, String aspecRatio) {
-        Asset newAsset = new Asset();
-        if (type.equals("Video")) {
             Asset newAssetVerify = new AssetVideo();
-            loadFile(newAssetVerify, file);
-            newAsset = newAssetVerify;
-        }
-        return newAsset;
+        loadFileVideo((AssetVideo) newAssetVerify, file);
+        return newAssetVerify;
     }
 
     /**
      * Constructor that create the type Asset Document
-     * @param type type of asset to be created
      * @param file the file to the load
      * @param path of the file
      * @param fileName Name of the file
@@ -103,15 +92,11 @@ public class AssetFactory {
      * @param contain of the Document
      * @return file convert a new asset
      */
-    public static Asset getAsset(String type, File file, String path, String fileName, String extension,
+    public static Asset getAsset(File file, String path, String fileName, String extension,
                                  TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
                                  String creationDate, String modificationDate, String lastDate, String contain) {
-        Asset newAsset = new Asset();
-        if (type.equals("Document")) {
-            Asset newAssetVerify = new AssetText();
-            loadFile(newAssetVerify, file);
-            newAsset = newAssetVerify;
-        }
-        return newAsset;
+        Asset newAssetVerify = new AssetText();
+        loadFileAudio((AssetAudio) newAssetVerify, file);
+        return newAssetVerify;
     }
 }

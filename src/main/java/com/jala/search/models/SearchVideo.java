@@ -41,15 +41,14 @@ public class SearchVideo implements ISearchable{
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
 
-                    Asset asset = (Asset) AssetFactory.getAsset("Video", file, criteria.getPath(), criteria.getFileName(),
+                    Asset asset = (Asset) AssetFactory.getAsset(file, criteria.getPath(), criteria.getFileName(),
                             criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(), criteria.getReadonly(),
-                            criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom(), criteria.getV);
+                            criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom());
 
-                    FFprobe ffprobe = new FFprobe("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffmpeg.exe");
-                    //System.out.println("Duracion : " + ffprobe.probe(path).getStreams().get(0).duration);
-                    String extension = ffprobe.probe(criteria.getPath()).getStreams().get(i).codec_name;
-                    String videoCodec = ffprobe.probe(criteria.getPath()).getStreams().get(i).codec_long_name;
-                    String audioCodec = ffprobe.probe(criteria.getPath()).getStreams().get(i).codec_tag_string;
+                   // String videoCodec = ((AssetVideo) asset).getVideoCodec();
+                    //String videoCriteria = criteria.getVideoCodec();
+                    String extension = ((AssetVideo)asset).getExtension();
+                    String extensionCriteria = criteria.getExtension();
 
                     boolean addVideoToResults = true;
                     if (!extension.equals("mp4")) {
@@ -62,8 +61,6 @@ public class SearchVideo implements ISearchable{
 
             } catch (NullPointerException e) {
                 log.error("The video values shouldn't be null", e);
-            } catch (IOException e) {
-                log.error("The values shouldn't be null", e);
             }
         }
         return result;
