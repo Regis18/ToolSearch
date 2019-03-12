@@ -41,13 +41,16 @@ public class SearchVideo implements ISearchable{
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
 
-                    Asset asset = (Asset) AssetFactory.getAsset("Common", file, criteria.getPath(), criteria.getFileName(),
+                    Asset asset = (Asset) AssetFactory.getAsset("Video", file, criteria.getPath(), criteria.getFileName(),
                             criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(), criteria.getReadonly(),
-                            criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom());
+                            criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom(), criteria.getV);
 
                     FFprobe ffprobe = new FFprobe("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffmpeg.exe");
                     //System.out.println("Duracion : " + ffprobe.probe(path).getStreams().get(0).duration);
-                    String extension = ffprobe.probe(criteria.getPath()).getStreams().get(0).codec_name;
+                    String extension = ffprobe.probe(criteria.getPath()).getStreams().get(i).codec_name;
+                    String videoCodec = ffprobe.probe(criteria.getPath()).getStreams().get(i).codec_long_name;
+                    String audioCodec = ffprobe.probe(criteria.getPath()).getStreams().get(i).codec_tag_string;
+
                     boolean addVideoToResults = true;
                     if (!extension.equals("mp4")) {
                         addVideoToResults = false;

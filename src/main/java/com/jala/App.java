@@ -29,8 +29,6 @@ public class App {
      * @param args
      */
     public static void main(String [] args) {
-        //runApp = new Run();
-        AssetLoadVideoAudio test = new AssetLoadVideoAudio();
-        test.loadFileVideo(123, );
+        runApp = new Run();
     }
 }
