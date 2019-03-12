@@ -67,37 +67,35 @@ public class SearchFile implements ISearchable {
                         String ownerCriteria = criteria.getOwner();
                        // var aux.
                         boolean addFileToResults = true;
-                        if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && file.isHidden()) {
+                        if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(file.isHidden())) {
                             addFileToResults = false;
                         }
-                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && file.isHidden()) {
+                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && (file.isHidden())) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                                if((Date.valueOf(fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom())))
-                                ||  (Date.valueOf(fileCreationDate(file.getPath())).after(Date.valueOf(criteria.getCreationDateTo())))
-                                )
+                            if(  ( Date.valueOf( fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom()) ))
+                                    ||  ( Date.valueOf(fileCreationDate(file.getPath())).after(Date.valueOf(criteria.getCreationDateTo()))))
+
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                            if((Date.valueOf(fileLastModifiedDate(file.getPath())).before(Date.valueOf(criteria.getModificationDateFrom())))
-                                    ||  (Date.valueOf(fileLastModifiedDate(file.getPath())).after(Date.valueOf(criteria.getModificationDateTo())))
-                            )
+                            if(  ( Date.valueOf(fileLastModifiedDate(file.getPath())).before(Date.valueOf(criteria.getModificationDateFrom()) ))
+                                    ||  ( Date.valueOf(fileLastModifiedDate(file.getPath())).after(Date.valueOf(criteria.getModificationDateTo()) ))                           )
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                            if((Date.valueOf(fileLastAccessDate(file.getPath())).before(Date.valueOf(criteria.getLastDateFrom())))
-                                    ||  (Date.valueOf(fileLastAccessDate(file.getPath())).after(Date.valueOf(criteria.getLastDateTo())))
-                            )
+                            if(  ( Date.valueOf(fileLastAccessDate(file.getPath())).before(Date.valueOf(criteria.getLastDateFrom()) ))
+                                    ||  ( Date.valueOf(fileLastAccessDate(file.getPath())).after(Date.valueOf(criteria.getLastDateTo()) )))
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!ownerCriteria.isEmpty()) && (!fileOwner(file.getPath()).contains(ownerCriteria))) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!sizeCriteria.isEmpty())) {
-                            if (criteria.isSizeCompareOption() && !(Double.parseDouble(sizeCriteria) > Double.parseDouble(String.valueOf(file.length()))))
+                            if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > file.length()))
                                 addFileToResults = false;
-                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble(sizeCriteria) <= Double.parseDouble(String.valueOf(file.length()))))
+                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) <= file.length()))
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!nameCriteria.isEmpty()) && (!file.getName().contains(nameCriteria))) {
@@ -106,16 +104,17 @@ public class SearchFile implements ISearchable {
                         if (addFileToResults && (!extensionCriteria.isEmpty()) && (!FilenameUtils.getExtension(file.getName()).equals(extensionCriteria))) {
                             addFileToResults = false;
                         }
-                        if (addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !file.canWrite()) {
-                                addFileToResults = false;
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(!file.canWrite())) {
+                            addFileToResults = false;
                         }
-                        if (addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && file.canWrite()) {
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
                             addFileToResults = false;
                         }
                         //video.
                         if (criteria.getType() == 1) {
                             //TODO verify video extension.
                         }
+
                         Asset asset = (Asset) AssetFactory.getAsset(file, criteria.getPath(), criteria.getFileName(),
                                 criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
                                 criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
