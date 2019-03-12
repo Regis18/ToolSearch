@@ -66,11 +66,10 @@ public class SearchFile implements ISearchable {
                         String sizeCriteria = criteria.getSize();
                         String ownerCriteria = criteria.getOwner();
                        // var aux.
-                        boolean addFileToResults = true;
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(file.isHidden())) {
-                            addFileToResults = false;
+                            continue;
                         }
-                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && (file.isHidden())) {
+                        if (criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && (file.isHidden())) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
@@ -110,18 +109,12 @@ public class SearchFile implements ISearchable {
                         if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
                             addFileToResults = false;
                         }
-                        //video.
-                        if (criteria.getType() == 1) {
-                            //TODO verify video extension.
-                        }
 
                         Asset asset = (Asset) AssetFactory.getAsset(file, criteria.getPath(), criteria.getFileName(),
                                 criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
                                 criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
+                        result.add(asset);
 
-                        if (addFileToResults) {
-                            result.add(asset);
-                        }
                     }
                 }
             } catch (NullPointerException e) {
