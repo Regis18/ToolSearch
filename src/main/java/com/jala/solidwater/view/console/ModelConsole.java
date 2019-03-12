@@ -17,6 +17,7 @@ package com.jala.solidwater.view.console;
 import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
+import com.jala.solidwater.view.console.models.Command;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,13 +42,30 @@ public class ModelConsole {
      * @return a Asset list that were find
      */
     public List<Asset> getSearch(String[] validCommands){
+        Command.CommandLine commandLineentered = createCommandLine(validCommands);
         return getAsset(createMap(validCommands));
     }
 
     /**
-     * @param inputCommands are all commands valid
+     * @param inputCommandLine are all commands valid
      * @return a Map with the key = command and value = value command.
      */
+    private Command.CommandLine createCommandLine(String[] inputCommandLine) {
+
+        List<Command> inputCommands = new ArrayList<>();
+        List<String> commandValues = new ArrayList<>();
+        for (int i = 0; i < inputCommandLine.length ; i += 2) {
+             Command inputCommand = new Command();
+             String valueCommand = "";
+             inputCommand.setAcronym(inputCommandLine[i]);
+             inputCommands.add(inputCommand);
+             valueCommand = inputCommandLine[i+1];
+             commandValues.add(valueCommand);
+
+        }
+        Command.CommandLine commandLine = new Command.CommandLine(inputCommands, commandValues);
+        return commandLine;
+    }
     private Map<String, String> createMap(String[] inputCommands) {
         Map<String, String> validCommandsInMap = new HashMap<>();
         int positionKey, positionValue;

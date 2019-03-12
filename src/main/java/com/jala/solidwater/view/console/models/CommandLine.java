@@ -1,4 +1,4 @@
-package com.jala.solidwater.view.console;
+package com.jala.solidwater.view.console.models;
 
 import java.util.ArrayList;
 import java.util.List;
