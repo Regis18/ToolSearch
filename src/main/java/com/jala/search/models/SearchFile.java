@@ -131,7 +131,7 @@ public class SearchFile implements ISearchable {
      * @param currentFile the starting file.
      * @param result list of files.
      */
-    private void GetAllFiles(File currentFile, List<File> result) {
+    static void GetAllFiles(File currentFile, List<File> result) {
         if (currentFile.isFile()) {
             result.add(currentFile);
         }else{
