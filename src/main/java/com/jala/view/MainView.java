@@ -32,11 +32,12 @@ public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
-    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter;
+    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelConverter panelConverterImage;
+    private JPanelVideo panelConverterVideo;
     private String currentPanel;
     private Border border;
 
@@ -173,6 +174,10 @@ public class MainView extends JFrame implements ActionListener {
         menuItemConverter = new JMenuItem("Converter Image");
         menuConverter.add(menuItemConverter);
         menuItemConverter.addActionListener(this);
+
+        menuItemConverterVideo = new JMenuItem("Converter Video");
+        menuConverter.add(menuItemConverterVideo);
+        menuItemConverterVideo.addActionListener(this);
     }
 
     /**
@@ -206,6 +211,14 @@ public class MainView extends JFrame implements ActionListener {
             panelConverterImage = new JPanelConverter(new BorderLayout());
             content.removeAll();
             content.add(panelConverterImage, BorderLayout.CENTER);
+            currentPanel = "ConverterImage";
+            this.validate();
+            this.repaint();
+        }
+        if (e.getSource() == menuItemConverterVideo) {
+            panelConverterVideo = new JPanelVideo(new BorderLayout());
+            content.removeAll();
+            content.add(panelConverterVideo, BorderLayout.CENTER);
             currentPanel = "ConverterImage";
             this.validate();
             this.repaint();
