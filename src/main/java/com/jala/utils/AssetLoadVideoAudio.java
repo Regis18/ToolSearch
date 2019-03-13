@@ -60,7 +60,7 @@ public class AssetLoadVideoAudio {
      * @param file the file to the load.
      */
     public void loadFileAudio(AssetAudio assetAudio, File file) {
-        loadFileAudio(assetAudio, file);
+
         try {
             FFprobe ffprobe = new FFprobe(FFPROBE_PATH);
             FFmpegProbeResult ffprobeResult;

@@ -97,6 +97,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd());
         criteriaSearch.setSize(convertSize());
         criteriaSearch.setSizeCompareOption(!viewAdvanced.getJPanelAdvanced().isMajorThanFile());
+        criteriaSearch.setType("Common");
         log.info("Information saved");
     }
 

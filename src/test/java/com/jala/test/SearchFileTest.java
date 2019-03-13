@@ -167,4 +167,13 @@ public class SearchFileTest {
         List<Asset> assetList = sf.search(cr);
         assertEquals(3, assetList.size());
     }
+
+ /*   @Test
+    public void searchVideoFileName() {
+        CriteriaSearch cr = new CriteriaSearch("c:\\searchv");
+        cr.setType("Video");
+        SearchFile sf = new SearchFile();
+        List<Asset> assetList = sf.search(cr);
+        assertEquals("c:\\searchv\\112263.avi", assetList.get(0).getPath());
+    }*/
 }
