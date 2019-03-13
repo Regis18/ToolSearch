@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultCommands {
-    private static List<Command> defaultCommands;
+    private List<Command> defaultCommands;
 
-    public static List<Command> addCommands() {
+    public List<Command> getDefaultCommands() {
+        return defaultCommands;
+    }
+
+    public List<Command> addDefaultCommands() {
         defaultCommands = new ArrayList<>();
         Command commandPath = new Command("-p", "path", "Path of the file or directory");
         Command commandFileName = new Command("-fn", "fileName", "Name of the file");
