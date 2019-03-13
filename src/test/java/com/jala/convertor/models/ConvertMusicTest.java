@@ -19,8 +19,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
+/**
+ * ConvertMusicTest
+ *
+ * @version 0.0.3
+ * @author Regis Humana
+ */
 public class ConvertMusicTest {
 
 	private String path = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\mMP3.mp3";
@@ -57,6 +61,7 @@ public class ConvertMusicTest {
 			System.out.println(e);
 		}
 	}
+
 	/**
 	 * Convert MP3 to AAC Advanced
 	 * Channel = mono
@@ -80,6 +85,11 @@ public class ConvertMusicTest {
 		}
 	}
 
+	/**
+	 * Verify the information of multimedia
+	 * @param path
+	 * @throws IOException
+	 */
 	public void verifyWithFfmpegProbe(String path) throws IOException {
 		FFprobe ffprobe = new FFprobe("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffprobe.exe");
 		System.out.println("Duracion: " + ffprobe.probe(path).getStreams().get(0).duration);

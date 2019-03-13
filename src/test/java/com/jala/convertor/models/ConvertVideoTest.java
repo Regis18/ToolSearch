@@ -19,6 +19,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ConvertVideoTest
+ *
+ * @version 0.0.3
+ * @author Regis Humana
+ */
 public class ConvertVideoTest {
 	private String path = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\Marvel.mp4";
 	private String pathDestination = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos";
@@ -39,6 +45,7 @@ public class ConvertVideoTest {
 			System.out.println(e);
 		}
 	}
+
 	/**
 	 * Convert MP4 to FLV advanced with only MONO
 	 */
@@ -95,6 +102,7 @@ public class ConvertVideoTest {
 			System.out.println(e);
 		}
 	}
+
 	/**
 	 * Convert MP4 to 3gp advanced with only resolution
 	 */
@@ -246,6 +254,7 @@ public class ConvertVideoTest {
 			System.out.println(e);
 		}
 	}
+
 	/**
 	 * Convert MP4 to mp3 advanced with only resolution
 	 */
@@ -264,6 +273,35 @@ public class ConvertVideoTest {
 			System.out.println(e);
 		}
 	}
+
+	/**
+	 * Convert MP4 to mp3 advanced with only resolution
+	 */
+	@Test
+	public void convert_ReturnMP4File_WhenSendAdvancedSentMP4File() {
+		path = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\mMP3.mp3";
+		ConvertVideo convert = new ConvertVideo();
+		CriteriaConverterVideo criteria = new CriteriaConverterVideo(path,pathDestination + "\\",".mp4");
+		criteria.setNewFileName("MP4File");
+		criteria.setIsAdvanced(true);
+		criteria.setAudioChannel("Stereo");
+		criteria.setVideoResolution("hd720");
+		criteria.setFrameRate(60.0);
+		criteria.setSampleRate(8000);
+		criteria.setBitRate(8000);
+		try {
+			convert.convert(criteria);
+			verifyWithFfmpegProbe(pathDestination + "\\" + criteria.getNewFileName() + ".mp4");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	/**
+	 * Verify the information of multimedia
+	 * @param path
+	 * @throws IOException
+	 */
 	public void verifyWithFfmpegProbe(String path) throws IOException {
 		FFprobe ffprobe = new FFprobe("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\ffmpeg\\bin\\ffprobe.exe");
 		System.out.println("Duracion: " + ffprobe.probe(path).getStreams().get(0).duration);

@@ -40,7 +40,7 @@ public class ConvertorImage implements IConvertible {
      */
     @Override
     public void convert(Object criteriaObject) {
-        CriteriaConverterImage criteriaConverter = (CriteriaConverterImage)criteriaObject;
+        CriteriaConverterImage criteriaConverter = (CriteriaConverterImage) criteriaObject;
         ConvertCmd convertCmd = new ConvertCmd();
         convertCmd.setSearchPath(IMAGE_MAGICK_PATH);
         existNewFileName(criteriaConverter);

@@ -18,6 +18,8 @@ import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
+
 /**
  * ConvertVideo
  *
@@ -25,7 +27,11 @@ import org.apache.log4j.Logger;
  * @author Regis Humana
  */
 public class ConvertVideo implements IConvertible{
+
+	/** It creates to follow up the instruction of the class*/
 	private Logger log = Logs.getInstance().getLog();
+
+	/** Store the path destination with the path of folder, name of file and the extension*/
 	private String pathDestination;
 
 	/**
@@ -33,7 +39,7 @@ public class ConvertVideo implements IConvertible{
 	 * @param criteriaObject
 	 */
 	public void convert(Object criteriaObject) {
-		CriteriaConverterVideo criteria = (CriteriaConverterVideo)criteriaObject;
+		CriteriaConverterVideo criteria = (CriteriaConverterVideo) criteriaObject;
 		try {
 			FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe");
 			FFmpegBuilder builder = new FFmpegBuilder();
@@ -45,7 +51,7 @@ public class ConvertVideo implements IConvertible{
 			} else {
 				convertAdvancedVideo(criteria, builder, fmpeg);
 			}
-		} catch (Exception error) {
+		} catch (IOException error) {
 			log.error("Error in ConvertVideo", error);
 		}
 	}
@@ -55,7 +61,6 @@ public class ConvertVideo implements IConvertible{
 	 * @param criteria
 	 * @param builder
 	 * @param fmpeg
-	 * @throws Exception
 	 */
 	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
 		try {
@@ -79,7 +84,7 @@ public class ConvertVideo implements IConvertible{
 			}
 			builder.addOutput(outputBuilder);
 			fmpeg.run(builder);
-		} catch (Exception error) {
+		} catch (IOException error) {
 			log.error("Error in ConvertAdvancedAudio", error);
 		}
 	}

@@ -35,8 +35,14 @@ public class CriteriaConverterVideo extends CriteriaConverter {
      */
     private double frameRate;
 
+    /**
+     * bitRate can be 4096, 8192, 32768, 98304, 131072, 199608, 320000
+     */
     private long bitRate;
 
+    /**
+     * sampleRate can be 8000, 11025, 12000, 16000, 22050, 32000, 44100, 48000, 96000
+     */
     private int sampleRate;
 
     /**
@@ -112,6 +118,7 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     public void setIsAdvanced(Boolean isAdvanced) {
         this.isAdvanced = isAdvanced;
     }
+
     /**
      * Return is the Advanced Converter
      * @return
@@ -120,18 +127,34 @@ public class CriteriaConverterVideo extends CriteriaConverter {
         return isAdvanced;
     }
 
+    /**
+     * Get bitRate
+     * @return long bitRate
+     */
     public long getBitRate() {
         return bitRate;
     }
 
+    /**
+     * Set bitRate
+     * @param bitRate long
+     */
     public void setBitRate(long bitRate) {
         this.bitRate = bitRate;
     }
 
+    /**
+     * Get sampleRate
+     * @return
+     */
     public int getSampleRate() {
         return sampleRate;
     }
 
+    /**
+     * Set sampleRate
+     * @param sampleRate
+     */
     public void setSampleRate(int sampleRate) {
         this.sampleRate = sampleRate;
     }

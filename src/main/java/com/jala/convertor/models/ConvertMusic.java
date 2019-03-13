@@ -18,6 +18,8 @@ import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
+
 /**
  * ConvertMusic
  *
@@ -51,7 +53,7 @@ public class ConvertMusic implements IConvertible {
 			} else {
 				convertAdvancedMusic(criteria, builder, fmpeg);
 			}
-		} catch (Exception error) {
+		} catch (IOException error) {
 			log.error("Error in ConvertMusic", error);
 		}
 	}
@@ -61,7 +63,6 @@ public class ConvertMusic implements IConvertible {
 	 * @param criteria
 	 * @param builder
 	 * @param fmpeg
-	 * @throws Exception
 	 */
 	private void convertAdvancedMusic(CriteriaConverterAudio criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
 		try {
@@ -79,7 +80,7 @@ public class ConvertMusic implements IConvertible {
 			}
 			builder.addOutput(outputBuilder);
 			fmpeg.run(builder);
-		} catch (Exception error) {
+		} catch (IOException error) {
 			log.error("Error in ConvertAdvancedMusic", error);
 		}
 	}
