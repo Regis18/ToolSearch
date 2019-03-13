@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.jala.utils.AssetFactory;
+import net.bramp.ffmpeg.FFprobe;
+import net.bramp.ffmpeg.probe.FFmpegProbeResult;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
@@ -41,6 +43,8 @@ public class SearchFile implements ISearchable {
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
 
+    private static String FFPROBE_PATH = SearchFile.class.getClassLoader()
+            .getResource("ThirdParty/ffmpeg/bin").getPath() + "ffprobe";
     /**
      * This method return a IAsset list by attributes of criteria.
      * @param criteria to do the search with the path is required and other attributes are optional.
@@ -90,9 +94,9 @@ public class SearchFile implements ISearchable {
                             continue;
                         }
                         if ((!sizeCriteria.isEmpty())) {
-                            if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > file.length()))
+                            if (criteria.isSizeCompareOption() && !(Double.parseDouble(sizeCriteria) > file.length()))
                                 continue;
-                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) <= file.length()))
+                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble(sizeCriteria) <= file.length()))
                                 continue;
                         }
                         if ((!nameCriteria.isEmpty()) && (!file.getName().contains(nameCriteria))) {
@@ -107,10 +111,43 @@ public class SearchFile implements ISearchable {
                         if((criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
                             continue;
                         }
-                        Asset asset = (Asset) AssetFactory.getAsset(file, criteria.getPath(), criteria.getFileName(),
-                                criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
-                                criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
-                        result.add(asset);
+
+                        //if(criteria.getType() == 0) {
+                            Asset asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(),
+                                    FilenameUtils.getExtension(file.getName()), file.isHidden(), fileOwner(file.getPath()), String.valueOf(file.length()), file.canWrite(),
+                                    criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom());
+                       //}
+                        /*
+                        if (criteria.getType() == 1)
+                        {
+
+
+                            try {
+
+
+                                FFprobe ffprobe = new FFprobe(FFPROBE_PATH);
+                                FFmpegProbeResult ffprobeResult;
+                                ffprobeResult = ffprobe.probe(file.getPath());
+                                if (!criteria.getFrameRate().equALS(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator()))
+                                     CONTINUEW
+
+                                    /* assetVideo.setVideoCodec(ffprobeResult.getStreams().get(0).codec_long_name);
+                                assetVideo.setAudioCodec(ffprobeResult.getStreams().get(0).codec_tag_string);
+                                assetVideo.setFrameRate(String.valueOf(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator()));
+                                assetVideo.setAspectRatio(ffprobeResult.getStreams().get(0).display_aspect_ratio);
+                                assetVideo.setDimentionWidth(String.valueOf(ffprobeResult.getStreams().get(0).width));
+                                assetVideo.setDimentionHeight(String.valueOf(ffprobeResult.getStreams().get(0).height));
+                                assetVideo.setAudioSampleRate(ffprobeResult.getStreams().get(0).sample_aspect_ratio);
+                                assetVideo.setDuration(String.valueOf(ffprobeResult.getStreams().get(0).duration));*/
+                           /* } catch (Exception ex) {
+
+                            }
+                            Asset asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(),
+                                    criteria.getExtension(), criteria.getHidden(), fileOwner(file.getPath()), criteria.getSize(), criteria.getReadonly(),
+                                    criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom(),ffprobeResult.getStreams().get(0).codec_long_name, );
+
+                        }*/
+                                result.add(asset);
                     }
                 }
             } catch (NullPointerException e) {

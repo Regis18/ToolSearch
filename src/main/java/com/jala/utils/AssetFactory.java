@@ -29,7 +29,6 @@ public class AssetFactory {
 
     /**
      * Constructor that create the type Asset Common
-     * @param file the file to the load
      * @param path of the file
      * @param fileName Name of the file
      * @param extension of the file
@@ -42,17 +41,25 @@ public class AssetFactory {
      * @param lastDate of the file
      * @return file convert a new asset
      */
-    public static Asset getAsset(File file, String path, String fileName, String extension,
-                                 TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
+    public static Asset getAsset(String path, String fileName, String extension,
+                                 boolean hidden, String owner, String size, boolean readOnly,
                                  String creationDate, String modificationDate, String lastDate) {
-        Asset newAssetVerify = new Asset();
-        loadFile(newAssetVerify, file);
-        return newAssetVerify;
+        Asset assetVerify = new Asset();
+        assetVerify.setFileName(fileName);
+        assetVerify.setPath(path);
+        assetVerify.setHidden(hidden);
+        assetVerify.setReadOnly(readOnly);
+        assetVerify.setExtension(extension);
+        assetVerify.setSize(size);
+        assetVerify.setOwner(SearchFile.fileOwner(owner));
+        assetVerify.setCreationDate(creationDate);
+        assetVerify.setModificationDate(modificationDate);
+        assetVerify.setLastDate(lastDate);
+        return assetVerify;
     }
 
     /**
      * Constructor that create the type Asset Video
-     * @param file the file to the load
      * @param path of the file
      * @param fileName Name of the file
      * @param extension of the file
@@ -66,16 +73,29 @@ public class AssetFactory {
      * @param videoCodec of the video
      * @param audioCodec of the video
      * @param frameRate of the video
-     * @param aspecRatio of the video
+     * @param aspectRatio of the video
      * @return file convert a new asset
      */
-    public static Asset getAsset(File file, String path, String fileName, String extension,
-                                 TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
+    public static Asset getAsset(String path, String fileName, String extension,
+                                 boolean hidden, String owner, String size, boolean readOnly,
                                  String creationDate, String modificationDate, String lastDate, String videoCodec,
-                                 String audioCodec, String frameRate, String aspecRatio) {
-            Asset newAssetVerify = new AssetVideo();
-        loadFileVideo((AssetVideo) newAssetVerify, file);
-        return newAssetVerify;
+                                 String audioCodec, String frameRate, String aspectRatio) {
+        Asset assetVerify = new AssetVideo();
+        assetVerify.setFileName(fileName);
+        assetVerify.setPath(path);
+        assetVerify.setHidden(hidden);
+        assetVerify.setReadOnly(readOnly);
+        assetVerify.setExtension(extension);
+        assetVerify.setSize(size);
+        assetVerify.setOwner(SearchFile.fileOwner(owner));
+        assetVerify.setCreationDate(creationDate);
+        assetVerify.setModificationDate(modificationDate);
+        assetVerify.setLastDate(lastDate);
+        ((AssetVideo) assetVerify).setVideoCodec(videoCodec);
+        ((AssetVideo) assetVerify).setAudioCodec(audioCodec);
+        ((AssetVideo) assetVerify).setAspectRatio(aspectRatio);
+        ((AssetVideo) assetVerify).setFrameRate(frameRate);
+        return assetVerify;
     }
 
     /**

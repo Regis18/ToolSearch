@@ -67,7 +67,7 @@ public class ExtractMetaDatas {
      * @param file the file to the load.
      */
     public static void loadFileVideo(AssetVideo assetVideo, File file) {
-        loadFileVideo(assetVideo, file);
+        //loadFileVideo(assetVideo, file);
         try {
             FFprobe ffprobe = new FFprobe(FFPROBE_PATH);
             FFmpegProbeResult ffprobeResult;
