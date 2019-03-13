@@ -31,7 +31,6 @@ import com.jala.utils.AssetFactory;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
-
 /**
  * SearchFile class.
  * @author Areliez Vargas
@@ -41,7 +40,6 @@ public class SearchFile implements ISearchable {
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
-
 
     /**
      * This method return a IAsset list by attributes of criteria.
@@ -60,79 +58,59 @@ public class SearchFile implements ISearchable {
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
                     if (file.isFile()) {
-<<<<<<< HEAD
-                        //convert of a file to asset.
-                        Asset asset = (Asset) AssetFactory.getAsset("Common", file, criteria.getPath(), criteria.getFileName(),
-                                criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
-                                criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
-                        String nameFile = ((Asset) asset).getFileName();
-                        String extensionFile = ((Asset) asset).getExtension();
-                        String sizeFile = ((Asset) asset).getSize();
-                        String nameCriteria = criteria.getFileName();
-                        String extensionCriteria = criteria.getExtension();
-                        String sizeCriteria = criteria.getSize();
-                        String ownerFile = ((Asset) asset).getOwner();
-                        String ownerCriteria = criteria.getOwner();
-                        String createDateFile = ((Asset) asset).getCreationDate();
-                        String modificationDateFile = ((Asset) asset).getModificationDate();
-                        String lastDateFile = ((Asset) asset).getLastDate();
-=======
 
                         String nameCriteria = criteria.getFileName();
                         String extensionCriteria = criteria.getExtension();
                         String sizeCriteria = criteria.getSize();
                         String ownerCriteria = criteria.getOwner();
->>>>>>> f0d3f574dfcee71ff6ca93be8ae49de547602a2d
+
                        // var aux.
                         if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(file.isHidden())) {
                             continue;
                         }
                         if (criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && (file.isHidden())) {
-                            addFileToResults = false;
+                            continue;
                         }
-                        if (addFileToResults && (!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
+                        if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
                             if(  ( Date.valueOf( fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom()) ))
                                     ||  ( Date.valueOf(fileCreationDate(file.getPath())).after(Date.valueOf(criteria.getCreationDateTo()))))
-
-                                addFileToResults = false;
+                                continue;
                         }
-                        if (addFileToResults && (!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
+                        if ((!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
                             if(  ( Date.valueOf(fileLastModifiedDate(file.getPath())).before(Date.valueOf(criteria.getModificationDateFrom()) ))
                                     ||  ( Date.valueOf(fileLastModifiedDate(file.getPath())).after(Date.valueOf(criteria.getModificationDateTo()) ))                           )
-                                addFileToResults = false;
+                                continue;
                         }
-                        if (addFileToResults && (!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
+                        if ((!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
                             if(  ( Date.valueOf(fileLastAccessDate(file.getPath())).before(Date.valueOf(criteria.getLastDateFrom()) ))
                                     ||  ( Date.valueOf(fileLastAccessDate(file.getPath())).after(Date.valueOf(criteria.getLastDateTo()) )))
-                                addFileToResults = false;
+                                continue;
                         }
-                        if (addFileToResults && (!ownerCriteria.isEmpty()) && (!fileOwner(file.getPath()).contains(ownerCriteria))) {
-                            addFileToResults = false;
+                        if ((!ownerCriteria.isEmpty()) && (!fileOwner(file.getPath()).contains(ownerCriteria))) {
+                            continue;
                         }
-                        if (addFileToResults && (!sizeCriteria.isEmpty())) {
+                        if ((!sizeCriteria.isEmpty())) {
                             if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > file.length()))
-                                addFileToResults = false;
+                                continue;
                             if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) <= file.length()))
-                                addFileToResults = false;
+                                continue;
                         }
-                        if (addFileToResults && (!nameCriteria.isEmpty()) && (!file.getName().contains(nameCriteria))) {
-                            addFileToResults = false;
+                        if ((!nameCriteria.isEmpty()) && (!file.getName().contains(nameCriteria))) {
+                            continue;
                         }
-                        if (addFileToResults && (!extensionCriteria.isEmpty()) && (!FilenameUtils.getExtension(file.getName()).equals(extensionCriteria))) {
-                            addFileToResults = false;
+                        if ((!extensionCriteria.isEmpty()) && (!FilenameUtils.getExtension(file.getName()).equals(extensionCriteria))) {
+                            continue;
                         }
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(!file.canWrite())) {
-                            addFileToResults = false;
+                        if((criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(!file.canWrite())) {
+                            continue;
                         }
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
-                            addFileToResults = false;
+                        if((criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
+                            continue;
                         }
-
                         Asset asset = (Asset) AssetFactory.getAsset(file, criteria.getPath(), criteria.getFileName(),
                                 criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
                                 criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
                         result.add(asset);
-
                     }
                 }
             } catch (NullPointerException e) {

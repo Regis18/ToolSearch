@@ -31,38 +31,6 @@ public class SearchVideo implements ISearchable{
     @Override
     public List<Asset> search(CriteriaSearch criteria) {
 
-        log.info("Searching on " + criteria.getPath());
-        List<Asset> result = new ArrayList<>();
-        File folder = new File(criteria.getPath());
-        if (folder.exists()) {
-            List<File> files = new ArrayList<File>();
-            SearchFile.GetAllFiles(folder, files);
-            try {
-                for (int i = 0; i < files.size(); i++) {
-                    File file = files.get(i);
-
-                    Asset asset = (Asset) AssetFactory.getAsset(file, criteria.getPath(), criteria.getFileName(),
-                            criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(), criteria.getReadonly(),
-                            criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom());
-
-                   // String videoCodec = ((AssetVideo) asset).getVideoCodec();
-                    //String videoCriteria = criteria.getVideoCodec();
-                    String extension = ((AssetVideo)asset).getExtension();
-                    String extensionCriteria = criteria.getExtension();
-
-                    boolean addVideoToResults = true;
-                    if (!extension.equals("mp4")) {
-                        addVideoToResults = false;
-                    }
-                    if (addVideoToResults) {
-                        result.add(asset);
-                    }
-                }
-
-            } catch (NullPointerException e) {
-                log.error("The video values shouldn't be null", e);
-            }
-        }
-        return result;
+        return null;
     }
 }
