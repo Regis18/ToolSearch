@@ -17,7 +17,7 @@ package com.jala.search.models;
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class AssetAudio {
+public class AssetAudio extends Asset {
     /**
      * Attributes of Audio.
      */

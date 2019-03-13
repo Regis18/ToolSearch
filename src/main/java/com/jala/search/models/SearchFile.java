@@ -14,12 +14,23 @@ package com.jala.search.models;
 
 import com.jala.utils.Logs;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileOwnerAttributeView;
+import java.nio.file.attribute.FileTime;
+import java.nio.file.attribute.UserPrincipal;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.jala.utils.AssetFactory;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+
 
 /**
  * SearchFile class.
@@ -30,6 +41,7 @@ public class SearchFile implements ISearchable {
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
+
 
     /**
      * This method return a IAsset list by attributes of criteria.
@@ -48,6 +60,7 @@ public class SearchFile implements ISearchable {
                 for (int i = 0; i < files.size(); i++) {
                     File file = files.get(i);
                     if (file.isFile()) {
+<<<<<<< HEAD
                         //convert of a file to asset.
                         Asset asset = (Asset) AssetFactory.getAsset("Common", file, criteria.getPath(), criteria.getFileName(),
                                 criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
@@ -63,60 +76,63 @@ public class SearchFile implements ISearchable {
                         String createDateFile = ((Asset) asset).getCreationDate();
                         String modificationDateFile = ((Asset) asset).getModificationDate();
                         String lastDateFile = ((Asset) asset).getLastDate();
+=======
+
+                        String nameCriteria = criteria.getFileName();
+                        String extensionCriteria = criteria.getExtension();
+                        String sizeCriteria = criteria.getSize();
+                        String ownerCriteria = criteria.getOwner();
+>>>>>>> f0d3f574dfcee71ff6ca93be8ae49de547602a2d
                        // var aux.
-                        boolean addFileToResults = true;
-                        if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !((Asset) asset).isHidden()) {
-                            addFileToResults = false;
+                        if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(file.isHidden())) {
+                            continue;
                         }
-                        if (addFileToResults && criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && asset.isHidden()) {
+                        if (criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && (file.isHidden())) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                                if(  ( Date.valueOf(createDateFile).before(Date.valueOf(criteria.getCreationDateFrom()) ))
-                                ||  ( Date.valueOf(createDateFile).after(Date.valueOf(criteria.getCreationDateTo()) ))
-                                )
+                            if(  ( Date.valueOf( fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom()) ))
+                                    ||  ( Date.valueOf(fileCreationDate(file.getPath())).after(Date.valueOf(criteria.getCreationDateTo()))))
+
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                            if(  ( Date.valueOf(modificationDateFile).before(Date.valueOf(criteria.getModificationDateFrom()) ))
-                                    ||  ( Date.valueOf(modificationDateFile).after(Date.valueOf(criteria.getModificationDateTo()) ))
-                            )
+                            if(  ( Date.valueOf(fileLastModifiedDate(file.getPath())).before(Date.valueOf(criteria.getModificationDateFrom()) ))
+                                    ||  ( Date.valueOf(fileLastModifiedDate(file.getPath())).after(Date.valueOf(criteria.getModificationDateTo()) ))                           )
                                 addFileToResults = false;
                         }
                         if (addFileToResults && (!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                            if(  ( Date.valueOf(lastDateFile).before(Date.valueOf(criteria.getLastDateFrom()) ))
-                                    ||  ( Date.valueOf(lastDateFile).after(Date.valueOf(criteria.getLastDateTo()) ))
-                            )
+                            if(  ( Date.valueOf(fileLastAccessDate(file.getPath())).before(Date.valueOf(criteria.getLastDateFrom()) ))
+                                    ||  ( Date.valueOf(fileLastAccessDate(file.getPath())).after(Date.valueOf(criteria.getLastDateTo()) )))
                                 addFileToResults = false;
                         }
-                        if (addFileToResults && (!ownerCriteria.isEmpty()) && (!ownerFile.contains(ownerCriteria))) {
+                        if (addFileToResults && (!ownerCriteria.isEmpty()) && (!fileOwner(file.getPath()).contains(ownerCriteria))) {
                             addFileToResults = false;
                         }
                         if (addFileToResults && (!sizeCriteria.isEmpty())) {
-                            if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > Double.parseDouble(sizeFile) ))
+                            if (criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) > file.length()))
                                 addFileToResults = false;
-                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) <= Double.parseDouble(sizeFile) ))
-                                addFileToResults = false;
-                        }
-                        if (addFileToResults && (!nameCriteria.isEmpty()) && (!nameFile.contains(nameCriteria))) {
-                            addFileToResults = false;
-                        }
-                        if (addFileToResults && (!extensionCriteria.isEmpty()) && (!extensionFile.equals(extensionCriteria))) {
-                            addFileToResults = false;
-                        }
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(asset).isReadOnly()) {
+                            if (!criteria.isSizeCompareOption() && !(Double.parseDouble( sizeCriteria) <= file.length()))
                                 addFileToResults = false;
                         }
-                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (asset).isReadOnly()) {
+                        if (addFileToResults && (!nameCriteria.isEmpty()) && (!file.getName().contains(nameCriteria))) {
                             addFileToResults = false;
                         }
-                        //video.
-                        if (criteria.getType() == 1) {
-                            //TODO verify video extension.
+                        if (addFileToResults && (!extensionCriteria.isEmpty()) && (!FilenameUtils.getExtension(file.getName()).equals(extensionCriteria))) {
+                            addFileToResults = false;
                         }
-                        if (addFileToResults) {
-                            result.add(asset);
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(!file.canWrite())) {
+                            addFileToResults = false;
                         }
+                        if(addFileToResults && (criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
+                            addFileToResults = false;
+                        }
+
+                        Asset asset = (Asset) AssetFactory.getAsset(file, criteria.getPath(), criteria.getFileName(),
+                                criteria.getExtension(), criteria.getHidden(), criteria.getOwner(), criteria.getSize(),criteria.getReadonly(),
+                                criteria.getCreationDateFrom(),criteria.getModificationDateFrom(), criteria.getLastDateFrom());
+                        result.add(asset);
+
                     }
                 }
             } catch (NullPointerException e) {
@@ -127,11 +143,87 @@ public class SearchFile implements ISearchable {
     }
 
     /**
+     * Get the file creation date.
+     * @param filePath the path of the file.
+     * @return the creation date of the file.
+     */
+    public static String fileCreationDate(String filePath){
+        File file = new File( filePath );
+        BasicFileAttributes attrs;
+        try {
+            attrs = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            FileTime time = attrs.creationTime();
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String formatted = simpleDateFormat.format( new java.util.Date( time.toMillis() ) );
+            return formatted;
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Get the file last access date.
+     * @param filePath the path of the file.
+     * @return the file date last access date.
+     */
+    public static String fileLastAccessDate(String filePath){
+        File file = new File( filePath );
+        BasicFileAttributes attrs;
+        try {
+            attrs = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            FileTime time = attrs.lastAccessTime();
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String formatted = simpleDateFormat.format( new java.util.Date( time.toMillis() ) );
+            return formatted ;
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Get the file last modified date.
+     * @param filePath the path of the file.
+     * @return the date of file the las modified date.
+     */
+    public static String fileLastModifiedDate(String filePath){
+        File file = new File( filePath );
+        BasicFileAttributes attrs;
+        try {
+            attrs = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            FileTime time = attrs.lastModifiedTime();
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            String formatted = simpleDateFormat.format( new java.util.Date( time.toMillis() ) );
+            return formatted ;
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    /**
+     * Get file owner.
+     * @param filePath the path of the file.
+     * @return the owner of the file.
+     */
+    public static String fileOwner(String filePath) {
+        Path path = Paths.get(filePath);
+        FileOwnerAttributeView ownerAttributeView = Files.getFileAttributeView(path, FileOwnerAttributeView.class);
+        try{
+            UserPrincipal owner = ownerAttributeView.getOwner();
+            return owner.getName();
+        }catch(java.io.IOException e){
+            return "";
+        }
+    }
+
+    /**
      * Search files recursively.
      * @param currentFile the starting file.
      * @param result list of files.
      */
-    private void GetAllFiles(File currentFile, List<File> result) {
+    static void GetAllFiles(File currentFile, List<File> result) {
         if (currentFile.isFile()) {
             result.add(currentFile);
         }else{
