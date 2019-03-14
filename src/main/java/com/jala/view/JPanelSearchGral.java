@@ -104,11 +104,14 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlNorth = pnlCriteria();
         this.add(pnlNorth, BorderLayout.NORTH);
 
-        JPanel pnlCentral = pnlButtonAdvanced();
+        /*JPanel pnlCentral = pnlButtonAdvanced();
         this.add(pnlCentral, BorderLayout.CENTER);
 
         JPanel pnlSouth = pnlTableResult();
-        this.add(pnlSouth, BorderLayout.SOUTH);
+        this.add(pnlSouth, BorderLayout.SOUTH);*/
+
+        JPanel pnlSouth = pnlTableResult();
+        this.add(pnlSouth, BorderLayout.CENTER);
     }
 
     /**

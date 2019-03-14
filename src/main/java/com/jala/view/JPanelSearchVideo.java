@@ -113,6 +113,7 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         cbExtension.addItem("WMV");
         constraintComponent(cbExtension, 3, 4, GridBagConstraints.WEST);
         btSerach = new JButton("Search");
+        btSerach.addActionListener(this);
         constraintComponent(btSerach, 3, 5, GridBagConstraints.EAST);
     }
 
@@ -164,6 +165,6 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        System.out.println("You are searching video files");
     }
 }

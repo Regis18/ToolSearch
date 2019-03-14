@@ -45,7 +45,7 @@ public class MainView extends JFrame implements ActionListener {
      * Constructor.
      */
     public MainView() {
-        setTitle("View Main");
+        setTitle("SolidWater");
     }
 
     /**
