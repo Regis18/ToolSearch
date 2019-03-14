@@ -15,10 +15,14 @@
 package com.jala.solidwater.console.controllers;
 
 import com.jala.search.models.Asset;
-import com.jala.solidwater.view.console.InputParameter;
+import com.jala.solidwater.console.models.Command;
+import com.jala.solidwater.console.models.CommandLine;
+import com.jala.solidwater.console.validators.ValidCommand;
+import com.jala.solidwater.console.validators.ValidCommandLine;
 import com.jala.solidwater.view.console.ModelConsole;
 import com.jala.solidwater.view.console.ViewConsole;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,10 +43,8 @@ public class ControllerConsole {
      */
     private ModelConsole modelConsole;
 
-    /**
-     * Criteria for validate the input parameter
-     */
-    private InputParameter inputParameter;
+    private CommandLine inputCommandLine;
+    private ValidCommandLine validCommandLine;
 
     /**
      * This method is the constructor of ControllerConsole to create an instance
@@ -51,16 +53,36 @@ public class ControllerConsole {
     public ControllerConsole(String[] parameters) {
         viewConsole = new ViewConsole();
         modelConsole = new ModelConsole();
-        inputParameter = new InputParameter();
+        validCommandLine = new ValidCommandLine();
         searchAsset(parameters);
     }
     private void searchAsset(String[] parameters) {
-
-        if (inputParameter.validateCommands(parameters)) {
-            List<Asset> assets = modelConsole.getSearch(parameters);
-           viewConsole.showAssets(assets);
+        createCommandLineInput(parameters);
+        if (validCommandLine.validate(inputCommandLine)) {
+            List<Asset> assets = modelConsole.getSearch(inputCommandLine);
+            viewConsole.showAssets(assets);
         } else {
-            viewConsole.printMessage(inputParameter.getMessage());
+            viewConsole.printMessage(validCommandLine.getMessage());
         }
+    }
+
+    private CommandLine createCommandLineInput(String[] input) {
+        List<Command> inputCommands = new ArrayList<>();
+        List<String> commandValues = new ArrayList<>();
+        for (int i = 0; i < input.length ; i += 2) {
+            Command inputCommand = new Command();
+            String valueCommand = "";
+            inputCommand.setAcronym(input[i]);
+            ValidCommand validCommand = new ValidCommand();
+            if(validCommand.validate(inputCommand)) {
+                inputCommands.add(inputCommand);
+                valueCommand = input[i+1];
+                commandValues.add(valueCommand);
+            } else {
+                i = input.length;
+            }
+        }
+        inputCommandLine = new CommandLine(inputCommands, commandValues);
+        return inputCommandLine;
     }
 }

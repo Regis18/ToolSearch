@@ -17,12 +17,9 @@ package com.jala.solidwater.view.console;
 import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
-import com.jala.solidwater.console.models.Command;
 import com.jala.solidwater.console.models.CommandLine;
-import com.jala.solidwater.console.validators.ValidCommand;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,59 +40,30 @@ public class ModelConsole {
      * @param inputCommandLine are valid data for the search
      * @return a Asset list that were find
      */
-    public List<Asset> getSearch(String[] inputCommandLine){
-        CommandLine commandLineentered = createCommandLine(inputCommandLine);
-        return getAsset(createMap(inputCommandLine));
-    }
-
-    /**
-     * @param inputCommandLine are all commands valid
-     * @return a Map with the key = command and value = value command.
-     */
-    private CommandLine createCommandLine(String[] inputCommandLine) {
-
-        List<Command> inputCommands = new ArrayList<>();
-        List<String> commandValues = new ArrayList<>();
-        for (int i = 0; i < inputCommandLine.length ; i += 2) {
-             Command inputCommand = new Command();
-             String valueCommand = "";
-             inputCommand.setAcronym(inputCommandLine[i]);
-             ValidCommand validCommand = new ValidCommand();
-             if(validCommand.validate(inputCommand)) {
-                 inputCommands.add(inputCommand);
-                 valueCommand = inputCommandLine[i+1];
-                 commandValues.add(valueCommand);
-             } else {
-                 i = inputCommandLine.length;
-             }
-
-
-        }
-        CommandLine commandLine = new CommandLine(inputCommands, commandValues);
-        return commandLine;
-    }
-    private Map<String, String> createMap(String[] inputCommands) {
-        Map<String, String> validCommandsInMap = new HashMap<>();
-        int positionKey, positionValue;
-        for (int i = 0; i < inputCommands.length ; i += 2) {
-            positionKey = i;
-            positionValue = positionKey + 1;
-            validCommandsInMap.put(inputCommands[positionKey], inputCommands[positionValue]);
-        }
-        return validCommandsInMap;
+    public List<Asset> getSearch(CommandLine inputCommandLine){
+        return getAsset(inputCommandLine);
     }
 
     /**
      * @param validCommand is a Map with all valid commands.
      * @return a Asset list with the criteria of search.
      */
-    private List<Asset> getAsset(Map<String, String> validCommand) {
+    private List<Asset> getAsset(CommandLine validCommand) {
 
         ArrayList<Asset> listFileSearch = new ArrayList<>();
-        CriteriaSearch criteria = new CriteriaSearch(validCommand.get("-p"));
-        isCommandValueNull(validCommand, criteria, FILE_NAME_COMMAND);
+        int postPath = validCommand.getPositionOfCommandByAcronym("-p");
+
+        String valuePath = "";
+        try {
+            valuePath = validCommand.getValueCommands().get(postPath);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("error : " + e);
+        }
+        CriteriaSearch criteria = new CriteriaSearch(valuePath);
+
+        /*isCommandValueNull(validCommand, criteria, FILE_NAME_COMMAND);
         isCommandValueNull(validCommand, criteria, EXTENSION_COMMAND);
-        isCommandValueNull(validCommand, criteria, SIZE_COMMAND);
+        isCommandValueNull(validCommand, criteria, SIZE_COMMAND);*/
         SearchFile searchFile = new SearchFile();
         try {
             listFileSearch = new ArrayList<>(searchFile.search(criteria));
