@@ -44,7 +44,7 @@ public class ControllerConvertVideo implements ActionListener {
 
     /**
      * This constructor of class.
-     * @param viewConvert object of UI Panel for convert video.
+     * @param viewConvert object of UI Panel for convert video and audio.
      */
     public ControllerConvertVideo(JPanelConverterVideo viewConvert) {
         log.info("Initialize the Control of Search General");
@@ -62,7 +62,6 @@ public class ControllerConvertVideo implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         log.info("Action Detected");
         if (event.getSource() == viewConvert.getBtnConvertVideo()) {
-            System.out.println("Hola boton controller");
             if (viewConvert.isVideo()) {
                 log.info("BtnConvert from Search General was pressed");
                 sendPathToConvertVideo();
@@ -78,7 +77,7 @@ public class ControllerConvertVideo implements ActionListener {
      * and that method convert the Video.
      */
     private void sendPathToConvertVideo() {
-        log.info("Preparing to send criteria converter to ConvertImage");
+        log.info("Preparing to send criteria converter to ConvertVideo");
         ConvertVideo converterVideo = new ConvertVideo();
         saveCriteriaVideo();
         converterVideo.convert(criteriaConverterVideo);
@@ -89,7 +88,7 @@ public class ControllerConvertVideo implements ActionListener {
      * and that method convert the Audio.
      */
     private void sendPathToConvertAudio() {
-        log.info("Preparing to send criteria converter to ConvertImage");
+        log.info("Preparing to send criteria converter to ConvertAudio");
         ConvertMusic converterAudio = new ConvertMusic();
         saveCriteriaAudio();
         converterAudio.convert(criteriaConverterAudio);
