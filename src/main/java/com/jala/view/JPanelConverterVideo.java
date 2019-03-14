@@ -147,6 +147,10 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         }
     }
 
+    public JButton getBtnConvertVideo() {
+        return btnConvertVideo;
+    }
+
     /**
      * Class constructor.
      * @param borderLayout
