@@ -203,5 +203,4 @@ public class SearchFileTest {
         List<Asset> assetList = sf.search(cr);
         assertEquals("C:\\prog102\\ToolSearch\\Academy.mp4", assetList.get(0).getPath());
     }
-
 }
