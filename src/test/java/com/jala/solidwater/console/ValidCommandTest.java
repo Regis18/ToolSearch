@@ -17,7 +17,7 @@ public class ValidateCommandTest {
     }
 
     @Test
-    public void validCommandSendingACommandNotValid() {
+    public void validCommandSendingACommandThatNotExitInDefaultCommands() {
         Command command = new Command();
         command.setAcronym("-cut");
         ValidateCommand validateCommand = new ValidateCommand();
