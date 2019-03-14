@@ -1,6 +1,6 @@
 package com.jala.solidwater.console;
 
-import com.jala.solidwater.view.console.models.Command;
+import com.jala.solidwater.console.models.Command;
 import com.jala.solidwater.console.validators.ValidCommand;
 import org.junit.Test;
 

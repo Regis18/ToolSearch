@@ -1,7 +1,7 @@
 package com.jala.solidwater.console.validators;
 
-import com.jala.solidwater.view.console.models.Command;
-import com.jala.solidwater.view.console.models.DefaultCommands;
+import com.jala.solidwater.console.models.Command;
+import com.jala.solidwater.console.models.DefaultCommands;
 
 /**
  * ValidCommand class will validate if the commands that entered are valid.
@@ -17,7 +17,7 @@ public class ValidCommand implements IValidable<Command> {
         boolean isCommandValid = false;
         if (command.getAcronym().startsWith("-")) {
 
-            defaultCommands.addDefaultCommands();
+            defaultCommands.createDefaultCommands();
             Command defaultComand = new Command();
             for (int i = 0; i < defaultCommands.getDefaultCommands().size(); i++) {
                  defaultComand = defaultCommands.getDefaultCommands().get(i);

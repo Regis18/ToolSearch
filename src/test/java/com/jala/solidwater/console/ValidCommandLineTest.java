@@ -1,7 +1,7 @@
 package com.jala.solidwater.console;
 
-import com.jala.solidwater.view.console.models.Command;
-import com.jala.solidwater.view.console.models.CommandLine;
+import com.jala.solidwater.console.models.Command;
+import com.jala.solidwater.console.models.CommandLine;
 import com.jala.solidwater.console.validators.ValidCommandLine;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class ValidCommandLineTest {
     List<Command> commands;
     List<String> values;
-   // CommandLine commandLine;
+
     @Before
     public void setup(){
         commands = new ArrayList<>();

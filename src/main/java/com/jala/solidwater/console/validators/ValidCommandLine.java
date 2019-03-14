@@ -1,6 +1,6 @@
 package com.jala.solidwater.console.validators;
 
-import com.jala.solidwater.view.console.models.CommandLine;
+import com.jala.solidwater.console.models.CommandLine;
 
 public class ValidCommandLine implements IValidable<CommandLine> {
     @Override
