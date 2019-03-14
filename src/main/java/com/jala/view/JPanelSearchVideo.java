@@ -12,11 +12,16 @@
 
 package com.jala.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Component;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /**
  * JPanelSearchVideo class
@@ -44,39 +49,18 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         lbAudioCod = new JLabel("Audio Codec: ");
         constraintComponent(lbAudioCod, 0, 4, GridBagConstraints.EAST);
         cbFramRat = new JComboBox();
-        cbFramRat.addItem("SELECT");
-        cbFramRat.addItem("30");
-        cbFramRat.addItem("25");
-        cbFramRat.addItem("27");
-        cbFramRat.addItem("60");
-        cbFramRat.addItem("29.7");
-        cbFramRat.addItem("24");
-        cbFramRat.addItem("24.976");
+        String[] myFrameRat = {"SELECT", "24", "24.976", "25", "27", "29.7", "30", "60"};
+        addItemsComboBox(myFrameRat, cbFramRat);
         constraintComponent(cbFramRat, 1, 2, GridBagConstraints.WEST);
         cbVideoCod = new JComboBox();
-        cbVideoCod.addItem("SELECT");
-        cbVideoCod.addItem("H.264/MPEG-4 AVC");
-        cbVideoCod.addItem("H.265/MPEG-H HEVC");
-        cbVideoCod.addItem("H.263/MPEG-4 parte2 codecs");
-        cbVideoCod.addItem("H.262/MPEG-2 codecs");
-        cbVideoCod.addItem("MPEG-1");
-        cbVideoCod.addItem("WMV");
-        cbVideoCod.addItem("MJPEG");
-        cbVideoCod.addItem("DV and HDV");
-        cbVideoCod.addItem("MPEG-2");
-        cbVideoCod.addItem("Microsoft VC-1");
+        String[] myVideoCod = {"SELECT", "H.264/MPEG-4 AVC", "H.265/MPEG-H HEVC", "H.263/MPEG-4 parte2 codecs",
+                    "H.262/MPEG-2 codecs", "MPEG-1", "WMV", "MJPEG", "DV and HDV", "MPEG-2", "Microsoft VC-1"};
+        addItemsComboBox(myVideoCod, cbVideoCod);
         constraintComponent(cbVideoCod, 1, 3, GridBagConstraints.WEST);
         cbAudioCod = new JComboBox();
-        cbAudioCod.addItem("SELECT");
-        cbAudioCod.addItem("WAV");
-        cbAudioCod.addItem("FLAC");
-        cbAudioCod.addItem("MP3");
-        cbAudioCod.addItem("WMA");
-        cbAudioCod.addItem("ALAC");
-        cbAudioCod.addItem("Ogg Vorbis");
-        cbAudioCod.addItem("AAC");
-        cbAudioCod.addItem("AIFF");
-        cbAudioCod.addItem("DSD");
+        String[] myAudioCod = {"SELECT", "WAV", "FLAC", "MP3", "WMA", "MPEG-1", "WMV", "ALAC", "Ogg Vorbis",
+                                "AAC", "AIFF", "DSD"};
+        addItemsComboBox(myAudioCod, cbAudioCod);
         constraintComponent(cbAudioCod, 1, 4, GridBagConstraints.WEST);
         lbAspectRadio = new JLabel("Aspect Ratio: ");
         constraintComponent(lbAspectRadio, 2, 2, GridBagConstraints.EAST);
@@ -86,35 +70,31 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         lbExtension = new JLabel("Extension: ");
         constraintComponent(lbExtension, 2, 4, GridBagConstraints.EAST);
         cbAspectRadio = new JComboBox();
-        cbAspectRadio.addItem("SELECT");
-        cbAspectRadio.addItem("5:4");
-        cbAspectRadio.addItem("4:3");
-        cbAspectRadio.addItem("3:2");
-        cbAspectRadio.addItem("16:10");
-        cbAspectRadio.addItem("16:9");
-        cbAspectRadio.addItem("1.85:1");
-        cbAspectRadio.addItem("1.35:1");
+        String[] myAspectRatio = {"SELECT", "3:2", "4:3", "5:4", "16:9", "16:10", "1.35:1", "1.85:1"};
+        addItemsComboBox(myAspectRatio, cbAspectRadio);
         constraintComponent(cbAspectRadio, 3, 2, GridBagConstraints.WEST);
         cbDimention = new JComboBox();
-        cbDimention.addItem("SELECT");
-        cbDimention.addItem("400/300");
-        cbDimention.addItem("1280/750");
-        cbDimention.addItem("1000/780");
-        cbDimention.addItem("400/300");
-        cbDimention.addItem("400/300");
+        String[] myDimention = {"SELECT", "400/300", "1280/750", "1000/780"};
+        addItemsComboBox(myDimention, cbDimention);
         constraintComponent(cbDimention, 3, 3, GridBagConstraints.WEST);
         cbExtension = new JComboBox();
-        cbExtension.addItem("SELECT");
-        cbExtension.addItem("FLV");
-        cbExtension.addItem("AVI");
-        cbExtension.addItem("MOV");
-        cbExtension.addItem("MP4");
-        cbExtension.addItem("MPG");
-        cbExtension.addItem("WMV");
+        String[] myExtension = {"SELECT", "FLV", "AVI", "MOV", "MP4", "MPG", "WMV"};
+        addItemsComboBox(myExtension, cbExtension);
         constraintComponent(cbExtension, 3, 4, GridBagConstraints.WEST);
         btSerach = new JButton("Search");
         btSerach.addActionListener(this);
         constraintComponent(btSerach, 3, 5, GridBagConstraints.EAST);
+    }
+
+    /**
+     * This method add items in combo box
+     * @param myItems are data for add at cbFrameRat
+     * @param cbFramRat is a data where add items
+     */
+    private void addItemsComboBox(String[] myItems, JComboBox cbFramRat) {
+        for (String item : myItems) {
+            cbFramRat.addItem(item);
+        }
     }
 
     /**
