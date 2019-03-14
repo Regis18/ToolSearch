@@ -53,7 +53,7 @@ public class JPanelSearchAdvancVideo extends JPanel{
         panelSearchVideo = new JPanelSearchVideo();
         TitledBorder attributeBorder = BorderFactory.createTitledBorder(border, "Attributes");
         panelSearchVideo.setBorder(attributeBorder);
-        this.add(panelSearchVideo, BorderLayout.EAST);
+        this.add(panelSearchVideo, BorderLayout.CENTER);
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
     }

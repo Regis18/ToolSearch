@@ -95,30 +95,30 @@ public class JPanelSearchVideo extends JPanel {
     }
 
     /**
-     * Section of getter methods
+     * Section of getter methods for get String values
      */
-    public JComboBox getCmbFrameRat() {
-        return cmbFrameRat;
+    public String getCmbFrameRat() {
+        return cmbFrameRat.getSelectedItem().toString();
     }
 
-    public JComboBox getCmbVideoCod() {
-        return cmbVideoCod;
+    public String getCmbVideoCod() {
+        return cmbVideoCod.getSelectedItem().toString();
     }
 
-    public JComboBox getCmbAudioCod() {
-        return cmbAudioCod;
+    public String getCmbAudioCod() {
+        return cmbAudioCod.getSelectedItem().toString();
     }
 
-    public JComboBox getCmbAspectRadio() {
-        return cmbAspectRadio;
+    public String getCmbAspectRadio() {
+        return cmbAspectRadio.getSelectedItem().toString();
     }
 
-    public JComboBox getCmbDimension() {
-        return cmbDimension;
+    public String getCmbDimension() {
+        return cmbDimension.getSelectedItem().toString();
     }
 
-    public JComboBox getCmbExtension() {
-        return cmbExtension;
+    public String getCmbExtension() {
+        return cmbExtension.getSelectedItem().toString();
     }
 
     /**
