@@ -12,6 +12,7 @@
 
 package com.jala.solidwater.console.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +33,10 @@ public class CommandLine {
      */
     private List<String> values;
 
+    public  CommandLine() {
+        commands = new ArrayList<>();
+        values = new ArrayList<>();
+    }
     /**
      * This constructor allows instance a command line sending a command list and command value list.
      *
@@ -39,7 +44,9 @@ public class CommandLine {
      * @param values   to create the list of command value.
      */
     public CommandLine(List<Command> commands, List<String> values) {
+
         this.commands = commands;
+
         this.values = values;
     }
 
@@ -77,5 +84,17 @@ public class CommandLine {
      */
     public void setValueCommands(List<String> values) {
         this.values = values;
+    }
+
+    public int getPositionOfCommandByAcronym(String acronym) {
+        int positionOfCommand = -1;
+        for (int i = 0; i < commands.size(); i++) {
+            Command command = commands.get(i);
+            if (command.getAcronym().equals(acronym)) {
+                positionOfCommand = i;
+                i = commands.size();
+            }
+        }
+        return positionOfCommand;
     }
 }
