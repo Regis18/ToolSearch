@@ -1,4 +1,4 @@
-package com.jala.solidwater.view.console.validators;
+package com.jala.solidwater.console.validators;
 
 /**
  * This interface allows validate.

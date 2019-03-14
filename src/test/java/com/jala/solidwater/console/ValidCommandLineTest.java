@@ -2,7 +2,7 @@ package com.jala.solidwater.console;
 
 import com.jala.solidwater.view.console.models.Command;
 import com.jala.solidwater.view.console.models.CommandLine;
-import com.jala.solidwater.view.console.validators.ValidCommandLine;
+import com.jala.solidwater.console.validators.ValidCommandLine;
 import org.junit.Before;
 import org.junit.Test;
 
