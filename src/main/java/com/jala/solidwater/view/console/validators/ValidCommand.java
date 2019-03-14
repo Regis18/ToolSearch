@@ -4,12 +4,12 @@ import com.jala.solidwater.view.console.models.Command;
 import com.jala.solidwater.view.console.models.DefaultCommands;
 
 /**
- * ValidateCommand class will validate if the commands that entered are valid.
+ * ValidCommand class will validate if the commands that entered are valid.
  *
  * @author Areliez Vargas.
  * @version 0.0.1
  */
-public class ValidateCommand implements IValidable<Command> {
+public class ValidCommand implements IValidable<Command> {
     private DefaultCommands defaultCommands = new DefaultCommands();
 
     @Override
