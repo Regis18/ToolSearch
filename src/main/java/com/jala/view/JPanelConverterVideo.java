@@ -42,11 +42,11 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private JLabel lblSeparatorSpace, lblSeparatorSpace2, lblBitRate, lblSampleRate, lblTypeConversion;
     private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertVideo;
-    private ButtonGroup typeOfAudioChannel, selectTypeConvertor;
+    private ButtonGroup typeOfAudioChannel, selectTypeConverter;
     private JComboBox cmbVideoResolution, cmbFrameRate, cmbExtension, cmbBitRate, cmbSampleRate;
     private JRadioButton radioStereo, radioMono, radioConvertVideo, radioConvertAudio;
     private JCheckBox chkOptionAdvanced;
-    private GridBagLayout esquema;
+    private GridBagLayout gridBag;
     private GridBagConstraints constraints;
     private Border border;
 
@@ -182,9 +182,9 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * Method that creates the components of the graphical interface.
      */
     private void initComponents() {
-        esquema = new GridBagLayout();
+        gridBag = new GridBagLayout();
         constraints = new GridBagConstraints();
-        setLayout(esquema);
+        setLayout(gridBag);
 
         lblTypeConversion = new JLabel("Type Conversion:");
         addComponent(lblTypeConversion, 0, 0, 1, 1);
@@ -332,9 +332,9 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         typeOfAudioChannel.add(radioStereo);
         typeOfAudioChannel.add(radioMono);
 
-        selectTypeConvertor = new ButtonGroup();
-        selectTypeConvertor.add(radioConvertAudio);
-        selectTypeConvertor.add(radioConvertVideo);
+        selectTypeConverter = new ButtonGroup();
+        selectTypeConverter.add(radioConvertAudio);
+        selectTypeConverter.add(radioConvertVideo);
 
         btnPathOriginFile = new JButton("Search File");
         btnPathOriginFile.addActionListener(this);
