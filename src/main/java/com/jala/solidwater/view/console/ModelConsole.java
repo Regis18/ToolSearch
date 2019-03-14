@@ -17,7 +17,9 @@ package com.jala.solidwater.view.console;
 import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
-import com.jala.solidwater.view.console.models.Command;
+import com.jala.solidwater.console.models.Command;
+import com.jala.solidwater.console.models.CommandLine;
+import com.jala.solidwater.console.validators.ValidCommand;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,19 +40,19 @@ public class ModelConsole {
     private static final String SIZE_COMMAND = "-s";
     
     /**
-     * @param validCommands are valid data for the search
+     * @param inputCommandLine are valid data for the search
      * @return a Asset list that were find
      */
-    public List<Asset> getSearch(String[] validCommands){
-        Command.CommandLine commandLineentered = createCommandLine(validCommands);
-        return getAsset(createMap(validCommands));
+    public List<Asset> getSearch(String[] inputCommandLine){
+        CommandLine commandLineentered = createCommandLine(inputCommandLine);
+        return getAsset(createMap(inputCommandLine));
     }
 
     /**
      * @param inputCommandLine are all commands valid
      * @return a Map with the key = command and value = value command.
      */
-    private Command.CommandLine createCommandLine(String[] inputCommandLine) {
+    private CommandLine createCommandLine(String[] inputCommandLine) {
 
         List<Command> inputCommands = new ArrayList<>();
         List<String> commandValues = new ArrayList<>();
@@ -58,12 +60,18 @@ public class ModelConsole {
              Command inputCommand = new Command();
              String valueCommand = "";
              inputCommand.setAcronym(inputCommandLine[i]);
-             inputCommands.add(inputCommand);
-             valueCommand = inputCommandLine[i+1];
-             commandValues.add(valueCommand);
+             ValidCommand validCommand = new ValidCommand();
+             if(validCommand.validate(inputCommand)) {
+                 inputCommands.add(inputCommand);
+                 valueCommand = inputCommandLine[i+1];
+                 commandValues.add(valueCommand);
+             } else {
+                 i = inputCommandLine.length;
+             }
+
 
         }
-        Command.CommandLine commandLine = new Command.CommandLine(inputCommands, commandValues);
+        CommandLine commandLine = new CommandLine(inputCommands, commandValues);
         return commandLine;
     }
     private Map<String, String> createMap(String[] inputCommands) {
