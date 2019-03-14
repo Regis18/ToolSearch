@@ -25,10 +25,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * ControllerMain
- * It controls the MainView
- * @version 0.0.1
- * @author Regis Humana
+ * ControllerMain.
+ * It controls the MainView.
+ * @version 0.0.1.
+ * @author Regis Humana.
  */
 public class ControllerMain implements ActionListener {
 
@@ -39,8 +39,8 @@ public class ControllerMain implements ActionListener {
     private MainView viewApp;
 
     /**
-     * Create a constructor of Main Controller
-     * @param viewApp
+     * Create a constructor of Main Controller.
+     * @param viewApp object for main view for UI.
      */
     public ControllerMain(MainView viewApp) {
         log.info("Initialize the Controller of MainView");
@@ -48,7 +48,7 @@ public class ControllerMain implements ActionListener {
     }
 
     /**
-     * Loading the UI and Initialize the listener of the menu items
+     * Loading the UI and Initialize the listener of the menu items.
      */
     public void initView() {
         log.info("Loading of the MainView from Controller");
@@ -59,7 +59,7 @@ public class ControllerMain implements ActionListener {
     }
 
     /**
-     * Initialize the action listener of the menu item of exit and item general, and Container Listener
+     * Initialize the action listener of the menu item of exit and item general, and Container Listener.
      */
     private void actionsListener() {
         log.info("Initialize actions listener in ControllerMain");
@@ -82,15 +82,21 @@ public class ControllerMain implements ActionListener {
                 	new ControllerConvertVideo(viewApp.getPanelConverterVideo().getJPanelVideo());
                 }
             }
+
+            /**
+             * Removed panel.
+             * @param event event for component removed.
+             */
             @Override
             public void componentRemoved(ContainerEvent event) {
+                log.info("Panel removed");
             }
         });
     }
 
     /**
-     * This method listens the an action that was performed
-     * @param event
+     * This method listens the an action that was performed.
+     * @param event event for menu item.
      */
     @Override
     public void actionPerformed(ActionEvent event) {
