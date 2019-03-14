@@ -28,10 +28,10 @@ import java.awt.Insets;
  * @version 0.0.1
  */
 public class JPanelSearchVideo extends JPanel {
-    private JLabel lblFramRat, lblVideoCod,
-            lblAudioCod, lblAspectRadio, lblDimension, lblExtension;
+    private JLabel lblFramRate, lblVideoCodec,
+            lblAudioCodec, lblAspectRatio, lblDimension, lblExtension;
     private JButton btnSearch;
-    private JComboBox cmbFrameRat, cmbVideoCod, cmbAudioCod, cmbAspectRadio,
+    private JComboBox cmbFrameRate, cmbVideoCodec, cmbAudioCodec, cmbAspectRatio,
             cmbDimension, cmbExtension;
 
     /**
@@ -40,37 +40,37 @@ public class JPanelSearchVideo extends JPanel {
     public JPanelSearchVideo() {
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        lblFramRat = new JLabel("Frame Rate: ");
-        constraintComponent(lblFramRat, 0, 2, GridBagConstraints.EAST);
-        lblVideoCod = new JLabel("Video Codec: ");
-        constraintComponent(lblVideoCod, 0, 3, GridBagConstraints.EAST);
-        lblAudioCod = new JLabel("Audio Codec: ");
-        constraintComponent(lblAudioCod, 0, 4, GridBagConstraints.EAST);
-        cmbFrameRat = new JComboBox();
+        lblFramRate = new JLabel("Frame Rate: ");
+        constraintComponent(lblFramRate, 0, 2, GridBagConstraints.EAST);
+        lblVideoCodec = new JLabel("Video Codec: ");
+        constraintComponent(lblVideoCodec, 0, 3, GridBagConstraints.EAST);
+        lblAudioCodec = new JLabel("Audio Codec: ");
+        constraintComponent(lblAudioCodec, 0, 4, GridBagConstraints.EAST);
+        cmbFrameRate = new JComboBox();
         String[] myFrameRat = {"SELECT", "24", "24.976", "25", "27", "29.7", "30", "60"};
-        addItemsComboBox(myFrameRat, cmbFrameRat);
-        constraintComponent(cmbFrameRat, 1, 2, GridBagConstraints.WEST);
-        cmbVideoCod = new JComboBox();
+        addItemsComboBox(myFrameRat, cmbFrameRate);
+        constraintComponent(cmbFrameRate, 1, 2, GridBagConstraints.WEST);
+        cmbVideoCodec = new JComboBox();
         String[] myVideoCod = {"SELECT", "H.264/MPEG-4 AVC", "H.265/MPEG-H HEVC", "H.263/MPEG-4 parte2 codecs",
                     "H.262/MPEG-2 codecs", "MPEG-1", "WMV", "MJPEG", "DV and HDV", "MPEG-2", "Microsoft VC-1"};
-        addItemsComboBox(myVideoCod, cmbVideoCod);
-        constraintComponent(cmbVideoCod, 1, 3, GridBagConstraints.WEST);
-        cmbAudioCod = new JComboBox();
+        addItemsComboBox(myVideoCod, cmbVideoCodec);
+        constraintComponent(cmbVideoCodec, 1, 3, GridBagConstraints.WEST);
+        cmbAudioCodec = new JComboBox();
         String[] myAudioCod = {"SELECT", "WAV", "FLAC", "MP3", "WMA", "MPEG-1", "WMV", "ALAC", "Ogg Vorbis",
                                 "AAC", "AIFF", "DSD"};
-        addItemsComboBox(myAudioCod, cmbAudioCod);
-        constraintComponent(cmbAudioCod, 1, 4, GridBagConstraints.WEST);
-        lblAspectRadio = new JLabel("Aspect Ratio: ");
-        constraintComponent(lblAspectRadio, 2, 2, GridBagConstraints.EAST);
+        addItemsComboBox(myAudioCod, cmbAudioCodec);
+        constraintComponent(cmbAudioCodec, 1, 4, GridBagConstraints.WEST);
+        lblAspectRatio = new JLabel("Aspect Ratio: ");
+        constraintComponent(lblAspectRatio, 2, 2, GridBagConstraints.EAST);
         lblDimension = new JLabel("Dimension: ");
         constraintComponent(lblDimension, 2, 3, GridBagConstraints.EAST);
-        cmbAspectRadio = new JComboBox();
+        cmbAspectRatio = new JComboBox();
         lblExtension = new JLabel("Extension: ");
         constraintComponent(lblExtension, 2, 4, GridBagConstraints.EAST);
-        cmbAspectRadio = new JComboBox();
+        cmbAspectRatio = new JComboBox();
         String[] myAspectRatio = {"SELECT", "3:2", "4:3", "5:4", "16:9", "16:10", "1.35:1", "1.85:1"};
-        addItemsComboBox(myAspectRatio, cmbAspectRadio);
-        constraintComponent(cmbAspectRadio, 3, 2, GridBagConstraints.WEST);
+        addItemsComboBox(myAspectRatio, cmbAspectRatio);
+        constraintComponent(cmbAspectRatio, 3, 2, GridBagConstraints.WEST);
         cmbDimension = new JComboBox();
         String[] myDimention = {"SELECT", "400/300", "1280/750", "1000/780"};
         addItemsComboBox(myDimention, cmbDimension);
@@ -97,20 +97,20 @@ public class JPanelSearchVideo extends JPanel {
     /**
      * Section of getter methods for get String values
      */
-    public String getCmbFrameRat() {
-        return cmbFrameRat.getSelectedItem().toString();
+    public String getCmbFrameRate() {
+        return cmbFrameRate.getSelectedItem().toString();
     }
 
-    public String getCmbVideoCod() {
-        return cmbVideoCod.getSelectedItem().toString();
+    public String getCmbVideoCodec() {
+        return cmbVideoCodec.getSelectedItem().toString();
     }
 
-    public String getCmbAudioCod() {
-        return cmbAudioCod.getSelectedItem().toString();
+    public String getCmbAudioCodec() {
+        return cmbAudioCodec.getSelectedItem().toString();
     }
 
-    public String getCmbAspectRadio() {
-        return cmbAspectRadio.getSelectedItem().toString();
+    public String getCmbAspectRatio() {
+        return cmbAspectRatio.getSelectedItem().toString();
     }
 
     public String getCmbDimension() {
