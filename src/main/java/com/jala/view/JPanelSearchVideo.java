@@ -22,7 +22,8 @@ import java.awt.Component;
 import java.awt.Insets;
 
 /**
- * JPanelSearchVideo class
+ * JPanelSearchVideo class is the panel with new attributes
+ * for to do search advanced video.
  *
  * @author Raúl Choque
  * @version 0.0.1
@@ -72,8 +73,8 @@ public class JPanelSearchVideo extends JPanel {
         addItemsComboBox(myAspectRatio, cmbAspectRatio);
         constraintComponent(cmbAspectRatio, 3, 2, GridBagConstraints.WEST);
         cmbDimension = new JComboBox();
-        String[] myDimention = {"SELECT", "400/300", "1280/750", "1000/780"};
-        addItemsComboBox(myDimention, cmbDimension);
+        String[] myDimension = {"SELECT", "400/300", "1280/750", "1000/780"};
+        addItemsComboBox(myDimension, cmbDimension);
         constraintComponent(cmbDimension, 3, 3, GridBagConstraints.WEST);
         cmbExtension = new JComboBox();
         String[] myExtension = {"SELECT", "FLV", "AVI", "MOV", "MP4", "MPG", "WMV"};
@@ -86,37 +87,52 @@ public class JPanelSearchVideo extends JPanel {
     /**
      * This method add items in combo box
      * @param myItems are data for add at cbFrameRat
-     * @param cbFramRat is a data where add items
+     * @param cmb is a data where add items
      */
-    private void addItemsComboBox(String[] myItems, JComboBox cbFramRat) {
+    private void addItemsComboBox(String[] myItems, JComboBox cmb) {
         for (String item : myItems) {
-            cbFramRat.addItem(item);
+            cmb.addItem(item);
         }
     }
 
     /**
-     * Section of getter methods for get String values
+     * The getCmbFrameRate method get String of ComboBox selected
      */
     public String getCmbFrameRate() {
         return cmbFrameRate.getSelectedItem().toString();
     }
 
+    /**
+     * The getCmbVideoCodec method get String of ComboBox selected
+     */
     public String getCmbVideoCodec() {
         return cmbVideoCodec.getSelectedItem().toString();
     }
 
+    /**
+     * The getCmbAudioCodec method get String of ComboBox selected
+     */
     public String getCmbAudioCodec() {
         return cmbAudioCodec.getSelectedItem().toString();
     }
 
+    /**
+     * The getCmbAspectRatio method get String of ComboBox selected
+     */
     public String getCmbAspectRatio() {
         return cmbAspectRatio.getSelectedItem().toString();
     }
 
+    /**
+     * The getCmbDimension method get String of ComboBox selected
+     */
     public String getCmbDimension() {
         return cmbDimension.getSelectedItem().toString();
     }
 
+    /**
+     * The getCmbExtension method get String of ComboBox selected
+     */
     public String getCmbExtension() {
         return cmbExtension.getSelectedItem().toString();
     }

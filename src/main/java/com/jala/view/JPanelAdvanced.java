@@ -58,10 +58,10 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     }
 
     /**
-     * The getTxfExtension method get the data txtExtension
+     * The getTxtFieldExtension method get the data txtExtension
      * @return a component JTextField type
      */
-    public JTextField getTxfExtension() {
+    public JTextField getTxtFieldExtension() {
         return txtExtension;
     }
 
@@ -88,7 +88,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     public String getTxtExtension() {
         return txtExtension.getText().toString();
     }
-
 
     /**
      * Gets the content from txtOwner.

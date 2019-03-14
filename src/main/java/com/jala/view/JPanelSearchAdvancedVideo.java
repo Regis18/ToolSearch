@@ -20,13 +20,14 @@ import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 
 /**
- * JPanelSearchAdvancVideo class
+ * JPanelSearchAdvancedVideo class is the panel to do
+ * the search advanced video
  *
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class JPanelSearchAdvancVideo extends JPanel{
-    private JPanelAdvanced panelAdvancSearch;
+public class JPanelSearchAdvancedVideo extends JPanel{
+    private JPanelAdvanced panelAdvanceSearch;
     private JPanelSearchVideo panelSearchVideo;
     private JTableResult tblResult;
     private Border border;
@@ -34,7 +35,7 @@ public class JPanelSearchAdvancVideo extends JPanel{
     /**
      * This is the constructor method for create an instance
      */
-    public JPanelSearchAdvancVideo() {
+    public JPanelSearchAdvancedVideo() {
         initComponent();
     }
 
@@ -43,13 +44,13 @@ public class JPanelSearchAdvancVideo extends JPanel{
      */
     private void initComponent() {
         setLayout(new BorderLayout());
-        panelAdvancSearch = new JPanelAdvanced(new BorderLayout());
+        panelAdvanceSearch = new JPanelAdvanced(new BorderLayout());
         TitledBorder advancedBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
-        panelAdvancSearch.setBorder(advancedBorder);
-        panelAdvancSearch.getBtnSearch().setVisible(false);
-        panelAdvancSearch.getTxfExtension().setVisible(false);
-        panelAdvancSearch.getLblExtension().setVisible(false);
-        this.add(panelAdvancSearch, BorderLayout.WEST);
+        panelAdvanceSearch.setBorder(advancedBorder);
+        panelAdvanceSearch.getBtnSearch().setVisible(false);
+        panelAdvanceSearch.getTxtFieldExtension().setVisible(false);
+        panelAdvanceSearch.getLblExtension().setVisible(false);
+        this.add(panelAdvanceSearch, BorderLayout.WEST);
         panelSearchVideo = new JPanelSearchVideo();
         TitledBorder attributeBorder = BorderFactory.createTitledBorder(border, "Attributes");
         panelSearchVideo.setBorder(attributeBorder);

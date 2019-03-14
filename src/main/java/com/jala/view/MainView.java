@@ -37,7 +37,7 @@ public class MainView extends JFrame implements ActionListener {
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
-    private JPanelSearchAdvancVideo pnlSearchAdvancedVideo;
+    private JPanelSearchAdvancedVideo pnlSearchAdvancedVideo;
     private JPanelConverter panelConverterImage;
     private JPanelVideo panelConverterVideo;
     private String currentPanel;
@@ -238,7 +238,7 @@ public class MainView extends JFrame implements ActionListener {
         }
         if (event.getSource() == menuItemSearchVideo) {
             if (currentPanel != "SearchAdvancedVideo") {
-                pnlSearchAdvancedVideo = new JPanelSearchAdvancVideo();
+                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
                 content.removeAll();
                 content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
                 currentPanel = "SearchAdvancedVideo";
