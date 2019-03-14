@@ -12,9 +12,11 @@
 
 package com.jala.view;
 
-
-import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Component;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -338,7 +340,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     /**
      * Method that adds components to the GridBagConstraints.
      */
-    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY) {
+    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX, int sizeFieldY) {
         constraints.gridx = sizeX;
         constraints.gridy = sizeY;
         constraints.gridwidth = sizeFieldX;
