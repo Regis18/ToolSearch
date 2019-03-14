@@ -12,9 +12,12 @@
  * with Jala Foundation.
  */
 
-package com.jala.solidwater.view.console;
+package com.jala.solidwater.console.controllers;
 
 import com.jala.search.models.Asset;
+import com.jala.solidwater.view.console.InputParameter;
+import com.jala.solidwater.view.console.ModelConsole;
+import com.jala.solidwater.view.console.ViewConsole;
 
 import java.util.List;
 
