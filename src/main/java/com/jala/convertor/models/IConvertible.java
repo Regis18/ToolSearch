@@ -15,14 +15,15 @@ package com.jala.convertor.models;
 /**
  * Interface allows that other classes can implement distinct form of conversion.
  *
- * @version 0.0.1
+ * @version 0.0.3
  * @author Areliez Vargas
+ * @author Regis Humana
  */
-public interface IConvertible {
+public interface IConvertible <T> {
 
     /**
-     * This method allows changes an image by criteria set.
+     * This method allows changes an image by whatever object.
      * @param criteriaConverter to convert.
      */
-    void convert(CriteriaConverterImage criteriaConverter);
+    <T> void convert(T criteriaConverter);
 }
