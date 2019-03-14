@@ -1,19 +1,22 @@
 package com.jala.solidwater.view.console.validators;
 
-import com.jala.solidwater.view.console.models.Command;
+import com.jala.solidwater.view.console.models.CommandLine;
 
-public class ValidCommandLine implements IValidable<Command.CommandLine> {
+public class ValidCommandLine implements IValidable<CommandLine> {
     @Override
-    public boolean validate(Command.CommandLine commandLine) {
+    public boolean validate(CommandLine commandLine) {
         boolean validCommandLine = false;
         if (commandLine.getCommands().size() == commandLine.getValueCommands().size()) {
-            exitCommandPath("-p", commandLine);
-            validCommandLine = true;
+            if (exitCommandPath("-p", commandLine)) {
+                validCommandLine = true;
+            } else {
+                validCommandLine = validCommandLine;
+            }
         }
         return validCommandLine;
     }
 
-    private boolean exitCommandPath(String commandPath, Command.CommandLine commandLine) {
+    private boolean exitCommandPath(String commandPath, CommandLine commandLine) {
         boolean exist = true;
         for (int j = 0 ; j < commandLine.getCommands().size(); j++) {
             try {
@@ -29,19 +32,4 @@ public class ValidCommandLine implements IValidable<Command.CommandLine> {
         }
         return exist;
     }
-
-   /* private boolean areCommandsValid(List<Command> inputCommand) {
-        boolean doTheyValid = false;
-        for (int i = 0; i < inputCommand.size(); i++) {
-            String command = (String) inputCommand.get(i);
-            if (existCommand(command, validCommands)) {
-                doTheyValid = true;
-            } else {
-                doTheyValid = false;
-                notValidCommands = command;
-                i = inputCommand.size();
-            }
-        }
-        return doTheyValid;
-    }*/
 }
