@@ -189,12 +189,12 @@ public class MainView extends JFrame implements ActionListener {
 
     /**
      * The method actionPerformed receives the event of MenuItem Search General.
-     * @param e, evento del MenuItem.
+     * @param event, evento del MenuItem.
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
         Container content = getContentPane();
-        if (e.getSource() == menuItemGeneral) {
+        if (event.getSource() == menuItemGeneral) {
             if (currentPanel != "SearchGral") {
                 pnlSearchGral = new JPanelSearchGral(new BorderLayout());
                 content.removeAll();
@@ -204,7 +204,7 @@ public class MainView extends JFrame implements ActionListener {
                 this.repaint();
             }
         }
-        if (e.getSource() == menuItemAdvanced) {
+        if (event.getSource() == menuItemAdvanced) {
             if (currentPanel != "SearchAdvanced") {
                 pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
                 content.removeAll();
@@ -214,7 +214,7 @@ public class MainView extends JFrame implements ActionListener {
                 this.repaint();
             }
         }
-        if (e.getSource() == menuItemConverter) {
+        if (event.getSource() == menuItemConverter) {
             panelConverterImage = new JPanelConverter(new BorderLayout());
             content.removeAll();
             content.add(panelConverterImage, BorderLayout.CENTER);
@@ -222,7 +222,7 @@ public class MainView extends JFrame implements ActionListener {
             this.validate();
             this.repaint();
         }
-        if (e.getSource() == menuItemConverterVideo) {
+        if (event.getSource() == menuItemConverterVideo) {
             panelConverterVideo = new JPanelVideo(new BorderLayout());
             content.removeAll();
             content.add(panelConverterVideo, BorderLayout.CENTER);
