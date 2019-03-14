@@ -55,7 +55,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return TxtPathFileOrigin, the content of the TxtPathFileOrigin text field.
      */
     public String getTxtPathFileOrigin() {
-        return txtPathFileOrigin.getText().toString();
+        return txtPathFileOrigin.getText();
     }
 
     /**
@@ -63,7 +63,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return TxtFolderDestiny, the content of the TxtFolderDestiny text field.
      */
     public String getTxtFolderDestiny() {
-        return txtFolderDestiny.getText().toString();
+        return txtFolderDestiny.getText();
     }
 
     /**
@@ -71,7 +71,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return TxtFileName, the content of the TxtFileName text field.
      */
     public String getTxtFileName() {
-        return txtFileName.getText().toString();
+        return txtFileName.getText();
     }
 
     /**
@@ -87,7 +87,11 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return comboFrameRate, the selected comboBox element.
      */
     public Double getComboFrameRate() {
-        return Double.parseDouble(comboFrameRate.getSelectedItem().toString());
+        double send = 0;
+        if (comboFrameRate.getSelectedItem() != "") {
+            send = Double.parseDouble(comboFrameRate.getSelectedItem().toString());
+        }
+        return send;
     }
 
     /**
@@ -103,7 +107,11 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return comboBitRate, the selected comboBox element.
      */
     public Long getComboBitRate() {
-        return Long.parseLong(separateValues(comboBitRate.getSelectedItem().toString())) * 1024;
+        long send = 0;
+        if (comboBitRate.getSelectedItem() != "") {
+            send = Long.parseLong(separateValues(comboBitRate.getSelectedItem().toString())) * 1024;
+        }
+        return send;
     }
 
     /**
@@ -111,7 +119,11 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return comboSampleRate, the selected comboBox element
      */
     public int getComboSampleRate() {
-        return Integer.parseInt(separateValues(comboSampleRate.getSelectedItem().toString()));
+        int send = 0;
+        if (comboSampleRate.getSelectedItem() != "") {
+            send = Integer.parseInt(separateValues(comboSampleRate.getSelectedItem().toString()));
+        }
+        return send;
     }
 
     /**
@@ -416,14 +428,14 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
             }
         }
 
-        if (e.getSource() == btnConvertVideo) {
+        /*if (e.getSource() == btnConvertVideo) {
             System.out.println(""+getComboExtension());
             System.out.println(""+getComboVideoResolution());
             System.out.println(""+getTxtFileName());
             System.out.println(""+getComboBitRate());
             System.out.println(""+getComboFrameRate());
             System.out.println(""+getComboSampleRate());
-        }
+        }*/
     }
 
     /**

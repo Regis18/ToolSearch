@@ -56,6 +56,10 @@ public class MainView extends JFrame implements ActionListener {
         return pnlSearchGral;
     }
 
+    public JPanelVideo getPanelConverterVideo() {
+        return panelConverterVideo;
+    }
+
     /**
      * Return the panel where is the Search Advanced.
      * @return Advanced Search Panel .

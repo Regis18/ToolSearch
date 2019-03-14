@@ -62,10 +62,11 @@ public class ControllerConvertVideo implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         log.info("Action Detected");
         if (event.getSource() == viewConvert.getBtnConvertVideo()) {
+            System.out.println("Hola boton controller");
             if (viewConvert.isVideo()) {
                 log.info("BtnConvert from Search General was pressed");
                 sendPathToConvertVideo();
-            }else{
+            } else {
                 log.info("BtnConvert from Search General was pressed");
                 sendPathToConvertAudio();
             }
@@ -78,9 +79,9 @@ public class ControllerConvertVideo implements ActionListener {
      */
     private void sendPathToConvertVideo() {
         log.info("Preparing to send criteria converter to ConvertImage");
-        ConvertVideo convertorVideo = new ConvertVideo();
+        ConvertVideo converterVideo = new ConvertVideo();
         saveCriteriaVideo();
-        convertorVideo.convert(criteriaConverterVideo);
+        converterVideo.convert(criteriaConverterVideo);
     }
 
     /**
@@ -89,9 +90,9 @@ public class ControllerConvertVideo implements ActionListener {
      */
     private void sendPathToConvertAudio() {
         log.info("Preparing to send criteria converter to ConvertImage");
-        ConvertMusic convertorAudio = new ConvertMusic();
+        ConvertMusic converterAudio = new ConvertMusic();
         saveCriteriaAudio();
-        convertorAudio.convert(criteriaConverterAudio);
+        converterAudio.convert(criteriaConverterAudio);
     }
 
     /**
@@ -107,7 +108,7 @@ public class ControllerConvertVideo implements ActionListener {
         double bitRate = viewConvert.getComboBitRate();
         int sampleRate = viewConvert.getComboSampleRate();
         boolean isAdvanced = viewConvert.isAdvanced();
-        String audioChannel = viewConvert.isStereo()? "Stereo" :"Mono";
+        String audioChannel = viewConvert.isStereo()? "Stereo" : "Mono";
         criteriaConverterVideo = new CriteriaConverterVideo(pathOrigin, pathDestiny + "\\", "." + extension);
         criteriaConverterVideo.setNewFileName(fileName);
         criteriaConverterVideo.setVideoResolution(resolution);
@@ -128,7 +129,7 @@ public class ControllerConvertVideo implements ActionListener {
         String extension = viewConvert.getComboExtension();
         double bitRate = viewConvert.getComboBitRate();
         int sampleRate = viewConvert.getComboSampleRate();
-        String audioChannel = viewConvert.isStereo()? "Stereo" :"Mono";
+        String audioChannel = viewConvert.isStereo() ? "Stereo" : "Mono";
         criteriaConverterAudio = new CriteriaConverterAudio(pathOrigin, pathDestiny + "\\", "." + extension);
         criteriaConverterAudio.setNewFileName(fileName);
         criteriaConverterAudio.setBitRate((long)bitRate);
