@@ -26,7 +26,7 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     private String videoResolution;
 
     /**
-     * Audio channel can be stereo or mono
+     * Audio channel can be Stereo or Mono
      */
     private String audioChannel;
 
@@ -34,10 +34,22 @@ public class CriteriaConverterVideo extends CriteriaConverter {
      * The frame rate can be 30, 60, 29.97, 24, 24.976 fps
      */
     private double frameRate;
+
     /**
-     *
+     * bitRate can be 4096, 8192, 32768, 98304, 131072, 199608, 320000
+     */
+    private long bitRate;
+
+    /**
+     * sampleRate can be 8000, 11025, 12000, 16000, 22050, 32000, 44100, 48000, 96000
+     */
+    private int sampleRate;
+
+    /**
+     * Determinate if the converter is advanced.
      */
     private boolean isAdvanced;
+
     /**
      * Accepts criteria path origin, destination and extension.
      * @param path
@@ -50,6 +62,8 @@ public class CriteriaConverterVideo extends CriteriaConverter {
         frameRate = 0;
         audioChannel = "";
         videoResolution = "";
+        bitRate = 0;
+        sampleRate = 0;
     }
 
     /**
@@ -104,6 +118,7 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     public void setIsAdvanced(Boolean isAdvanced) {
         this.isAdvanced = isAdvanced;
     }
+
     /**
      * Return is the Advanced Converter
      * @return
@@ -111,4 +126,37 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     public Boolean getIsAdvanced() {
         return isAdvanced;
     }
+
+    /**
+     * Get bitRate
+     * @return long bitRate
+     */
+    public long getBitRate() {
+        return bitRate;
+    }
+
+    /**
+     * Set bitRate
+     * @param bitRate long
+     */
+    public void setBitRate(long bitRate) {
+        this.bitRate = bitRate;
+    }
+
+    /**
+     * Get sampleRate
+     * @return
+     */
+    public int getSampleRate() {
+        return sampleRate;
+    }
+
+    /**
+     * Set sampleRate
+     * @param sampleRate
+     */
+    public void setSampleRate(int sampleRate) {
+        this.sampleRate = sampleRate;
+    }
+
 }

@@ -16,11 +16,9 @@ import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelSearchGral;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.List;
 
 /**
