@@ -44,7 +44,7 @@ public class SearchFile implements ISearchable {
     private Logger log = Logs.getInstance().getLog();
 
     private static String FFPROBE_PATH = SearchFile.class.getClassLoader()
-            .getResource("ThirdParty/ffmpeg/bin").getPath() + "ffprobe";
+            .getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffprobe.exe";
     /**
      * This method return a IAsset list by attributes of criteria.
      * @param criteria to do the search with the path is required and other attributes are optional.
@@ -76,18 +76,18 @@ public class SearchFile implements ISearchable {
                             continue;
                         }
                         if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                            if(  ( Date.valueOf(fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom()) ))
+                            if ((Date.valueOf(fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom())))
                                     ||  ( Date.valueOf(fileCreationDate(file.getPath())).after(Date.valueOf(criteria.getCreationDateTo()))))
                                 continue;
                         }
                         if ((!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                            if(  ( Date.valueOf(fileLastModifiedDate(file.getPath())).before(Date.valueOf(criteria.getModificationDateFrom()) ))
+                            if ((Date.valueOf(fileLastModifiedDate(file.getPath())).before(Date.valueOf(criteria.getModificationDateFrom())))
                                     ||  ( Date.valueOf(fileLastModifiedDate(file.getPath())).after(Date.valueOf(criteria.getModificationDateTo()) ))                           )
                                 continue;
                         }
                         if ((!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                            if(  ( Date.valueOf(fileLastAccessDate(file.getPath())).before(Date.valueOf(criteria.getLastDateFrom()) ))
-                                    ||  ( Date.valueOf(fileLastAccessDate(file.getPath())).after(Date.valueOf(criteria.getLastDateTo()) )))
+                            if ((Date.valueOf(fileLastAccessDate(file.getPath())).before(Date.valueOf(criteria.getLastDateFrom())))
+                                    ||  (Date.valueOf(fileLastAccessDate(file.getPath())).after(Date.valueOf(criteria.getLastDateTo()))))
                                 continue;
                         }
                         if ((!ownerCriteria.isEmpty()) && (!fileOwner(file.getPath()).contains(ownerCriteria))) {
@@ -105,50 +105,68 @@ public class SearchFile implements ISearchable {
                         if ((!extensionCriteria.isEmpty()) && (!FilenameUtils.getExtension(file.getName()).equals(extensionCriteria))) {
                             continue;
                         }
-                        if((criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(!file.canWrite())) {
+                        if ((criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(!file.canWrite())) {
                             continue;
                         }
-                        if((criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
+                        if ((criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!file.canWrite())) {
                             continue;
                         }
-
-                        //if(criteria.getType() == 0) {
-                            Asset asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(),
-                                     FilenameUtils.getExtension(file.getName()), file.isHidden(), fileOwner(file.getPath()), String.valueOf(file.length()), file.canWrite(),
+                        Asset asset = new Asset();
+                        if (criteria.getType() == "common") {
+                              asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(), FilenameUtils.getExtension(file.getName()),
+                                     file.isHidden(), fileOwner(file.getPath()), String.valueOf(file.length()), file.canWrite(),
                                      fileCreationDate(file.getPath()), fileLastModifiedDate(file.getPath()), fileLastAccessDate(file.getPath()));
-                        /*}
+                        }
 
-                        if (criteria.getType() == 1)
+                        if (criteria.getType() == "video")
                         {
+                            CriteriaSearchMultimedia criteriaSearchVideo = (CriteriaSearchMultimedia) criteria;
+                            FFprobe ffprobe;
+                            FFmpegProbeResult ffprobeResult;
                             try {
-
-                                FFprobe ffprobe = new FFprobe(FFPROBE_PATH);
-                                FFmpegProbeResult ffprobeResult;
+                                ffprobe = new FFprobe(FFPROBE_PATH);
                                 ffprobeResult = ffprobe.probe(file.getPath());
-                                if (!criteria.getFrameRate().equals(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator())) {
-                                    continue;
+                                System.out.println("path " + file.getPath());
+                                boolean resultSearchVideo = true;
+
+                                if (resultSearchVideo && !(criteriaSearchVideo.getFrameRate()).equals(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator())) {
+                                    resultSearchVideo = false;
+                                    System.out.println("FrameRate " + ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator());
                                 }
-                                if () {
+                                if (!resultSearchVideo && !(criteriaSearchVideo.getVideoCodec()).equals(ffprobeResult.getStreams().get(0).codec_long_name)) {
+                                    resultSearchVideo = false;
+                                    System.out.println("VideoCodec " + ffprobeResult.getStreams().get(0).codec_long_name);
+                                }
+                                if (!resultSearchVideo && !(criteriaSearchVideo.getAudioCodec()).equals(ffprobeResult.getStreams().get(0).codec_tag_string)) {
+                                    resultSearchVideo = false;
+                                    System.out.println("AudioCodec " + ffprobeResult.getStreams().get(0).codec_tag_string);
+                                }
+                                if (!resultSearchVideo && !(criteriaSearchVideo.getAspectRatio().equals(ffprobeResult.getStreams().get(0).display_aspect_ratio))) {
+                                    resultSearchVideo = false;
+                                    System.out.println("AspectRatio " + ffprobeResult.getStreams().get(0).display_aspect_ratio);
+                                }
+                                if (!resultSearchVideo && !(criteriaSearchVideo.getAudioSampleRate().equals(ffprobeResult.getStreams().get(0).sample_aspect_ratio))) {
+                                    resultSearchVideo = false;
+                                    System.out.println("AudioSampleRate " + ffprobeResult.getStreams().get(0).sample_aspect_ratio);
+                                }
+                                if (!resultSearchVideo && !(criteriaSearchVideo.getDuration().equals(ffprobeResult.getStreams().get(0).duration))) {
+                                    resultSearchVideo = false;
+                                    System.out.println("Duration " + ffprobeResult.getStreams().get(0).duration);
+                                }
+                                if (!resultSearchVideo) {
+                                    asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(), FilenameUtils.getExtension(file.getName()),
+                                            file.isHidden(), fileOwner(file.getPath()), String.valueOf(file.length()), file.canWrite(),
+                                            fileCreationDate(file.getPath()), fileLastModifiedDate(file.getPath()), fileLastAccessDate(file.getPath()),
+                                            ffprobeResult.getStreams().get(0).codec_long_name, ffprobeResult.getStreams().get(0).codec_tag_string,
+                                            String.valueOf(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator()), ffprobeResult.getStreams().get(0).display_aspect_ratio,
+                                            ffprobeResult.getStreams().get(0).sample_aspect_ratio, String.valueOf(ffprobeResult.getStreams().get(0).duration));
+                                }
 
-                                }*/
-
-                                    /* assetVideo.setVideoCodec(ffprobeResult.getStreams().get(0).codec_long_name);
-                                assetVideo.setAudioCodec(ffprobeResult.getStreams().get(0).codec_tag_string);
-                                assetVideo.setFrameRate(String.valueOf(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator()));
-                                assetVideo.setAspectRatio(ffprobeResult.getStreams().get(0).display_aspect_ratio);
-                                assetVideo.setDimentionWidth(String.valueOf(ffprobeResult.getStreams().get(0).width));
-                                assetVideo.setDimentionHeight(String.valueOf(ffprobeResult.getStreams().get(0).height));
-                                assetVideo.setAudioSampleRate(ffprobeResult.getStreams().get(0).sample_aspect_ratio);
-                                assetVideo.setDuration(String.valueOf(ffprobeResult.getStreams().get(0).duration));*/
-                           /* } catch (Exception ex) {
-                                log.error("The criteria values shouldn't be null", ex);
+                            } catch (IOException ex) {
+                                log.error("The criteria values shouldn't be null...", ex);
                             }
-                            Asset asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(),
-                                    criteria.getExtension(), criteria.getHidden(), fileOwner(file.getPath()), criteria.getSize(), criteria.getReadonly(),
-                                    criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom(),ffprobeResult.getStreams().get(0).codec_long_name, );
 
-                        }*/
-
+                        }
                             result.add(asset);
                     }
                 }

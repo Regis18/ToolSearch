@@ -79,7 +79,7 @@ public class AssetFactory {
     public static Asset getAsset(String path, String fileName, String extension,
                                  boolean hidden, String owner, String size, boolean readOnly,
                                  String creationDate, String modificationDate, String lastDate, String videoCodec,
-                                 String audioCodec, String frameRate, String aspectRatio) {
+                                 String audioCodec, String frameRate, String aspectRatio, String audioSampleRate, String duration) {
         Asset assetVerify = new AssetVideo();
         assetVerify.setFileName(fileName);
         assetVerify.setPath(path);
@@ -95,6 +95,8 @@ public class AssetFactory {
         ((AssetVideo) assetVerify).setAudioCodec(audioCodec);
         ((AssetVideo) assetVerify).setAspectRatio(aspectRatio);
         ((AssetVideo) assetVerify).setFrameRate(frameRate);
+        ((AssetVideo) assetVerify).setFrameRate(audioSampleRate);
+        ((AssetVideo) assetVerify).setFrameRate(duration);
         return assetVerify;
     }
 

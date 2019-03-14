@@ -83,7 +83,7 @@ public class CriteriaSearch extends Criteria {
     /**
      * Type of criteria (video, audio, image, common, etc).
      */
-    private int type;
+    private String type;
 
     /**
      * Constructor of the CriteriaSearch class.
@@ -197,7 +197,7 @@ public class CriteriaSearch extends Criteria {
      *
      * @return The type of search used.
      */
-    public int getType() {
+    public String getType() {
         return type;
     }
 
@@ -206,7 +206,7 @@ public class CriteriaSearch extends Criteria {
      *
      * @param type The type of search used.
      */
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

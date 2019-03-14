@@ -12,10 +12,7 @@
 
 package com.jala.test;
 
-import com.jala.search.models.Asset;
-import com.jala.search.models.CriteriaSearch;
-import com.jala.search.models.SearchFile;
-import com.jala.search.models.TernaryBooleanEnum;
+import com.jala.search.models.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,6 +37,7 @@ public class SearchFileTest {
     public void searchFileName() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
         cr.setFileName("hosts");
+        cr.setType("common");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals("c:\\Windows\\System32\\drivers\\etc\\hosts", assetList.get(0).getPath());
@@ -52,6 +50,7 @@ public class SearchFileTest {
     public void searchExtension() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
         cr.setExtension("sam");
+        cr.setType("common");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals("c:\\Windows\\System32\\drivers\\etc\\lmhosts.sam", assetList.get(0).getPath());
@@ -64,6 +63,7 @@ public class SearchFileTest {
     public void searchHiddenAll() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
         cr.setHidden(TernaryBooleanEnum.ALL);
+        cr.setType("common");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals("c:\\Windows\\System32\\drivers\\etc\\hosts", assetList.get(0).getPath());
@@ -76,6 +76,7 @@ public class SearchFileTest {
     public void searchHiddenOnlyTrue() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
         cr.setReadonly(TernaryBooleanEnum.OnlyTrue);
+        cr.setType("common");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(0, assetList.size());
@@ -88,6 +89,7 @@ public class SearchFileTest {
     public void searchReadOnlyAll() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
         cr.setReadonly(TernaryBooleanEnum.ALL);
+        cr.setType("common");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(5, assetList.size());
@@ -100,6 +102,7 @@ public class SearchFileTest {
     public void searchOwner() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Search");
         cr.setOwner("LAPTOP-B31P03EN\\Melvi");
+       cr.setType("common");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(3, assetList.size());
@@ -167,4 +170,38 @@ public class SearchFileTest {
         List<Asset> assetList = sf.search(cr);
         assertEquals(3, assetList.size());
     }
+
+    /**
+     * Test return the number of file with the a last date.
+     */
+    @Test
+    public void searchVideoMp4() {
+        CriteriaSearchMultimedia cr = new CriteriaSearchMultimedia("C:\\prog102\\ToolSearch");
+        cr.setExtension("mp4");
+        cr.setType("video");
+        SearchFile sf = new SearchFile();
+        List<Asset> assetList = sf.search(cr);
+        assertEquals("C:\\prog102\\ToolSearch\\Academy.mp4", assetList.get(0).getPath());
+    }
+
+    @Test
+    public void searchFileMp4() {
+        CriteriaSearch cr = new CriteriaSearch("C:\\prog102\\ToolSearch");
+        cr.setExtension("mp4");
+        cr.setType("common");
+        SearchFile sf = new SearchFile();
+        List<Asset> assetList = sf.search(cr);
+        assertEquals("C:\\prog102\\ToolSearch\\Academy.mp4", assetList.get(0).getPath());
+    }
+
+    @Test
+    public void searchVideoVideoCodec() {
+        CriteriaSearchMultimedia cr = new CriteriaSearchMultimedia("C:\\prog102\\ToolSearch");
+        cr.setVideoCodec("H.264");
+        cr.setType("video");
+        SearchFile sf = new SearchFile();
+        List<Asset> assetList = sf.search(cr);
+        assertEquals("C:\\prog102\\ToolSearch\\Academy.mp4", assetList.get(0).getPath());
+    }
+
 }

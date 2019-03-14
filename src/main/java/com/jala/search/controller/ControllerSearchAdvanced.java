@@ -18,7 +18,6 @@ import com.jala.search.models.TernaryBooleanEnum;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelSearchAdvanced;
 import org.apache.log4j.Logger;
-
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,6 +95,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd());
         criteriaSearch.setSize(convertSize());
         criteriaSearch.setSizeCompareOption(!viewAdvanced.getJPanelAdvanced().isMajorThanFile());
+        criteriaSearch.setType("common");
         log.info("Information saved");
     }
 
