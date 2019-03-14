@@ -12,8 +12,11 @@
 
 package com.jala.view;
 
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Component;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -39,11 +42,11 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private JLabel lblSeparatorSpace, lblSeparatorSpace2, lblBitRate, lblSampleRate, lblTypeConversion;
     private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertVideo;
-    private ButtonGroup typeOfAudioChannel, selectTypeConvertor;
-    private JComboBox comboVideoResolution, comboFrameRate, comboExtension, comboBitRate, comboSampleRate;
+    private ButtonGroup typeOfAudioChannel, selectTypeConverter;
+    private JComboBox cmbVideoResolution, cmbFrameRate, cmbExtension, cmbBitRate, cmbSampleRate;
     private JRadioButton radioStereo, radioMono, radioConvertVideo, radioConvertAudio;
-    private JCheckBox checkOptionAdvanced;
-    private GridBagLayout esquema;
+    private JCheckBox chkOptionAdvanced;
+    private GridBagLayout gridBag;
     private GridBagConstraints constraints;
     private Border border;
 
@@ -52,7 +55,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return TxtPathFileOrigin, the content of the TxtPathFileOrigin text field.
      */
     public String getTxtPathFileOrigin() {
-        return txtPathFileOrigin.getText().toString();
+        return txtPathFileOrigin.getText();
     }
 
     /**
@@ -60,7 +63,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return TxtFolderDestiny, the content of the TxtFolderDestiny text field.
      */
     public String getTxtFolderDestiny() {
-        return txtFolderDestiny.getText().toString();
+        return txtFolderDestiny.getText();
     }
 
     /**
@@ -68,55 +71,67 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * @return TxtFileName, the content of the TxtFileName text field.
      */
     public String getTxtFileName() {
-        return txtFileName.getText().toString();
+        return txtFileName.getText();
     }
 
     /**
-     * Gets the content from comboVideoResolution.
-     * @return comboVideoResolution, the selected comboBox element
+     * Gets the content from cmbVideoResolution.
+     * @return cmbVideoResolution, the selected comboBox element.
      */
-    public String getComboVideoResolution() {
-        return separateValues(comboVideoResolution.getSelectedItem().toString());
+    public String getCmbVideoResolution() {
+        return separateValues(cmbVideoResolution.getSelectedItem().toString());
     }
 
     /**
-     * Gets the content from comboFrameRate.
-     * @return comboFrameRate, the selected comboBox element
+     * Gets the content from cmbFrameRate.
+     * @return cmbFrameRate, the selected comboBox element.
      */
-    public Double getComboFrameRate() {
-        return Double.parseDouble(comboFrameRate.getSelectedItem().toString());
+    public Double getCmbFrameRate() {
+        double send = 0;
+        if (cmbFrameRate.getSelectedItem() != "") {
+            send = Double.parseDouble(cmbFrameRate.getSelectedItem().toString());
+        }
+        return send;
     }
 
     /**
-     * Gets the content from comboExtension.
-     * @return comboExtension, the selected comboBox element
+     * Gets the content from cmbExtension.
+     * @return cmbExtension, the selected comboBox element.
      */
-    public String getComboExtension() {
-        return comboExtension.getSelectedItem().toString();
+    public String getCmbExtension() {
+        return cmbExtension.getSelectedItem().toString();
     }
 
     /**
-     * Gets the content from comboBitRate.
-     * @return comboBitRate, the selected comboBox element
+     * Gets the content from cmbBitRate.
+     * @return cmbBitRate, the selected comboBox element.
      */
-    public Long getComboBitRate() {
-        return Long.parseLong(separateValues(comboBitRate.getSelectedItem().toString())) * 1024;
+    public Long getCmbBitRate() {
+        long send = 0;
+        if (cmbBitRate.getSelectedItem() != "") {
+            send = Long.parseLong(separateValues(cmbBitRate.getSelectedItem().toString())) * 1024;
+        }
+        return send;
     }
 
     /**
-     * Gets the content from comboSampleRate.
-     * @return comboSampleRate, the selected comboBox element
+     * Gets the content from cmbSampleRate.
+     * @return cmbSampleRate, the selected comboBox element
      */
-    public int getComboSampleRate() {
-        return Integer.parseInt(separateValues(comboSampleRate.getSelectedItem().toString()));
+    public int getCmbSampleRate() {
+        int send = 0;
+        if (cmbSampleRate.getSelectedItem() != "") {
+            send = Integer.parseInt(separateValues(cmbSampleRate.getSelectedItem().toString()));
+        }
+        return send;
     }
 
     /**
-     * Gets the status from checkOptionAdvanced.
-     * @return boolean value, true if checkOptionAdvanced is active and false if not activated.
+     * Gets the status from chkOptionAdvanced.
+     * @return boolean value, true if chkOptionAdvanced is active and false if not activated.
      */
     public boolean isAdvanced() {
-        if (checkOptionAdvanced.isSelected()) {
+        if (chkOptionAdvanced.isSelected()) {
             return true;
         } else {
             return false;
@@ -148,6 +163,14 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
+     * Get event button Convert Video.
+     * @return btnConvertVideo the even button.
+     */
+    public JButton getBtnConvertVideo() {
+        return btnConvertVideo;
+    }
+
+    /**
      * Class constructor.
      * @param borderLayout
      */
@@ -158,10 +181,10 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     /**
      * Method that creates the components of the graphical interface.
      */
-    private void initComponents(){
-        esquema= new GridBagLayout();
+    private void initComponents() {
+        gridBag = new GridBagLayout();
         constraints = new GridBagConstraints();
-        setLayout(esquema);
+        setLayout(gridBag);
 
         lblTypeConversion = new JLabel("Type Conversion:");
         addComponent(lblTypeConversion, 0, 0, 1, 1);
@@ -208,84 +231,84 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         txtFileName = new JTextField();
         addComponent(txtFileName, 1, 3, 1, 1);
 
-        comboExtension = new JComboBox();
-        comboExtension.addItem("");
-        comboExtension.addItem("mp3");
-        comboExtension.addItem("wma");
-        comboExtension.addItem("aac");
-        comboExtension.addItem("flv");
-        comboExtension.addItem("mpeg");
-        comboExtension.addItem("avi");
-        comboExtension.addItem("mp4");
-        comboExtension.addItem("VOB");
-        comboExtension.addItem("mkv");
-        comboExtension.addItem("MOV");
-        addComponent(comboExtension, 4, 3, 1, 1);
+        cmbExtension = new JComboBox();
+        cmbExtension.addItem("");
+        cmbExtension.addItem("mp3");
+        cmbExtension.addItem("wma");
+        cmbExtension.addItem("aac");
+        cmbExtension.addItem("flv");
+        cmbExtension.addItem("mpeg");
+        cmbExtension.addItem("avi");
+        cmbExtension.addItem("mp4");
+        cmbExtension.addItem("VOB");
+        cmbExtension.addItem("mkv");
+        cmbExtension.addItem("MOV");
+        addComponent(cmbExtension, 4, 3, 1, 1);
 
-        comboVideoResolution = new JComboBox();
-        comboVideoResolution.addItem("");
-        comboVideoResolution.addItem("ntsc    (720 X 480)");
-        comboVideoResolution.addItem("pal     (720 X 576)");
-        comboVideoResolution.addItem("film    (352 X 240)");
-        comboVideoResolution.addItem("qqvga   (320 X 240)");
-        comboVideoResolution.addItem("vga     (640 X 280)");
-        comboVideoResolution.addItem("svga    (800 X 600)");
-        comboVideoResolution.addItem("xga     (1024 X 768)");
-        comboVideoResolution.addItem("uxga    (1600 X 1200)");
-        comboVideoResolution.addItem("qxga    (2048 X 1536)");
-        comboVideoResolution.addItem("svga    (1280 X 1024)");
-        comboVideoResolution.addItem("wvga    (852 X 480)");
-        comboVideoResolution.addItem("wxga    (1366 X 768)");
-        comboVideoResolution.addItem("wsxga   (1600 X 1024)");
-        comboVideoResolution.addItem("wuxga   (1920 X 1200)");
-        comboVideoResolution.addItem("cga     (320 X 200)");
-        comboVideoResolution.addItem("ega     (640 X 350)");
-        comboVideoResolution.addItem("hd480   (852 X 480)");
-        comboVideoResolution.addItem("hd720   (1280 X 720)");
-        comboVideoResolution.addItem("hd1080  (1920 X 1080)");
-        comboVideoResolution.addItem("2k      (2048 X 1080)");
-        comboVideoResolution.addItem("4k      (4096 X 2160)");
-        comboVideoResolution.addItem("hqvga   (240 X 160)");
-        comboVideoResolution.addItem("hvga    (480 X 320)");
-        comboVideoResolution.addItem("qhd     (960 X 540)");
-        comboVideoResolution.addItem("2kdci   (2048 X 1080)");
-        comboVideoResolution.addItem("4kdci   (4096 X 2160)");
-        comboVideoResolution.addItem("uhd2160 (3840 X 2160)");
-        comboVideoResolution.addItem("uhd4320 (7680 X 4320)");
-        addComponent(comboVideoResolution, 1, 6, 1, 1);
+        cmbVideoResolution = new JComboBox();
+        cmbVideoResolution.addItem("");
+        cmbVideoResolution.addItem("ntsc    (720 X 480)");
+        cmbVideoResolution.addItem("pal     (720 X 576)");
+        cmbVideoResolution.addItem("film    (352 X 240)");
+        cmbVideoResolution.addItem("qqvga   (320 X 240)");
+        cmbVideoResolution.addItem("vga     (640 X 280)");
+        cmbVideoResolution.addItem("svga    (800 X 600)");
+        cmbVideoResolution.addItem("xga     (1024 X 768)");
+        cmbVideoResolution.addItem("uxga    (1600 X 1200)");
+        cmbVideoResolution.addItem("qxga    (2048 X 1536)");
+        cmbVideoResolution.addItem("svga    (1280 X 1024)");
+        cmbVideoResolution.addItem("wvga    (852 X 480)");
+        cmbVideoResolution.addItem("wxga    (1366 X 768)");
+        cmbVideoResolution.addItem("wsxga   (1600 X 1024)");
+        cmbVideoResolution.addItem("wuxga   (1920 X 1200)");
+        cmbVideoResolution.addItem("cga     (320 X 200)");
+        cmbVideoResolution.addItem("ega     (640 X 350)");
+        cmbVideoResolution.addItem("hd480   (852 X 480)");
+        cmbVideoResolution.addItem("hd720   (1280 X 720)");
+        cmbVideoResolution.addItem("hd1080  (1920 X 1080)");
+        cmbVideoResolution.addItem("2k      (2048 X 1080)");
+        cmbVideoResolution.addItem("4k      (4096 X 2160)");
+        cmbVideoResolution.addItem("hqvga   (240 X 160)");
+        cmbVideoResolution.addItem("hvga    (480 X 320)");
+        cmbVideoResolution.addItem("qhd     (960 X 540)");
+        cmbVideoResolution.addItem("2kdci   (2048 X 1080)");
+        cmbVideoResolution.addItem("4kdci   (4096 X 2160)");
+        cmbVideoResolution.addItem("uhd2160 (3840 X 2160)");
+        cmbVideoResolution.addItem("uhd4320 (7680 X 4320)");
+        addComponent(cmbVideoResolution, 1, 6, 1, 1);
 
-        comboFrameRate = new JComboBox();
-        comboFrameRate.addItem("");
-        comboFrameRate.addItem("30");
-        comboFrameRate.addItem("60");
-        comboFrameRate.addItem("29.97");
-        comboFrameRate.addItem("24");
-        comboFrameRate.addItem("24.976");
-        addComponent(comboFrameRate, 4, 6, 1, 1);
+        cmbFrameRate = new JComboBox();
+        cmbFrameRate.addItem("");
+        cmbFrameRate.addItem("30");
+        cmbFrameRate.addItem("60");
+        cmbFrameRate.addItem("29.97");
+        cmbFrameRate.addItem("24");
+        cmbFrameRate.addItem("24.976");
+        addComponent(cmbFrameRate, 4, 6, 1, 1);
 
-        comboBitRate = new JComboBox();
-        comboBitRate.addItem("");
-        comboBitRate.addItem("4 K");
-        comboBitRate.addItem("8 K");
-        comboBitRate.addItem("32 K");
-        comboBitRate.addItem("96 K");
-        comboBitRate.addItem("128 K");
-        comboBitRate.addItem("192 K");
-        comboBitRate.addItem("320 K");
-        addComponent(comboBitRate, 1, 7, 1, 1);
+        cmbBitRate = new JComboBox();
+        cmbBitRate.addItem("");
+        cmbBitRate.addItem("4 K");
+        cmbBitRate.addItem("8 K");
+        cmbBitRate.addItem("32 K");
+        cmbBitRate.addItem("96 K");
+        cmbBitRate.addItem("128 K");
+        cmbBitRate.addItem("192 K");
+        cmbBitRate.addItem("320 K");
+        addComponent(cmbBitRate, 1, 7, 1, 1);
 
-        comboSampleRate = new JComboBox();
-        comboSampleRate.addItem("");
-        comboSampleRate.addItem("8000 Hz");
-        comboSampleRate.addItem("11025 Hz");
-        comboSampleRate.addItem("12000 Hz");
-        comboSampleRate.addItem("16000 Hz");
-        comboSampleRate.addItem("22050 Hz");
-        comboSampleRate.addItem("32000 Hz");
-        comboSampleRate.addItem("44100 Hz");
-        comboSampleRate.addItem("48000 Hz");
-        comboSampleRate.addItem("96000 Hz");
-        addComponent(comboSampleRate, 4, 7, 1, 1);
+        cmbSampleRate = new JComboBox();
+        cmbSampleRate.addItem("");
+        cmbSampleRate.addItem("8000 Hz");
+        cmbSampleRate.addItem("11025 Hz");
+        cmbSampleRate.addItem("12000 Hz");
+        cmbSampleRate.addItem("16000 Hz");
+        cmbSampleRate.addItem("22050 Hz");
+        cmbSampleRate.addItem("32000 Hz");
+        cmbSampleRate.addItem("44100 Hz");
+        cmbSampleRate.addItem("48000 Hz");
+        cmbSampleRate.addItem("96000 Hz");
+        addComponent(cmbSampleRate, 4, 7, 1, 1);
 
         radioStereo = new JRadioButton("Stereo      ",true);
         addComponent(radioStereo, 1, 5, 1, 1);
@@ -301,17 +324,17 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         radioConvertAudio.addActionListener(this);
         addComponent(radioConvertAudio, 3, 0, 1, 1);
 
-        checkOptionAdvanced = new JCheckBox("Option Advanced", true);
-        checkOptionAdvanced.addActionListener(this);
-        addComponent(checkOptionAdvanced, 1, 4, 1, 1);
+        chkOptionAdvanced = new JCheckBox("Option Advanced", true);
+        chkOptionAdvanced.addActionListener(this);
+        addComponent(chkOptionAdvanced, 1, 4, 1, 1);
 
         typeOfAudioChannel = new ButtonGroup();
         typeOfAudioChannel.add(radioStereo);
         typeOfAudioChannel.add(radioMono);
 
-        selectTypeConvertor = new ButtonGroup();
-        selectTypeConvertor.add(radioConvertAudio);
-        selectTypeConvertor.add(radioConvertVideo);
+        selectTypeConverter = new ButtonGroup();
+        selectTypeConverter.add(radioConvertAudio);
+        selectTypeConverter.add(radioConvertVideo);
 
         btnPathOriginFile = new JButton("Search File");
         btnPathOriginFile.addActionListener(this);
@@ -329,7 +352,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     /**
      * Method that adds components to the GridBagConstraints.
      */
-    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY) {
+    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX, int sizeFieldY) {
         constraints.gridx = sizeX;
         constraints.gridy = sizeY;
         constraints.gridwidth = sizeFieldX;
@@ -343,14 +366,13 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     /**
      * Method that adds action to the buttons.
      */
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(btnPathOriginFile)) {
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource().equals(btnPathOriginFile)) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             int result = fileChooser.showOpenDialog(this);
             if (result != JFileChooser.CANCEL_OPTION) {
                 File fileName = fileChooser.getSelectedFile();
-
                 if ((fileName == null) || (fileName.getName().equals(""))) {
                     txtPathFileOrigin.setText("...");
                 } else {
@@ -358,60 +380,46 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 }
             }
         }
-        if (e.getSource() == btnPathFolderDestiny) {
-            if (e.getSource().equals(btnPathFolderDestiny)) {
+        if (event.getSource() == btnPathFolderDestiny) {
+            if (event.getSource().equals(btnPathFolderDestiny)) {
                 JFileChooser chooser = new JFileChooser();
                 chooser.setCurrentDirectory(new java.io.File("."));
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 chooser.setAcceptAllFileFilterUsed(false);
                 if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     txtFolderDestiny.setText("" + chooser.getSelectedFile());
-                } else {
-                    System.out.println("");
                 }
             }
         }
-
-        if (e.getSource() == checkOptionAdvanced) {
-            if(checkOptionAdvanced.isSelected() && radioConvertAudio.isSelected() ) {
+        if (event.getSource() == chkOptionAdvanced) {
+            if (chkOptionAdvanced.isSelected() && radioConvertAudio.isSelected()) {
                 enableOptionsAudio();
                 disableOptionsVideo();
             }
-            if (checkOptionAdvanced.isSelected() && radioConvertVideo.isSelected() ) {
+            if (chkOptionAdvanced.isSelected() && radioConvertVideo.isSelected()) {
                 enableOptionsVideo();
                 enableOptionsAudio();
             }
-            if (!checkOptionAdvanced.isSelected()) {
+            if (!chkOptionAdvanced.isSelected()) {
                 disableOptionsAudio();
                 disableOptionsVideo();
             }
         }
-
-        if (e.getSource() == radioConvertAudio) {
-            if(radioConvertAudio.isSelected()) {
-                checkOptionAdvanced.setSelected(true);
+        if (event.getSource() == radioConvertAudio) {
+            if (radioConvertAudio.isSelected()) {
+                chkOptionAdvanced.setSelected(true);
                 btnConvertVideo.setText("Convert Audio");
                 enableOptionsAudio();
                 disableOptionsVideo();
             }
         }
-
-        if (e.getSource() == radioConvertVideo) {
-            if(radioConvertVideo.isSelected()) {
-                checkOptionAdvanced.setSelected(true);
+        if (event.getSource() == radioConvertVideo) {
+            if (radioConvertVideo.isSelected()) {
+                chkOptionAdvanced.setSelected(true);
                 btnConvertVideo.setText("Convert Video");
                 enableOptionsVideo();
                 enableOptionsAudio();
             }
-        }
-
-        if (e.getSource() == btnConvertVideo) {
-            System.out.println(""+getComboExtension());
-            System.out.println(""+getComboVideoResolution());
-            System.out.println(""+getTxtFileName());
-            System.out.println(""+getComboBitRate());
-            System.out.println(""+getComboFrameRate());
-            System.out.println(""+getComboSampleRate());
         }
     }
 
@@ -419,34 +427,34 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * Method that adds action to the buttons.
      */
     private void enableOptionsVideo() {
-        comboFrameRate.setEnabled(true);
-        comboVideoResolution.setEnabled(true);
+        cmbFrameRate.setEnabled(true);
+        cmbVideoResolution.setEnabled(true);
     }
 
     /**
      * Method that adds action to the buttons.
      */
     private void disableOptionsVideo() {
-        comboFrameRate.setEnabled(false);
-        comboVideoResolution.setEnabled(false);
+        cmbFrameRate.setEnabled(false);
+        cmbVideoResolution.setEnabled(false);
     }
 
     /**
-     * method that enables audio and video conversion options
+     * method that enables audio and video conversion options.
      */
     private void enableOptionsAudio() {
-        comboBitRate.setEnabled(true);
-        comboSampleRate.setEnabled(true);
+        cmbBitRate.setEnabled(true);
+        cmbSampleRate.setEnabled(true);
         radioMono.setEnabled(true);
         radioStereo.setEnabled(true);
     }
 
     /**
-     * method that disables audio and video conversion options
+     * method that disables audio and video conversion options.
      */
     private void disableOptionsAudio() {
-        comboBitRate.setEnabled(false);
-        comboSampleRate.setEnabled(false);
+        cmbBitRate.setEnabled(false);
+        cmbSampleRate.setEnabled(false);
         radioMono.setEnabled(false);
         radioStereo.setEnabled(false);
     }

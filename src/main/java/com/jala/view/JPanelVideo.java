@@ -20,8 +20,13 @@ import javax.swing.border.TitledBorder;
 import java.awt.LayoutManager;
 import java.awt.BorderLayout;
 
-
-public class JPanelVideo  extends JPanel {
+/**
+ * JPanelVideo
+ *
+ * @version 0.0.3
+ * @author Luis Guardia
+ */
+public class JPanelVideo extends JPanel {
     private JPanelConverterVideo panelConverterVideo;
     private Border border;
 
