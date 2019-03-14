@@ -1,5 +1,5 @@
 /*
- * @(#)CriteriaSearch.java
+ * @(#)ControllerConsole.java
  *
  * Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ControllerConsole class will manage the ModelConsole, ViewConsole and InputParameter
+ * ControllerConsole class will manage the ModelConsole, ViewConsole.
  *
  * @author Raúl Choque
  * @version 0.0.1
