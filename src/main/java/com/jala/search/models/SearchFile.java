@@ -76,7 +76,7 @@ public class SearchFile implements ISearchable {
                             continue;
                         }
                         if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                            if(  ( Date.valueOf( fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom()) ))
+                            if(  ( Date.valueOf(fileCreationDate(file.getPath())).before(Date.valueOf(criteria.getCreationDateFrom()) ))
                                     ||  ( Date.valueOf(fileCreationDate(file.getPath())).after(Date.valueOf(criteria.getCreationDateTo()))))
                                 continue;
                         }
@@ -114,22 +114,23 @@ public class SearchFile implements ISearchable {
 
                         //if(criteria.getType() == 0) {
                             Asset asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(),
-                                    FilenameUtils.getExtension(file.getName()), file.isHidden(), fileOwner(file.getPath()), String.valueOf(file.length()), file.canWrite(),
-                                    criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom());
-                       //}
-                        /*
+                                     FilenameUtils.getExtension(file.getName()), file.isHidden(), fileOwner(file.getPath()), String.valueOf(file.length()), file.canWrite(),
+                                     fileCreationDate(file.getPath()), fileLastModifiedDate(file.getPath()), fileLastAccessDate(file.getPath()));
+                        /*}
+
                         if (criteria.getType() == 1)
                         {
-
-
                             try {
-
 
                                 FFprobe ffprobe = new FFprobe(FFPROBE_PATH);
                                 FFmpegProbeResult ffprobeResult;
                                 ffprobeResult = ffprobe.probe(file.getPath());
-                                if (!criteria.getFrameRate().equALS(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator()))
-                                     CONTINUEW
+                                if (!criteria.getFrameRate().equals(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator())) {
+                                    continue;
+                                }
+                                if () {
+
+                                }*/
 
                                     /* assetVideo.setVideoCodec(ffprobeResult.getStreams().get(0).codec_long_name);
                                 assetVideo.setAudioCodec(ffprobeResult.getStreams().get(0).codec_tag_string);
@@ -140,14 +141,15 @@ public class SearchFile implements ISearchable {
                                 assetVideo.setAudioSampleRate(ffprobeResult.getStreams().get(0).sample_aspect_ratio);
                                 assetVideo.setDuration(String.valueOf(ffprobeResult.getStreams().get(0).duration));*/
                            /* } catch (Exception ex) {
-
+                                log.error("The criteria values shouldn't be null", ex);
                             }
                             Asset asset = (Asset) AssetFactory.getAsset(file.getPath(), file.getName(),
                                     criteria.getExtension(), criteria.getHidden(), fileOwner(file.getPath()), criteria.getSize(), criteria.getReadonly(),
                                     criteria.getCreationDateFrom(), criteria.getModificationDateFrom(), criteria.getLastDateFrom(),ffprobeResult.getStreams().get(0).codec_long_name, );
 
                         }*/
-                                result.add(asset);
+
+                            result.add(asset);
                     }
                 }
             } catch (NullPointerException e) {
