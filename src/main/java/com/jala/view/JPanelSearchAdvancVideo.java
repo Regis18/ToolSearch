@@ -12,10 +12,12 @@
 
 package com.jala.view;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
 
 /**
  * JPanelSearchAdvancVideo class
@@ -24,31 +26,34 @@ import java.awt.*;
  * @version 0.0.1
  */
 public class JPanelSearchAdvancVideo extends JPanel{
-    private JPanelAdvanced jpAdvancSearch;
-    private JPanelSearchVideo jpSearchVideo;
-    private JTableResult jtResult;
+    private JPanelAdvanced panelAdvancSearch;
+    private JPanelSearchVideo panelSearchVideo;
+    private JTableResult tblResult;
+    private Border border;
 
-    Border border;
-
+    /**
+     * This is the constructor method for create an instance
+     */
     public JPanelSearchAdvancVideo() {
         initComponent();
     }
+
     /**
      * The initComponent method will initialize the components.
      */
     private void initComponent() {
         setLayout(new BorderLayout());
-        jpAdvancSearch = new JPanelAdvanced(new BorderLayout());
+        panelAdvancSearch = new JPanelAdvanced(new BorderLayout());
         TitledBorder advancedBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
-        jpAdvancSearch.setBorder(advancedBorder);
-        jpAdvancSearch.getBtnSearch().setVisible(false);
-        jpAdvancSearch.getTxfExtension().setVisible(false);
-        jpAdvancSearch.getLblExtension().setVisible(false);
-        this.add(jpAdvancSearch, BorderLayout.WEST);
-        jpSearchVideo = new JPanelSearchVideo();
+        panelAdvancSearch.setBorder(advancedBorder);
+        panelAdvancSearch.getBtnSearch().setVisible(false);
+        panelAdvancSearch.getTxfExtension().setVisible(false);
+        panelAdvancSearch.getLblExtension().setVisible(false);
+        this.add(panelAdvancSearch, BorderLayout.WEST);
+        panelSearchVideo = new JPanelSearchVideo();
         TitledBorder attributeBorder = BorderFactory.createTitledBorder(border, "Attributes");
-        jpSearchVideo.setBorder(attributeBorder);
-        this.add(jpSearchVideo, BorderLayout.EAST);
+        panelSearchVideo.setBorder(attributeBorder);
+        this.add(panelSearchVideo, BorderLayout.EAST);
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
     }
@@ -62,8 +67,8 @@ public class JPanelSearchAdvancVideo extends JPanel{
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Video");
         pnlSearchAdvanced.setBorder(titleBorder);
 
-        jtResult = new JTableResult();
-        JScrollPane scroll = new JScrollPane(jtResult);
+        tblResult = new JTableResult();
+        JScrollPane scroll = new JScrollPane(tblResult);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
     }
