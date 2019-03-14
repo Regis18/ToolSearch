@@ -25,10 +25,9 @@ import java.util.ArrayList;
  * @version 0.0.1
  */
 public class JPanelSearchVideo extends JPanel implements ActionListener {
-    private JLabel lbPath, lbFramRat, lbVideoCod,
+    private JLabel lbFramRat, lbVideoCod,
                      lbAudioCod, lbAspectRadio, lbDimention, lbExtension;
-    private JTextField tfPath;
-    private JButton btPath, btSerach;
+    private JButton btSerach;
     private JComboBox cbFramRat, cbVideoCod, cbAudioCod, cbAspectRadio,
                         cbDimention, cbExtension;
 
@@ -38,19 +37,13 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     public JPanelSearchVideo() {
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
-        lbPath = new JLabel("Source File: ");
-        constraintComponent(lbPath, 0, 0, GridBagConstraints.EAST);
-        tfPath = new JTextField(20);
-        constraintComponent(tfPath, 1, 0, GridBagConstraints.WEST);
-        btPath = new JButton("...");
-        btPath.addActionListener(this);
-        constraintComponent(btPath, 2, 0, GridBagConstraints.WEST);
         lbFramRat = new JLabel("Frame Rate: ");
         constraintComponent(lbFramRat, 0, 2, GridBagConstraints.EAST);
         lbVideoCod = new JLabel("Video Codec: ");
         constraintComponent(lbVideoCod, 0, 3, GridBagConstraints.EAST);
         lbAudioCod = new JLabel("Audio Codec: ");
         constraintComponent(lbAudioCod, 0, 4, GridBagConstraints.EAST);
+        cbFramRat = new JComboBox();
         cbFramRat.addItem("SELECT");
         cbFramRat.addItem("30");
         cbFramRat.addItem("25");
@@ -124,6 +117,33 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     }
 
     /**
+     * Section of getter methods
+     */
+    public JComboBox getCbFramRat() {
+        return cbFramRat;
+    }
+
+    public JComboBox getCbVideoCod() {
+        return cbVideoCod;
+    }
+
+    public JComboBox getCbAudioCod() {
+        return cbAudioCod;
+    }
+
+    public JComboBox getCbAspectRadio() {
+        return cbAspectRadio;
+    }
+
+    public JComboBox getCbDimention() {
+        return cbDimention;
+    }
+
+    public JComboBox getCbExtension() {
+        return cbExtension;
+    }
+
+    /**
      * The method constraintComponent add constraint for a component
      * @param component is data that receive a constraint
      * @param posX is data for position on row
@@ -134,19 +154,9 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = posX;
         constraints.gridy = posY;
-        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.insets = new Insets(2, 2, 2, 2);
         constraints.anchor = align;
         add(component, constraints);
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        JPanelSearchVideo test = new JPanelSearchVideo();
-        frame.setContentPane(test);
-        frame.setSize(600,400);
-        frame.setVisible(true);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /**
@@ -154,17 +164,6 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        if (source.equals(btPath)) {
-            JFileChooser chooser = new JFileChooser();
-            chooser.setCurrentDirectory(new java.io.File("."));
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            chooser.setAcceptAllFileFilterUsed(false);
-            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                tfPath.setText("" + chooser.getSelectedFile());
-            } else {
-                System.out.println("");
-            }
-        }
+
     }
 }

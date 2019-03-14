@@ -180,12 +180,3 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         }
     }
 }
-
-
-
-
-
-
-
-
-

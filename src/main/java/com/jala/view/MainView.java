@@ -32,13 +32,14 @@ public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
-    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter;
+    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemAdvacVideo;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelConverter panelConverterImage;
     private String currentPanel;
     private Border border;
+    private JPanelSearchAdvancVideo jpSearchAdvancVideo;
 
     /**
      * Constructor.
@@ -159,6 +160,9 @@ public class MainView extends JFrame implements ActionListener {
         menuItemGeneral = new JMenuItem("General");
         menuSearch.add(menuItemGeneral);
         menuItemGeneral.addActionListener(this);
+        menuItemAdvacVideo = new JMenuItem("Advance Video");
+        menuSearch.add(menuItemAdvacVideo);
+        menuItemAdvacVideo.addActionListener(this);
 
         menuItemAdvanced = new JMenuItem("Advanced");
         menuSearch.add(menuItemAdvanced);
@@ -203,12 +207,24 @@ public class MainView extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == menuItemConverter) {
-            panelConverterImage = new JPanelConverter(new BorderLayout());
-            content.removeAll();
-            content.add(panelConverterImage, BorderLayout.CENTER);
-            currentPanel = "ConverterImage";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "ConverterImage") {
+                panelConverterImage = new JPanelConverter(new BorderLayout());
+                content.removeAll();
+                content.add(panelConverterImage, BorderLayout.CENTER);
+                currentPanel = "ConverterImage";
+                this.validate();
+                this.repaint();
+            }
+        }
+        if (e.getSource() == menuItemAdvacVideo) {
+            if (currentPanel != "SearchAdvVideo") {
+                jpSearchAdvancVideo = new JPanelSearchAdvancVideo();
+                content.removeAll();
+                content.add(jpSearchAdvancVideo, BorderLayout.CENTER);
+                currentPanel = "SearchAdvVideo";
+                this.validate();
+                this.repaint();
+            }
         }
     }
 }
