@@ -56,6 +56,10 @@ public class MainView extends JFrame implements ActionListener {
         return pnlSearchGral;
     }
 
+    /**
+     * Return the panel for convert Video and Audio.
+     * @return panelConverterVideo panel for convert video and audio.
+     */
     public JPanelVideo getPanelConverterVideo() {
         return panelConverterVideo;
     }
@@ -134,7 +138,6 @@ public class MainView extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(500, 400));
         initComponent();
-
         setLocationRelativeTo(null);
     }
 

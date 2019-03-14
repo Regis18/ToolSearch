@@ -373,7 +373,6 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
             int result = fileChooser.showOpenDialog(this);
             if (result != JFileChooser.CANCEL_OPTION) {
                 File fileName = fileChooser.getSelectedFile();
-
                 if ((fileName == null) || (fileName.getName().equals(""))) {
                     txtPathFileOrigin.setText("...");
                 } else {
@@ -394,7 +393,6 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 }
             }
         }
-
         if (e.getSource() == checkOptionAdvanced) {
             if(checkOptionAdvanced.isSelected() && radioConvertAudio.isSelected() ) {
                 enableOptionsAudio();
@@ -409,7 +407,6 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 disableOptionsVideo();
             }
         }
-
         if (e.getSource() == radioConvertAudio) {
             if(radioConvertAudio.isSelected()) {
                 checkOptionAdvanced.setSelected(true);
@@ -418,7 +415,6 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 disableOptionsVideo();
             }
         }
-
         if (e.getSource() == radioConvertVideo) {
             if(radioConvertVideo.isSelected()) {
                 checkOptionAdvanced.setSelected(true);
@@ -427,15 +423,6 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 enableOptionsAudio();
             }
         }
-
-        /*if (e.getSource() == btnConvertVideo) {
-            System.out.println(""+getComboExtension());
-            System.out.println(""+getComboVideoResolution());
-            System.out.println(""+getTxtFileName());
-            System.out.println(""+getComboBitRate());
-            System.out.println(""+getComboFrameRate());
-            System.out.println(""+getComboSampleRate());
-        }*/
     }
 
     /**
