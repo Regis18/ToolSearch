@@ -12,7 +12,6 @@
 
 package com.jala.solidwater.console.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,9 +39,7 @@ public class CommandLine {
      * @param values   to create the list of command value.
      */
     public CommandLine(List<Command> commands, List<String> values) {
-        this.commands = new ArrayList<>();
         this.commands = commands;
-        this.values = new ArrayList<>();
         this.values = values;
     }
 
