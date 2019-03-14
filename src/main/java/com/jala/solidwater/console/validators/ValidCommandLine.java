@@ -3,6 +3,17 @@ package com.jala.solidwater.console.validators;
 import com.jala.solidwater.console.models.CommandLine;
 
 public class ValidCommandLine implements IValidable<CommandLine> {
+
+    private String message = "";
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public boolean validate(CommandLine commandLine) {
         boolean validCommandLine = false;
@@ -11,7 +22,11 @@ public class ValidCommandLine implements IValidable<CommandLine> {
                 validCommandLine = true;
             } else {
                 validCommandLine = validCommandLine;
+                setMessage("The command -p is required");
             }
+        } else {
+            validCommandLine = validCommandLine;
+            setMessage("The size of commands and values in command line are differents");
         }
         return validCommandLine;
     }
