@@ -73,7 +73,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from comboVideoResolution.
-     * @return comboVideoResolution, the selected comboBox element
+     * @return comboVideoResolution, the selected comboBox element.
      */
     public String getComboVideoResolution() {
         return separateValues(comboVideoResolution.getSelectedItem().toString());
@@ -81,7 +81,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from comboFrameRate.
-     * @return comboFrameRate, the selected comboBox element
+     * @return comboFrameRate, the selected comboBox element.
      */
     public Double getComboFrameRate() {
         return Double.parseDouble(comboFrameRate.getSelectedItem().toString());
@@ -89,7 +89,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from comboExtension.
-     * @return comboExtension, the selected comboBox element
+     * @return comboExtension, the selected comboBox element.
      */
     public String getComboExtension() {
         return comboExtension.getSelectedItem().toString();
@@ -97,7 +97,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from comboBitRate.
-     * @return comboBitRate, the selected comboBox element
+     * @return comboBitRate, the selected comboBox element.
      */
     public Long getComboBitRate() {
         return Long.parseLong(separateValues(comboBitRate.getSelectedItem().toString())) * 1024;
@@ -147,6 +147,10 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Get event button Convert Video.
+     * @return btnConvertVideo the even button.
+     */
     public JButton getBtnConvertVideo() {
         return btnConvertVideo;
     }
@@ -436,7 +440,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * method that enables audio and video conversion options
+     * method that enables audio and video conversion options.
      */
     private void enableOptionsAudio() {
         comboBitRate.setEnabled(true);
@@ -446,7 +450,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * method that disables audio and video conversion options
+     * method that disables audio and video conversion options.
      */
     private void disableOptionsAudio() {
         comboBitRate.setEnabled(false);

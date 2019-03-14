@@ -23,19 +23,28 @@ import org.apache.log4j.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Class ControllerConvertVideo.
+ * @version: 0.0.1
+ * @autor: Melvi Caballero M.
+ */
 public class ControllerConvertVideo implements ActionListener {
+
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
 
-    /** ViewConvert: create a pointer of JPanelSearchGral the object will provide other class.*/
+    /** ViewConvert: create a pointer of JPanelConverterVideo the object will provide other class.*/
     private JPanelConverterVideo viewConvert;
 
+    /** Criteria for convert video.*/
     private CriteriaConverterVideo criteriaConverterVideo;
+
+    /** Criteria for convert audio.*/
     private CriteriaConverterAudio criteriaConverterAudio;
 
     /**
-     * This constructor
-     * @param viewConvert
+     * This constructor of class.
+     * @param viewConvert object of UI Panel for convert video.
      */
     public ControllerConvertVideo(JPanelConverterVideo viewConvert) {
         log.info("Initialize the Control of Search General");
@@ -46,8 +55,8 @@ public class ControllerConvertVideo implements ActionListener {
     }
 
     /**
-     * It is override the method of ActionListener and the objective is listen if button is pressed
-     * @param event this activates when a button is  pressed
+     * It is override the method of ActionListener and the objective is listen if button is pressed.
+     * @param event this activates when a button is  pressed.
      */
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -64,8 +73,8 @@ public class ControllerConvertVideo implements ActionListener {
     }
 
     /**
-     * This method sends to ConvertImage the criteria that was wrote by user, and that method convert
-     * the image
+     * This method sends to ConvertVideo the criteria that was wrote by user.
+     * and that method convert the Video.
      */
     private void sendPathToConvertVideo() {
         log.info("Preparing to send criteria converter to ConvertImage");
@@ -74,6 +83,10 @@ public class ControllerConvertVideo implements ActionListener {
         convertorVideo.convert(criteriaConverterVideo);
     }
 
+    /**
+     * This method sends to ConvertAudio the criteria that was wrote by user.
+     * and that method convert the Audio.
+     */
     private void sendPathToConvertAudio() {
         log.info("Preparing to send criteria converter to ConvertImage");
         ConvertMusic convertorAudio = new ConvertMusic();
@@ -82,7 +95,7 @@ public class ControllerConvertVideo implements ActionListener {
     }
 
     /**
-     * Save the information that the Ui provides into CriteriaConverter to send Converter
+     * Save the information that the Ui provides into CriteriaConverterVideo to send Converter.
      */
     private void saveCriteriaVideo() {
         String pathOrigin = viewConvert.getTxtPathFileOrigin();
@@ -95,7 +108,6 @@ public class ControllerConvertVideo implements ActionListener {
         int sampleRate = viewConvert.getComboSampleRate();
         boolean isAdvanced = viewConvert.isAdvanced();
         String audioChannel = viewConvert.isStereo()? "Stereo" :"Mono";
-
         criteriaConverterVideo = new CriteriaConverterVideo(pathOrigin, pathDestiny + "\\", "." + extension);
         criteriaConverterVideo.setNewFileName(fileName);
         criteriaConverterVideo.setVideoResolution(resolution);
@@ -104,11 +116,10 @@ public class ControllerConvertVideo implements ActionListener {
         criteriaConverterVideo.setSampleRate(sampleRate);
         criteriaConverterVideo.setIsAdvanced(isAdvanced);
         criteriaConverterVideo.setAudioChannel(audioChannel);
-
     }
 
     /**
-     * Save the information that the Ui provides into CriteriaConverter to send Converter
+     * Save the information that the Ui provides into CriteriaConverterAudio to send Converter.
      */
     private void saveCriteriaAudio() {
         String pathOrigin = viewConvert.getTxtPathFileOrigin();
@@ -118,7 +129,6 @@ public class ControllerConvertVideo implements ActionListener {
         double bitRate = viewConvert.getComboBitRate();
         int sampleRate = viewConvert.getComboSampleRate();
         String audioChannel = viewConvert.isStereo()? "Stereo" :"Mono";
-
         criteriaConverterAudio = new CriteriaConverterAudio(pathOrigin, pathDestiny + "\\", "." + extension);
         criteriaConverterAudio.setNewFileName(fileName);
         criteriaConverterAudio.setBitRate((long)bitRate);
