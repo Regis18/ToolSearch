@@ -12,7 +12,6 @@
 
 package com.jala.model.criteria;
 
-import com.jala.common.models.Criteria;
 import com.jala.model.TernaryBooleanEnum;
 
 /**

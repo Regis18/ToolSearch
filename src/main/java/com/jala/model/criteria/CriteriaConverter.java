@@ -12,8 +12,6 @@
 
 package com.jala.model.criteria;
 
-import com.jala.common.models.Criteria;
-
 /**
  * The CriteriaConverter class is used to establish and obtain the conversion criteria.
  * @version 0.0.1

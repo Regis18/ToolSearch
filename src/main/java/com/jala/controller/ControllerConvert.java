@@ -22,17 +22,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControllerConvert implements ActionListener {
+
 	/** It creates to follow up the instruction of the class*/
 	private Logger log = Logs.getInstance().getLog();
 
-	/** ViewConvert: create a pointer of JPanelSearchGral the object will provide other class.*/
+	/** ViewConvert: Create a pointer of JPanelConverter the object will provide other class.*/
 	private JPanelConverter viewConvert;
 
+	/** Criteria for converter images ie. audioChannel, bitRate, sampleRate, etc.*/
 	private CriteriaConverterImage criteriaConverter;
 
 	/**
-	 * This constructor
-	 * @param viewConvert
+	 * Constructor with JPanelConverter object as parameters.
+	 * @param viewConvert create a pointer of JPanelConvert.
 	 */
 	public ControllerConvert(JPanelConverter viewConvert) {
 		log.info("Initialize the Control of Search General");
@@ -43,8 +45,8 @@ public class ControllerConvert implements ActionListener {
 	}
 
 	/**
-	 * It is override the method of ActionListener and the objective is listen if button is pressed
-	 * @param event this activates when a button is  pressed
+	 * It is override the method of ActionListener and the objective is listen if button is pressed.
+	 * @param event this activates when a button is  pressed.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent event) {
@@ -57,7 +59,7 @@ public class ControllerConvert implements ActionListener {
 
 	/**
 	 * This method sends to ConvertImage the criteria that was wrote by user, and that method convert
-	 * the image
+	 * the image.
 	 */
 	private void sendPathToConvert() {
 		log.info("Preparing to send criteria converter to ConvertImage");
@@ -67,7 +69,7 @@ public class ControllerConvert implements ActionListener {
 	}
 
 	/**
-	 * Save the information that the Ui provides into CriteriaConverter to send Converter
+	 * Save the information that the Ui provides into CriteriaConverterImage to send Converter.
 	 */
 	private void saveCriteria() {
 		String pathOrigin = viewConvert.getJPanelAdvanced().getTxtPathFileOrigin();

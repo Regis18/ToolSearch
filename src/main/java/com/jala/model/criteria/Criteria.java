@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.common.models;
+package com.jala.model.criteria;
 
 /**
  * The Criteria class.
