@@ -1,8 +1,8 @@
-/**
+/*
  * @(#) ConvertorImage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
- * 
+ *
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
@@ -10,8 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.model;
+package com.jala.model.convert;
 
+import com.jala.model.convert.IConvertible;
 import com.jala.model.criteria.CriteriaConverterImage;
 import com.jala.utils.Logs;
 import org.im4java.core.ConvertCmd;

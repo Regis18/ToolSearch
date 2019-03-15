@@ -12,7 +12,7 @@
 
 package com.jala.model.criteria;
 
-import com.jala.model.TernaryBooleanEnum;
+import com.jala.model.search.TernaryBooleanEnum;
 
 /**
  * The CriteriaSearch class is to set and get the criteria to search.

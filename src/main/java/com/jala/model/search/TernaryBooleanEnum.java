@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.model;
+package com.jala.model.search;
 
 /**
  * TernaryBooleanEnum Enum.

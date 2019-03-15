@@ -12,7 +12,7 @@
 
 package com.jala.controller;
 
-import com.jala.model.ConvertorImage;
+import com.jala.model.convert.ConvertorImage;
 import com.jala.model.criteria.CriteriaConverterImage;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelConverter;

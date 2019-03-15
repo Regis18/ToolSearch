@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.model;
+package com.jala.model.convert;
 
 import com.jala.model.criteria.CriteriaConverterAudio;
 import com.jala.utils.Logs;

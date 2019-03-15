@@ -1,4 +1,4 @@
-/**
+/*
  * @(#) IConvertible.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.model;
+package com.jala.model.convert;
 
 /**
  * Interface allows that other classes can implement distinct form of conversion.
