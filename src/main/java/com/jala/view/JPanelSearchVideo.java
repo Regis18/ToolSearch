@@ -36,7 +36,8 @@ public class JPanelSearchVideo extends JPanel {
                         cmbAspectRatio, cmbDimension, cmbExtension;
 
     /**
-     * The constructor method of the ViewConsole class, it is for build an instance.
+     * The JPanelSearchVideo method is the constructor of ViewConsole class,
+     * it is for build an instance of itself class.
      */
     public JPanelSearchVideo() {
 
@@ -45,14 +46,14 @@ public class JPanelSearchVideo extends JPanel {
     }
 
     /**
-     * The initUI method personalise attribute of class.
+     * The initUI method personalise attribute of itself class.
      */
     private void initUI() {
         setLayout(new GridBagLayout());
     }
 
     /**
-     * The initComponent method, is for add component ourselves.
+     * The initComponent method, is for add component itself class.
      */
     private void initComponent() {
 
@@ -112,15 +113,32 @@ public class JPanelSearchVideo extends JPanel {
     }
 
     /**
-     * This method add items in combo box.
-     * @param myItems are data for add at cbFrameRat
-     * @param cmb is a data where add items
+     * This method addItemsComboBox add myItems into a cmb.
+     * @param myItems is a string array
+     * @param cmb is a JComboBox class component
      */
     private void addItemsComboBox(String[] myItems, JComboBox cmb) {
 
         for (String item : myItems) {
             cmb.addItem(item);
         }
+    }
+
+    /**
+     * The constraintComponent method add constraint for a component.
+     * @param component is data that receive a constraint
+     * @param posX is data for position on row
+     * @param posY is data for position on column
+     * @param align is data for place the component.
+     */
+    private void constraintComponent(Component component, int posX, int posY, int align) {
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = posX;
+        constraints.gridy = posY;
+        constraints.insets = new Insets(2, 2, 2, 2);
+        constraints.anchor = align;
+        add(component, constraints);
     }
 
     /**
@@ -143,7 +161,6 @@ public class JPanelSearchVideo extends JPanel {
     public String getCmbAudioCodec() {
         return cmbAudioCodec.getSelectedItem().toString();
     }
-
     /**
      * The getCmbAspectRatio method get String of ComboBox selected.
      */
@@ -163,22 +180,5 @@ public class JPanelSearchVideo extends JPanel {
      */
     public String getCmbExtension() {
         return cmbExtension.getSelectedItem().toString();
-    }
-
-    /**
-     * The method constraintComponent add constraint for a component.
-     * @param component is data that receive a constraint
-     * @param posX is data for position on row
-     * @param posY is data for position on column
-     * @param align is data for place the component.
-     */
-    private void constraintComponent(Component component, int posX, int posY, int align) {
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = posX;
-        constraints.gridy = posY;
-        constraints.insets = new Insets(2, 2, 2, 2);
-        constraints.anchor = align;
-        add(component, constraints);
     }
 }

@@ -34,8 +34,8 @@ public class JPanelSearchAdvancedVideo extends JPanel{
     private Border border;
 
     /**
-     * The constructor method of the JPanelSearchAdvancedVideo class,
-     * it is for build an instance.
+     * The JPanelSearchAdvancedVideo method is the constructor for JPanelSearchAdvancedVideo class,
+     * it is for build an instance of itself class.
      */
     public JPanelSearchAdvancedVideo() {
 
@@ -44,12 +44,12 @@ public class JPanelSearchAdvancedVideo extends JPanel{
     }
 
     /**
-     * The initUI method personalise attribute of class.
+     * The initUI method personalise attribute of itself class.
      */
     private void initUI() { setLayout(new BorderLayout()); }
 
     /**
-     * The initComponent method, is for add component ourselves.
+     * The initComponent method, is for add component itself class.
      */
     private void initComponent() {
 
@@ -71,8 +71,9 @@ public class JPanelSearchAdvancedVideo extends JPanel{
     }
 
     /**
-     * Return the instance of center panel with the Table Result.
-     * @return pnlTable the panel of the table.
+     * The method pnlTableResult get a JPanel with the JTableResult.
+     *
+     * @return a JPanel component.
      */
     private JPanel pnlTableResult() {
 
@@ -83,5 +84,32 @@ public class JPanelSearchAdvancedVideo extends JPanel{
         JScrollPane scroll = new JScrollPane(tblResult);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
+    }
+
+    /**
+     * The getPanelAdvanceSearch method get JPanelAdvanced attribute of itself class.
+     *
+     * @return a JPanelAdvanced class
+     */
+    public JPanelAdvanced getPanelAdvanceSearch() {
+        return panelAdvanceSearch;
+    }
+
+    /**
+     * The getPanelSearchVideo method get JPanelSearchVideo attribute of itself class.
+     *
+     * @return JPanelSearchVideo class
+     */
+    public JPanelSearchVideo getPanelSearchVideo() {
+        return panelSearchVideo;
+    }
+
+    /**
+     * The getTblResult method get JTableResult attribute of itself class.
+     *
+     * @return JTableResult class
+     */
+    public JTableResult getTblResult() {
+        return tblResult;
     }
 }
