@@ -1,5 +1,5 @@
 /*
- * @(#) ConvertMusicTest.java Copyright (c) 2019 Jala Foundation.
+ * @(#) ConvertAudioTest.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ConvertMusicTest
+ * ConvertAudioTest
  *
  * @version 0.0.3
  * @author Regis Humana
  */
-public class ConvertMusicTest {
+public class ConvertAudioTest {
 
 	private String path = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\mMP3.mp3";
 	private String pathDestination = "C:\\Users\\Admin\\Desktop\\PROG 02\\Videos\\Audio";
@@ -35,7 +35,7 @@ public class ConvertMusicTest {
 	 */
 	@Test
 	public void convert_ReturnWMAFile_WhenSentBasicMP3File() {
-		ConvertMusic convert = new ConvertMusic();
+		ConvertAudio convert = new ConvertAudio();
 		CriteriaConverterAudio criteria = new CriteriaConverterAudio(path,pathDestination + "\\",".wmv");
 		criteria.setNewFileName("AudioWmv");
 		try {
@@ -51,7 +51,7 @@ public class ConvertMusicTest {
 	 */
 	@Test
 	public void convert_ReturnAACFile_WhenSentBasicMP3File() {
-		ConvertMusic convert = new ConvertMusic();
+		ConvertAudio convert = new ConvertAudio();
 		CriteriaConverterAudio criteria = new CriteriaConverterAudio(path,pathDestination + "\\",".aac");
 		criteria.setNewFileName("AudioAAC");
 		try {
@@ -70,7 +70,7 @@ public class ConvertMusicTest {
 	 */
 	@Test
 	public void convert_ReturnAACFile_WhenSentAdvancedMP3File() {
-		ConvertMusic convert = new ConvertMusic();
+		ConvertAudio convert = new ConvertAudio();
 		CriteriaConverterAudio criteria = new CriteriaConverterAudio(path,pathDestination + "\\",".aac");
 		criteria.setNewFileName("AudioAdvancedAAC");
 		criteria.setAdvanced(true);

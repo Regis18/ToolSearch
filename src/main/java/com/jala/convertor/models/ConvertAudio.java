@@ -1,5 +1,5 @@
 /*
- * @(#) ConvertMusic.java Copyright (c) 2019 Jala Foundation.
+ * @(#) ConvertAudio.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -21,12 +21,12 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 
 /**
- * ConvertMusic
+ * ConvertAudio
  *
  * @author Regis Humana
  * @version 0.0.3
  */
-public class ConvertMusic implements IConvertible {
+public class ConvertAudio implements IConvertible {
 
 	/**Save the real path destination to send to FFMPEG*/
 	private String pathDestination;
@@ -54,7 +54,7 @@ public class ConvertMusic implements IConvertible {
 				convertAdvancedMusic(criteria, builder, fmpeg);
 			}
 		} catch (IOException error) {
-			log.error("Error in ConvertMusic", error);
+			log.error("Error in ConvertAudio", error);
 		}
 	}
 
