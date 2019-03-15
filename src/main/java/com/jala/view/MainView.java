@@ -32,10 +32,12 @@ public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
-    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo;
+    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo,
+            menuItemSearchVideo;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
+    private JPanelSearchAdvancedVideo pnlSearchAdvancedVideo;
     private JPanelConverter panelConverterImage;
     private JPanelVideo panelConverterVideo;
     private String currentPanel;
@@ -45,7 +47,7 @@ public class MainView extends JFrame implements ActionListener {
      * Constructor.
      */
     public MainView() {
-        setTitle("View Main");
+        setTitle("SolidWater");
     }
 
     /**
@@ -172,6 +174,10 @@ public class MainView extends JFrame implements ActionListener {
         menuSearch.add(menuItemAdvanced);
         menuItemAdvanced.addActionListener(this);
 
+        menuItemSearchVideo = new JMenuItem("Advance Video");
+        menuSearch.add(menuItemSearchVideo);
+        menuItemSearchVideo.addActionListener(this);
+
         menuItemExit = new JMenuItem("Exit");
         menuFile.add(menuItemExit);
 
@@ -230,6 +236,15 @@ public class MainView extends JFrame implements ActionListener {
             this.validate();
             this.repaint();
         }
+        if (event.getSource() == menuItemSearchVideo) {
+            if (currentPanel != "SearchAdvancedVideo") {
+                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+                content.removeAll();
+                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+                currentPanel = "SearchAdvancedVideo";
+                this.validate();
+                this.repaint();
+            }
+        }
     }
 }
-
