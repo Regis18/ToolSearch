@@ -12,8 +12,8 @@
 
 package com.jala.controller;
 
-import com.jala.model.ConvertMusic;
-import com.jala.model.ConvertVideo;
+import com.jala.model.convert.ConvertMusic;
+import com.jala.model.convert.ConvertVideo;
 import com.jala.model.criteria.CriteriaConverterAudio;
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Logs;

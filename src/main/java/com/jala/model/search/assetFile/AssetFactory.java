@@ -10,12 +10,8 @@
  * with Jala Foundation.
  */
 
-package com.jala.model.assetFile;
+package com.jala.model.search.assetFile;
 
-import com.jala.model.assetFile.Asset;
-import com.jala.model.assetFile.AssetVideo;
-import com.jala.model.assetFile.AssetCommon;
-import com.jala.model.assetFile.AssetText;
 import com.jala.model.criteria.CriteriaSearch;
 import org.apache.commons.io.FilenameUtils;
 

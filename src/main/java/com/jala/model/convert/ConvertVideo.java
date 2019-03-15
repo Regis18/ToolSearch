@@ -10,8 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.model;
+package com.jala.model.convert;
 
+import com.jala.model.convert.IConvertible;
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;

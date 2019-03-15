@@ -1,8 +1,8 @@
-/**
- * @(#)SearchFile.java Copyright (c) 2019 Jala Foundation.
+/*
+ * @(#) SearchFile.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
- * <p>
+ *
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
@@ -10,9 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.model;
+package com.jala.model.search;
 
-import com.jala.model.assetFile.Asset;
+import com.jala.model.search.assetFile.Asset;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.utils.Logs;
 import java.io.File;
@@ -20,7 +20,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.jala.model.assetFile.AssetFactory;
+import com.jala.model.search.assetFile.AssetFactory;
 import org.apache.log4j.Logger;
 
 /**
