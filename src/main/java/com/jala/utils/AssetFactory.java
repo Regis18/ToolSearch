@@ -51,7 +51,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(readOnly);
         assetVerify.setExtension(extension);
         assetVerify.setSize(size);
-        assetVerify.setOwner(SearchFile.fileOwner(owner));
+        assetVerify.setOwner(SearchCommon.fileOwner(owner));
         assetVerify.setCreationDate(creationDate);
         assetVerify.setModificationDate(modificationDate);
         assetVerify.setLastDate(lastDate);
@@ -87,7 +87,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(readOnly);
         assetVerify.setExtension(extension);
         assetVerify.setSize(size);
-        assetVerify.setOwner(SearchFile.fileOwner(owner));
+        assetVerify.setOwner(SearchCommon.fileOwner(owner));
         assetVerify.setCreationDate(creationDate);
         assetVerify.setModificationDate(modificationDate);
         assetVerify.setLastDate(lastDate);

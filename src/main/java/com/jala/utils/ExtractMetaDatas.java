@@ -55,10 +55,10 @@ public class ExtractMetaDatas {
         asset.setExtension(FilenameUtils.getExtension(file.getName()));
         asset.setSizeView(Double.toString(getFileSizeInKb(file.length())));
         asset.setSize(Double.toString(file.length()));
-        asset.setOwner(SearchFile.fileOwner(file.getPath()));
-        asset.setCreationDate(SearchFile.fileCreationDate(file.getPath()));
-        asset.setModificationDate(SearchFile.fileLastModifiedDate(file.getPath()));
-        asset.setLastDate(SearchFile.fileLastAccessDate(file.getPath()));
+        asset.setOwner(SearchCommon.fileOwner(file.getPath()));
+        asset.setCreationDate(SearchCommon.fileCreationDate(file.getPath()));
+        asset.setModificationDate(SearchCommon.fileLastModifiedDate(file.getPath()));
+        asset.setLastDate(SearchCommon.fileLastAccessDate(file.getPath()));
     }
 
     /**
