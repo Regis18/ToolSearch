@@ -14,10 +14,6 @@ package com.jala.controller;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 
-import com.jala.convertor.controller.ControllerConvert;
-import com.jala.convertor.controller.ControllerConvertVideo;
-import com.jala.search.controller.ControllerSearch;
-import com.jala.search.controller.ControllerSearchAdvanced;
 import com.jala.utils.Logs;
 import com.jala.view.MainView;
 import org.apache.log4j.Logger;

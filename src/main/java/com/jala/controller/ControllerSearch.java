@@ -9,7 +9,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
-package com.jala.search.controller;
+package com.jala.controller;
 
 import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
