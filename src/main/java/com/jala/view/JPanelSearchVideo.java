@@ -142,6 +142,14 @@ public class JPanelSearchVideo extends JPanel {
     }
 
     /**
+     * The getBtnSearch method get JButton attribute of itself class.
+     * @return a JButton class
+     */
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    /**
      * The getCmbFrameRate method get String of ComboBox selected.
      */
     public String getCmbFrameRate() {

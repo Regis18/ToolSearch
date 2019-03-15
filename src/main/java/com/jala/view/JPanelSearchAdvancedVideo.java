@@ -73,7 +73,7 @@ public class JPanelSearchAdvancedVideo extends JPanel{
     /**
      * The method pnlTableResult get a JPanel with the JTableResult.
      *
-     * @return a JPanel component.
+     * @return a JPanel class.
      */
     private JPanel pnlTableResult() {
 
