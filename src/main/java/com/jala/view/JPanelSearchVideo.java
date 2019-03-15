@@ -40,6 +40,14 @@ public class JPanelSearchVideo extends JPanel {
      */
     public JPanelSearchVideo() {
         setLayout(new GridBagLayout());
+        initComponent();
+
+    }
+
+    /**
+     * The initComponent method
+     */
+    private void initComponent() {
         GridBagConstraints constraints = new GridBagConstraints();
         lblFramRate = new JLabel("Frame Rate: ");
         constraintComponent(lblFramRate, 0, 2, GridBagConstraints.EAST);
@@ -53,12 +61,12 @@ public class JPanelSearchVideo extends JPanel {
         constraintComponent(cmbFrameRate, 1, 2, GridBagConstraints.WEST);
         cmbVideoCodec = new JComboBox();
         String[] myVideoCod = {"SELECT", "H.264/MPEG-4 AVC", "H.265/MPEG-H HEVC", "H.263/MPEG-4 parte2 codecs",
-                    "H.262/MPEG-2 codecs", "MPEG-1", "WMV", "MJPEG", "DV and HDV", "MPEG-2", "Microsoft VC-1"};
+                "H.262/MPEG-2 codecs", "MPEG-1", "WMV", "MJPEG", "DV and HDV", "MPEG-2", "Microsoft VC-1"};
         addItemsComboBox(myVideoCod, cmbVideoCodec);
         constraintComponent(cmbVideoCodec, 1, 3, GridBagConstraints.WEST);
         cmbAudioCodec = new JComboBox();
         String[] myAudioCod = {"SELECT", "WAV", "FLAC", "MP3", "WMA", "MPEG-1", "WMV", "ALAC", "Ogg Vorbis",
-                                "AAC", "AIFF", "DSD"};
+                "AAC", "AIFF", "DSD"};
         addItemsComboBox(myAudioCod, cmbAudioCodec);
         constraintComponent(cmbAudioCodec, 1, 4, GridBagConstraints.WEST);
         lblAspectRatio = new JLabel("Aspect Ratio: ");
