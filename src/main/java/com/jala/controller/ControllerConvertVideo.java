@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.controller;
+package com.jala.controller;
 
 import com.jala.convertor.models.ConvertMusic;
 import com.jala.convertor.models.ConvertVideo;
