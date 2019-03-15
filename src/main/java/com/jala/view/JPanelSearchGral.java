@@ -27,7 +27,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JFileChooser;
 
-
 /**
  * Module view, ui/JPanelSearchAdvanced.
  * @version 0.0.1.
@@ -104,11 +103,8 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlNorth = pnlCriteria();
         this.add(pnlNorth, BorderLayout.NORTH);
 
-        JPanel pnlCentral = pnlButtonAdvanced();
-        this.add(pnlCentral, BorderLayout.CENTER);
-
         JPanel pnlSouth = pnlTableResult();
-        this.add(pnlSouth, BorderLayout.SOUTH);
+        this.add(pnlSouth, BorderLayout.CENTER);
     }
 
     /**
@@ -180,12 +176,3 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         }
     }
 }
-
-
-
-
-
-
-
-
-

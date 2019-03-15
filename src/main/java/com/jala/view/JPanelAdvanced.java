@@ -50,6 +50,22 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     private JCheckBox fileMajors;
 
     /**
+     * The getLblExtension method get the data lblExtension
+     * @return the JLabel component
+     */
+    public JLabel getLblExtension() {
+        return lblExtension;
+    }
+
+    /**
+     * The getTxtFieldExtension method get the data txtExtension
+     * @return a component JTextField type
+     */
+    public JTextField getTxtFieldExtension() {
+        return txtExtension;
+    }
+
+    /**
      * Gets the content from txtPath.
      * @return txtPath, the content of the txtPath text field.
      */
