@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.utils;
+package com.jala.model.assetFile;
 
 import com.jala.model.assetFile.Asset;
 import com.jala.model.assetFile.AssetVideo;

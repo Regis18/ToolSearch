@@ -20,7 +20,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.jala.utils.AssetFactory;
+import com.jala.model.assetFile.AssetFactory;
 import org.apache.log4j.Logger;
 
 /**
