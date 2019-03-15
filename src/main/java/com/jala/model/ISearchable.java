@@ -10,9 +10,11 @@
  * with Jala Foundation.
  */
 
-package com.jala.search.models;
+package com.jala.model;
 
-import java.io.File;
+import com.jala.model.assetFile.Asset;
+import com.jala.model.criteria.CriteriaSearch;
+
 import java.util.List;
 
 /**

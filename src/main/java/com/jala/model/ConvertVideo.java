@@ -10,8 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.models;
+package com.jala.model;
 
+import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.FFmpeg;
@@ -26,7 +27,7 @@ import java.io.IOException;
  * @version 0.0.3
  * @author Regis Humana
  */
-public class ConvertVideo implements IConvertible{
+public class ConvertVideo implements IConvertible {
 
 	/** It creates to follow up the instruction of the class*/
 	private Logger log = Logs.getInstance().getLog();

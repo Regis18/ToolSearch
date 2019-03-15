@@ -10,9 +10,10 @@
  * with Jala Foundation.
  */
 
-package com.jala.search.models;
+package com.jala.model.criteria;
 
 import com.jala.common.models.Criteria;
+import com.jala.model.TernaryBooleanEnum;
 
 /**
  * The CriteriaSearch class is to set and get the criteria to search.

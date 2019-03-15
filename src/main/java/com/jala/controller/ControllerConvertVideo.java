@@ -12,10 +12,10 @@
 
 package com.jala.controller;
 
-import com.jala.convertor.models.ConvertMusic;
-import com.jala.convertor.models.ConvertVideo;
-import com.jala.convertor.models.CriteriaConverterAudio;
-import com.jala.convertor.models.CriteriaConverterVideo;
+import com.jala.model.ConvertMusic;
+import com.jala.model.ConvertVideo;
+import com.jala.model.criteria.CriteriaConverterAudio;
+import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelConverterVideo;
 import org.apache.log4j.Logger;

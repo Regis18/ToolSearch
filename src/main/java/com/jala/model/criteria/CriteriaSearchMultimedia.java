@@ -10,7 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.search.models;
+package com.jala.model.criteria;
+
+import com.jala.model.criteria.CriteriaSearch;
 
 /**
  * CriteriaSearchMultimedia class.

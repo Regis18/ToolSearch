@@ -10,14 +10,14 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.models;
+package com.jala.model.criteria;
 
 import com.jala.common.models.Criteria;
 
 /**
  * The CriteriaConverter class is used to establish and obtain the conversion criteria.
  * @version 0.0.1
- * @author Luis Guardia
+ * @author Luis Guardia.
  */
 public class CriteriaConverter extends Criteria {
 
@@ -27,7 +27,7 @@ public class CriteriaConverter extends Criteria {
     private String pathDestination;
 
     /**
-     * It is characteristic for add a new file name to the converted stuff
+     * It is characteristic for add a new file name to the converted stuff.
      */
     private String newFileName;
 
