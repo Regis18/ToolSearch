@@ -46,9 +46,16 @@ public abstract class SearchBasic implements ISearchable {
                 File file = files.get(i);
                 if (file.isFile()) {
                     Asset asset;
-                    asset = AssetFactory.getAsset(file.getPath(), file.getName(), FilenameUtils.getExtension(file.getName()),
-                                file.isHidden(), fileOwner(file.getPath()), String.valueOf(file.length()), file.canWrite(),
-                                fileCreationDate(file.getPath()), fileLastModifiedDate(file.getPath()), fileLastAccessDate(file.getPath()));
+                    asset = AssetFactory.getAsset(file.getPath(),
+                            file.getName(),
+                            FilenameUtils.getExtension(file.getName()),
+                            file.isHidden(),
+                            fileOwner(file.getPath()),
+                            String.valueOf(file.length()),
+                            file.canWrite(),
+                            fileCreationDate(file.getPath()),
+                            fileLastModifiedDate(file.getPath()),
+                            fileLastAccessDate(file.getPath()));
                     result.add(asset);
                 }
             }
@@ -71,7 +78,7 @@ public abstract class SearchBasic implements ISearchable {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String formatted = simpleDateFormat.format( new java.util.Date( time.toMillis() ) );
             return formatted;
-        } catch (IOException e) {
+        } catch (IOException event) {
             return "";
         }
     }
@@ -87,7 +94,7 @@ public abstract class SearchBasic implements ISearchable {
         try {
             UserPrincipal owner = ownerAttributeView.getOwner();
             return owner.getName();
-        } catch(java.io.IOException event){
+        } catch(IOException event){
             return "";
         }
     }

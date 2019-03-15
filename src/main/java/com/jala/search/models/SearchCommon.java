@@ -12,10 +12,8 @@
 
 package com.jala.search.models;
 
-import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import com.jala.utils.Logs;
 
@@ -33,7 +31,6 @@ public class SearchCommon extends SearchBasic {
     public SearchCommon(CriteriaSearch criteria) {
         log.info("Searching on " + criteria.getPath());
         this.criteria = criteria;
-        search();
     }
 
     public List<Asset> search() {

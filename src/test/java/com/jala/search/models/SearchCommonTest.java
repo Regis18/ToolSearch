@@ -28,7 +28,7 @@ public class SearchCommonTest {
     }
     @Test
     public void getResult_ReturnPaths_WhenSentOnlyMP4() {
-        CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Usuario\\Desktop\\JALA\\Prog02");
+        CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
         criteriaSearch.setExtension("mp4");
         SearchCommon search = new SearchCommon(criteriaSearch);
         for (int i = 0; i < search.search().size(); i++) {
