@@ -21,29 +21,38 @@ import java.awt.BorderLayout;
 
 /**
  * JPanelSearchAdvancedVideo class is the panel to do
- * the search advanced video
+ * the search advanced video.
  *
  * @author Raúl Choque
  * @version 0.0.1
  */
 public class JPanelSearchAdvancedVideo extends JPanel{
+
     private JPanelAdvanced panelAdvanceSearch;
     private JPanelSearchVideo panelSearchVideo;
     private JTableResult tblResult;
     private Border border;
 
     /**
-     * This is the constructor method for create an instance
+     * The constructor method of the JPanelSearchAdvancedVideo class,
+     * it is for build an instance.
      */
     public JPanelSearchAdvancedVideo() {
+
+        initUI();
         initComponent();
     }
 
     /**
-     * The initComponent method will initialize the components.
+     * The initUI method personalise attribute of class.
+     */
+    private void initUI() { setLayout(new BorderLayout()); }
+
+    /**
+     * The initComponent method, is for add component ourselves.
      */
     private void initComponent() {
-        setLayout(new BorderLayout());
+
         panelAdvanceSearch = new JPanelAdvanced(new BorderLayout());
         TitledBorder advancedBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
         panelAdvanceSearch.setBorder(advancedBorder);
@@ -64,10 +73,10 @@ public class JPanelSearchAdvancedVideo extends JPanel{
      * @return pnlTable the panel of the table.
      */
     private JPanel pnlTableResult() {
+
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Video");
         pnlSearchAdvanced.setBorder(titleBorder);
-
         tblResult = new JTableResult();
         JScrollPane scroll = new JScrollPane(tblResult);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);

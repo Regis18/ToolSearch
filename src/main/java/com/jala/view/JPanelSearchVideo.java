@@ -36,7 +36,7 @@ public class JPanelSearchVideo extends JPanel {
             cmbDimension, cmbExtension;
 
     /**
-     * The constructor method of the ViewConsole class to build an instance
+     * The constructor method of the ViewConsole class, it is for build an instance.
      */
     public JPanelSearchVideo() {
         initUI();
@@ -44,17 +44,17 @@ public class JPanelSearchVideo extends JPanel {
     }
 
     /**
-     * The initUI method personalise attribute of class
+     * The initUI method personalise attribute of class.
      */
     private void initUI() {
         setLayout(new GridBagLayout());
     }
 
     /**
-     * The initComponent method, is for add component ourselves
+     * The initComponent method, is for add component ourselves.
      */
     private void initComponent() {
-        GridBagConstraints constraints = new GridBagConstraints();
+
         lblFrameRate = new JLabel("Frame Rate: ");
         constraintComponent(lblFrameRate, 0, 2, GridBagConstraints.EAST);
         lblVideoCodec = new JLabel("Video Codec: ");
@@ -99,66 +99,68 @@ public class JPanelSearchVideo extends JPanel {
     }
 
     /**
-     * This method add items in combo box
+     * This method add items in combo box.
      * @param myItems are data for add at cbFrameRat
      * @param cmb is a data where add items
      */
     private void addItemsComboBox(String[] myItems, JComboBox cmb) {
+
         for (String item : myItems) {
             cmb.addItem(item);
         }
     }
 
     /**
-     * The getCmbFrameRate method get String of ComboBox selected
+     * The getCmbFrameRate method get String of ComboBox selected.
      */
     public String getCmbFrameRate() {
         return cmbFrameRate.getSelectedItem().toString();
     }
 
     /**
-     * The getCmbVideoCodec method get String of ComboBox selected
+     * The getCmbVideoCodec method get String of ComboBox selected.
      */
     public String getCmbVideoCodec() {
         return cmbVideoCodec.getSelectedItem().toString();
     }
 
     /**
-     * The getCmbAudioCodec method get String of ComboBox selected
+     * The getCmbAudioCodec method get String of ComboBox selected.
      */
     public String getCmbAudioCodec() {
         return cmbAudioCodec.getSelectedItem().toString();
     }
 
     /**
-     * The getCmbAspectRatio method get String of ComboBox selected
+     * The getCmbAspectRatio method get String of ComboBox selected.
      */
     public String getCmbAspectRatio() {
         return cmbAspectRatio.getSelectedItem().toString();
     }
 
     /**
-     * The getCmbDimension method get String of ComboBox selected
+     * The getCmbDimension method get String of ComboBox selected.
      */
     public String getCmbDimension() {
         return cmbDimension.getSelectedItem().toString();
     }
 
     /**
-     * The getCmbExtension method get String of ComboBox selected
+     * The getCmbExtension method get String of ComboBox selected.
      */
     public String getCmbExtension() {
         return cmbExtension.getSelectedItem().toString();
     }
 
     /**
-     * The method constraintComponent add constraint for a component
+     * The method constraintComponent add constraint for a component.
      * @param component is data that receive a constraint
      * @param posX is data for position on row
      * @param posY is data for position on column
      * @param align is data for place the component.
      */
     private void constraintComponent(Component component, int posX, int posY, int align) {
+
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = posX;
         constraints.gridy = posY;
