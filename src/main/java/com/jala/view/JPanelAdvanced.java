@@ -245,7 +245,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         lblHidden = new JLabel("Hidden: ");
         addComponent(lblHidden, 0, 2, 1, 1);
 
-
         lblReadOnly = new JLabel("ReadOnly: ");
         addComponent(lblReadOnly, 3, 2, 1, 1);
 
