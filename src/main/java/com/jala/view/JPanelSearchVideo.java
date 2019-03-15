@@ -29,7 +29,7 @@ import java.awt.Insets;
  * @version 0.0.1
  */
 public class JPanelSearchVideo extends JPanel {
-    private JLabel lblFramRate, lblVideoCodec,
+    private JLabel lblFrameRate, lblVideoCodec,
             lblAudioCodec, lblAspectRatio, lblDimension, lblExtension;
     private JButton btnSearch;
     private JComboBox cmbFrameRate, cmbVideoCodec, cmbAudioCodec, cmbAspectRatio,
@@ -39,18 +39,24 @@ public class JPanelSearchVideo extends JPanel {
      * The constructor method of the ViewConsole class to build an instance
      */
     public JPanelSearchVideo() {
-        setLayout(new GridBagLayout());
+        initUI();
         initComponent();
-
     }
 
     /**
-     * The initComponent method
+     * The initUI method personalise attribute of class
+     */
+    private void initUI() {
+        setLayout(new GridBagLayout());
+    }
+
+    /**
+     * The initComponent method, is for add component ourselves
      */
     private void initComponent() {
         GridBagConstraints constraints = new GridBagConstraints();
-        lblFramRate = new JLabel("Frame Rate: ");
-        constraintComponent(lblFramRate, 0, 2, GridBagConstraints.EAST);
+        lblFrameRate = new JLabel("Frame Rate: ");
+        constraintComponent(lblFrameRate, 0, 2, GridBagConstraints.EAST);
         lblVideoCodec = new JLabel("Video Codec: ");
         constraintComponent(lblVideoCodec, 0, 3, GridBagConstraints.EAST);
         lblAudioCodec = new JLabel("Audio Codec: ");
