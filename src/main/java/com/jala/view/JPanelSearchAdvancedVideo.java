@@ -60,10 +60,12 @@ public class JPanelSearchAdvancedVideo extends JPanel{
         panelAdvanceSearch.getTxtFieldExtension().setVisible(false);
         panelAdvanceSearch.getLblExtension().setVisible(false);
         this.add(panelAdvanceSearch, BorderLayout.WEST);
+
         panelSearchVideo = new JPanelSearchVideo();
         TitledBorder attributeBorder = BorderFactory.createTitledBorder(border, "Attributes");
         panelSearchVideo.setBorder(attributeBorder);
         this.add(panelSearchVideo, BorderLayout.CENTER);
+
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
     }
