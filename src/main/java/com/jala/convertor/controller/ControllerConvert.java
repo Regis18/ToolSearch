@@ -12,9 +12,8 @@
 
 package com.jala.convertor.controller;
 
-import com.jala.convertor.models.ConvertorImage;
-import com.jala.convertor.models.CriteriaConverter;
-import com.jala.convertor.models.CriteriaConverterImage;
+import com.jala.model.ConvertorImage;
+import com.jala.model.criteria.CriteriaConverterImage;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelConverter;
 import org.apache.log4j.Logger;

@@ -10,7 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.search.models;
+package com.jala.model.assetFile;
+
+import com.jala.model.assetFile.Asset;
 
 /**
  * AssetVideo class.

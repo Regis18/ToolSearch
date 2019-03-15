@@ -10,9 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.search.models;
+package com.jala.model.assetFile;
 
-import java.io.File;
+import com.jala.model.assetFile.Asset;
 
 /**
  * AssetText class.

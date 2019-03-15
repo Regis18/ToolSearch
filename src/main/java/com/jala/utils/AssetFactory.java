@@ -12,13 +12,12 @@
 
 package com.jala.utils;
 
-import com.jala.search.models.Asset;
-import com.jala.search.models.AssetVideo;
-import com.jala.search.models.AssetCommon;
-import com.jala.search.models.AssetText;
-import com.jala.search.models.CriteriaSearch;
+import com.jala.model.assetFile.Asset;
+import com.jala.model.assetFile.AssetVideo;
+import com.jala.model.assetFile.AssetCommon;
+import com.jala.model.assetFile.AssetText;
+import com.jala.model.criteria.CriteriaSearch;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.File;

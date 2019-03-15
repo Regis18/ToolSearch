@@ -11,10 +11,10 @@
  */
 package com.jala.search.controller;
 
-import com.jala.search.models.Asset;
-import com.jala.search.models.CriteriaSearch;
-import com.jala.search.models.SearchFile;
-import com.jala.search.models.TernaryBooleanEnum;
+import com.jala.model.assetFile.Asset;
+import com.jala.model.criteria.CriteriaSearch;
+import com.jala.model.SearchFile;
+import com.jala.model.TernaryBooleanEnum;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelSearchAdvanced;
 import org.apache.log4j.Logger;

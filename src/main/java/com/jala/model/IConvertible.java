@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.models;
+package com.jala.model;
 
 /**
  * Interface allows that other classes can implement distinct form of conversion.

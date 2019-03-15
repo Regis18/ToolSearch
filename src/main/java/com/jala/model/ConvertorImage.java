@@ -10,8 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.models;
+package com.jala.model;
 
+import com.jala.model.criteria.CriteriaConverterImage;
 import com.jala.utils.Logs;
 import org.im4java.core.ConvertCmd;
 import org.im4java.core.IM4JavaException;

@@ -10,8 +10,9 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.models;
+package com.jala.model;
 
+import com.jala.model.criteria.CriteriaConverterAudio;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;

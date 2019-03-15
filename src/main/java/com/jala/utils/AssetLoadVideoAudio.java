@@ -11,8 +11,8 @@
  */
 package com.jala.utils;
 
-import com.jala.search.models.AssetVideo;
-import com.jala.search.models.AssetAudio;
+import com.jala.model.assetFile.AssetVideo;
+import com.jala.model.assetFile.AssetAudio;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.probe.FFmpegProbeResult;
 

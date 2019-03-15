@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.models;
+package com.jala.model.criteria;
 
 import com.jala.common.models.Criteria;
 
