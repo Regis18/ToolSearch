@@ -12,9 +12,9 @@
 
 package com.jala.test;
 
+import com.jala.model.search.SearchFile;
 import com.jala.model.search.assetFile.Asset;
 import com.jala.model.criteria.CriteriaSearch;
-import SearchFile;
 import com.jala.model.search.TernaryBooleanEnum;
 import org.junit.After;
 import org.junit.Before;
