@@ -32,10 +32,12 @@ public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
     private JMenu menuFile, menuSearch, menuConverter;
-    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo;
+    private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo,
+            menuItemSearchVideo;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
+    private JPanelSearchAdvancedVideo pnlSearchAdvancedVideo;
     private JPanelConverter panelConverterImage;
     private JPanelVideo panelConverterVideo;
     private String currentPanel;
@@ -45,7 +47,7 @@ public class MainView extends JFrame implements ActionListener {
      * Constructor.
      */
     public MainView() {
-        setTitle("View Main");
+        setTitle("SolidWater");
     }
 
     /**
@@ -54,6 +56,14 @@ public class MainView extends JFrame implements ActionListener {
      */
     public JPanelSearchGral getpSearchGral() {
         return pnlSearchGral;
+    }
+
+    /**
+     * Return the panel for convert Video and Audio.
+     * @return panelConverterVideo panel for convert video and audio.
+     */
+    public JPanelVideo getPanelConverterVideo() {
+        return panelConverterVideo;
     }
 
     /**
@@ -130,7 +140,6 @@ public class MainView extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(500, 400));
         initComponent();
-
         setLocationRelativeTo(null);
     }
 
@@ -165,6 +174,10 @@ public class MainView extends JFrame implements ActionListener {
         menuSearch.add(menuItemAdvanced);
         menuItemAdvanced.addActionListener(this);
 
+        menuItemSearchVideo = new JMenuItem("Advance Video");
+        menuSearch.add(menuItemSearchVideo);
+        menuItemSearchVideo.addActionListener(this);
+
         menuItemExit = new JMenuItem("Exit");
         menuFile.add(menuItemExit);
 
@@ -182,12 +195,12 @@ public class MainView extends JFrame implements ActionListener {
 
     /**
      * The method actionPerformed receives the event of MenuItem Search General.
-     * @param e, evento del MenuItem.
+     * @param event, evento del MenuItem.
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent event) {
         Container content = getContentPane();
-        if (e.getSource() == menuItemGeneral) {
+        if (event.getSource() == menuItemGeneral) {
             if (currentPanel != "SearchGral") {
                 pnlSearchGral = new JPanelSearchGral(new BorderLayout());
                 content.removeAll();
@@ -197,7 +210,7 @@ public class MainView extends JFrame implements ActionListener {
                 this.repaint();
             }
         }
-        if (e.getSource() == menuItemAdvanced) {
+        if (event.getSource() == menuItemAdvanced) {
             if (currentPanel != "SearchAdvanced") {
                 pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
                 content.removeAll();
@@ -207,7 +220,7 @@ public class MainView extends JFrame implements ActionListener {
                 this.repaint();
             }
         }
-        if (e.getSource() == menuItemConverter) {
+        if (event.getSource() == menuItemConverter) {
             panelConverterImage = new JPanelConverter(new BorderLayout());
             content.removeAll();
             content.add(panelConverterImage, BorderLayout.CENTER);
@@ -215,7 +228,7 @@ public class MainView extends JFrame implements ActionListener {
             this.validate();
             this.repaint();
         }
-        if (e.getSource() == menuItemConverterVideo) {
+        if (event.getSource() == menuItemConverterVideo) {
             panelConverterVideo = new JPanelVideo(new BorderLayout());
             content.removeAll();
             content.add(panelConverterVideo, BorderLayout.CENTER);
@@ -223,6 +236,15 @@ public class MainView extends JFrame implements ActionListener {
             this.validate();
             this.repaint();
         }
+        if (event.getSource() == menuItemSearchVideo) {
+            if (currentPanel != "SearchAdvancedVideo") {
+                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+                content.removeAll();
+                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+                currentPanel = "SearchAdvancedVideo";
+                this.validate();
+                this.repaint();
+            }
+        }
     }
 }
-

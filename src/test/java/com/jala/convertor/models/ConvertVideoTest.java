@@ -12,6 +12,8 @@
 
 package com.jala.convertor.models;
 
+import com.jala.model.convert.ConvertVideo;
+import com.jala.model.criteria.CriteriaConverterVideo;
 import org.junit.Test;
 import net.bramp.ffmpeg.FFprobe;
 

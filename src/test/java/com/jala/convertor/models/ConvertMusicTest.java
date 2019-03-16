@@ -12,6 +12,8 @@
 
 package com.jala.convertor.models;
 
+import com.jala.model.convert.ConvertMusic;
+import com.jala.model.criteria.CriteriaConverterAudio;
 import net.bramp.ffmpeg.FFprobe;
 import org.junit.Test;
 
