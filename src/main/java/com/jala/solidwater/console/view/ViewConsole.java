@@ -12,7 +12,7 @@
 
 package com.jala.solidwater.console.view;
 
-import com.jala.search.models.Asset;
+import com.jala.model.search.assetFile.Asset;
 
 import java.util.ArrayList;
 import java.util.List;

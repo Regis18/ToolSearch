@@ -12,9 +12,9 @@
 
 package com.jala.solidwater.console.models;
 
-import com.jala.search.models.Asset;
-import com.jala.search.models.CriteriaSearch;
-import com.jala.search.models.SearchFile;
+import com.jala.model.criteria.CriteriaSearch;
+import com.jala.model.search.SearchFile;
+import com.jala.model.search.assetFile.Asset;
 
 import java.util.ArrayList;
 import java.util.List;

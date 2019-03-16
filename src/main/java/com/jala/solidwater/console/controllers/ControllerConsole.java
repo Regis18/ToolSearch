@@ -12,7 +12,7 @@
 
 package com.jala.solidwater.console.controllers;
 
-import com.jala.search.models.Asset;
+import com.jala.model.search.assetFile.Asset;
 import com.jala.solidwater.console.models.Command;
 import com.jala.solidwater.console.models.CommandLine;
 import com.jala.solidwater.console.models.ModelConsole;
