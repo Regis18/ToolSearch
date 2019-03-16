@@ -1,10 +1,8 @@
-/*
- * @(#)ControllerConsole.java
- *
- * Copyright (c) 2019 Jala Foundation.
+/**
+ * @(#)ControllerConsole.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
- *
+ * <p>
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
@@ -17,16 +15,16 @@ package com.jala.solidwater.console.controllers;
 import com.jala.search.models.Asset;
 import com.jala.solidwater.console.models.Command;
 import com.jala.solidwater.console.models.CommandLine;
+import com.jala.solidwater.console.models.ModelConsole;
 import com.jala.solidwater.console.validators.ValidCommand;
 import com.jala.solidwater.console.validators.ValidCommandLine;
-import com.jala.solidwater.view.console.ModelConsole;
-import com.jala.solidwater.view.console.ViewConsole;
+import com.jala.solidwater.console.view.ViewConsole;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ControllerConsole class will manage the ModelConsole, ViewConsole.
+ * ControllerConsole class will manage the ViewConsole.
  *
  * @author Raúl Choque
  * @version 0.0.1
@@ -43,11 +41,19 @@ public class ControllerConsole {
      */
     private ModelConsole modelConsole;
 
+    /**
+     * Command line to set the arguments of console.
+     */
     private CommandLine inputCommandLine;
+
+    /**
+     * Allows validate a command line.
+     */
     private ValidCommandLine validCommandLine;
 
     /**
      * This method is the constructor of ControllerConsole to create an instance
+     *
      * @param parameters are data to find Asset
      */
     public ControllerConsole(String[] parameters) {
@@ -56,6 +62,12 @@ public class ControllerConsole {
         validCommandLine = new ValidCommandLine();
         searchAsset(parameters);
     }
+
+    /**
+     * Print on console the asset by the command line that was entered.
+     *
+     * @param parameters to create a command line.
+     */
     private void searchAsset(String[] parameters) {
         createCommandLineInput(parameters);
         if (validCommandLine.validate(inputCommandLine)) {
@@ -66,20 +78,27 @@ public class ControllerConsole {
         }
     }
 
-    private CommandLine createCommandLineInput(String[] input) {
+    /**
+     * Create the command line with parameter that was entered in console.
+     *
+     * @param inputParameters to create a command line.
+     * @return command line valid if of commands are valid and
+     * invalid if the command at least one commando is invalid.
+     */
+    private CommandLine createCommandLineInput(String[] inputParameters) {
         List<Command> inputCommands = new ArrayList<>();
         List<String> commandValues = new ArrayList<>();
-        for (int i = 0; i < input.length ; i += 2) {
+        for (int i = 0; i < inputParameters.length; i += 2) {
             Command inputCommand = new Command();
             String valueCommand = "";
-            inputCommand.setAcronym(input[i]);
+            inputCommand.setAcronym(inputParameters[i]);
             ValidCommand validCommand = new ValidCommand();
-            if(validCommand.validate(inputCommand)) {
+            if (validCommand.validate(inputCommand)) {
                 inputCommands.add(inputCommand);
-                valueCommand = input[i+1];
+                valueCommand = inputParameters[i + 1];
                 commandValues.add(valueCommand);
             } else {
-                i = input.length;
+                i = inputParameters.length;
             }
         }
         inputCommandLine = new CommandLine(inputCommands, commandValues);

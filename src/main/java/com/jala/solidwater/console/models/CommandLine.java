@@ -12,7 +12,6 @@
 
 package com.jala.solidwater.console.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,10 +32,6 @@ public class CommandLine {
      */
     private List<String> values;
 
-    public  CommandLine() {
-        commands = new ArrayList<>();
-        values = new ArrayList<>();
-    }
     /**
      * This constructor allows instance a command line sending a command list and command value list.
      *
@@ -44,9 +39,7 @@ public class CommandLine {
      * @param values   to create the list of command value.
      */
     public CommandLine(List<Command> commands, List<String> values) {
-
         this.commands = commands;
-
         this.values = values;
     }
 

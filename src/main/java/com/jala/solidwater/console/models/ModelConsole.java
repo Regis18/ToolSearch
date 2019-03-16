@@ -16,10 +16,8 @@ import com.jala.search.models.Asset;
 import com.jala.search.models.CriteriaSearch;
 import com.jala.search.models.SearchFile;
 
-import javax.xml.soap.SAAJResult;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * ModelConsole class defines the structure of a ModelConsole.
@@ -29,30 +27,40 @@ import java.util.Map;
  */
 public class ModelConsole {
 
+    /**
+     * Constant for set empty values in criteria.
+     */
     private static final String EMPTY_VALUE_FOR_SET_IN_ATTRIBUTES_OF_CRITERIA = "";
+
+    /**
+     * Constant to get command by file name acronym.
+     */
     private static final String FILE_NAME_COMMAND = "-fn";
+
+    /**
+     * Constant to get command by extension acronym.
+     */
     private static final String EXTENSION_COMMAND = "-ex";
+
+    /**
+     * Constant to get command by size acronym.
+     */
     private static final String SIZE_COMMAND = "-s";
 
     /**
-     * @param inputCommandLine are valid data for the search
-     * @return a Asset list that were find
+     * This method return a asset list sending
+     * a command line valid and according to the setting of criteria.
+     *
+     * @param validCommand command valid to search file.
+     * @return a Asset list according to the criteria set.
      */
-    public List<Asset> getSearch(CommandLine inputCommandLine) {
-        return getAsset(inputCommandLine);
-    }
-
-    /**
-     * @param validCommand is a Map with all valid commands.
-     * @return a Asset list with the criteria of search.
-     */
-    private List<Asset> getAsset(CommandLine validCommand) {
+    public List<Asset> getSearch(CommandLine validCommand) {
         String valuePath = getValueCommandByPositionOfCommand(validCommand, "-p");
 
         CriteriaSearch criteria = new CriteriaSearch(valuePath);
-        criteria.setFileName(setCriteriaValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
-        criteria.setExtension(setCriteriaValueIfExistCommand(validCommand, EXTENSION_COMMAND));
-        criteria.setSize(setCriteriaValueIfExistCommand(validCommand, SIZE_COMMAND));
+        criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
+        criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
+        criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
 
         SearchFile searchFile = new SearchFile();
         ArrayList<Asset> listFileSearch = new ArrayList<>();
@@ -64,13 +72,20 @@ public class ModelConsole {
         return listFileSearch;
     }
 
-    private String setCriteriaValueIfExistCommand(CommandLine cl, String acronym) {
+    /**
+     * This method set the criteria if the command exist in command line.
+     *
+     * @param commandLine to search the acronym sent.
+     * @param acronym     to search in command line and get its value.
+     * @return if command exist return the value its value, else return value as empty.
+     */
+    private String setValueIfExistCommand(CommandLine commandLine, String acronym) {
         String value = EMPTY_VALUE_FOR_SET_IN_ATTRIBUTES_OF_CRITERIA;
-        for (int i =1; i < cl.getCommands().size(); i++) {
-            Command command = cl.getCommands().get(i);
+        for (int i = 1; i < commandLine.getCommands().size(); i++) {
+            Command command = commandLine.getCommands().get(i);
             if (command.getAcronym().equals(acronym)) {
-                value = getValueCommandByPositionOfCommand(cl, acronym);
-                i = cl.getCommands().size();
+                value = getValueCommandByPositionOfCommand(commandLine, acronym);
+                i = commandLine.getCommands().size();
             } else {
                 value = value;
             }
@@ -78,13 +93,19 @@ public class ModelConsole {
         return value;
     }
 
+    /**
+     * Get the value the a command getting the position del command by acronym.
+     *
+     * @param validCommand   to get the value of a command.
+     * @param acronymCommand to get the position of command.
+     * @return value as string of an command by its position.
+     */
     private String getValueCommandByPositionOfCommand(CommandLine validCommand, String acronymCommand) {
-
         int positionOfCommand = validCommand.getPositionOfCommandByAcronym(acronymCommand);
         String valueByPositionCommand = "";
         if (!validCommand.getValueCommands().get(positionOfCommand).isEmpty()
                 && validCommand.getValueCommands().get(positionOfCommand) != null) {
-            valueByPositionCommand =  validCommand.getValueCommands().get(positionOfCommand);
+            valueByPositionCommand = validCommand.getValueCommands().get(positionOfCommand);
         } else {
             valueByPositionCommand = valueByPositionCommand;
         }
