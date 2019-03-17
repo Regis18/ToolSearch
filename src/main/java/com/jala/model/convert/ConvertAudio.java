@@ -23,17 +23,17 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 
 /**
- * ConvertAudio
+ * ConvertAudio.
  *
  * @author Regis Humana
  * @version 0.0.3
  */
 public class ConvertAudio implements IConvertible {
 
-	/**Save the real path destination to send to FFMPEG*/
+	/**Save the real path destination to send to FFMPEG.*/
 	private String pathDestination;
 
-	/** It creates to follow up the instruction of the class*/
+	/** It creates to follow up the instruction of the class.*/
 	private Logger log = Logs.getInstance().getLog();
 
 	/**
@@ -63,9 +63,9 @@ public class ConvertAudio implements IConvertible {
 
 	/**
 	 * Convert the music with advances parameters like audioChannel, BitRate and SampleRate.
-	 * @param criteria
-	 * @param builder
-	 * @param fmpeg
+	 * @param criteria criteria for convert audio.
+	 * @param builder FFmpeg builder.
+	 * @param fmpeg converter app.
 	 */
 	private void convertAdvancedMusic(CriteriaConverterAudio criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
 		try {

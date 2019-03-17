@@ -12,20 +12,20 @@
 
 package com.jala.utils;
 
-import org.apache.log4j.Logger;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+/**
+ * Module view, ui/JPanelSearchAdvanced.
+ * @version 0.0.1.
+ * @autor Melvi Caballero M.
+ */
 public class Common {
 
-    /** It creates to follow up the instruction of the class*/
-    private Logger log = Logs.getInstance().getLog();
-
     /**
-     *
-     * @param path
-     * @return
+     * Method for clean url coding from path.
+     * @param path path to clean.
+     * @return cleaned path.
      */
     public static String cleanPath(String path){
         try {

@@ -23,17 +23,17 @@ import com.jala.utils.Common;
 import java.io.IOException;
 
 /**
- * ConvertVideo
+ * ConvertVideo.
  *
  * @version 0.0.3
  * @author Regis Humana
  */
 public class ConvertVideo implements IConvertible {
 
-	/** It creates to follow up the instruction of the class*/
+	/** It creates to follow up the instruction of the class.*/
 	private Logger log = Logs.getInstance().getLog();
 
-	/** Store the path destination with the path of folder, name of file and the extension*/
+	/** Store the path destination with the path of folder, name of file and the extension.*/
 	private String pathDestination;
 
 	/**
@@ -63,9 +63,9 @@ public class ConvertVideo implements IConvertible {
 
 	/**
 	 * Convert the video with advances parameters like audioChannel, BitRate, SampleRate, Frame rate & Video resolution.
-	 * @param criteria
-	 * @param builder
-	 * @param fmpeg
+	 * @param criteria criteria for convert video.
+	 * @param builder FFmpeg Builder.
+	 * @param fmpeg FFmpeg app.
 	 */
 	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
 		try {
