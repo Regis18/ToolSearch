@@ -25,7 +25,7 @@ public class ValidCommandTest {
     }
 
     @Test
-    public void validCommandSendingACommandWithoutGuion() {
+    public void validCommandSendingACommandWithoutDash() {
         Command command = new Command();
         command.setAcronym("p");
         ValidCommand validateCommand = new ValidCommand();
