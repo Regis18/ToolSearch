@@ -73,6 +73,9 @@ public class JpanelShowDB extends JPanel {
         initComponent();
     }
 
+    /**
+     * The initComponent method, is for add component itself class.
+     */
     private void initComponent() {
         JPanel pnlNorth = pnlCriteria();
         this.add(pnlNorth, BorderLayout.EAST);
@@ -82,16 +85,6 @@ public class JpanelShowDB extends JPanel {
 
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
-    }
-
-    private JPanel pnlTableResult() {
-        JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search");
-        pnlSearchAdvanced.setBorder(titleBorder);
-        tblResult = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tblResult);
-        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
-        return pnlSearchAdvanced;
     }
 
     /**
@@ -113,6 +106,26 @@ public class JpanelShowDB extends JPanel {
         return pnlPath;
     }
 
+    /**
+     * The method pnlTableResult get a JPanel with the JTableResult.
+     *
+     * @return a JPanel class.
+     */
+    private JPanel pnlTableResult() {
+        JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search");
+        pnlSearchAdvanced.setBorder(titleBorder);
+        tblResult = new JTableResult();
+        JScrollPane scroll = new JScrollPane(tblResult);
+        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+        return pnlSearchAdvanced;
+    }
+
+    /**
+     * The method pnlTableDB get a JPanel with the JTableResult.
+     *
+     * @return a JPanel class.
+     */
     private JPanel pnlTableDB() {
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Data Base");

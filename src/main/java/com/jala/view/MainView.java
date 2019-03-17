@@ -173,6 +173,7 @@ public class MainView extends JFrame implements ActionListener {
         //Container content = getContentPane();
         createMenu();
         //content.removeAll();
+        this.getContentPane().setBackground(new Color(189, 189, 189));
     }
 
     /**
@@ -231,6 +232,17 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuDB);
         menuBar.add(menuExit);
         menuBar.setBorderPainted(true);
+
+        menuBar.setBackground(new Color(40, 116, 166));
+        menuSearch.setCursor(new Cursor(HAND_CURSOR));
+        menuConverter.setCursor(new Cursor(HAND_CURSOR));
+        menuPlayerVideo.setCursor(new Cursor(HAND_CURSOR));
+        menuDB.setCursor(new Cursor(HAND_CURSOR));
+        menuItemGeneral.setCursor(new Cursor(HAND_CURSOR));
+        menuItemAdvanced.setCursor(new Cursor(HAND_CURSOR));
+        menuItemSearchVideo.setCursor(new Cursor(HAND_CURSOR));
+        menuItemConverter.setCursor(new Cursor(HAND_CURSOR));
+
     }
 
     /**
