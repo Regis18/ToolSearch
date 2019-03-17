@@ -22,6 +22,7 @@ import com.jala.solidwater.console.models.DefaultCommands;
  * @version 0.0.1
  */
 public class ValidCommand implements IValidable<Command> {
+
     /**
      * Create a instance of default commands.
      */

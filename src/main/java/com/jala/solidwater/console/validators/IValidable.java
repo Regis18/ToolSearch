@@ -23,8 +23,8 @@ public interface IValidable<T> {
     /**
      * This method allows validate a set of arguments.
      *
-     * @param argument
-     * @return
+     * @param argument to validate the T.
+     * @return true if argument is valid, false if argument isn't valid.
      */
     boolean validate(T argument);
 }
