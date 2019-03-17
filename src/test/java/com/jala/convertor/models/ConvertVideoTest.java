@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * ConvertVideoTest
  *
@@ -310,5 +312,14 @@ public class ConvertVideoTest {
 		String ds = ffprobe.probe(path).getStreams().get(0).codec_name;
 		List<String> list = new ArrayList<>();
 		ffprobe.run(list);
+	}
+
+
+	@Test
+	public void cleanPathTest() {
+		String path = "c://search//test%20test";
+		ConvertVideo cv = new ConvertVideo();
+		path = cv.cleanPath(path);
+		assertEquals(path, "c://search//test test");
 	}
 }

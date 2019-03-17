@@ -12,13 +12,13 @@
 
 package com.jala.model.convert;
 
-import com.jala.model.convert.IConvertible;
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 import org.apache.log4j.Logger;
+import com.jala.utils.Common;
 
 import java.io.IOException;
 
@@ -43,7 +43,8 @@ public class ConvertVideo implements IConvertible {
 	public void convert(Object criteriaObject) {
 		CriteriaConverterVideo criteria = (CriteriaConverterVideo) criteriaObject;
 		try {
-			FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe");
+			String pathFFmpeg = getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe";
+			FFmpeg fmpeg = new FFmpeg(Common.cleanPath(pathFFmpeg));
 			FFmpegBuilder builder = new FFmpegBuilder();
 			pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
 			builder.addInput(criteria.getPath()).overrideOutputFiles(true);
@@ -57,6 +58,8 @@ public class ConvertVideo implements IConvertible {
 			log.error("Error in ConvertVideo", error);
 		}
 	}
+
+
 
 	/**
 	 * Convert the video with advances parameters like audioChannel, BitRate, SampleRate, Frame rate & Video resolution.

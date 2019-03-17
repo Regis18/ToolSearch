@@ -13,6 +13,7 @@
 package com.jala.model.convert;
 
 import com.jala.model.criteria.CriteriaConverterAudio;
+import com.jala.utils.Common;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
@@ -44,7 +45,8 @@ public class ConvertAudio implements IConvertible {
 	public void convert(Object criteriaObject) {
 		CriteriaConverterAudio criteria = (CriteriaConverterAudio) criteriaObject;
 		try {
-			FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe");
+			String pathFFmpeg = getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe";
+			FFmpeg fmpeg = new FFmpeg(Common.cleanPath(pathFFmpeg));
 			FFmpegBuilder builder = new FFmpegBuilder();
 			pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
 			builder.addInput(criteria.getPath()).overrideOutputFiles(true);
