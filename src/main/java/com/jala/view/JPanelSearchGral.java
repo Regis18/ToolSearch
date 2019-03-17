@@ -112,7 +112,6 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      * @return pnlCriteria  the panel with path, file name, extension.
      */
     private JPanel pnlCriteria() {
-
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search");
         pnlPath.setBorder(titleBorder);
