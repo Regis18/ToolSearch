@@ -1,5 +1,5 @@
 /*
- * @(#) CriteriaConverterImage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) CriteriaConvertImage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -15,12 +15,12 @@ package com.jala.model.criteria;
 import com.jala.model.criteria.CriteriaConverter;
 
 /**
- * CriteriaConverterImage
+ * CriteriaConvertImage
  *
  * @version 0.0.3
  * @author Regis Humana
  */
-public class CriteriaConverterImage extends CriteriaConverter {
+public class CriteriaConvertImage extends CriteriaConverter {
 
     /**
      * The new width for the image file to convert.
@@ -52,7 +52,7 @@ public class CriteriaConverterImage extends CriteriaConverter {
      * @param pathOrigin of the file.
      * @param pathDestination of the file.
      */
-    public CriteriaConverterImage(String pathOrigin, String pathDestination, String newExtension) {
+    public CriteriaConvertImage(String pathOrigin, String pathDestination, String newExtension) {
         super(pathOrigin, pathDestination, newExtension);
         height = -1;
         width = -1;

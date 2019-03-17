@@ -12,8 +12,7 @@
 
 package com.jala.model.convert;
 
-import com.jala.model.convert.IConvertible;
-import com.jala.model.criteria.CriteriaConverterImage;
+import com.jala.model.criteria.CriteriaConvertImage;
 import com.jala.utils.Logs;
 import org.im4java.core.ConvertCmd;
 import org.im4java.core.IM4JavaException;
@@ -42,7 +41,7 @@ public class ConvertorImage implements IConvertible {
      */
     @Override
     public void convert(Object criteriaObject) {
-        CriteriaConverterImage criteriaConverter = (CriteriaConverterImage) criteriaObject;
+        CriteriaConvertImage criteriaConverter = (CriteriaConvertImage) criteriaObject;
         ConvertCmd convertCmd = new ConvertCmd();
         convertCmd.setSearchPath(IMAGE_MAGICK_PATH);
         existNewFileName(criteriaConverter);
@@ -70,7 +69,7 @@ public class ConvertorImage implements IConvertible {
      * @param criteriaConverter criteria to resize.
      * @param convertImage operation to convert image.
      */
-    private void convertByPercentage(CriteriaConverterImage criteriaConverter, IMOperation convertImage) {
+    private void convertByPercentage(CriteriaConvertImage criteriaConverter, IMOperation convertImage) {
         if (criteriaConverter.isMaintainProportion()) {
             if (criteriaConverter.getWidth() > 0 && criteriaConverter.getHeight() == -1) {
                 criteriaConverter.setHeight(criteriaConverter.getWidth());
@@ -89,7 +88,7 @@ public class ConvertorImage implements IConvertible {
      * @param criteriaConverter criteria to resize.
      * @param convertImage operation to convert image.
      */
-    private void convertByPixel(CriteriaConverterImage criteriaConverter, IMOperation convertImage) {
+    private void convertByPixel(CriteriaConvertImage criteriaConverter, IMOperation convertImage) {
         if (criteriaConverter.isMaintainProportion()) {
             if (criteriaConverter.getWidth() > 0 && criteriaConverter.getHeight() == -1) {
                 convertImage.sample(criteriaConverter.getWidth());
@@ -108,7 +107,7 @@ public class ConvertorImage implements IConvertible {
      * by the file name of the image to convert if the user didn't set.
      * @param criteriaConverter to set the file name.
      */
-    private void existNewFileName(CriteriaConverterImage criteriaConverter) {
+    private void existNewFileName(CriteriaConvertImage criteriaConverter) {
         File imageToChange = new File(criteriaConverter.getPath());
         if (criteriaConverter.getNewFileName().isEmpty()) {
             criteriaConverter.setNewFileName(imageToChange.getName());
