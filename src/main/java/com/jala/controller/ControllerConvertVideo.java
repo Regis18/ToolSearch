@@ -12,7 +12,7 @@
 
 package com.jala.controller;
 
-import com.jala.model.convert.ConvertMusic;
+import com.jala.model.convert.ConvertAudio;
 import com.jala.model.convert.ConvertVideo;
 import com.jala.model.criteria.CriteriaConverterAudio;
 import com.jala.model.criteria.CriteriaConverterVideo;
@@ -89,7 +89,7 @@ public class ControllerConvertVideo implements ActionListener {
      */
     private void sendPathToConvertAudio() {
         log.info("Preparing to send criteria converter to ConvertAudio");
-        ConvertMusic converterAudio = new ConvertMusic();
+        ConvertAudio converterAudio = new ConvertAudio();
         saveCriteriaAudio();
         converterAudio.convert(criteriaConverterAudio);
     }
