@@ -30,6 +30,7 @@ public class JpanelShowDB extends JPanel {
     private JTextField txtCriteria;
     private JButton btnSearch;
     private JTableDB tbDataBase;
+    private JTableResult tblResult;
     private Border border;
 
     public JpanelShowDB(LayoutManager layout) {
@@ -74,10 +75,23 @@ public class JpanelShowDB extends JPanel {
 
     private void initComponent() {
         JPanel pnlNorth = pnlCriteria();
-        this.add(pnlNorth, BorderLayout.NORTH);
+        this.add(pnlNorth, BorderLayout.EAST);
 
         JPanel pnlSouth = pnlTableDB();
         this.add(pnlSouth, BorderLayout.CENTER);
+
+        JPanel jpForTable = pnlTableResult();
+        this.add(jpForTable, BorderLayout.SOUTH);
+    }
+
+    private JPanel pnlTableResult() {
+        JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search");
+        pnlSearchAdvanced.setBorder(titleBorder);
+        tblResult = new JTableResult();
+        JScrollPane scroll = new JScrollPane(tblResult);
+        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+        return pnlSearchAdvanced;
     }
 
     /**
