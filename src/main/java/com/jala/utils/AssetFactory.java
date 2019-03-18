@@ -15,9 +15,7 @@ package com.jala.utils;
 
 import com.jala.search.models.*;
 
-import java.io.File;
 
-import static com.jala.utils.ExtractMetaDatas.*;
 
 
 /**
@@ -84,32 +82,31 @@ public class AssetFactory {
         ((AssetVideo) assetVerify).setAudioCodec(audioCodec);
         ((AssetVideo) assetVerify).setAspectRatio(aspectRatio);
         ((AssetVideo) assetVerify).setFrameRate(frameRate);
-        ((AssetVideo) assetVerify).setFrameRate(audioSampleRate);
-        ((AssetVideo) assetVerify).setFrameRate(duration);
+        ((AssetVideo) assetVerify).setAudioSampleRate(audioSampleRate);
+        ((AssetVideo) assetVerify).setDuration(duration);
         return assetVerify;
     }
 
     /**
-     * Constructor that create the type Asset Document
-     * @param file the file to the load
-     * @param path of the file
-     * @param fileName Name of the file
-     * @param extension of the file
-     * @param hidden of the file
-     * @param owner of the file
-     * @param size of the file
-     * @param readOnly of the file
-     * @param creationDate of the file
-     * @param modificationDate of the file
-     * @param lastDate of the file
-     * @param contain of the Document
+     * Constructor that create the type Asset Audio
      * @return file convert a new asset
      */
-    public static Asset getAsset(File file, String path, String fileName, String extension,
-                                 TernaryBooleanEnum hidden, String owner, String size, TernaryBooleanEnum readOnly,
-                                 String creationDate, String modificationDate, String lastDate, String contain) {
-        Asset newAssetVerify = new AssetText();
-        loadFileAudio((AssetAudio) newAssetVerify, file);
-        return newAssetVerify;
+    public static Asset getAsset(Asset asset, String audioCodec, String channel_layout, String sample_rate, String duration) {
+        Asset assetVerify = new AssetAudio();
+        assetVerify.setFileName(asset.getFileName());
+        assetVerify.setPath(asset.getPath());
+        assetVerify.setHidden(asset.isHidden());
+        assetVerify.setReadOnly(asset.isReadOnly());
+        assetVerify.setExtension(asset.getExtension());
+        assetVerify.setSize(asset.getSize());
+        assetVerify.setOwner(SearchCommon.fileOwner(asset.getOwner()));
+        assetVerify.setCreationDate(asset.getCreationDate());
+        assetVerify.setModificationDate(asset.getModificationDate());
+        assetVerify.setLastDate(asset.getLastDate());
+        ((AssetAudio) assetVerify).setAudioCodec(audioCodec);
+        ((AssetAudio) assetVerify).setChannel(channel_layout);
+        ((AssetAudio) assetVerify).setAudioSampleRate(String.valueOf(sample_rate));
+        ((AssetAudio) assetVerify).setDuration(String.valueOf(duration));
+        return assetVerify;
     }
 }

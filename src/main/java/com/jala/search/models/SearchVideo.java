@@ -19,6 +19,8 @@ import net.bramp.ffmpeg.probe.FFmpegProbeResult;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class SearchVideo extends SearchCommon {
 	/** It creates to follow up the instruction of the class*/
 	private Logger log = Logs.getInstance().getLog();
 
-	private static String FFPROBE_PATH = SearchFile.class.getClassLoader()
+	private String FFPROBE_PATH = SearchFile.class.getClassLoader()
 			.getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffprobe.exe";
 
 	public SearchVideo(CriteriaSearch criteria) {
@@ -50,48 +52,61 @@ public class SearchVideo extends SearchCommon {
 				ffprobeResult = ffprobe.probe(preview.get(i).getPath());
 				boolean resultSearchVideo = true;
 				Asset asset;
-				/*if (resultSearchVideo && !(criteriaSearchVideo.getFrameRate()).equals(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator())) {
-					resultSearchVideo = false;
-					System.out.println("FrameRate " + ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator());
+				double frameRateProbe = new BigDecimal(ffprobeResult.getStreams().get(0).
+						avg_frame_rate.doubleValue()).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
+				if (!criteriaSearchVideo.getFrameRate().equals("")) {
+					double frameRate = Double.parseDouble(criteriaSearchVideo.getFrameRate());
+					if (resultSearchVideo && !(frameRate == frameRateProbe)) {
+						resultSearchVideo = false;
+					}
 				}
-				if (!resultSearchVideo && !(criteriaSearchVideo.getVideoCodec()).equals(ffprobeResult.getStreams().get(0).codec_long_name)) {
-					resultSearchVideo = false;
-					System.out.println("VideoCodec " + ffprobeResult.getStreams().get(0).codec_long_name);
+				if (!criteriaSearchVideo.getAudioSampleRate().equals("")) {
+					double sampleRate = Double.parseDouble(criteriaSearchVideo.getAudioSampleRate());
+					if (resultSearchVideo && !(sampleRate >= ffprobeResult.getStreams().get(1).sample_rate)) {
+						resultSearchVideo = false;
+					}
 				}
-				if (!resultSearchVideo && !(criteriaSearchVideo.getAudioCodec()).equals(ffprobeResult.getStreams().get(0).codec_tag_string)) {
-					resultSearchVideo = false;
-					System.out.println("AudioCodec " + ffprobeResult.getStreams().get(0).codec_tag_string);
+				if (!criteriaSearchVideo.getDuration().equals("")) {
+					double durationCriteria = Double.parseDouble(criteriaSearchVideo.getDuration()) * 60;
+					if (resultSearchVideo && !(durationCriteria >= ffprobeResult.getStreams().get(0).duration)) {
+						resultSearchVideo = false;
+					}
 				}
-				if (!resultSearchVideo && !(criteriaSearchVideo.getAspectRatio().equals(ffprobeResult.getStreams().get(0).display_aspect_ratio))) {
-					resultSearchVideo = false;
-					System.out.println("AspectRatio " + ffprobeResult.getStreams().get(0).display_aspect_ratio);
+				if (resultSearchVideo && !(ffprobeResult.getStreams().get(0).codec_long_name).contains(criteriaSearchVideo.getVideoCodec())) {
+					if (!criteriaSearchVideo.getVideoCodec().equals("")) {
+                        resultSearchVideo = false;
+                    }
 				}
-				if (!resultSearchVideo && !(criteriaSearchVideo.getAudioSampleRate().equals(ffprobeResult.getStreams().get(0).sample_aspect_ratio))) {
-					resultSearchVideo = false;
-					System.out.println("AudioSampleRate " + ffprobeResult.getStreams().get(0).sample_aspect_ratio);
+				if (resultSearchVideo && !(ffprobeResult.getStreams().get(1).codec_long_name).contains(criteriaSearchVideo.getAudioCodec())) {
+					if (!criteriaSearchVideo.getAudioCodec().equals("")) {
+                        resultSearchVideo = false;
+                    }
 				}
-				if (!resultSearchVideo && !(criteriaSearchVideo.getDuration().equals(ffprobeResult.getStreams().get(0).duration))) {
-					resultSearchVideo = false;
-					System.out.println("Duration " + ffprobeResult.getStreams().get(0).duration);
-				}*/
-				System.out.println("PRoble: " + ffprobeResult.getStreams().get(1).channel_layout);
-				System.out.println("SS: " + criteriaSearchVideo.getChannel());
+				if (resultSearchVideo && !(criteriaSearchVideo.getAspectRatio().equals(ffprobeResult.getStreams().get(0).display_aspect_ratio))) {
+					if (!criteriaSearchVideo.getAspectRatio().equals("")) {
+						resultSearchVideo = false;
+					}
+				}
 				if (resultSearchVideo && !(criteriaSearchVideo.getChannel().equals(ffprobeResult.getStreams().get(1).channel_layout))) {
-					resultSearchVideo = false;
+					if (!criteriaSearchVideo.getChannel().equals("")) {
+                        resultSearchVideo = false;
+                    }
 				}
 				if (resultSearchVideo) {
-					asset = AssetFactory.getAsset(preview.get(0),
+					asset = AssetFactory.getAsset(preview.get(i),
 							ffprobeResult.getStreams().get(0).codec_long_name,
-							ffprobeResult.getStreams().get(0).codec_tag_string,
-							String.valueOf(ffprobeResult.getStreams().get(0).r_frame_rate.getNumerator()),
+							ffprobeResult.getStreams().get(1).codec_long_name,
+							String.valueOf(frameRateProbe),
 							ffprobeResult.getStreams().get(0).display_aspect_ratio,
-							ffprobeResult.getStreams().get(0).sample_aspect_ratio,
+							Integer.toString(ffprobeResult.getStreams().get(1).sample_rate),
 							String.valueOf(ffprobeResult.getStreams().get(0).duration));
 					result.add(asset);
 				}
 
 			} catch (IOException event) {
 				log.error("The criteria values shouldn't be null...", event);
+			} catch (NumberFormatException event) {
+				log.error("Error in conversion in numbers...", event);
 			}
 		}
 		return result;
