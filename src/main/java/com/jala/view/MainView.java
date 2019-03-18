@@ -26,17 +26,33 @@ import javax.swing.border.Border;
 public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
-    private JMenu menuFile, menuSearch, menuConverter, menuPlayerVideo;
+    private JMenu menuExit, menuSearch, menuConverter, menuPlayerVideo, menuDB;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo,
-            menuItemSearchVideo, menuItemVideoPlayer;
+            menuItemSearchVideo, menuItemVideoPlayer, menuItemDB;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelSearchAdvancedVideo pnlSearchAdvancedVideo;
     private JPanelConverter panelConverterImage;
     private JPanelVideo panelConverterVideo;
+    private JpanelShowDB panelShowDB;
+    private JPanelHistoricalDB panelHistoricalDB;
     private String currentPanel;
     private Border border;
+
+    //Creamos un menu y modificamos el icono
+    ImageIcon imgSearh = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\search.png");
+    ImageIcon imgGSearchGral = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
+    ImageIcon imgGSearchAdvanced = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\searchAdv.png");
+    ImageIcon imgGSearchAdvVideo = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\searchVideo.png");
+    ImageIcon imgConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\Convert.png");
+    ImageIcon imgImageConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\imageConverter.png");
+    ImageIcon imgVideoConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\videoConverter.png");
+    ImageIcon imgVideoPlayer = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer2.png");
+    ImageIcon imgDBHistorical = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\dbHistorical.png");
+    ImageIcon imgDBH = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\dbHistorical48.png");
+    ImageIcon imgExit = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\exitB.png");
+    ImageIcon imgExitTemp = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\exit.png");
 
     /**
      * Constructor.
@@ -78,19 +94,19 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * Gets the Converter Menu.
-     * @return the Menu option Converter
-     */
-    public JMenu getMenuConverter() {
-        return menuConverter;
-    }
-
-    /**
      * Gets the Exit Menu option.
      * @return menuItemExit, the Exit menu item.
      */
     public JMenuItem getMenuItemExit() {
         return menuItemExit;
+    }
+
+    /**
+     * Gets the Converter Menu.
+     * @return the Menu option Converter
+     */
+    public JPanelHistoricalDB getHistoricalDB() {
+        return panelHistoricalDB;
     }
 
     /**
@@ -125,7 +141,18 @@ public class MainView extends JFrame implements ActionListener {
         return menuItemConverter;
     }
 
+    /**
+     * Gets the video player menu option.
+     * @return menuItemVideoPlayer
+     */
     public JMenuItem getMenuItemVideoPlayer() {return menuItemVideoPlayer; }
+
+    /**
+     * Gets the show data base menu option.
+     * @return menuItemDB
+     */
+    public JMenuItem getMenuItemDB() {return menuItemDB; }
+
     /**
      * Initialize the main window.
      */
@@ -136,63 +163,87 @@ public class MainView extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(500, 400));
         initComponent();
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
     }
 
     /**
      * Initialize the components.
      */
     private void initComponent() {
-        Container content = getContentPane();
+        //Container content = getContentPane();
         createMenu();
-        pnlHistorical = new JPanelHistorical(new BorderLayout());
-        content.add(pnlHistorical, BorderLayout.CENTER);
-        currentPanel = "Historical";
-        pnlSearchGral = new JPanelSearchGral(new BorderLayout());
-        content.removeAll();
+        //content.removeAll();
+        this.getContentPane().setBackground(new Color(166, 166, 166));
     }
 
     /**
      * Create menu.
      */
     private void createMenu() {
-        menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
-
-        menuFile = new JMenu("File");
-        menuBar.add(menuFile);
 
         menuSearch = new JMenu("Search");
-        menuFile.add(menuSearch);
-        menuItemGeneral = new JMenuItem("General");
+        menuSearch.setIcon(imgSearh);
+        menuConverter = new JMenu("Converter");
+        menuConverter.setIcon(imgConverter);
+        menuPlayerVideo = new JMenu("Video Player");
+        menuPlayerVideo.setIcon(imgVideoPlayer);
+        menuExit = new JMenu("Exit");
+        menuExit.setIcon(imgExit);
+        menuDB = new JMenu("Historical DB");
+        menuDB.setIcon(imgDBHistorical);
+
+        //Add a Submenu with an image in the builder
+        menuItemGeneral = new JMenuItem("General", imgGSearchGral );
         menuSearch.add(menuItemGeneral);
+        menuSearch.addSeparator();
         menuItemGeneral.addActionListener(this);
 
-        menuItemAdvanced = new JMenuItem("Advanced");
+        menuItemAdvanced = new JMenuItem("Advanced", imgGSearchAdvanced);
         menuSearch.add(menuItemAdvanced);
+        menuSearch.addSeparator();
         menuItemAdvanced.addActionListener(this);
 
-        menuItemSearchVideo = new JMenuItem("Advanced Video");
+        menuItemSearchVideo = new JMenuItem("Advanced Video", imgGSearchAdvVideo);
         menuSearch.add(menuItemSearchVideo);
         menuItemSearchVideo.addActionListener(this);
 
-        menuItemExit = new JMenuItem("Exit");
-        menuFile.add(menuItemExit);
-
-        menuConverter = new JMenu("Converter");
-        menuBar.add(menuConverter);
-
-        menuItemConverter = new JMenuItem("Converter Image");
+        menuItemConverter = new JMenuItem("Converter Image", imgImageConverter);
         menuConverter.add(menuItemConverter);
+        menuConverter.addSeparator();
         menuItemConverter.addActionListener(this);
 
-        menuItemConverterVideo = new JMenuItem("Converter Video");
+        menuItemConverterVideo = new JMenuItem("Converter Video", imgVideoConverter);
         menuConverter.add(menuItemConverterVideo);
         menuItemConverterVideo.addActionListener(this);
 
-        menuItemVideoPlayer = new JMenu("Video Player");
-        menuBar.add(menuItemVideoPlayer);
-        menuItemVideoPlayer.addActionListener(this);
+        menuItemDB = new JMenuItem("Table Data Base", imgDBH);
+        menuDB.add(menuItemDB);
+        menuItemDB.addActionListener(this);
+
+        menuItemExit = new JMenuItem("Exit", imgExitTemp);
+        menuSearch.add(menuItemExit);
+
+        //Add a menu with an image in the builder
+        menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        menuBar.add(menuSearch);
+        menuBar.add(menuConverter);
+        menuBar.add(menuPlayerVideo);
+        menuBar.add(menuDB);
+        menuBar.add(menuExit);
+        menuBar.setBorderPainted(true);
+
+        menuBar.setBackground(new Color(0, 119, 100));
+        menuSearch.setCursor(new Cursor(HAND_CURSOR));
+        menuConverter.setCursor(new Cursor(HAND_CURSOR));
+        menuPlayerVideo.setCursor(new Cursor(HAND_CURSOR));
+        menuDB.setCursor(new Cursor(HAND_CURSOR));
+        menuExit.setCursor(new Cursor(HAND_CURSOR));
+        menuItemGeneral.setCursor(new Cursor(HAND_CURSOR));
+        menuItemAdvanced.setCursor(new Cursor(HAND_CURSOR));
+        menuItemSearchVideo.setCursor(new Cursor(HAND_CURSOR));
+        menuItemConverter.setCursor(new Cursor(HAND_CURSOR));
+        menuItemConverterVideo.setCursor(new Cursor(HAND_CURSOR));
 
     }
 
@@ -204,24 +255,24 @@ public class MainView extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         Container content = getContentPane();
         if (event.getSource() == menuItemGeneral) {
-            if (currentPanel != "SearchGral") {
+            //if (currentPanel != "SearchGral") {
                 pnlSearchGral = new JPanelSearchGral(new BorderLayout());
                 content.removeAll();
                 content.add(pnlSearchGral, BorderLayout.CENTER);
                 currentPanel = "SearchGral";
-                this.validate();
-                this.repaint();
-            }
+            this.validate();
+            this.repaint();
+           // }
         }
         if (event.getSource() == menuItemAdvanced) {
-            if (currentPanel != "SearchAdvanced") {
+            //if (currentPanel != "SearchAdvanced") {
                 pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
                 content.removeAll();
                 content.add(pnlSearchAdvanced, BorderLayout.CENTER);
                 currentPanel = "SearchAdvanced";
                 this.validate();
                 this.repaint();
-            }
+           //}
         }
         if (event.getSource() == menuItemConverter) {
             panelConverterImage = new JPanelConverter(new BorderLayout());
@@ -235,29 +286,39 @@ public class MainView extends JFrame implements ActionListener {
             panelConverterVideo = new JPanelVideo(new BorderLayout());
             content.removeAll();
             content.add(panelConverterVideo, BorderLayout.CENTER);
-            currentPanel = "ConverterImage";
+            currentPanel = "ConverterVideo";
             this.validate();
             this.repaint();
         }
         if (event.getSource() == menuItemSearchVideo) {
-            if (currentPanel != "SearchAdvancedVideo") {
+           // if (currentPanel == "SearchAdvancedVideo") {
                 pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
                 content.removeAll();
                 content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
                 currentPanel = "SearchAdvancedVideo";
                 this.validate();
                 this.repaint();
-            }
+           // }
         }
         if (event.getSource() == menuItemVideoPlayer) {
-            if (currentPanel != "VideoPlayer") {
-                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+            pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+            content.removeAll();
+            content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+            currentPanel = "VideoPlayer";
+            this.validate();
+            this.repaint();
+        }
+
+        if (event.getSource() == menuItemDB) {
+           //if (currentPanel != "HistoricalDB") {
+                panelShowDB = new JpanelShowDB(new BorderLayout());
                 content.removeAll();
-                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
-                currentPanel = "VideoPlayer";
+                content.add(panelShowDB, BorderLayout.CENTER);
+                currentPanel = "HistoricalDB";
                 this.validate();
                 this.repaint();
-            }
+           // }
         }
     }
+
 }

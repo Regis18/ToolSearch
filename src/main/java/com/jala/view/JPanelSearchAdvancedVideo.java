@@ -17,7 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.BorderLayout;
+import java.awt.*;
 
 /**
  * JPanelSearchAdvancedVideo class is the panel to do
@@ -59,12 +59,12 @@ public class JPanelSearchAdvancedVideo extends JPanel{
         panelAdvanceSearch.getBtnSearch().setVisible(false);
         panelAdvanceSearch.getTxtFieldExtension().setVisible(false);
         panelAdvanceSearch.getLblExtension().setVisible(false);
-        this.add(panelAdvanceSearch, BorderLayout.WEST);
+        this.add(panelAdvanceSearch, BorderLayout.CENTER);
 
         panelSearchVideo = new JPanelSearchVideo();
         TitledBorder attributeBorder = BorderFactory.createTitledBorder(border, "Attributes");
         panelSearchVideo.setBorder(attributeBorder);
-        this.add(panelSearchVideo, BorderLayout.CENTER);
+        this.add(panelSearchVideo, BorderLayout.EAST);
 
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
