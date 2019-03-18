@@ -67,7 +67,7 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * The getPnlSearchAdvancedVideo method get JPanelSearchAdvancedVideo attribute of itself class.
+     * The getPnlSearchAdvancedVideo method get JPanelSearchAdvancedVideo attribute of this class.
      * @return pnlSearchAdvancedVideo class for advanced search video
      */
     public JPanelSearchAdvancedVideo getPnlSearchAdvancedVideo() { return pnlSearchAdvancedVideo; }
