@@ -23,8 +23,7 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 
 /**
- * ConvertAudio.
- *
+ * This class used the FFmpeg app for Convert of format an audio .
  * @author Regis Humana
  * @version 0.0.3
  */
@@ -38,8 +37,7 @@ public class ConvertAudio implements IConvertible {
 
 	/**
 	 * Convert formats of music into another extension - basic.
-	 * @param criteriaObject
-	 * @throws Exception
+	 * @param criteriaObject criteria for convert audio.
 	 */
 	@Override
 	public void convert(Object criteriaObject) {
@@ -63,7 +61,7 @@ public class ConvertAudio implements IConvertible {
 
 	/**
 	 * Convert the music with advances parameters like audioChannel, BitRate and SampleRate.
-	 * @param criteria criteria for convert audio.
+	 * @param criteria for convert audio.
 	 * @param builder FFmpeg builder.
 	 * @param fmpeg converter app.
 	 */

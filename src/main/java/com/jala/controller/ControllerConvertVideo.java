@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Class ControllerConvertVideo.
+ * Class Controller of Convert a Video and audio.
  * @version: 0.0.1
  * @autor: Melvi Caballero M.
  */
@@ -84,7 +84,7 @@ public class ControllerConvertVideo implements ActionListener {
     }
 
     /**
-     * This method sends to ConvertAudio the criteria that was wrote by user.
+     * This method sends to ConvertAudio the criteria that was wrote by user
      * and that method convert the Audio.
      */
     private void sendPathToConvertAudio() {

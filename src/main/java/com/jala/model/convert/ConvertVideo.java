@@ -23,8 +23,7 @@ import com.jala.utils.Common;
 import java.io.IOException;
 
 /**
- * ConvertVideo.
- *
+ * This class used the FFmpeg app for Convert of format a Video.
  * @version 0.0.3
  * @author Regis Humana
  */
@@ -38,7 +37,7 @@ public class ConvertVideo implements IConvertible {
 
 	/**
 	 * Convert formats of video into another extension - basic.
-	 * @param criteriaObject
+	 * @param criteriaObject criteria for convert video.
 	 */
 	public void convert(Object criteriaObject) {
 		CriteriaConverterVideo criteria = (CriteriaConverterVideo) criteriaObject;
