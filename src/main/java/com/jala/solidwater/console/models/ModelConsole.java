@@ -14,6 +14,7 @@ package com.jala.solidwater.console.models;
 
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.search.SearchFile;
+import com.jala.model.search.TernaryBooleanEnum;
 import com.jala.model.search.asset.Asset;
 
 import java.util.ArrayList;
@@ -61,6 +62,8 @@ public class ModelConsole {
         criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
+        criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-hd"));
+        criteria.setReadonly(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-ro"));
 
         SearchFile searchFile = new SearchFile();
         ArrayList<Asset> listFileSearch = new ArrayList<>();
@@ -111,4 +114,15 @@ public class ModelConsole {
         }
         return valueByPositionCommand;
     }
+
+    private TernaryBooleanEnum setValueOnHiddenOrReadOnlyCriteria(CommandLine validCommand, String acronymCommand) {
+        if(setValueIfExistCommand(validCommand,acronymCommand).equals("No")) {
+            return TernaryBooleanEnum.OnlyFalse;
+        } else if(setValueIfExistCommand(validCommand,acronymCommand).equals("Yes")) {
+            return TernaryBooleanEnum.OnlyTrue;
+        } else  {
+            return TernaryBooleanEnum.ALL;
+        }
+    }
+
 }

@@ -44,14 +44,18 @@ public class DefaultCommands {
      */
     public List<Command> createDefaultCommands() {
         defaultCommands = new ArrayList<>();
-        Command commandPath = new Command("-p", "path", "Path of the file or directory");
-        Command commandFileName = new Command("-fn", "fileName", "Name of the file");
-        Command commandExtension = new Command("-ex", "extension", "Extension of the file");
-        Command commandSize = new Command("-s", "size", "Size of the file");
-        defaultCommands.add(commandPath);
-        defaultCommands.add(commandFileName);
-        defaultCommands.add(commandExtension);
-        defaultCommands.add(commandSize);
+        Command commandForPath = new Command("-p", "path", "Path of the file or directory");
+        Command commandForFileName = new Command("-fn", "fileName", "Name of the file");
+        Command commandForExtension = new Command("-ex", "extension", "Extension of the file");
+        Command commandForSize = new Command("-s", "size", "Size of the file");
+        Command commandForHidden = new Command("-hd", "hidden", "This command allows the values true and false");
+        Command commandForReadOnly = new Command("-ro", "readOnly", "This command allows the values Yes and No");
+        defaultCommands.add(commandForPath);
+        defaultCommands.add(commandForFileName);
+        defaultCommands.add(commandForExtension);
+        defaultCommands.add(commandForSize);
+        defaultCommands.add(commandForHidden);
+        defaultCommands.add(commandForReadOnly);
         return defaultCommands;
     }
 }
