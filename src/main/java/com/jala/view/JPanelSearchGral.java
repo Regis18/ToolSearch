@@ -113,9 +113,13 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     private JPanel pnlCriteria() {
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search");
+        CustomComponents0 component = new CustomComponents0();
         pnlPath.setBorder(titleBorder);
         lblPath = new JLabel("Path: ");
         pnlPath.add(lblPath);
+        Font fuente = new Font("Calibri", 2, 20);
+        lblPath.setFont(fuente);
+        lblPath.setForeground(Color.BLUE);
 
         txtPath = new JTextField(50);
         pnlPath.add(txtPath);
@@ -171,6 +175,33 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 txtPath.setText("" + chooser.getSelectedFile());
             }
+        }
+    }
+
+    static class CustomComponents0 extends JLabel {
+
+        @Override
+        public Font getFont(){
+            return new Font("Calibri", 1, 11);
+        }
+
+        @Override
+        public Dimension getMinimumSize() {
+            return new Dimension(200, 100);
+        }
+
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(300, 200);
+        }
+
+        @Override
+        public void paintComponent(Graphics g) {
+            int margin = 10;
+            Dimension dim = getSize();
+            super.paintComponent(g);
+            g.setColor(Color.red);
+            g.fillRect(margin, margin, dim.width - margin * 2, dim.height - margin * 2);
         }
     }
 }

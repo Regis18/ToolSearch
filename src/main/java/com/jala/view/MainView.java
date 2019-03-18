@@ -48,7 +48,7 @@ public class MainView extends JFrame implements ActionListener {
     ImageIcon imgConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\Convert.png");
     ImageIcon imgImageConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\imageConverter.png");
     ImageIcon imgVideoConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\videoConverter.png");
-    ImageIcon imgVideoPlayer = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer.png");
+    ImageIcon imgVideoPlayer = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer2.png");
     ImageIcon imgDBHistorical = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\dbHistorical.png");
     ImageIcon imgDBH = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\dbHistorical48.png");
     ImageIcon imgExit = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\exitB.png");
@@ -173,7 +173,7 @@ public class MainView extends JFrame implements ActionListener {
         //Container content = getContentPane();
         createMenu();
         //content.removeAll();
-        this.getContentPane().setBackground(new Color(189, 189, 189));
+        this.getContentPane().setBackground(new Color(166, 166, 166));
     }
 
     /**
@@ -233,15 +233,17 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuExit);
         menuBar.setBorderPainted(true);
 
-        menuBar.setBackground(new Color(40, 116, 166));
+        menuBar.setBackground(new Color(0, 119, 100));
         menuSearch.setCursor(new Cursor(HAND_CURSOR));
         menuConverter.setCursor(new Cursor(HAND_CURSOR));
         menuPlayerVideo.setCursor(new Cursor(HAND_CURSOR));
         menuDB.setCursor(new Cursor(HAND_CURSOR));
+        menuExit.setCursor(new Cursor(HAND_CURSOR));
         menuItemGeneral.setCursor(new Cursor(HAND_CURSOR));
         menuItemAdvanced.setCursor(new Cursor(HAND_CURSOR));
         menuItemSearchVideo.setCursor(new Cursor(HAND_CURSOR));
         menuItemConverter.setCursor(new Cursor(HAND_CURSOR));
+        menuItemConverterVideo.setCursor(new Cursor(HAND_CURSOR));
 
     }
 
@@ -259,7 +261,7 @@ public class MainView extends JFrame implements ActionListener {
                 content.add(pnlSearchGral, BorderLayout.CENTER);
                 currentPanel = "SearchGral";
             this.validate();
-            this.setBackground(new Color(200,10,130));
+            this.repaint();
            // }
         }
         if (event.getSource() == menuItemAdvanced) {
