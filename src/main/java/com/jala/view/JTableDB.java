@@ -16,16 +16,15 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Module view, ui/JTableResult.
  * JTableResult class.
  *
  * @version 0.0.1.
- * @autor Melvi Caballero M.
+ * @autor Cxristian
  */
 public class JTableDB extends JTable{
     DefaultTableModel defaultTableM = new DefaultTableModel(0, 0);
 
-    String[] header = new String[]{"Id", "Path", "File Name", "Ext.", "Size"};
+    String[] header = new String[]{"N.","id", "File Name", "Date"};
 
     /**
      * Constructor that setting the table DefaultTableModel.
@@ -38,22 +37,23 @@ public class JTableDB extends JTable{
         this.setModel(defaultTableM);
         this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         this.getColumnModel().getColumn(0).setPreferredWidth(20);
-        this.getColumnModel().getColumn(1).setPreferredWidth(500);
-        this.getColumnModel().getColumn(2).setPreferredWidth(400);
-        this.getColumnModel().getColumn(3).setPreferredWidth(150);
-        this.getColumnModel().getColumn(4).setPreferredWidth(250);
+        this.getColumnModel().getColumn(1).setPreferredWidth(20);
+        this.getColumnModel().getColumn(2).setPreferredWidth(500);
+        this.getColumnModel().getColumn(3).setPreferredWidth(400);
+
+
     }
 
     /**
      * Add a row to the table.
      *
-     * @param path     file path.
+     * @param num number.
+     * @param id file id.
      * @param fileName file name.
-     * @param ext      file extension.
-     * @param size     file size.
+     * @param date file date.
      */
-    public void addResultRow(String id, String path, String fileName, String ext, String size) {
-        defaultTableM.addRow(new Object[]{id, path, fileName, ext, size});
+    public void addResultRow(String num,String id, String fileName, String date) {
+        defaultTableM.addRow(new Object[]{num,id , fileName, date, });
     }
 
 }

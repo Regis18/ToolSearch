@@ -31,6 +31,7 @@ public class JPanelSearchAdvanced extends JPanel {
     private JTableResult tbSearchAdvanced;
     private Border border;
     private JPanelAdvanced panelSearchAdvanced;
+    private JTableDB tbDataBase;
 
     /**
      * Class constructor.
@@ -71,28 +72,13 @@ public class JPanelSearchAdvanced extends JPanel {
         panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
         panelSearchAdvanced.setBorder(titleBorder);
-        this.add(panelSearchAdvanced, BorderLayout.NORTH);
+        this.add(panelSearchAdvanced, BorderLayout.CENTER);
+
+        JPanel pnlTableDB = pnlTableDB();
+        this.add(pnlTableDB, BorderLayout.WEST);
 
         JPanel pnlCentral = pnlTableResult();
-        this.add(pnlCentral, BorderLayout.CENTER);
-
-        JPanel pnlSouth = pnlMessages();
-        this.add(pnlSouth, BorderLayout.SOUTH);
-    }
-
-    /**
-     * Return the instance of panel north with the path, file name, extension and the Search button.
-     * @return pnlSearchAd the panel with the criteria of the advanced Search.
-     */
-    private JPanel pnlCriteria() {
-        JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
-        pnlSearchAdvanced.setBorder(titleBorder);
-
-        tbSearchAdvanced = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
-        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
-        return pnlSearchAdvanced;
+        this.add(pnlCentral, BorderLayout.SOUTH);
     }
 
     /**
@@ -108,6 +94,17 @@ public class JPanelSearchAdvanced extends JPanel {
         JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
+    }
+
+    private JPanel pnlTableDB() {
+        JPanel pnlSearchGral = new JPanel(new BorderLayout());
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Data Base");
+        pnlSearchGral.setBorder(titleBorder);
+
+        tbDataBase = new JTableDB();
+        JScrollPane scroll = new JScrollPane(tbDataBase);
+        pnlSearchGral.add(scroll, BorderLayout.CENTER);
+        return pnlSearchGral;
     }
 
     /**

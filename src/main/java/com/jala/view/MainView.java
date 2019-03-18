@@ -26,9 +26,9 @@ import javax.swing.border.Border;
 public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
-    private JMenu menuExit, menuSearch, menuConverter, menuPlayerVideo, menuDB;
+    private JMenu menuExit, menuSearch, menuConverter, menuPlayerVideo;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo,
-            menuItemSearchVideo, menuItemVideoPlayer, menuItemDB;
+            menuItemSearchVideo, menuItemVideoPlayer;
     private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
@@ -41,18 +41,16 @@ public class MainView extends JFrame implements ActionListener {
     private Border border;
 
     //Creamos un menu y modificamos el icono
-    ImageIcon imgSearh = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\search.png");
-    ImageIcon imgGSearchGral = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
-    ImageIcon imgGSearchAdvanced = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\searchAdv.png");
-    ImageIcon imgGSearchAdvVideo = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\searchVideo.png");
-    ImageIcon imgConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\Convert.png");
-    ImageIcon imgImageConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\imageConverter.png");
-    ImageIcon imgVideoConverter = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\videoConverter.png");
-    ImageIcon imgVideoPlayer = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer2.png");
-    ImageIcon imgDBHistorical = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\dbHistorical.png");
-    ImageIcon imgDBH = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\dbHistorical48.png");
-    ImageIcon imgExit = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\exitB.png");
-    ImageIcon imgExitTemp = new ImageIcon("D:\\Fundacion-Jala\\IU\\ToolSearch\\src\\main\\resources\\Icons\\exit.png");
+    ImageIcon imgSearh = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search.png");
+    ImageIcon imgGSearchGral = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
+    ImageIcon imgGSearchAdvanced = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchAdv.png");
+    ImageIcon imgGSearchAdvVideo = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchVideo.png");
+    ImageIcon imgConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\Convert.png");
+    ImageIcon imgImageConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\imageConverter.png");
+    ImageIcon imgVideoConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoConverter.png");
+    ImageIcon imgVideoPlayer = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer2.png");
+    ImageIcon imgExit = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\exitB.png");
+    ImageIcon imgExitTemp = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\exit.png");
 
     /**
      * Constructor.
@@ -148,12 +146,6 @@ public class MainView extends JFrame implements ActionListener {
     public JMenuItem getMenuItemVideoPlayer() {return menuItemVideoPlayer; }
 
     /**
-     * Gets the show data base menu option.
-     * @return menuItemDB
-     */
-    public JMenuItem getMenuItemDB() {return menuItemDB; }
-
-    /**
      * Initialize the main window.
      */
     public void init() {
@@ -189,8 +181,6 @@ public class MainView extends JFrame implements ActionListener {
         menuPlayerVideo.setIcon(imgVideoPlayer);
         menuExit = new JMenu("Exit");
         menuExit.setIcon(imgExit);
-        menuDB = new JMenu("Historical DB");
-        menuDB.setIcon(imgDBHistorical);
 
         //Add a Submenu with an image in the builder
         menuItemGeneral = new JMenuItem("General", imgGSearchGral );
@@ -216,10 +206,6 @@ public class MainView extends JFrame implements ActionListener {
         menuConverter.add(menuItemConverterVideo);
         menuItemConverterVideo.addActionListener(this);
 
-        menuItemDB = new JMenuItem("Table Data Base", imgDBH);
-        menuDB.add(menuItemDB);
-        menuItemDB.addActionListener(this);
-
         menuItemExit = new JMenuItem("Exit", imgExitTemp);
         menuSearch.add(menuItemExit);
 
@@ -229,7 +215,6 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuSearch);
         menuBar.add(menuConverter);
         menuBar.add(menuPlayerVideo);
-        menuBar.add(menuDB);
         menuBar.add(menuExit);
         menuBar.setBorderPainted(true);
 
@@ -237,7 +222,6 @@ public class MainView extends JFrame implements ActionListener {
         menuSearch.setCursor(new Cursor(HAND_CURSOR));
         menuConverter.setCursor(new Cursor(HAND_CURSOR));
         menuPlayerVideo.setCursor(new Cursor(HAND_CURSOR));
-        menuDB.setCursor(new Cursor(HAND_CURSOR));
         menuExit.setCursor(new Cursor(HAND_CURSOR));
         menuItemGeneral.setCursor(new Cursor(HAND_CURSOR));
         menuItemAdvanced.setCursor(new Cursor(HAND_CURSOR));
@@ -307,17 +291,6 @@ public class MainView extends JFrame implements ActionListener {
             currentPanel = "VideoPlayer";
             this.validate();
             this.repaint();
-        }
-
-        if (event.getSource() == menuItemDB) {
-           //if (currentPanel != "HistoricalDB") {
-                panelShowDB = new JpanelShowDB(new BorderLayout());
-                content.removeAll();
-                content.add(panelShowDB, BorderLayout.CENTER);
-                currentPanel = "HistoricalDB";
-                this.validate();
-                this.repaint();
-           // }
         }
     }
 

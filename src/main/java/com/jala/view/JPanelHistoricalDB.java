@@ -20,6 +20,12 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+/**
+ * JPanelHistorical class.
+ *
+ * @version 0.0.1
+ * @autor Cxristian
+ */
 public class JPanelHistoricalDB extends JPanel {
     private JTableDB tbHistoricalDB;
     private Border border;
@@ -35,7 +41,7 @@ public class JPanelHistoricalDB extends JPanel {
     /**
      * Gets the historical table.
      *
-     * @return tbHistorical, get Historical table of the last searches.
+     * @return tbHistoricalDB, get Historical table of the last searches.
      */
     public JTableDB getTbHistoricalDB() {
         return tbHistoricalDB;
@@ -49,18 +55,16 @@ public class JPanelHistoricalDB extends JPanel {
     }
 
     /**
-     * Start the components of this panel pList.
+     * Start the components of this panel List.
      */
     private void initComponent() {
         JPanel pnlHistorical = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Historical DataBase Table");
         pnlHistorical.setBorder(titleBorder);
 
-        // Create table with data.
         tbHistoricalDB = new JTableDB();
         JScrollPane scroll = new JScrollPane(tbHistoricalDB);
         pnlHistorical.add(scroll, BorderLayout.CENTER);
-
         this.add(pnlHistorical, BorderLayout.CENTER);
     }
 }

@@ -13,12 +13,10 @@
 package com.jala.view;
 
 import com.toedter.calendar.JDateChooser;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Component;
 import java.util.Calendar;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -232,9 +230,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         lblFileName = new JLabel("File Name: ");
         addComponent(lblFileName, 0, 1, 1, 1);
 
-        lblSeparatorEmpty = new JLabel("   ");
-        addComponent(lblSeparatorEmpty, 4, 0, 1, 1);
-
         lblSeparatorEmpty2 = new JLabel("   ");
         addComponent(lblSeparatorEmpty2, 2, 1, 1, 1);
 
@@ -275,7 +270,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         addComponent(txtPath, 1, 0, 5, 1);
 
         txtFileName = new JTextField("");
-        txtFileName.setSize(200, 20);
         addComponent(txtFileName, 1, 1, 1, 1);
 
         txtExtension = new JTextField("");
@@ -349,7 +343,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         constraints.gridwidth = sizeFieldX;
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weighty = 1.0;
         this.add (Component , constraints);
     }
 

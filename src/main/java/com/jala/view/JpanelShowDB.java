@@ -22,14 +22,19 @@ import javax.swing.JTextField;
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 
-
+/**
+ * JPanelSearchAdvanced class.
+ * @version 0.0.1.
+ * @autor Melvi Caballero M.
+ */
 public class JpanelShowDB extends JPanel {
     private JLabel lblPath, lblFileName, lblExtension;
     private JTextField txtPath, txtFileName, txtExtension;
-    private JButton btnSearch;
+    private JButton btnSearch, btnCharge, btnDelete;
     private JTableDB tbDataBase;
     private JTableResult tblResult;
     private Border border;
+    private JPanel pnlPath;
     private GridBagConstraints constraints;
 
     public JpanelShowDB(LayoutManager layout) {
@@ -100,14 +105,8 @@ public class JpanelShowDB extends JPanel {
      * The initComponent method, is for add component itself class.
      */
     private void initComponent() {
-        JPanel pnlNorth = pnlCriteria();
-        this.add(pnlNorth, BorderLayout.EAST);
-
-        JPanel pnlSouth = pnlTableDB();
-        this.add(pnlSouth, BorderLayout.CENTER);
-
-        JPanel jpForTable = pnlTableResult();
-        this.add(jpForTable, BorderLayout.SOUTH);
+        pnlPath = pnlCriteria();
+        this.add(pnlPath, BorderLayout.CENTER);
     }
 
     /**
@@ -115,45 +114,28 @@ public class JpanelShowDB extends JPanel {
      * @return pnlCriteria  the panel with path, file name, extension.
      */
     private JPanel pnlCriteria() {
-        JPanel pnlPath = new JPanel((new BorderLayout()));
+        pnlPath = new JPanel((new GridBagLayout()));
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Dates : ");
         pnlPath.setBorder(titleBorder);
 
         constraints = new GridBagConstraints();
-        setLayout(new GridBagLayout());
 
         lblPath = new JLabel("Path: ");
-        addComponent(lblPath, 0, 0, 1, 1);
-        txtPath = new JTextField("");
-        addComponent(txtPath, 1, 0, 5, 1);
+        addComponent(lblPath, 0, 0,GridBagConstraints.EAST , pnlPath);
+        txtPath = new JTextField(10);
+        addComponent(txtPath, 1, 0,GridBagConstraints.WEST , pnlPath);
 
         lblFileName = new JLabel("File Name: ");
-        addComponent(lblFileName, 0, 1, 1, 1);
-        txtFileName = new JTextField("");
-        txtFileName.setSize(200, 20);
-        addComponent(txtFileName, 1, 1, 1, 1);
+        addComponent(lblFileName, 0, 1,GridBagConstraints.EAST , pnlPath);
+        txtFileName = new JTextField(10);
+        addComponent(txtFileName, 1, 1,GridBagConstraints.WEST, pnlPath);
 
         lblExtension = new JLabel("Extension: ");
-        addComponent(lblExtension, 0, 2, 1, 1);
-        txtExtension = new JTextField("");
-        addComponent(txtExtension, 1, 2, 1, 1);
+        addComponent(lblExtension, 0, 2,GridBagConstraints.EAST, pnlPath);
+        txtExtension = new JTextField(10);
+        addComponent(txtExtension, 1, 2,GridBagConstraints.WEST, pnlPath);
 
         return pnlPath;
-    }
-
-    /**
-     * The method pnlTableResult get a JPanel with the JTableResult.
-     *
-     * @return a JPanel class.
-     */
-    private JPanel pnlTableResult() {
-        JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search");
-        pnlSearchAdvanced.setBorder(titleBorder);
-        tblResult = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tblResult);
-        pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
-        return pnlSearchAdvanced;
     }
 
     /**
@@ -161,27 +143,16 @@ public class JpanelShowDB extends JPanel {
      *
      * @return a JPanel class.
      */
-    private JPanel pnlTableDB() {
-        JPanel pnlSearchGral = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Data Base");
-        pnlSearchGral.setBorder(titleBorder);
 
-        tbDataBase = new JTableDB();
-        JScrollPane scroll = new JScrollPane(tbDataBase);
-        pnlSearchGral.add(scroll, BorderLayout.CENTER);
-        return pnlSearchGral;
-    }
 
     /**
      * Method that adds components to the GridBagConstraints.
      */
-    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY) {
+    public void addComponent(Component Component, int sizeX, int sizeY, int align, JPanel addPanel) {
         constraints.gridx = sizeX;
         constraints.gridy = sizeY;
-        constraints.gridwidth = sizeFieldX;
-        constraints.gridheight = sizeFieldY;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weighty = 1.0;
-        this.add (Component , constraints);
+        constraints.insets = new Insets(2, 2, 2, 2);
+        constraints.anchor = align;
+        addPanel.add(Component , constraints);
     }
 }
