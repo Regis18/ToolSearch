@@ -19,6 +19,7 @@ import com.jala.model.search.asset.AssetAudio;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +48,7 @@ public class SearchAudioTest {
 		List<Asset> result = searchAudio.search();
 		for (int i = 0; i < result.size(); i++) {
 			System.out.println(result.get(i).getPath());
+			System.out.println((new Date()).toString());
 		}
 	}
 

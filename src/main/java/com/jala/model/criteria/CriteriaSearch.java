@@ -14,6 +14,7 @@ package com.jala.model.criteria;
 
 import com.jala.model.search.TernaryBooleanEnum;
 
+
 /**
  * The CriteriaSearch class is to set and get the criteria to search.
  *
@@ -106,7 +107,7 @@ public class CriteriaSearch extends Criteria {
      * Load Criteria Search goes to init the empty values.
      */
     public void loadCriteria() {
-        this.setHidden(TernaryBooleanEnum.ALL);
+        this.setHidden(TernaryBooleanEnum.OnlyFalse);
         this.setReadonly(TernaryBooleanEnum.ALL);
         this.setSize("");
         this.setCreationDateFrom("");

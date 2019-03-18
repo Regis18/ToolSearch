@@ -44,7 +44,7 @@ public class SearchAudio extends SearchCommon {
 
     /** Path of the ffprobe. */
     private  String FFPROBE_PATH = SearchFile.class.getClassLoader()
-            .getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffprobe.exe";
+            .getResource("ThirdParty/ffmpeg/bin/ffprobe.exe").getPath();
 
     /**
      * Receive the criteria and cast the criteria into CriteriaSearchMultimedia.
