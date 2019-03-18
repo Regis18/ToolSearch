@@ -12,12 +12,17 @@
 
 package com.jala.convertor.models;
 
+import com.jala.model.convert.ConvertVideo;
+import com.jala.model.criteria.CriteriaConverterVideo;
+import com.jala.utils.Common;
 import org.junit.Test;
 import net.bramp.ffmpeg.FFprobe;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * ConvertVideoTest
@@ -180,7 +185,7 @@ public class ConvertVideoTest {
 	}
 
 	/**
-	 * Convert MP4 to VOB advanced with only resolution
+	 * Convert MP4 to VOB advanced with only resolution.
 	 */
 	@Test
 	public void convert_ReturnVOBFile_WhenSentBasicSentMP4File() {
@@ -199,7 +204,7 @@ public class ConvertVideoTest {
 	}
 
 	/**Delete, is not correct.
-	 * Convert MP4 to DVD advanced with only resolution
+	 * Convert MP4 to DVD advanced with only resolution.
 	 */
 	@Test
 	public void convert_ReturnDVDFile_WhenSentBasicSentMP4File() {
@@ -218,7 +223,7 @@ public class ConvertVideoTest {
 	}
 
 	/**
-	 * Convert MP4 to OGV advanced with only resolution
+	 * Convert MP4 to OGV advanced with only resolution.
 	 */
 	@Test
 	public void convert_ReturnOGVFile_WhenSentBasicSentMP4File() {
@@ -237,7 +242,7 @@ public class ConvertVideoTest {
 	}
 
 	/**
-	 * Convert MP4 to mp3 advanced with only resolution
+	 * Convert MP4 to mp3 advanced with only resolution.
 	 */
 	@Test
 	public void convert_ReturnMP3File_WhenSentBasicSentMP4File() {
@@ -256,7 +261,7 @@ public class ConvertVideoTest {
 	}
 
 	/**
-	 * Convert MP4 to mp3 advanced with only resolution
+	 * Convert MP4 to mp3 advanced with only resolution.
 	 */
 	@Test
 	public void convert_ReturnMP4File_WhenSentBasicSentMP3File() {
@@ -275,7 +280,7 @@ public class ConvertVideoTest {
 	}
 
 	/**
-	 * Convert MP4 to mp3 advanced with only resolution
+	 * Convert MP4 to mp3 advanced with only resolution.
 	 */
 	@Test
 	public void convert_ReturnMP4File_WhenSendAdvancedSentMP4File() {
@@ -298,7 +303,7 @@ public class ConvertVideoTest {
 	}
 
 	/**
-	 * Verify the information of multimedia
+	 * Verify the information of multimedia.
 	 * @param path
 	 * @throws IOException
 	 */
@@ -308,5 +313,15 @@ public class ConvertVideoTest {
 		String ds = ffprobe.probe(path).getStreams().get(0).codec_name;
 		List<String> list = new ArrayList<>();
 		ffprobe.run(list);
+	}
+
+	/**
+	 * Test for verify the method cleanPath from Common class.
+	 */
+	@Test
+	public void cleanPathTest() {
+		String path = "c://search//test%20test";
+		path = Common.cleanPath(path);
+		assertEquals(path, "c://search//test test");
 	}
 }
