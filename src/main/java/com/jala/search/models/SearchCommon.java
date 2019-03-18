@@ -40,7 +40,7 @@ public class SearchCommon extends SearchBasic {
             if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(preview.get(i).isHidden())) {
                 continue;
             }
-            if (criteria.getHidden() == TernaryBooleanEnum.OnlyFalse && (preview.get(i).isHidden())) {
+            if ((criteria.getHidden() == TernaryBooleanEnum.OnlyFalse) && (preview.get(i).isHidden())) {
                 continue;
             }
             if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
@@ -78,7 +78,7 @@ public class SearchCommon extends SearchBasic {
             if ((!criteria.getExtension().isEmpty()) && (!FilenameUtils.getExtension(preview.get(i).getFileName()).equals(criteria.getExtension()))) {
                 continue;
             }
-            if ((criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && !(!preview.get(i).isReadOnly())) {
+            if ((criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && (preview.get(i).isReadOnly())) {
                 continue;
             }
             if ((criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!preview.get(i).isReadOnly())) {

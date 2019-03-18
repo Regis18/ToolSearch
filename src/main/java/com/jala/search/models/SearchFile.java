@@ -25,9 +25,17 @@ import org.apache.log4j.Logger;
 public class SearchFile {
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
-
     public List<Asset> search(CriteriaSearch criteria) {
         SearchCommon searchCommon = new SearchCommon(criteria);
         return searchCommon.search();
+    }
+    public List<Asset> search(CriteriaSearchMultimedia criteria, boolean isSearchVideo) {
+        if (isSearchVideo) {
+            SearchVideo searchVideo = new SearchVideo(criteria);
+            return searchVideo.search();
+        } else {
+            SearchAudio searchAudio = new SearchAudio(criteria);
+            return searchAudio.search();
+        }
     }
 }
