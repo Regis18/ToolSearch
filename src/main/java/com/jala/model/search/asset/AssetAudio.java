@@ -12,17 +12,16 @@
 
 package com.jala.model.search.asset;
 /**
- * AssetVideo class.
+ * AssetAudio class.
  *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class AssetAudio {
+public class AssetAudio extends Asset {
     /**
      * Attributes of Audio.
      */
     private String audioCodec;
-    private String frameRate;
     private String channel;
     private String audioSampleRate;
     private String duration;
@@ -32,7 +31,6 @@ public class AssetAudio {
      */
     public void AssetAudio() {
         audioCodec = "";
-        frameRate = "";
         channel = "";
         audioSampleRate = "";
         duration = "";
@@ -52,22 +50,6 @@ public class AssetAudio {
      */
     public void setAudioCodec(String audioCodec) {
         this.audioCodec = audioCodec;
-    }
-
-    /**
-     * Return the frame rate value.
-     * @return return as a int value.
-     */
-    public String getFrameRate() {
-        return frameRate;
-    }
-
-    /**
-     * Set the frame ratio attribute of audio.
-     * @param frameRate this is an attribute of audio for the advanced searched.
-     */
-    public void setFrameRate(String frameRate) {
-        this.frameRate = frameRate;
     }
 
     /**

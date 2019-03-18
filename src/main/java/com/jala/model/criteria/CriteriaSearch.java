@@ -1,8 +1,8 @@
-/**
- * @(#)CriteriaSearch.java Copyright (c) 2019 Jala Foundation.
+/*
+ * @(#) CriteriaSearch.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
- * <p>
+ *
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
@@ -83,7 +83,7 @@ public class CriteriaSearch extends Criteria {
     /**
      * Type of criteria (video, audio, image, common, etc).
      */
-    private int type;
+    private String type;
 
     /**
      * Constructor of the CriteriaSearch class.
@@ -197,7 +197,7 @@ public class CriteriaSearch extends Criteria {
      *
      * @return The type of search used.
      */
-    public int getType() {
+    public String getType() {
         return type;
     }
 
@@ -206,7 +206,7 @@ public class CriteriaSearch extends Criteria {
      *
      * @param type The type of search used.
      */
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

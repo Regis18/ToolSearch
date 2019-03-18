@@ -23,8 +23,8 @@ public class AssetVideo extends Asset {
     private String audioCodec;
     private String frameRate;
     private String aspectRatio;
-    private String dimentionWidth;
-    private String dimentionHeight;
+    private String dimensionWidth;
+    private String dimensionHeight;
     private String audioSampleRate;
     private String duration;
 
@@ -37,8 +37,8 @@ public class AssetVideo extends Asset {
         audioCodec = "";
         frameRate = "";
         aspectRatio = "";
-        dimentionWidth = "";
-        dimentionHeight = "";
+        dimensionWidth = "";
+        dimensionHeight = "";
         audioSampleRate = "";
         duration = "";
     }
@@ -101,34 +101,34 @@ public class AssetVideo extends Asset {
 
     /**
      *
-     * @return dimentionWidth as a property of video.
+     * @return dimensionWidth as a property of video.
      */
-    public String getDimentionWidth() {
-        return dimentionWidth;
+    public String getDimensionWidth() {
+        return dimensionWidth;
     }
 
     /**
      *
-     * @param dimentionWidth this is the dimention with an attribute of video for the advanced searched.
+     * @param dimensionWidth this is the dimention with an attribute of video for the advanced searched.
      */
-    public void setDimentionWidth(String dimentionWidth) {
-        this.dimentionWidth = dimentionWidth;
+    public void setDimensionWidth(String dimensionWidth) {
+        this.dimensionWidth = dimensionWidth;
     }
 
     /**
      *
-     * @return dimentionHeight as a property of video.
+     * @return dimensionHeight as a property of video.
      */
-    public String getDimentionHeight() {
-        return dimentionHeight;
+    public String getDimensionHeight() {
+        return dimensionHeight;
     }
 
     /**
      *
-     * @param dimentionHeight this is the dimention height an attribute of audio for the advanced searched.
+     * @param dimensionHeight this is the dimention height an attribute of audio for the advanced searched.
      */
-    public void setDimentionHeight(String dimentionHeight) {
-        this.dimentionHeight = dimentionHeight;
+    public void setDimensionHeight(String dimensionHeight) {
+        this.dimensionHeight = dimensionHeight;
     }
 
     /**
