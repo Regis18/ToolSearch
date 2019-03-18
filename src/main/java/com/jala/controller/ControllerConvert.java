@@ -13,7 +13,7 @@
 package com.jala.controller;
 
 import com.jala.model.convert.ConvertorImage;
-import com.jala.model.criteria.CriteriaConverterImage;
+import com.jala.model.criteria.CriteriaConvertImage;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelConverter;
 import org.apache.log4j.Logger;
@@ -30,7 +30,7 @@ public class ControllerConvert implements ActionListener {
 	private JPanelConverter viewConvert;
 
 	/** Criteria for converter images ie. audioChannel, bitRate, sampleRate, etc.*/
-	private CriteriaConverterImage criteriaConverter;
+	private CriteriaConvertImage criteriaConverter;
 
 	/**
 	 * Constructor with JPanelConverter object as parameters.
@@ -69,7 +69,7 @@ public class ControllerConvert implements ActionListener {
 	}
 
 	/**
-	 * Save the information that the Ui provides into CriteriaConverterImage to send Converter.
+	 * Save the information that the Ui provides into CriteriaConvertImage to send Converter.
 	 */
 	private void saveCriteria() {
 		String pathOrigin = viewConvert.getJPanelAdvanced().getTxtPathFileOrigin();
@@ -81,7 +81,7 @@ public class ControllerConvert implements ActionListener {
 		boolean isMaintain = viewConvert.getJPanelAdvanced().isProprotion();
 		boolean isPercentage = !viewConvert.getJPanelAdvanced().isPixeles();
 		boolean isResize = viewConvert.getJPanelAdvanced().isResize();
-		criteriaConverter = new CriteriaConverterImage(pathOrigin, pathDestiny + "\\", "." + extension);
+		criteriaConverter = new CriteriaConvertImage(pathOrigin, pathDestiny + "\\", "." + extension);
 		criteriaConverter.setNewFileName(fileName);
 		if (!sizeHeight.isEmpty()) {
 			criteriaConverter.setHeight(Integer.parseInt(sizeHeight));

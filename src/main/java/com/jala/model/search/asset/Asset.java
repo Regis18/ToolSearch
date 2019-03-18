@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.model.search.assetFile;
+package com.jala.model.search.asset;
 
 /**
  * Asset class.

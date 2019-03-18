@@ -12,7 +12,7 @@
 
 package com.jala.convertor.models;
 
-import com.jala.model.convert.ConvertMusic;
+import com.jala.model.convert.ConvertAudio;
 import com.jala.model.criteria.CriteriaConverterAudio;
 import net.bramp.ffmpeg.FFprobe;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class ConvertMusicTest {
 	 */
 	@Test
 	public void convert_ReturnWMAFile_WhenSentBasicMP3File() {
-		ConvertMusic convert = new ConvertMusic();
+		ConvertAudio convert = new ConvertAudio();
 		CriteriaConverterAudio criteria = new CriteriaConverterAudio(path,pathDestination + "\\",".wmv");
 		criteria.setNewFileName("AudioWmv");
 		try {
@@ -53,7 +53,7 @@ public class ConvertMusicTest {
 	 */
 	@Test
 	public void convert_ReturnAACFile_WhenSentBasicMP3File() {
-		ConvertMusic convert = new ConvertMusic();
+		ConvertAudio convert = new ConvertAudio();
 		CriteriaConverterAudio criteria = new CriteriaConverterAudio(path,pathDestination + "\\",".aac");
 		criteria.setNewFileName("AudioAAC");
 		try {
@@ -72,7 +72,7 @@ public class ConvertMusicTest {
 	 */
 	@Test
 	public void convert_ReturnAACFile_WhenSentAdvancedMP3File() {
-		ConvertMusic convert = new ConvertMusic();
+		ConvertAudio convert = new ConvertAudio();
 		CriteriaConverterAudio criteria = new CriteriaConverterAudio(path,pathDestination + "\\",".aac");
 		criteria.setNewFileName("AudioAdvancedAAC");
 		criteria.setAdvanced(true);
