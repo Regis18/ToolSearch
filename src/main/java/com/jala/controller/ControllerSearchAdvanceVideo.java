@@ -34,7 +34,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
 
-    /** ViewAdvanced: create a pointer of JPanelSearchAdvanced, the object will provide other class.*/
+    /** Criteria for manages an instance of JPanelSearchAdvancedVideo */
     private JPanelSearchAdvancedVideo viewAdvanced;
 
     /** This is temporal, it is just for calculate a size of the file.*/
@@ -49,7 +49,8 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      * @param viewAdvanced has a data of GUI.
      */
     public ControllerSearchAdvanceVideo(JPanelSearchAdvancedVideo viewAdvanced) {
-        super();
+        log.info("Initialize the Control of Video Advanced Search.");
+        //super();
         this.viewAdvanced = viewAdvanced;
         actionListener();
     }
@@ -58,7 +59,9 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      * Initialize the action listener of the btnSearch button.
      */
     private void actionListener() {
+        log.info("It will add action listener for the button in Video Advanced Search.");
         viewAdvanced.getPanelSearchVideo().getBtnSearch().addActionListener(this);
+        log.info("It was end  action listener for the button in Video Advanced Search.");
     }
 
     /**
@@ -68,6 +71,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      */
     @Override
     public void actionPerformed(ActionEvent event) {
+        log.info("It was detected an event on the JPanelSearchAdvancedVideo class ");
         Object source = event.getSource();
         if (source == viewAdvanced.getPanelSearchVideo().getBtnSearch()) {
             sendCriteriaToFile(super.getCriteria(viewAdvanced.getPanelAdvanceSearch()));
