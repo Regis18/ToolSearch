@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ViewConsole class, show the data for console
+ * ViewConsole class, show the data for console.
  *
  * @author Raúl Choque
  * @version 0.0.1
