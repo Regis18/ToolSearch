@@ -14,7 +14,7 @@ package com.jala;
 import com.jala.solidwater.console.controllers.ControllerConsole;
 
 /**
- * AppB
+ * App class to execute the application with UI or from console.
  *
  * @author Regis Humana
  * @version 0.0.1
