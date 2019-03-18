@@ -21,7 +21,8 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 /**
- * SearchFile class.
+ * SearchFile class
+ *
  * @author Regis Humana
  * @version 0.0.3
  */
