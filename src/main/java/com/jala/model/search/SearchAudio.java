@@ -103,7 +103,6 @@ public class SearchAudio extends SearchCommon {
                             String.valueOf(ffprobeResult.getStreams().get(0).duration));
                     result.add(asset);
                 }
-
             } catch (IOException event) {
                 log.error("The criteria values shouldn't be null...", event);
             } catch (NumberFormatException event) {
