@@ -11,22 +11,38 @@
  */
 package com.jala;
 
+import com.jala.solidwater.console.controllers.ControllerConsole;
+
 /**
- * App
+ * App class to execute the application with UI or from console.
  *
- * @version 0.0.1
  * @author Regis Humana
+ * @version 0.0.1
  */
 public class App {
 
-    /** Create a variable of Run*/
+    /**
+     * Create a variable of Run
+     */
     private static Run runApp;
 
     /**
-     * Executes the program
-     * @param args
+     * Attribute to execute search from console.
      */
-    public static void main(String [] args) {
-        runApp = new Run();
+    private static ControllerConsole controllerConsole;
+
+    /**
+     * Executes the program
+     *
+     * @param args that are entered from console.
+     */
+    public static void main(String[] args) {
+        if (args.length > 0) {
+            //Execute search for console.
+            controllerConsole = new ControllerConsole(args);
+        } else {
+            //Execute the application with UI
+            runApp = new Run();
+        }
     }
 }
