@@ -26,10 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SearchAudio
+ * SearchAudio.
  *
  * @version 0.0.3
- * @author Regis Humana
+ * @author Regis Humana.
  */
 public class SearchAudio extends SearchCommon {
 
