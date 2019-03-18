@@ -42,7 +42,7 @@ public class App {
             //Execute search for console.
             controllerConsole = new ControllerConsole(args);
         } else {
-            //Execute the appication with UI.
+            //Execute the application with UI.
             runApp = new Run();
         }
     }
