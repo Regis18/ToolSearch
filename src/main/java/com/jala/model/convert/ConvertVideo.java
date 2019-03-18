@@ -59,8 +59,6 @@ public class ConvertVideo implements IConvertible {
 		}
 	}
 
-
-
 	/**
 	 * Convert the video with advances parameters like audioChannel, BitRate, SampleRate, Frame rate & Video resolution.
 	 * @param criteria criteria for convert video.
