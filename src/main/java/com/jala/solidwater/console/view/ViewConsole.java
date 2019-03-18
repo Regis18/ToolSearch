@@ -152,8 +152,7 @@ public class ViewConsole {
      */
     private String printHorizontalLine(List<Integer> size) {
         String border = "+";
-        for (Integer division : size
-        ) {
+        for (Integer division : size) {
             for (int i = 0; i <= division; i++) {
                 border += (i == division) ? "+" : "-";
             }
@@ -167,7 +166,6 @@ public class ViewConsole {
      * @param assets are data that have to show.
      */
     public void showAssets(List<Asset> assets) {
-
         for (Asset asset : assets) {
             updateSize(convertToString(asset));
         }

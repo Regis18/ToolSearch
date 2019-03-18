@@ -32,12 +32,12 @@ import java.util.List;
 public class ControllerConsole {
 
     /**
-     * Criteria for show the result of find
+     * Criteria for show the result of find.
      */
     private ViewConsole viewConsole;
 
     /**
-     * Criteria for search of Asset
+     * Criteria for search of Asset.
      */
     private ModelConsole modelConsole;
 
@@ -52,7 +52,7 @@ public class ControllerConsole {
     private ValidCommandLine validCommandLine;
 
     /**
-     * This method is the constructor of ControllerConsole to create an instance
+     * This method is the constructor of ControllerConsole to create an instance.
      *
      * @param parameters are data to find Asset
      */
