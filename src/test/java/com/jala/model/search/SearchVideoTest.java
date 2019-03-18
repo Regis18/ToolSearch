@@ -27,7 +27,7 @@ public class SearchVideoTest {
 	private CriteriaSearchMultimedia criteria;
 	@Before
 	public void setUp() {
-		criteria = new CriteriaSearchMultimedia("C:\\Users\\Usuario\\Desktop\\Semana Santa");
+		criteria = new CriteriaSearchMultimedia("C:\\Users\\Admin\\Desktop\\PROG 02\\Videos");
 	}
 
 	@Test

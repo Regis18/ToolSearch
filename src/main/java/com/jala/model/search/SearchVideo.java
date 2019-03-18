@@ -100,7 +100,7 @@ public class SearchVideo extends SearchCommon {
 						resultSearchVideo = false;
 					}
 				}
-				if (resultSearchVideo && !(ffprobeResult.getStreams().get(1).codec_long_name).contains(criteriaSearchVideo.getAudioCodec())) {
+				if (resultSearchVideo && !(ffprobeResult.getStreams().get(0).codec_long_name).contains(criteriaSearchVideo.getAudioCodec())) {
 					if (!criteriaSearchVideo.getAudioCodec().equals("")) {
 						resultSearchVideo = false;
 					}
@@ -110,7 +110,7 @@ public class SearchVideo extends SearchCommon {
 						resultSearchVideo = false;
 					}
 				}
-				if (resultSearchVideo && !(criteriaSearchVideo.getChannel().equals(ffprobeResult.getStreams().get(1).channel_layout))) {
+				if (resultSearchVideo && !(criteriaSearchVideo.getChannel().equals(ffprobeResult.getStreams().get(0).channel_layout))) {
 					if (!criteriaSearchVideo.getChannel().equals("")) {
 						resultSearchVideo = false;
 					}
@@ -118,10 +118,10 @@ public class SearchVideo extends SearchCommon {
 				if (resultSearchVideo) {
 					asset = AssetFactory.getAsset(preview.get(i),
 							ffprobeResult.getStreams().get(0).codec_long_name,
-							ffprobeResult.getStreams().get(1).codec_long_name,
+							ffprobeResult.getStreams().get(0).codec_long_name,
 							String.valueOf(frameRateProbe),
 							ffprobeResult.getStreams().get(0).display_aspect_ratio,
-							Integer.toString(ffprobeResult.getStreams().get(1).sample_rate),
+							Integer.toString(ffprobeResult.getStreams().get(0).sample_rate),
 							String.valueOf(ffprobeResult.getStreams().get(0).duration));
 					result.add(asset);
 				}
