@@ -62,7 +62,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     }
 
     /**
-     * It is override the method of ActionListener and the objective is listen if button is pressed
+     * It is override the method of ActionListener and the objective is listen if button is pressed.
      * @param event this activates when a button is  pressed
      *
      */
@@ -75,8 +75,8 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     }
 
     /**
-     * Send criteriaSearch to SearchFile to search files like the filename or extension, receive a list of
-     * results, and print the results in the UI table.
+     * Send criteriaSearch to SearchFile to search files like the filename or extension,
+     * receive a list of results, and print the results in the UI table.
      * @param criteria has data for search video file
      */
     private void sendCriteriaToFile(CriteriaSearch criteria) {
