@@ -21,21 +21,21 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 /**
- * SearchFile class
+ * SearchFile.
  *
- * @author Regis Humana
+ * @author Regis Humana.
  * @version 0.0.3
  */
 public class SearchFile {
 
-    /** It creates to follow up the instruction of the class*/
+    /** It creates to follow up the instruction of the class. */
     private Logger log = Logs.getInstance().getLog();
 
     /**
      * Searching for commons files.
      *
      * @param criteria
-     * @return
+     * @return List<Asset> result.
      */
     public List<Asset> search(CriteriaSearch criteria) {
         log.info("Searching for Commons");
@@ -47,7 +47,7 @@ public class SearchFile {
      * Searching for special files, like video and audio.
      * @param criteria
      * @param isSearchVideo
-     * @return
+     * @return List<Asset> result.
      */
     public List<Asset> search(CriteriaSearchMultimedia criteria, boolean isSearchVideo) {
         log.info("Search is initialize");

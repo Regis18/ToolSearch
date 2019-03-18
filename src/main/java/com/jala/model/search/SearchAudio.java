@@ -33,21 +33,21 @@ import java.util.List;
  */
 public class SearchAudio extends SearchCommon {
 
-    /** Asset list*/
+    /** Asset list. */
     private List<Asset> result;
 
-    /** Criteria multimedia*/
+    /** Criteria multimedia. */
     private CriteriaSearchMultimedia criteriaSearchAudio;
 
-    /** It creates to follow up the instruction of the class*/
+    /** It creates to follow up the instruction of the class. */
     private Logger log = Logs.getInstance().getLog();
 
-    /** Path of the ffprobe*/
+    /** Path of the ffprobe. */
     private  String FFPROBE_PATH = SearchFile.class.getClassLoader()
             .getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffprobe.exe";
 
     /**
-     * Receive the criteria and cast the criteria into CriteriaSearchMultimedia
+     * Receive the criteria and cast the criteria into CriteriaSearchMultimedia.
      * @param criteria
      */
     public SearchAudio(CriteriaSearch criteria) {
@@ -58,7 +58,7 @@ public class SearchAudio extends SearchCommon {
     /**
      * Receive all the file that found in Search common, and deliver a list with the filters that was made for the
      * customer, in special audio.
-     * @return
+     * @return List<Asset> result.
      */
     @Override
     public List<Asset> search() {

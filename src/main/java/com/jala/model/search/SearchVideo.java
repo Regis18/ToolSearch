@@ -28,28 +28,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SearchVideo
+ * SearchVideo.
  *
  * @author Regis Humana
  * @version 0.0.3
  */
 public class SearchVideo extends SearchCommon {
 	/**
-	 * Asset list
+	 * Asset list.
 	 */
 	private List<Asset> result;
 
-	/** Criteria multimedia*/
+	/** Criteria multimedia. */
 	private CriteriaSearchMultimedia criteriaSearchVideo;
 
-	/** It creates to follow up the instruction of the class*/
+	/** It creates to follow up the instruction of the class. */
 	private Logger log = Logs.getInstance().getLog();
 
-	/** Path of the ffprobe*/
+	/** Path of the ffprobe. */
 	private String FFPROBE_PATH = SearchFile.class.getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffprobe.exe";
 
 	/**
-	 * Receive the criteria and cast the criteria into CriteriaSearchMultimedia
+	 * Receive the criteria and cast the criteria into CriteriaSearchMultimedia.
 	 * @param criteria
 	 */
 	public SearchVideo(CriteriaSearch criteria) {
@@ -59,8 +59,8 @@ public class SearchVideo extends SearchCommon {
 
 	/**
 	 * Receive all the file that found in Search common, and deliver a list with the filters that was made for the
-	 * customer, in special video
-	 * @return List<Asset>
+	 * customer, in special video.
+	 * @return List<Asset> result.
 	 */
 	@Override
 	public List<Asset> search() {

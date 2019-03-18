@@ -21,6 +21,12 @@ import org.junit.Test;
 
 import java.util.List;
 
+/**
+ * SearchAudioTest
+ *
+ * @version 0.0.3
+ * @author Regis Humana
+ */
 public class SearchAudioTest {
 	CriteriaSearchMultimedia criteria;
 	SearchAudio searchAudio;
@@ -51,7 +57,7 @@ public class SearchAudioTest {
 	@Test
 	public void search_returnMP3_WhenSendPathMultimediaMono() {
 		criteria.setExtension("mp3");
-		criteria.setChannel("mono");
+		criteria.setChannel("stereo");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
 		for (int i = 0; i < result.size(); i++) {

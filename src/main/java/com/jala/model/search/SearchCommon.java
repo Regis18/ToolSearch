@@ -23,13 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SearchCommon
+ * SearchCommon.
  *
  * @version 0.0.3
  * @author Regis Humana
  */
 public class SearchCommon extends SearchBasic {
-    /** It creates to follow up the instruction of the class*/
+    /** It creates to follow up the instruction of the class. */
     private Logger log = Logs.getInstance().getLog();
     private CriteriaSearch criteria;
     private List<Asset> result;
@@ -46,7 +46,7 @@ public class SearchCommon extends SearchBasic {
 	/**
 	 * Receive the list of files founded in the path, and deliver a list with the filters that was made for the
      * customer.
-     * @return
+     * @return List<Asset> result.
 	 */
     public List<Asset> search() {
         List<Asset> preview = super.search(criteria);

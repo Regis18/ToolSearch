@@ -22,6 +22,12 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * SearchVideoTest
+ *
+ * @version 0.0.3
+ * @author Regis Humana
+ */
 public class SearchVideoTest {
 	private SearchVideo searchVideo;
 	private CriteriaSearchMultimedia criteria;
@@ -30,6 +36,10 @@ public class SearchVideoTest {
 		criteria = new CriteriaSearchMultimedia("C:\\Users\\Admin\\Desktop\\PROG 02\\Videos");
 	}
 
+	/**
+	 * Extension : mp4
+	 * Channel: stereo
+	 */
 	@Test
 	public void search_returnMP4_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
@@ -40,6 +50,11 @@ public class SearchVideoTest {
 			System.out.println(result.get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * AudioCodec: AAC
+	 */
 	@Test
 	public void search_returnAudioCodec_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
@@ -51,6 +66,11 @@ public class SearchVideoTest {
 			System.out.println(result.get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * VideoCodec: H.264
+	 */
 	@Test
 	public void search_returnVideoCodec_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
@@ -62,6 +82,11 @@ public class SearchVideoTest {
 			System.out.println(result.get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * AudioSampleRate: 44100
+	 */
 	@Test
 	public void search_returnSampleRate_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
@@ -73,6 +98,11 @@ public class SearchVideoTest {
 			System.out.println(result.get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * AspectRatio: 16:9
+	 */
 	@Test
 	public void search_returnAspectRatio_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
@@ -84,6 +114,11 @@ public class SearchVideoTest {
 			System.out.println(result.get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * FrameRate: 29.97
+	 */
 	@Test
 	public void search_returnFrameRate_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
@@ -95,6 +130,11 @@ public class SearchVideoTest {
 			System.out.println(result.get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * Duration: 10
+	 */
 	@Test
 	public void search_returnDuration_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");

@@ -34,21 +34,21 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * SearchBasic
+ * SearchBasic.
  *
  * @version 0.0.3
  * @author Regis Humana
  */
 public abstract class SearchBasic implements ISearchable {
-    /** It creates to follow up the instruction of the class*/
+    /** It creates to follow up the instruction of the class. */
     private static Logger log = Logs.getInstance().getLog();
-    /** asset list*/
+    /** Asset list. */
     private List<Asset> result;
 
 	/**
 	 * Search all the file in the path without filters.
      * @param criteria to do the search.
-	 * @return
+	 * @return List<Asset> result.
 	 */
     public List<Asset> search(CriteriaSearch criteria) {
         result = new ArrayList<>();
