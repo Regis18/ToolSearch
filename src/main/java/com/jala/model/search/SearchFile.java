@@ -12,7 +12,7 @@
 
 package com.jala.model.search;
 
-import com.jala.model.search.assetFile.Asset;
+import com.jala.model.search.asset.Asset;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.utils.Logs;
 import java.io.File;
@@ -20,7 +20,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.jala.model.search.assetFile.AssetFactory;
+import com.jala.model.search.asset.AssetFactory;
 import org.apache.log4j.Logger;
 
 /**

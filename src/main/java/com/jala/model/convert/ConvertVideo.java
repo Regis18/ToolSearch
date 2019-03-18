@@ -12,38 +12,38 @@
 
 package com.jala.model.convert;
 
-import com.jala.model.convert.IConvertible;
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegOutputBuilder;
 import org.apache.log4j.Logger;
+import com.jala.utils.Common;
 
 import java.io.IOException;
 
 /**
- * ConvertVideo
- *
+ * This class used the FFmpeg app for Convert of format a Video.
  * @version 0.0.3
  * @author Regis Humana
  */
 public class ConvertVideo implements IConvertible {
 
-	/** It creates to follow up the instruction of the class*/
+	/** It creates to follow up the instruction of the class.*/
 	private Logger log = Logs.getInstance().getLog();
 
-	/** Store the path destination with the path of folder, name of file and the extension*/
+	/** Store the path destination with the path of folder, name of file and the extension.*/
 	private String pathDestination;
 
 	/**
 	 * Convert formats of video into another extension - basic.
-	 * @param criteriaObject
+	 * @param criteriaObject criteria for convert video.
 	 */
 	public void convert(Object criteriaObject) {
 		CriteriaConverterVideo criteria = (CriteriaConverterVideo) criteriaObject;
 		try {
-			FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe");
+			String pathFFmpeg = getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe";
+			FFmpeg fmpeg = new FFmpeg(Common.cleanPath(pathFFmpeg));
 			FFmpegBuilder builder = new FFmpegBuilder();
 			pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
 			builder.addInput(criteria.getPath()).overrideOutputFiles(true);
@@ -60,9 +60,9 @@ public class ConvertVideo implements IConvertible {
 
 	/**
 	 * Convert the video with advances parameters like audioChannel, BitRate, SampleRate, Frame rate & Video resolution.
-	 * @param criteria
-	 * @param builder
-	 * @param fmpeg
+	 * @param criteria criteria for convert video.
+	 * @param builder FFmpeg Builder.
+	 * @param fmpeg FFmpeg app.
 	 */
 	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
 		try {

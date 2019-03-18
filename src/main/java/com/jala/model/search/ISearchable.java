@@ -12,7 +12,7 @@
 
 package com.jala.model.search;
 
-import com.jala.model.search.assetFile.Asset;
+import com.jala.model.search.asset.Asset;
 import com.jala.model.criteria.CriteriaSearch;
 
 import java.util.List;

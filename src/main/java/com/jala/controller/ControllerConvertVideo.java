@@ -12,7 +12,7 @@
 
 package com.jala.controller;
 
-import com.jala.model.convert.ConvertMusic;
+import com.jala.model.convert.ConvertAudio;
 import com.jala.model.convert.ConvertVideo;
 import com.jala.model.criteria.CriteriaConverterAudio;
 import com.jala.model.criteria.CriteriaConverterVideo;
@@ -24,13 +24,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Class ControllerConvertVideo.
+ * Class Controller of Convert a Video and audio.
  * @version: 0.0.1
  * @autor: Melvi Caballero M.
  */
 public class ControllerConvertVideo implements ActionListener {
 
-    /** It creates to follow up the instruction of the class*/
+    /** It creates to follow up the instruction of the class.*/
     private Logger log = Logs.getInstance().getLog();
 
     /** ViewConvert: create a pointer of JPanelConverterVideo the object will provide other class.*/
@@ -73,7 +73,7 @@ public class ControllerConvertVideo implements ActionListener {
     }
 
     /**
-     * This method sends to ConvertVideo the criteria that was wrote by user.
+     * This method sends to ConvertVideo the criteria that was wrote by user
      * and that method convert the Video.
      */
     private void sendPathToConvertVideo() {
@@ -84,12 +84,12 @@ public class ControllerConvertVideo implements ActionListener {
     }
 
     /**
-     * This method sends to ConvertAudio the criteria that was wrote by user.
+     * This method sends to ConvertAudio the criteria that was wrote by user
      * and that method convert the Audio.
      */
     private void sendPathToConvertAudio() {
         log.info("Preparing to send criteria converter to ConvertAudio");
-        ConvertMusic converterAudio = new ConvertMusic();
+        ConvertAudio converterAudio = new ConvertAudio();
         saveCriteriaAudio();
         converterAudio.convert(criteriaConverterAudio);
     }
@@ -99,7 +99,7 @@ public class ControllerConvertVideo implements ActionListener {
      */
     private void saveCriteriaVideo() {
         String pathOrigin = viewConvert.getTxtPathFileOrigin();
-        String pathDestiny = viewConvert.getTxtFolderDestiny();
+        String pathDestination = viewConvert.getTxtFolderDestiny();
         String fileName = viewConvert.getTxtFileName();
         String extension = viewConvert.getCmbExtension();
         String resolution = viewConvert.getCmbVideoResolution();
@@ -108,7 +108,7 @@ public class ControllerConvertVideo implements ActionListener {
         int sampleRate = viewConvert.getCmbSampleRate();
         boolean isAdvanced = viewConvert.isAdvanced();
         String audioChannel = viewConvert.isStereo()? "Stereo" : "Mono";
-        criteriaConverterVideo = new CriteriaConverterVideo(pathOrigin, pathDestiny + "\\", "." + extension);
+        criteriaConverterVideo = new CriteriaConverterVideo(pathOrigin, pathDestination + "\\", "." + extension);
         criteriaConverterVideo.setNewFileName(fileName);
         criteriaConverterVideo.setVideoResolution(resolution);
         criteriaConverterVideo.setFrameRate(frameRate);
@@ -123,13 +123,13 @@ public class ControllerConvertVideo implements ActionListener {
      */
     private void saveCriteriaAudio() {
         String pathOrigin = viewConvert.getTxtPathFileOrigin();
-        String pathDestiny = viewConvert.getTxtFolderDestiny();
+        String pathDestination = viewConvert.getTxtFolderDestiny();
         String fileName = viewConvert.getTxtFileName();
         String extension = viewConvert.getCmbExtension();
         double bitRate = viewConvert.getCmbBitRate();
         int sampleRate = viewConvert.getCmbSampleRate();
         String audioChannel = viewConvert.isStereo() ? "Stereo" : "Mono";
-        criteriaConverterAudio = new CriteriaConverterAudio(pathOrigin, pathDestiny + "\\", "." + extension);
+        criteriaConverterAudio = new CriteriaConverterAudio(pathOrigin, pathDestination + "\\", "." + extension);
         criteriaConverterAudio.setNewFileName(fileName);
         criteriaConverterAudio.setBitRate((long)bitRate);
         criteriaConverterAudio.setSampleRate(sampleRate);
