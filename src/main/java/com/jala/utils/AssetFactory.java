@@ -49,7 +49,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(readOnly);
         assetVerify.setExtension(extension);
         assetVerify.setSize(size);
-        assetVerify.setOwner(SearchCommon.fileOwner(owner));
+        assetVerify.setOwner(SearchCommon.getFileOwner(owner));
         assetVerify.setCreationDate(creationDate);
         assetVerify.setModificationDate(modificationDate);
         assetVerify.setLastDate(lastDate);
@@ -74,7 +74,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(asset.isReadOnly());
         assetVerify.setExtension(asset.getExtension());
         assetVerify.setSize(asset.getSize());
-        assetVerify.setOwner(SearchCommon.fileOwner(asset.getOwner()));
+        assetVerify.setOwner(SearchCommon.getFileOwner(asset.getOwner()));
         assetVerify.setCreationDate(asset.getCreationDate());
         assetVerify.setModificationDate(asset.getModificationDate());
         assetVerify.setLastDate(asset.getLastDate());
@@ -99,7 +99,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(asset.isReadOnly());
         assetVerify.setExtension(asset.getExtension());
         assetVerify.setSize(asset.getSize());
-        assetVerify.setOwner(SearchCommon.fileOwner(asset.getOwner()));
+        assetVerify.setOwner(SearchCommon.getFileOwner(asset.getOwner()));
         assetVerify.setCreationDate(asset.getCreationDate());
         assetVerify.setModificationDate(asset.getModificationDate());
         assetVerify.setLastDate(asset.getLastDate());

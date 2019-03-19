@@ -188,6 +188,7 @@ public class Asset {
     public void setLastDate(String lastDate) {
         this.lastDate = lastDate;
     }
+
     /**
      * @return isDirectory as boolean value.
      */

@@ -19,6 +19,7 @@ import com.jala.utils.AssetFactory;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.probe.FFmpegProbeResult;
+import net.bramp.ffmpeg.probe.FFmpegStream;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -28,7 +29,7 @@ import java.util.List;
 /**
  * SearchAudio.
  *
- * @version 0.0.3
+ * @version 0.0.1
  * @author Regis Humana.
  */
 public class SearchAudio extends SearchCommon {
@@ -45,6 +46,9 @@ public class SearchAudio extends SearchCommon {
     /** Path of the ffprobe. */
     private  String FFPROBE_PATH = SearchFile.class.getClassLoader()
             .getResource("ThirdParty/ffmpeg/bin/ffprobe.exe").getPath();
+
+    /** Total Seconds in a minute*/
+    private final int SECONDS = 60;
 
     /**
      * Receive the criteria and cast the criteria into CriteriaSearchMultimedia.
@@ -71,36 +75,37 @@ public class SearchAudio extends SearchCommon {
             try {
                 ffprobe = new FFprobe(FFPROBE_PATH);
                 ffprobeResult = ffprobe.probe(preview.get(i).getPath());
+                FFmpegStream fFmpegStream = ffprobeResult.getStreams().get(0);
                 boolean resultSearchAudio = true;
                 Asset asset;
-                if (resultSearchAudio && !(ffprobeResult.getStreams().get(0).codec_long_name).contains(criteriaSearchAudio.getAudioCodec())) {
-                    if (!criteriaSearchAudio.getAudioCodec().equals("")) {
+                if (resultSearchAudio && !(fFmpegStream.codec_long_name).contains(criteriaSearchAudio.getAudioCodec())) {
+                    if (!criteriaSearchAudio.getAudioCodec().isEmpty()) {
                         resultSearchAudio = false;
                     }
                 }
-                if (!criteriaSearchAudio.getAudioSampleRate().equals("")) {
+                if (!criteriaSearchAudio.getAudioSampleRate().isEmpty()) {
                     double sampleRate = Double.parseDouble(criteriaSearchAudio.getAudioSampleRate());
-                    if (resultSearchAudio && !(sampleRate >= ffprobeResult.getStreams().get(0).sample_rate)) {
+                    if (resultSearchAudio && !(sampleRate >= fFmpegStream.sample_rate)) {
                         resultSearchAudio = false;
                     }
                 }
-                if (!criteriaSearchAudio.getDuration().equals("")) {
-                    double durationCriteria = Double.parseDouble(criteriaSearchAudio.getDuration()) * 60;
-                    if (resultSearchAudio && !(durationCriteria >= ffprobeResult.getStreams().get(0).duration)) {
+                if (!criteriaSearchAudio.getDuration().isEmpty()) {
+                    double durationCriteria = Double.parseDouble(criteriaSearchAudio.getDuration()) * SECONDS;
+                    if (resultSearchAudio && !(durationCriteria >= fFmpegStream.duration)) {
                         resultSearchAudio = false;
                     }
                 }
-                if (resultSearchAudio && !(criteriaSearchAudio.getChannel().equals(ffprobeResult.getStreams().get(0).channel_layout))) {
-                    if (!criteriaSearchAudio.getChannel().equals("")) {
+                if (resultSearchAudio && !(criteriaSearchAudio.getChannel().equals(fFmpegStream.channel_layout))) {
+                    if (!criteriaSearchAudio.getChannel().isEmpty()) {
                         resultSearchAudio = false;
                     }
                 }
                 if (resultSearchAudio) {
                     asset = AssetFactory.getAsset(preview.get(i),
-                            ffprobeResult.getStreams().get(0).codec_long_name,
-                            ffprobeResult.getStreams().get(0).channel_layout,
-                            Integer.toString(ffprobeResult.getStreams().get(0).sample_rate),
-                            String.valueOf(ffprobeResult.getStreams().get(0).duration));
+                            fFmpegStream.codec_long_name,
+                            fFmpegStream.channel_layout,
+                            Integer.toString(fFmpegStream.sample_rate),
+                            String.valueOf(fFmpegStream.duration));
                     result.add(asset);
                 }
             } catch (IOException event) {

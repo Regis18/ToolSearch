@@ -29,14 +29,14 @@ import java.util.List;
 
 /**
  * SearchVideo.
+ * It searches the files for the specials characters of Video.
  *
  * @author Regis Humana
- * @version 0.0.3
+ * @version 0.0.1
  */
 public class SearchVideo extends SearchCommon {
-	/**
-	 * Asset list.
-	 */
+
+	/** Asset list. */
 	private List<Asset> result;
 
 	/** Criteria multimedia. */
@@ -60,6 +60,7 @@ public class SearchVideo extends SearchCommon {
 	/**
 	 * Receive all the file that found in Search common, and deliver a list with the filters that was made for the
 	 * customer, in special video.
+	 *
 	 * @return List<Asset> result.
 	 */
 	@Override

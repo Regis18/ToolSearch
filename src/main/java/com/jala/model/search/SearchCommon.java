@@ -24,18 +24,22 @@ import java.util.List;
 
 /**
  * SearchCommon.
- *
- * @version 0.0.3
+ * Search file with common parameters.
+ * @version 0.0.1
  * @author Regis Humana
  */
 public class SearchCommon extends SearchBasic {
     /** It creates to follow up the instruction of the class. */
     private Logger log = Logs.getInstance().getLog();
+
+    /** Criteria of the file. */
     private CriteriaSearch criteria;
+
+    /** List of Asset for result. */
     private List<Asset> result;
 
 	/**
-	 * This constructor receive the criteria.
+	 * This constructor receive the criteria, for using in the search.
      * @param criteria
 	 */
     public SearchCommon(CriteriaSearch criteria) {
@@ -52,6 +56,7 @@ public class SearchCommon extends SearchBasic {
         List<Asset> preview = super.search(criteria);
         result = new ArrayList<>();
         for (int i = 0; i < preview.size(); i++) {
+            String path = preview.get(i).getPath();
             if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(preview.get(i).isHidden())) {
                 continue;
             }
@@ -59,24 +64,24 @@ public class SearchCommon extends SearchBasic {
                 continue;
             }
             if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                if ((Date.valueOf(fileCreationDate(preview.get(i).getPath())).before(Date.valueOf(criteria.getCreationDateFrom())))
-                        || ( Date.valueOf(fileCreationDate(preview.get(i).getPath())).after(Date.valueOf(criteria.getCreationDateTo())))) {
+                if ((Date.valueOf(createFileDate(path)).before(Date.valueOf(criteria.getCreationDateFrom())))
+                        || (Date.valueOf(createFileDate(path)).after(Date.valueOf(criteria.getCreationDateTo())))) {
                     continue;
                 }
             }
             if ((!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                if ((Date.valueOf(fileLastModifiedDate(preview.get(i).getPath())).before(Date.valueOf(criteria.getModificationDateFrom())))
-                        || ( Date.valueOf(fileLastModifiedDate(preview.get(i).getPath())).after(Date.valueOf(criteria.getModificationDateTo())))) {
+                if ((Date.valueOf(getFileLastModifiedDate(path)).before(Date.valueOf(criteria.getModificationDateFrom())))
+                        || (Date.valueOf(getFileLastModifiedDate(path))).after(Date.valueOf(criteria.getModificationDateTo()))) {
                     continue;
                 }
             }
             if ((!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                if ((Date.valueOf(fileLastAccessDate(preview.get(i).getPath())).before(Date.valueOf(criteria.getLastDateFrom())))
-                        || (Date.valueOf(fileLastAccessDate(preview.get(i).getPath())).after(Date.valueOf(criteria.getLastDateTo())))) {
+                if ((Date.valueOf(getFileLastAccessDate(path)).before(Date.valueOf(criteria.getLastDateFrom())))
+                        || (Date.valueOf(getFileLastAccessDate(path)).after(Date.valueOf(criteria.getLastDateTo())))) {
                     continue;
                 }
             }
-            if ((!criteria.getOwner().isEmpty()) && (!fileOwner(preview.get(i).getPath()).contains(criteria.getOwner()))) {
+            if ((!criteria.getOwner().isEmpty()) && (!getFileOwner(path).contains(criteria.getOwner()))) {
                 continue;
             }
             if ((!criteria.getSize().isEmpty())) {

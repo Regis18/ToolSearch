@@ -23,8 +23,8 @@ import java.util.List;
 /**
  * SearchFile.
  *
- * @author Regis Humana.
- * @version 0.0.3
+ * @author Areliez Vargas.
+ * @version 0.0.1
  */
 public class SearchFile {
 
@@ -32,7 +32,7 @@ public class SearchFile {
     private Logger log = Logs.getInstance().getLog();
 
     /**
-     * Searching for commons files.
+     * Searching for commons files, it calls to SearchCommons.
      *
      * @param criteria
      * @return List<Asset> result.
@@ -45,8 +45,8 @@ public class SearchFile {
 
     /**
      * Searching for special files, like video and audio.
-     * @param criteria
-     * @param isSearchVideo
+     * @param criteria criteria of Multimedia of searching.
+     * @param isSearchVideo set if the searching is SearchVideo or Audio.
      * @return List<Asset> result.
      */
     public List<Asset> search(CriteriaSearchMultimedia criteria, boolean isSearchVideo) {
