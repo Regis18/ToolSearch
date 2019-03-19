@@ -12,6 +12,7 @@
 
 package com.jala.view;
 
+
 import javax.swing.*;
 
 /**
@@ -26,10 +27,23 @@ public class CustomTextField extends JTextField {
      * @param valor define the size textBox
      */
     public CustomTextField(int valor){
-        setFont(new java.awt.Font("Calibri", 0, 16));
+        setColumns(valor);
+        init();
+    }
+    /**
+     *  Class constructor.
+     */
+    public CustomTextField(){
+        init();
+    }
+
+    /**
+     * Init of constructor.
+     */
+    public void init() {
+        setFont(new java.awt.Font("Calibri", 0, 13));
         setHorizontalAlignment(JTextField.LEFT);
         setVisible(true);
-        setColumns(valor);
     }
 
 }

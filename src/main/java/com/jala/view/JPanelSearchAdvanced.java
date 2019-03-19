@@ -12,15 +12,10 @@
 
 package com.jala.view;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.BorderFactory;
 import javax.swing.border.TitledBorder;
-import java.awt.LayoutManager;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Dimension;
+import java.awt.*;
 
 /**
  * Module view, ui/JPanelSearchAdvanced.
@@ -32,6 +27,8 @@ public class JPanelSearchAdvanced extends JPanel {
     private Border border;
     private JPanelAdvanced panelSearchAdvanced;
     private JTableDB tbDataBase;
+    private JPanel panelInferior;
+    private JButton btnDelete, btnSave, btnCharge;
 
     /**
      * Class constructor.
@@ -70,15 +67,19 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private void initComponent() {
         panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search Advanced");
         panelSearchAdvanced.setBorder(titleBorder);
-        this.add(panelSearchAdvanced, BorderLayout.CENTER);
+        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
+        titleBorder.setTitleFont(new Font("Arial", 1, 14));
+        this.add(panelSearchAdvanced, BorderLayout.WEST);
 
         JPanel pnlTableDB = pnlTableDB();
-        this.add(pnlTableDB, BorderLayout.WEST);
+        this.add(pnlTableDB, BorderLayout.CENTER);
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.SOUTH);
+
+
     }
 
     /**
@@ -88,6 +89,8 @@ public class JPanelSearchAdvanced extends JPanel {
     private JPanel pnlTableResult() {
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
+        titleBorder.setTitleFont(new Font("Arial", 1, 14));
         pnlSearchAdvanced.setBorder(titleBorder);
 
         tbSearchAdvanced = new JTableResult();
@@ -103,12 +106,26 @@ public class JPanelSearchAdvanced extends JPanel {
     private JPanel pnlTableDB() {
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Data Base");
+        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
+        titleBorder.setTitleFont(new Font("Arial", 1, 14));
         pnlSearchGral.setBorder(titleBorder);
+        pnlButtonInferiorDB();
 
         tbDataBase = new JTableDB();
         JScrollPane scroll = new JScrollPane(tbDataBase);
+
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
+        pnlSearchGral.add(panelInferior, BorderLayout.SOUTH);
+
         return pnlSearchGral;
+    }
+    private void pnlButtonInferiorDB(){
+        panelInferior = new JPanel();
+        btnCharge = new JButton("Charge");
+        btnDelete = new JButton("Delete");
+        panelInferior.setLayout(new FlowLayout());
+        panelInferior.add(btnCharge);
+        panelInferior.add(btnDelete);
     }
 
     /**

@@ -25,10 +25,24 @@ public class CustomLabel extends JLabel {
      * Class constructor.
      */
     public CustomLabel() {
-        setFont(new java.awt.Font("Calibri", 1, 18));
+        init();
+    }
+
+    /**
+     *Class constructor.
+     */
+    public CustomLabel(String text) {
+        setText(text);
+        init();
+    }
+
+    /**
+     * Init of constructor.
+     */
+    public void init() {
+        setFont(new java.awt.Font("Calibri", 1, 14));
         setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         setVisible(true);
     }
 }
-

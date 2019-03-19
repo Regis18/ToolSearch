@@ -38,7 +38,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblTest , lblOwner, lblSeparatorEmpty, lblSeparatorEmpty2, lblSizeFile;
     private JLabel lblDateCreateStar, lblDateCreateEnd, lblDateLastModBegin, lblDateLastModEnd, lblDateLatterAccesBegin, lblDateLatterAccesEnd;
     private JTextField txtPath, txtFileName, txtExtension, txtOwner;
-    private JButton btnSearchAdvanced, btnPathSearch;
+    private JButton btnSearchAdvanced, btnPathSearch, btnSave;
     private JComboBox cmbHidden, comboReadOnly, comboTypeSizeFile;
     private JDateChooser dateCreateStar, dateCreateEnd, dateLastModBegin, dateLastModEnd, dateLatterAccesBegin, dateLatterAccesEnd;
     private GridBagLayout esquema;
@@ -229,6 +229,9 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         addComponent(lblPath, 0, 0, 1, 1);
         txtPath = new CustomTextField(0);
         addComponent(txtPath, 1, 0, 5, 1);
+        btnPathSearch = new JButton(" .... ");
+        btnPathSearch.addActionListener(this);
+        addComponent(btnPathSearch, 6, 0, 1, 1);
 
         lblFileName = new CustomLabel();
         lblFileName.setText("File Name: ");
@@ -287,30 +290,32 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         lblSizeFile.setText("Size File: ");
         addComponent(lblSizeFile, 0, 6, 1, 1);
 
-        cmbHidden = new JComboBox();
+        cmbHidden = new CustomJCombo();
         cmbHidden.addItem("Not Hidden");
         cmbHidden.addItem("Hidden");
         cmbHidden.addItem("All");
         addComponent(cmbHidden, 1, 2, 1, 1);
 
-        comboReadOnly = new JComboBox();
+        comboReadOnly = new CustomJCombo();
         comboReadOnly.addItem("Not Read Only");
         comboReadOnly.addItem("Read Only");
         comboReadOnly.addItem("All");
         addComponent(comboReadOnly, 5, 2, 1, 1);
 
-        comboTypeSizeFile = new JComboBox();
+        comboTypeSizeFile = new CustomJCombo();
         comboTypeSizeFile.addItem("Kb");
         comboTypeSizeFile.addItem("Mb");
         comboTypeSizeFile.addItem("Gb");
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
+        lblSeparatorEmpty2 = new JLabel("   ");
+        addComponent(lblSeparatorEmpty2, 2, 8, 1, 1);
+        lblSeparatorEmpty2 = new JLabel("   ");
+        addComponent(lblSeparatorEmpty2, 2, 9, 1, 1);
         btnSearchAdvanced = new JButton("Search");
-        addComponent(btnSearchAdvanced, 5, 7, 1, 1);
-
-        btnPathSearch = new JButton(" .... ");
-        btnPathSearch.addActionListener(this);
-        addComponent(btnPathSearch, 6, 0, 1, 1);
+        addComponent(btnSearchAdvanced, 1, 10, 1, 1);
+        btnSave = new JButton("Save");
+        addComponent(btnSave, 4, 10, 1, 1);
 
         dateCreateStar = new JDateChooser();
         dateCreateStar.setDateFormatString("yyyy-MM-dd");
@@ -352,6 +357,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         constraints.gridwidth = sizeFieldX;
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.insets = new Insets(2, 2, 2, 2);
         this.add (Component , constraints);
     }
 

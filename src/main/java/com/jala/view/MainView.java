@@ -222,6 +222,7 @@ public class MainView extends JFrame implements ActionListener {
         menuItemSearchVideo.setCursor(new Cursor(HAND_CURSOR));
         menuItemConverter.setCursor(new Cursor(HAND_CURSOR));
         menuItemConverterVideo.setCursor(new Cursor(HAND_CURSOR));
+        menuItemExit.setCursor(new Cursor(HAND_CURSOR));
     }
 
     /**
