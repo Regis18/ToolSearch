@@ -78,4 +78,21 @@ public class CommandLine {
     public void setValueCommands(List<String> values) {
         this.values = values;
     }
+
+    /**
+     * Return the position of a command by the acronym sent.
+     * @param acronym to get the position of command.
+     * @return the position of command as int.
+     */
+    public int getPositionOfCommandByAcronym(String acronym) {
+        int positionOfCommand = -1;
+        for (int i = 0; i < commands.size(); i++) {
+            Command command = commands.get(i);
+            if (command.getAcronym().equals(acronym)) {
+                positionOfCommand = i;
+                i = commands.size();
+            }
+        }
+        return positionOfCommand;
+    }
 }
