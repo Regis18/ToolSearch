@@ -29,6 +29,7 @@ import java.util.List;
 /**
  * SearchAudio.
  *
+ * Look for types of audio files.
  * @version 0.0.1
  * @author Regis Humana.
  */

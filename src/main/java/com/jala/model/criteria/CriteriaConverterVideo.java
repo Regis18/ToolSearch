@@ -12,7 +12,6 @@
 
 package com.jala.model.criteria;
 
-
 /**
  * CriteriaConverterVideo
  *
@@ -159,5 +158,4 @@ public class CriteriaConverterVideo extends CriteriaConverter {
     public void setSampleRate(int sampleRate) {
         this.sampleRate = sampleRate;
     }
-
 }

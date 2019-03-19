@@ -11,6 +11,7 @@
  */
 
 package com.jala.model.search.asset;
+
 /**
  * AssetAudio class.
  *
