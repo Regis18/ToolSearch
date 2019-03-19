@@ -89,7 +89,6 @@ public class JPanelSearchAdvanced extends JPanel {
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
         pnlSearchAdvanced.setBorder(titleBorder);
-
         tbSearchAdvanced = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);

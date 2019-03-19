@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package com.jala.model.search.assetFile;
+package com.jala.model.search.asset;
 
 /**
  * AssetVideo class.
@@ -19,15 +19,30 @@ package com.jala.model.search.assetFile;
  * @version 0.0.1
  */
 public class AssetVideo extends Asset {
-    private String videoCodec;
-    private String audioCodec;
-    private String frameRate;
-    private String aspectRatio;
-    private String dimentionWidth;
-    private String dimentionHeight;
-    private String audioSampleRate;
-    private String duration;
 
+    /** Save VideoCodec valid for AssetVideo. */
+    private String videoCodec;
+
+    /** Save audioCodec valid for AssetVideo. */
+    private String audioCodec;
+
+    /** Save frameRate valid for AssetVideo. */
+    private String frameRate;
+
+    /** Save aspectRatio valid for AssetVideo. */
+    private String aspectRatio;
+
+    /** Save dimensionWidth valid for AssetVideo. */
+    private String dimensionWidth;
+
+    /** Save dimensionHeight valid for AssetVideo. */
+    private String dimensionHeight;
+
+    /** Save audioSampleRate valid for AssetVideo. */
+    private String audioSampleRate;
+
+    /** Save duration valid for AssetVideo. */
+    private String duration;
 
     /**
      * Constructor of AssetVideo class
@@ -37,8 +52,8 @@ public class AssetVideo extends Asset {
         audioCodec = "";
         frameRate = "";
         aspectRatio = "";
-        dimentionWidth = "";
-        dimentionHeight = "";
+        dimensionWidth = "";
+        dimensionHeight = "";
         audioSampleRate = "";
         duration = "";
     }
@@ -100,39 +115,34 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
-     * @return dimentionWidth as a property of video.
+     * @return dimensionWidth as a property of video.
      */
-    public String getDimentionWidth() {
-        return dimentionWidth;
+    public String getDimensionWidth() {
+        return dimensionWidth;
     }
 
     /**
-     *
-     * @param dimentionWidth this is the dimention with an attribute of video for the advanced searched.
+     * @param dimensionWidth this is the dimention with an attribute of video for the advanced searched.
      */
-    public void setDimentionWidth(String dimentionWidth) {
-        this.dimentionWidth = dimentionWidth;
+    public void setDimensionWidth(String dimensionWidth) {
+        this.dimensionWidth = dimensionWidth;
     }
 
     /**
-     *
-     * @return dimentionHeight as a property of video.
+     * @return dimensionHeight as a property of video.
      */
-    public String getDimentionHeight() {
-        return dimentionHeight;
+    public String getDimensionHeight() {
+        return dimensionHeight;
     }
 
     /**
-     *
-     * @param dimentionHeight this is the dimention height an attribute of audio for the advanced searched.
+     * @param dimensionHeight this is the dimention height an attribute of audio for the advanced searched.
      */
-    public void setDimentionHeight(String dimentionHeight) {
-        this.dimentionHeight = dimentionHeight;
+    public void setDimensionHeight(String dimensionHeight) {
+        this.dimensionHeight = dimensionHeight;
     }
 
     /**
-     *
      * @return audioSampleRate as a property of video.
      */
     public String getAudioSampleRate() {
@@ -140,7 +150,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @param audioSampleRate this is the audio samples rate an attribute of audio for the advanced searched.
      */
     public void setAudioSampleRate(String audioSampleRate) {
@@ -148,7 +157,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @return duration as a property of video.
      */
     public String getDuration() {
@@ -156,7 +164,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @param duration this is the duration an attribute of audio for the advanced searched.
      */
     public void setDuration(String duration) {

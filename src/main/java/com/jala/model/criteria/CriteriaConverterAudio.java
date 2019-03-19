@@ -12,8 +12,6 @@
 
 package com.jala.model.criteria;
 
-import com.jala.model.criteria.CriteriaConverter;
-
 /**
  * CriteriaConverterAudio
  *

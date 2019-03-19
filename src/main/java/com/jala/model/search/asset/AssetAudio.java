@@ -10,21 +10,26 @@
  * with Jala Foundation.
  */
 
-package com.jala.model.search.assetFile;
+package com.jala.model.search.asset;
+
 /**
- * AssetVideo class.
+ * AssetAudio class.
  *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
-public class AssetAudio {
-    /**
-     * Attributes of Audio.
-     */
+public class AssetAudio extends Asset {
+
+    /** Save AudioCodec valid for AssetAudio. */
     private String audioCodec;
-    private String frameRate;
+
+    /** Save channel valid for AssetAudio. */
     private String channel;
+
+    /** Save audioSampleRate valid for AssetAudio. */
     private String audioSampleRate;
+
+    /** Save duration valid for AssetAudio. */
     private String duration;
 
     /**
@@ -32,7 +37,6 @@ public class AssetAudio {
      */
     public void AssetAudio() {
         audioCodec = "";
-        frameRate = "";
         channel = "";
         audioSampleRate = "";
         duration = "";
@@ -52,22 +56,6 @@ public class AssetAudio {
      */
     public void setAudioCodec(String audioCodec) {
         this.audioCodec = audioCodec;
-    }
-
-    /**
-     * Return the frame rate value.
-     * @return return as a int value.
-     */
-    public String getFrameRate() {
-        return frameRate;
-    }
-
-    /**
-     * Set the frame ratio attribute of audio.
-     * @param frameRate this is an attribute of audio for the advanced searched.
-     */
-    public void setFrameRate(String frameRate) {
-        this.frameRate = frameRate;
     }
 
     /**

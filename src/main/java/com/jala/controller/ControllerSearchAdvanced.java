@@ -12,7 +12,7 @@
 package com.jala.controller;
 
 import com.jala.model.search.SearchFile;
-import com.jala.model.search.assetFile.Asset;
+import com.jala.model.search.asset.Asset;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.search.TernaryBooleanEnum;
 import com.jala.utils.Logs;

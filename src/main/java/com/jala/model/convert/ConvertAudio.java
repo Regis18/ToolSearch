@@ -1,5 +1,5 @@
 /*
- * @(#) ConvertMusic.java Copyright (c) 2019 Jala Foundation.
+ * @(#) ConvertAudio.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -13,6 +13,7 @@
 package com.jala.model.convert;
 
 import com.jala.model.criteria.CriteriaConverterAudio;
+import com.jala.utils.Common;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.FFmpeg;
 import net.bramp.ffmpeg.builder.FFmpegBuilder;
@@ -22,29 +23,28 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 
 /**
- * ConvertMusic
- *
+ * This class used the FFmpeg app for Convert of format an audio .
  * @author Regis Humana
  * @version 0.0.3
  */
-public class ConvertMusic implements IConvertible {
+public class ConvertAudio implements IConvertible {
 
-	/**Save the real path destination to send to FFMPEG*/
+	/**Save the real path destination to send to FFMPEG.*/
 	private String pathDestination;
 
-	/** It creates to follow up the instruction of the class*/
+	/** It creates to follow up the instruction of the class.*/
 	private Logger log = Logs.getInstance().getLog();
 
 	/**
 	 * Convert formats of music into another extension - basic.
-	 * @param criteriaObject
-	 * @throws Exception
+	 * @param criteriaObject criteria for convert audio.
 	 */
 	@Override
 	public void convert(Object criteriaObject) {
 		CriteriaConverterAudio criteria = (CriteriaConverterAudio) criteriaObject;
 		try {
-			FFmpeg fmpeg = new FFmpeg(getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe");
+			String pathFFmpeg = getClass().getClassLoader().getResource("ThirdParty/ffmpeg/bin/").getPath() + "ffmpeg.exe";
+			FFmpeg fmpeg = new FFmpeg(Common.cleanPath(pathFFmpeg));
 			FFmpegBuilder builder = new FFmpegBuilder();
 			pathDestination = criteria.getPathDestination() + criteria.getNewFileName() + criteria.getNewExtension();
 			builder.addInput(criteria.getPath()).overrideOutputFiles(true);
@@ -55,15 +55,15 @@ public class ConvertMusic implements IConvertible {
 				convertAdvancedMusic(criteria, builder, fmpeg);
 			}
 		} catch (IOException error) {
-			log.error("Error in ConvertMusic", error);
+			log.error("Error in ConvertAudio", error);
 		}
 	}
 
 	/**
 	 * Convert the music with advances parameters like audioChannel, BitRate and SampleRate.
-	 * @param criteria
-	 * @param builder
-	 * @param fmpeg
+	 * @param criteria for convert audio.
+	 * @param builder FFmpeg builder.
+	 * @param fmpeg converter app.
 	 */
 	private void convertAdvancedMusic(CriteriaConverterAudio criteria, FFmpegBuilder builder, FFmpeg fmpeg) {
 		try {

@@ -10,25 +10,48 @@
  * with Jala Foundation.
  */
 
-package com.jala.model.search.assetFile;
+package com.jala.model.search.asset;
 
 /**
  * Asset class.
+ *
  * @author Melvi Caballero.
  * @version 0.0.1
  */
 public class Asset {
+
+    /** Save Path valid for Asset. */
     private String path;
+
+    /** Save filename valid for Asset. */
     private String fileName;
+
+    /** Save extension valid for Asset. */
     private String extension;
+
+    /** Save hidden valid for Asset. */
     private boolean hidden;
+
+    /** Save owner valid for Asset. */
     private String owner;
+
+    /** Save size valid for Asset. */
     private String size;
-    private String sizeView;
+
+    /** Save readOnly valid for Asset. */
     private boolean readOnly;
+
+    /** Save creationDate valid for Asset. */
     private String creationDate;
+
+    /** Save modificationDate valid for Asset. */
     private String modificationDate;
+
+    /** Save lastDate valid for Asset. */
     private String lastDate;
+
+    /** Save isDirectory valid for Asset. */
+    private boolean isDirectory;
 
     /**
      * Constructor Asset class.
@@ -40,16 +63,15 @@ public class Asset {
         hidden = false;
         owner = "";
         size = "";
-        sizeView = "";
         readOnly = false;
         creationDate = "";
         modificationDate = "";
         lastDate = "";
+        isDirectory = false;
     }
 
     /**
-     * Return the value of path as string.     *
-     * @return path get path file.
+     * @return path get path
      */
     public String getPath() {
         return path;
@@ -133,20 +155,6 @@ public class Asset {
     }
 
     /**
-     * @return size view of the size file of show in the table view.
-     */
-    public String getSizeView() {
-        return sizeView;
-    }
-
-    /**
-     * @param sizeView as String value set size for ui.
-     */
-    public void setSizeView(String sizeView) {
-        this.sizeView = sizeView;
-    }
-
-    /**
      * @return readOnly set read only file a property of file.
      */
     public boolean isReadOnly() {
@@ -200,5 +208,19 @@ public class Asset {
      */
     public void setLastDate(String lastDate) {
         this.lastDate = lastDate;
+    }
+
+    /**
+     * @return isDirectory as boolean value.
+     */
+    public boolean isDirectory() {
+        return isDirectory;
+    }
+
+    /**
+     * @param directory as boolean value for know if the file is directory.
+     */
+    public void setDirectory(boolean directory) {
+        isDirectory = directory;
     }
 }
