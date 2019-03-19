@@ -113,13 +113,12 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     private JPanel pnlCriteria() {
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search");
-        //CustomComponents0 component = new CustomComponents0();
+
         pnlPath.setBorder(titleBorder);
         lblPath = new CustomLabel();
         lblPath.setText("Path :");
         pnlPath.add(lblPath);
-
-        txtPath = new JTextField(50);
+        txtPath = new CustomTextField(50);
         pnlPath.add(txtPath);
 
         btnPathFolder = new JButton("...");

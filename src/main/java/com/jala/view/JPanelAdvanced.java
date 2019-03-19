@@ -224,59 +224,68 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         constraints = new GridBagConstraints();
         setLayout(esquema);
 
-        lblPath = new JLabel("Path: ");
+        lblPath = new CustomLabel();
+        lblPath.setText("Path :");
         addComponent(lblPath, 0, 0, 1, 1);
+        txtPath = new CustomTextField(0);
+        addComponent(txtPath, 1, 0, 5, 1);
 
-        lblFileName = new JLabel("File Name: ");
+        lblFileName = new CustomLabel();
+        lblFileName.setText("File Name: ");
         addComponent(lblFileName, 0, 1, 1, 1);
+        txtFileName = new CustomTextField(0);
+        addComponent(txtFileName, 1, 1, 1, 1);
 
         lblSeparatorEmpty2 = new JLabel("   ");
         addComponent(lblSeparatorEmpty2, 2, 1, 1, 1);
 
-        lblExtension = new JLabel("Extension: ");
+        lblExtension = new CustomLabel();
+        lblExtension.setText("Extension: ");
         addComponent(lblExtension, 3, 1, 1, 1);
-
-        lblHidden = new JLabel("Hidden: ");
-        addComponent(lblHidden, 0, 2, 1, 1);
-
-        lblReadOnly = new JLabel("ReadOnly: ");
-        addComponent(lblReadOnly, 3, 2, 1, 1);
-
-        lblDateCreateStar = new JLabel("Creation Date From: ");
-        addComponent(lblDateCreateStar, 0, 3, 1, 1);
-
-        lblDateCreateEnd = new JLabel("To: ");
-        addComponent(lblDateCreateEnd, 3, 3, 1, 1);
-
-        lblDateLastModBegin = new JLabel("Modification Date From:  ");
-        addComponent(lblDateLastModBegin, 0, 4, 1, 1);
-
-        lblDateLastModEnd = new JLabel("To: ");
-        addComponent(lblDateLastModEnd, 3, 4, 1, 1);
-
-        lblDateLatterAccesBegin = new JLabel("Last Date From: ");
-        addComponent(lblDateLatterAccesBegin, 0, 5, 1, 1);
-
-        lblDateLatterAccesEnd = new JLabel("To: ");
-        addComponent(lblDateLatterAccesEnd, 3, 5, 1, 1);
-
-        lblOwner = new JLabel("Owner: ");
-        addComponent(lblOwner, 0, 7, 1, 1);
-
-        lblSizeFile = new JLabel("Size File: ");
-        addComponent(lblSizeFile, 0, 6, 1, 1);
-
-        txtPath = new JTextField("");
-        addComponent(txtPath, 1, 0, 5, 1);
-
-        txtFileName = new JTextField("");
-        addComponent(txtFileName, 1, 1, 1, 1);
-
-        txtExtension = new JTextField("");
+        txtExtension = new CustomTextField(0);
         addComponent(txtExtension, 5, 1, 1, 1);
 
-        txtOwner = new JTextField();
+        lblHidden = new CustomLabel();
+        lblHidden.setText("Hidden: ");
+        addComponent(lblHidden, 0, 2, 1, 1);
+
+        lblReadOnly = new CustomLabel();
+        lblReadOnly.setText("Read Only: ");
+        addComponent(lblReadOnly, 3, 2, 1, 1);
+
+        lblDateCreateStar = new CustomLabel();
+        lblDateCreateStar.setText("Creation Date From: ");
+        addComponent(lblDateCreateStar, 0, 3, 1, 1);
+
+        lblDateCreateEnd = new CustomLabel();
+        lblDateCreateEnd.setText("To: ");
+        addComponent(lblDateCreateEnd, 3, 3, 1, 1);
+
+        lblDateLastModBegin = new CustomLabel();
+        lblDateLastModBegin.setText("Modification Date From:  ");
+        addComponent(lblDateLastModBegin, 0, 4, 1, 1);
+
+        lblDateLastModEnd = new CustomLabel();
+        lblDateLastModEnd.setText("To: ");
+        addComponent(lblDateLastModEnd, 3, 4, 1, 1);
+
+        lblDateLatterAccesBegin = new CustomLabel();
+        lblDateLatterAccesBegin.setText("Last Date From: ");
+        addComponent(lblDateLatterAccesBegin, 0, 5, 1, 1);
+
+        lblDateLatterAccesEnd = new CustomLabel();
+        lblDateLatterAccesEnd.setText("To: ");
+        addComponent(lblDateLatterAccesEnd, 3, 5, 1, 1);
+
+        lblOwner = new CustomLabel();
+        lblOwner.setText("Owner: ");
+        addComponent(lblOwner, 0, 7, 1, 1);
+        txtOwner = new CustomTextField(0);
         addComponent(txtOwner, 1, 7, 3, 1);
+
+        lblSizeFile = new CustomLabel();
+        lblSizeFile.setText("Size File: ");
+        addComponent(lblSizeFile, 0, 6, 1, 1);
 
         cmbHidden = new JComboBox();
         cmbHidden.addItem("Not Hidden");

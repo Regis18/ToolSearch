@@ -74,6 +74,7 @@ public class JPanelSearchAdvanced extends JPanel {
         panelSearchAdvanced.setBorder(titleBorder);
         this.add(panelSearchAdvanced, BorderLayout.CENTER);
 
+
         JPanel pnlTableDB = pnlTableDB();
         this.add(pnlTableDB, BorderLayout.WEST);
 

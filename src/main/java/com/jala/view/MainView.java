@@ -40,7 +40,6 @@ public class MainView extends JFrame implements ActionListener {
     private String currentPanel;
     private Border border;
 
-    //Creamos un menu y modificamos el icono
     ImageIcon imgSearh = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search.png");
     ImageIcon imgGSearchGral = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
     ImageIcon imgGSearchAdvanced = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchAdv.png");

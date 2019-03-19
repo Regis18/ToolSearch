@@ -24,7 +24,7 @@ import javax.swing.JScrollPane;
  * JPanelHistorical class.
  *
  * @version 0.0.1
- * @autor Cxristian
+ * @autor Cxristian Lujan
  */
 public class JPanelHistoricalDB extends JPanel {
     private JTableDB tbHistoricalDB;

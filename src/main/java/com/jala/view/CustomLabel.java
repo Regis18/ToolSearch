@@ -21,8 +21,11 @@ import javax.swing.JLabel;
  */
 public class CustomLabel extends JLabel {
 
+    /**
+     * Class constructor.
+     */
     public CustomLabel() {
-        setFont(new java.awt.Font("Calibri", 0, 14));
+        setFont(new java.awt.Font("Calibri", 1, 18));
         setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         setVisible(true);
