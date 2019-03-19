@@ -13,14 +13,12 @@
 package com.jala.solidwater.console.controllers;
 
 import com.jala.model.search.asset.Asset;
-import com.jala.solidwater.console.models.Command;
 import com.jala.solidwater.console.models.CommandLine;
 import com.jala.solidwater.console.models.ModelConsole;
-import com.jala.solidwater.console.validators.ValidCommand;
 import com.jala.solidwater.console.validators.ValidCommandLine;
+import com.jala.solidwater.console.validators.ValidInputParameters;
 import com.jala.solidwater.console.view.ViewConsole;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,6 +50,11 @@ public class ControllerConsole {
     private ValidCommandLine validCommandLine;
 
     /**
+     * Allows validate the input parameters.
+     */
+    private ValidInputParameters validInputParameters;
+
+    /**
      * This method is the constructor of ControllerConsole to create an instance.
      *
      * @param parameters are data to find Asset
@@ -60,48 +63,27 @@ public class ControllerConsole {
         viewConsole = new ViewConsole();
         modelConsole = new ModelConsole();
         validCommandLine = new ValidCommandLine();
-        searchAsset(parameters);
+        validInputParameters = new ValidInputParameters();
+        if (validInputParameters.validate(parameters)) {
+            inputCommandLine = new CommandLine(parameters);
+            searchAsset(inputCommandLine);
+        } else {
+            viewConsole.printMessage(validInputParameters.getMessage());
+        }
     }
 
     /**
      * Print on console the asset by the command line that was entered.
      *
-     * @param parameters to create a command line.
+     * @param inputCommandLine to search the files.
      */
-    private void searchAsset(String[] parameters) {
-        createCommandLineInput(parameters);
+    private void searchAsset(CommandLine inputCommandLine) {
+
         if (validCommandLine.validate(inputCommandLine)) {
             List<Asset> assets = modelConsole.getSearch(inputCommandLine);
             viewConsole.showAssets(assets);
         } else {
             viewConsole.printMessage(validCommandLine.getMessage());
         }
-    }
-
-    /**
-     * Create the command line with parameter that was entered in console.
-     *
-     * @param inputParameters to create a command line.
-     * @return command line valid if of commands are valid and
-     * invalid if the command at least one commando is invalid.
-     */
-    private CommandLine createCommandLineInput(String[] inputParameters) {
-        List<Command> inputCommands = new ArrayList<>();
-        List<String> commandValues = new ArrayList<>();
-        for (int i = 0; i < inputParameters.length; i += 2) {
-            Command inputCommand = new Command();
-            String valueCommand = "";
-            inputCommand.setAcronym(inputParameters[i]);
-            ValidCommand validCommand = new ValidCommand();
-            if (validCommand.validate(inputCommand)) {
-                inputCommands.add(inputCommand);
-                valueCommand = inputParameters[i + 1];
-                commandValues.add(valueCommand);
-            } else {
-                i = inputParameters.length;
-            }
-        }
-        inputCommandLine = new CommandLine(inputCommands, commandValues);
-        return inputCommandLine;
     }
 }

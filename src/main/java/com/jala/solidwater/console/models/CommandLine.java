@@ -12,6 +12,10 @@
 
 package com.jala.solidwater.console.models;
 
+import com.jala.solidwater.console.validators.ValidCommand;
+import com.jala.solidwater.console.validators.ValidValueOfCommand;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,12 +39,10 @@ public class CommandLine {
     /**
      * This constructor allows instance a command line sending a command list and command value list.
      *
-     * @param commands to create the list of commands.
-     * @param values   to create the list of command value.
+     * @param inputParameters to set the command list and value list.
      */
-    public CommandLine(List<Command> commands, List<String> values) {
-        this.commands = commands;
-        this.values = values;
+    public CommandLine(String[] inputParameters) {
+        createCommandLineInput(inputParameters);
     }
 
     /**
@@ -81,6 +83,7 @@ public class CommandLine {
 
     /**
      * Return the position of a command by the acronym sent.
+     *
      * @param acronym to get the position of command.
      * @return the position of command as int.
      */
@@ -94,5 +97,33 @@ public class CommandLine {
             }
         }
         return positionOfCommand;
+    }
+
+    /**
+     * Set the command list and value list with parameter that was entered in console.
+     *
+     * @param inputParameters to set the list.
+     */
+    private void createCommandLineInput(String[] inputParameters) {
+        commands = new ArrayList<>();
+        values = new ArrayList<>();
+        for (int i = 0; i < inputParameters.length; i += 2) {
+            Command inputCommand = new Command();
+            String valueCommand = "";
+            inputCommand.setAcronym(inputParameters[i]);
+            ValidCommand validCommand = new ValidCommand();
+            if (validCommand.validate(inputCommand)) {
+                commands.add(inputCommand);
+                valueCommand = inputParameters[i + 1];
+                ValidValueOfCommand validValueOfCommand = new ValidValueOfCommand();
+                if (validValueOfCommand.validate(valueCommand)) {
+                    values.add(valueCommand);
+                } else {
+                    i = inputParameters.length;
+                }
+            } else {
+                i = inputParameters.length;
+            }
+        }
     }
 }
