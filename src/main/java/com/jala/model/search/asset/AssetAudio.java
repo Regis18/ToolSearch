@@ -18,12 +18,17 @@ package com.jala.model.search.asset;
  * @version 0.0.1
  */
 public class AssetAudio extends Asset {
-    /**
-     * Attributes of Audio.
-     */
+
+    /** Save AudioCodec valid for AssetAudio. */
     private String audioCodec;
+
+    /** Save channel valid for AssetAudio. */
     private String channel;
+
+    /** Save audioSampleRate valid for AssetAudio. */
     private String audioSampleRate;
+
+    /** Save duration valid for AssetAudio. */
     private String duration;
 
     /**

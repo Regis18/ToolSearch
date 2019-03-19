@@ -29,6 +29,7 @@ import java.util.List;
  * @author Regis Humana
  */
 public class SearchCommon extends SearchBasic {
+
     /** It creates to follow up the instruction of the class. */
     private Logger log = Logs.getInstance().getLog();
 

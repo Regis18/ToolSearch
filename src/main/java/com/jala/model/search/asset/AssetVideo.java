@@ -19,13 +19,29 @@ package com.jala.model.search.asset;
  * @version 0.0.1
  */
 public class AssetVideo extends Asset {
+
+    /** Save VideoCodec valid for AssetVideo. */
     private String videoCodec;
+
+    /** Save audioCodec valid for AssetVideo. */
     private String audioCodec;
+
+    /** Save frameRate valid for AssetVideo. */
     private String frameRate;
+
+    /** Save aspectRatio valid for AssetVideo. */
     private String aspectRatio;
+
+    /** Save dimensionWidth valid for AssetVideo. */
     private String dimensionWidth;
+
+    /** Save dimensionHeight valid for AssetVideo. */
     private String dimensionHeight;
+
+    /** Save audioSampleRate valid for AssetVideo. */
     private String audioSampleRate;
+
+    /** Save duration valid for AssetVideo. */
     private String duration;
 
 

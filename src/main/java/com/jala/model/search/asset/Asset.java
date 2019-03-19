@@ -20,16 +20,37 @@ package com.jala.model.search.asset;
  */
 public class Asset {
 
+    /** Save Path valid for Asset. */
     private String path;
+
+    /** Save filename valid for Asset. */
     private String fileName;
+
+    /** Save extension valid for Asset. */
     private String extension;
+
+    /** Save hidden valid for Asset. */
     private boolean hidden;
+
+    /** Save owner valid for Asset. */
     private String owner;
+
+    /** Save size valid for Asset. */
     private String size;
+
+    /** Save readOnly valid for Asset. */
     private boolean readOnly;
+
+    /** Save creationDate valid for Asset. */
     private String creationDate;
+
+    /** Save modificationDate valid for Asset. */
     private String modificationDate;
+
+    /** Save lastDate valid for Asset. */
     private String lastDate;
+
+    /** Save isDirectory valid for Asset. */
     private boolean isDirectory;
 
     /**
