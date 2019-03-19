@@ -44,7 +44,6 @@ public class AssetVideo extends Asset {
     /** Save duration valid for AssetVideo. */
     private String duration;
 
-
     /**
      * Constructor of AssetVideo class
      */
@@ -116,7 +115,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @return dimensionWidth as a property of video.
      */
     public String getDimensionWidth() {
@@ -124,7 +122,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @param dimensionWidth this is the dimention with an attribute of video for the advanced searched.
      */
     public void setDimensionWidth(String dimensionWidth) {
@@ -132,7 +129,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @return dimensionHeight as a property of video.
      */
     public String getDimensionHeight() {
@@ -140,7 +136,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @param dimensionHeight this is the dimention height an attribute of audio for the advanced searched.
      */
     public void setDimensionHeight(String dimensionHeight) {
@@ -148,7 +143,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @return audioSampleRate as a property of video.
      */
     public String getAudioSampleRate() {
@@ -156,7 +150,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @param audioSampleRate this is the audio samples rate an attribute of audio for the advanced searched.
      */
     public void setAudioSampleRate(String audioSampleRate) {
@@ -164,7 +157,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @return duration as a property of video.
      */
     public String getDuration() {
@@ -172,7 +164,6 @@ public class AssetVideo extends Asset {
     }
 
     /**
-     *
      * @param duration this is the duration an attribute of audio for the advanced searched.
      */
     public void setDuration(String duration) {

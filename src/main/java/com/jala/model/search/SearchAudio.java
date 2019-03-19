@@ -48,7 +48,7 @@ public class SearchAudio extends SearchCommon {
     private  String FFPROBE_PATH = SearchFile.class.getClassLoader()
             .getResource("ThirdParty/ffmpeg/bin/ffprobe.exe").getPath();
 
-    /** Total Seconds in a minute*/
+    /** Total Seconds in a minute. */
     private final int SECONDS = 60;
 
     /**
