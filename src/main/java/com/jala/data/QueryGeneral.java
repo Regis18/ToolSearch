@@ -12,6 +12,9 @@
 
 package com.jala.data;
 
+import com.jala.utils.Logs;
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +28,9 @@ import java.sql.PreparedStatement;
  */
 public class QueryGeneral {
 
+    /** It creates to follow up the instruction of the class*/
+    private Logger log = Logs.getInstance().getLog();
+
     /**
      * Attribute to create the connection.
      */
@@ -35,8 +41,14 @@ public class QueryGeneral {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    public QueryGeneral() throws SQLException, ClassNotFoundException {
-        connection = ConnectionDB.getInstance().getConnection();
+    public QueryGeneral() {
+        try {
+            connection = ConnectionDB.getInstance().getConnection();
+        } catch (SQLException event) {
+            log.error("Error in: " + event.getMessage(), event);
+        } catch (ClassNotFoundException event) {
+            log.error("Error in: " + event.getMessage(), event);
+        }
     }
 
     /**
@@ -46,7 +58,7 @@ public class QueryGeneral {
      */
     public ResultSet displayData() throws SQLException {
         Statement state = connection.createStatement();
-        ResultSet resultset = ((Statement) state).executeQuery("SELECT id, criteria fileName FROM criteriaSearch");
+        ResultSet resultset = ((Statement) state).executeQuery("SELECT id, criteria fileName FROM criteriaSearchDB");
         return resultset;
     }
 
@@ -71,5 +83,15 @@ public class QueryGeneral {
         prepared.setInt(1,idCriteria);
         prepared.execute();
     }
-    //TODO implement the update method
+
+    public ResultSet obtainDB() throws SQLException {
+        Statement state = connection.createStatement();
+        ResultSet resultSet = ((Statement) state).executeQuery("select * from criteriaSearchDB");
+        return resultSet;
+        /*while(resultSet.next())
+        {
+            System.out.println("name = " + resultSet.getString("criteria"));
+            System.out.println("id = " + resultSet.getInt("id"));
+        }*/
+    }
 }

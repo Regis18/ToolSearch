@@ -1,8 +1,8 @@
-/**
- * @(#)CriteriaSearch.java Copyright (c) 2019 Jala Foundation.
+/*
+ * @(#) CriteriaSearch.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
- * <p>
+ *
  * This software is the confidential and proprietary information of
  * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
@@ -14,6 +14,8 @@ package com.jala.model.criteria;
 
 import com.jala.model.search.TernaryBooleanEnum;
 
+import java.util.Date;
+
 /**
  * The CriteriaSearch class is to set and get the criteria to search.
  *
@@ -21,6 +23,16 @@ import com.jala.model.search.TernaryBooleanEnum;
  * @version 0.0.1
  */
 public class CriteriaSearch extends Criteria {
+
+    /**
+     * Name of Criteria.
+     */
+    private String nameCriteria;
+
+    /**
+     * Date of Creation
+     */
+    private String dateCreation;
 
     /**
      * Criteria for hidden of file.
@@ -83,7 +95,7 @@ public class CriteriaSearch extends Criteria {
     /**
      * Type of criteria (video, audio, image, common, etc).
      */
-    private int type;
+    private String type;
 
     /**
      * Constructor of the CriteriaSearch class.
@@ -106,6 +118,7 @@ public class CriteriaSearch extends Criteria {
      * Load Criteria Search goes to init the empty values.
      */
     public void loadCriteria() {
+        //at date = new Date();
         this.setHidden(TernaryBooleanEnum.ALL);
         this.setReadonly(TernaryBooleanEnum.ALL);
         this.setSize("");
@@ -118,6 +131,8 @@ public class CriteriaSearch extends Criteria {
         this.setOwner("");
         this.setFileName("");
         this.setExtension("");
+        this.setNameCriteria("");
+        //this.setDateCreation();
     }
 
     /**
@@ -197,7 +212,7 @@ public class CriteriaSearch extends Criteria {
      *
      * @return The type of search used.
      */
-    public int getType() {
+    public String getType() {
         return type;
     }
 
@@ -206,7 +221,7 @@ public class CriteriaSearch extends Criteria {
      *
      * @param type The type of search used.
      */
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -390,5 +405,37 @@ public class CriteriaSearch extends Criteria {
      */
     public void setLastDateTo(String lastDateTo) {
         this.lastDateTo = lastDateTo;
+    }
+
+    /**
+     * Set the name of criteria.
+     * @return
+     */
+    public String getNameCriteria() {
+        return nameCriteria;
+    }
+
+    /**
+     * Get the name of criteria.
+     * @param nameCriteria
+     */
+    public void setNameCriteria(String nameCriteria) {
+        this.nameCriteria = nameCriteria;
+    }
+
+    /**
+     * Get the date creation of criteria.
+     * @return
+     */
+    public String getDateCreation() {
+        return dateCreation;
+    }
+
+    /**
+     * Set the date creation of criteria.
+     * @param dateCreation
+     */
+    public void setDateCreation(String dateCreation) {
+        this.dateCreation = dateCreation;
     }
 }
