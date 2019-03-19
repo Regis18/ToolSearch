@@ -95,7 +95,8 @@ public class ControllerConsole {
             ValidCommand validCommand = new ValidCommand();
             if (validCommand.validate(inputCommand)) {
                 inputCommands.add(inputCommand);
-                valueCommand = inputParameters[i + 1];
+                int posParamether = i + 1;
+                valueCommand = (inputParameters.length <= posParamether) ? inputParameters[posParamether] : null;
                 commandValues.add(valueCommand);
             } else {
                 i = inputParameters.length;

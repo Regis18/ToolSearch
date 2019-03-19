@@ -100,9 +100,7 @@ public class JPanelSearchAdvancedVideo extends JPanel{
      *
      * @return JPanelSearchVideo class
      */
-    public JPanelSearchVideo getPanelSearchVideo() {
-        return panelSearchVideo;
-    }
+    public JPanelSearchVideo getPanelSearchVideo() { return panelSearchVideo; }
 
     /**
      * The getTblResult method get JTableResult attribute of itself class.

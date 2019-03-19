@@ -103,6 +103,60 @@ public class CriteriaSearch extends Criteria {
     }
 
     /**
+     * Constructor that setting all data from Advanced Search.
+     * @param path
+     * @param fileName
+     * @param owner
+     * @param hidden
+     * @param readOnly
+     * @param creationDateFrom
+     * @param creationDateTo
+     * @param modificationDateFrom
+     * @param modificationDateTo
+     * @param lastDateFrom
+     * @param lastDateTo
+     * @param size
+     * @param major
+     */
+    /*public CriteriaSearch(String path, String fileName, String owner, TernaryBooleanEnum hidden, TernaryBooleanEnum readOnly,
+                          String creationDateFrom, String creationDateTo, String modificationDateFrom,
+                          String modificationDateTo, String lastDateFrom, String lastDateTo,
+                          String size, Boolean major) {
+        this.loadCriteria();
+        this.path = path;
+        this.fileName = fileName;
+        this.owner = owner;
+        this.hidden = hidden;
+        this.readonly = readOnly;
+        this.creationDateFrom = creationDateFrom;
+        this.creationDateTo = creationDateTo;
+        this.modificationDateFrom = modificationDateFrom;
+        this.modificationDateTo = modificationDateTo;
+        this.lastDateFrom = lastDateFrom;
+        this.lastDateTo = lastDateTo;
+        this.size = size;
+        this.sizeCompareOption = major;
+
+    }*/
+    public CriteriaSearch(CriteriaSearch criteriaSearch) {
+        this.loadCriteria();
+        path = criteriaSearch.getPath();
+        fileName = criteriaSearch.getFileName();
+        owner = criteriaSearch.getOwner();
+        hidden = criteriaSearch.getHidden();
+        readonly = criteriaSearch.getReadonly();
+        creationDateFrom = criteriaSearch.getCreationDateFrom();
+        creationDateTo = criteriaSearch.getCreationDateTo();
+        modificationDateFrom = criteriaSearch.getModificationDateFrom();
+        modificationDateTo = criteriaSearch.getModificationDateTo();
+        lastDateFrom = criteriaSearch.getLastDateFrom();
+        lastDateTo = criteriaSearch.getLastDateTo();
+        size = criteriaSearch.getSize();
+        sizeCompareOption = criteriaSearch.isSizeCompareOption();
+
+    }
+
+    /**
      * Load Criteria Search goes to init the empty values.
      */
     public void loadCriteria() {

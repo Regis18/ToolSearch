@@ -14,9 +14,11 @@ package com.jala.controller;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.criteria.CriteriaSearchMultimedia;
 import com.jala.model.search.SearchFile;
-import com.jala.model.search.assetFile.Asset;
+import com.jala.model.search.SearchVideo;
+import com.jala.model.search.asset.Asset;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelSearchAdvancedVideo;
+import com.jala.view.JPanelSearchVideo;
 import org.apache.log4j.Logger;
 
 import java.awt.event.ActionEvent;
@@ -35,13 +37,13 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     private Logger log = Logs.getInstance().getLog();
 
     /** Criteria for manages an instance of JPanelSearchAdvancedVideo */
-    private JPanelSearchAdvancedVideo viewAdvanced;
+    private JPanelSearchAdvancedVideo viewAdvancedVideo;
 
     /** This is temporal, it is just for calculate a size of the file.*/
     private final static double BYTES = 1024.0;
 
     /** To save the values of the UI and send to SearchFile*/
-    private CriteriaSearchMultimedia criteriaSearch;
+    private CriteriaSearchMultimedia criteriaSearchMultimedia;
 
     /**
      * ControllerSearchAdvanceVideo is the constructor method,
@@ -51,7 +53,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     public ControllerSearchAdvanceVideo(JPanelSearchAdvancedVideo viewAdvanced) {
         log.info("Initialize the Control of Video Advanced Search.");
         //super();
-        this.viewAdvanced = viewAdvanced;
+        this.viewAdvancedVideo = viewAdvanced;
         actionListener();
     }
 
@@ -60,7 +62,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      */
     private void actionListener() {
         log.info("It will add action listener for the button in Video Advanced Search.");
-        viewAdvanced.getPanelSearchVideo().getBtnSearch().addActionListener(this);
+        viewAdvancedVideo.getPanelSearchVideo().getBtnSearch().addActionListener(this);
         log.info("It was end  action listener for the button in Video Advanced Search.");
     }
 
@@ -73,8 +75,12 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     public void actionPerformed(ActionEvent event) {
         log.info("It was detected an event on the JPanelSearchAdvancedVideo class ");
         Object source = event.getSource();
-        if (source == viewAdvanced.getPanelSearchVideo().getBtnSearch()) {
-            sendCriteriaToFile(super.getCriteria(viewAdvanced.getPanelAdvanceSearch()));
+        if (source == viewAdvancedVideo.getPanelSearchVideo().getBtnSearch()) {
+            CriteriaSearch criteriaSearch = super.getCriteria(viewAdvancedVideo.getPanelAdvanceSearch());
+            this.criteriaSearchMultimedia = new CriteriaSearchMultimedia(criteriaSearch);
+            addAttibutesOfVideo();
+            System.out.println("Values: " + criteriaSearchMultimedia.getAspectRatio());
+            sendCriteriaToFile(criteriaSearchMultimedia);
         }
     }
 
@@ -85,15 +91,36 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      */
     private void sendCriteriaToFile(CriteriaSearch criteria) {
         log.info("Preparing to send criteria to SearchFile");
-        SearchFile searchFile = new SearchFile();
+        SearchVideo searchFile = new SearchVideo(criteriaSearchMultimedia);
         List<Asset> results = searchFile.search(criteria);
         log.info("Information sending and waiting answers");
-        viewAdvanced.getTblResult().removeRow();
+        viewAdvancedVideo.getTblResult().removeRow();
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
-            viewAdvanced.getTblResult().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
+            viewAdvancedVideo.getTblResult().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
                     data.getExtension(), super.getFileSizeInKb(data.getSize()));
         }
         log.info("Results implemented in the JTable of the UI");
+    }
+
+    /**
+     * Without comments...................
+     *
+     */
+    private void addAttibutesOfVideo() {
+        JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
+        this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
+        this.criteriaSearchMultimedia.setAudioCodec(searchVideo.getCmbAudioCodec());
+        this.criteriaSearchMultimedia.setDimension(searchVideo.getCmbDimension());
+        this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension());
+        this.criteriaSearchMultimedia.setFrameRate(searchVideo.getCmbFrameRate());
+        this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
+    }
+
+    /**
+     * @return the CriteriaSearchMultimedia attribute of this class.
+     */
+    public CriteriaSearchMultimedia getCriteriaSearch() {
+        return criteriaSearchMultimedia;
     }
 }

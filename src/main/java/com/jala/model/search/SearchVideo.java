@@ -50,11 +50,11 @@ public class SearchVideo extends SearchCommon {
 
 	/**
 	 * Receive the criteria and cast the criteria into CriteriaSearchMultimedia.
-	 * @param criteria
+	 * @param criteriaSearchVideo
 	 */
-	public SearchVideo(CriteriaSearch criteria) {
-		super(criteria);
-		criteriaSearchVideo = (CriteriaSearchMultimedia) criteria;
+	public SearchVideo(CriteriaSearchMultimedia criteriaSearchVideo) {
+		super(criteriaSearchVideo);
+		this.criteriaSearchVideo = criteriaSearchVideo;
 	}
 
 	/**
