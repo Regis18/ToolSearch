@@ -12,7 +12,6 @@
 
 package com.jala.model.search;
 
-
 import com.jala.model.criteria.CriteriaSearchMultimedia;
 import com.jala.model.search.asset.Asset;
 import com.jala.model.search.asset.AssetAudio;

@@ -15,10 +15,11 @@ package com.jala.model.search;
 import com.jala.model.criteria.CriteriaSearch;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class SearchCommonTest {
 
+	/**
+	 * Search just path.
+	 */
 	@Test
 	public void getResult_ReturnPaths_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Usuario\\Desktop\\JALA\\Prog02");
@@ -27,6 +28,10 @@ public class SearchCommonTest {
 			System.out.println(search.search().get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4.
+	 */
 	@Test
 	public void getResult_ReturnPaths_WhenSentOnlyMP4() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
@@ -36,30 +41,46 @@ public class SearchCommonTest {
 			System.out.println(search.search().get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * Hidden: true
+	 */
 	@Test
 	public void getResult_ReturnHidden_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
-		//criteriaSearch.setExtension("mp4");
+		criteriaSearch.setExtension("mp4");
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		for (int i = 0; i < search.search().size(); i++) {
 			System.out.println(search.search().get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * Hidden: false.
+	 */
 	@Test
 	public void getResult_ReturnReadTrue_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
-		//criteriaSearch.setExtension("mp4");
-		criteriaSearch.setReadonly(TernaryBooleanEnum.OnlyTrue);
+		criteriaSearch.setExtension("mp4");
+		criteriaSearch.setReadonly(TernaryBooleanEnum.OnlyFalse);
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		for (int i = 0; i < search.search().size(); i++) {
 			System.out.println(search.search().get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp3
+	 * Hidden: true.
+	 * ReadOnly: true.
+	 */
 	@Test
 	public void getResult_ReturnReadHiddenTrue_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
-		//criteriaSearch.setExtension("mp4");
+		criteriaSearch.setExtension("mp4");
 		criteriaSearch.setReadonly(TernaryBooleanEnum.OnlyTrue);
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
@@ -67,6 +88,12 @@ public class SearchCommonTest {
 			System.out.println(search.search().get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * Hidden: true.
+	 * ReadOnly: false.
+	 */
 	@Test
 	public void getResult_ReturnReadFalseHiddenTrue_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
@@ -78,6 +105,12 @@ public class SearchCommonTest {
 			System.out.println(search.search().get(i).getPath());
 		}
 	}
+
+	/**
+	 * Extension : mp4
+	 * Hidden: false.
+	 * ReadOnly: true.
+	 */
 	@Test
 	public void getResult_ReturnReadTrueHiddenFalse_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
