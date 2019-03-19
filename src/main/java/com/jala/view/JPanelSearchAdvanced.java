@@ -74,7 +74,6 @@ public class JPanelSearchAdvanced extends JPanel {
         panelSearchAdvanced.setBorder(titleBorder);
         this.add(panelSearchAdvanced, BorderLayout.CENTER);
 
-
         JPanel pnlTableDB = pnlTableDB();
         this.add(pnlTableDB, BorderLayout.WEST);
 
@@ -97,6 +96,10 @@ public class JPanelSearchAdvanced extends JPanel {
         return pnlSearchAdvanced;
     }
 
+    /**
+     * Return the instance of Table Criteria.
+     * @return pnlTableDB the criteria of the table.
+     */
     private JPanel pnlTableDB() {
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Data Base");

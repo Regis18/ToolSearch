@@ -28,7 +28,6 @@ import javax.swing.JScrollPane;
  */
 public class JPanelHistoricalDB extends JPanel {
     private JTableDB tbHistoricalDB;
-    private Border border;
 
     /**
      * @param layout, add the layout in this panel.
@@ -59,7 +58,7 @@ public class JPanelHistoricalDB extends JPanel {
      */
     private void initComponent() {
         JPanel pnlHistorical = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Historical DataBase Table");
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Historical DataBase Table");
         pnlHistorical.setBorder(titleBorder);
 
         tbHistoricalDB = new JTableDB();

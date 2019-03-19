@@ -32,16 +32,12 @@ public class JTableDB extends JTable{
     public JTableDB() {
         super();
         defaultTableM.setColumnIdentifiers(header);
-
-        //set model into the table object
         this.setModel(defaultTableM);
         this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         this.getColumnModel().getColumn(0).setPreferredWidth(20);
         this.getColumnModel().getColumn(1).setPreferredWidth(20);
         this.getColumnModel().getColumn(2).setPreferredWidth(500);
         this.getColumnModel().getColumn(3).setPreferredWidth(400);
-
-
     }
 
     /**

@@ -35,7 +35,6 @@ public class MainView extends JFrame implements ActionListener {
     private JPanelSearchAdvancedVideo pnlSearchAdvancedVideo;
     private JPanelConverter panelConverterImage;
     private JPanelVideo panelConverterVideo;
-    private JpanelShowDB panelShowDB;
     private JPanelHistoricalDB panelHistoricalDB;
     private String currentPanel;
     private Border border;
@@ -154,16 +153,13 @@ public class MainView extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(500, 400));
         initComponent();
-        //setLocationRelativeTo(null);
     }
 
     /**
      * Initialize the components.
      */
     private void initComponent() {
-        //Container content = getContentPane();
         createMenu();
-        //content.removeAll();
         this.getContentPane().setBackground(new Color(166, 166, 166));
     }
 
@@ -171,7 +167,6 @@ public class MainView extends JFrame implements ActionListener {
      * Create menu.
      */
     private void createMenu() {
-
         menuSearch = new JMenu("Search");
         menuSearch.setIcon(imgSearh);
         menuConverter = new JMenu("Converter");
@@ -227,7 +222,6 @@ public class MainView extends JFrame implements ActionListener {
         menuItemSearchVideo.setCursor(new Cursor(HAND_CURSOR));
         menuItemConverter.setCursor(new Cursor(HAND_CURSOR));
         menuItemConverterVideo.setCursor(new Cursor(HAND_CURSOR));
-
     }
 
     /**
@@ -238,24 +232,20 @@ public class MainView extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         Container content = getContentPane();
         if (event.getSource() == menuItemGeneral) {
-            //if (currentPanel != "SearchGral") {
-                pnlSearchGral = new JPanelSearchGral(new BorderLayout());
-                content.removeAll();
-                content.add(pnlSearchGral, BorderLayout.CENTER);
-                currentPanel = "SearchGral";
+            pnlSearchGral = new JPanelSearchGral(new BorderLayout());
+            content.removeAll();
+            content.add(pnlSearchGral, BorderLayout.CENTER);
+            currentPanel = "SearchGral";
             this.validate();
             this.repaint();
-           // }
         }
         if (event.getSource() == menuItemAdvanced) {
-            //if (currentPanel != "SearchAdvanced") {
-                pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
-                content.removeAll();
-                content.add(pnlSearchAdvanced, BorderLayout.CENTER);
-                currentPanel = "SearchAdvanced";
-                this.validate();
-                this.repaint();
-           //}
+            pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
+            content.removeAll();
+            content.add(pnlSearchAdvanced, BorderLayout.CENTER);
+            currentPanel = "SearchAdvanced";
+            this.validate();
+            this.repaint();
         }
         if (event.getSource() == menuItemConverter) {
             panelConverterImage = new JPanelConverter(new BorderLayout());
@@ -274,14 +264,12 @@ public class MainView extends JFrame implements ActionListener {
             this.repaint();
         }
         if (event.getSource() == menuItemSearchVideo) {
-           // if (currentPanel == "SearchAdvancedVideo") {
-                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
-                content.removeAll();
-                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
-                currentPanel = "SearchAdvancedVideo";
-                this.validate();
-                this.repaint();
-           // }
+            pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+            content.removeAll();
+            content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+            currentPanel = "SearchAdvancedVideo";
+            this.validate();
+            this.repaint();
         }
         if (event.getSource() == menuItemVideoPlayer) {
             pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
