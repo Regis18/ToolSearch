@@ -104,10 +104,10 @@ public class JPanelSearchAdvanced extends JPanel {
         panelSearchAdvanced.setBorder(titleBorder);
         titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
         titleBorder.setTitleFont(new Font("Arial", 1, 10));
-        this.add(panelSearchAdvanced, BorderLayout.WEST);
+        this.add(panelSearchAdvanced, BorderLayout.CENTER);
 
         JPanel pnlTableDB = pnlTableDB();
-        this.add(pnlTableDB, BorderLayout.CENTER);
+        this.add(pnlTableDB, BorderLayout.WEST);
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.SOUTH);
