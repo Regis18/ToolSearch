@@ -18,6 +18,7 @@ import com.jala.utils.Logs;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,7 @@ public class SearchCommon extends SearchBasic {
         result = new ArrayList<>();
         for (int i = 0; i < preview.size(); i++) {
             String path = preview.get(i).getPath();
+            File file = new File(path);
             if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(preview.get(i).isHidden())) {
                 continue;
             }
@@ -65,20 +67,20 @@ public class SearchCommon extends SearchBasic {
                 continue;
             }
             if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                if ((Date.valueOf(createFileDate(path)).before(Date.valueOf(criteria.getCreationDateFrom())))
-                        || (Date.valueOf(createFileDate(path)).after(Date.valueOf(criteria.getCreationDateTo())))) {
+                if ((Date.valueOf(createFileDate(file)).before(Date.valueOf(criteria.getCreationDateFrom())))
+                        || (Date.valueOf(createFileDate(file)).after(Date.valueOf(criteria.getCreationDateTo())))) {
                     continue;
                 }
             }
             if ((!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                if ((Date.valueOf(getFileLastModifiedDate(path)).before(Date.valueOf(criteria.getModificationDateFrom())))
-                        || (Date.valueOf(getFileLastModifiedDate(path))).after(Date.valueOf(criteria.getModificationDateTo()))) {
+                if ((Date.valueOf(getFileLastModifiedDate(file)).before(Date.valueOf(criteria.getModificationDateFrom())))
+                        || (Date.valueOf(getFileLastModifiedDate(file))).after(Date.valueOf(criteria.getModificationDateTo()))) {
                     continue;
                 }
             }
             if ((!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                if ((Date.valueOf(getFileLastAccessDate(path)).before(Date.valueOf(criteria.getLastDateFrom())))
-                        || (Date.valueOf(getFileLastAccessDate(path)).after(Date.valueOf(criteria.getLastDateTo())))) {
+                if ((Date.valueOf(getFileLastAccessDate(file)).before(Date.valueOf(criteria.getLastDateFrom())))
+                        || (Date.valueOf(getFileLastAccessDate(file)).after(Date.valueOf(criteria.getLastDateTo())))) {
                     continue;
                 }
             }

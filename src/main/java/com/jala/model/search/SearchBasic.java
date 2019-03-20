@@ -69,9 +69,9 @@ public abstract class SearchBasic implements ISearchable {
                             getFileOwner(file.getPath()),
                             String.valueOf(file.length()),
                             file.canWrite(),
-                            createFileDate(file.getPath()),
-                            getFileLastModifiedDate(file.getPath()),
-                            getFileLastAccessDate(file.getPath()));
+                            createFileDate(file),
+                            getFileLastModifiedDate(file),
+                            getFileLastAccessDate(file));
                     result.add(asset);
                 }
             }
@@ -81,12 +81,16 @@ public abstract class SearchBasic implements ISearchable {
 
     /**
      * Get the file creation date.
-     * 
+     *
      * @param filePath the path of the file.
      * @return the creation date of the file.
      */
-    public static String createFileDate(String filePath) {
-        File file = new File(filePath);
+    /**
+     * Get the file creation date.
+     * @param file
+     * @return
+     */
+    public static String createFileDate(File file) {
         BasicFileAttributes attributes;
         String formatted;
         try {
@@ -123,12 +127,11 @@ public abstract class SearchBasic implements ISearchable {
     }
 
     /**
-     * Get the file last access date.
-     * @param filePath the path of the file.
-     * @return the file date last access date.
+     *
+     * @param file
+     * @return
      */
-    public static String getFileLastAccessDate(String filePath) {
-        File file = new File(filePath);
+    public static String getFileLastAccessDate(File file) {
         BasicFileAttributes attributes;
         String formatted;
         try {
@@ -146,12 +149,11 @@ public abstract class SearchBasic implements ISearchable {
     }
 
     /**
-     * Get the file last modified date.
-     * @param filePath the path of the file.
-     * @return the date of file the las modified date.
+     *
+     * @param file
+     * @return
      */
-    public static String getFileLastModifiedDate(String filePath) {
-        File file = new File(filePath);
+    public static String getFileLastModifiedDate(File file) {
         BasicFileAttributes attributes;
         String formatted;
         try {
