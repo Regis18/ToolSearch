@@ -54,8 +54,8 @@ public class MainView extends JFrame implements ActionListener {
     ImageIcon imgConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\Convert.png");
     ImageIcon imgImageConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\imageConverter.png");
     ImageIcon imgVideoConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoConverter.png");
-    ImageIcon imgVideoPlayer = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer2.png");
-    ImageIcon imgExit = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\exitB.png");
+    ImageIcon imgVideoPlayer = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer1.png");
+    ImageIcon imgExit = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\exit.png");
     ImageIcon imgExitTemp = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\exit.png");
 
     /**
