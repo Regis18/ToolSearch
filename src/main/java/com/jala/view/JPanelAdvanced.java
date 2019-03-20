@@ -48,7 +48,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
      */
     public void setTxtPath(String txtPath) {
         this.txtPath.setText(txtPath);
-        ;
     }
 
     /**
@@ -470,6 +469,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         addComponent(btnSearchAdvanced, 1, 9, 1, 1);
         btnSave = new JButton("Save");
         addComponent(btnSave, 5, 9, 1, 1);
+        btnSave.addActionListener(this);
 
         dateCreateStar = new JDateChooser();
         dateCreateStar.setDateFormatString("yyyy-MM-dd");
@@ -528,32 +528,20 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
                 txtPath.setText("" + chooser.getSelectedFile());
             }
         }
-    }
-
-    /**
-     * Create panel for buttons
-     */
-    private void btnJdialog() {
-
-        JTextField firstName = new JTextField();
-        JTextField lastName = new JTextField();
-        JPasswordField password = new JPasswordField();
-        final JComponent[] inputs = new JComponent[] {
-                new JLabel("First"),
-                firstName,
-                new JLabel("Last"),
-                lastName,
-                new JLabel("Password"),
-                password
-        };
-        int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
-            System.out.println("You entered " +
-                    firstName.getText() + ", " +
-                    lastName.getText() + ", " +
-                    password.getText());
-        } else {
-            System.out.println("User canceled / closed the dialog, result = " + result);
+        if(e.getSource().equals(btnSave)) {
+            JTextField criteriaName = new JTextField();
+            final JComponent[] inputs = new JComponent[] {
+                    new CustomLabel("Criteria Name: "),
+                    criteriaName
+            };
+            int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                System.out.println("You entered " +
+                        criteriaName.getText());
+            } else {
+                System.out.println("User canceled / closed the dialog, result = " + result);
+            }
         }
     }
+
 }
