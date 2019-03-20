@@ -58,7 +58,8 @@ public class ModelConsole {
     public List<Asset> getSearch(CommandLine validCommand) {
         String valuePath = getValueCommandByPositionOfCommand(validCommand, "-p");
 
-        CriteriaSearch criteria = new CriteriaSearch(valuePath);
+        ValueCustom valueCustom = new ValueCustom();
+        CriteriaSearch criteria = new CriteriaSearch(valueCustom.removeCharSpecial(valuePath,"'", 0));
         criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
@@ -88,6 +89,8 @@ public class ModelConsole {
             Command command = commandLine.getCommands().get(i);
             if (command.getAcronym().equals(acronym)) {
                 value = getValueCommandByPositionOfCommand(commandLine, acronym);
+                ValueCustom valueCustom = new ValueCustom();
+                value = valueCustom.removeCharSpecial(value,"'", 0);
                 i = commandLine.getCommands().size();
             } else {
                 value = value;
