@@ -23,7 +23,7 @@ import java.awt.*;
 public class CustomJCombo extends JComboBox {
 
     /**
-     * Class constructor.
+     * Class constructor for all JComboBox.
      */
     public CustomJCombo(){
         setFont(new Font("Calibri" , Font.PLAIN , 13));

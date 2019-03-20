@@ -22,14 +22,15 @@ import javax.swing.JLabel;
 public class CustomLabel extends JLabel {
 
     /**
-     * Class constructor.
+     * Class constructor for all JLabel.
      */
     public CustomLabel() {
         init();
     }
 
     /**
-     *Class constructor.
+     * Class constructor for all JLabel.
+     * @param text
      */
     public CustomLabel(String text) {
         setText(text);
@@ -37,7 +38,7 @@ public class CustomLabel extends JLabel {
     }
 
     /**
-     * Init of constructor.
+     * Init of constructors.
      */
     public void init() {
         setFont(new java.awt.Font("Calibri", 1, 14));

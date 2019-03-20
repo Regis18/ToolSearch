@@ -23,22 +23,22 @@ import javax.swing.JTextField;
 public class CustomTextField extends JTextField {
 
     /**
-     * Class constructor.
-     * @param valor define the size textBox
+     * Class constructor for all JTextField.
+     * @param valor define the size textBox.
      */
-    public CustomTextField(int valor){
+    public CustomTextField(int valor) {
         setColumns(valor);
         init();
     }
     /**
-     *  Class constructor.
+     *  Class constructor for all JTextField.
      */
     public CustomTextField(){
         init();
     }
 
     /**
-     * Init of constructor.
+     * Init of constructors.
      */
     public void init() {
         setFont(new java.awt.Font("Calibri", 0, 13));

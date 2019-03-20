@@ -26,7 +26,8 @@ public class JTableResult extends JTable {
 	DefaultTableModel dtm = new DefaultTableModel(0, 0);
 
 	// add header of the table
-	String[] header = new String[]{"Id", "Path", "File Name", "Ext.", "Size"};
+	String[] header = new String[]{"Id", "Path", "File Name", "Extension", "Size",
+			"Hidden", "ReadOnly", "Date Create", "Date Modification","Date Later Access "};
 
 	/**
 	 * Constructor that setting the table DefaultTableModel.
@@ -41,14 +42,14 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(0).setPreferredWidth(30);
 		this.getColumnModel().getColumn(1).setPreferredWidth(500);
 		this.getColumnModel().getColumn(2).setPreferredWidth(400);
-		this.getColumnModel().getColumn(3).setPreferredWidth(150);
-		this.getColumnModel().getColumn(4).setPreferredWidth(250);
-		this.getColumnModel().getColumn(5).setPreferredWidth(500);
-		this.getColumnModel().getColumn(6).setPreferredWidth(400);
+		this.getColumnModel().getColumn(3).setPreferredWidth(200);
+		this.getColumnModel().getColumn(4).setPreferredWidth(150);
+		this.getColumnModel().getColumn(5).setPreferredWidth(150);
+		this.getColumnModel().getColumn(6).setPreferredWidth(150);
 		this.getColumnModel().getColumn(7).setPreferredWidth(150);
-		this.getColumnModel().getColumn(8).setPreferredWidth(250);
+		this.getColumnModel().getColumn(8).setPreferredWidth(150);
+		this.getColumnModel().getColumn(9).setPreferredWidth(150);
 	}
-
 	/**
 	 * Add a row to the table.
 	 *
@@ -58,8 +59,11 @@ public class JTableResult extends JTable {
 	 * @param ext      file extension.
 	 * @param size     file size.
 	 */
-	public void addResultRow(String id, String path, String fileName, String ext, String size) {
-		dtm.addRow(new Object[]{id, path, fileName, ext, size});
+	public void addResultRow(String id, String path, String fileName, String ext,
+							 String size, String hidden, String readOnly, String dateCreate,
+							 String dateModification, String dateLaterAccess) {
+		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
+				dateCreate, dateModification, dateLaterAccess});
 	}
 
 	/**

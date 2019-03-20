@@ -210,7 +210,6 @@ public class MainView extends JFrame implements ActionListener {
 
         menuItemExit = new JMenuItem("Exit", imgExitTemp);
         menuSearch.add(menuItemExit);
-
         //Add a menu with an image in the builder
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
