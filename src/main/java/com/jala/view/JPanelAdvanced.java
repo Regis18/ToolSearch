@@ -471,8 +471,8 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         comboTypeSizeFile.addItem("Gb");
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
-        lblSeparatorEmpty2 = new JLabel("   ");
-        addComponent(lblSeparatorEmpty2, 2, 8, 1, 1);
+        //lblSeparatorEmpty2 = new JLabel("   ");
+        //addComponent(lblSeparatorEmpty2, 2, 8, 1, 1);
         btnSearchAdvanced = new JButton("Search");
         addComponent(btnSearchAdvanced, 1, 9, 1, 1);
         btnSave = new JButton("Save");
@@ -518,7 +518,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         constraints.gridwidth = sizeFieldX;
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(1, 1, 1, 1);
+        constraints.insets = new Insets(0, 0, 0, 0);
         this.add (Component , constraints);
     }
 
