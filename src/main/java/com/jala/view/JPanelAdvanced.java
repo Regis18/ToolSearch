@@ -51,6 +51,165 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     private JCheckBox fileMajors;
 
     /**
+     * Sets the path field for the search location.
+     * @param txtPath, the location where to search.
+     */
+    public void setTxtPath(JTextField txtPath) {
+        this.txtPath = txtPath;
+    }
+
+    /**
+     * Sets the File Name for the search location.
+     * @param txtFileName, the location where to search.
+     */
+    public void setTxtFileName(JTextField txtFileName) {
+        this.txtFileName = txtFileName;
+    }
+
+    /**
+     * Sets the Extension for the search location.
+     * @param txtExtension, the location where to search.
+     */
+    public void setTxtExtension(JTextField txtExtension) {
+        this.txtExtension = txtExtension;
+    }
+
+    /**
+     * Sets the Owner for the search location.
+     * @param txtOwner, the location where to search.
+     */
+    public void setTxtOwner(JTextField txtOwner) {
+        this.txtOwner = txtOwner;
+    }
+
+    /**
+     * Sets the Hidden for the search location.
+     * @param cmbHidden, the location where to search.
+     */
+    public void setCmbHidden(JComboBox cmbHidden) {
+        this.cmbHidden = cmbHidden;
+    }
+
+    /**
+     * Sets the Read Only for the search location.
+     * @param comboReadOnly, the location where to search.
+     */
+    public void setComboReadOnly(JComboBox comboReadOnly) {
+        this.comboReadOnly = comboReadOnly;
+    }
+
+    /**
+     * Sets the Type Size File for the search location.
+     * @param comboTypeSizeFile, the location where to search.
+     */
+    public void setComboTypeSizeFile(JComboBox comboTypeSizeFile) {
+        this.comboTypeSizeFile = comboTypeSizeFile;
+    }
+
+    /**
+     * Sets the Date Create for the search location.
+     * @param dateCreateStar, the location where to search.
+     */
+    public void setDateCreateStar(JDateChooser dateCreateStar) {
+        this.dateCreateStar = dateCreateStar;
+    }
+
+    /**
+     * Sets the Date Create End for the search location.
+     * @param dateCreateEnd, the location where to search.
+     */
+    public void setDateCreateEnd(JDateChooser dateCreateEnd) {
+        this.dateCreateEnd = dateCreateEnd;
+    }
+
+    /**
+     * Sets the Date Last Begin for the search location.
+     * @param dateLastModBegin, the location where to search.
+     */
+    public void setDateLastModBegin(JDateChooser dateLastModBegin) {
+        this.dateLastModBegin = dateLastModBegin;
+    }
+
+    /**
+     * Sets the Date Last End for the search location.
+     * @param dateLastModEnd, the location where to search.
+     */
+    public void setDateLastModEnd(JDateChooser dateLastModEnd) {
+        this.dateLastModEnd = dateLastModEnd;
+    }
+
+    /**
+     * Sets the Date Last Acces Begin for the search location.
+     * @param dateLatterAccesBegin, the location where to search.
+     */
+    public void setDateLatterAccesBegin(JDateChooser dateLatterAccesBegin) {
+        this.dateLatterAccesBegin = dateLatterAccesBegin;
+    }
+
+    /**
+     * Sets the Date Last Acces End for the search location.
+     * @param dateLatterAccesEnd, the location where to search.
+     */
+    public void setDateLatterAccesEnd(JDateChooser dateLatterAccesEnd) {
+        this.dateLatterAccesEnd = dateLatterAccesEnd;
+    }
+
+    /**
+     * Sets the Esquema for the search location.
+     * @param esquema, the location where to search.
+     */
+    public void setEsquema(GridBagLayout esquema) {
+        this.esquema = esquema;
+    }
+
+    /**
+     * Sets the Constraints for the search location.
+     * @param constraints, the location where to search.
+     */
+    public void setConstraints(GridBagConstraints constraints) {
+        this.constraints = constraints;
+    }
+
+    /**
+     * Sets the Control Zise File for the search location.
+     * @param spinControlSizeFile, the location where to search.
+     */
+    public void setSpinControlSizeFile(JSpinner spinControlSizeFile) {
+        this.spinControlSizeFile = spinControlSizeFile;
+    }
+
+    /**
+     * Sets the File Major for the search location.
+     * @param fileMajors, the location where to search.
+     */
+    public void setFileMajors(JCheckBox fileMajors) {
+        this.fileMajors = fileMajors;
+    }
+
+    /**
+     * Gets the search button.
+     * @return btnSearchAdvanced, the Search button.
+     */
+    public JButton getBtnSearchAdvanced() {
+        return btnSearchAdvanced;
+    }
+
+    /**
+     * Gets the Pathsearch button.
+     * @return btnPathSearch, the Search button.
+     */
+    public JButton getBtnPathSearch() {
+        return btnPathSearch;
+    }
+
+    /**
+     * Gets the save button.
+     * @return btnSave, the Search button.
+     */
+    public JButton getBtnSave() {
+        return btnSave;
+    }
+    /**
      * The getLblExtension method get the data lblExtension
      * @return the JLabel component
      */

@@ -36,7 +36,32 @@ public class JPanelSearchAdvanced extends JPanel {
     private JPanelAdvanced panelSearchAdvanced;
     private JTableDB tbDataBase;
     private JPanel panelInferior;
-    private JButton btnDelete, btnSave, btnCharge;
+    private JButton btnDelete, btnCharge, btnSave;
+
+
+    /**
+     * Gets the delete button.
+     * @return btnDelete, the Search button.
+     */
+    public JButton getBtnDelete() {
+        return btnDelete;
+    }
+
+    /**
+     * Gets the save button.
+     * @return btnSave, the Search button.
+     */
+    public JButton getBtnSave() {
+        return btnSave;
+    }
+
+    /**
+     * Gets the charge button.
+     * @return btnCharge, the Search button.
+     */
+    public JButton getBtnCharge() {
+        return btnCharge;
+    }
 
     /**
      * Class constructor.
