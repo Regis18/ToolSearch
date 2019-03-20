@@ -103,7 +103,6 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
         JPanel pnlSouth = pnlTableResult();
         this.add(pnlSouth, BorderLayout.CENTER);
-
     }
 
     /**
