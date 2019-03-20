@@ -20,4 +20,5 @@ dependencies {
     compile group: 'com.toedter', name: 'jcalendar', version: '1.4'
     compile group: 'net.bramp.ffmpeg', name: 'ffmpeg', version: '0.6.2'
     compile group: 'org.apache.cassandra', name: 'cassandra-all', version: '3.11.2'
+    compile group: 'uk.co.caprica', name: 'vlcj', version: '3.12.1'
 }
