@@ -26,7 +26,7 @@ import java.awt.BorderLayout;
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class JPanelSearchAdvancedVideo extends JPanel{
+public class JPanelSearchAdvancedVideo extends JPanel {
 
     private JPanelAdvanced panelAdvanceSearch;
     private JPanelSearchVideo panelSearchVideo;
@@ -59,12 +59,12 @@ public class JPanelSearchAdvancedVideo extends JPanel{
         panelAdvanceSearch.getBtnSearch().setVisible(false);
         panelAdvanceSearch.getTxtFieldExtension().setVisible(false);
         panelAdvanceSearch.getLblExtension().setVisible(false);
-        this.add(panelAdvanceSearch, BorderLayout.WEST);
+        this.add(panelAdvanceSearch, BorderLayout.CENTER);
 
         panelSearchVideo = new JPanelSearchVideo();
         TitledBorder attributeBorder = BorderFactory.createTitledBorder(border, "Attributes");
         panelSearchVideo.setBorder(attributeBorder);
-        this.add(panelSearchVideo, BorderLayout.CENTER);
+        this.add(panelSearchVideo, BorderLayout.EAST);
 
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);

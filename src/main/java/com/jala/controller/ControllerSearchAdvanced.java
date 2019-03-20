@@ -111,7 +111,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
             viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
-                    data.getExtension(), getFileSizeInKb(data.getSize()));
+                    data.getExtension(), getFileSizeInKb(data.getSize()),"","","","","");
         }
         log.info("Results implemented in the JTable of the UI");
     }

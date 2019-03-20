@@ -21,6 +21,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import static com.oracle.jrockit.jfr.Transition.To;
+
 /**
  * ControllerSearch
  * It controls the JPanelSearchGral and SearchFile
@@ -85,7 +87,7 @@ public class ControllerSearch implements ActionListener {
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
             viewSearch.getTbSearchGral().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
-                    data.getExtension(), getFileSizeInKb(data.getSize()));
+                    data.getExtension(), getFileSizeInKb(data.getSize()), "","","","","");
         }
         log.info("Results implemented in the JTable of the UI");
     }
