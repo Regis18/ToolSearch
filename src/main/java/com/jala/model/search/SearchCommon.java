@@ -18,7 +18,6 @@ import com.jala.utils.Logs;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 
-import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +58,6 @@ public class SearchCommon extends SearchBasic {
         result = new ArrayList<>();
         for (int i = 0; i < preview.size(); i++) {
             String path = preview.get(i).getPath();
-            File file = new File(path);
             if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(preview.get(i).isHidden())) {
                 continue;
             }
