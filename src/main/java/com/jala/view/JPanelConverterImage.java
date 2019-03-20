@@ -12,14 +12,14 @@
 
 package com.jala.view;
 
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Font;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.io.File;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;

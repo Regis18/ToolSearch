@@ -14,7 +14,6 @@ package com.jala.view;
 
 import javax.swing.border.TitledBorder;
 import javax.swing.BorderFactory;
-import javax.swing.border.Border;
 import java.awt.LayoutManager;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;

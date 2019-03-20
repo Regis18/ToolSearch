@@ -17,7 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
 
 /**
  * JPanelSearchAdvancedVideo class is the panel to do

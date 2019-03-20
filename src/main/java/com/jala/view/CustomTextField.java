@@ -13,7 +13,7 @@
 package com.jala.view;
 
 
-import javax.swing.*;
+import javax.swing.JTextField;
 
 /**
  * This class is Customizer TextField

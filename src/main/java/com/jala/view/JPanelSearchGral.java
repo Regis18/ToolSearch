@@ -14,7 +14,11 @@ package com.jala.view;
 
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;

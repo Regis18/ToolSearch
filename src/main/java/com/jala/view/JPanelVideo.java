@@ -12,13 +12,12 @@
 
 package com.jala.view;
 
+import java.awt.BorderLayout;
+import java.awt.LayoutManager;
 import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
-import java.awt.LayoutManager;
-import java.awt.BorderLayout;
 
 /**
  * JPanelVideo
