@@ -49,12 +49,22 @@ public class ViewConsole {
         sizeColumns.add(11);
         sizeColumns.add(11);
         sizeColumns.add(6);
+        sizeColumns.add(7);
+        sizeColumns.add(7);
+        sizeColumns.add(8);
+        sizeColumns.add(8);
+        sizeColumns.add(6);
         rowCounter = 0;
         headTitle.add("Nº");
         headTitle.add("Path");
         headTitle.add("File Name");
         headTitle.add("Extension");
         headTitle.add("Size");
+        headTitle.add("Hidden");
+        headTitle.add("Readonly");
+        headTitle.add("Created");
+        headTitle.add("Modified");
+        headTitle.add("Owner");
     }
 
     /**
@@ -107,7 +117,13 @@ public class ViewConsole {
         String fileName = row.get(1);
         String extension = row.get(2);
         String size = row.get(3);
-        System.out.format(leftJustifying, getRowCounter(), path, fileName, extension, size);
+        String hidden = row.get(4);
+        String readonly = row.get(5);
+        String dateCreated = row.get(6);
+        String dateModified = row.get(7);
+        String owner = row.get(8);
+        System.out.format(leftJustifying, getRowCounter(), path, fileName, extension, size, hidden, readonly,
+                dateCreated, dateModified, owner);
         System.out.println(lowerLine);
     }
 
@@ -191,8 +207,14 @@ public class ViewConsole {
         String fileName = headTitle.get(2);
         String extension = headTitle.get(3);
         String size = headTitle.get(4);
+        String hidden = headTitle.get(5);
+        String readonly = headTitle.get(6);
+        String dateCreated = headTitle.get(7);
+        String dateModified = headTitle.get(8);
+        String owner = headTitle.get(9);
         System.out.println(topLine);
-        System.out.format(leftJustifying, nro, path, fileName, extension, size);
+        System.out.format(leftJustifying, nro, path, fileName, extension, size, hidden, readonly,
+                dateCreated, dateModified, owner);
         System.out.println(lowerLine);
     }
 
@@ -208,6 +230,11 @@ public class ViewConsole {
         row.add(asset.getFileName());
         row.add(asset.getExtension());
         row.add(asset.getSize());
+        row.add(Boolean.toString(asset.isHidden()));
+        row.add(Boolean.toString(asset.isReadOnly()));
+        row.add(asset.getCreationDate());
+        row.add(asset.getModificationDate());
+        row.add(asset.getOwner());
         return row;
     }
 }

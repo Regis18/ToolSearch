@@ -14,6 +14,7 @@ package com.jala.solidwater.console.models;
 
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.search.SearchFile;
+import com.jala.model.search.TernaryBooleanEnum;
 import com.jala.model.search.asset.Asset;
 
 import java.util.ArrayList;
@@ -57,10 +58,17 @@ public class ModelConsole {
     public List<Asset> getSearch(CommandLine validCommand) {
         String valuePath = getValueCommandByPositionOfCommand(validCommand, "-p");
 
-        CriteriaSearch criteria = new CriteriaSearch(valuePath);
+        ValueCustom valueCustom = new ValueCustom();
+        CriteriaSearch criteria = new CriteriaSearch(valueCustom.removeCharSpecial(valuePath,"'", 0));
         criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
+        criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-hd"));
+        criteria.setReadonly(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-ro"));
+        criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, "-fdc"));
+        criteria.setCreationDateTo(setValueIfExistCommand(validCommand, "-tdc"));
+        criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, "-fmc"));
+        criteria.setModificationDateTo(setValueIfExistCommand(validCommand, "-tmc"));
 
         SearchFile searchFile = new SearchFile();
         ArrayList<Asset> listFileSearch = new ArrayList<>();
@@ -85,6 +93,8 @@ public class ModelConsole {
             Command command = commandLine.getCommands().get(i);
             if (command.getAcronym().equals(acronym)) {
                 value = getValueCommandByPositionOfCommand(commandLine, acronym);
+                ValueCustom valueCustom = new ValueCustom();
+                value = valueCustom.removeCharSpecial(value,"'", 0);
                 i = commandLine.getCommands().size();
             } else {
                 value = value;
@@ -111,4 +121,15 @@ public class ModelConsole {
         }
         return valueByPositionCommand;
     }
+
+    private TernaryBooleanEnum setValueOnHiddenOrReadOnlyCriteria(CommandLine validCommand, String acronymCommand) {
+        if(setValueIfExistCommand(validCommand,acronymCommand).equals("No")) {
+            return TernaryBooleanEnum.OnlyFalse;
+        } else if(setValueIfExistCommand(validCommand,acronymCommand).equals("Yes")) {
+            return TernaryBooleanEnum.OnlyTrue;
+        } else  {
+            return TernaryBooleanEnum.ALL;
+        }
+    }
+
 }
