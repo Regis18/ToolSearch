@@ -27,7 +27,7 @@ import java.util.List;
  * SearchCommon.
  * Search file with common parameters.
  * @version 0.0.1
- * @author Regis Humana
+ * @author Regis Humana.
  */
 public class SearchCommon extends SearchBasic {
 
@@ -42,7 +42,7 @@ public class SearchCommon extends SearchBasic {
 
 	/**
 	 * This constructor receive the criteria, for using in the search.
-     * @param criteria
+     * @param criteria for common search.
 	 */
     public SearchCommon(CriteriaSearch criteria) {
         log.info("Searching on " + criteria.getPath());
