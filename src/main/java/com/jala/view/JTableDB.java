@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @version 0.0.1.
  * @autor Cxristian
  */
-public class JTableDB extends JTable{
+public class JTableDB extends JTable {
     DefaultTableModel defaultTableM = new DefaultTableModel(0, 0);
 
     String[] header = new String[]{"N.","id", "File Name", "Date"};

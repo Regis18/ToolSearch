@@ -440,7 +440,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * method that enables audio and video conversion options.
+     * Method that enables audio and video conversion options.
      */
     private void enableOptionsAudio() {
         cmbBitRate.setEnabled(true);
@@ -450,7 +450,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * method that disables audio and video conversion options.
+     * Method that disables audio and video conversion options.
      */
     private void disableOptionsAudio() {
         cmbBitRate.setEnabled(false);

@@ -33,7 +33,7 @@ public class CustomTextField extends JTextField {
     /**
      *  Class constructor for all JTextField.
      */
-    public CustomTextField(){
+    public CustomTextField() {
         init();
     }
 

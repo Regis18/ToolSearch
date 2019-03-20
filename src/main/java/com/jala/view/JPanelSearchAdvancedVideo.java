@@ -26,7 +26,7 @@ import java.awt.BorderLayout;
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class JPanelSearchAdvancedVideo extends JPanel{
+public class JPanelSearchAdvancedVideo extends JPanel {
 
     private JPanelAdvanced panelAdvanceSearch;
     private JPanelSearchVideo panelSearchVideo;

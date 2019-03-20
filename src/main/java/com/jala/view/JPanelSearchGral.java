@@ -170,7 +170,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     /**
      * method that adds action to a button
      */
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnPathFolder)) {
             JFileChooser chooser = new JFileChooser();
             chooser.setCurrentDirectory(new java.io.File("."));

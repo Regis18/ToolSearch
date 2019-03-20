@@ -34,10 +34,12 @@ import javax.swing.border.Border;
 public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
-    private JMenu menuExit, menuSearch, menuConverter, menuPlayerVideo;
+    private JMenu menuExit;
+    private JMenu menuSearch;
+    private JMenu menuConverter;
+    private JMenu menuPlayerVideo;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo,
             menuItemSearchVideo, menuItemVideoPlayer;
-    private JPanelHistorical pnlHistorical;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelSearchAdvancedVideo pnlSearchAdvancedVideo;
@@ -47,7 +49,7 @@ public class MainView extends JFrame implements ActionListener {
     private String currentPanel;
     private Border border;
 
-    ImageIcon imgSearh = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search.png");
+    ImageIcon imgSearch = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search.png");
     ImageIcon imgGSearchGral = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
     ImageIcon imgGSearchAdvanced = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchAdv.png");
     ImageIcon imgGSearchAdvVideo = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchVideo.png");
@@ -59,12 +61,19 @@ public class MainView extends JFrame implements ActionListener {
     ImageIcon imgExitTemp = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\exit.png");
 
     /**
-     * Constructor.
+     * Constructor with title.
      */
     public MainView() {
         setTitle("SolidWater");
     }
 
+    /**
+     * Return Exit app.
+     * @return menuExit .
+     */
+    public JMenu getMenuExit() {
+        return menuExit;
+    }
     /**
      * Return the panel where is the Search General.
      * @return General Search Panel .
@@ -111,14 +120,6 @@ public class MainView extends JFrame implements ActionListener {
      */
     public JPanelHistoricalDB getHistoricalDB() {
         return panelHistoricalDB;
-    }
-
-    /**
-     * Gets the Historical Panel.
-     * @return pHistorical, the last searches history Panel.
-     */
-    public JPanelHistorical getpHistorical() {
-        return pnlHistorical;
     }
 
     /**
@@ -176,7 +177,7 @@ public class MainView extends JFrame implements ActionListener {
      */
     private void createMenu() {
         menuSearch = new JMenu("Search");
-        menuSearch.setIcon(imgSearh);
+        menuSearch.setIcon(imgSearch);
         menuConverter = new JMenu("Converter");
         menuConverter.setIcon(imgConverter);
         menuPlayerVideo = new JMenu("Video Player");
