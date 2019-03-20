@@ -12,13 +12,15 @@
 
 package com.jala.view;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.io.File;
-import java.awt.BorderLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -148,61 +150,65 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         constraints = new GridBagConstraints();
         setLayout(esquema);
 
-        lblPathFileOrigin = new JLabel("Path Origin File:   ");
+        lblPathFileOrigin = new CustomLabel("Path Origin File: ");
         addComponent(lblPathFileOrigin, 0, 0, 1, 1);
 
-        lblPathFolderDestiny = new JLabel("Folder Destiny");
+        lblPathFolderDestiny = new CustomLabel("Folder Destiny: ");
         addComponent(lblPathFolderDestiny, 0, 1, 1, 1);
 
-        lblFileName = new JLabel("File Name");
+        lblFileName = new CustomLabel("File Name: ");
         addComponent(lblFileName, 0, 2, 1, 1);
 
-        lblExtension = new JLabel("Extension");
+        lblExtension = new CustomLabel("Extension: ");
         addComponent(lblExtension, 3, 2, 1, 1);
 
-        lblChangeSize = new JLabel("Change Size to:  ");
+        lblChangeSize = new CustomLabel("Change Size to: ");
         addComponent(lblChangeSize, 0, 3, 1, 1);
 
-        lblSizeWidth = new JLabel("Size Width");
+        lblSizeWidth = new CustomLabel("Size Width: ");
         addComponent(lblSizeWidth, 0, 4, 1, 1);
 
-        lblSizeHeight = new JLabel("Size Height");
+        lblSizeHeight = new CustomLabel("Size Height: ");
         addComponent(lblSizeHeight, 3, 4, 1, 1);
 
-        lblSeparatorSpace = new JLabel("   ");
+        lblSeparatorSpace = new CustomLabel("   ");
         addComponent(lblSeparatorSpace, 2, 2, 1, 1);
 
-        lblSeparatorSpace2 = new JLabel("   ");
+        lblSeparatorSpace2 = new CustomLabel("   ");
         addComponent(lblSeparatorSpace2, 5, 0, 1, 1);
 
-        txtPathFileOrigin = new JTextField("");
+        txtPathFileOrigin = new CustomTextField();
         addComponent(txtPathFileOrigin, 1, 0, 4, 1);
 
-        txtFolderDestiny = new JTextField();
+        txtFolderDestiny = new CustomTextField();
         addComponent(txtFolderDestiny, 1, 1, 4, 1);
 
-        txtFileName = new JTextField();
+        txtFileName = new CustomTextField();
         addComponent(txtFileName, 1, 2, 1, 1);
 
-        txtExtension = new JTextField();
+        txtExtension = new CustomTextField();
         addComponent(txtExtension, 4, 2, 1, 1);
 
-        txtSizeWidth = new JTextField();
+        txtSizeWidth = new CustomTextField();
         addComponent(txtSizeWidth, 1, 4, 1, 1);
 
-        txtSizeHeight = new JTextField();
+        txtSizeHeight = new CustomTextField();
         addComponent(txtSizeHeight, 4, 4, 1, 1);
 
-        resizePixeles = new JRadioButton("Pixels      ",true);
+        resizePixeles = new JRadioButton("Pixels",true);
+        resizePixeles.setFont(new Font ("Calibri" , Font.BOLD , 14));
         addComponent(resizePixeles, 1, 3, 1, 1);
 
         resizePercentage = new JRadioButton("Percentage",false);
+        resizePercentage.setFont(new Font ("Calibri" , Font.BOLD , 14));
         addComponent(resizePercentage, 3, 3, 1, 1);
 
         chekMaintainProportion = new JCheckBox("Maintain Proportion", true);
+        chekMaintainProportion.setFont(new Font ("Calibri" , Font.BOLD , 14));
         addComponent(chekMaintainProportion, 4, 3, 1, 1);
 
         checkResizeImage = new JCheckBox("Resize", true);
+        chekMaintainProportion.setFont(new Font ("Calibri" , Font.BOLD , 14));
         addComponent(checkResizeImage, 6, 4, 1, 1);
 
         typeOfResize = new ButtonGroup();
@@ -231,6 +237,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weighty = 1.0;
+        constraints.insets = new Insets(2, 2, 2, 2);
         this.add(Component , constraints);
     }
 

@@ -15,21 +15,24 @@ package com.jala.view;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Component;
 import java.util.Calendar;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.JCheckBox;
 
 /**
  * Module view, ui/JPanelAdvanced.
@@ -41,7 +44,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblTest , lblOwner, lblSeparatorEmpty, lblSeparatorEmpty2, lblSizeFile;
     private JLabel lblDateCreateStar, lblDateCreateEnd, lblDateLastModBegin, lblDateLastModEnd, lblDateLatterAccesBegin, lblDateLatterAccesEnd;
     private JTextField txtPath, txtFileName, txtExtension, txtOwner;
-    private JButton btnSearchAdvanced, btnPathSearch;
+    private JButton btnSearchAdvanced, btnPathSearch, btnSave;
     private JComboBox cmbHidden, comboReadOnly, comboTypeSizeFile;
     private JDateChooser dateCreateStar, dateCreateEnd, dateLastModBegin, dateLastModEnd, dateLatterAccesBegin, dateLatterAccesEnd;
     private GridBagLayout esquema;
@@ -49,6 +52,165 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
     private JSpinner spinControlSizeFile;
     private JCheckBox fileMajors;
 
+    /**
+     * Sets the path field for the search location.
+     * @param txtPath, the location where to search.
+     */
+    public void setTxtPath(String txtPath) {
+        this.txtPath.setText(txtPath);
+    }
+
+    /**
+     * Sets the File Name for the search location.
+     * @param txtFileName, the location where to search.
+     */
+    public void setTxtFileName(String txtFileName) {
+        this.txtFileName.setText(txtFileName);
+    }
+
+    /**
+     * Sets the Extension for the search location.
+     * @param txtExtension, the location where to search.
+     */
+    public void setTxtExtension(String txtExtension) {
+        this.txtExtension.setText(txtExtension);
+    }
+
+    /**
+     * Sets the Owner for the search location.
+     * @param txtOwner, the location where to search.
+     */
+    public void setTxtOwner(String txtOwner) {
+        this.txtOwner.setText(txtOwner);
+    }
+
+    /**
+     * Sets the Hidden for the search location.
+     * @param cmbHidden, the location where to search.
+     */
+    public void setCmbHidden(String cmbHidden) {
+        this.cmbHidden.setActionCommand(cmbHidden);
+    }
+
+    /**
+     * Sets the Read Only for the search location.
+     * @param comboReadOnly, the location where to search.
+     */
+    public void setComboReadOnly(String comboReadOnly) {
+        this.comboReadOnly.setActionCommand(comboReadOnly);
+    }
+
+    /**
+     * Sets the Type Size File for the search location.
+     * @param comboTypeSizeFile, the location where to search.
+     */
+    public void setComboTypeSizeFile(String comboTypeSizeFile) {
+        this.comboTypeSizeFile.setActionCommand(comboTypeSizeFile);
+    }
+
+    /**
+     * Sets the Date Create for the search location.
+     * @param dateCreateStar, the location where to search.
+     */
+    public void setDateCreateStar(String dateCreateStar) {
+        this.dateCreateStar.setDateFormatString(dateCreateStar);
+    }
+
+    /**
+     * Sets the Date Create End for the search location.
+     * @param dateCreateEnd, the location where to search.
+     */
+    public void setDateCreateEnd(String dateCreateEnd) {
+        this.dateCreateEnd.setDateFormatString(dateCreateEnd);
+    }
+
+    /**
+     * Sets the Date Last Begin for the search location.
+     * @param dateLastModBegin, the location where to search.
+     */
+    public void setDateLastModBegin(String dateLastModBegin) {
+        this.dateLastModBegin.setDateFormatString(dateLastModBegin);
+    }
+
+    /**
+     * Sets the Date Last End for the search location.
+     * @param dateLastModEnd, the location where to search.
+     */
+    public void setDateLastModEnd(String dateLastModEnd) {
+        this.dateLastModEnd.setDateFormatString(dateLastModEnd);
+    }
+
+    /**
+     * Sets the Date Last Acces Begin for the search location.
+     * @param dateLatterAccesBegin, the location where to search.
+     */
+    public void setDateLatterAccesBegin(String dateLatterAccesBegin) {
+        this.dateLatterAccesBegin.setDateFormatString(dateLatterAccesBegin);
+    }
+
+    /**
+     * Sets the Date Last Acces End for the search location.
+     * @param dateLatterAccesEnd, the location where to search.
+     */
+    public void setDateLatterAccesEnd(String dateLatterAccesEnd) {
+        this.dateLatterAccesEnd.setDateFormatString(dateLatterAccesEnd);
+    }
+
+    /**
+     * Sets the Esquema for the search location.
+     * @param esquema, the location where to search.
+     */
+    public void setEsquema(GridBagLayout esquema) {
+        this.esquema = esquema;
+    }
+
+    /**
+     * Sets the Constraints for the search location.
+     * @param constraints, the location where to search.
+     */
+    public void setConstraints(GridBagConstraints constraints) {
+        this.constraints = constraints;
+    }
+
+    /**
+     * Sets the Control Zise File for the search location.
+     * @param spinControlSizeFile, the location where to search.
+     */
+    public void setSpinControlSizeFile(JSpinner spinControlSizeFile) {
+        this.spinControlSizeFile = spinControlSizeFile;
+    }
+
+    /**
+     * Sets the File Major for the search location.
+     * @param fileMajors, the location where to search.
+     */
+    public void setFileMajors(JCheckBox fileMajors) {
+        this.fileMajors = fileMajors;
+    }
+
+    /**
+     * Gets the search button.
+     * @return btnSearchAdvanced, the Search button.
+     */
+    public JButton getBtnSearchAdvanced() {
+        return btnSearchAdvanced;
+    }
+
+    /**
+     * Gets the Pathsearch button.
+     * @return btnPathSearch, the Search button.
+     */
+    public JButton getBtnPathSearch() {
+        return btnPathSearch;
+    }
+
+    /**
+     * Gets the save button.
+     * @return btnSave, the Search button.
+     */
+    public JButton getBtnSave() {
+        return btnSave;
+    }
     /**
      * The getLblExtension method get the data lblExtension
      * @return the JLabel component
@@ -227,89 +389,97 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         constraints = new GridBagConstraints();
         setLayout(esquema);
 
-        lblPath = new JLabel("Path: ");
+        lblPath = new CustomLabel();
+        lblPath.setText("Path :");
         addComponent(lblPath, 0, 0, 1, 1);
+        txtPath = new CustomTextField(0);
+        addComponent(txtPath, 1, 0, 5, 1);
+        btnPathSearch = new JButton(" .... ");
+        btnPathSearch.addActionListener(this);
+        addComponent(btnPathSearch, 6, 0, 1, 1);
 
-        lblFileName = new JLabel("File Name: ");
+        lblFileName = new CustomLabel();
+        lblFileName.setText("File Name: ");
         addComponent(lblFileName, 0, 1, 1, 1);
-
-        lblSeparatorEmpty = new JLabel("   ");
-        addComponent(lblSeparatorEmpty, 4, 0, 1, 1);
+        txtFileName = new CustomTextField(0);
+        addComponent(txtFileName, 1, 1, 1, 1);
 
         lblSeparatorEmpty2 = new JLabel("   ");
         addComponent(lblSeparatorEmpty2, 2, 1, 1, 1);
 
-        lblExtension = new JLabel("Extension: ");
+        lblExtension = new CustomLabel();
+        lblExtension.setText("Extension: ");
         addComponent(lblExtension, 3, 1, 1, 1);
-
-        lblHidden = new JLabel("Hidden: ");
-        addComponent(lblHidden, 0, 2, 1, 1);
-
-
-        lblReadOnly = new JLabel("ReadOnly: ");
-        addComponent(lblReadOnly, 3, 2, 1, 1);
-
-        lblDateCreateStar = new JLabel("Creation Date From: ");
-        addComponent(lblDateCreateStar, 0, 3, 1, 1);
-
-        lblDateCreateEnd = new JLabel("To: ");
-        addComponent(lblDateCreateEnd, 3, 3, 1, 1);
-
-        lblDateLastModBegin = new JLabel("Modification Date From:  ");
-        addComponent(lblDateLastModBegin, 0, 4, 1, 1);
-
-        lblDateLastModEnd = new JLabel("To: ");
-        addComponent(lblDateLastModEnd, 3, 4, 1, 1);
-
-        lblDateLatterAccesBegin = new JLabel("Last Date From: ");
-        addComponent(lblDateLatterAccesBegin, 0, 5, 1, 1);
-
-        lblDateLatterAccesEnd = new JLabel("To: ");
-        addComponent(lblDateLatterAccesEnd, 3, 5, 1, 1);
-
-        lblOwner = new JLabel("Owner: ");
-        addComponent(lblOwner, 0, 7, 1, 1);
-
-        lblSizeFile = new JLabel("Size File: ");
-        addComponent(lblSizeFile, 0, 6, 1, 1);
-
-        txtPath = new JTextField("");
-        addComponent(txtPath, 1, 0, 5, 1);
-
-        txtFileName = new JTextField("");
-        txtFileName.setSize(200, 20);
-        addComponent(txtFileName, 1, 1, 1, 1);
-
-        txtExtension = new JTextField("");
+        txtExtension = new CustomTextField(0);
         addComponent(txtExtension, 5, 1, 1, 1);
 
-        txtOwner = new JTextField();
+        lblHidden = new CustomLabel();
+        lblHidden.setText("Hidden: ");
+        addComponent(lblHidden, 0, 2, 1, 1);
+
+        lblReadOnly = new CustomLabel();
+        lblReadOnly.setText("Read Only: ");
+        addComponent(lblReadOnly, 3, 2, 1, 1);
+
+        lblDateCreateStar = new CustomLabel();
+        lblDateCreateStar.setText("Creation Date From: ");
+        addComponent(lblDateCreateStar, 0, 3, 1, 1);
+
+        lblDateCreateEnd = new CustomLabel();
+        lblDateCreateEnd.setText("To: ");
+        addComponent(lblDateCreateEnd, 3, 3, 1, 1);
+
+        lblDateLastModBegin = new CustomLabel();
+        lblDateLastModBegin.setText("Modification Date From:  ");
+        addComponent(lblDateLastModBegin, 0, 4, 1, 1);
+
+        lblDateLastModEnd = new CustomLabel();
+        lblDateLastModEnd.setText("To: ");
+        addComponent(lblDateLastModEnd, 3, 4, 1, 1);
+
+        lblDateLatterAccesBegin = new CustomLabel();
+        lblDateLatterAccesBegin.setText("Last Date From: ");
+        addComponent(lblDateLatterAccesBegin, 0, 5, 1, 1);
+
+        lblDateLatterAccesEnd = new CustomLabel();
+        lblDateLatterAccesEnd.setText("To: ");
+        addComponent(lblDateLatterAccesEnd, 3, 5, 1, 1);
+
+        lblOwner = new CustomLabel();
+        lblOwner.setText("Owner: ");
+        addComponent(lblOwner, 0, 7, 1, 1);
+        txtOwner = new CustomTextField(0);
         addComponent(txtOwner, 1, 7, 3, 1);
 
-        cmbHidden = new JComboBox();
+        lblSizeFile = new CustomLabel();
+        lblSizeFile.setText("Size File: ");
+        addComponent(lblSizeFile, 0, 6, 1, 1);
+
+        cmbHidden = new CustomJCombo();
         cmbHidden.addItem("Not Hidden");
         cmbHidden.addItem("Hidden");
         cmbHidden.addItem("All");
         addComponent(cmbHidden, 1, 2, 1, 1);
 
-        comboReadOnly = new JComboBox();
+        comboReadOnly = new CustomJCombo();
         comboReadOnly.addItem("Not Read Only");
         comboReadOnly.addItem("Read Only");
         comboReadOnly.addItem("All");
         addComponent(comboReadOnly, 5, 2, 1, 1);
 
-        comboTypeSizeFile = new JComboBox();
+        comboTypeSizeFile = new CustomJCombo();
         comboTypeSizeFile.addItem("Kb");
         comboTypeSizeFile.addItem("Mb");
         comboTypeSizeFile.addItem("Gb");
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
+        //lblSeparatorEmpty2 = new JLabel("   ");
+        //addComponent(lblSeparatorEmpty2, 2, 8, 1, 1);
         btnSearchAdvanced = new JButton("Search");
-        addComponent(btnSearchAdvanced, 5, 7, 1, 1);
-
-        btnPathSearch = new JButton(" .... ");
-        btnPathSearch.addActionListener(this);
-        addComponent(btnPathSearch, 6, 0, 1, 1);
+        addComponent(btnSearchAdvanced, 1, 9, 1, 1);
+        btnSave = new JButton("Save");
+        addComponent(btnSave, 5, 9, 1, 1);
+        btnSave.addActionListener(this);
 
         dateCreateStar = new JDateChooser();
         dateCreateStar.setDateFormatString("yyyy-MM-dd");
@@ -351,7 +521,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         constraints.gridwidth = sizeFieldX;
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weighty = 1.0;
+        constraints.insets = new Insets(0, 0, 0, 0);
         this.add (Component , constraints);
     }
 
@@ -368,5 +538,20 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
                 txtPath.setText("" + chooser.getSelectedFile());
             }
         }
+        if(e.getSource().equals(btnSave)) {
+            JTextField criteriaName = new JTextField();
+            final JComponent[] inputs = new JComponent[] {
+                    new CustomLabel("Criteria Name: "),
+                    criteriaName
+            };
+            int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                System.out.println("You entered " +
+                        criteriaName.getText());
+            } else {
+                System.out.println("User canceled / closed the dialog, result = " + result);
+            }
+        }
     }
+
 }
