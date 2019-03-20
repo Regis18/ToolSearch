@@ -14,9 +14,11 @@ package com.jala.view;
 
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.LayoutManager;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -112,14 +114,16 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      * @return pnlCriteria  the panel with path, file name, extension.
      */
     private JPanel pnlCriteria() {
-
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search");
-        pnlPath.setBorder(titleBorder);
-        lblPath = new JLabel("Path: ");
-        pnlPath.add(lblPath);
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Search");
+        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
+        titleBorder.setTitleFont(new Font("Arial", 1, 10));
 
-        txtPath = new JTextField(50);
+        pnlPath.setBorder(titleBorder);
+        lblPath = new CustomLabel();
+        lblPath.setText("Path :");
+        pnlPath.add(lblPath);
+        txtPath = new CustomTextField(50);
         pnlPath.add(txtPath);
 
         btnPathFolder = new JButton("...");
@@ -142,7 +146,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         pnlSearchAdvanced.add(btnSearchAdvanced);
         btnSearchAdvanced.setVisible(false);
         return pnlSearchAdvanced;
-        
+
         //TODO implement the add actionListener to this button.
     }
 
@@ -154,6 +158,8 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlSearchGral = new JPanel(new  BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search General");
         pnlSearchGral.setBorder(titleBorder);
+        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
+        titleBorder.setTitleFont(new Font("Arial", 1, 10));
 
         tbSearchGral = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchGral);
@@ -164,7 +170,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     /**
      * method that adds action to a button
      */
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnPathFolder)) {
             JFileChooser chooser = new JFileChooser();
             chooser.setCurrentDirectory(new java.io.File("."));
