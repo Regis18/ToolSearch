@@ -152,6 +152,10 @@ public class JPanelSearchAdvanced extends JPanel {
 
         return pnlSearchGral;
     }
+
+    /**
+     * Create panel for buttons
+     */
     private void pnlButtonInferiorDB(){
         panelInferior = new JPanel();
         btnCharge = new JButton("Charge");
