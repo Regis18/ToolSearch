@@ -52,7 +52,7 @@ public class DefaultCommands {
         Command commandForReadOnly = new Command("-ro", "readOnly", "This command allows the values Yes and No");
         Command commandFromDateCreation = new Command("-fdc", "from date creation",
                 "This command allows set a date to search the file from the date needed in formmat yyyy-mm-dd");
-        Command commandToDateCreateion = new Command("-tdc", "to date creation", "");
+        Command commandToDateCreation = new Command("-tdc", "to date creation", "");
         Command commandFromDateModified = new Command("-fdm", "From to date modified", "");
         Command commandToDateModified = new Command("-tdm", "to date modified", "");
         defaultCommands.add(commandForPath);
@@ -62,7 +62,7 @@ public class DefaultCommands {
         defaultCommands.add(commandForHidden);
         defaultCommands.add(commandForReadOnly);
         defaultCommands.add(commandFromDateCreation);
-        defaultCommands.add(commandToDateCreateion);
+        defaultCommands.add(commandToDateCreation);
         defaultCommands.add(commandFromDateModified);
         defaultCommands.add(commandToDateModified);
         return defaultCommands;

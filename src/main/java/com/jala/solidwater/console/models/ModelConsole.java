@@ -48,6 +48,13 @@ public class ModelConsole {
      */
     private static final String SIZE_COMMAND = "-s";
 
+    public static final String HIDDEN_COMMAND = "-hd";
+    public static final String READONLY_COMMAND = "-ro";
+    public static final String FROM_DATE_CREATED_COMMAND = "-fdc";
+    public static final String TO_DATE_CREATED_COMMAND = "-tdc";
+    public static final String FROM_DATE_MODIFIED_COMMAND = "-fdm";
+    public static final String TO_DATE_MODIFIED_COMMAND = "-tdm";
+
     /**
      * This method return a asset list sending
      * a command line valid and according to the setting of criteria.
@@ -63,12 +70,12 @@ public class ModelConsole {
         criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
-        criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-hd"));
-        criteria.setReadonly(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-ro"));
-        criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, "-fdc"));
-        criteria.setCreationDateTo(setValueIfExistCommand(validCommand, "-tdc"));
-        criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, "-fmc"));
-        criteria.setModificationDateTo(setValueIfExistCommand(validCommand, "-tmc"));
+        criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, HIDDEN_COMMAND));
+        criteria.setReadonly(setValueOnHiddenOrReadOnlyCriteria(validCommand, READONLY_COMMAND));
+        criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_CREATED_COMMAND));
+        criteria.setCreationDateTo(setValueIfExistCommand(validCommand, TO_DATE_CREATED_COMMAND));
+        criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_MODIFIED_COMMAND));
+        criteria.setModificationDateTo(setValueIfExistCommand(validCommand, TO_DATE_MODIFIED_COMMAND));
 
         SearchFile searchFile = new SearchFile();
         ArrayList<Asset> listFileSearch = new ArrayList<>();
