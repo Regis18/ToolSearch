@@ -38,8 +38,6 @@ public class JPanelSearchAdvanced extends JPanel {
     private JTableDB tbDataBase;
     private JPanel panelInferior;
     private JButton btnDelete, btnCharge, btnSave;
-    private JRadioButton radioVideo, radioAudio;
-
 
     /**
      * Gets the delete button.

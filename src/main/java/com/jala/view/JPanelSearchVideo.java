@@ -12,14 +12,13 @@
 
 package com.jala.view;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
+import javax.swing.*;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Component;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * JPanelSearchVideo class is the panel with new attributes
@@ -28,19 +27,21 @@ import java.awt.Insets;
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class JPanelSearchVideo extends JPanel {
+public class JPanelSearchVideo extends JPanel implements ActionListener {
     private JLabel lblFrameRate, lblVideoCodec, lblAudioCodec,
-                    lblAspectRatio, lblDimension, lblExtension;
+                    lblAspectRatio, lblAudioChannel, lblAudioSampleRate, lblExtension, lblDuration;
+    private JTextField txtAudioSampleRate, txtDuration;
     private JButton btnSearch;
     private JComboBox cmbFrameRate, cmbVideoCodec, cmbAudioCodec,
-                        cmbAspectRatio, cmbDimension, cmbExtension;
+                        cmbAspectRatio, cmbExtension;
+    private ButtonGroup typeOfAudioChannel, selectTypeSearch;
+    private JRadioButton radioStereo, radioMono, radioVideo, radioAudio;
 
     /**
      * The JPanelSearchVideo method is the constructor of ViewConsole class,
      * it is for build an instance of itself class.
      */
     public JPanelSearchVideo() {
-
         initUI();
         initComponent();
     }
@@ -67,19 +68,19 @@ public class JPanelSearchVideo extends JPanel {
         constraintComponent(lblAudioCodec, 0, 4, GridBagConstraints.EAST);
 
         cmbFrameRate = new CustomJCombo();
-        String[] myFrameRat = {" ", "24", "24.976", "25", "27", "29.7", "30", "60"};
+        String[] myFrameRat = {"", "24", "24.976", "25", "27", "29.7", "30", "60"};
         addItemsComboBox(myFrameRat, cmbFrameRate);
         constraintComponent(cmbFrameRate, 1, 2, GridBagConstraints.WEST);
 
         cmbVideoCodec = new CustomJCombo();
-        String[] myVideoCod = {" ", "H.264/MPEG-4 AVC", "H.265/MPEG-H HEVC",
+        String[] myVideoCod = {"", "H.264/MPEG-4 AVC", "H.265/MPEG-H HEVC",
                                 "H.263/MPEG-4 parte2 codecs", "H.262/MPEG-2 codecs", "MPEG-1",
                                 "WMV", "MJPEG", "DV and HDV", "MPEG-2", "Microsoft VC-1"};
         addItemsComboBox(myVideoCod, cmbVideoCodec);
         constraintComponent(cmbVideoCodec, 1, 3, GridBagConstraints.WEST);
 
         cmbAudioCodec = new CustomJCombo();
-        String[] myAudioCod = {" ", "WAV", "FLAC", "MP3", "WMA", "MPEG-1", "WMV", "ALAC",
+        String[] myAudioCod = {"", "WAV", "FLAC", "MP3", "WMA", "MPEG-1", "WMV", "ALAC",
                                 "Ogg Vorbis", "AAC", "AIFF", "DSD"};
         addItemsComboBox(myAudioCod, cmbAudioCodec);
         constraintComponent(cmbAudioCodec, 1, 4, GridBagConstraints.WEST);
@@ -87,29 +88,88 @@ public class JPanelSearchVideo extends JPanel {
         lblAspectRatio = new CustomLabel("Aspect Ratio: ");
         constraintComponent(lblAspectRatio, 2, 2, GridBagConstraints.EAST);
 
-        lblDimension = new CustomLabel("Dimension: ");
-        constraintComponent(lblDimension, 2, 3, GridBagConstraints.EAST);
-
         lblExtension = new CustomLabel("Extension: ");
-        constraintComponent(lblExtension, 2, 4, GridBagConstraints.EAST);
+        constraintComponent(lblExtension, 2, 3, GridBagConstraints.EAST);
 
         cmbAspectRatio = new CustomJCombo();
-        String[] myAspectRatio = {" ", "3:2", "4:3", "5:4", "16:9", "16:10", "1.35:1", "1.85:1"};
+        String[] myAspectRatio = {"" ,"1:1" , "3:2", "4:3", "5:4", "16:9", "16:10", "1.35:1", "1.85:1"};
         addItemsComboBox(myAspectRatio, cmbAspectRatio);
         constraintComponent(cmbAspectRatio, 3, 2, GridBagConstraints.WEST);
 
-        cmbDimension = new CustomJCombo();
-        String[] myDimension = {" ", "400/300", "1280/750", "1000/780"};
-        addItemsComboBox(myDimension, cmbDimension);
-        constraintComponent(cmbDimension, 3, 3, GridBagConstraints.WEST);
-
         cmbExtension = new CustomJCombo();
-        String[] myExtension = {" ", "FLV", "AVI", "MOV", "MP4", "MPG", "WMV"};
+        String[] myExtension = {"", "FLV", "AVI", "MOV", "MP4", "MPG", "WMV"};
         addItemsComboBox(myExtension, cmbExtension);
-        constraintComponent(cmbExtension, 3, 4, GridBagConstraints.WEST);
+        constraintComponent(cmbExtension, 3, 3, GridBagConstraints.WEST);
+
+        lblAudioChannel = new CustomLabel("AudioChannel: ");
+        constraintComponent(lblAudioChannel, 4, 1, GridBagConstraints.EAST );
+        radioStereo = new JRadioButton("Stereo",true);
+        constraintComponent(radioStereo, 4, 2, GridBagConstraints.WEST);
+        radioMono = new JRadioButton("Mono",false);
+        constraintComponent(radioMono, 4, 3, GridBagConstraints.WEST);
+
+        radioVideo = new JRadioButton("Video",true);
+        radioVideo.addActionListener(this);
+        constraintComponent(radioVideo, 1, 0, GridBagConstraints.EAST);
+        radioAudio = new JRadioButton("Audio",false);
+        radioAudio.addActionListener(this);
+        constraintComponent(radioAudio, 2, 0, GridBagConstraints.WEST);
+
+        typeOfAudioChannel = new ButtonGroup();
+        typeOfAudioChannel.add(radioStereo);
+        typeOfAudioChannel.add(radioMono);
+
+        selectTypeSearch = new ButtonGroup();
+        selectTypeSearch.add(radioAudio);
+        selectTypeSearch.add(radioVideo);
+
+        lblAudioSampleRate = new CustomLabel("Audio Sample Rate: ");
+        constraintComponent(lblAudioSampleRate, 0, 5, GridBagConstraints.EAST);
+        txtAudioSampleRate = new CustomTextField(15);
+        constraintComponent(txtAudioSampleRate, 1, 5, GridBagConstraints.WEST);
+        lblDuration = new CustomLabel("Duration: ");
+        constraintComponent(lblDuration, 2, 5, GridBagConstraints.EAST);
+        txtDuration = new CustomTextField(15);
+        constraintComponent(txtDuration, 3, 5, GridBagConstraints.EAST);
 
         btnSearch = new JButton("Search");
-        constraintComponent(btnSearch, 3, 5, GridBagConstraints.EAST);
+        constraintComponent(btnSearch, 3, 6, GridBagConstraints.EAST);
+    }
+
+    /**
+     * Method that adds action to the buttons.
+     */
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == radioVideo) {
+            if (radioVideo.isSelected()) {
+                btnSearch.setText("Convert Video");
+                enableOptionsVideo();
+            }
+        }
+        if (event.getSource() == radioAudio) {
+            if (radioAudio.isSelected()) {
+                btnSearch.setText("Convert Audio");
+                disableOptionsVideo();
+            }
+        }
+    }
+
+    /**
+     * Method that adds action to the buttons.
+     */
+    private void enableOptionsVideo() {
+        cmbFrameRate.setEnabled(true);
+        cmbVideoCodec.setEnabled(true);
+        cmbAspectRatio.setEnabled(true);
+    }
+
+    /**
+     * Method that adds action to the buttons.
+     */
+    private void disableOptionsVideo() {
+        cmbFrameRate.setEnabled(false);
+        cmbVideoCodec.setEnabled(false);
+        cmbAspectRatio.setEnabled(false);
     }
 
     /**
@@ -118,7 +178,6 @@ public class JPanelSearchVideo extends JPanel {
      * @param cmb is a JComboBox class component
      */
     private void addItemsComboBox(String[] myItems, JComboBox cmb) {
-
         for (String item : myItems) {
             cmb.addItem(item);
         }
@@ -138,6 +197,20 @@ public class JPanelSearchVideo extends JPanel {
         constraints.insets = new Insets(2, 2, 2, 2);
         constraints.anchor = align;
         add(component, constraints);
+    }
+
+    /**
+     * The txtDuration method get String of txtField selected.
+     */
+    public JTextField getTxtAudioSampleRate() {
+        return txtAudioSampleRate;
+    }
+
+    /**
+     * The txtDuration method get String of txtField selected.
+     */
+    public JTextField getTxtDuration() {
+        return txtDuration;
     }
 
     /**
@@ -176,16 +249,33 @@ public class JPanelSearchVideo extends JPanel {
     }
 
     /**
-     * The getCmbDimension method get String of ComboBox selected.
-     */
-    public String getCmbDimension() {
-        return cmbDimension.getSelectedItem().toString();
-    }
-
-    /**
      * The getCmbExtension method get String of ComboBox selected.
      */
     public String getCmbExtension() {
         return cmbExtension.getSelectedItem().toString();
+    }
+
+    /**
+     * Gets the status from radioConvertVideo.
+     * @return boolean value, true if radioConvertVideo is active and false if not activated.
+     */
+    public boolean isVideo() {
+        if (radioVideo.isSelected()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Gets the status from radioStereo.
+     * @return boolean value, true if radioStereo is active and false if not activated.
+     */
+    public boolean isStereo() {
+        if (radioStereo.isSelected()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
