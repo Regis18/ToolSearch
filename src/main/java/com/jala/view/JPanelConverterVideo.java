@@ -20,6 +20,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import javax.swing.border.Border;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -29,7 +30,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
 /**
  * Module view, UI/JPanelConverterImage.
@@ -186,28 +186,28 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         constraints = new GridBagConstraints();
         setLayout(gridBag);
 
-        lblTypeConversion = new JLabel("Type Conversion:");
+        lblTypeConversion = new CustomLabel("Type Conversion: ");
         addComponent(lblTypeConversion, 0, 0, 1, 1);
 
-        lblPathFileOrigin = new JLabel("Path Origin File:   ");
+        lblPathFileOrigin = new CustomLabel("Path Origin File: ");
         addComponent(lblPathFileOrigin, 0, 1, 1, 1);
 
-        lblPathFolderDestiny = new JLabel("Folder Destiny");
+        lblPathFolderDestiny = new CustomLabel("Folder Destiny: ");
         addComponent(lblPathFolderDestiny, 0, 2, 1, 1);
 
-        lblFileName = new JLabel("File Name");
+        lblFileName = new CustomLabel("File Name: ");
         addComponent(lblFileName, 0, 3, 1, 1);
 
-        lblExtension = new JLabel("Extension");
+        lblExtension = new CustomLabel("Extension: ");
         addComponent(lblExtension, 3, 3, 1, 1);
 
-        lblAudioChannel = new JLabel("AudioChannel:  ");
+        lblAudioChannel = new CustomLabel("AudioChannel: ");
         addComponent(lblAudioChannel, 0, 5, 1, 1);
 
-        lblResolutionVideo = new JLabel("Video Resolution: ");
+        lblResolutionVideo = new CustomLabel("Video Resolution: ");
         addComponent(lblResolutionVideo, 0, 6, 1, 1);
 
-        lblFrameRate = new JLabel("Frame Rate");
+        lblFrameRate = new CustomLabel("Frame Rate: ");
         addComponent(lblFrameRate, 3, 6, 1, 1);
 
         lblSeparatorSpace = new JLabel("   ");
@@ -216,13 +216,13 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         lblSeparatorSpace2 = new JLabel("   ");
         addComponent(lblSeparatorSpace2, 5, 1, 1, 1);
 
-        lblBitRate = new JLabel("Bit Rate: ");
+        lblBitRate = new CustomLabel("Bit Rate: ");
         addComponent(lblBitRate, 0, 7, 1, 1);
 
-        lblSampleRate = new JLabel("Sample Rate: ");
+        lblSampleRate = new CustomLabel("Sample Rate: ");
         addComponent(lblSampleRate, 3, 7, 1, 1);
 
-        txtPathFileOrigin = new JTextField("");
+        txtPathFileOrigin = new JTextField(" ");
         addComponent(txtPathFileOrigin, 1, 1, 4, 1);
 
         txtFolderDestiny = new JTextField();
@@ -231,8 +231,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         txtFileName = new JTextField();
         addComponent(txtFileName, 1, 3, 1, 1);
 
-        cmbExtension = new JComboBox();
-        cmbExtension.addItem("");
+        cmbExtension = new CustomJCombo();
+        cmbExtension.addItem(" ");
         cmbExtension.addItem("mp3");
         cmbExtension.addItem("wma");
         cmbExtension.addItem("aac");
@@ -245,8 +245,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbExtension.addItem("MOV");
         addComponent(cmbExtension, 4, 3, 1, 1);
 
-        cmbVideoResolution = new JComboBox();
-        cmbVideoResolution.addItem("");
+        cmbVideoResolution = new CustomJCombo();
+        cmbVideoResolution.addItem(" ");
         cmbVideoResolution.addItem("ntsc    (720 X 480)");
         cmbVideoResolution.addItem("pal     (720 X 576)");
         cmbVideoResolution.addItem("film    (352 X 240)");
@@ -277,8 +277,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbVideoResolution.addItem("uhd4320 (7680 X 4320)");
         addComponent(cmbVideoResolution, 1, 6, 1, 1);
 
-        cmbFrameRate = new JComboBox();
-        cmbFrameRate.addItem("");
+        cmbFrameRate = new CustomJCombo();
+        cmbFrameRate.addItem(" ");
         cmbFrameRate.addItem("30");
         cmbFrameRate.addItem("60");
         cmbFrameRate.addItem("29.97");
@@ -286,8 +286,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbFrameRate.addItem("24.976");
         addComponent(cmbFrameRate, 4, 6, 1, 1);
 
-        cmbBitRate = new JComboBox();
-        cmbBitRate.addItem("");
+        cmbBitRate = new CustomJCombo();
+        cmbBitRate.addItem(" ");
         cmbBitRate.addItem("4 K");
         cmbBitRate.addItem("8 K");
         cmbBitRate.addItem("32 K");
@@ -297,7 +297,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbBitRate.addItem("320 K");
         addComponent(cmbBitRate, 1, 7, 1, 1);
 
-        cmbSampleRate = new JComboBox();
+        cmbSampleRate = new CustomJCombo();
         cmbSampleRate.addItem("");
         cmbSampleRate.addItem("8000 Hz");
         cmbSampleRate.addItem("11025 Hz");
@@ -310,17 +310,17 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbSampleRate.addItem("96000 Hz");
         addComponent(cmbSampleRate, 4, 7, 1, 1);
 
-        radioStereo = new JRadioButton("Stereo      ",true);
+        radioStereo = new JRadioButton("Stereo",true);
         addComponent(radioStereo, 1, 5, 1, 1);
 
-        radioMono = new JRadioButton("Mono ",false);
+        radioMono = new JRadioButton("Mono",false);
         addComponent(radioMono, 3, 5, 1, 1);
 
-        radioConvertVideo = new JRadioButton("Video ",true);
+        radioConvertVideo = new JRadioButton("Video",true);
         radioConvertVideo.addActionListener(this);
         addComponent(radioConvertVideo, 1, 0, 1, 1);
 
-        radioConvertAudio = new JRadioButton("Audio ",false);
+        radioConvertAudio = new JRadioButton("Audio",false);
         radioConvertAudio.addActionListener(this);
         addComponent(radioConvertAudio, 3, 0, 1, 1);
 
@@ -359,7 +359,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weighty = 1.0;
-        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.insets = new Insets(2, 2, 2, 2);
         this.add(Component , constraints);
     }
 
@@ -440,7 +440,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * method that enables audio and video conversion options.
+     * Method that enables audio and video conversion options.
      */
     private void enableOptionsAudio() {
         cmbBitRate.setEnabled(true);
@@ -450,7 +450,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * method that disables audio and video conversion options.
+     * Method that disables audio and video conversion options.
      */
     private void disableOptionsAudio() {
         cmbBitRate.setEnabled(false);
