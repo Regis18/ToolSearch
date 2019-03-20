@@ -12,8 +12,8 @@
 
 package com.jala.view;
 
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+import com.jala.view.player.VideoMusicPlayer;
+import java.util.ArrayList;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -21,6 +21,9 @@ import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -37,9 +40,10 @@ import javax.swing.JFileChooser;
 public class JPanelSearchGral extends JPanel implements ActionListener {
     private JLabel lblPath;
     private JTextField txtPath;
-    private JButton btnSearch, btnSearchAdvanced, btnPathFolder;
+    private JButton btnSearch, btnPlay, btnPathFolder;
     private JTableResult tbSearchGral;
     private Border border;
+    private ArrayList myListPlayer = new ArrayList();
 
     /**
      * Class constructor.
@@ -86,8 +90,8 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      * Gets the advanced search button.
      * @return btnSearchAdvanced, the Advanced Search button.
      */
-    public JButton getBtnSearchAdvanced() {
-        return btnSearchAdvanced;
+    public JButton getBtnPlay() {
+        return btnPlay;
     }
 
      /**
@@ -105,8 +109,11 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlNorth = pnlCriteria();
         this.add(pnlNorth, BorderLayout.NORTH);
 
-        JPanel pnlSouth = pnlTableResult();
-        this.add(pnlSouth, BorderLayout.CENTER);
+        JPanel pnlCentral = pnlTableResult();
+        this.add(pnlCentral, BorderLayout.CENTER);
+
+        JPanel pnlSouth = pnlButtonAdvanced();
+        this.add(pnlSouth, BorderLayout.SOUTH);
     }
 
     /**
@@ -140,14 +147,11 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      * @return pnlButtonAdvanced the Advanced button panel.
      */
     private JPanel pnlButtonAdvanced() {
-
         JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btnSearchAdvanced = new JButton("Advanced");
-        pnlSearchAdvanced.add(btnSearchAdvanced);
-        btnSearchAdvanced.setVisible(false);
+        btnPlay = new JButton("Play");
+        pnlSearchAdvanced.add(btnPlay);
+        btnPlay.addActionListener(this);
         return pnlSearchAdvanced;
-
-        //TODO implement the add actionListener to this button.
     }
 
     /**
@@ -179,6 +183,14 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 txtPath.setText("" + chooser.getSelectedFile());
             }
+        }if (e.getSource().equals(btnPlay)) {
+            myListPlayer.clear();
+            for(int i = 0; i < tbSearchGral.getRowCount(); i++){
+                if(tbSearchGral.getValueAt(i,10).toString().equals("true")){
+                    myListPlayer.add(tbSearchGral.getValueAt(i,1));
+                }
+            }
+            VideoMusicPlayer listPlayer= new VideoMusicPlayer(myListPlayer);
         }
     }
 }
