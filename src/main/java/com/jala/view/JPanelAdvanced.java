@@ -16,21 +16,13 @@ import com.toedter.calendar.JDateChooser;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.util.Calendar;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 /**
  * Module view, ui/JPanelAdvanced.
@@ -54,104 +46,105 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
      * Sets the path field for the search location.
      * @param txtPath, the location where to search.
      */
-    public void setTxtPath(JTextField txtPath) {
-        this.txtPath = txtPath;
+    public void setTxtPath(String txtPath) {
+        this.txtPath.setText(txtPath);
+        ;
     }
 
     /**
      * Sets the File Name for the search location.
      * @param txtFileName, the location where to search.
      */
-    public void setTxtFileName(JTextField txtFileName) {
-        this.txtFileName = txtFileName;
+    public void setTxtFileName(String txtFileName) {
+        this.txtFileName.setText(txtFileName);
     }
 
     /**
      * Sets the Extension for the search location.
      * @param txtExtension, the location where to search.
      */
-    public void setTxtExtension(JTextField txtExtension) {
-        this.txtExtension = txtExtension;
+    public void setTxtExtension(String txtExtension) {
+        this.txtExtension.setText(txtExtension);
     }
 
     /**
      * Sets the Owner for the search location.
      * @param txtOwner, the location where to search.
      */
-    public void setTxtOwner(JTextField txtOwner) {
-        this.txtOwner = txtOwner;
+    public void setTxtOwner(String txtOwner) {
+        this.txtOwner.setText(txtOwner);
     }
 
     /**
      * Sets the Hidden for the search location.
      * @param cmbHidden, the location where to search.
      */
-    public void setCmbHidden(JComboBox cmbHidden) {
-        this.cmbHidden = cmbHidden;
+    public void setCmbHidden(String cmbHidden) {
+        this.cmbHidden.setActionCommand(cmbHidden);
     }
 
     /**
      * Sets the Read Only for the search location.
      * @param comboReadOnly, the location where to search.
      */
-    public void setComboReadOnly(JComboBox comboReadOnly) {
-        this.comboReadOnly = comboReadOnly;
+    public void setComboReadOnly(String comboReadOnly) {
+        this.comboReadOnly.setActionCommand(comboReadOnly);
     }
 
     /**
      * Sets the Type Size File for the search location.
      * @param comboTypeSizeFile, the location where to search.
      */
-    public void setComboTypeSizeFile(JComboBox comboTypeSizeFile) {
-        this.comboTypeSizeFile = comboTypeSizeFile;
+    public void setComboTypeSizeFile(String comboTypeSizeFile) {
+        this.comboTypeSizeFile.setActionCommand(comboTypeSizeFile);
     }
 
     /**
      * Sets the Date Create for the search location.
      * @param dateCreateStar, the location where to search.
      */
-    public void setDateCreateStar(JDateChooser dateCreateStar) {
-        this.dateCreateStar = dateCreateStar;
+    public void setDateCreateStar(String dateCreateStar) {
+        this.dateCreateStar.setDateFormatString(dateCreateStar);
     }
 
     /**
      * Sets the Date Create End for the search location.
      * @param dateCreateEnd, the location where to search.
      */
-    public void setDateCreateEnd(JDateChooser dateCreateEnd) {
-        this.dateCreateEnd = dateCreateEnd;
+    public void setDateCreateEnd(String dateCreateEnd) {
+        this.dateCreateEnd.setDateFormatString(dateCreateEnd);
     }
 
     /**
      * Sets the Date Last Begin for the search location.
      * @param dateLastModBegin, the location where to search.
      */
-    public void setDateLastModBegin(JDateChooser dateLastModBegin) {
-        this.dateLastModBegin = dateLastModBegin;
+    public void setDateLastModBegin(String dateLastModBegin) {
+        this.dateLastModBegin.setDateFormatString(dateLastModBegin);
     }
 
     /**
      * Sets the Date Last End for the search location.
      * @param dateLastModEnd, the location where to search.
      */
-    public void setDateLastModEnd(JDateChooser dateLastModEnd) {
-        this.dateLastModEnd = dateLastModEnd;
+    public void setDateLastModEnd(String dateLastModEnd) {
+        this.dateLastModEnd.setDateFormatString(dateLastModEnd);
     }
 
     /**
      * Sets the Date Last Acces Begin for the search location.
      * @param dateLatterAccesBegin, the location where to search.
      */
-    public void setDateLatterAccesBegin(JDateChooser dateLatterAccesBegin) {
-        this.dateLatterAccesBegin = dateLatterAccesBegin;
+    public void setDateLatterAccesBegin(String dateLatterAccesBegin) {
+        this.dateLatterAccesBegin.setDateFormatString(dateLatterAccesBegin);
     }
 
     /**
      * Sets the Date Last Acces End for the search location.
      * @param dateLatterAccesEnd, the location where to search.
      */
-    public void setDateLatterAccesEnd(JDateChooser dateLatterAccesEnd) {
-        this.dateLatterAccesEnd = dateLatterAccesEnd;
+    public void setDateLatterAccesEnd(String dateLatterAccesEnd) {
+        this.dateLatterAccesEnd.setDateFormatString(dateLatterAccesEnd);
     }
 
     /**
@@ -534,6 +527,33 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 txtPath.setText("" + chooser.getSelectedFile());
             }
+        }
+    }
+
+    /**
+     * Create panel for buttons
+     */
+    private void btnJdialog() {
+
+        JTextField firstName = new JTextField();
+        JTextField lastName = new JTextField();
+        JPasswordField password = new JPasswordField();
+        final JComponent[] inputs = new JComponent[] {
+                new JLabel("First"),
+                firstName,
+                new JLabel("Last"),
+                lastName,
+                new JLabel("Password"),
+                password
+        };
+        int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
+        if (result == JOptionPane.OK_OPTION) {
+            System.out.println("You entered " +
+                    firstName.getText() + ", " +
+                    lastName.getText() + ", " +
+                    password.getText());
+        } else {
+            System.out.println("User canceled / closed the dialog, result = " + result);
         }
     }
 }
