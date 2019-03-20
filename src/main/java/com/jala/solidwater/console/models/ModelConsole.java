@@ -65,6 +65,10 @@ public class ModelConsole {
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
         criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-hd"));
         criteria.setReadonly(setValueOnHiddenOrReadOnlyCriteria(validCommand, "-ro"));
+        criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, "-fdc"));
+        criteria.setCreationDateTo(setValueIfExistCommand(validCommand, "-tdc"));
+        criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, "-fmc"));
+        criteria.setModificationDateTo(setValueIfExistCommand(validCommand, "-tmc"));
 
         SearchFile searchFile = new SearchFile();
         ArrayList<Asset> listFileSearch = new ArrayList<>();

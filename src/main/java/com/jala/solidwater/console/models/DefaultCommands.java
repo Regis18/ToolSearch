@@ -50,12 +50,21 @@ public class DefaultCommands {
         Command commandForSize = new Command("-s", "size", "Size of the file");
         Command commandForHidden = new Command("-hd", "hidden", "This command allows the values true and false");
         Command commandForReadOnly = new Command("-ro", "readOnly", "This command allows the values Yes and No");
+        Command commandFromDateCreation = new Command("-fdc", "from date creation",
+                "This command allows set a date to search the file from the date needed in formmat yyyy-mm-dd");
+        Command commandToDateCreateion = new Command("-tdc", "to date creation", "");
+        Command commandFromDateModified = new Command("-fdm", "From to date modified", "");
+        Command commandToDateModified = new Command("-tdm", "to date modified", "");
         defaultCommands.add(commandForPath);
         defaultCommands.add(commandForFileName);
         defaultCommands.add(commandForExtension);
         defaultCommands.add(commandForSize);
         defaultCommands.add(commandForHidden);
         defaultCommands.add(commandForReadOnly);
+        defaultCommands.add(commandFromDateCreation);
+        defaultCommands.add(commandToDateCreateion);
+        defaultCommands.add(commandFromDateModified);
+        defaultCommands.add(commandToDateModified);
         return defaultCommands;
     }
 }
