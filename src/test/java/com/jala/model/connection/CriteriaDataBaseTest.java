@@ -38,9 +38,9 @@ public class CriteriaDataBaseTest {
 	@Test
 	public void loadCriteria() {
 		CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
-		CriteriaSearch criteria = new CriteriaSearch("C:\\Users\\Admin\\Desktop");
+		/*CriteriaSearch criteria = new CriteriaSearch("C:\\Users\\Admin\\Desktop");
 		criteria.setNameCriteria("Enrique");
-		criteriaDataBase.saveCriteria(criteria);
+		criteriaDataBase.saveCriteria(criteria);*/
 		List<CriteriaName> criteriaName;
 		criteriaName = criteriaDataBase.loadCriteria();
 		for (int i = 0; i < criteriaName.size(); i++) {

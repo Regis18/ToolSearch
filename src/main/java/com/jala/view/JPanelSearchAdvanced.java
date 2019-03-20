@@ -66,6 +66,14 @@ public class JPanelSearchAdvanced extends JPanel {
     }
 
     /**
+     * Get the table of database.
+     * @return
+     */
+    public JTableDB getTbDataBase() {
+        return tbDataBase;
+    }
+
+    /**
      * Class constructor.
      * @param layout define the main layout.
      */

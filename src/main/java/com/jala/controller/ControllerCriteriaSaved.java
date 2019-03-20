@@ -15,10 +15,13 @@ package com.jala.controller;
 import com.jala.model.connection.CriteriaDataBase;
 import com.jala.model.criteria.CriteriaName;
 import com.jala.model.criteria.CriteriaSearch;
+import com.jala.model.search.TernaryBooleanEnum;
 import com.jala.utils.Logs;
+import com.jala.view.CustomLabel;
 import com.jala.view.JPanelSearchAdvanced;
 import org.apache.log4j.Logger;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -27,6 +30,7 @@ public class ControllerCriteriaSaved implements ActionListener {
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
+
     /** Criteria search to charge. */
     private CriteriaSearch criteriaSearch;
 
@@ -36,12 +40,15 @@ public class ControllerCriteriaSaved implements ActionListener {
     /** Initialize criteriaDataBase */
     private CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
 
+    private ControllerSearchAdvanced controllerSearchAdvanced;
+
     /**
      * ControllerCriteriaSaved and activates actionListener.
      * @param viewAdvanced
      */
-    public ControllerCriteriaSaved(JPanelSearchAdvanced viewAdvanced) {
+    public ControllerCriteriaSaved(JPanelSearchAdvanced viewAdvanced, ControllerSearchAdvanced controllerSearchAdvanced) {
         log.info("Initialize the Control of Search Advanced");
+        this.controllerSearchAdvanced = controllerSearchAdvanced;
         this.viewAdvanced = viewAdvanced;
         actionListener();
     }
@@ -51,56 +58,109 @@ public class ControllerCriteriaSaved implements ActionListener {
      */
     private void actionListener() {
         log.info("Initialize the adding of listener for the buttons in Search Advanced ");
-        //TODO put the buttons of Delete and Select.
+        viewAdvanced.getBtnCharge().addActionListener(this);
+        viewAdvanced.getBtnDelete().addActionListener(this);
+        viewAdvanced.getJPanelAdvanced().getBtnSave().addActionListener(this);
         log.info("Finish the actionListener");
     }
 
     /**
      * This method take the criteria search and send to Database.
-     * @param criteriaSearch
      */
-    private void sendCriteriaToDB(CriteriaSearch criteriaSearch) {
+    private void sendCriteriaToDB(String name) {
+        controllerSearchAdvanced.saveCriteria();
+        criteriaSearch = controllerSearchAdvanced.getCriteriaSearch();
+        criteriaSearch.setNameCriteria(name);
         criteriaDataBase.saveCriteria(criteriaSearch);
+        setDBIntoTable();
     }
-    private void deleteCriteria(int id) {
-        List<CriteriaName> criteria = criteriaDataBase.deleteCriteria(id);
-        //TODO set to tableDB
+    private void deleteCriteria() {
+        int row = viewAdvanced.getTbDataBase().getSelectedRow();
+        if (row != -1) {
+            int id = Integer.parseInt(viewAdvanced.getTbDataBase().getValueAt(row, 1).toString());
+            criteriaDataBase.deleteCriteria(id);
+            setDBIntoTable();
+        }
+
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        //TODO button
+        if (event.getSource() == viewAdvanced.getJPanelAdvanced().getBtnSave()) {
+            JTextField criteriaName = new JTextField();
+            final JComponent[] inputs = new JComponent[] {
+                    new CustomLabel("Criteria Name: "),
+                    criteriaName
+            };
+            int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                sendCriteriaToDB(criteriaName.getText());
+            }
+
+        } else if (event.getSource() == viewAdvanced.getBtnCharge()) {
+            selectCriteria();
+        } else if (event.getSource() == viewAdvanced.getBtnDelete()) {
+            deleteCriteria();
+        }
     }
     private void selectCriteria() {
-        //TODO recover ID from table
-        int id = 0;
-        criteriaSearch = criteriaDataBase.getCriteria(id);
-        setCriteria();
+        int row = viewAdvanced.getTbDataBase().getSelectedRow();
+        if (row != -1) {
+            int id = Integer.parseInt(viewAdvanced.getTbDataBase().getValueAt(row, 1).toString());
+            criteriaSearch = criteriaDataBase.getCriteria(id);
+            setCriteria();
+        }
     }
 
     private void setCriteria() {
-        //TODO set the parameters.
+        viewAdvanced.getJPanelAdvanced().setTxtPath(criteriaSearch.getPath());
+        viewAdvanced.getJPanelAdvanced().setTxtFileName(criteriaSearch.getFileName());
+        viewAdvanced.getJPanelAdvanced().setDateCreateStar(criteriaSearch.getCreationDateFrom());
+        viewAdvanced.getJPanelAdvanced().setDateCreateEnd(criteriaSearch.getCreationDateTo());
+        viewAdvanced.getJPanelAdvanced().setDateLastModBegin(criteriaSearch.getModificationDateFrom());
+        viewAdvanced.getJPanelAdvanced().setDateLastModEnd(criteriaSearch.getModificationDateTo());
+        viewAdvanced.getJPanelAdvanced().setDateLatterAccesBegin(criteriaSearch.getLastDateFrom());
+        viewAdvanced.getJPanelAdvanced().setDateLatterAccesEnd(criteriaSearch.getLastDateTo());
+        viewAdvanced.getJPanelAdvanced().setTxtOwner(criteriaSearch.getOwner());
+        JCheckBox jCheckBox = new JCheckBox();
+        jCheckBox.setSelected(criteriaSearch.isSizeCompareOption());
+        viewAdvanced.getJPanelAdvanced().setFileMajors(jCheckBox);
+        viewAdvanced.getJPanelAdvanced().setCmbHidden(getMessage(criteriaSearch.getHidden(),true));
+        viewAdvanced.getJPanelAdvanced().setComboReadOnly(getMessage(criteriaSearch.getReadonly(),false));
+        if (!criteriaSearch.getSize().equals("")) {
+            JSpinner spinner = new JSpinner();
+            spinner.setValue(Double.parseDouble(criteriaSearch.getSize()) / 1023);
+            viewAdvanced.getJPanelAdvanced().setSpinControlSizeFile(spinner);
+        }
     }
 
-    /**
-     * Save path, fileName and extension in criteriaSearch.
-     */
-    private void saveCriteria() {
-        log.info("Saving data of Path, File Name and Extension in Criteria");
-        criteriaSearch = new CriteriaSearch(viewAdvanced.getJPanelAdvanced().getTxtPath());
-        criteriaSearch.setFileName(viewAdvanced.getJPanelAdvanced().getTxtFileName());
-        criteriaSearch.setExtension(viewAdvanced.getJPanelAdvanced().getTxtExtension());
-        criteriaSearch.setOwner(viewAdvanced.getJPanelAdvanced().getTxtOwner());
-        criteriaSearch.setHidden(getEnumHidden());
-        criteriaSearch.setReadonly(getEnumReadOnly());
-        criteriaSearch.setCreationDateFrom(viewAdvanced.getJPanelAdvanced().getDateCreateStar());
-        criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
-        criteriaSearch.setModificationDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
-        criteriaSearch.setModificationDateTo(viewAdvanced.getJPanelAdvanced().getDateLastModEnd());
-        criteriaSearch.setLastDateFrom(viewAdvanced.getJPanelAdvanced().getDateLatterAccesBegin());
-        criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd());
-        criteriaSearch.setSize(convertSize());
-        criteriaSearch.setSizeCompareOption(!viewAdvanced.getJPanelAdvanced().isMajorThanFile());
-        log.info("Information saved");
+    private String getMessage(TernaryBooleanEnum enums, boolean isHidden) {
+        String result;
+        if (enums == TernaryBooleanEnum.OnlyTrue) {
+            if (isHidden) {
+                result = "Hidden";
+            } else {
+                result = "Read Only";
+            }
+        } else if (enums == TernaryBooleanEnum.OnlyFalse){
+            if (isHidden) {
+                result = "Not Hidden";
+            } else {
+                result = "Not Read Only";
+            }
+        } else {
+            result = "All";
+        }
+        return result;
+    }
+    public void setDBIntoTable() {
+        viewAdvanced.getTbDataBase().removeRow();
+        List<CriteriaName> result = criteriaDataBase.loadCriteria();
+        if (result != null) {
+            for (int i = 0; i < result.size(); i++) {
+                viewAdvanced.getTbDataBase().addResultRow(Integer.toString(i), Integer.toString(result.get(i).getId()), result.get(i).getName(), result.get(i).getDateCreation());
+
+            }
+        }
     }
 }
