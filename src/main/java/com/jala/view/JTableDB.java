@@ -57,8 +57,6 @@ public class JTableDB extends JTable{
      */
     public void removeRow() {
         int rowCount = defaultTableM.getRowCount();
-
-        //Remove rows one by one from the end of the table.
         for (int index = rowCount - 1; index >= 0; index--) {
             defaultTableM.removeRow(index);
         }
