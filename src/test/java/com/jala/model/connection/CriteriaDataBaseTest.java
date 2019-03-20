@@ -66,7 +66,7 @@ public class CriteriaDataBaseTest {
 	@Test
 	public void deleteCriteria() {
 		CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
-		List<CriteriaName> criteria= criteriaDataBase.deleteCriteria(2);
+		List<CriteriaName> criteria = criteriaDataBase.deleteCriteria(2);
 		for (int i = 0; i < criteria.size(); i++) {
 			System.out.println(criteria.get(i).getName());
 		}
