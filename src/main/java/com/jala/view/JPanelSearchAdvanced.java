@@ -12,34 +12,34 @@
 
 package com.jala.view;
 
+import com.jala.view.player.VideoMusicPlayer;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.LayoutManager;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
 
 /**
  * Module view, ui/JPanelSearchAdvanced.
  * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
-public class JPanelSearchAdvanced extends JPanel {
+public class JPanelSearchAdvanced extends JPanel implements ActionListener {
     private JTableResult tbSearchAdvanced;
     private Border border;
     private JPanelAdvanced panelSearchAdvanced;
     private JTableDB tbDataBase;
     private JPanel panelInferior;
-    private JButton btnDelete, btnCharge, btnSave;
+    private JButton btnDelete, btnCharge, btnSave, btnPlay;
     private JRadioButton radioVideo, radioAudio;
-
+    private ArrayList myListPlayer = new ArrayList();
 
     /**
      * Gets the delete button.
@@ -63,6 +63,14 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     public JButton getBtnCharge() {
         return btnCharge;
+    }
+
+    /**
+     * Gets the advanced search button.
+     * @return btnSearchAdvanced, the Advanced Search button.
+     */
+    public JButton getBtnPlay() {
+        return btnPlay;
     }
 
     /**
@@ -114,7 +122,8 @@ public class JPanelSearchAdvanced extends JPanel {
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.SOUTH);
 
-
+        JPanel pnlSouth = pnlPlayBtn();
+        this.add(pnlSouth, BorderLayout.EAST);
     }
 
     /**
@@ -156,6 +165,18 @@ public class JPanelSearchAdvanced extends JPanel {
     }
 
     /**
+     * Return the instance of center panel with the Advanced button.
+     * @return pnlButtonAdvanced the Advanced button panel.
+     */
+    private JPanel pnlPlayBtn() {
+        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        btnPlay = new JButton("Play");
+        pnlSearchAdvanced.add(btnPlay);
+        btnPlay.addActionListener(this);
+        return pnlSearchAdvanced;
+    }
+
+    /**
      * Create panel for buttons
      */
     private void pnlButtonInferiorDB() {
@@ -175,5 +196,17 @@ public class JPanelSearchAdvanced extends JPanel {
         JPanel pnlMessage = new JPanel(new FlowLayout(FlowLayout.LEFT));
         pnlMessage.setPreferredSize(new Dimension(200, 50));
         return pnlMessage;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(btnPlay)) {
+            myListPlayer.clear();
+            for(int i = 0; i < tbSearchAdvanced.getRowCount(); i++){
+                if(tbSearchAdvanced.getValueAt(i,10).toString().equals("true")){
+                    myListPlayer.add(tbSearchAdvanced.getValueAt(i,1));
+                }
+            }
+            VideoMusicPlayer listPlayer= new VideoMusicPlayer(myListPlayer);
+        }
     }
 }
