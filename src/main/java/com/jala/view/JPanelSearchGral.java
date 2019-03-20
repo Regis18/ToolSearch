@@ -117,7 +117,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
         TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Search");
         titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 14));
+        titleBorder.setTitleFont(new Font("Arial", 1, 10));
 
         pnlPath.setBorder(titleBorder);
         lblPath = new CustomLabel();
@@ -159,7 +159,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search General");
         pnlSearchGral.setBorder(titleBorder);
         titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 14));
+        titleBorder.setTitleFont(new Font("Arial", 1, 10));
 
         tbSearchGral = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchGral);

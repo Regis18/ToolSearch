@@ -41,7 +41,7 @@ public class CustomLabel extends JLabel {
      * Init of constructors.
      */
     public void init() {
-        setFont(new java.awt.Font("Calibri", 1, 14));
+        setFont(new java.awt.Font("Calibri", 1, 12));
         setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         setVisible(true);

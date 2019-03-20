@@ -26,6 +26,6 @@ public class CustomJCombo extends JComboBox {
      * Class constructor for all JComboBox.
      */
     public CustomJCombo() {
-        setFont(new Font("Calibri" , Font.PLAIN , 13));
+        setFont(new Font("Calibri" , Font.PLAIN , 11));
     }
 }

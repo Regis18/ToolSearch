@@ -473,12 +473,10 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
 
         lblSeparatorEmpty2 = new JLabel("   ");
         addComponent(lblSeparatorEmpty2, 2, 8, 1, 1);
-        lblSeparatorEmpty2 = new JLabel("   ");
-        addComponent(lblSeparatorEmpty2, 2, 9, 1, 1);
         btnSearchAdvanced = new JButton("Search");
-        addComponent(btnSearchAdvanced, 1, 10, 1, 1);
+        addComponent(btnSearchAdvanced, 1, 9, 1, 1);
         btnSave = new JButton("Save");
-        addComponent(btnSave, 4, 10, 1, 1);
+        addComponent(btnSave, 5, 9, 1, 1);
 
         dateCreateStar = new JDateChooser();
         dateCreateStar.setDateFormatString("yyyy-MM-dd");
@@ -520,7 +518,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         constraints.gridwidth = sizeFieldX;
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(2, 2, 2, 2);
+        constraints.insets = new Insets(1, 1, 1, 1);
         this.add (Component , constraints);
     }
 

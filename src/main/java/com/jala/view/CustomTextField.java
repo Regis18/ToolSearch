@@ -41,7 +41,7 @@ public class CustomTextField extends JTextField {
      * Init of constructors.
      */
     public void init() {
-        setFont(new java.awt.Font("Calibri", 0, 13));
+        setFont(new java.awt.Font("Calibri", 0, 11));
         setHorizontalAlignment(JTextField.LEFT);
         setVisible(true);
     }
