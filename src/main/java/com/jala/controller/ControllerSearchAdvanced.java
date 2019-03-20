@@ -52,6 +52,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         this.viewAdvanced = viewAdvanced;
         actionListener();
     }
+    public ControllerSearchAdvanced() {}
 
     /**
      * Initialize the action listener of the btnSearch button.
@@ -79,7 +80,7 @@ public class ControllerSearchAdvanced implements ActionListener {
     /**
      * Save path, fileName and extension in criteriaSearch.
      */
-    private void saveCriteria() {
+    protected void saveCriteria() {
         log.info("Saving data of Path, File Name and Extension in Criteria");
         criteriaSearch = new CriteriaSearch(viewAdvanced.getJPanelAdvanced().getTxtPath());
         criteriaSearch.setFileName(viewAdvanced.getJPanelAdvanced().getTxtFileName());
@@ -133,10 +134,10 @@ public class ControllerSearchAdvanced implements ActionListener {
      * Method that returns a TernaryBooleanEnum value.
      * @return TernaryBooleanEnum.
      */
-    private TernaryBooleanEnum getEnumHidden() {
-        if(viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Not Hidden")) {
+    protected TernaryBooleanEnum getEnumHidden() {
+        if (viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Not Hidden")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Hidden")) {
+        } else if (viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Hidden")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else  {
             return TernaryBooleanEnum.ALL;
@@ -147,10 +148,10 @@ public class ControllerSearchAdvanced implements ActionListener {
      * Method that returns a TernaryBooleanEnum value.
      * @return TernaryBooleanEnum.
      */
-    private TernaryBooleanEnum getEnumReadOnly() {
-        if(viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Not Read Only")) {
+    protected TernaryBooleanEnum getEnumReadOnly() {
+        if (viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Not Read Only")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Read Only")) {
+        } else if (viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Read Only")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else  {
             return TernaryBooleanEnum.ALL;
@@ -160,7 +161,7 @@ public class ControllerSearchAdvanced implements ActionListener {
     /**
      * method that performs the conversion to Kb, Mb and Gb
      */
-    private String convertSize() {
+    protected String convertSize() {
          double value;
          if(viewAdvanced.getJPanelAdvanced().getComboTypeSizeFile().equals("Kb")) {
             value = Double.parseDouble(viewAdvanced.getJPanelAdvanced().getSpinControlSizeFile());
@@ -173,5 +174,13 @@ public class ControllerSearchAdvanced implements ActionListener {
              value = value * 1024 * 1024 * 1024;
          }
          return Double.toString(value);
+    }
+
+    /**
+     * Get the criteriaSearch of the Criteria advanced.
+     * @return
+     */
+    public CriteriaSearch getCriteriaSearch() {
+        return criteriaSearch;
     }
 }

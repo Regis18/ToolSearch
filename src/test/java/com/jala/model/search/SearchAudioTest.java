@@ -32,7 +32,7 @@ public class SearchAudioTest {
 	SearchAudio searchAudio;
 	@Before
 	public void setUp() {
-		criteria = new CriteriaSearchMultimedia("C:\\Users\\Admin\\Desktop\\PROG 02\\Videos");
+		criteria = new CriteriaSearchMultimedia("C:\\Users\\Admin\\Desktop\\o");
 	}
 
 	/**
@@ -41,8 +41,8 @@ public class SearchAudioTest {
 	 */
 	@Test
 	public void search_returnMP3_WhenSendPathMultimediaStereo() {
-		criteria.setExtension("mp3");
-		criteria.setChannel("stereo");
+		//criteria.setExtension("mp3");
+		//criteria.setChannel("stereo");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
 		for (int i = 0; i < result.size(); i++) {

@@ -69,7 +69,9 @@ public class ControllerMain implements ActionListener {
                     new ControllerSearch(viewApp.getpSearchGral());
                 } else if (viewApp.getContentPane().getComponent(0) == viewApp.getpSearchAdvanced()) {
                     log.info("Loading Search Advanced Form");
-                    new ControllerSearchAdvanced(viewApp.getpSearchAdvanced());
+                    ControllerSearchAdvanced control = new ControllerSearchAdvanced(viewApp.getpSearchAdvanced());
+                    ControllerCriteriaSaved controllerCriteriaSaved = new ControllerCriteriaSaved(viewApp.getpSearchAdvanced(), control);
+                    controllerCriteriaSaved.setDBIntoTable();
                 } else if (viewApp.getContentPane().getComponent(0) == viewApp.getpConverterImage()) {
                     log.info("Loading Converter Image Form");
 	                new ControllerConvert(viewApp.getpConverterImage());
