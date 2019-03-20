@@ -57,6 +57,7 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         TitledBorder advancedBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
         panelAdvanceSearch.setBorder(advancedBorder);
         panelAdvanceSearch.getBtnSearch().setVisible(false);
+        panelAdvanceSearch.getBtnSave().setVisible(false);
         panelAdvanceSearch.getTxtFieldExtension().setVisible(false);
         panelAdvanceSearch.getLblExtension().setVisible(false);
         this.add(panelAdvanceSearch, BorderLayout.CENTER);
