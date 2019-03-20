@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * This class defines the connection and creation of the database
+ * This class defines the connection and creation of the database.
  * @author by Cristian Lujan
  * @Version 0.0.1
  */
@@ -65,7 +65,7 @@ public class ConnectionDB {
         Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection("jdbc:sqlite:dataSearch.db");
         Statement state = connection.createStatement();
-        state.execute("CREATE TABLE if not exists criteriaSearch (id integer primary key autoincrement,criteria varchar(200));");
+        state.execute("CREATE TABLE if not exists criteriaSearchDB (id integer primary key autoincrement,criteria varchar(200));");
     }
 
     /**

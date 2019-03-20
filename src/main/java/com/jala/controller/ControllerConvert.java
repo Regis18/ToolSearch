@@ -21,6 +21,12 @@ import org.apache.log4j.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * ControllerConvert.
+ *
+ * @version 0.0.1
+ * @author Regis Humana
+ */
 public class ControllerConvert implements ActionListener {
 
 	/** It creates to follow up the instruction of the class*/
