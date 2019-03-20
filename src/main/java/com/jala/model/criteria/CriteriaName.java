@@ -12,25 +12,56 @@
 
 package com.jala.model.criteria;
 
+/**
+ * CriteriaName
+ * Save fields of DataBase to use in UI.
+ *
+ * @version 0.0.1
+ * @author Regis Humana.
+ */
 public class CriteriaName {
+
+	/** Save the name. */
 	private String name;
+
+	/** Save the creation. */
 	private String dateCreation;
+
+	/** Save the criteria id. */
 	private int id;
 
+	/**
+	 * Save the value of Name, dataCreation and ID.
+	 * @param name
+	 * @param dateCreation
+	 * @param id
+	 */
 	public CriteriaName(String name, String dateCreation, int id) {
 		this.name = name;
 		this.dateCreation = dateCreation;
 		this.id = id;
 	}
 
+	/**
+	 * Get name to send to the UI table.
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Get Date creation of the name of criteria.
+	 * @return
+	 */
 	public String getDateCreation() {
 		return dateCreation;
 	}
 
+	/**
+	 * Get the ID of criteria DB.
+	 * @return
+	 */
 	public int getId() {
 		return id;
 	}

@@ -85,6 +85,11 @@ public class QueryGeneral {
         prepared.execute();
     }
 
+    /**
+     * Obtains all of the values of the criteria.
+     * @return ResultSet result
+     * @throws SQLException
+     */
     public ResultSet obtainDB() throws SQLException {
         Statement state = connection.createStatement();
         ResultSet resultSet = ((Statement) state).executeQuery("select * from criteriaSearchDB");
