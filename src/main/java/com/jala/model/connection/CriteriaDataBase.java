@@ -16,6 +16,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.jala.data.QueryGeneral;
+import com.jala.model.criteria.CriteriaName;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.utils.Logs;
 import org.apache.log4j.Logger;
@@ -46,18 +47,17 @@ public class CriteriaDataBase {
 			log.error("Error in : " + event.getMessage(), event);
 		}
 	}
-	public CriteriaSearch loadCriteria() {
+	public List<CriteriaName> loadCriteria() {
 		ObjectMapper mapper = new ObjectMapper();
+		List<CriteriaName> result = new ArrayList<>();
 		try {
-			List<CriteriaSearch> criteriaSearch = new ArrayList<>();
+			CriteriaSearch criteriaSearch;
 			ResultSet resultSet = queryGeneral.obtainDB();
-			int i = 0;
-			while(resultSet.next())
-			{
-				System.out.println("id = " + resultSet.getInt("id"));
-				criteriaSearch.add(mapper.readValue(resultSet.getString("criteria"),CriteriaSearch.class));
-				System.out.println(criteriaSearch.get(i).getPath());
-				i++;
+			while (resultSet.next()) {
+				criteriaSearch = (mapper.readValue(resultSet.getString("criteria"), CriteriaSearch.class));
+				CriteriaName criteriaName = new CriteriaName(criteriaSearch.getNameCriteria(), criteriaSearch.getDateCreation(), resultSet.getInt("id"));
+				result.add(criteriaName);
+				System.out.println(resultSet.getInt("id"));
 			}
 		} catch (JsonMappingException event) {
 			log.error("Error in : " + event.getMessage(), event);
@@ -67,8 +67,30 @@ public class CriteriaDataBase {
 			log.error("Error in : " + event.getMessage(), event);
 		} catch (SQLException event) {
 			log.error("Error in : " + event.getMessage(), event);
-			System.out.println(event.getMessage());
 		}
-		return null;
+		return result;
+	}
+	public CriteriaSearch getCriteria(int id) {
+		ObjectMapper mapper = new ObjectMapper();
+		CriteriaSearch criteriaSearch = new CriteriaSearch(null);
+		try {
+
+
+			ResultSet resultSet = queryGeneral.selectCriteria(id);
+			criteriaSearch = (mapper.readValue(resultSet.getString(id), CriteriaSearch.class));
+
+
+
+
+		} catch (JsonMappingException event) {
+			log.error("Error in : " + event.getMessage(), event);
+		} catch (JsonParseException event) {
+			log.error("Error in : " + event.getMessage(), event);
+		} catch (IOException event) {
+			log.error("Error in : " + event.getMessage(), event);
+		} catch (SQLException event) {
+			log.error("Error in : " + event.getMessage(), event);
+		}
+		return criteriaSearch;
 	}
 }

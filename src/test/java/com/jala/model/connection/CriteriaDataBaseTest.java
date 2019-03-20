@@ -12,10 +12,14 @@
 
 package com.jala.model.connection;
 
+import com.jala.model.criteria.CriteriaName;
 import com.jala.model.criteria.CriteriaSearch;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class CriteriaDataBaseTest {
 
@@ -23,14 +27,28 @@ public class CriteriaDataBaseTest {
 	public void saveCriteria() {
 		CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
 		CriteriaSearch criteria = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\PROG 02");
+		criteria.setNameCriteria("Lucho");
 		criteriaDataBase.saveCriteria(criteria);
 	}
 
 	@Test
 	public void loadCriteria() {
 		CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
-		CriteriaSearch criteria = new CriteriaSearch("C:\\Users\\Admin\\Desktop");
-		criteriaDataBase.saveCriteria(criteria);
-		criteriaDataBase.loadCriteria();
+		/*CriteriaSearch criteria = new CriteriaSearch("C:\\Users\\Admin\\Desktop");
+		criteria.setNameCriteria("Enrique");
+		criteriaDataBase.saveCriteria(criteria);*/
+		List<CriteriaName> criteriaName;
+		criteriaName = criteriaDataBase.loadCriteria();
+		for (int i = 0; i < criteriaName.size(); i++) {
+			System.out.println(criteriaName.get(i).getId());
+		}
+
+	}
+
+	@Test
+	public void getCriteria() {
+		CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
+		CriteriaSearch criteriaSearch = criteriaDataBase.getCriteria(2);
+		System.out.println(criteriaSearch.getNameCriteria());
 	}
 }

@@ -56,9 +56,10 @@ public class QueryGeneral {
      * @return resultset
      * @throws SQLException
      */
-    public ResultSet displayData() throws SQLException {
-        Statement state = connection.createStatement();
-        ResultSet resultset = ((Statement) state).executeQuery("SELECT id, criteria fileName FROM criteriaSearchDB");
+    public ResultSet selectCriteria(int id) throws SQLException {
+        PreparedStatement prepared = connection.prepareStatement("SELECT criteria FROM criteriaSearchDB WHERE id=?;");
+        prepared.setInt(1, id);
+        ResultSet resultset = prepared.executeQuery();
         return resultset;
     }
 
@@ -79,7 +80,7 @@ public class QueryGeneral {
      * @throws SQLException
      */
     public void deleteCriteria(int idCriteria) throws SQLException {
-        PreparedStatement prepared = connection.prepareStatement("DELETE FROM criteriaSearch WHERE id = ?;");
+        PreparedStatement prepared = connection.prepareStatement("DELETE FROM criteriaSearchDB WHERE id = ?;");
         prepared.setInt(1,idCriteria);
         prepared.execute();
     }
@@ -88,10 +89,5 @@ public class QueryGeneral {
         Statement state = connection.createStatement();
         ResultSet resultSet = ((Statement) state).executeQuery("select * from criteriaSearchDB");
         return resultSet;
-        /*while(resultSet.next())
-        {
-            System.out.println("name = " + resultSet.getString("criteria"));
-            System.out.println("id = " + resultSet.getInt("id"));
-        }*/
     }
 }
