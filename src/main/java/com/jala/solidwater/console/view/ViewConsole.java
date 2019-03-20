@@ -49,11 +49,11 @@ public class ViewConsole {
         sizeColumns.add(11);
         sizeColumns.add(11);
         sizeColumns.add(6);
-        sizeColumns.add(7);
-        sizeColumns.add(7);
+        sizeColumns.add(8);
+        sizeColumns.add(10);
         sizeColumns.add(8);
         sizeColumns.add(8);
-        sizeColumns.add(6);
+        sizeColumns.add(7);
         rowCounter = 0;
         headTitle.add("Nº");
         headTitle.add("Path");
