@@ -27,13 +27,19 @@ public class ControllerCriteriaSaved implements ActionListener {
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
-
+    /** Criteria search to charge. */
     private CriteriaSearch criteriaSearch;
 
     /** ViewAdvanced: create a pointer of JPanelSearchAdvanced, the object will provide other class.*/
     private JPanelSearchAdvanced viewAdvanced;
+
+    /** Initialize criteriaDataBase */
     private CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
 
+    /**
+     * ControllerCriteriaSaved and activates actionListener.
+     * @param viewAdvanced
+     */
     public ControllerCriteriaSaved(JPanelSearchAdvanced viewAdvanced) {
         log.info("Initialize the Control of Search Advanced");
         this.viewAdvanced = viewAdvanced;
@@ -49,6 +55,10 @@ public class ControllerCriteriaSaved implements ActionListener {
         log.info("Finish the actionListener");
     }
 
+    /**
+     * This method take the criteria search and send to Database.
+     * @param criteriaSearch
+     */
     private void sendCriteriaToDB(CriteriaSearch criteriaSearch) {
         criteriaDataBase.saveCriteria(criteriaSearch);
     }
@@ -70,5 +80,27 @@ public class ControllerCriteriaSaved implements ActionListener {
 
     private void setCriteria() {
         //TODO set the parameters.
+    }
+
+    /**
+     * Save path, fileName and extension in criteriaSearch.
+     */
+    private void saveCriteria() {
+        log.info("Saving data of Path, File Name and Extension in Criteria");
+        criteriaSearch = new CriteriaSearch(viewAdvanced.getJPanelAdvanced().getTxtPath());
+        criteriaSearch.setFileName(viewAdvanced.getJPanelAdvanced().getTxtFileName());
+        criteriaSearch.setExtension(viewAdvanced.getJPanelAdvanced().getTxtExtension());
+        criteriaSearch.setOwner(viewAdvanced.getJPanelAdvanced().getTxtOwner());
+        criteriaSearch.setHidden(getEnumHidden());
+        criteriaSearch.setReadonly(getEnumReadOnly());
+        criteriaSearch.setCreationDateFrom(viewAdvanced.getJPanelAdvanced().getDateCreateStar());
+        criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
+        criteriaSearch.setModificationDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
+        criteriaSearch.setModificationDateTo(viewAdvanced.getJPanelAdvanced().getDateLastModEnd());
+        criteriaSearch.setLastDateFrom(viewAdvanced.getJPanelAdvanced().getDateLatterAccesBegin());
+        criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd());
+        criteriaSearch.setSize(convertSize());
+        criteriaSearch.setSizeCompareOption(!viewAdvanced.getJPanelAdvanced().isMajorThanFile());
+        log.info("Information saved");
     }
 }

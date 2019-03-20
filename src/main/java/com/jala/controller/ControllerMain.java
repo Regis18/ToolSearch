@@ -70,6 +70,7 @@ public class ControllerMain implements ActionListener {
                 } else if (viewApp.getContentPane().getComponent(0) == viewApp.getpSearchAdvanced()) {
                     log.info("Loading Search Advanced Form");
                     new ControllerSearchAdvanced(viewApp.getpSearchAdvanced());
+                    new ControllerCriteriaSaved(viewApp.getpSearchAdvanced());
                 } else if (viewApp.getContentPane().getComponent(0) == viewApp.getpConverterImage()) {
                     log.info("Loading Converter Image Form");
 	                new ControllerConvert(viewApp.getpConverterImage());
