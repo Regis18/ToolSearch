@@ -67,24 +67,24 @@ public class SearchCommon extends SearchBasic {
                 continue;
             }
             if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                if ((Date.valueOf(createFileDate(file)).before(Date.valueOf(criteria.getCreationDateFrom())))
-                        || (Date.valueOf(createFileDate(file)).after(Date.valueOf(criteria.getCreationDateTo())))) {
+                if ((Date.valueOf(preview.get(i).getCreationDate()).before(Date.valueOf(criteria.getCreationDateFrom())))
+                        || (Date.valueOf(preview.get(i).getCreationDate()).after(Date.valueOf(criteria.getCreationDateTo())))) {
                     continue;
                 }
             }
             if ((!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                if ((Date.valueOf(getFileLastModifiedDate(file)).before(Date.valueOf(criteria.getModificationDateFrom())))
-                        || (Date.valueOf(getFileLastModifiedDate(file))).after(Date.valueOf(criteria.getModificationDateTo()))) {
+                if ((Date.valueOf(preview.get(i).getModificationDate()).before(Date.valueOf(criteria.getModificationDateFrom())))
+                        || (Date.valueOf(preview.get(i).getModificationDate())).after(Date.valueOf(criteria.getModificationDateTo()))) {
                     continue;
                 }
             }
             if ((!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                if ((Date.valueOf(getFileLastAccessDate(file)).before(Date.valueOf(criteria.getLastDateFrom())))
-                        || (Date.valueOf(getFileLastAccessDate(file)).after(Date.valueOf(criteria.getLastDateTo())))) {
+                if ((Date.valueOf(preview.get(i).getLastDate()).before(Date.valueOf(criteria.getLastDateFrom())))
+                        || (Date.valueOf(preview.get(i).getFileName()).after(Date.valueOf(criteria.getLastDateTo())))) {
                     continue;
                 }
             }
-            if ((!criteria.getOwner().isEmpty()) && (!getFileOwner(path).contains(criteria.getOwner()))) {
+            if ((!criteria.getOwner().isEmpty()) && (!preview.get(i).getOwner().contains(criteria.getOwner()))) {
                 continue;
             }
             if ((!criteria.getSize().isEmpty())) {

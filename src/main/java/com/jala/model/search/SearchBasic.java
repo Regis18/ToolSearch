@@ -66,12 +66,12 @@ public abstract class SearchBasic implements ISearchable {
                             file.getName(),
                             FilenameUtils.getExtension(file.getName()),
                             file.isHidden(),
-                            getFileOwner(file.getPath()),
+                            getFileOwner(file),
                             String.valueOf(file.length()),
                             file.canWrite(),
-                            createFileDate(file),
-                            getFileLastModifiedDate(file),
-                            getFileLastAccessDate(file));
+                            fileDate(file,"Creation"),
+                            fileDate(file,"Modification"),
+                            fileDate(file, "LastAccess"));
                     result.add(asset);
                 }
             }
@@ -80,22 +80,24 @@ public abstract class SearchBasic implements ISearchable {
     }
 
     /**
-     * Get the file creation date.
-     *
-     * @param filePath the path of the file.
-     * @return the creation date of the file.
+     * Get creation modification and last access date of a file.
+     * @param file to search.
+     * @param typeDate creation, modifiction and last access.
+     * @return new format date.
      */
-    /**
-     * Get the file creation date.
-     * @param file
-     * @return
-     */
-    public static String createFileDate(File file) {
+    public static String fileDate (File file, String typeDate) {
         BasicFileAttributes attributes;
         String formatted;
+        FileTime time;
         try {
             attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-            FileTime time = attributes.creationTime();
+            if(typeDate.equals("Creation")) {
+                time = attributes.creationTime();
+            } else if (typeDate.equals("Modification")){
+                time =attributes.lastModifiedTime();
+            } else {
+                time =attributes.lastAccessTime();
+            }
             String pattern = "yyyy-MM-dd";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             formatted = simpleDateFormat.format(new java.util.Date(time.toMillis()));
@@ -109,12 +111,12 @@ public abstract class SearchBasic implements ISearchable {
 
     /**
      * Get file owner.
-     * @param filePath the path of the file.
+     * @param file the file to search.
      * @return the owner of the file.
+     *
      */
-    public static String getFileOwner(String filePath) {
-        Path path = Paths.get(filePath);
-        FileOwnerAttributeView ownerAttributeView = Files.getFileAttributeView(path, FileOwnerAttributeView.class);
+    public static String getFileOwner(File file) {
+        FileOwnerAttributeView ownerAttributeView = Files.getFileAttributeView(file.toPath(), FileOwnerAttributeView.class);
         String owner;
         try {
             UserPrincipal owners = ownerAttributeView.getOwner();
@@ -124,50 +126,6 @@ public abstract class SearchBasic implements ISearchable {
             owner = "";
         }
         return owner;
-    }
-
-    /**
-     *
-     * @param file
-     * @return
-     */
-    public static String getFileLastAccessDate(File file) {
-        BasicFileAttributes attributes;
-        String formatted;
-        try {
-            attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-            FileTime time = attributes.lastAccessTime();
-            String pattern = "yyyy-MM-dd";
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            formatted = simpleDateFormat.format(new java.util.Date(time.toMillis()));
-
-        } catch (IOException event) {
-            log.error("Error in " + event.getMessage(), event);
-            formatted = "";
-        }
-        return formatted;
-    }
-
-    /**
-     *
-     * @param file
-     * @return
-     */
-    public static String getFileLastModifiedDate(File file) {
-        BasicFileAttributes attributes;
-        String formatted;
-        try {
-            attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
-            FileTime time = attributes.lastModifiedTime();
-            String pattern = "yyyy-MM-dd";
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            formatted = simpleDateFormat.format(new java.util.Date(time.toMillis()));
-
-        } catch (IOException event) {
-            log.error("Error in " + event.getMessage(), event);
-            formatted = "";
-        }
-        return formatted ;
     }
 
     /**
