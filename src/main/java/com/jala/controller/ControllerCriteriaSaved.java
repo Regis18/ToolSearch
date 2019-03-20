@@ -21,11 +21,21 @@ import com.jala.view.CustomLabel;
 import com.jala.view.JPanelSearchAdvanced;
 import org.apache.log4j.Logger;
 
-import javax.swing.*;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * ControllerCriteriaSaved
+ *
+ * @version 0.0.1
+ * @author Regis Humana
+ */
 public class ControllerCriteriaSaved implements ActionListener {
 
     /** It creates to follow up the instruction of the class*/
@@ -40,6 +50,7 @@ public class ControllerCriteriaSaved implements ActionListener {
     /** Initialize criteriaDataBase */
     private CriteriaDataBase criteriaDataBase = new CriteriaDataBase();
 
+    /** Initialize controllerSearchAdvanced. */
     private ControllerSearchAdvanced controllerSearchAdvanced;
 
     /**
@@ -74,6 +85,10 @@ public class ControllerCriteriaSaved implements ActionListener {
         criteriaDataBase.saveCriteria(criteriaSearch);
         setDBIntoTable();
     }
+
+    /**
+     * Delete the criteria of DB.
+     */
     private void deleteCriteria() {
         int row = viewAdvanced.getTbDataBase().getSelectedRow();
         if (row != -1) {
@@ -84,6 +99,10 @@ public class ControllerCriteriaSaved implements ActionListener {
 
     }
 
+    /**
+     * Listen every change in the buttons.
+     * @param event
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == viewAdvanced.getJPanelAdvanced().getBtnSave()) {
@@ -103,6 +122,10 @@ public class ControllerCriteriaSaved implements ActionListener {
             deleteCriteria();
         }
     }
+
+    /**
+     * Select a date in the table and recover to de DB.
+     */
     private void selectCriteria() {
         int row = viewAdvanced.getTbDataBase().getSelectedRow();
         if (row != -1) {
@@ -112,6 +135,9 @@ public class ControllerCriteriaSaved implements ActionListener {
         }
     }
 
+    /**
+     * Set the criteria into the UI.
+     */
     private void setCriteria() {
         viewAdvanced.getJPanelAdvanced().setTxtPath(criteriaSearch.getPath());
         viewAdvanced.getJPanelAdvanced().setTxtFileName(criteriaSearch.getFileName());
@@ -134,6 +160,12 @@ public class ControllerCriteriaSaved implements ActionListener {
         }
     }
 
+    /**
+     * Obtain the message of hidden or read only.
+     * @param enums
+     * @param isHidden
+     * @return
+     */
     private String getMessage(TernaryBooleanEnum enums, boolean isHidden) {
         String result;
         if (enums == TernaryBooleanEnum.OnlyTrue) {
@@ -153,6 +185,10 @@ public class ControllerCriteriaSaved implements ActionListener {
         }
         return result;
     }
+
+    /**
+     * Set dates in to Table.
+     */
     public void setDBIntoTable() {
         viewAdvanced.getTbDataBase().removeRow();
         List<CriteriaName> result = criteriaDataBase.loadCriteria();
