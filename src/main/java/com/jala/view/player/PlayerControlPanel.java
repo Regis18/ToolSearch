@@ -19,16 +19,13 @@ import javax.swing.JButton;
 import javax.swing.JSlider;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
-
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
-
 import uk.co.caprica.vlcj.binding.LibVlcConst;
 import uk.co.caprica.vlcj.filter.swing.SwingFileFilterFactory;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
-
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
@@ -48,7 +45,6 @@ import java.util.concurrent.TimeUnit;
  * @author Luis Guardia
  */
 public class PlayerControlPanel extends JPanel implements ActionListener {
-
     private static final int SKIP_TIME_MS = 10 * 1000;
     private final EmbeddedMediaPlayerComponent mediaPlayer;
     private JLabel lblPlaybackTime;
@@ -113,7 +109,7 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
         btnToggleMute.addActionListener(this);
         btnLoadTrack.addActionListener(this);
         btnFullScreen.addActionListener(this);
-        sldVolumeSlider.addChangeListener(new ChangeListener(){
+        sldVolumeSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent event) {
                 JSlider source = (JSlider)event.getSource();
@@ -135,7 +131,7 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
             }
         }
         if (event.getSource() == btnNextTrack) {
-            if(controlMusic.getPlayerMusic() < listMusic.size()-1){
+            if (controlMusic.getPlayerMusic() < listMusic.size()-1) {
                 mediaPlayer.getMediaPlayer().playMedia(listMusic.get(controlMusic.getPlayerMusic() + 1).toString());
                 controlMusic.setPlayerMusic(controlMusic.getPlayerMusic()+1);
             }
@@ -354,8 +350,8 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
                 @Override
                 public void run() {
                     if (mediaPlayer.getMediaPlayer().isPlaying()) {
-                        if(sldPositionSlider.getValue() >= 990) {
-                            if(controlMusic.getPlayerMusic() < listMusic.size()-1){
+                        if (sldPositionSlider.getValue() >= 990) {
+                            if (controlMusic.getPlayerMusic() < listMusic.size()-1) {
                                 mediaPlayer.getMediaPlayer().playMedia(listMusic.get(controlMusic.getPlayerMusic() + 1).toString());
                                 controlMusic.setPlayerMusic(controlMusic.getPlayerMusic()+1);
                                 updateTime(time);

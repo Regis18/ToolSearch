@@ -16,25 +16,21 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.util.ArrayList;
-
 import com.jala.utils.Logs;
 import com.sun.jna.NativeLibrary;
 import org.apache.log4j.Logger;
-
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.player.AudioOutput;
 import uk.co.caprica.vlcj.player.embedded.DefaultFullScreenStrategy;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.embedded.FullScreenStrategy;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
-
 import javax.swing.JList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -52,7 +48,6 @@ public class VideoMusicPlayer {
     private final JFrame mainFrame;
     private final Canvas videoSurface;
     private final JPanel controlsPanel;
-
     private EmbeddedMediaPlayerComponent mediaPlayer;
     private static final String NATIVE_LIBRARY_SEARCH_PATH = "..\\ToolSearch\\src\\main\\resources\\ThirdParty\\VLC";
     private JList playList, playListTitles;
@@ -134,7 +129,7 @@ public class VideoMusicPlayer {
      * Method that loads the ArrayList to a JList component
      * where the music and video list is added.
      */
-    private void loadPlaylist(ArrayList listMusic){
+    private void loadPlaylist(ArrayList listMusic) {
         model = new DefaultListModel();
         modelTitles = new DefaultListModel();
         playList = new JList(model);

@@ -19,7 +19,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
+
 /**
+ *
  * @version 0.0.1.
  * @author: Luis Guardia
  */
@@ -46,30 +48,39 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
     /**
      * The JCheckBox is selected/deleted according to the cell value.
      */
+
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        ( (JCheckBox) component).setBackground( new Color(0,50,255) );
+        ((JCheckBox)component).setBackground(new Color(0,50,255));
         boolean b = ((Boolean) value).booleanValue();
-        ( (JCheckBox) component).setSelected( b );
-        return ( (JCheckBox) component);
+        ((JCheckBox)component).setSelected( b );
+        return ((JCheckBox)component);
     }
 
     /**
      * when the cell manipulation is over.
+     * @return a value boolean.
      */
+
     @Override
     public boolean stopCellEditing() {
-        value = ((Boolean)getCellEditorValue()).booleanValue() ;
+        value = ((Boolean)getCellEditorValue()).booleanValue();
         ((JCheckBox)component).setSelected( value );
         return super.stopCellEditing();
     }
 
     /**
      * Returns the checkBox component.
+     * @param table
+     * @param value
+     * @param isSelected
+     * @param hasFocus
+     * @param row
+     * @param column
      */
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         if (value == null)
             return null;
-        return ( (JCheckBox) component );
+        return ((JCheckBox)component );
     }
 }
