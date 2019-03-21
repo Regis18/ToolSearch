@@ -14,6 +14,7 @@ package com.jala.solidwater.console.models;
 
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.search.SearchFile;
+import com.jala.model.search.TernaryBooleanEnum;
 import com.jala.model.search.asset.Asset;
 
 import java.util.ArrayList;
@@ -47,6 +48,13 @@ public class ModelConsole {
      */
     private static final String SIZE_COMMAND = "-s";
 
+    public static final String HIDDEN_COMMAND = "-hd";
+    public static final String READONLY_COMMAND = "-ro";
+    public static final String FROM_DATE_CREATED_COMMAND = "-fdc";
+    public static final String TO_DATE_CREATED_COMMAND = "-tdc";
+    public static final String FROM_DATE_MODIFIED_COMMAND = "-fdm";
+    public static final String TO_DATE_MODIFIED_COMMAND = "-tdm";
+
     /**
      * This method return a asset list sending
      * a command line valid and according to the setting of criteria.
@@ -57,10 +65,17 @@ public class ModelConsole {
     public List<Asset> getSearch(CommandLine validCommand) {
         String valuePath = getValueCommandByPositionOfCommand(validCommand, "-p");
 
-        CriteriaSearch criteria = new CriteriaSearch(valuePath);
+        ValueCustom valueCustom = new ValueCustom();
+        CriteriaSearch criteria = new CriteriaSearch(valueCustom.removeCharSpecial(valuePath,"'", 0));
         criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
+        criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, HIDDEN_COMMAND));
+        criteria.setReadonly(setValueOnHiddenOrReadOnlyCriteria(validCommand, READONLY_COMMAND));
+        criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_CREATED_COMMAND));
+        criteria.setCreationDateTo(setValueIfExistCommand(validCommand, TO_DATE_CREATED_COMMAND));
+        criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_MODIFIED_COMMAND));
+        criteria.setModificationDateTo(setValueIfExistCommand(validCommand, TO_DATE_MODIFIED_COMMAND));
 
         SearchFile searchFile = new SearchFile();
         ArrayList<Asset> listFileSearch = new ArrayList<>();
@@ -85,6 +100,8 @@ public class ModelConsole {
             Command command = commandLine.getCommands().get(i);
             if (command.getAcronym().equals(acronym)) {
                 value = getValueCommandByPositionOfCommand(commandLine, acronym);
+                ValueCustom valueCustom = new ValueCustom();
+                value = valueCustom.removeCharSpecial(value,"'", 0);
                 i = commandLine.getCommands().size();
             } else {
                 value = value;
@@ -111,4 +128,15 @@ public class ModelConsole {
         }
         return valueByPositionCommand;
     }
+
+    private TernaryBooleanEnum setValueOnHiddenOrReadOnlyCriteria(CommandLine validCommand, String acronymCommand) {
+        if(setValueIfExistCommand(validCommand,acronymCommand).equals("No")) {
+            return TernaryBooleanEnum.OnlyFalse;
+        } else if(setValueIfExistCommand(validCommand,acronymCommand).equals("Yes")) {
+            return TernaryBooleanEnum.OnlyTrue;
+        } else  {
+            return TernaryBooleanEnum.ALL;
+        }
+    }
+
 }

@@ -66,7 +66,7 @@ public class ValidCommandLine implements IValidable<CommandLine> {
             }
         } else {
             validCommandLine = validCommandLine;
-            setMessage("The size of commands and values in command line are differents");
+            setMessage("The size of commands and values in command line are different");
         }
         return validCommandLine;
     }
