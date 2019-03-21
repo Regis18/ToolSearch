@@ -21,7 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 /**
- *Class CellCheckBox
+ * Class CellCheckBox
  * @version 0.0.1.
  * @author: Luis Guardia
  */
