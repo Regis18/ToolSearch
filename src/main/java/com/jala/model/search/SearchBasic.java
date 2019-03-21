@@ -22,8 +22,6 @@ import org.apache.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileOwnerAttributeView;
 import java.nio.file.attribute.FileTime;
@@ -69,9 +67,9 @@ public abstract class SearchBasic implements ISearchable {
                             getFileOwner(file),
                             String.valueOf(file.length()),
                             file.canWrite(),
-                            fileDate(file,"Creation"),
-                            fileDate(file,"Modification"),
-                            fileDate(file, "LastAccess"));
+                            getFileDate(file,"Creation"),
+                            getFileDate(file,"Modification"),
+                            getFileDate(file, "LastAccess"));
                     result.add(asset);
                 }
             }
@@ -82,10 +80,10 @@ public abstract class SearchBasic implements ISearchable {
     /**
      * Get creation modification and last access date of a file.
      * @param file to search.
-     * @param typeDate creation, modifiction and last access.
+     * @param typeDate creation, modification and last access.
      * @return new format date.
      */
-    public static String fileDate (File file, String typeDate) {
+    public static String getFileDate(File file, String typeDate) {
         BasicFileAttributes attributes;
         String formatted;
         FileTime time;
@@ -93,7 +91,7 @@ public abstract class SearchBasic implements ISearchable {
             attributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
             if(typeDate.equals("Creation")) {
                 time = attributes.creationTime();
-            } else if (typeDate.equals("Modification")){
+            } else if (typeDate.equals("Modification")) {
                 time =attributes.lastModifiedTime();
             } else {
                 time =attributes.lastAccessTime();

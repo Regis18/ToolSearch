@@ -15,7 +15,6 @@ package com.jala.utils;
 import com.jala.model.search.asset.Asset;
 import com.jala.model.search.asset.AssetAudio;
 import com.jala.model.search.asset.AssetVideo;
-import com.jala.model.search.SearchCommon;
 
 /**
  * AssetFactory class.
