@@ -120,7 +120,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
         this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
         this.criteriaSearchMultimedia.setAudioCodec(searchVideo.getCmbAudioCodec());
         this.criteriaSearchMultimedia.setAudioSampleRate(searchVideo.getTxtAudioSampleRate());
-        this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension());
+        this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension().toLowerCase());
         this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
         log.info("Information saved on criteriaSearchMultimedia attribute");
     }

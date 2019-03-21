@@ -147,8 +147,11 @@ public class ControllerSearchAdvanced implements ActionListener {
         viewAdvanced.getTbSearchAdvanced().removeRow();
         for (int i = 0; i < results.size(); i++) {
             Asset data = results.get(i);
+            String hidden = String.valueOf(data.isHidden());
+            String readOnly = String.valueOf(data.isReadOnly());
             viewAdvanced.getTbSearchAdvanced().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
-                    data.getExtension(), getFileSizeInKb(data.getSize()),"","","","","");
+                    data.getExtension(), getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
+                            data.getModificationDate(), data.getLastDate());
         }
         log.info("Results implemented in the JTable of the UI");
     }
