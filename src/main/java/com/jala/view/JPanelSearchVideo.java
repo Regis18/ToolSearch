@@ -148,13 +148,13 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == radioVideo) {
             if (radioVideo.isSelected()) {
-                btnSearch.setText("Convert Video");
+                btnSearch.setText("Search Video");
                 enableOptionsVideo();
             }
         }
         if (event.getSource() == radioAudio) {
             if (radioAudio.isSelected()) {
-                btnSearch.setText("Convert Audio");
+                btnSearch.setText("Search Audio");
                 disableOptionsVideo();
             }
         }
