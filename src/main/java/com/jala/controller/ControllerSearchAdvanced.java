@@ -16,6 +16,7 @@ import com.jala.model.search.asset.Asset;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.search.TernaryBooleanEnum;
 import com.jala.utils.Logs;
+import com.jala.view.JPanelAdvanced;
 import com.jala.view.JPanelSearchAdvanced;
 import org.apache.log4j.Logger;
 import java.util.List;
@@ -72,11 +73,46 @@ public class ControllerSearchAdvanced implements ActionListener {
         log.info("Action Detected");
         if (event.getSource() == viewAdvanced.getJPanelAdvanced().getBtnSearch()) {
             log.info("BtnSearch from Search Advanced was pressed");
-            saveCriteria();
+            saveCriteria(viewAdvanced.getJPanelAdvanced());
             sendCriteriaToFile();
         }
     }
 
+    /**
+     * The getCriteria method get CriteriaSearch of this class.
+     * @param viewPanelAdvanced has the data in CriteriaSearch.
+     * @return a CriteriaSearch class
+     */
+    public CriteriaSearch getCriteria(JPanelAdvanced viewPanelAdvanced) {
+        saveCriteria(viewPanelAdvanced);
+        return criteriaSearch;
+    }
+
+    /**
+     * The saveCriteria method save data in a CriteriaSearch Class.
+     * Save path, fileName and extension in criteriaSearch.
+     * @param panelAdvanced has data for create a CriteriaSearch class.
+     */
+
+    private void saveCriteria(JPanelAdvanced panelAdvanced) {
+
+        log.info("Saving data of Path, File Name and Extension in Criteria");
+        criteriaSearch = new CriteriaSearch(panelAdvanced.getTxtPath());
+        criteriaSearch.setFileName(panelAdvanced.getTxtFileName());
+        criteriaSearch.setExtension(panelAdvanced.getTxtExtension());
+        criteriaSearch.setOwner(panelAdvanced.getTxtOwner());
+        criteriaSearch.setHidden(getEnumHidden(panelAdvanced));
+        criteriaSearch.setReadonly(getEnumReadOnly(panelAdvanced));
+        criteriaSearch.setCreationDateFrom(panelAdvanced.getDateCreateStar());
+        criteriaSearch.setCreationDateTo(panelAdvanced.getDateCreateEnd());
+        criteriaSearch.setModificationDateFrom(panelAdvanced.getDateLastModBegin());
+        criteriaSearch.setModificationDateTo(panelAdvanced.getDateLastModEnd());
+        criteriaSearch.setLastDateFrom(panelAdvanced.getDateLatterAccesBegin());
+        criteriaSearch.setLastDateTo(panelAdvanced.getDateLatterAccesEnd());
+        criteriaSearch.setSize(convertSize(panelAdvanced));
+        criteriaSearch.setSizeCompareOption(!panelAdvanced.isMajorThanFile());
+        log.info("Information saved");
+    }
     /**
      * Save path, fileName and extension in criteriaSearch.
      */
@@ -86,15 +122,15 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setFileName(viewAdvanced.getJPanelAdvanced().getTxtFileName());
         criteriaSearch.setExtension(viewAdvanced.getJPanelAdvanced().getTxtExtension());
         criteriaSearch.setOwner(viewAdvanced.getJPanelAdvanced().getTxtOwner());
-        criteriaSearch.setHidden(getEnumHidden());
-        criteriaSearch.setReadonly(getEnumReadOnly());
+        criteriaSearch.setHidden(getEnumHidden(viewAdvanced.getJPanelAdvanced()));
+        criteriaSearch.setReadonly(getEnumReadOnly(viewAdvanced.getJPanelAdvanced()));
         criteriaSearch.setCreationDateFrom(viewAdvanced.getJPanelAdvanced().getDateCreateStar());
         criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
         criteriaSearch.setModificationDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
         criteriaSearch.setModificationDateTo(viewAdvanced.getJPanelAdvanced().getDateLastModEnd());
         criteriaSearch.setLastDateFrom(viewAdvanced.getJPanelAdvanced().getDateLatterAccesBegin());
         criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd());
-        criteriaSearch.setSize(convertSize());
+        criteriaSearch.setSize(convertSize(viewAdvanced.getJPanelAdvanced()));
         criteriaSearch.setSizeCompareOption(!viewAdvanced.getJPanelAdvanced().isMajorThanFile());
         log.info("Information saved");
     }
@@ -122,7 +158,7 @@ public class ControllerSearchAdvanced implements ActionListener {
      * @param fileLength
      * @return TernaryBooleanEnum.
      */
-    private String getFileSizeInKb(String fileLength) {
+    public String getFileSizeInKb(String fileLength) {
         Double file = Double.parseDouble(fileLength);
         log.info("Returns the size of the file");
         file = file / BYTES;
@@ -132,12 +168,13 @@ public class ControllerSearchAdvanced implements ActionListener {
 
     /**
      * Method that returns a TernaryBooleanEnum value.
+     * @param panelAdvanced has data for get TernaryBooleanEnum.
      * @return TernaryBooleanEnum.
      */
-    protected TernaryBooleanEnum getEnumHidden() {
-        if (viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Not Hidden")) {
+    private TernaryBooleanEnum getEnumHidden(JPanelAdvanced panelAdvanced) {
+        if(panelAdvanced.getCmbHidden().equals("Not Hidden")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if (viewAdvanced.getJPanelAdvanced().getCmbHidden().equals("Hidden")) {
+        } else if(panelAdvanced.getCmbHidden().equals("Hidden")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else  {
             return TernaryBooleanEnum.ALL;
@@ -146,12 +183,13 @@ public class ControllerSearchAdvanced implements ActionListener {
 
     /**
      * Method that returns a TernaryBooleanEnum value.
+     * @param panelAdvanced has data for get TernaryBooleanEnum.
      * @return TernaryBooleanEnum.
      */
-    protected TernaryBooleanEnum getEnumReadOnly() {
-        if (viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Not Read Only")) {
+    private TernaryBooleanEnum getEnumReadOnly(JPanelAdvanced panelAdvanced) {
+        if(panelAdvanced.getComboReadOnly().equals("Not Read Only")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if (viewAdvanced.getJPanelAdvanced().getComboReadOnly().equals("Read Only")) {
+        } else if(panelAdvanced.getComboReadOnly().equals("Read Only")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else  {
             return TernaryBooleanEnum.ALL;
@@ -161,19 +199,20 @@ public class ControllerSearchAdvanced implements ActionListener {
     /**
      * method that performs the conversion to Kb, Mb and Gb
      */
-    protected String convertSize() {
-         double value;
-         if(viewAdvanced.getJPanelAdvanced().getComboTypeSizeFile().equals("Kb")) {
-            value = Double.parseDouble(viewAdvanced.getJPanelAdvanced().getSpinControlSizeFile());
+
+    private String convertSize(JPanelAdvanced panelAdvanced) {
+        double value;
+        if(panelAdvanced.getComboTypeSizeFile().equals("Kb")) {
+            value = Double.parseDouble(panelAdvanced.getSpinControlSizeFile());
             value = value * 1024;
-         } else if (viewAdvanced.getJPanelAdvanced().getComboTypeSizeFile().equals("Mb")) {
-             value = Double.parseDouble(viewAdvanced.getJPanelAdvanced().getSpinControlSizeFile());
-             value = value * 1024 * 1024;
-         } else {
-             value = Double.parseDouble(viewAdvanced.getJPanelAdvanced().getSpinControlSizeFile());
-             value = value * 1024 * 1024 * 1024;
-         }
-         return Double.toString(value);
+        } else if (panelAdvanced.getComboTypeSizeFile().equals("Mb")) {
+            value = Double.parseDouble(panelAdvanced.getSpinControlSizeFile());
+            value = value * 1024 * 1024;
+        } else {
+            value = Double.parseDouble(panelAdvanced.getSpinControlSizeFile());
+            value = value * 1024 * 1024 * 1024;
+        }
+        return Double.toString(value);
     }
 
     /**

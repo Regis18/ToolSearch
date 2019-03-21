@@ -79,6 +79,16 @@ public class CriteriaSearchMultimedia extends CriteriaSearch {
     }
 
     /**
+     * Constructor CriteriaSearchMultimedia class with a path parameter.
+     *
+     * @param criteriaSearch the path of file.
+     */
+    public CriteriaSearchMultimedia(CriteriaSearch criteriaSearch) {
+        super(criteriaSearch);
+        this.loadVideoCriteria();
+    }
+
+    /**
      * Load video criteria goes to init the empty values.
      */
     private void loadVideoCriteria() {
