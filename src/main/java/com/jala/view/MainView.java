@@ -107,6 +107,14 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
+     * The getPnlSearchAdvancedVideo method get  a JPanelSearchAdvancedVideo
+     * @return a pnlSearchAdvancedVideo attribute of this class.
+     */
+    public JPanelSearchAdvancedVideo getPnlSearchAdvancedVideo() {
+        return pnlSearchAdvancedVideo;
+    }
+
+    /**
      * Gets the Exit Menu option.
      * @return menuItemExit, the Exit menu item.
      */

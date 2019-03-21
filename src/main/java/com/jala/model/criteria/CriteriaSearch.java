@@ -115,7 +115,8 @@ public class CriteriaSearch extends Criteria {
     }
 
     /**
-     * @param criteriaSearch ...............with out comment
+     * The CriteriaSearch method is the constructor for create an instance.
+     * @param criteriaSearch has data for attributes of this class.
      */
     public CriteriaSearch(CriteriaSearch criteriaSearch) {
         this.loadCriteria();

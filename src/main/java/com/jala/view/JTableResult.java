@@ -60,7 +60,9 @@ public class JTableResult extends JTable {
 	}
 
 	/**
-	 * @param withColumn ............. without comment
+	 * The JTableResult method is the constructor of this class.
+	 * This constructor is using for create a table for advance search video.
+	 * @param withColumn is data for use in the with of column.
 	 */
 	public JTableResult(int withColumn) {
 		super();
@@ -103,22 +105,23 @@ public class JTableResult extends JTable {
 	}
 
 	/**
-	 * @param id
-	 * @param path
-	 * @param fileName
-	 * @param ext
-	 * @param size
-	 * @param hidden
-	 * @param readOnly
-	 * @param dateCreate
-	 * @param dateModification
-	 * @param dateLaterAccess
-	 * @param frameRate
-	 * @param videoCodec
-	 * @param audioCodec
-	 * @param aspectRatio
-	 * @param audioSampleRate
-	 * @param duration
+	 * The addResultRowVideo method is for add a row in the table of advance search video.
+	 * @param id data for Id column.
+	 * @param path data for Path column.
+	 * @param fileName data for File Name column.
+	 * @param ext data for Extension column.
+	 * @param size data for Size column.
+	 * @param hidden data for Hidden column.
+	 * @param readOnly data for Read Only column.
+	 * @param dateCreate data for Date Create column.
+	 * @param dateModification data for Date Modification column.
+	 * @param dateLaterAccess data for Date Later Access column.
+	 * @param frameRate data for Frame Rate column.
+	 * @param videoCodec data for Video Codec column.
+	 * @param audioCodec data for Audio Codec column.
+	 * @param aspectRatio data for Aspect Ratio column.
+	 * @param audioSampleRate data for Audio Sample Rate column.
+	 * @param duration data for Duration column.
 	 */
 	public void addResultRowVideo(String id, String path, String fileName, String ext,
 							 String size, String hidden, String readOnly, String dateCreate,

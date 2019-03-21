@@ -62,7 +62,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      */
     private void actionListener() {
         log.info("It will add action listener for the button in Video Advanced Search.");
-        viewAdvancedVideo.getPanelSearchVideo().getBtnSearchVideo().addActionListener(this);
+        viewAdvancedVideo.getPanelSearchVideo().getBtnSearch().addActionListener(this);
         log.info("It was end  action listener for the button in Video Advanced Search.");
     }
 
@@ -77,7 +77,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
         JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
         log.info("It was detected an event on the JPanelSearchAdvancedVideo class ");
         Object source = event.getSource();
-        if (source == searchVideo.getBtnSearchVideo()) {
+        if (source == searchVideo.getBtnSearch()) {
             CriteriaSearch criteriaSearch = super.getCriteria(viewAdvancedVideo.getPanelAdvanceSearch());
             this.criteriaSearchMultimedia = new CriteriaSearchMultimedia(criteriaSearch);
             //searchVideo.isVideo() ? addAttributesOfVideo() : addAttributesOfVideo();

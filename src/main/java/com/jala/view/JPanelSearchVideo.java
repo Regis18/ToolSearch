@@ -33,11 +33,11 @@ import java.awt.event.ActionListener;
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class JPanelSearchVideo extends JPanel {
+public class JPanelSearchVideo extends JPanel implements ActionListener {
     private JLabel lblFrameRate, lblVideoCodec, lblAudioCodec,
                     lblAspectRatio, lblAudioChannel, lblAudioSampleRate, lblExtension, lblDuration;
     private JTextField txtAudioSampleRate, txtDuration;
-    private JButton btnSearch, btnSearchVideo;
+    private JButton btnSearch;
     private JComboBox cmbFrameRate, cmbVideoCodec, cmbAudioCodec,
                         cmbAspectRatio, cmbExtension;
     private ButtonGroup typeOfAudioChannel, selectTypeSearch;
@@ -115,10 +115,10 @@ public class JPanelSearchVideo extends JPanel {
         constraintComponent(radioMono, 4, 3, GridBagConstraints.WEST);
 
         radioVideo = new JRadioButton("Video",true);
-       // radioVideo.addActionListener(this);
+        radioVideo.addActionListener(this);
         constraintComponent(radioVideo, 1, 0, GridBagConstraints.EAST);
         radioAudio = new JRadioButton("Audio",false);
-        //radioAudio.addActionListener(this);
+        radioAudio.addActionListener(this);
         constraintComponent(radioAudio, 2, 0, GridBagConstraints.WEST);
 
         typeOfAudioChannel = new ButtonGroup();
@@ -140,14 +140,12 @@ public class JPanelSearchVideo extends JPanel {
 
         btnSearch = new JButton("Search");
         constraintComponent(btnSearch, 3, 6, GridBagConstraints.EAST);
-        btnSearchVideo = new JButton("Search Video");
-        constraintComponent(btnSearchVideo, 0, 6, GridBagConstraints.EAST);
     }
 
     /**
      * Method that adds action to the buttons.
      */
-   /* public void actionPerformed(ActionEvent event) {
+    public void actionPerformed(ActionEvent event) {
         if (event.getSource() == radioVideo) {
             if (radioVideo.isSelected()) {
                 btnSearch.setText("Convert Video");
@@ -160,7 +158,7 @@ public class JPanelSearchVideo extends JPanel {
                 disableOptionsVideo();
             }
         }
-    }*/
+    }
 
     /**
      * Method that adds action to the buttons.
@@ -227,13 +225,6 @@ public class JPanelSearchVideo extends JPanel {
      */
     public JButton getBtnSearch() {
         return btnSearch;
-    }
-
-    /**
-     * @return
-     */
-    public JButton getBtnSearchVideo() {
-        return btnSearchVideo;
     }
 
     /**
