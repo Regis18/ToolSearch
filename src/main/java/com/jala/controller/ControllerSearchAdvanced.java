@@ -53,6 +53,10 @@ public class ControllerSearchAdvanced implements ActionListener {
         this.viewAdvanced = viewAdvanced;
         actionListener();
     }
+
+    /**
+     * Constructor without parameters.
+     */
     public ControllerSearchAdvanced() {}
 
     /**
@@ -101,7 +105,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setExtension(panelAdvanced.getTxtExtension());
         criteriaSearch.setOwner(panelAdvanced.getTxtOwner());
         criteriaSearch.setHidden(getEnumHidden(panelAdvanced));
-        criteriaSearch.setReadonly(getEnumReadOnly(panelAdvanced));
+        criteriaSearch.setReadOnly(getEnumReadOnly(panelAdvanced));
         criteriaSearch.setCreationDateFrom(panelAdvanced.getDateCreateStar());
         criteriaSearch.setCreationDateTo(panelAdvanced.getDateCreateEnd());
         criteriaSearch.setModificationDateFrom(panelAdvanced.getDateLastModBegin());
@@ -122,7 +126,7 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setExtension(viewAdvanced.getJPanelAdvanced().getTxtExtension());
         criteriaSearch.setOwner(viewAdvanced.getJPanelAdvanced().getTxtOwner());
         criteriaSearch.setHidden(getEnumHidden(viewAdvanced.getJPanelAdvanced()));
-        criteriaSearch.setReadonly(getEnumReadOnly(viewAdvanced.getJPanelAdvanced()));
+        criteriaSearch.setReadOnly(getEnumReadOnly(viewAdvanced.getJPanelAdvanced()));
         criteriaSearch.setCreationDateFrom(viewAdvanced.getJPanelAdvanced().getDateCreateStar());
         criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
         criteriaSearch.setModificationDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
