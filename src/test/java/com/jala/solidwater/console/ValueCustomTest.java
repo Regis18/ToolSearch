@@ -12,11 +12,13 @@
 
 package com.jala.solidwater.console;
 
-import com.jala.solidwater.console.models.ValueCustom;
+import com.jala.utils.ValueCustom;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.jala.solidwater.console.models.ValueCustom.*;
+import static com.jala.utils.ValueCustom.ERROR_FOR_CONDITIONS;
+import static com.jala.utils.ValueCustom.ERROR_FOR_LENGTH_LESS_THAN_1;
+import static com.jala.utils.ValueCustom.ERROR_FOR_LENGTH_LESS_THAN_2;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -95,7 +97,7 @@ public class ValueCustomTest {
     public void removeTheCharacterOfValueWithLengthEqualsTo1() {
         valueWithCharacterToTheStarAndEndInString = "'";
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(ERROR_TO_LENGTH_LESS_THAN_2, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
         assertEquals("", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 1));
     }
 
@@ -106,7 +108,7 @@ public class ValueCustomTest {
     public void removeTheCharacterOfValueWithLengthEqualsTo0() {
         valueWithCharacterToTheStarAndEndInString = "";
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(ERROR_TO_LENGTH_LESS_THAN_2, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
         assertEquals(ERROR_FOR_LENGTH_LESS_THAN_1, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 1));
     }
 

@@ -9,7 +9,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
-package com.jala.solidwater.console.models;
+package com.jala.utils;
 
 /**
  * ValueCustom class allows remove a character of a string.
@@ -19,7 +19,7 @@ public class ValueCustom {
     /**
      * Constant for error message when entering string with length less that two.
      */
-    public static final String ERROR_TO_LENGTH_LESS_THAN_2 = "Enter a String with length greater equals than 2";
+    public static final String ERROR_FOR_LENGTH_LESS_THAN_2 = "Enter a String with length greater equals than 2";
 
     /**
      * Constant for error message when entering string with length less that one.
@@ -49,7 +49,7 @@ public class ValueCustom {
                     valueWithoutChars = value.substring(1, value.length() - 1);
                 }
             } else if (condition == 0 && value.length() < 2) {
-                valueWithoutChars = ERROR_TO_LENGTH_LESS_THAN_2;
+                valueWithoutChars = ERROR_FOR_LENGTH_LESS_THAN_2;
             } else if (condition == 1 && value.length() >= 1) {
                 String newValue = "";
                 valueWithoutChars = value.replace(characterToRemove, newValue);
