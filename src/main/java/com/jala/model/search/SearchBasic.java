@@ -83,7 +83,7 @@ public abstract class SearchBasic implements ISearchable {
      * @param typeDate creation, modification and last access.
      * @return new format date.
      */
-    public static String getFileDate(File file, String typeDate) {
+    public String getFileDate(File file, String typeDate) {
         BasicFileAttributes attributes;
         String formatted;
         FileTime time;
@@ -111,9 +111,8 @@ public abstract class SearchBasic implements ISearchable {
      * Get file owner.
      * @param file the file to search.
      * @return the owner of the file.
-     *
      */
-    public static String getFileOwner(File file) {
+    public String getFileOwner(File file) {
         FileOwnerAttributeView ownerAttributeView = Files.getFileAttributeView(file.toPath(), FileOwnerAttributeView.class);
         String owner;
         try {
