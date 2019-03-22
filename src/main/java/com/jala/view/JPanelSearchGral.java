@@ -116,8 +116,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     private JPanel pnlCriteria() {
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
         TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Search");
-        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 10));
+
 
         pnlPath.setBorder(titleBorder);
         lblPath = new CustomLabel();

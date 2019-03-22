@@ -131,11 +131,11 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
 
         lblAudioSampleRate = new CustomLabel("Audio Sample Rate: ");
         constraintComponent(lblAudioSampleRate, 0, 5, GridBagConstraints.EAST);
-        txtAudioSampleRate = new CustomTextField(15);
+        txtAudioSampleRate = new CustomTextField(10);
         constraintComponent(txtAudioSampleRate, 1, 5, GridBagConstraints.WEST);
         lblDuration = new CustomLabel("Duration: ");
         constraintComponent(lblDuration, 2, 5, GridBagConstraints.EAST);
-        txtDuration = new CustomTextField(15);
+        txtDuration = new CustomTextField(10);
         constraintComponent(txtDuration, 3, 5, GridBagConstraints.EAST);
 
         btnSearch = new JButton("Search");

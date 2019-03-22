@@ -34,7 +34,7 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
      * Class constructor.
      */
     public CellCheckBox() {
-        super( new JCheckBox() );
+        super(new JCheckBox());
     }
 
     /**

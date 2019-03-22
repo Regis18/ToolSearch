@@ -38,6 +38,9 @@ public class JTableDB extends JTable {
         this.getColumnModel().getColumn(1).setPreferredWidth(20);
         this.getColumnModel().getColumn(2).setPreferredWidth(500);
         this.getColumnModel().getColumn(3).setPreferredWidth(400);
+        this.getColumnModel().getColumn(1).setMaxWidth(0);
+        this.getColumnModel().getColumn(1).setMinWidth(0);
+        this.getColumnModel().getColumn(1).setPreferredWidth(0);
     }
 
     /**

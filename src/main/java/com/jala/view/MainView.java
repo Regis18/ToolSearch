@@ -34,7 +34,6 @@ import javax.swing.border.Border;
 public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
-    private JMenu menuExit;
     private JMenu menuSearch;
     private JMenu menuConverter;
     private JMenu menuPlayerVideo;
@@ -67,13 +66,6 @@ public class MainView extends JFrame implements ActionListener {
         setTitle("SolidWater");
     }
 
-    /**
-     * Return Exit app.
-     * @return menuExit .
-     */
-    public JMenu getMenuExit() {
-        return menuExit;
-    }
     /**
      * Return the panel where is the Search General.
      * @return General Search Panel .
@@ -182,8 +174,6 @@ public class MainView extends JFrame implements ActionListener {
         menuConverter.setIcon(imgConverter);
         menuPlayerVideo = new JMenu("Video Player");
         menuPlayerVideo.setIcon(imgVideoPlayer);
-        menuExit = new JMenu("Exit");
-        menuExit.setIcon(imgExit);
 
         //Add a Submenu with an image in the builder
         menuItemGeneral = new JMenuItem("General", imgGSearchGral );
@@ -196,7 +186,7 @@ public class MainView extends JFrame implements ActionListener {
         menuSearch.addSeparator();
         menuItemAdvanced.addActionListener(this);
 
-        menuItemSearchVideo = new JMenuItem("Advanced Video", imgGSearchAdvVideo);
+        menuItemSearchVideo = new JMenuItem("Multimedia", imgGSearchAdvVideo);
         menuSearch.add(menuItemSearchVideo);
         menuItemSearchVideo.addActionListener(this);
 
@@ -210,6 +200,7 @@ public class MainView extends JFrame implements ActionListener {
         menuItemConverterVideo.addActionListener(this);
 
         menuItemExit = new JMenuItem("Exit", imgExitTemp);
+        menuSearch.addSeparator();
         menuSearch.add(menuItemExit);
         //Add a menu with an image in the builder
         menuBar = new JMenuBar();
@@ -217,20 +208,18 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuSearch);
         menuBar.add(menuConverter);
         menuBar.add(menuPlayerVideo);
-        menuBar.add(menuExit);
         menuBar.setBorderPainted(true);
 
         menuBar.setBackground(new Color(0, 119, 100));
-        menuSearch.setCursor(new Cursor(HAND_CURSOR));
-        menuConverter.setCursor(new Cursor(HAND_CURSOR));
-        menuPlayerVideo.setCursor(new Cursor(HAND_CURSOR));
-        menuExit.setCursor(new Cursor(HAND_CURSOR));
-        menuItemGeneral.setCursor(new Cursor(HAND_CURSOR));
-        menuItemAdvanced.setCursor(new Cursor(HAND_CURSOR));
-        menuItemSearchVideo.setCursor(new Cursor(HAND_CURSOR));
-        menuItemConverter.setCursor(new Cursor(HAND_CURSOR));
-        menuItemConverterVideo.setCursor(new Cursor(HAND_CURSOR));
-        menuItemExit.setCursor(new Cursor(HAND_CURSOR));
+        menuSearch.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuConverter.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuPlayerVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemGeneral.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemAdvanced.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemSearchVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemConverter.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemConverterVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemExit.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
     }
 
     /**
@@ -241,52 +230,64 @@ public class MainView extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         Container content = getContentPane();
         if (event.getSource() == menuItemGeneral) {
-            pnlSearchGral = new JPanelSearchGral(new BorderLayout());
-            content.removeAll();
-            content.add(pnlSearchGral, BorderLayout.CENTER);
-            currentPanel = "SearchGral";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "SearchGral") {
+                pnlSearchGral = new JPanelSearchGral(new BorderLayout());
+                content.removeAll();
+                content.add(pnlSearchGral, BorderLayout.CENTER);
+                currentPanel = "SearchGral";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemAdvanced) {
-            pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
-            content.removeAll();
-            content.add(pnlSearchAdvanced, BorderLayout.CENTER);
-            currentPanel = "SearchAdvanced";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "SearchAdvanced") {
+                pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
+                content.removeAll();
+                content.add(pnlSearchAdvanced, BorderLayout.CENTER);
+                currentPanel = "SearchAdvanced";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemConverter) {
-            panelConverterImage = new JPanelConverter(new BorderLayout());
-            content.removeAll();
-            content.add(panelConverterImage, BorderLayout.CENTER);
-            currentPanel = "ConverterImage";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "ConverterImage") {
+                panelConverterImage = new JPanelConverter(new BorderLayout());
+                content.removeAll();
+                content.add(panelConverterImage, BorderLayout.CENTER);
+                currentPanel = "ConverterImage";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemConverterVideo) {
-            panelConverterVideo = new JPanelVideo(new BorderLayout());
-            content.removeAll();
-            content.add(panelConverterVideo, BorderLayout.CENTER);
-            currentPanel = "ConverterVideo";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "ConverterVideo") {
+                panelConverterVideo = new JPanelVideo(new BorderLayout());
+                content.removeAll();
+                content.add(panelConverterVideo, BorderLayout.CENTER);
+                currentPanel = "ConverterVideo";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemSearchVideo) {
-            pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
-            content.removeAll();
-            content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
-            currentPanel = "SearchAdvancedVideo";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "SearchAdvancedVideo") {
+                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+                content.removeAll();
+                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+                currentPanel = "SearchAdvancedVideo";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemVideoPlayer) {
-            pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
-            content.removeAll();
-            content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
-            currentPanel = "VideoPlayer";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "VideoPlayer") {
+                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+                content.removeAll();
+                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+                currentPanel = "VideoPlayer";
+                this.validate();
+                this.repaint();
+            }
         }
     }
 
