@@ -72,7 +72,10 @@ public class JTableResult extends JTable {
 	public JTableResult(int withColumn) {
 		super();
 		dtm.setColumnIdentifiers(bothHeader);
-		setFont(new java.awt.Font("Tahoma", 0, 10));
+		setFont(new java.awt.Font("Tahoma", 0, 12));
+		setGridColor(Color.WHITE);
+		setForeground(new ColorUIResource(0, 180, 158));
+		setBackground(Color.DARK_GRAY);
 		//set model into the table object
 		this.setModel(dtm);
 
