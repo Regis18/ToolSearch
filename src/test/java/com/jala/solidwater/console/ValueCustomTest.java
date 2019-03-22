@@ -12,33 +12,135 @@
 
 package com.jala.solidwater.console;
 
-import com.jala.solidwater.console.models.ValueCustom;
+import com.jala.utils.ValueCustom;
 import org.junit.Before;
 import org.junit.Test;
 
+import static com.jala.utils.ValueCustom.ERROR_FOR_CONDITIONS;
+import static com.jala.utils.ValueCustom.ERROR_FOR_LENGTH_LESS_THAN_1;
+import static com.jala.utils.ValueCustom.ERROR_FOR_LENGTH_LESS_THAN_2;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Class to unit test of Value custom.
+ */
 public class ValueCustomTest {
 
-    private String valuePath;
-    private String valueFileName;
+    /**
+     * Constant to do the assert.
+     */
+    private static final String VALUE_RESULT = "Hello world";
 
+    /**
+     * Value with character to the start and end string.
+     */
+    private String valueWithCharacterToTheStarAndEndInString;
+
+    /**
+     * Value with character to the start and end string and between words.
+     */
+    private String valueWithCharacterBetweenWords;
+
+    /**
+     * Initialize the values before start the test.
+     */
     @Before
-    public void setup(){
+    public void setup() {
 
-        valuePath = "'C:\\hola'";
-        valueFileName = "'hola mundo'";
+        valueWithCharacterToTheStarAndEndInString = "'Hello world'";
+        valueWithCharacterBetweenWords = "'Hello 'wor'ld'";
     }
 
+    /**
+     * Verify that the characters will be removed to the start and end of a string.
+     */
     @Test
-    public void removeTheCharacterOfValueWithSimpleQuotes() {
+    public void removeTheCharactersToTheStartAndEndString() {
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals("C:\\hola",valueCustomTest.removeCharSpecial(valuePath, "'", 0));
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
     }
 
+    /**
+     * Verify that the characters will be removed with spaces between words.
+     */
     @Test
-    public void removeTheCharacterOfValueWithSimpleQuotesAndSpaceBetweenWords() {
+    public void removeTheCharactersWithSpaceBetweenWords() {
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals("hola mundo",valueCustomTest.removeCharSpecial(valueFileName, "'", 0));
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterBetweenWords, "'", 1));
+    }
+
+    /**
+     * Verify that all coincidence will be removed.
+     */
+    @Test
+    public void removeAllCoincidenceOfCharacter() {
+        ValueCustom valueCustomTest = new ValueCustom();
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterBetweenWords, "'", 1));
+    }
+
+    /**
+     * Verify that characters will be removed in a string with length equals to 2.
+     */
+    @Test
+    public void removeCharacterOfValueWithLengthEqualsTo2() {
+        valueWithCharacterToTheStarAndEndInString = "''";
+        ValueCustom valueCustomTest = new ValueCustom();
+        assertEquals("", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
+        assertEquals("", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+    }
+
+    /**
+     * Verify that characters will be removed in a string with length equals to 1.
+     */
+    @Test
+    public void removeTheCharacterOfValueWithLengthEqualsTo1() {
+        valueWithCharacterToTheStarAndEndInString = "'";
+        ValueCustom valueCustomTest = new ValueCustom();
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals("", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
+    }
+
+    /**
+     * Verify an error message for string with length equals to 0.
+     */
+    @Test
+    public void removeTheCharacterOfValueWithLengthEqualsTo0() {
+        valueWithCharacterToTheStarAndEndInString = "";
+        ValueCustom valueCustomTest = new ValueCustom();
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_1, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
+    }
+
+    /**
+     * Verify that characters will be removed in a string that contains only spaces.
+     */
+    @Test
+    public void removeTheCharacterOfValueOnlyWithSpace() {
+        valueWithCharacterToTheStarAndEndInString = "'  '";
+        ValueCustom valueCustomTest = new ValueCustom();
+        assertEquals("  ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals("  ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
+    }
+
+    /**
+     * Verify that characters will be removed in a string that contains spaces in the end.
+     */
+    @Test
+    public void removeTheCharacterOfValueWithSpaceInTheEndOfWord() {
+        valueWithCharacterToTheStarAndEndInString = "'Hello' '";
+        ValueCustom valueCustomTest = new ValueCustom();
+        assertEquals("Hello' ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals("Hello ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
+    }
+
+    /**
+     * Verify that the error message when enter a condition no valid.
+     */
+    @Test
+    public void removeTheCharacterSendingInvalidValueToRemove() {
+        ValueCustom valueCustomTest = new ValueCustom();
+        assertEquals(ERROR_FOR_CONDITIONS, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", -1));
+        assertEquals(ERROR_FOR_CONDITIONS, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 3));
     }
 }
