@@ -27,11 +27,10 @@ import java.util.List;
 
 /**
  * ControllerSearchAdvanceVideo class
- *
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced implements ActionListener{
+public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced implements ActionListener {
 
     /** It creates to follow up the instruction of the class*/
     private Logger log = Logs.getInstance().getLog();
@@ -69,7 +68,6 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     /**
      * It is override the method of ActionListener and the objective is listen if button is pressed.
      * @param event this activates when a button is  pressed
-     *
      */
     @Override
     public void actionPerformed(ActionEvent event) {

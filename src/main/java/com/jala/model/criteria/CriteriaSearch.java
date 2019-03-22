@@ -133,7 +133,6 @@ public class CriteriaSearch extends Criteria {
         lastDateTo = criteriaSearch.getLastDateTo();
         size = criteriaSearch.getSize();
         sizeCompareOption = criteriaSearch.isSizeCompareOption();
-
     }
 
     /**
