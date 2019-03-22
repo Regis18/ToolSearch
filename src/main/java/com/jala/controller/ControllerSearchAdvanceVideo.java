@@ -71,16 +71,13 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      */
     @Override
     public void actionPerformed(ActionEvent event) {
-        System.out.println("Event: controller search video:" + event);
         JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
         log.info("It was detected an event on the JPanelSearchAdvancedVideo class ");
         Object source = event.getSource();
         if (source == searchVideo.getBtnSearch()) {
             CriteriaSearch criteriaSearch = super.getCriteria(viewAdvancedVideo.getPanelAdvanceSearch());
             this.criteriaSearchMultimedia = new CriteriaSearchMultimedia(criteriaSearch);
-            System.out.println("Path: " + criteriaSearchMultimedia.getPath());
-            //searchVideo.isVideo() ? addAttributesOfVideo() : addAttributesOfVideo();
-            addAttributesOfVideo();
+            addAttributesMultimedia();
             sendCriteriaToFile(criteriaSearchMultimedia);
         }
     }
@@ -90,12 +87,10 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      * receive a list of results, and print the results in the UI table.
      * @param criteria has data for search video file
      */
-    private void sendCriteriaToFile(CriteriaSearchMultimedia criteria) {
+    private void sendCriteriaToFile(CriteriaSearchMultimedia criteria ) {
         log.info("Preparing to send criteria to SearchFile multimedia");
         SearchFile searchFile = new SearchFile();
         List<Asset> results = searchFile.search(criteria, true);
-        System.out.println("result criteria:" + criteria.getFrameRate());
-        System.out.println("result asset:" + results);
         log.info("Information sending and waiting answers");
         viewAdvancedVideo.getTblResult().removeRow();
         for (int i = 0; i < results.size(); i++) {
@@ -111,20 +106,24 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     }
 
     /**
-     * The addAttributesOfVideo method, upload data in criteriaSearchMultimedia attribute
-     * from this class, for search advanced video.
+     * The addAttributesMultimedia method, upload data in criteriaSearchMultimedia attribute
+     * from this class, for search advanced multimedia video or audio.
      */
-    private void addAttributesOfVideo() {
+    private void addAttributesMultimedia() {
         JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
         log.info("Upload data for criteriaSearchMultimedia attribute");
-        this.criteriaSearchMultimedia.setFrameRate(searchVideo.getCmbFrameRate());
-        this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
         this.criteriaSearchMultimedia.setAudioCodec(searchVideo.getCmbAudioCodec());
         this.criteriaSearchMultimedia.setAudioSampleRate(searchVideo.getTxtAudioSampleRate());
         this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension().toLowerCase());
-        this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
         this.criteriaSearchMultimedia.setDuration(searchVideo.getTxtDuration());
         this.criteriaSearchMultimedia.setChannel(getChanel());
+
+        if (searchVideo.isVideo()) {
+            this.criteriaSearchMultimedia.setFrameRate(searchVideo.getCmbFrameRate());
+            this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
+            this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
+            this.criteriaSearchMultimedia.setChannel("");
+        }
         log.info("Information saved on criteriaSearchMultimedia attribute");
     }
 
