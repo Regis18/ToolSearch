@@ -14,6 +14,8 @@ package com.jala.view;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  * JTableResult class.
@@ -33,6 +35,14 @@ public class JTableDB extends JTable {
         super();
         defaultTableM.setColumnIdentifiers(header);
         this.setModel(defaultTableM);
+        setFont(new Font("Calibri", 0, 12));
+        setGridColor(Color.BLACK);
+        setForeground(Color.WHITE);
+        setBackground(Color.BLACK);
+        this.getTableHeader().setForeground(new Color(255, 255, 255, 0));
+        this.getTableHeader().setFont(new Font("Calibri", 0, 14));
+        this.getTableHeader().setBackground(new Color(141, 145, 141, 140));
+        this.getColumnModel().getColumn(0).setPreferredWidth(30);
         this.getColumnModel().getColumn(0).setPreferredWidth(20);
         this.getColumnModel().getColumn(1).setPreferredWidth(20);
         this.getColumnModel().getColumn(2).setPreferredWidth(500);

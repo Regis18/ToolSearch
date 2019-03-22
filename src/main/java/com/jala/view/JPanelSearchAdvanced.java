@@ -133,6 +133,7 @@ public class JPanelSearchAdvanced extends JPanel {
         tbSearchAdvanced = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+
         return pnlSearchAdvanced;
     }
 
@@ -167,6 +168,7 @@ public class JPanelSearchAdvanced extends JPanel {
         panelInferior.add(btnCharge);
         panelInferior.add(btnDelete);
     }
+
 
     /**
      * Return the instance of south panel with the label messages.

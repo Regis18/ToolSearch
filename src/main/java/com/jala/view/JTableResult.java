@@ -45,14 +45,16 @@ public class JTableResult extends JTable {
 	public JTableResult() {
 		super();
 		dtm.setColumnIdentifiers(header);
-		setFont(new java.awt.Font("Calibri", 0, 12));
+		setFont(new Font("Calibri", 0, 12));
 		setGridColor(Color.WHITE);
 		setForeground(Color.black);
 		setBackground(Color.white);
 
 		//set model into the table object
 		this.setModel(dtm);
-		this.tableHeader.getColorModel();
+		this.getTableHeader().setForeground(new Color(0, 0, 0, 228));
+		this.getTableHeader().setFont(new Font("Calibri", 0, 14));
+		this.getTableHeader().setBackground(new Color(189, 193, 189, 140));
 		this.getColumnModel().getColumn(0).setPreferredWidth(30);
 		this.getColumnModel().getColumn(1).setPreferredWidth(500);
 		this.getColumnModel().getColumn(2).setPreferredWidth(400);
@@ -74,13 +76,16 @@ public class JTableResult extends JTable {
 	public JTableResult(int withColumn) {
 		super();
 		dtm.setColumnIdentifiers(bothHeader);
-		setFont(new java.awt.Font("Calibri", 0, 12));
+		setFont(new Font("Calibri", 0, 12));
 		setGridColor(Color.WHITE);
-		setForeground(new ColorUIResource(0, 180, 158));
-		setBackground(Color.DARK_GRAY);
+		setForeground(Color.black);
+		setBackground(Color.white);
+
 		//set model into the table object
 		this.setModel(dtm);
-
+		this.getTableHeader().setForeground(new Color(0, 0, 0, 228));
+		this.getTableHeader().setFont(new Font("Calibri", 0, 14));
+		this.getTableHeader().setBackground(new Color(189, 193, 189, 140));
 		this.getColumnModel().getColumn(0).setPreferredWidth(30);
 		this.getColumnModel().getColumn(1).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(2).setPreferredWidth(withColumn);
