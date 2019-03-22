@@ -169,7 +169,7 @@ public class MainView extends JFrame implements ActionListener {
      */
     private void initComponent() {
         createMenu();
-        this.getContentPane().setBackground(new Color(166, 166, 166));
+        this.getContentPane().setBackground(new Color(71, 71, 71));
     }
 
     /**
@@ -218,7 +218,7 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuPlayerVideo);
         menuBar.setBorderPainted(true);
 
-        menuBar.setBackground(new Color(0, 119, 100));
+        menuBar.setBackground(new Color(0, 139, 119));
         menuSearch.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
         menuConverter.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
         menuPlayerVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));

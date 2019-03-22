@@ -16,8 +16,8 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +25,6 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JFileChooser;
 
@@ -115,10 +114,9 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      */
     private JPanel pnlCriteria() {
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Search");
-
-
+        TitledBorder titleBorder = new CustomTitleBorder("Search: ");
         pnlPath.setBorder(titleBorder);
+        pnlPath.setBackground(new Color(0,0,0,65));
         lblPath = new CustomLabel();
         lblPath.setText("Path :");
         pnlPath.add(lblPath);
@@ -155,10 +153,9 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      */
     private JPanel pnlTableResult() {
         JPanel pnlSearchGral = new JPanel(new  BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search General");
+        TitledBorder titleBorder = new CustomTitleBorder("List Search General: ");
         pnlSearchGral.setBorder(titleBorder);
-        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 10));
+        pnlSearchGral.setBackground(new Color(0,0,0,65));
 
         tbSearchGral = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchGral);

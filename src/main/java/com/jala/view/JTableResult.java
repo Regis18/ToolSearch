@@ -15,7 +15,9 @@ package com.jala.view;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.swing.JTable;
+import javax.swing.plaf.ColorUIResource;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 /**
  * Module view, ui/JTableResult.
@@ -43,10 +45,12 @@ public class JTableResult extends JTable {
 	public JTableResult() {
 		super();
 		dtm.setColumnIdentifiers(header);
-
+		setFont(new java.awt.Font("Tahoma", 0, 12));
+		setGridColor(Color.WHITE);
+		setForeground(new ColorUIResource(0, 180, 158));
+		setBackground(Color.DARK_GRAY);
 		//set model into the table object
 		this.setModel(dtm);
-		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 		this.getColumnModel().getColumn(0).setPreferredWidth(30);
 		this.getColumnModel().getColumn(1).setPreferredWidth(500);
 		this.getColumnModel().getColumn(2).setPreferredWidth(400);
@@ -57,6 +61,7 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(7).setPreferredWidth(150);
 		this.getColumnModel().getColumn(8).setPreferredWidth(150);
 		this.getColumnModel().getColumn(9).setPreferredWidth(150);
+		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 
 	/**
@@ -67,10 +72,13 @@ public class JTableResult extends JTable {
 	public JTableResult(int withColumn) {
 		super();
 		dtm.setColumnIdentifiers(bothHeader);
-
+		setFont(new java.awt.Font("Tahoma", 0, 12));
+		setGridColor(Color.WHITE);
+		setForeground(new ColorUIResource(0, 180, 158));
+		setBackground(Color.DARK_GRAY);
 		//set model into the table object
 		this.setModel(dtm);
-		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+
 		this.getColumnModel().getColumn(0).setPreferredWidth(30);
 		this.getColumnModel().getColumn(1).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(2).setPreferredWidth(withColumn);
@@ -87,6 +95,7 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(13).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(14).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(15).setPreferredWidth(withColumn);
+		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 	/**
 	 * Add a row to the table.

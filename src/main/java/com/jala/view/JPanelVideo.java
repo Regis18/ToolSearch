@@ -13,9 +13,9 @@
 package com.jala.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.LayoutManager;
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
@@ -51,8 +51,9 @@ public class JPanelVideo extends JPanel {
      */
     private void initComponent() {
         panelConverterVideo = new JPanelConverterVideo(new BorderLayout());
-        TitledBorder titleBorderVideo = BorderFactory.createTitledBorder(border, "Options Convert");
+        TitledBorder titleBorderVideo = new CustomTitleBorder("Options Convert: ");
         panelConverterVideo.setBorder(titleBorderVideo);
+        panelConverterVideo.setBackground(new Color(0,0,0,65));
         this.add(panelConverterVideo, BorderLayout.NORTH);
     }
 }
