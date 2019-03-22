@@ -72,7 +72,7 @@ public class ModelConsole {
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
         criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, HIDDEN_COMMAND));
-        criteria.setReadonly(setValueOnHiddenOrReadOnlyCriteria(validCommand, READONLY_COMMAND));
+        criteria.setReadOnly(setValueOnHiddenOrReadOnlyCriteria(validCommand, READONLY_COMMAND));
         criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_CREATED_COMMAND));
         criteria.setCreationDateTo(setValueIfExistCommand(validCommand, TO_DATE_CREATED_COMMAND));
         criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_MODIFIED_COMMAND));

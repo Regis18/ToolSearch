@@ -131,11 +131,11 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
 
         lblAudioSampleRate = new CustomLabel("Audio Sample Rate: ");
         constraintComponent(lblAudioSampleRate, 0, 5, GridBagConstraints.EAST);
-        txtAudioSampleRate = new CustomTextField(15);
+        txtAudioSampleRate = new CustomTextField(10);
         constraintComponent(txtAudioSampleRate, 1, 5, GridBagConstraints.WEST);
         lblDuration = new CustomLabel("Duration: ");
         constraintComponent(lblDuration, 2, 5, GridBagConstraints.EAST);
-        txtDuration = new CustomTextField(15);
+        txtDuration = new CustomTextField(10);
         constraintComponent(txtDuration, 3, 5, GridBagConstraints.EAST);
 
         btnSearch = new JButton("Search");
@@ -148,13 +148,13 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == radioVideo) {
             if (radioVideo.isSelected()) {
-                btnSearch.setText("Convert Video");
+                btnSearch.setText("Search Video");
                 enableOptionsVideo();
             }
         }
         if (event.getSource() == radioAudio) {
             if (radioAudio.isSelected()) {
-                btnSearch.setText("Convert Audio");
+                btnSearch.setText("Search Audio");
                 disableOptionsVideo();
             }
         }
@@ -206,6 +206,28 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     }
 
     /**
+     * The radioStereo method get RadioButton.
+     */
+    public JRadioButton getRadioStereo() {
+        return radioStereo;
+    }
+
+
+    public JRadioButton getRadioMono() {
+        return radioMono;
+    }
+
+
+    public JRadioButton getRadioVideo() {
+        return radioVideo;
+    }
+
+
+    public JRadioButton getRadioAudio() {
+        return radioAudio;
+    }
+
+    /**
      * The txtDuration method get String of txtField selected.
      */
     public String getTxtAudioSampleRate() {
@@ -215,8 +237,8 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     /**
      * The txtDuration method get String of txtField selected.
      */
-    public JTextField getTxtDuration() {
-        return txtDuration;
+    public String getTxtDuration() {
+        return txtDuration.getText();
     }
 
     /**

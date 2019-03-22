@@ -152,7 +152,7 @@ public class ControllerCriteriaSaved implements ActionListener {
         jCheckBox.setSelected(criteriaSearch.isSizeCompareOption());
         viewAdvanced.getJPanelAdvanced().setFileMajors(jCheckBox);
         viewAdvanced.getJPanelAdvanced().setCmbHidden(getMessage(criteriaSearch.getHidden(),true));
-        viewAdvanced.getJPanelAdvanced().setComboReadOnly(getMessage(criteriaSearch.getReadonly(),false));
+        viewAdvanced.getJPanelAdvanced().setComboReadOnly(getMessage(criteriaSearch.getReadOnly(),false));
         if (!criteriaSearch.getSize().equals("")) {
             JSpinner spinner = new JSpinner();
             spinner.setValue(Double.parseDouble(criteriaSearch.getSize()) / 1023);
@@ -194,8 +194,10 @@ public class ControllerCriteriaSaved implements ActionListener {
         List<CriteriaName> result = criteriaDataBase.loadCriteria();
         if (result != null) {
             for (int i = 0; i < result.size(); i++) {
-                viewAdvanced.getTbDataBase().addResultRow(Integer.toString(i), Integer.toString(result.get(i).getId()), result.get(i).getName(), result.get(i).getDateCreation());
-
+                viewAdvanced.getTbDataBase().addResultRow(Integer.toString(i),
+                        Integer.toString(result.get(i).getId()),
+                        result.get(i).getName(),
+                        result.get(i).getDateCreation());
             }
         }
     }

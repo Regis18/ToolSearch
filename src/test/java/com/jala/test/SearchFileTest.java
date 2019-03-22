@@ -75,19 +75,19 @@ public class SearchFileTest {
     @Test
     public void searchHiddenOnlyTrue() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
-        cr.setReadonly(TernaryBooleanEnum.OnlyTrue);
+        cr.setReadOnly(TernaryBooleanEnum.OnlyTrue);
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(0, assetList.size());
     }
 
     /**
-     * Test return the number of files, readonly  and not readonly files.
+     * Test return the number of files, readOnly  and not readOnly files.
      */
     @Test
     public void searchReadOnlyAll() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
-        cr.setReadonly(TernaryBooleanEnum.ALL);
+        cr.setReadOnly(TernaryBooleanEnum.ALL);
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(5, assetList.size());

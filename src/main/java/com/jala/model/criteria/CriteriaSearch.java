@@ -42,7 +42,7 @@ public class CriteriaSearch extends Criteria {
     /**
      * Criteria for read only of file.
      */
-    public TernaryBooleanEnum readonly;
+    public TernaryBooleanEnum readOnly;
 
     /**
      * Criteria for path of the directory.
@@ -124,7 +124,7 @@ public class CriteriaSearch extends Criteria {
         fileName = criteriaSearch.getFileName();
         owner = criteriaSearch.getOwner();
         hidden = criteriaSearch.getHidden();
-        readonly = criteriaSearch.getReadonly();
+        readOnly = criteriaSearch.getReadOnly();
         creationDateFrom = criteriaSearch.getCreationDateFrom();
         creationDateTo = criteriaSearch.getCreationDateTo();
         modificationDateFrom = criteriaSearch.getModificationDateFrom();
@@ -144,7 +144,7 @@ public class CriteriaSearch extends Criteria {
         String month = Integer.toString(date.get(Calendar.MONTH));
         String day = Integer.toString(date.get(Calendar.DAY_OF_MONTH));
         this.setHidden(TernaryBooleanEnum.ALL);
-        this.setReadonly(TernaryBooleanEnum.ALL);
+        this.setReadOnly(TernaryBooleanEnum.ALL);
         this.setSize("");
         this.setCreationDateFrom("");
         this.setCreationDateTo(year + "-" + month + "-" + day);
@@ -252,19 +252,19 @@ public class CriteriaSearch extends Criteria {
     /**
      * Get the Readonly file status criteria.
      *
-     * @return the readonly criteria used.
+     * @return the readOnly criteria used.
      */
-    public TernaryBooleanEnum getReadonly() {
-        return readonly;
+    public TernaryBooleanEnum getReadOnly() {
+        return readOnly;
     }
 
     /**
-     * Set the readonly file status criteria.
+     * Set the readOnly file status criteria.
      *
-     * @param readonly the readonly criteria used.
+     * @param readOnly the readOnly criteria used.
      */
-    public void setReadonly(TernaryBooleanEnum readonly) {
-        this.readonly = readonly;
+    public void setReadOnly(TernaryBooleanEnum readOnly) {
+        this.readOnly = readOnly;
     }
 
     /**

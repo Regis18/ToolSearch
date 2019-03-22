@@ -13,16 +13,19 @@
 package com.jala.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.LayoutManager;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import com.jala.view.player.VideoMusicPlayer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 /**
@@ -30,13 +33,15 @@ import javax.swing.border.TitledBorder;
  * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
-public class JPanelSearchAdvanced extends JPanel {
+public class JPanelSearchAdvanced extends JPanel implements ActionListener{
     private JTableResult tbSearchAdvanced;
     private Border border;
     private JPanelAdvanced panelSearchAdvanced;
     private JTableDB tbDataBase;
     private JPanel panelInferior;
-    private JButton btnDelete, btnCharge, btnSave;
+    private JButton btnDelete, btnCharge, btnSave, btnPlay;;
+    private ArrayList myListPlayer = new ArrayList();
+
 
     /**
      * Gets the delete button.
@@ -66,6 +71,15 @@ public class JPanelSearchAdvanced extends JPanel {
      * Get the table of database.
      * @return
      */
+
+    /**
+     * Gets the btnPlay button.
+     * @return btnPlay, the Advanced Search button.
+     */
+    public JButton getBtnPlay() {
+        return btnPlay;
+    }
+
     public JTableDB getTbDataBase() {
         return tbDataBase;
     }
@@ -107,10 +121,9 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private void initComponent() {
         panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "Search Advanced");
+        TitledBorder titleBorder =  new CustomTitleBorder("Search Advanced: ");
         panelSearchAdvanced.setBorder(titleBorder);
-        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 10));
+        panelSearchAdvanced.setBackground(new Color(0,0,0,65));
         this.add(panelSearchAdvanced, BorderLayout.CENTER);
 
         JPanel pnlTableDB = pnlTableDB();
@@ -128,14 +141,16 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private JPanel pnlTableResult() {
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
-        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 10));
+        TitledBorder titleBorder = new CustomTitleBorder("List Search Advanced: ");
         pnlSearchAdvanced.setBorder(titleBorder);
+        pnlSearchAdvanced.setBackground(new Color(0,0,0,65));
 
         tbSearchAdvanced = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+
+        JPanel pnlSouth = pnlPlayBtn();
+        pnlSearchAdvanced.add(pnlSouth, BorderLayout.SOUTH);
         return pnlSearchAdvanced;
     }
 
@@ -145,15 +160,13 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private JPanel pnlTableDB() {
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Data Base");
-        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 10));
+        TitledBorder titleBorder = new CustomTitleBorder("List Search Data Base: ");
         pnlSearchGral.setBorder(titleBorder);
+        pnlSearchGral.setBackground(new Color(0,0,0,65));
         pnlButtonInferiorDB();
 
         tbDataBase = new JTableDB();
         JScrollPane scroll = new JScrollPane(tbDataBase);
-
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
         pnlSearchGral.add(panelInferior, BorderLayout.SOUTH);
 
@@ -161,13 +174,26 @@ public class JPanelSearchAdvanced extends JPanel {
     }
 
     /**
+     * Return the instance of center panel with the Advanced button.
+     * @return pnlButtonAdvanced the Advanced button panel.
+     */
+    private JPanel pnlPlayBtn() {
+        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        btnPlay = new JButton("Play");
+        pnlSearchAdvanced.add(btnPlay);
+        btnPlay.addActionListener(this);
+        return pnlSearchAdvanced;
+    }
+
+    /**
      * Create panel for buttons
      */
     private void pnlButtonInferiorDB() {
         panelInferior = new JPanel();
-        btnCharge = new JButton("Charge");
+        btnCharge = new JButton("Load");
         btnDelete = new JButton("Delete");
         panelInferior.setLayout(new FlowLayout());
+        panelInferior.setBackground(new Color(0,0,0,15));
         panelInferior.add(btnCharge);
         panelInferior.add(btnDelete);
     }
@@ -180,5 +206,17 @@ public class JPanelSearchAdvanced extends JPanel {
         JPanel pnlMessage = new JPanel(new FlowLayout(FlowLayout.LEFT));
         pnlMessage.setPreferredSize(new Dimension(200, 50));
         return pnlMessage;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(btnPlay)) {
+            myListPlayer.clear();
+            for(int i = 0; i < tbSearchAdvanced.getRowCount(); i++){
+                if(tbSearchAdvanced.getValueAt(i,10).toString().equals("true")){
+                    myListPlayer.add(tbSearchAdvanced.getValueAt(i,1));
+                }
+            }
+            VideoMusicPlayer listPlayer= new VideoMusicPlayer(myListPlayer);
+        }
     }
 }
