@@ -135,7 +135,7 @@ public class JTableResult extends JTable {
 							 String size, String hidden, String readOnly, String dateCreate,
 							 String dateModification, String dateLaterAccess) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
-				dateCreate, dateModification, dateLaterAccess, dateLaterAccess, false});
+				dateCreate, dateModification, dateLaterAccess, false});
 	}
 
 	/**
