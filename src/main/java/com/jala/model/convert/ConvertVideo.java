@@ -73,7 +73,7 @@ public class ConvertVideo implements IConvertible {
 
 			} else {
 			convertAdvancedVideo(criteria, builder, fmpeg, fprobe);
-		}
+			}
 		} catch (IOException error) {
 			log.error("Error in ConvertVideo", error);
 		}
@@ -107,9 +107,9 @@ public class ConvertVideo implements IConvertible {
 			}
 			builder.addOutput(outputBuilder);
 			//fmpeg.run(builder);
-				FFmpegExecutor executor = new FFmpegExecutor(fmpeg, fprobe);
-				FFmpegProbeResult probeResult = fprobe.probe(criteria.getPath());
-				ConvertVideoProgress(executor, builder, probeResult);
+			FFmpegExecutor executor = new FFmpegExecutor(fmpeg, fprobe);
+			FFmpegProbeResult probeResult = fprobe.probe(criteria.getPath());
+			ConvertVideoProgress(executor, builder, probeResult);
 		} catch (IOException error) {
 			log.error("Error in ConvertAdvancedAudio", error);
 		}
@@ -131,7 +131,9 @@ public class ConvertVideo implements IConvertible {
 			public void progress(final Progress progress) {
 				double percentage = progress.out_time_ns / durationNs;
 				// Print out interesting information about the progress
-				JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
+				if((int) (percentage * 100) <= 100) {
+					JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
+				}
 			}
 		});
 
@@ -142,13 +144,12 @@ public class ConvertVideo implements IConvertible {
 			log.error(e);
 		}
 		if (job.getState() == FFmpegJob.State.FAILED) {
-			convertResult = "The Convertion has failed. ";
+			convertResult = "The Conversion has failed. ";
 			log.error("The Convertion has failed.");
-
 		}
 		if (job.getState() == FFmpegJob.State.FINISHED) {
-			convertResult = "The Convertion has finished successfully.";
-			log.info("The Convertion has finished successfully.");
+			convertResult = "The Conversion has finished successfully.";
+			log.info("The Conversion has finished successfully.");
 		}
 	}
 
