@@ -237,7 +237,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(txtFileName, 1, 3, 1, 1);
 
         cmbExtension = new CustomJCombo();
-        cmbExtension.addItem(" ");
+        cmbExtension.addItem("");
         cmbExtension.addItem("mp3");
         cmbExtension.addItem("wma");
         cmbExtension.addItem("aac");
@@ -251,7 +251,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(cmbExtension, 4, 3, 1, 1);
 
         cmbVideoResolution = new CustomJCombo();
-        cmbVideoResolution.addItem(" ");
+        cmbVideoResolution.addItem("");
         cmbVideoResolution.addItem("ntsc    (720 X 480)");
         cmbVideoResolution.addItem("pal     (720 X 576)");
         cmbVideoResolution.addItem("film    (352 X 240)");
@@ -283,7 +283,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(cmbVideoResolution, 1, 6, 1, 1);
 
         cmbFrameRate = new CustomJCombo();
-        cmbFrameRate.addItem(" ");
+        cmbFrameRate.addItem("");
         cmbFrameRate.addItem("30");
         cmbFrameRate.addItem("60");
         cmbFrameRate.addItem("29.97");
@@ -292,7 +292,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(cmbFrameRate, 4, 6, 1, 1);
 
         cmbBitRate = new CustomJCombo();
-        cmbBitRate.addItem(" ");
+        cmbBitRate.addItem("");
         cmbBitRate.addItem("4 K");
         cmbBitRate.addItem("8 K");
         cmbBitRate.addItem("32 K");
