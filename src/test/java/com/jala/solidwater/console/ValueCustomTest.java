@@ -57,7 +57,7 @@ public class ValueCustomTest {
     @Test
     public void removeTheCharactersToTheStartAndEndString() {
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(VALUE_RESULT, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
     }
 
     /**
@@ -66,8 +66,8 @@ public class ValueCustomTest {
     @Test
     public void removeTheCharactersWithSpaceBetweenWords() {
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(VALUE_RESULT, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
-        assertEquals(VALUE_RESULT, valueCustomTest.removeCharSpecial(valueWithCharacterBetweenWords, "'", 1));
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterBetweenWords, "'", 1));
     }
 
     /**
@@ -76,7 +76,7 @@ public class ValueCustomTest {
     @Test
     public void removeAllCoincidenceOfCharacter() {
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(VALUE_RESULT, valueCustomTest.removeCharSpecial(valueWithCharacterBetweenWords, "'", 1));
+        assertEquals(VALUE_RESULT, valueCustomTest.removeCharacter(valueWithCharacterBetweenWords, "'", 1));
     }
 
     /**
@@ -86,8 +86,8 @@ public class ValueCustomTest {
     public void removeCharacterOfValueWithLengthEqualsTo2() {
         valueWithCharacterToTheStarAndEndInString = "''";
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals("", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 1));
-        assertEquals("", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals("", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
+        assertEquals("", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
     }
 
     /**
@@ -97,8 +97,8 @@ public class ValueCustomTest {
     public void removeTheCharacterOfValueWithLengthEqualsTo1() {
         valueWithCharacterToTheStarAndEndInString = "'";
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
-        assertEquals("", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 1));
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals("", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
     }
 
     /**
@@ -108,8 +108,8 @@ public class ValueCustomTest {
     public void removeTheCharacterOfValueWithLengthEqualsTo0() {
         valueWithCharacterToTheStarAndEndInString = "";
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
-        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_1, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 1));
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_2, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals(ERROR_FOR_LENGTH_LESS_THAN_1, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
     }
 
     /**
@@ -119,8 +119,8 @@ public class ValueCustomTest {
     public void removeTheCharacterOfValueOnlyWithSpace() {
         valueWithCharacterToTheStarAndEndInString = "'  '";
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals("  ", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
-        assertEquals("  ", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 1));
+        assertEquals("  ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals("  ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
     }
 
     /**
@@ -130,8 +130,8 @@ public class ValueCustomTest {
     public void removeTheCharacterOfValueWithSpaceInTheEndOfWord() {
         valueWithCharacterToTheStarAndEndInString = "'Hello' '";
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals("Hello' ", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 0));
-        assertEquals("Hello ", valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 1));
+        assertEquals("Hello' ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 0));
+        assertEquals("Hello ", valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 1));
     }
 
     /**
@@ -140,7 +140,7 @@ public class ValueCustomTest {
     @Test
     public void removeTheCharacterSendingInvalidValueToRemove() {
         ValueCustom valueCustomTest = new ValueCustom();
-        assertEquals(ERROR_FOR_CONDITIONS, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", -1));
-        assertEquals(ERROR_FOR_CONDITIONS, valueCustomTest.removeCharSpecial(valueWithCharacterToTheStarAndEndInString, "'", 3));
+        assertEquals(ERROR_FOR_CONDITIONS, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", -1));
+        assertEquals(ERROR_FOR_CONDITIONS, valueCustomTest.removeCharacter(valueWithCharacterToTheStarAndEndInString, "'", 3));
     }
 }

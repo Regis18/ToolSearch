@@ -27,7 +27,7 @@ public class ValueCustom {
     public static final String ERROR_FOR_LENGTH_LESS_THAN_1 = "Enter a String with length greater equals than 1";
 
     /**
-     * Constant for error message when entering condicion no valid.
+     * Constant for error message when entering condition no valid.
      */
     public static final String ERROR_FOR_CONDITIONS = "Enter 1 or 0";
 
@@ -41,7 +41,7 @@ public class ValueCustom {
      *                          1 to remove only the start and end of a string.
      * @return a string without the character that was sent to delete.
      */
-    public String removeCharSpecial(String value, String characterToRemove, int condition) {
+    public String removeCharacter(String value, String characterToRemove, int condition) {
         String valueWithoutChars = "";
         if (condition == 0 || condition == 1) {
             if (condition == 0 && value.length() >= 2) {
