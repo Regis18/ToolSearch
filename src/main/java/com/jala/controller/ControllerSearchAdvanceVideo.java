@@ -80,6 +80,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
         if (source == searchVideo.getBtnSearch()) {
             CriteriaSearch criteriaSearch = super.getCriteria(viewAdvancedVideo.getPanelAdvanceSearch());
             this.criteriaSearchMultimedia = new CriteriaSearchMultimedia(criteriaSearch);
+            System.out.println("Path: " + criteriaSearchMultimedia.getPath());
             //searchVideo.isVideo() ? addAttributesOfVideo() : addAttributesOfVideo();
             addAttributesOfVideo();
             sendCriteriaToFile(criteriaSearchMultimedia);
