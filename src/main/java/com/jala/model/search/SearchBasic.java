@@ -65,7 +65,16 @@ public abstract class SearchBasic implements ISearchable {
 				File file = files.get(i);
 				if (file.isFile()) {
 					Asset asset;
-					asset = AssetFactory.getAsset(file.getPath(), file.getName(), FilenameUtils.getExtension(file.getName()), file.isHidden(), getFileOwner(file), String.valueOf(file.length()), ! file.canWrite(), getFileDate(file, "Creation"), getFileDate(file, "Modification"), getFileDate(file, "LastAccess"));
+					asset = AssetFactory.getAsset(file.getPath(),
+							file.getName(),
+							FilenameUtils.getExtension(file.getName()),
+							file.isHidden(),
+							getFileOwner(file),
+							String.valueOf(file.length()),
+							!file.canWrite(),
+							getFileDate(file, "Creation"),
+							getFileDate(file, "Modification"),
+							getFileDate(file, "LastAccess"));
 					result.add(asset);
 				}
 			}

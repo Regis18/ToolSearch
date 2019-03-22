@@ -22,6 +22,12 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * SearchBasicTest
+ *
+ * @version 0.0.1
+ * @author Regis Humana
+ */
 public class SearchBasicTest {
 
 	private SearchCommon search;
@@ -31,7 +37,6 @@ public class SearchBasicTest {
 	public void setUp() throws Exception {
 		String path = "C:\\Users\\Admin\\Desktop\\o";
 		criteriaSearch = new CriteriaSearch(path);
-
 	}
 
 	@Test
@@ -53,7 +58,6 @@ public class SearchBasicTest {
 			System.out.println("FIN");
 			System.out.println(list.get(i).getPath());
 			System.out.println(list.get(i).isReadOnly());
-
 		}
 	}
 
