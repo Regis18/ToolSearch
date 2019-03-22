@@ -152,7 +152,7 @@ public class ControllerCriteriaSaved implements ActionListener {
         jCheckBox.setSelected(criteriaSearch.isSizeCompareOption());
         viewAdvanced.getJPanelAdvanced().setFileMajors(jCheckBox);
         viewAdvanced.getJPanelAdvanced().setCmbHidden(getMessage(criteriaSearch.getHidden(),true));
-        viewAdvanced.getJPanelAdvanced().setComboReadOnly(getMessage(criteriaSearch.getReadonly(),false));
+        viewAdvanced.getJPanelAdvanced().setComboReadOnly(getMessage(criteriaSearch.getReadOnly(),false));
         if (!criteriaSearch.getSize().equals("")) {
             JSpinner spinner = new JSpinner();
             spinner.setValue(Double.parseDouble(criteriaSearch.getSize()) / 1023);

@@ -66,7 +66,7 @@ public abstract class SearchBasic implements ISearchable {
                             file.isHidden(),
                             getFileOwner(file),
                             String.valueOf(file.length()),
-                            file.canWrite(),
+                            !file.canWrite(),
                             getFileDate(file,"Creation"),
                             getFileDate(file,"Modification"),
                             getFileDate(file, "LastAccess"));

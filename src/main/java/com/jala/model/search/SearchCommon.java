@@ -57,7 +57,6 @@ public class SearchCommon extends SearchBasic {
         List<Asset> preview = super.search(criteria);
         result = new ArrayList<>();
         for (int i = 0; i < preview.size(); i++) {
-            String path = preview.get(i).getPath();
             if ((criteria.getHidden() == TernaryBooleanEnum.OnlyTrue) && !(preview.get(i).isHidden())) {
                 continue;
             }
@@ -99,10 +98,10 @@ public class SearchCommon extends SearchBasic {
             if ((!criteria.getExtension().isEmpty()) && (!FilenameUtils.getExtension(preview.get(i).getFileName()).equals(criteria.getExtension()))) {
                 continue;
             }
-            if ((criteria.getReadonly() == TernaryBooleanEnum.OnlyTrue) && (preview.get(i).isReadOnly())) {
+            if ((criteria.getReadOnly() == TernaryBooleanEnum.OnlyTrue) && !(preview.get(i).isReadOnly())) {
                 continue;
             }
-            if ((criteria.getReadonly() == TernaryBooleanEnum.OnlyFalse) && (!preview.get(i).isReadOnly())) {
+            if ((criteria.getReadOnly() == TernaryBooleanEnum.OnlyFalse) && (preview.get(i).isReadOnly())) {
                 continue;
             }
             result.add(preview.get(i));
