@@ -53,6 +53,10 @@ public class ControllerSearchAdvanced implements ActionListener {
         this.viewAdvanced = viewAdvanced;
         actionListener();
     }
+
+    /**
+     * Constructor without parameters.
+     */
     public ControllerSearchAdvanced() {}
 
     /**
