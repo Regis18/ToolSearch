@@ -15,7 +15,6 @@ package com.jala.utils;
 import com.jala.model.search.asset.Asset;
 import com.jala.model.search.asset.AssetAudio;
 import com.jala.model.search.asset.AssetVideo;
-import com.jala.model.search.SearchCommon;
 
 /**
  * AssetFactory class.
@@ -48,7 +47,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(readOnly);
         assetVerify.setExtension(extension);
         assetVerify.setSize(size);
-        assetVerify.setOwner(SearchCommon.getFileOwner(owner));
+        assetVerify.setOwner(owner);
         assetVerify.setCreationDate(creationDate);
         assetVerify.setModificationDate(modificationDate);
         assetVerify.setLastDate(lastDate);
@@ -73,7 +72,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(asset.isReadOnly());
         assetVerify.setExtension(asset.getExtension());
         assetVerify.setSize(asset.getSize());
-        assetVerify.setOwner(SearchCommon.getFileOwner(asset.getOwner()));
+        assetVerify.setOwner(asset.getOwner());
         assetVerify.setCreationDate(asset.getCreationDate());
         assetVerify.setModificationDate(asset.getModificationDate());
         assetVerify.setLastDate(asset.getLastDate());
@@ -98,7 +97,7 @@ public class AssetFactory {
         assetVerify.setReadOnly(asset.isReadOnly());
         assetVerify.setExtension(asset.getExtension());
         assetVerify.setSize(asset.getSize());
-        assetVerify.setOwner(SearchCommon.getFileOwner(asset.getOwner()));
+        assetVerify.setOwner(asset.getOwner());
         assetVerify.setCreationDate(asset.getCreationDate());
         assetVerify.setModificationDate(asset.getModificationDate());
         assetVerify.setLastDate(asset.getLastDate());
