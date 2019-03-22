@@ -101,7 +101,7 @@ public class CriteriaDataBase {
 	 */
 	public CriteriaSearch getCriteria(int id) {
 		ObjectMapper mapper = new ObjectMapper();
-		CriteriaSearch criteriaSearch = new CriteriaSearch(null);
+		CriteriaSearch criteriaSearch = new CriteriaSearch();
 		try {
 			ResultSet resultSet = queryGeneral.selectCriteria(id);
 			criteriaSearch = (mapper.readValue(resultSet.getString(1), CriteriaSearch.class));

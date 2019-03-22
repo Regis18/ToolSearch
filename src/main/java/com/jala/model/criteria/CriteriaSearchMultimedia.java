@@ -70,11 +70,19 @@ public class CriteriaSearchMultimedia extends CriteriaSearch {
 
     /**
      * Constructor CriteriaSearchMultimedia class with a path parameter.
-     *
      * @param path the path of file.
      */
     public CriteriaSearchMultimedia(String path) {
         super(path);
+        this.loadVideoCriteria();
+    }
+
+    /**
+     * Constructor CriteriaSearchMultimedia class with a path parameter.
+     * @param criteriaSearch the path of file.
+     */
+    public CriteriaSearchMultimedia(CriteriaSearch criteriaSearch) {
+        super(criteriaSearch);
         this.loadVideoCriteria();
     }
 

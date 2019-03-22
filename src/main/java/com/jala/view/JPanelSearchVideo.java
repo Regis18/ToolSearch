@@ -208,8 +208,8 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     /**
      * The txtDuration method get String of txtField selected.
      */
-    public JTextField getTxtAudioSampleRate() {
-        return txtAudioSampleRate;
+    public String getTxtAudioSampleRate() {
+        return txtAudioSampleRate.getText();
     }
 
     /**
