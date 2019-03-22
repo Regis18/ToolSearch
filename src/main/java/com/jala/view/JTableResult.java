@@ -12,6 +12,8 @@
 
 package com.jala.view;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,6 +31,12 @@ public class JTableResult extends JTable {
 	String[] header = new String[]{"Id", "Path", "File Name", "Extension", "Size",
 			"Hidden", "ReadOnly", "Date Create", "Date Modification","Date Later Access "};
 
+	// add header for search a video or Audio
+	String[] headerVideo = new String[]{"Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
+										"Duration"};
+
+	//Join both headers for show a table
+	String[] bothHeader = (String[]) ArrayUtils.addAll(header, headerVideo);
 	/**
 	 * Constructor that setting the table DefaultTableModel.
 	 */
@@ -50,6 +58,36 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(8).setPreferredWidth(150);
 		this.getColumnModel().getColumn(9).setPreferredWidth(150);
 	}
+
+	/**
+	 * The JTableResult method is the constructor of this class.
+	 * This constructor is using for create a table for advance search video.
+	 * @param withColumn is data for use in the with of column.
+	 */
+	public JTableResult(int withColumn) {
+		super();
+		dtm.setColumnIdentifiers(bothHeader);
+
+		//set model into the table object
+		this.setModel(dtm);
+		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+		this.getColumnModel().getColumn(0).setPreferredWidth(30);
+		this.getColumnModel().getColumn(1).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(2).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(3).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(4).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(5).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(6).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(7).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(8).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(9).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(10).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(11).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(12).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(13).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(14).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(15).setPreferredWidth(withColumn);
+	}
 	/**
 	 * Add a row to the table.
 	 *
@@ -64,6 +102,35 @@ public class JTableResult extends JTable {
 							 String dateModification, String dateLaterAccess) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
 				dateCreate, dateModification, dateLaterAccess});
+	}
+
+	/**
+	 * The addResultRowVideo method is for add a row in the table of advance search video.
+	 * @param id data for Id column.
+	 * @param path data for Path column.
+	 * @param fileName data for File Name column.
+	 * @param ext data for Extension column.
+	 * @param size data for Size column.
+	 * @param hidden data for Hidden column.
+	 * @param readOnly data for Read Only column.
+	 * @param dateCreate data for Date Create column.
+	 * @param dateModification data for Date Modification column.
+	 * @param dateLaterAccess data for Date Later Access column.
+	 * @param frameRate data for Frame Rate column.
+	 * @param videoCodec data for Video Codec column.
+	 * @param audioCodec data for Audio Codec column.
+	 * @param aspectRatio data for Aspect Ratio column.
+	 * @param audioSampleRate data for Audio Sample Rate column.
+	 * @param duration data for Duration column.
+	 */
+	public void addResultRowVideo(String id, String path, String fileName, String ext,
+							 String size, String hidden, String readOnly, String dateCreate,
+							 String dateModification, String dateLaterAccess, String frameRate,
+								  String videoCodec, String audioCodec, String aspectRatio,
+								  String audioSampleRate, String duration) {
+		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
+				dateCreate, dateModification, dateLaterAccess, frameRate, videoCodec,
+				audioCodec, aspectRatio, audioSampleRate, duration});
 	}
 
 	/**

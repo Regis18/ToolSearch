@@ -78,6 +78,9 @@ public class ControllerMain implements ActionListener {
                 } else if (viewApp.getContentPane().getComponent(0) == viewApp.getPanelConverterVideo()) {
                 	log.info("Loading UI Converter Video and Music");
                 	new ControllerConvertVideo(viewApp.getPanelConverterVideo().getJPanelVideo());
+                } else if (viewApp.getContentPane().getComponent(0) == viewApp.getPnlSearchAdvancedVideo()) {
+                    log.info("Loading UI Search Video");
+                    new ControllerSearchAdvanceVideo(viewApp.getPnlSearchAdvancedVideo());
                 }
             }
 
