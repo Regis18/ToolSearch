@@ -44,6 +44,9 @@ public class AssetVideo extends Asset {
     /** Save duration valid for AssetVideo. */
     private String duration;
 
+    /** Save channel valid for AssetAudio. */
+    private String channel;
+
     /**
      * Constructor of AssetVideo class
      */
@@ -168,6 +171,22 @@ public class AssetVideo extends Asset {
      */
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    /**
+     * Return the frame rate value.
+     * @return channel return as a String value.
+     */
+    public String getChannel() {
+        return channel;
+    }
+
+    /**
+     * Set the channel attribute of audio.
+     * @param channel this is an attribute of audio for the advanced searched.
+     */
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 }
 

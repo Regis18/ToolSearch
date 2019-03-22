@@ -123,7 +123,8 @@ public class SearchVideo extends SearchCommon {
 							String.valueOf(frameRateProbe),
 							ffprobeResult.getStreams().get(0).display_aspect_ratio,
 							Integer.toString(ffprobeResult.getStreams().get(0).sample_rate),
-							String.valueOf(ffprobeResult.getStreams().get(0).duration));
+							String.valueOf(ffprobeResult.getStreams().get(0).duration),
+							ffprobeResult.getStreams().get(0).channel_layout);
 					result.add(asset);
 				}
 

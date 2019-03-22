@@ -139,10 +139,10 @@ public class JTableResult extends JTable {
 							 String size, String hidden, String readOnly, String dateCreate,
 							 String dateModification, String dateLaterAccess, String frameRate,
 								  String videoCodec, String audioCodec, String aspectRatio,
-								  String audioSampleRate, String duration) {
+								  String audioSampleRate, String duration,String chanel) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
 				dateCreate, dateModification, dateLaterAccess, frameRate, videoCodec,
-				audioCodec, aspectRatio, audioSampleRate, duration});
+				audioCodec, aspectRatio, audioSampleRate, duration, chanel});
 	}
 
 	/**

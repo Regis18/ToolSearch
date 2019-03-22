@@ -94,6 +94,8 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
         log.info("Preparing to send criteria to SearchFile multimedia");
         SearchFile searchFile = new SearchFile();
         List<Asset> results = searchFile.search(criteria, true);
+        System.out.println("result criteria:" + criteria.getFrameRate());
+        System.out.println("result asset:" + results);
         log.info("Information sending and waiting answers");
         viewAdvancedVideo.getTblResult().removeRow();
         for (int i = 0; i < results.size(); i++) {
@@ -103,7 +105,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i), data.getPath(), data.getFileName(),
                     data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
                     data.getModificationDate(), data.getLastDate(), data.getFrameRate(), data.getVideoCodec(), data.getAudioCodec(),
-                    data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration());
+                    data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration(),getChanel());
         }
         log.info("Results implemented in the JTable of the UI");
     }
@@ -121,7 +123,18 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
         this.criteriaSearchMultimedia.setAudioSampleRate(searchVideo.getTxtAudioSampleRate());
         this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension().toLowerCase());
         this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
+        this.criteriaSearchMultimedia.setDuration(searchVideo.getTxtDuration());
+        this.criteriaSearchMultimedia.setChannel(getChanel());
         log.info("Information saved on criteriaSearchMultimedia attribute");
+    }
+
+    /**
+     * The getChanel method get the value select on Audio Chanel ButtonGroup.
+     * @return a String of stereo or mono
+     */
+    private String getChanel() {
+        JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
+        return searchVideo.isStereo() ? "stereo" : "mono";
     }
 
     /**
