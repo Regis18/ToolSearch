@@ -35,7 +35,7 @@ public class JTableResult extends JTable {
 
 	// add header for search a video or Audio
 	String[] headerVideo = new String[]{"Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
-										"Duration", "Audio Channel"};
+										"Duration", "Audio Channel", "Player"};
 
 	//Join both headers for show a table
 	String[] bothHeader = (String[]) ArrayUtils.addAll(header, headerVideo);
@@ -63,6 +63,9 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(7).setPreferredWidth(150);
 		this.getColumnModel().getColumn(8).setPreferredWidth(150);
 		this.getColumnModel().getColumn(9).setPreferredWidth(150);
+		this.getColumnModel().getColumn(10).setPreferredWidth(150);
+		this.getColumnModel().getColumn( 10 ).setCellEditor(new CellCheckBox());
+		this.getColumnModel().getColumn( 10 ).setCellRenderer(new RenderCheckBox());
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 
@@ -98,6 +101,9 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(14).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(15).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(16).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(17).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn( 17).setCellEditor(new CellCheckBox());
+		this.getColumnModel().getColumn( 17).setCellRenderer(new RenderCheckBox());
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 	/**
@@ -113,7 +119,7 @@ public class JTableResult extends JTable {
 							 String size, String hidden, String readOnly, String dateCreate,
 							 String dateModification, String dateLaterAccess) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
-				dateCreate, dateModification, dateLaterAccess});
+				dateCreate, dateModification, dateLaterAccess, false});
 	}
 
 	/**
@@ -139,10 +145,10 @@ public class JTableResult extends JTable {
 							 String size, String hidden, String readOnly, String dateCreate,
 							 String dateModification, String dateLaterAccess, String frameRate,
 								  String videoCodec, String audioCodec, String aspectRatio,
-								  String audioSampleRate, String duration,String chanel) {
+								  String audioSampleRate, String duration, String chanel) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
 				dateCreate, dateModification, dateLaterAccess, frameRate, videoCodec,
-				audioCodec, aspectRatio, audioSampleRate, duration, chanel});
+				audioCodec, aspectRatio, audioSampleRate, duration, chanel, false});
 	}
 
 	/**
