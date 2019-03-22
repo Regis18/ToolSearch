@@ -135,11 +135,11 @@ public class SearchFileTest {
     @Test
     public void searchCreationDate() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Search");
-        cr.setCreationDateFrom("2019-03-01");
-        cr.setCreationDateTo("2019-03-03");
+        cr.setCreationDateFrom("2019-03-14");
+        cr.setCreationDateTo("2019-03-14");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
-        assertEquals(3, assetList.size());
+        assertEquals(2, assetList.size());
     }
 
     /**
