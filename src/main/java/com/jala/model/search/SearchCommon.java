@@ -26,7 +26,7 @@ import java.util.List;
  * SearchCommon.
  * Search file with common parameters.
  * @version 0.0.1
- * @author Regis Humana
+ * @author Regis Humana.
  */
 public class SearchCommon extends SearchBasic {
 
@@ -41,7 +41,7 @@ public class SearchCommon extends SearchBasic {
 
 	/**
 	 * This constructor receive the criteria, for using in the search.
-     * @param criteria
+     * @param criteria for common search.
 	 */
     public SearchCommon(CriteriaSearch criteria) {
         log.info("Searching on " + criteria.getPath());
@@ -65,24 +65,24 @@ public class SearchCommon extends SearchBasic {
                 continue;
             }
             if ((!criteria.getCreationDateFrom().isEmpty()) && !criteria.getCreationDateTo().isEmpty()) {
-                if ((Date.valueOf(createFileDate(path)).before(Date.valueOf(criteria.getCreationDateFrom())))
-                        || (Date.valueOf(createFileDate(path)).after(Date.valueOf(criteria.getCreationDateTo())))) {
+                if ((Date.valueOf(preview.get(i).getCreationDate()).before(Date.valueOf(criteria.getCreationDateFrom())))
+                        || (Date.valueOf(preview.get(i).getCreationDate()).after(Date.valueOf(criteria.getCreationDateTo())))) {
                     continue;
                 }
             }
             if ((!criteria.getModificationDateFrom().isEmpty()) && !criteria.getModificationDateTo().isEmpty()) {
-                if ((Date.valueOf(getFileLastModifiedDate(path)).before(Date.valueOf(criteria.getModificationDateFrom())))
-                        || (Date.valueOf(getFileLastModifiedDate(path))).after(Date.valueOf(criteria.getModificationDateTo()))) {
+                if ((Date.valueOf(preview.get(i).getModificationDate()).before(Date.valueOf(criteria.getModificationDateFrom())))
+                        || (Date.valueOf(preview.get(i).getModificationDate())).after(Date.valueOf(criteria.getModificationDateTo()))) {
                     continue;
                 }
             }
             if ((!criteria.getLastDateFrom().isEmpty()) && !criteria.getLastDateTo().isEmpty()) {
-                if ((Date.valueOf(getFileLastAccessDate(path)).before(Date.valueOf(criteria.getLastDateFrom())))
-                        || (Date.valueOf(getFileLastAccessDate(path)).after(Date.valueOf(criteria.getLastDateTo())))) {
+                if ((Date.valueOf(preview.get(i).getLastDate()).before(Date.valueOf(criteria.getLastDateFrom())))
+                        || (Date.valueOf(preview.get(i).getFileName()).after(Date.valueOf(criteria.getLastDateTo())))) {
                     continue;
                 }
             }
-            if ((!criteria.getOwner().isEmpty()) && (!getFileOwner(path).contains(criteria.getOwner()))) {
+            if ((!criteria.getOwner().isEmpty()) && (!preview.get(i).getOwner().contains(criteria.getOwner()))) {
                 continue;
             }
             if ((!criteria.getSize().isEmpty())) {
