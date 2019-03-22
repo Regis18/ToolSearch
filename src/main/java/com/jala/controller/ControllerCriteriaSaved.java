@@ -194,8 +194,10 @@ public class ControllerCriteriaSaved implements ActionListener {
         List<CriteriaName> result = criteriaDataBase.loadCriteria();
         if (result != null) {
             for (int i = 0; i < result.size(); i++) {
-                viewAdvanced.getTbDataBase().addResultRow(Integer.toString(i), Integer.toString(result.get(i).getId()), result.get(i).getName(), result.get(i).getDateCreation());
-
+                viewAdvanced.getTbDataBase().addResultRow(Integer.toString(i),
+                        Integer.toString(result.get(i).getId()),
+                        result.get(i).getName(),
+                        result.get(i).getDateCreation());
             }
         }
     }
