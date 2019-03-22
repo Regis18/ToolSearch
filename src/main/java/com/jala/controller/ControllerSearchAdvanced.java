@@ -93,7 +93,6 @@ public class ControllerSearchAdvanced implements ActionListener {
      * Save path, fileName and extension in criteriaSearch.
      * @param panelAdvanced has data for create a CriteriaSearch class.
      */
-
     private void saveCriteria(JPanelAdvanced panelAdvanced) {
 
         log.info("Saving data of Path, File Name and Extension in Criteria");
@@ -175,9 +174,9 @@ public class ControllerSearchAdvanced implements ActionListener {
      * @return TernaryBooleanEnum.
      */
     private TernaryBooleanEnum getEnumHidden(JPanelAdvanced panelAdvanced) {
-        if(panelAdvanced.getCmbHidden().equals("Not Hidden")) {
+        if (panelAdvanced.getCmbHidden().equals("Not Hidden")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(panelAdvanced.getCmbHidden().equals("Hidden")) {
+        } else if (panelAdvanced.getCmbHidden().equals("Hidden")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else  {
             return TernaryBooleanEnum.ALL;
@@ -190,11 +189,11 @@ public class ControllerSearchAdvanced implements ActionListener {
      * @return TernaryBooleanEnum.
      */
     private TernaryBooleanEnum getEnumReadOnly(JPanelAdvanced panelAdvanced) {
-        if(panelAdvanced.getComboReadOnly().equals("Not Read Only")) {
+        if (panelAdvanced.getComboReadOnly().equals("Not Read Only")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(panelAdvanced.getComboReadOnly().equals("Read Only")) {
+        } else if (panelAdvanced.getComboReadOnly().equals("Read Only")) {
             return TernaryBooleanEnum.OnlyTrue;
-        } else  {
+        } else {
             return TernaryBooleanEnum.ALL;
         }
     }
@@ -205,7 +204,7 @@ public class ControllerSearchAdvanced implements ActionListener {
 
     private String convertSize(JPanelAdvanced panelAdvanced) {
         double value;
-        if(panelAdvanced.getComboTypeSizeFile().equals("Kb")) {
+        if (panelAdvanced.getComboTypeSizeFile().equals("Kb")) {
             value = Double.parseDouble(panelAdvanced.getSpinControlSizeFile());
             value = value * 1024;
         } else if (panelAdvanced.getComboTypeSizeFile().equals("Mb")) {
