@@ -29,7 +29,7 @@ public class ValueCustomTest {
     /**
      * Constant to do the assert.
      */
-    public static final String VALUE_RESULT = "Hello world";
+    private static final String VALUE_RESULT = "Hello world";
 
     /**
      * Value with character to the start and end string.

@@ -65,9 +65,8 @@ public class ModelConsole {
      */
     public List<Asset> getSearch(CommandLine validCommand) {
         String valuePath = getValueCommandByPositionOfCommand(validCommand, "-p");
-
         ValueCustom valueCustom = new ValueCustom();
-        CriteriaSearch criteria = new CriteriaSearch(valueCustom.removeCharSpecial(valuePath,"'", 0));
+        CriteriaSearch criteria = new CriteriaSearch(valueCustom.removeCharSpecial(valuePath, "'", 0));
         criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
@@ -102,7 +101,7 @@ public class ModelConsole {
             if (command.getAcronym().equals(acronym)) {
                 value = getValueCommandByPositionOfCommand(commandLine, acronym);
                 ValueCustom valueCustom = new ValueCustom();
-                value = valueCustom.removeCharSpecial(value,"'", 0);
+                value = valueCustom.removeCharSpecial(value, "'", 0);
                 i = commandLine.getCommands().size();
             } else {
                 value = value;
@@ -131,13 +130,12 @@ public class ModelConsole {
     }
 
     private TernaryBooleanEnum setValueOnHiddenOrReadOnlyCriteria(CommandLine validCommand, String acronymCommand) {
-        if(setValueIfExistCommand(validCommand,acronymCommand).equals("No")) {
+        if (setValueIfExistCommand(validCommand, acronymCommand).equals("No")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(setValueIfExistCommand(validCommand,acronymCommand).equals("Yes")) {
+        } else if (setValueIfExistCommand(validCommand, acronymCommand).equals("Yes")) {
             return TernaryBooleanEnum.OnlyTrue;
-        } else  {
+        } else {
             return TernaryBooleanEnum.ALL;
         }
     }
-
 }
