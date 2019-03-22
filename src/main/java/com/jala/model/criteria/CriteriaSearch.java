@@ -115,6 +115,27 @@ public class CriteriaSearch extends Criteria {
     }
 
     /**
+     * The CriteriaSearch method is the constructor for create an instance.
+     * @param criteriaSearch has data for attributes of this class.
+     */
+    public CriteriaSearch(CriteriaSearch criteriaSearch) {
+        this.loadCriteria();
+        path = criteriaSearch.getPath();
+        fileName = criteriaSearch.getFileName();
+        owner = criteriaSearch.getOwner();
+        hidden = criteriaSearch.getHidden();
+        readonly = criteriaSearch.getReadonly();
+        creationDateFrom = criteriaSearch.getCreationDateFrom();
+        creationDateTo = criteriaSearch.getCreationDateTo();
+        modificationDateFrom = criteriaSearch.getModificationDateFrom();
+        modificationDateTo = criteriaSearch.getModificationDateTo();
+        lastDateFrom = criteriaSearch.getLastDateFrom();
+        lastDateTo = criteriaSearch.getLastDateTo();
+        size = criteriaSearch.getSize();
+        sizeCompareOption = criteriaSearch.isSizeCompareOption();
+    }
+
+    /**
      * Load Criteria Search goes to init the empty values.
      */
     public void loadCriteria() {
