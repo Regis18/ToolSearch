@@ -11,18 +11,10 @@
 
 package com.jala.view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.*;
 import javax.swing.border.Border;
 
 /**
@@ -162,6 +154,7 @@ public class MainView extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(500, 400));
         initComponent();
+
     }
 
     /**
@@ -169,7 +162,6 @@ public class MainView extends JFrame implements ActionListener {
      */
     private void initComponent() {
         createMenu();
-        this.getContentPane().setBackground(new Color(71, 71, 71));
     }
 
     /**
@@ -178,10 +170,13 @@ public class MainView extends JFrame implements ActionListener {
     private void createMenu() {
         menuSearch = new JMenu("Search");
         menuSearch.setIcon(imgSearch);
+        menuSearch.setForeground(Color.WHITE);
         menuConverter = new JMenu("Converter");
         menuConverter.setIcon(imgConverter);
+        menuConverter.setForeground(Color.WHITE);
         menuPlayerVideo = new JMenu("Video Player");
         menuPlayerVideo.setIcon(imgVideoPlayer);
+        menuPlayerVideo.setForeground(Color.WHITE);
 
         //Add a Submenu with an image in the builder
         menuItemGeneral = new JMenuItem("General", imgGSearchGral );
@@ -218,7 +213,7 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuPlayerVideo);
         menuBar.setBorderPainted(true);
 
-        menuBar.setBackground(new Color(0, 139, 119));
+        menuBar.setBackground(new Color(21, 81, 154, 240));
         menuSearch.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
         menuConverter.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
         menuPlayerVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
@@ -298,5 +293,4 @@ public class MainView extends JFrame implements ActionListener {
             }
         }
     }
-
 }

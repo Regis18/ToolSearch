@@ -30,12 +30,12 @@ public class JTableResult extends JTable {
 	DefaultTableModel dtm = new DefaultTableModel(0, 0);
 
 	// add header of the table
-	String[] header = new String[]{"Id", "Path", "File Name", "Extension", "Size",
+	String[] header = new String[]{"N.", "Path", "File Name", "Extension", "Size",
 			"Hidden", "ReadOnly", "Date Create", "Date Modification","Date Later Access "};
 
 	// add header for search a video or Audio
 	String[] headerVideo = new String[]{"Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
-										"Duration"};
+										"Duration", "Audio Channel"};
 
 	//Join both headers for show a table
 	String[] bothHeader = (String[]) ArrayUtils.addAll(header, headerVideo);
@@ -45,12 +45,14 @@ public class JTableResult extends JTable {
 	public JTableResult() {
 		super();
 		dtm.setColumnIdentifiers(header);
-		setFont(new java.awt.Font("Tahoma", 0, 12));
+		setFont(new java.awt.Font("Calibri", 0, 12));
 		setGridColor(Color.WHITE);
-		setForeground(new ColorUIResource(0, 180, 158));
-		setBackground(Color.DARK_GRAY);
+		setForeground(Color.black);
+		setBackground(Color.white);
+
 		//set model into the table object
 		this.setModel(dtm);
+		this.tableHeader.getColorModel();
 		this.getColumnModel().getColumn(0).setPreferredWidth(30);
 		this.getColumnModel().getColumn(1).setPreferredWidth(500);
 		this.getColumnModel().getColumn(2).setPreferredWidth(400);
@@ -72,7 +74,7 @@ public class JTableResult extends JTable {
 	public JTableResult(int withColumn) {
 		super();
 		dtm.setColumnIdentifiers(bothHeader);
-		setFont(new java.awt.Font("Tahoma", 0, 12));
+		setFont(new java.awt.Font("Calibri", 0, 12));
 		setGridColor(Color.WHITE);
 		setForeground(new ColorUIResource(0, 180, 158));
 		setBackground(Color.DARK_GRAY);
@@ -95,6 +97,7 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(13).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(14).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(15).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(16).setPreferredWidth(withColumn);
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 	/**

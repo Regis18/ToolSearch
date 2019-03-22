@@ -205,21 +205,28 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         add(component, constraints);
     }
 
+    /**
+     * The radioStereo method get RadioButton.
+     */
     public JRadioButton getRadioStereo() {
         return radioStereo;
     }
+
 
     public JRadioButton getRadioMono() {
         return radioMono;
     }
 
+
     public JRadioButton getRadioVideo() {
         return radioVideo;
     }
 
+
     public JRadioButton getRadioAudio() {
         return radioAudio;
     }
+
     /**
      * The txtDuration method get String of txtField selected.
      */
