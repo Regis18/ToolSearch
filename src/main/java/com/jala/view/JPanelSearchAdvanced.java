@@ -20,7 +20,6 @@ import java.awt.LayoutManager;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -38,8 +37,6 @@ public class JPanelSearchAdvanced extends JPanel {
     private JTableDB tbDataBase;
     private JPanel panelInferior;
     private JButton btnDelete, btnCharge, btnSave;
-    private JRadioButton radioVideo, radioAudio;
-
 
     /**
      * Gets the delete button.
@@ -63,6 +60,14 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     public JButton getBtnCharge() {
         return btnCharge;
+    }
+
+    /**
+     * Get the table of database.
+     * @return
+     */
+    public JTableDB getTbDataBase() {
+        return tbDataBase;
     }
 
     /**

@@ -107,6 +107,14 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
+     * The getPnlSearchAdvancedVideo method get  a JPanelSearchAdvancedVideo
+     * @return a pnlSearchAdvancedVideo attribute of this class.
+     */
+    public JPanelSearchAdvancedVideo getPnlSearchAdvancedVideo() {
+        return pnlSearchAdvancedVideo;
+    }
+
+    /**
      * Gets the Exit Menu option.
      * @return menuItemExit, the Exit menu item.
      */
@@ -241,52 +249,64 @@ public class MainView extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         Container content = getContentPane();
         if (event.getSource() == menuItemGeneral) {
-            pnlSearchGral = new JPanelSearchGral(new BorderLayout());
-            content.removeAll();
-            content.add(pnlSearchGral, BorderLayout.CENTER);
-            currentPanel = "SearchGral";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "SearchGral") {
+                pnlSearchGral = new JPanelSearchGral(new BorderLayout());
+                content.removeAll();
+                content.add(pnlSearchGral, BorderLayout.CENTER);
+                currentPanel = "SearchGral";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemAdvanced) {
-            pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
-            content.removeAll();
-            content.add(pnlSearchAdvanced, BorderLayout.CENTER);
-            currentPanel = "SearchAdvanced";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "SearchAdvanced") {
+                pnlSearchAdvanced = new JPanelSearchAdvanced(new BorderLayout());
+                content.removeAll();
+                content.add(pnlSearchAdvanced, BorderLayout.CENTER);
+                currentPanel = "SearchAdvanced";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemConverter) {
-            panelConverterImage = new JPanelConverter(new BorderLayout());
-            content.removeAll();
-            content.add(panelConverterImage, BorderLayout.CENTER);
-            currentPanel = "ConverterImage";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "ConverterImage") {
+                panelConverterImage = new JPanelConverter(new BorderLayout());
+                content.removeAll();
+                content.add(panelConverterImage, BorderLayout.CENTER);
+                currentPanel = "ConverterImage";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemConverterVideo) {
-            panelConverterVideo = new JPanelVideo(new BorderLayout());
-            content.removeAll();
-            content.add(panelConverterVideo, BorderLayout.CENTER);
-            currentPanel = "ConverterVideo";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "ConverterVideo") {
+                panelConverterVideo = new JPanelVideo(new BorderLayout());
+                content.removeAll();
+                content.add(panelConverterVideo, BorderLayout.CENTER);
+                currentPanel = "ConverterVideo";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemSearchVideo) {
-            pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
-            content.removeAll();
-            content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
-            currentPanel = "SearchAdvancedVideo";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "SearchAdvancedVideo") {
+                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+                content.removeAll();
+                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+                currentPanel = "SearchAdvancedVideo";
+                this.validate();
+                this.repaint();
+            }
         }
         if (event.getSource() == menuItemVideoPlayer) {
-            pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
-            content.removeAll();
-            content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
-            currentPanel = "VideoPlayer";
-            this.validate();
-            this.repaint();
+            if (currentPanel != "VideoPlayer") {
+                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
+                content.removeAll();
+                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
+                currentPanel = "VideoPlayer";
+                this.validate();
+                this.repaint();
+            }
         }
     }
 

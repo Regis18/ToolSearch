@@ -25,10 +25,8 @@ import java.util.Calendar;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -39,7 +37,7 @@ import javax.swing.SpinnerNumberModel;
  * @version 0.0.1.
  * @autor Luis Guardia.
  */
-public class JPanelAdvanced extends JPanel implements ActionListener{
+public class JPanelAdvanced extends JPanel implements ActionListener {
 
     private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblTest , lblOwner, lblSeparatorEmpty, lblSeparatorEmpty2, lblSizeFile;
     private JLabel lblDateCreateStar, lblDateCreateEnd, lblDateLastModBegin, lblDateLastModEnd, lblDateLatterAccesBegin, lblDateLatterAccesEnd;
@@ -473,13 +471,10 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
         comboTypeSizeFile.addItem("Gb");
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
-        //lblSeparatorEmpty2 = new JLabel("   ");
-        //addComponent(lblSeparatorEmpty2, 2, 8, 1, 1);
         btnSearchAdvanced = new JButton("Search");
         addComponent(btnSearchAdvanced, 1, 9, 1, 1);
         btnSave = new JButton("Save");
         addComponent(btnSave, 5, 9, 1, 1);
-        btnSave.addActionListener(this);
 
         dateCreateStar = new JDateChooser();
         dateCreateStar.setDateFormatString("yyyy-MM-dd");
@@ -529,7 +524,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
      * method that adds action to a button
      */
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(btnPathSearch)) {
+        if (e.getSource().equals(btnPathSearch)) {
             JFileChooser chooser = new JFileChooser();
             chooser.setCurrentDirectory(new java.io.File("."));
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -538,20 +533,5 @@ public class JPanelAdvanced extends JPanel implements ActionListener{
                 txtPath.setText("" + chooser.getSelectedFile());
             }
         }
-        if(e.getSource().equals(btnSave)) {
-            JTextField criteriaName = new JTextField();
-            final JComponent[] inputs = new JComponent[] {
-                    new CustomLabel("Criteria Name: "),
-                    criteriaName
-            };
-            int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.OK_CANCEL_OPTION);
-            if (result == JOptionPane.OK_OPTION) {
-                System.out.println("You entered " +
-                        criteriaName.getText());
-            } else {
-                System.out.println("User canceled / closed the dialog, result = " + result);
-            }
-        }
     }
-
 }

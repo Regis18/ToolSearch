@@ -57,6 +57,7 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         TitledBorder advancedBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
         panelAdvanceSearch.setBorder(advancedBorder);
         panelAdvanceSearch.getBtnSearch().setVisible(false);
+        panelAdvanceSearch.getBtnSave().setVisible(false);
         panelAdvanceSearch.getTxtFieldExtension().setVisible(false);
         panelAdvanceSearch.getLblExtension().setVisible(false);
         this.add(panelAdvanceSearch, BorderLayout.CENTER);
@@ -80,7 +81,7 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
         TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Video");
         pnlSearchAdvanced.setBorder(titleBorder);
-        tblResult = new JTableResult();
+        tblResult = new JTableResult(400);
         JScrollPane scroll = new JScrollPane(tblResult);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
