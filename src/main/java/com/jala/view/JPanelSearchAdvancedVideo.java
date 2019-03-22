@@ -14,10 +14,10 @@ package com.jala.view;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 /**
  * JPanelSearchAdvancedVideo class is the panel to do
@@ -46,7 +46,9 @@ public class JPanelSearchAdvancedVideo extends JPanel {
     /**
      * The initUI method personalise attribute of itself class.
      */
-    private void initUI() { setLayout(new BorderLayout()); }
+    private void initUI() {
+        setLayout(new BorderLayout());
+    }
 
     /**
      * The initComponent method, is for add component itself class.
@@ -54,7 +56,9 @@ public class JPanelSearchAdvancedVideo extends JPanel {
     private void initComponent() {
 
         panelAdvanceSearch = new JPanelAdvanced(new BorderLayout());
-        TitledBorder advancedBorder = BorderFactory.createTitledBorder(border, "List Search Advanced");
+        TitledBorder advancedBorder = new CustomTitleBorder("List Search Advanced: ");
+        panelAdvanceSearch.setBorder(advancedBorder);
+        panelAdvanceSearch.setBackground(new Color(0, 0, 0, 65));
         panelAdvanceSearch.setBorder(advancedBorder);
         panelAdvanceSearch.getBtnSearch().setVisible(false);
         panelAdvanceSearch.getBtnSave().setVisible(false);
@@ -63,8 +67,9 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         this.add(panelAdvanceSearch, BorderLayout.CENTER);
 
         panelSearchVideo = new JPanelSearchVideo();
-        TitledBorder attributeBorder = BorderFactory.createTitledBorder(border, "Attributes");
+        TitledBorder attributeBorder = new CustomTitleBorder("Attributes: ");
         panelSearchVideo.setBorder(attributeBorder);
+        panelSearchVideo.setBackground(new Color(0, 0, 0, 65));
         this.add(panelSearchVideo, BorderLayout.EAST);
 
         JPanel jpForTable = pnlTableResult();
@@ -79,8 +84,9 @@ public class JPanelSearchAdvancedVideo extends JPanel {
     private JPanel pnlTableResult() {
 
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search Video");
+        TitledBorder titleBorder = new CustomTitleBorder("List Search Video");
         pnlSearchAdvanced.setBorder(titleBorder);
+        pnlSearchAdvanced.setBackground(new Color(0, 0, 0, 65));
         tblResult = new JTableResult(400);
         JScrollPane scroll = new JScrollPane(tblResult);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);

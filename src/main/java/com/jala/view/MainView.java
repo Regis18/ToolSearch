@@ -11,18 +11,10 @@
 
 package com.jala.view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.*;
 import javax.swing.border.Border;
 
 /**
@@ -34,7 +26,6 @@ import javax.swing.border.Border;
 public class MainView extends JFrame implements ActionListener {
 
     private JMenuBar menuBar;
-    private JMenu menuExit;
     private JMenu menuSearch;
     private JMenu menuConverter;
     private JMenu menuPlayerVideo;
@@ -67,13 +58,6 @@ public class MainView extends JFrame implements ActionListener {
         setTitle("SolidWater");
     }
 
-    /**
-     * Return Exit app.
-     * @return menuExit .
-     */
-    public JMenu getMenuExit() {
-        return menuExit;
-    }
     /**
      * Return the panel where is the Search General.
      * @return General Search Panel .
@@ -170,6 +154,7 @@ public class MainView extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(500, 400));
         initComponent();
+
     }
 
     /**
@@ -177,7 +162,6 @@ public class MainView extends JFrame implements ActionListener {
      */
     private void initComponent() {
         createMenu();
-        this.getContentPane().setBackground(new Color(166, 166, 166));
     }
 
     /**
@@ -186,12 +170,13 @@ public class MainView extends JFrame implements ActionListener {
     private void createMenu() {
         menuSearch = new JMenu("Search");
         menuSearch.setIcon(imgSearch);
+        menuSearch.setForeground(Color.WHITE);
         menuConverter = new JMenu("Converter");
         menuConverter.setIcon(imgConverter);
+        menuConverter.setForeground(Color.WHITE);
         menuPlayerVideo = new JMenu("Video Player");
         menuPlayerVideo.setIcon(imgVideoPlayer);
-        menuExit = new JMenu("Exit");
-        menuExit.setIcon(imgExit);
+        menuPlayerVideo.setForeground(Color.WHITE);
 
         //Add a Submenu with an image in the builder
         menuItemGeneral = new JMenuItem("General", imgGSearchGral );
@@ -204,7 +189,7 @@ public class MainView extends JFrame implements ActionListener {
         menuSearch.addSeparator();
         menuItemAdvanced.addActionListener(this);
 
-        menuItemSearchVideo = new JMenuItem("Advanced Video", imgGSearchAdvVideo);
+        menuItemSearchVideo = new JMenuItem("Multimedia", imgGSearchAdvVideo);
         menuSearch.add(menuItemSearchVideo);
         menuItemSearchVideo.addActionListener(this);
 
@@ -218,6 +203,7 @@ public class MainView extends JFrame implements ActionListener {
         menuItemConverterVideo.addActionListener(this);
 
         menuItemExit = new JMenuItem("Exit", imgExitTemp);
+        menuSearch.addSeparator();
         menuSearch.add(menuItemExit);
         //Add a menu with an image in the builder
         menuBar = new JMenuBar();
@@ -225,20 +211,18 @@ public class MainView extends JFrame implements ActionListener {
         menuBar.add(menuSearch);
         menuBar.add(menuConverter);
         menuBar.add(menuPlayerVideo);
-        menuBar.add(menuExit);
         menuBar.setBorderPainted(true);
 
-        menuBar.setBackground(new Color(0, 119, 100));
-        menuSearch.setCursor(new Cursor(HAND_CURSOR));
-        menuConverter.setCursor(new Cursor(HAND_CURSOR));
-        menuPlayerVideo.setCursor(new Cursor(HAND_CURSOR));
-        menuExit.setCursor(new Cursor(HAND_CURSOR));
-        menuItemGeneral.setCursor(new Cursor(HAND_CURSOR));
-        menuItemAdvanced.setCursor(new Cursor(HAND_CURSOR));
-        menuItemSearchVideo.setCursor(new Cursor(HAND_CURSOR));
-        menuItemConverter.setCursor(new Cursor(HAND_CURSOR));
-        menuItemConverterVideo.setCursor(new Cursor(HAND_CURSOR));
-        menuItemExit.setCursor(new Cursor(HAND_CURSOR));
+        menuBar.setBackground(new Color(21, 81, 154, 240));
+        menuSearch.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuConverter.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuPlayerVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemGeneral.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemAdvanced.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemSearchVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemConverter.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemConverterVideo.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
+        menuItemExit.setCursor(Cursor.getPredefinedCursor (Cursor.HAND_CURSOR));
     }
 
     /**
@@ -309,5 +293,4 @@ public class MainView extends JFrame implements ActionListener {
             }
         }
     }
-
 }

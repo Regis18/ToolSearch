@@ -12,25 +12,24 @@
 
 package com.jala.view;
 
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
-import javax.swing.JFileChooser;
 
 /**
  * Module view, ui/JPanelSearchAdvanced.
+ *
  * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
@@ -43,6 +42,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
     /**
      * Class constructor.
+     *
      * @param layout define the main layout.
      */
     public JPanelSearchGral(LayoutManager layout) {
@@ -51,15 +51,17 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     }
 
     /**
-     *  Get the table with the general search.
+     * Get the table with the general search.
+     *
      * @return tbSearchGral the table with the general search.
      */
     public JTableResult getTbSearchGral() {
         return tbSearchGral;
     }
 
-     /**
+    /**
      * Gets the Path of the location to search.
+     *
      * @return txtPath, the location of file to search.
      */
     public JTextField getTxtPath() {
@@ -68,6 +70,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
     /**
      * Sets the path field for the search location.
+     *
      * @param txtPath, the location where to search.
      */
     public void setTxtPath(JTextField txtPath) {
@@ -76,21 +79,23 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
     /**
      * Gets the search button.
+     *
      * @return btnSearch, the Search button.
      */
     public JButton getBtnSearch() {
         return btnSearch;
     }
 
-     /**
+    /**
      * Gets the advanced search button.
+     *
      * @return btnSearchAdvanced, the Advanced Search button.
      */
     public JButton getBtnSearchAdvanced() {
         return btnSearchAdvanced;
     }
 
-     /**
+    /**
      * The init method will initialize this panel.
      */
     public void init() {
@@ -111,15 +116,14 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
     /**
      * Return the instance of panel central with the path, file name, extension and Search button.
+     *
      * @return pnlCriteria  the panel with path, file name, extension.
      */
     private JPanel pnlCriteria() {
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Search");
-        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 10));
-
+        TitledBorder titleBorder = new CustomTitleBorder("Search: ");
         pnlPath.setBorder(titleBorder);
+        pnlPath.setBackground(new Color(0, 0, 0, 65));
         lblPath = new CustomLabel();
         lblPath.setText("Path :");
         pnlPath.add(lblPath);
@@ -137,6 +141,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
     /**
      * Return the instance of center panel with the Advanced button.
+     *
      * @return pnlButtonAdvanced the Advanced button panel.
      */
     private JPanel pnlButtonAdvanced() {
@@ -152,14 +157,14 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
     /**
      * Return the instance of south panel with the table of file founds.
+     *
      * @return pnlTableResult the south panel with the table of file founds.
      */
     private JPanel pnlTableResult() {
-        JPanel pnlSearchGral = new JPanel(new  BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(border, "List Search General");
+        JPanel pnlSearchGral = new JPanel(new BorderLayout());
+        TitledBorder titleBorder = new CustomTitleBorder("List Search General: ");
         pnlSearchGral.setBorder(titleBorder);
-        titleBorder.setTitlePosition(TitledBorder.DEFAULT_POSITION);
-        titleBorder.setTitleFont(new Font("Arial", 1, 10));
+        pnlSearchGral.setBackground(new Color(0, 0, 0, 65));
 
         tbSearchGral = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchGral);

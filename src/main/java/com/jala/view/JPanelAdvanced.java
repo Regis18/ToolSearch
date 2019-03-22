@@ -254,7 +254,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
      * @return txtOwner, the content of the txtOwner text field.
      */
     public String getTxtOwner() {
-        return txtOwner.getText().toString();
+        return txtOwner.getText();
     }
 
     /**
@@ -392,7 +392,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(lblPath, 0, 0, 1, 1);
         txtPath = new CustomTextField(0);
         addComponent(txtPath, 1, 0, 5, 1);
-        btnPathSearch = new JButton(" .... ");
+        btnPathSearch = new JButton("...");
         btnPathSearch.addActionListener(this);
         addComponent(btnPathSearch, 6, 0, 1, 1);
 
@@ -503,7 +503,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         spinControlSizeFile = new JSpinner(new SpinnerNumberModel( 0 , 0 , 100000 , 1));
         addComponent(spinControlSizeFile, 1, 6, 1, 1);
 
-        fileMajors = new JCheckBox("Major", true);
+        fileMajors = new JCheckBox("Greater than", true);
         addComponent(fileMajors, 5, 6, 1, 1);
     }
 
@@ -516,7 +516,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         constraints.gridwidth = sizeFieldX;
         constraints.gridheight = sizeFieldY;
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.insets = new Insets(2, 2, 2, 2);
         this.add (Component , constraints);
     }
 
