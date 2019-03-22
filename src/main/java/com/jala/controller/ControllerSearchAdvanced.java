@@ -174,9 +174,9 @@ public class ControllerSearchAdvanced implements ActionListener {
      * @return TernaryBooleanEnum.
      */
     private TernaryBooleanEnum getEnumHidden(JPanelAdvanced panelAdvanced) {
-        if(panelAdvanced.getCmbHidden().equals("Not Hidden")) {
+        if (panelAdvanced.getCmbHidden().equals("Not Hidden")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(panelAdvanced.getCmbHidden().equals("Hidden")) {
+        } else if (panelAdvanced.getCmbHidden().equals("Hidden")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else  {
             return TernaryBooleanEnum.ALL;
@@ -189,9 +189,9 @@ public class ControllerSearchAdvanced implements ActionListener {
      * @return TernaryBooleanEnum.
      */
     private TernaryBooleanEnum getEnumReadOnly(JPanelAdvanced panelAdvanced) {
-        if(panelAdvanced.getComboReadOnly().equals("Not Read Only")) {
+        if (panelAdvanced.getComboReadOnly().equals("Not Read Only")) {
             return TernaryBooleanEnum.OnlyFalse;
-        } else if(panelAdvanced.getComboReadOnly().equals("Read Only")) {
+        } else if (panelAdvanced.getComboReadOnly().equals("Read Only")) {
             return TernaryBooleanEnum.OnlyTrue;
         } else {
             return TernaryBooleanEnum.ALL;
