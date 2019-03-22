@@ -50,7 +50,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private GridBagLayout gridBag;
     private GridBagConstraints constraints;
     private Border border;
-    private JProgressBar progressBar;
+    private static JProgressBar progressBar;
 
     /**
      * Gets the content from TxtPathFileOrigin.
@@ -482,7 +482,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      * Set progressBar Value in percentage and draw graphics.
      * @param percentage read the percentage convert value.
      */
-    public void setProgressBarValue(int percentage){
+    public static void setProgressBarValue(int percentage) {
         progressBar.setValue(percentage);
         progressBar.update(progressBar.getGraphics());
         progressBar.setStringPainted(true);
