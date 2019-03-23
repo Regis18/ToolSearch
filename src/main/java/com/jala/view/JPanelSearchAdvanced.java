@@ -39,7 +39,7 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
     private JPanelAdvanced panelSearchAdvanced;
     private JTableDB tbDataBase;
     private JPanel panelInferior;
-    private JButton btnDelete, btnCharge, btnSave, btnPlay;;
+    private JButton btnDelete, btnCharge, btnSave, btnPlay;
     private ArrayList myListPlayer = new ArrayList();
 
 
@@ -197,6 +197,7 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
         panelInferior.add(btnCharge);
         panelInferior.add(btnDelete);
     }
+
 
     /**
      * Return the instance of south panel with the label messages.

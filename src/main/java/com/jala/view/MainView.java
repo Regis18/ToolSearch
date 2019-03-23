@@ -48,7 +48,7 @@ public class MainView extends JFrame implements ActionListener {
     private String currentPanel;
     private Border border;
 
-    ImageIcon imgSearch = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search.png");
+    ImageIcon imgSearch = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search48.png");
     ImageIcon imgGSearchGral = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
     ImageIcon imgGSearchAdvanced = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchAdv.png");
     ImageIcon imgGSearchAdvVideo = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchVideo.png");

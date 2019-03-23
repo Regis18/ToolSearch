@@ -22,6 +22,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -49,6 +50,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
     private GridBagConstraints constraints;
     private JSpinner spinControlSizeFile;
     private JCheckBox fileMajors;
+    private JPanel panelInferior;
 
     /**
      * Sets the path field for the search location.
@@ -471,11 +473,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         comboTypeSizeFile.addItem("Gb");
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
-        btnSearchAdvanced = new JButton("Search");
-        addComponent(btnSearchAdvanced, 1, 9, 1, 1);
-        btnSave = new JButton("Save");
-        addComponent(btnSave, 5, 9, 1, 1);
-
         dateCreateStar = new JDateChooser();
         dateCreateStar.setDateFormatString("yyyy-MM-dd");
         addComponent(dateCreateStar, 1, 3, 1, 1);
@@ -505,6 +502,12 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
 
         fileMajors = new JCheckBox("Greater than", true);
         addComponent(fileMajors, 5, 6, 1, 1);
+
+        btnSearchAdvanced = new JButton();
+        btnSave = new JButton("Save");
+        btnSearchAdvanced.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search36.png"));
+        addComponent(btnSave, 7, 8, 1, 1);
+        addComponent(btnSearchAdvanced, 7, 7, 1, 1);
     }
 
     /**

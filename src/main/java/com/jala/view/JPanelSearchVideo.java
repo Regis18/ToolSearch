@@ -12,13 +12,7 @@
 
 package com.jala.view;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Component;
@@ -138,7 +132,8 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         txtDuration = new CustomTextField(10);
         constraintComponent(txtDuration, 3, 5, GridBagConstraints.EAST);
 
-        btnSearch = new JButton("Search");
+        btnSearch = new JButton();
+        btnSearch.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search24.png"));
         constraintComponent(btnSearch, 3, 6, GridBagConstraints.EAST);
     }
 

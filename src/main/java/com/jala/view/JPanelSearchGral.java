@@ -12,12 +12,7 @@
 
 package com.jala.view;
 
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
@@ -148,7 +143,8 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         btnPathFolder.addActionListener(this);
         pnlPath.add(btnPathFolder);
 
-        btnSearch = new JButton("Search");
+        btnSearch = new JButton();
+        btnSearch.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search24.png"));
         pnlPath.add(btnSearch);
         return pnlPath;
     }
