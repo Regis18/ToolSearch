@@ -44,11 +44,9 @@ public class ConvertVideo implements IConvertible {
 
 	/** Store the path destination with the path of folder, name of file and the extension.*/
 	private String pathDestination;
-	/**
-	 *
-	 */
-	private String convertResult;
 
+	/** Var for error messages.*/
+	private String convertResult;
 
 	/**
 	 * Convert formats of video into another extension - basic.
@@ -66,11 +64,9 @@ public class ConvertVideo implements IConvertible {
 			builder.addInput(criteria.getPath()).overrideOutputFiles(true);
 			if (! criteria.getIsAdvanced()) {
 				builder.addOutput(pathDestination);
-
 				FFmpegProbeResult probeResult = fprobe.probe(criteria.getPath());
 				FFmpegExecutor executor = new FFmpegExecutor(fmpeg, fprobe);
 				ConvertVideoProgress(executor, builder, probeResult);
-
 			} else {
 			convertAdvancedVideo(criteria, builder, fmpeg, fprobe);
 			}
@@ -81,9 +77,10 @@ public class ConvertVideo implements IConvertible {
 
 	/**
 	 * Convert the video with advances parameters like audioChannel, BitRate, SampleRate, Frame rate & Video resolution.
-	 * @param criteria criteria for convert video.
-	 * @param builder FFmpeg Builder.
-	 * @param fmpeg FFmpeg app.
+	 * @param criteria for convert video and audio.
+	 * @param builder for the format convert audio and video.
+	 * @param fmpeg library.
+	 * @param fprobe library.
 	 */
 	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg, FFprobe fprobe) {
 			try {
@@ -106,7 +103,6 @@ public class ConvertVideo implements IConvertible {
 				outputBuilder.setAudioSampleRate(criteria.getSampleRate());
 			}
 			builder.addOutput(outputBuilder);
-			//fmpeg.run(builder);
 			FFmpegExecutor executor = new FFmpegExecutor(fmpeg, fprobe);
 			FFmpegProbeResult probeResult = fprobe.probe(criteria.getPath());
 			ConvertVideoProgress(executor, builder, probeResult);
@@ -116,27 +112,22 @@ public class ConvertVideo implements IConvertible {
 	}
 
 	/**
-	 *
-	 * @param executor
-	 * @param builder
-	 * @param pr
+	 * Method for convert the video and audio using the FFmpeg and FFprobe and show the progress.
+	 * @param executor this method is who do the progress.
+	 * @param builder is who do the convert.
+	 * @param pr is the library.
 	 */
 	public void ConvertVideoProgress(FFmpegExecutor executor, FFmpegBuilder builder, final FFmpegProbeResult pr) {
 		FFmpegJob job = executor.createJob(builder, new ProgressListener() {
-
-			// Using the FFmpegProbeResult determine the duration of the input
 			private final double durationNs = pr.getFormat().duration * TimeUnit.SECONDS.toNanos(1);
-
 			@Override
 			public void progress(final Progress progress) {
 				double percentage = progress.out_time_ns / durationNs;
-				// Print out interesting information about the progress
 				if((int) (percentage * 100) <= 100) {
 					JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
 				}
 			}
 		});
-
 		try {
 			job.run();
 		} catch (Exception e) {
@@ -148,9 +139,9 @@ public class ConvertVideo implements IConvertible {
 			log.error("The Convertion has failed.");
 		}
 		if (job.getState() == FFmpegJob.State.FINISHED) {
+			JPanelConverterVideo.setProgressBarValue(100);
 			convertResult = "The Conversion has finished successfully.";
 			log.info("The Conversion has finished successfully.");
 		}
 	}
-
 }

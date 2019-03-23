@@ -65,7 +65,7 @@ public class ControllerConvertVideo implements ActionListener {
             if (viewConvert.isVideo()) {
                 log.info("BtnConvert from Search General was pressed");
                 sendPathToConvertVideo();
-            } else {
+                   } else {
                 log.info("BtnConvert from Search General was pressed");
                 sendPathToConvertAudio();
             }

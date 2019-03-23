@@ -57,7 +57,7 @@ public abstract class Criteria {
      * @return path origin as string.
      */
     public String getPath() {
-        return path;
+        return path.trim();
     }
 
     /**

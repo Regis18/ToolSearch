@@ -188,13 +188,13 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         constraints = new GridBagConstraints();
         setLayout(gridBag);
 
-        lblTypeConversion = new CustomLabel("Type Conversion: ");
+        lblTypeConversion = new CustomLabel("Conversion Type: ");
         addComponent(lblTypeConversion, 0, 0, 1, 1);
 
-        lblPathFileOrigin = new CustomLabel("Path Origin File: ");
+        lblPathFileOrigin = new CustomLabel("Origin File Path: ");
         addComponent(lblPathFileOrigin, 0, 1, 1, 1);
 
-        lblPathFolderDestiny = new CustomLabel("Folder Destiny: ");
+        lblPathFolderDestiny = new CustomLabel("Ouput Folder: ");
         addComponent(lblPathFolderDestiny, 0, 2, 1, 1);
 
         lblFileName = new CustomLabel("File Name: ");
@@ -203,7 +203,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         lblExtension = new CustomLabel("Extension: ");
         addComponent(lblExtension, 3, 3, 1, 1);
 
-        lblAudioChannel = new CustomLabel("AudioChannel: ");
+        lblAudioChannel = new CustomLabel("Audio Channel: ");
         addComponent(lblAudioChannel, 0, 5, 1, 1);
 
         lblResolutionVideo = new CustomLabel("Video Resolution: ");
@@ -224,7 +224,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         lblSampleRate = new CustomLabel("Sample Rate: ");
         addComponent(lblSampleRate, 3, 7, 1, 1);
 
-        lblProgressBar = new JLabel("Progress");
+        lblProgressBar = new JLabel("Progress: ");
         addComponent(lblProgressBar, 0,9,1,1);
 
         txtPathFileOrigin = new JTextField(" ");
@@ -284,11 +284,11 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
         cmbFrameRate = new CustomJCombo();
         cmbFrameRate.addItem("");
-        cmbFrameRate.addItem("30");
-        cmbFrameRate.addItem("60");
-        cmbFrameRate.addItem("29.97");
         cmbFrameRate.addItem("24");
         cmbFrameRate.addItem("24.976");
+        cmbFrameRate.addItem("29.97");
+        cmbFrameRate.addItem("30");
+        cmbFrameRate.addItem("60");
         addComponent(cmbFrameRate, 4, 6, 1, 1);
 
         cmbBitRate = new CustomJCombo();
@@ -345,7 +345,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         btnPathOriginFile.addActionListener(this);
         addComponent(btnPathOriginFile, 6, 1, 1, 1);
 
-        btnPathFolderDestiny = new JButton("Destiny");
+        btnPathFolderDestiny = new JButton("Ouput Folder");
         btnPathFolderDestiny.addActionListener(this);
         addComponent(btnPathFolderDestiny, 6, 2, 1, 1);
 
@@ -356,8 +356,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         progressBar = new JProgressBar();
         progressBar.setMinimum(0);
         progressBar.setMaximum(100);
+        progressBar.setStringPainted(true);
         addComponent(progressBar,1,9,4,1);
-
     }
 
     /**
@@ -422,6 +422,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 btnConvertVideo.setText("Convert Audio");
                 enableOptionsAudio();
                 disableOptionsVideo();
+                progressBar.setValue(0);
             }
         }
         if (event.getSource() == radioConvertVideo) {
@@ -429,7 +430,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 chkOptionAdvanced.setSelected(true);
                 btnConvertVideo.setText("Convert Video");
                 enableOptionsVideo();
-                enableOptionsAudio();
+                disableOptionsAudio();
+                progressBar.setValue(0);
             }
         }
     }
@@ -484,7 +486,5 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      */
     public static void setProgressBarValue(int percentage) {
         progressBar.setValue(percentage);
-        progressBar.update(progressBar.getGraphics());
-        progressBar.setStringPainted(true);
     }
 }
