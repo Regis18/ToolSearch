@@ -16,8 +16,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
+
+import com.jala.view.player.VideoMusicPlayer;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JButton;
 
 /**
  * JPanelSearchAdvancedVideo class is the panel to do
@@ -26,12 +32,14 @@ import java.awt.Color;
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class JPanelSearchAdvancedVideo extends JPanel {
+public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener {
 
     private JPanelAdvanced panelAdvanceSearch;
     private JPanelSearchVideo panelSearchVideo;
     private JTableResult tblResult;
     private Border border;
+    private ArrayList myListPlayer = new ArrayList();
+    private JButton btnPlay;
 
     /**
      * The JPanelSearchAdvancedVideo method is the constructor for JPanelSearchAdvancedVideo class,
@@ -74,6 +82,9 @@ public class JPanelSearchAdvancedVideo extends JPanel {
 
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
+
+        JPanel pnlSouth = pnlPlayBtn();
+        this.add(pnlSouth, BorderLayout.WEST);
     }
 
     /**
@@ -90,6 +101,18 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         tblResult = new JTableResult(400);
         JScrollPane scroll = new JScrollPane(tblResult);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
+        return pnlSearchAdvanced;
+    }
+
+    /**
+     * Return the instance of center panel with the Advanced button.
+     * @return pnlButtonAdvanced the Advanced button panel.
+     */
+    private JPanel pnlPlayBtn() {
+        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        btnPlay = new JButton("Play");
+        pnlSearchAdvanced.add(btnPlay);
+        btnPlay.addActionListener(this);
         return pnlSearchAdvanced;
     }
 
@@ -118,5 +141,20 @@ public class JPanelSearchAdvancedVideo extends JPanel {
      */
     public JTableResult getTblResult() {
         return tblResult;
+    }
+
+    /**
+     * method that adds action to a button
+     */
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(btnPlay)) {
+            myListPlayer.clear();
+            for(int i = 0; i < tblResult.getRowCount(); i++){
+                if(tblResult.getValueAt(i,16).toString().equals("true")){
+                    myListPlayer.add(tblResult.getValueAt(i,1));
+                }
+            }
+            VideoMusicPlayer listPlayer= new VideoMusicPlayer(myListPlayer);
+        }
     }
 }
