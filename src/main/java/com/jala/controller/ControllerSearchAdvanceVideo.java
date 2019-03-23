@@ -11,10 +11,12 @@
  */
 package com.jala.controller;
 
+import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.criteria.CriteriaSearchMultimedia;
 import com.jala.model.search.SearchFile;
 import com.jala.model.search.asset.Asset;
+import com.jala.model.search.asset.AssetAudio;
 import com.jala.model.search.asset.AssetVideo;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelSearchAdvancedVideo;
@@ -78,16 +80,19 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             CriteriaSearch criteriaSearch = super.getCriteria(viewAdvancedVideo.getPanelAdvanceSearch());
             this.criteriaSearchMultimedia = new CriteriaSearchMultimedia(criteriaSearch);
             addAttributesMultimedia();
-            sendCriteriaToFile(criteriaSearchMultimedia);
+            if (searchVideo.isVideo()) {
+                sendCriteriaToFileVideo(criteriaSearchMultimedia);
+            } else { sendCriteriaToFileAudio(criteriaSearchMultimedia);}
+
         }
     }
 
     /**
-     * Send criteriaSearch to SearchFile to search files like the filename or extension,
+     * The sendCriteriaToFileVideo method send data to search file video
      * receive a list of results, and print the results in the UI table.
      * @param criteria has data for search video file
      */
-    private void sendCriteriaToFile(CriteriaSearchMultimedia criteria ) {
+    private void sendCriteriaToFileVideo(CriteriaSearchMultimedia criteria ) {
         log.info("Preparing to send criteria to SearchFile multimedia");
         SearchFile searchFile = new SearchFile();
         List<Asset> results = searchFile.search(criteria, true);
@@ -101,6 +106,28 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
                     data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
                     data.getModificationDate(), data.getLastDate(), data.getFrameRate(), data.getVideoCodec(), data.getAudioCodec(),
                     data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration(),getChanel());
+        }
+        log.info("Results implemented in the JTable of the UI");
+    }
+    /**
+     * The sendCriteriaToFileAudio method send data to search file audio
+     * receive a list of results, and print the results in the UI table.
+     * @param criteria has data for search video file
+     */
+    private void sendCriteriaToFileAudio(CriteriaSearchMultimedia criteria ) {
+        log.info("Preparing to send criteria to SearchFile multimedia");
+        SearchFile searchFile = new SearchFile();
+        List<Asset> results = searchFile.search(criteria, false);
+        log.info("Information sending and waiting answers");
+        viewAdvancedVideo.getTblResult().removeRow();
+        for (int i = 0; i < results.size(); i++) {
+            AssetAudio data = (AssetAudio) results.get(i);
+            String hidden = String.valueOf(data.isHidden());
+            String readOnly = String.valueOf(data.isReadOnly());
+            viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i), data.getPath(), data.getFileName(),
+                    data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
+                    data.getModificationDate(), data.getLastDate(), "-", "-", data.getAudioCodec(),
+                    "-", data.getAudioSampleRate(), data.getDuration(),getChanel());
         }
         log.info("Results implemented in the JTable of the UI");
     }
