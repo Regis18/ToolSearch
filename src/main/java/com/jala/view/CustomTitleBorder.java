@@ -30,7 +30,7 @@ public class CustomTitleBorder extends TitledBorder {
         setBorder(BorderFactory.createTitledBorder(title));
         setTitlePosition(TitledBorder.DEFAULT_POSITION);
         setTitleFont(new Font("Bahnschrift", 1, 12));
-        setTitleColor(new ColorUIResource(43, 77, 198));
+        setTitleColor(new ColorUIResource(19, 0, 76));
         setBorder(new CompoundBorder(new EmptyBorder(8,8,8,8), new LineBorder(new Color(249, 255, 250), 1)));
     }
 }
