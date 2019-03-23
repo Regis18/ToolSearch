@@ -206,6 +206,28 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     }
 
     /**
+     * The radioStereo method get RadioButton.
+     */
+    public JRadioButton getRadioStereo() {
+        return radioStereo;
+    }
+
+
+    public JRadioButton getRadioMono() {
+        return radioMono;
+    }
+
+
+    public JRadioButton getRadioVideo() {
+        return radioVideo;
+    }
+
+
+    public JRadioButton getRadioAudio() {
+        return radioAudio;
+    }
+
+    /**
      * The txtDuration method get String of txtField selected.
      */
     public String getTxtAudioSampleRate() {
@@ -215,8 +237,8 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     /**
      * The txtDuration method get String of txtField selected.
      */
-    public JTextField getTxtDuration() {
-        return txtDuration;
+    public String getTxtDuration() {
+        return txtDuration.getText();
     }
 
     /**

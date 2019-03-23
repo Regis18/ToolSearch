@@ -12,7 +12,11 @@
 
 package com.jala.view;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -26,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.JProgressBar;
 
 /**
  * Module view, UI/JPanelConverterImage.
@@ -35,7 +40,7 @@ import javax.swing.JTextField;
 public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     private JLabel lblPathFileOrigin, lblPathFolderDestiny, lblFileName, lblExtension, lblResolutionVideo, lblAudioChannel, lblFrameRate;
-    private JLabel lblSeparatorSpace, lblSeparatorSpace2, lblBitRate, lblSampleRate, lblTypeConversion;
+    private JLabel lblSeparatorSpace, lblSeparatorSpace2, lblBitRate, lblSampleRate, lblTypeConversion,  lblProgressBar;
     private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertVideo;
     private ButtonGroup typeOfAudioChannel, selectTypeConverter;
@@ -45,6 +50,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private GridBagLayout gridBag;
     private GridBagConstraints constraints;
     private Border border;
+    private JProgressBar progressBar;
 
     /**
      * Gets the content from TxtPathFileOrigin.
@@ -218,6 +224,9 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         lblSampleRate = new CustomLabel("Sample Rate: ");
         addComponent(lblSampleRate, 3, 7, 1, 1);
 
+        lblProgressBar = new JLabel("Progress");
+        addComponent(lblProgressBar, 0,9,1,1);
+
         txtPathFileOrigin = new JTextField(" ");
         addComponent(txtPathFileOrigin, 1, 1, 4, 1);
 
@@ -228,7 +237,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(txtFileName, 1, 3, 1, 1);
 
         cmbExtension = new CustomJCombo();
-        cmbExtension.addItem(" ");
+        cmbExtension.addItem("");
         cmbExtension.addItem("mp3");
         cmbExtension.addItem("wma");
         cmbExtension.addItem("aac");
@@ -242,7 +251,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(cmbExtension, 4, 3, 1, 1);
 
         cmbVideoResolution = new CustomJCombo();
-        cmbVideoResolution.addItem(" ");
+        cmbVideoResolution.addItem("");
         cmbVideoResolution.addItem("ntsc    (720 X 480)");
         cmbVideoResolution.addItem("pal     (720 X 576)");
         cmbVideoResolution.addItem("film    (352 X 240)");
@@ -274,7 +283,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(cmbVideoResolution, 1, 6, 1, 1);
 
         cmbFrameRate = new CustomJCombo();
-        cmbFrameRate.addItem(" ");
+        cmbFrameRate.addItem("");
         cmbFrameRate.addItem("30");
         cmbFrameRate.addItem("60");
         cmbFrameRate.addItem("29.97");
@@ -283,7 +292,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(cmbFrameRate, 4, 6, 1, 1);
 
         cmbBitRate = new CustomJCombo();
-        cmbBitRate.addItem(" ");
+        cmbBitRate.addItem("");
         cmbBitRate.addItem("4 K");
         cmbBitRate.addItem("8 K");
         cmbBitRate.addItem("32 K");
@@ -343,6 +352,12 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         btnConvertVideo = new JButton("Convert Video");
         btnConvertVideo.addActionListener(this);
         addComponent(btnConvertVideo, 1, 8, 1, 1);
+
+        progressBar = new JProgressBar();
+        progressBar.setMinimum(0);
+        progressBar.setMaximum(100);
+        addComponent(progressBar,1,9,4,1);
+
     }
 
     /**
@@ -461,5 +476,15 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private String separateValues(String getValue) {
         String[] getString = getValue.split(" ");
         return getString[0];
+    }
+
+    /**
+     * Set progressBar Value in percentage and draw graphics.
+     * @param percentage read the percentage convert value.
+     */
+    public void setProgressBarValue(int percentage){
+        progressBar.setValue(percentage);
+        progressBar.update(progressBar.getGraphics());
+        progressBar.setStringPainted(true);
     }
 }

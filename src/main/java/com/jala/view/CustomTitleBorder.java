@@ -22,8 +22,19 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+ * This class is Customizer TextField
+ *
+ * @author by Cristian Lujan
+ * @Version 0.0.1
+ */
 public class CustomTitleBorder extends TitledBorder {
 
+    /**
+     * Class constructor for all Title Border.
+     *
+     * @param title define the title.
+     */
     public CustomTitleBorder(String title) {
 
         super(title);

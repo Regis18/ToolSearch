@@ -65,7 +65,7 @@ public class SearchCommonTest {
 	public void getResult_ReturnReadTrue_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
 		criteriaSearch.setExtension("mp4");
-		criteriaSearch.setReadonly(TernaryBooleanEnum.OnlyFalse);
+		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyFalse);
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		for (int i = 0; i < search.search().size(); i++) {
 			System.out.println(search.search().get(i).getPath());
@@ -81,7 +81,7 @@ public class SearchCommonTest {
 	public void getResult_ReturnReadHiddenTrue_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
 		criteriaSearch.setExtension("mp4");
-		criteriaSearch.setReadonly(TernaryBooleanEnum.OnlyTrue);
+		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyTrue);
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		for (int i = 0; i < search.search().size(); i++) {
@@ -98,7 +98,7 @@ public class SearchCommonTest {
 	public void getResult_ReturnReadFalseHiddenTrue_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
 		criteriaSearch.setExtension("mp4");
-		criteriaSearch.setReadonly(TernaryBooleanEnum.OnlyFalse);
+		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyFalse);
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		for (int i = 0; i < search.search().size(); i++) {
@@ -115,7 +115,7 @@ public class SearchCommonTest {
 	public void getResult_ReturnReadTrueHiddenFalse_WhenSentPath() {
 		CriteriaSearch criteriaSearch = new CriteriaSearch("C:\\Users\\Admin\\Desktop\\o");
 		criteriaSearch.setExtension("mp4");
-		criteriaSearch.setReadonly(TernaryBooleanEnum.OnlyTrue);
+		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyTrue);
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyFalse);
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		for (int i = 0; i < search.search().size(); i++) {

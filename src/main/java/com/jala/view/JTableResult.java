@@ -18,6 +18,9 @@ import javax.swing.JTable;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * Module view, ui/JTableResult.
@@ -27,15 +30,27 @@ import java.awt.*;
  * @autor Melvi Caballero M.
  */
 public class JTableResult extends JTable {
-	DefaultTableModel dtm = new DefaultTableModel(0, 0);
+	private ArrayList extensions = new ArrayList();
+	DefaultTableModel dtm = new DefaultTableModel(0, 0){
+		public boolean isCellEditable(int rowIndex , int columnIndex){
+			boolean isEdit = false;
+			if(extensionValid(rowIndex,3))
+				isEdit = true;
+			return isEdit;
+		}
+	};
+
+	String[] headerGral = new String[]{"Id", "Path", "File Name", "Extension", "Size",
+			"Hidden", "ReadOnly", "Date Create", "Date Modification","Date Later Access", "Player"};
 
 	// add header of the table
-	String[] header = new String[]{"Id", "Path", "File Name", "Extension", "Size",
+	String[] header = new String[]{"N.", "Path", "File Name", "Extension", "Size",
 			"Hidden", "ReadOnly", "Date Create", "Date Modification","Date Later Access "};
+
 
 	// add header for search a video or Audio
 	String[] headerVideo = new String[]{"Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
-										"Duration"};
+										"Duration", "Player"};
 
 	//Join both headers for show a table
 	String[] bothHeader = (String[]) ArrayUtils.addAll(header, headerVideo);
@@ -44,13 +59,16 @@ public class JTableResult extends JTable {
 	 */
 	public JTableResult() {
 		super();
-		dtm.setColumnIdentifiers(header);
-		setFont(new java.awt.Font("Tahoma", 0, 12));
+		loadExtension(extensions);
+		dtm.setColumnIdentifiers(headerGral);
+		setFont(new java.awt.Font("Calibri", 0, 12));
 		setGridColor(Color.WHITE);
-		setForeground(new ColorUIResource(0, 180, 158));
-		setBackground(Color.DARK_GRAY);
+		setForeground(Color.black);
+		setBackground(Color.white);
+
 		//set model into the table object
 		this.setModel(dtm);
+		this.tableHeader.getColorModel();
 		this.getColumnModel().getColumn(0).setPreferredWidth(30);
 		this.getColumnModel().getColumn(1).setPreferredWidth(500);
 		this.getColumnModel().getColumn(2).setPreferredWidth(400);
@@ -61,6 +79,9 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(7).setPreferredWidth(150);
 		this.getColumnModel().getColumn(8).setPreferredWidth(150);
 		this.getColumnModel().getColumn(9).setPreferredWidth(150);
+		this.getColumnModel().getColumn(10).setPreferredWidth(150);
+		this.getColumnModel().getColumn( 10 ).setCellEditor(new CellCheckBox());
+		this.getColumnModel().getColumn( 10 ).setCellRenderer(new RenderCheckBox());
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 
@@ -71,8 +92,9 @@ public class JTableResult extends JTable {
 	 */
 	public JTableResult(int withColumn) {
 		super();
+		loadExtension(extensions);
 		dtm.setColumnIdentifiers(bothHeader);
-		setFont(new java.awt.Font("Tahoma", 0, 12));
+		setFont(new java.awt.Font("Calibri", 0, 12));
 		setGridColor(Color.WHITE);
 		setForeground(new ColorUIResource(0, 180, 158));
 		setBackground(Color.DARK_GRAY);
@@ -95,6 +117,9 @@ public class JTableResult extends JTable {
 		this.getColumnModel().getColumn(13).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(14).setPreferredWidth(withColumn);
 		this.getColumnModel().getColumn(15).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn(16).setPreferredWidth(withColumn);
+		this.getColumnModel().getColumn( 16).setCellEditor(new CellCheckBox());
+		this.getColumnModel().getColumn( 16).setCellRenderer(new RenderCheckBox());
 		this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 	}
 	/**
@@ -110,7 +135,7 @@ public class JTableResult extends JTable {
 							 String size, String hidden, String readOnly, String dateCreate,
 							 String dateModification, String dateLaterAccess) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
-				dateCreate, dateModification, dateLaterAccess});
+				dateCreate, dateModification, dateLaterAccess, false});
 	}
 
 	/**
@@ -139,7 +164,7 @@ public class JTableResult extends JTable {
 								  String audioSampleRate, String duration) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
 				dateCreate, dateModification, dateLaterAccess, frameRate, videoCodec,
-				audioCodec, aspectRatio, audioSampleRate, duration});
+				audioCodec, aspectRatio, audioSampleRate, duration, false});
 	}
 
 	/**
@@ -152,5 +177,41 @@ public class JTableResult extends JTable {
 		for (int index = rowCount - 1; index >= 0; index--) {
 			dtm.removeRow(index);
 		}
+	}
+
+	/**
+	 * Load the list of valid extensions
+	 *
+	 */
+	public void loadExtension(ArrayList extensions) {
+		extensions.add("mp3");
+		extensions.add("wma");
+		extensions.add("aac");
+		extensions.add("flv");
+		extensions.add("mpeg");
+		extensions.add("mpg");
+		extensions.add("avi");
+		extensions.add("mp4");
+		extensions.add("vob");
+		extensions.add("mkv");
+		extensions.add("dat");
+		extensions.add("mov");
+		extensions.add("asf");
+	}
+
+	/**
+	 * Method that verifies if a cell is a valid extensions.
+	 * @param row     row of a table.
+	 * @param column     column of a table.
+	 * @return true if a cell is valid.
+	 */
+	private boolean extensionValid(int row , int column) {
+		boolean isMultimedia = false;
+		for (int i = 0 ; i < extensions.size() ; i++) {
+			if (dtm.getValueAt(row , column).toString().equalsIgnoreCase(extensions.get(i).toString())) {
+				isMultimedia = true;
+			}
+		}
+		return isMultimedia;
 	}
 }

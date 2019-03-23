@@ -33,7 +33,6 @@ public class JTableDB extends JTable {
         super();
         defaultTableM.setColumnIdentifiers(header);
         this.setModel(defaultTableM);
-        this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         this.getColumnModel().getColumn(0).setPreferredWidth(20);
         this.getColumnModel().getColumn(1).setPreferredWidth(20);
         this.getColumnModel().getColumn(2).setPreferredWidth(500);
@@ -41,6 +40,7 @@ public class JTableDB extends JTable {
         this.getColumnModel().getColumn(1).setMaxWidth(0);
         this.getColumnModel().getColumn(1).setMinWidth(0);
         this.getColumnModel().getColumn(1).setPreferredWidth(0);
+        this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
     }
 
     /**

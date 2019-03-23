@@ -75,19 +75,19 @@ public class SearchFileTest {
     @Test
     public void searchHiddenOnlyTrue() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
-        cr.setReadonly(TernaryBooleanEnum.OnlyTrue);
+        cr.setReadOnly(TernaryBooleanEnum.OnlyTrue);
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(0, assetList.size());
     }
 
     /**
-     * Test return the number of files, readonly  and not readonly files.
+     * Test return the number of files, readOnly  and not readOnly files.
      */
     @Test
     public void searchReadOnlyAll() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Windows\\System32\\drivers\\etc");
-        cr.setReadonly(TernaryBooleanEnum.ALL);
+        cr.setReadOnly(TernaryBooleanEnum.ALL);
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
         assertEquals(5, assetList.size());
@@ -135,11 +135,11 @@ public class SearchFileTest {
     @Test
     public void searchCreationDate() {
         CriteriaSearch cr = new CriteriaSearch("c:\\Search");
-        cr.setCreationDateFrom("2019-03-01");
-        cr.setCreationDateTo("2019-03-03");
+        cr.setCreationDateFrom("2019-03-14");
+        cr.setCreationDateTo("2019-03-14");
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(cr);
-        assertEquals(3, assetList.size());
+        assertEquals(2, assetList.size());
     }
 
     /**
