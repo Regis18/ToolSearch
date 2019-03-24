@@ -16,7 +16,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -195,20 +194,17 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         txtSizeHeight = new CustomTextField();
         addComponent(txtSizeHeight, 4, 4, 1, 1);
 
-        resizePixeles = new JRadioButton("Pixels",true);
-        resizePixeles.setFont(new Font ("Calibri" , Font.BOLD , 14));
+        resizePixeles = new CustomRadioButton("Pixels");
         addComponent(resizePixeles, 1, 3, 1, 1);
 
-        resizePercentage = new JRadioButton("Percentage",false);
-        resizePercentage.setFont(new Font ("Calibri" , Font.BOLD , 14));
+        resizePercentage = new CustomRadioButton("Percentage");
+        resizePercentage.setSelected(false);
         addComponent(resizePercentage, 3, 3, 1, 1);
 
-        chekMaintainProportion = new JCheckBox("Maintain Proportion", true);
-        chekMaintainProportion.setFont(new Font ("Calibri" , Font.BOLD , 14));
+        chekMaintainProportion = new CustomCheckBox("Maintain Proportion");
         addComponent(chekMaintainProportion, 4, 3, 1, 1);
 
-        checkResizeImage = new JCheckBox("Resize", true);
-        chekMaintainProportion.setFont(new Font ("Calibri" , Font.BOLD , 14));
+        checkResizeImage = new CustomCheckBox("Resize");
         addComponent(checkResizeImage, 6, 4, 1, 1);
 
         typeOfResize = new ButtonGroup();

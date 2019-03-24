@@ -14,8 +14,9 @@ package com.jala.view;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
  */
 public class JTableResult extends JTable {
 	private ArrayList extensions = new ArrayList();
+
 	DefaultTableModel dtm = new DefaultTableModel(0, 0){
 		public boolean isCellEditable(int rowIndex , int columnIndex){
 			boolean isEdit = false;
@@ -66,7 +68,6 @@ public class JTableResult extends JTable {
 		loadExtension(extensions);
 		dtm.setColumnIdentifiers(headerGral);
 		setFont(new java.awt.Font("Calibri", 0, 12));
-
 		setGridColor(Color.WHITE);
 		setForeground(Color.black);
 		setBackground(Color.white);
@@ -146,6 +147,7 @@ public class JTableResult extends JTable {
 							 String dateModification, String dateLaterAccess) {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
 				dateCreate, dateModification, dateLaterAccess, false});
+		centerData();
 	}
 
 	/**
@@ -175,6 +177,7 @@ public class JTableResult extends JTable {
 		dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
 				dateCreate, dateModification, dateLaterAccess, frameRate, videoCodec,
 				audioCodec, aspectRatio, audioSampleRate, duration, false});
+		centerData();
 	}
 
 	/**
@@ -223,5 +226,15 @@ public class JTableResult extends JTable {
 			}
 		}
 		return isMultimedia;
+	}
+
+	/**
+	 *
+	 */
+	public void centerData(){
+		DefaultTableCellRenderer centerModel = new DefaultTableCellRenderer();
+		centerModel.setHorizontalAlignment(SwingConstants.CENTER);
+		this.getColumnModel().getColumn(5).setCellRenderer(centerModel);
+		this.getColumnModel().getColumn(6).setCellRenderer(centerModel);
 	}
 }

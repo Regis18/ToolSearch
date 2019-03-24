@@ -103,15 +103,17 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
 
         lblAudioChannel = new CustomLabel("AudioChannel: ");
         constraintComponent(lblAudioChannel, 4, 1, GridBagConstraints.EAST );
-        radioStereo = new JRadioButton("Stereo",true);
+        radioStereo = new CustomRadioButton("Stereo");
         constraintComponent(radioStereo, 4, 2, GridBagConstraints.WEST);
-        radioMono = new JRadioButton("Mono",false);
+        radioMono = new CustomRadioButton("Mono");
+        radioMono.setSelected(false);
         constraintComponent(radioMono, 4, 3, GridBagConstraints.WEST);
 
-        radioVideo = new JRadioButton("Video",true);
+        radioVideo = new CustomRadioButton("Video");
         radioVideo.addActionListener(this);
         constraintComponent(radioVideo, 1, 0, GridBagConstraints.EAST);
-        radioAudio = new JRadioButton("Audio",false);
+        radioAudio = new CustomRadioButton("Audio");
+        radioAudio.setSelected(false);
         radioAudio.addActionListener(this);
         constraintComponent(radioAudio, 2, 0, GridBagConstraints.WEST);
 
@@ -207,17 +209,23 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         return radioStereo;
     }
 
-
+    /**
+     * The radioMono method get RadioButton.
+     */
     public JRadioButton getRadioMono() {
         return radioMono;
     }
 
-
+    /**
+     * The radioVideo method get RadioButton.
+     */
     public JRadioButton getRadioVideo() {
         return radioVideo;
     }
 
-
+    /**
+     * The RadioAudio method get RadioButton
+     */
     public JRadioButton getRadioAudio() {
         return radioAudio;
     }

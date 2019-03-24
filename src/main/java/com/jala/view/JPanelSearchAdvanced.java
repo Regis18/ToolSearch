@@ -17,9 +17,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import com.jala.view.player.VideoMusicPlayer;
@@ -123,7 +121,7 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
         panelSearchAdvanced = new JPanelAdvanced(new BorderLayout());
         TitledBorder titleBorder =  new CustomTitleBorder("Search Advanced: ");
         panelSearchAdvanced.setBorder(titleBorder);
-        panelSearchAdvanced.setBackground(new Color(0,0,0,65));
+        panelSearchAdvanced.setBackground(new Color(172, 175, 177));
         this.add(panelSearchAdvanced, BorderLayout.CENTER);
 
         JPanel pnlTableDB = pnlTableDB();
@@ -143,7 +141,7 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
         TitledBorder titleBorder = new CustomTitleBorder("List Search Advanced: ");
         pnlSearchAdvanced.setBorder(titleBorder);
-        pnlSearchAdvanced.setBackground(new Color(0,0,0,65));
+        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
 
         tbSearchAdvanced = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
@@ -162,7 +160,7 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
         TitledBorder titleBorder = new CustomTitleBorder("List Search Data Base: ");
         pnlSearchGral.setBorder(titleBorder);
-        pnlSearchGral.setBackground(new Color(0,0,0,65));
+        pnlSearchGral.setBackground(new Color(172, 175, 177));
         pnlButtonInferiorDB();
 
         tbDataBase = new JTableDB();
@@ -179,7 +177,9 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
      */
     private JPanel pnlPlayBtn() {
         JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        pnlSearchAdvanced.setOpaque(false);
         btnPlay = new JButton("Play");
+        btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer24"));
         pnlSearchAdvanced.add(btnPlay);
         btnPlay.addActionListener(this);
         return pnlSearchAdvanced;
@@ -193,7 +193,7 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
         btnCharge = new JButton("Load");
         btnDelete = new JButton("Delete");
         panelInferior.setLayout(new FlowLayout());
-        panelInferior.setBackground(new Color(0,0,0,15));
+        panelInferior.setOpaque(false);
         panelInferior.add(btnCharge);
         panelInferior.add(btnDelete);
     }
@@ -209,6 +209,10 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener{
         return pnlMessage;
     }
 
+    /**
+     * method that adds action to a button
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnPlay)) {
             myListPlayer.clear();

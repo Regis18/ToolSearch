@@ -66,7 +66,7 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
         panelAdvanceSearch = new JPanelAdvanced(new BorderLayout());
         TitledBorder advancedBorder = new CustomTitleBorder("List Search Advanced: ");
         panelAdvanceSearch.setBorder(advancedBorder);
-        panelAdvanceSearch.setBackground(new Color(0, 0, 0, 65));
+        panelAdvanceSearch.setBackground(new Color(172, 175, 177));
         panelAdvanceSearch.setBorder(advancedBorder);
         panelAdvanceSearch.getBtnSearch().setVisible(false);
         panelAdvanceSearch.getBtnSave().setVisible(false);
@@ -77,7 +77,7 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
         panelSearchVideo = new JPanelSearchVideo();
         TitledBorder attributeBorder = new CustomTitleBorder("Attributes: ");
         panelSearchVideo.setBorder(attributeBorder);
-        panelSearchVideo.setBackground(new Color(0, 0, 0, 65));
+        panelSearchVideo.setBackground(new Color(172, 175, 177));
         this.add(panelSearchVideo, BorderLayout.EAST);
 
         JPanel jpForTable = pnlTableResult();
@@ -97,7 +97,7 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
         TitledBorder titleBorder = new CustomTitleBorder("List Search Video");
         pnlSearchAdvanced.setBorder(titleBorder);
-        pnlSearchAdvanced.setBackground(new Color(0, 0, 0, 65));
+        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         tblResult = new JTableResult(400);
         JScrollPane scroll = new JScrollPane(tblResult);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);

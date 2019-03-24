@@ -315,21 +315,22 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbSampleRate.addItem("96000 Hz");
         addComponent(cmbSampleRate, 4, 7, 1, 1);
 
-        radioStereo = new JRadioButton("Stereo",true);
+        radioStereo = new CustomRadioButton("Stereo");
         addComponent(radioStereo, 1, 5, 1, 1);
 
-        radioMono = new JRadioButton("Mono",false);
+        radioMono = new CustomRadioButton("Mono");
+        radioMono.setSelected(false);
         addComponent(radioMono, 3, 5, 1, 1);
 
-        radioConvertVideo = new JRadioButton("Video",true);
+        radioConvertVideo = new CustomRadioButton("Video");
         radioConvertVideo.addActionListener(this);
         addComponent(radioConvertVideo, 1, 0, 1, 1);
 
-        radioConvertAudio = new JRadioButton("Audio",false);
+        radioConvertAudio = new CustomRadioButton("Audio");
         radioConvertAudio.addActionListener(this);
         addComponent(radioConvertAudio, 3, 0, 1, 1);
 
-        chkOptionAdvanced = new JCheckBox("Option Advanced", true);
+        chkOptionAdvanced = new CustomCheckBox("Option Advanced");
         chkOptionAdvanced.addActionListener(this);
         addComponent(chkOptionAdvanced, 1, 4, 1, 1);
 
@@ -345,7 +346,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         btnPathOriginFile.addActionListener(this);
         addComponent(btnPathOriginFile, 6, 1, 1, 1);
 
-        btnPathFolderDestiny = new JButton("Destiny");
+        btnPathFolderDestiny = new JButton("Output");
         btnPathFolderDestiny.addActionListener(this);
         addComponent(btnPathFolderDestiny, 6, 2, 1, 1);
 

@@ -53,7 +53,7 @@ public class JPanelVideo extends JPanel {
         panelConverterVideo = new JPanelConverterVideo(new BorderLayout());
         TitledBorder titleBorderVideo = new CustomTitleBorder("Options Convert: ");
         panelConverterVideo.setBorder(titleBorderVideo);
-        panelConverterVideo.setBackground(new Color(0,0,0,65));
+        panelConverterVideo.setBackground(new Color(172, 175, 177));
         this.add(panelConverterVideo, BorderLayout.NORTH);
     }
 }

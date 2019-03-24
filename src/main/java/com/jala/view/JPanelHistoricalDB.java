@@ -57,7 +57,7 @@ public class JPanelHistoricalDB extends JPanel {
      */
     private void initComponent() {
         JPanel pnlHistorical = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Historical DataBase Table");
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Historical DataBase Table: ");
         pnlHistorical.setBorder(titleBorder);
 
         tbHistoricalDB = new JTableDB();

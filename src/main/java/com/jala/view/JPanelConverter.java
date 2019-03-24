@@ -60,7 +60,7 @@ public class JPanelConverter extends JPanel {
         panelConverterImage = new JPanelConverterImage(new BorderLayout());
         TitledBorder titleBorder = new CustomTitleBorder("Options Convert: ");
         panelConverterImage.setBorder(titleBorder);
-        panelConverterImage.setBackground(new Color(0,0,0,65));
+        panelConverterImage.setBackground(new Color(172, 175, 177));
         this.add(panelConverterImage,BorderLayout.NORTH);
     }
 }

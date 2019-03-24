@@ -14,11 +14,7 @@ package com.jala.view;
 
 import com.toedter.calendar.JDateChooser;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -394,7 +390,8 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(lblPath, 0, 0, 1, 1);
         txtPath = new CustomTextField(0);
         addComponent(txtPath, 1, 0, 5, 1);
-        btnPathSearch = new JButton("...");
+        btnPathSearch = new JButton();
+        btnPathSearch.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\examine24.png"));
         btnPathSearch.addActionListener(this);
         addComponent(btnPathSearch, 6, 0, 1, 1);
 
@@ -500,7 +497,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         spinControlSizeFile = new JSpinner(new SpinnerNumberModel( 0 , 0 , 100000 , 1));
         addComponent(spinControlSizeFile, 1, 6, 1, 1);
 
-        fileMajors = new JCheckBox("Greater than", true);
+        fileMajors = new CustomCheckBox("Greater than");
         addComponent(fileMajors, 5, 6, 1, 1);
 
         btnSearchAdvanced = new JButton();

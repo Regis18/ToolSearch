@@ -52,7 +52,7 @@ public class MainView extends JFrame implements ActionListener {
     ImageIcon imgGSearchGral = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
     ImageIcon imgGSearchAdvanced = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchAdv.png");
     ImageIcon imgGSearchAdvVideo = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchVideo.png");
-    ImageIcon imgConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\Convert.png");
+    ImageIcon imgConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter48.png");
     ImageIcon imgImageConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\imageConverter.png");
     ImageIcon imgVideoConverter = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoConverter.png");
     ImageIcon imgVideoPlayer = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer1.png");

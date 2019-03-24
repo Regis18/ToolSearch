@@ -51,7 +51,7 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object cell, boolean isSelected, int row, int column) {
-        ((JCheckBox)componentCheckBox).setBackground(new Color(0,50,255));
+        ((JCheckBox)componentCheckBox).setBackground(new Color(0, 40, 203, 201));
         boolean cellSelect = ((Boolean)cell).booleanValue();
         ((JCheckBox)componentCheckBox).setSelected(cellSelect);
         return ((JCheckBox)componentCheckBox);

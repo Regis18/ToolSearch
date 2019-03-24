@@ -118,9 +118,6 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.CENTER);
-
-        JPanel pnlSouth = pnlButtonPlayer();
-        this.add(pnlSouth, BorderLayout.SOUTH);
     }
 
     /**
@@ -132,38 +129,29 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlPath = new JPanel(new FlowLayout(FlowLayout.LEFT));
         TitledBorder titleBorder = new CustomTitleBorder("Search: ");
         pnlPath.setBorder(titleBorder);
-        pnlPath.setBackground(new Color(0, 0, 0, 65));
+        pnlPath.setBackground(new Color(172, 175, 177));
+
         lblPath = new CustomLabel();
         lblPath.setText("Path :");
         pnlPath.add(lblPath);
         txtPath = new CustomTextField(50);
         pnlPath.add(txtPath);
 
-        btnPathFolder = new JButton("...");
+        btnPathFolder = new JButton();
+        btnPathFolder.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\examine24.png"));
         btnPathFolder.addActionListener(this);
         pnlPath.add(btnPathFolder);
 
         btnSearch = new JButton();
         btnSearch.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search24.png"));
         pnlPath.add(btnSearch);
+
+        pnlPath.add(new JSeparator(JSeparator.VERTICAL), BorderLayout.LINE_END);
+        pnlPath.add(pnlButtonPlayer(), BorderLayout.LINE_END);
         return pnlPath;
     }
 
-    /**
-     * Return the instance of center panel with the Advanced button.
-     *
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlButtonAdvanced() {
-
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btnSearchAdvanced = new JButton("Advanced");
-        pnlSearchAdvanced.add(btnSearchAdvanced);
-        btnSearchAdvanced.setVisible(false);
-        return pnlSearchAdvanced;
-    }
-
-    /**
+      /**
      * Return the instance of center panel with the Advanced button.
      * @return pnlButtonAdvanced the Advanced button panel.
      */
@@ -184,7 +172,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
         TitledBorder titleBorder = new CustomTitleBorder("List Search General: ");
         pnlSearchGral.setBorder(titleBorder);
-        pnlSearchGral.setBackground(new Color(0, 0, 0, 65));
+        pnlSearchGral.setBackground(new Color(172, 175, 177));
 
         tbSearchGral = new JTableResult();
         JScrollPane scroll = new JScrollPane(tbSearchGral);
