@@ -21,17 +21,19 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.io.File;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.border.Border;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 /**
  * Module view, ui/JPanelConverterImage.
+ *
  * @version 0.0.1.
  * @autor Luis Guardia.
  */
@@ -50,14 +52,16 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtPathFileOrigin.
+     *
      * @return TxtPathFileOrigin, the content of the TxtPathFileOrigin text field.
      */
     public String getTxtPathFileOrigin() {
-        return txtPathFileOrigin.getText().toString();
+        return txtPathFileOrigin.getText();
     }
 
     /**
      * Gets the content from TxtFolderDestiny.
+     *
      * @return TxtFolderDestiny, the content of the TxtFolderDestiny text field.
      */
     public String getTxtFolderDestiny() {
@@ -66,6 +70,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtFileName.
+     *
      * @return TxtFileName, the content of the TxtFileName text field.
      */
     public String getTxtFileName() {
@@ -74,6 +79,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtExtension.
+     *
      * @return TxtExtension, the content of the TxtExtension text field.
      */
     public String getTxtExtension() {
@@ -82,6 +88,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtSizeWidth.
+     *
      * @return TxtSizeWidth, the content of the TxtSizeWidth text field.
      */
     public String getTxtSizeWidth() {
@@ -90,6 +97,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtSizeHeight.
+     *
      * @return TxtSizeHeight, the content of the TxtSizeHeight text field.
      */
     public String getTxtSizeHeight() {
@@ -98,6 +106,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     /**
      * Gets the button btnConvertFile
+     *
      * @return btnConvertFile
      */
     public JButton getBtnConvert() {
@@ -106,53 +115,45 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     /**
      * Gets the status from resizePixeles.
+     *
      * @return boolean value, true if radioButton is active and false if not activated.
      */
     public boolean isPixeles() {
-        if (resizePixeles.isSelected()) {
-            return true;
-        } else {
-            return false;
-        }
+        return resizePixeles.isSelected();
     }
 
     /**
      * Gets the status from chekMaintainProportion.
+     *
      * @return boolean value, true if checkBox is active and false if not activated.
      */
     public boolean isProprotion() {
-        if (chekMaintainProportion.isSelected()) {
-            return true;
-        } else {
-            return false;
-        }
+        return chekMaintainProportion.isSelected();
     }
 
     /**
      * Gets the status from chekResizeImage.
+     *
      * @return boolean value, true if checkBox is active and false if not activated.
      */
     public boolean isResize() {
-        if (checkResizeImage.isSelected()) {
-            return true;
-        } else {
-            return false;
-        }
+        return checkResizeImage.isSelected();
     }
 
     /**
      * Class constructor.
+     *
      * @param borderLayout
      */
     public JPanelConverterImage(BorderLayout borderLayout) {
-        esquema= new GridBagLayout();
+        esquema = new GridBagLayout();
         constraints = new GridBagConstraints();
         setLayout(esquema);
 
         lblPathFileOrigin = new CustomLabel("Path Origin File: ");
         addComponent(lblPathFileOrigin, 0, 0, 1, 1);
 
-        lblPathFolderDestiny = new CustomLabel("Folder Destiny: ");
+        lblPathFolderDestiny = new CustomLabel("Folder Output: ");
         addComponent(lblPathFolderDestiny, 0, 1, 1, 1);
 
         lblFileName = new CustomLabel("File Name: ");
@@ -211,22 +212,28 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         typeOfResize.add(resizePixeles);
         typeOfResize.add(resizePercentage);
 
-        btnPathOriginFile = new JButton("Search File");
+        btnPathOriginFile = new CustomButton();
+        btnPathOriginFile.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchFile24.png"));
+        btnPathOriginFile.setToolTipText("Search File");
         btnPathOriginFile.addActionListener(this);
         addComponent(btnPathOriginFile, 6, 0, 1, 1);
 
-        btnPathFolderDestiny = new JButton("Destiny");
+        btnPathFolderDestiny = new CustomButton();
+        btnPathFolderDestiny.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\output24.png"));
+        btnPathFolderDestiny.setToolTipText("Output");
         btnPathFolderDestiny.addActionListener(this);
         addComponent(btnPathFolderDestiny, 6, 1, 1, 1);
 
-        btnConvertFile = new JButton("Convert");
+        btnConvertFile = new CustomButton();
+        btnConvertFile.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter36.png"));
+        btnConvertFile.setToolTipText("Convert");
         addComponent(btnConvertFile, 1, 5, 1, 1);
     }
 
     /**
      * Method that adds components to the GridBagConstraints.
      */
-    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX,int sizeFieldY) {
+    public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX, int sizeFieldY) {
         constraints.gridx = sizeX;
         constraints.gridy = sizeY;
         constraints.gridwidth = sizeFieldX;
@@ -234,7 +241,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weighty = 1.0;
         constraints.insets = new Insets(2, 2, 2, 2);
-        this.add(Component , constraints);
+        this.add(Component, constraints);
     }
 
     /**
@@ -264,7 +271,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
                 if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     txtFolderDestiny.setText("" + chooser.getSelectedFile());
                 } else {
-                    System.out.println("");
+                    System.out.println();
                 }
             }
         }

@@ -12,18 +12,16 @@
 
 package com.jala.view;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
-
 import com.jala.view.player.VideoMusicPlayer;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import javax.swing.JButton;
 
 /**
  * JPanelSearchAdvancedVideo class is the panel to do
@@ -78,13 +76,15 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
         TitledBorder attributeBorder = new CustomTitleBorder("Attributes: ");
         panelSearchVideo.setBorder(attributeBorder);
         panelSearchVideo.setBackground(new Color(172, 175, 177));
-        this.add(panelSearchVideo, BorderLayout.EAST);
+        this.add(panelSearchVideo, BorderLayout.WEST);
+
+        JPanel pnlSouth = pnlPlayBtn();
+        this.add(pnlSouth, BorderLayout.EAST);
 
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
 
-        JPanel pnlSouth = pnlPlayBtn();
-        this.add(pnlSouth, BorderLayout.WEST);
+
     }
 
     /**
@@ -106,11 +106,15 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
 
     /**
      * Return the instance of center panel with the Advanced button.
+     *
      * @return pnlButtonAdvanced the Advanced button panel.
      */
     private JPanel pnlPlayBtn() {
         JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        btnPlay = new JButton("Play");
+        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
+        btnPlay = new CustomButton();
+        btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer36.png"));
+        btnPlay.setToolTipText("Play Video");
         pnlSearchAdvanced.add(btnPlay);
         btnPlay.addActionListener(this);
         return pnlSearchAdvanced;
@@ -149,12 +153,12 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnPlay)) {
             myListPlayer.clear();
-            for(int i = 0; i < tblResult.getRowCount(); i++){
-                if(tblResult.getValueAt(i,16).toString().equals("true")){
-                    myListPlayer.add(tblResult.getValueAt(i,1));
+            for (int i = 0; i < tblResult.getRowCount(); i++) {
+                if (tblResult.getValueAt(i, 16).toString().equals("true")) {
+                    myListPlayer.add(tblResult.getValueAt(i, 1));
                 }
             }
-            VideoMusicPlayer listPlayer= new VideoMusicPlayer(myListPlayer);
+            VideoMusicPlayer listPlayer = new VideoMusicPlayer(myListPlayer);
         }
     }
 }

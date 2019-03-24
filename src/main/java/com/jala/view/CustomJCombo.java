@@ -17,6 +17,7 @@ import java.awt.Font;
 
 /**
  * This class is Customizer Label
+ *
  * @author by Cristian Lujan
  * @Version 0.0.1
  */
@@ -26,6 +27,6 @@ public class CustomJCombo extends JComboBox {
      * Class constructor for all JComboBox.
      */
     public CustomJCombo() {
-        setFont(new Font("Calibri" , Font.PLAIN , 11));
+        setFont(new Font("Calibri", Font.PLAIN, 11));
     }
 }

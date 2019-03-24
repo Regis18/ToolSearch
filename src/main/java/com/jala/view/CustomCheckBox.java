@@ -12,21 +12,22 @@
 
 package com.jala.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JCheckBox;
+import java.awt.Font;
 
 /**
  * This class is Customizer CheckBox
+ *
  * @author by Cristian Lujan
  * @Version 0.0.1
  */
-    class CustomCheckBox extends JCheckBox {
+class CustomCheckBox extends JCheckBox {
 
     /**
      * Class constructor for all JLabel.
      */
     public CustomCheckBox(String valor) {
-        setFont(new Font("Calibri" , Font.BOLD , 12));
+        setFont(new Font("Calibri", Font.BOLD, 12));
         setText(valor);
         setOpaque(false);
         setSelected(true);

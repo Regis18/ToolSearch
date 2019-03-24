@@ -26,7 +26,7 @@ import java.awt.Font;
 public class JTableDB extends JTable {
     DefaultTableModel defaultTableM = new DefaultTableModel(0, 0);
 
-    String[] header = new String[]{"N.","id", "File Name", "Date"};
+    String[] header = new String[]{"N.", "id", "File Name", "Date"};
 
     /**
      * Constructor that setting the table DefaultTableModel.
@@ -56,13 +56,13 @@ public class JTableDB extends JTable {
     /**
      * Add a row to the table.
      *
-     * @param num number.
-     * @param id file id.
+     * @param num      number.
+     * @param id       file id.
      * @param fileName file name.
-     * @param date file date.
+     * @param date     file date.
      */
-    public void addResultRow(String num,String id, String fileName, String date) {
-        defaultTableM.addRow(new Object[]{num,id , fileName, date, });
+    public void addResultRow(String num, String id, String fileName, String date) {
+        defaultTableM.addRow(new Object[]{num, id, fileName, date,});
     }
 
     /**

@@ -15,12 +15,18 @@ package com.jala.view;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class is Customizer RadioButton
+ *
+ * @author by Cristian Lujan
+ * @Version 0.0.1
+ */
 public class CustomRadioButton extends JRadioButton {
     /**
      * Class constructor for all JLabel.
      */
     public CustomRadioButton(String valor) {
-        setFont(new Font("Calibri" , Font.BOLD , 12));
+        setFont(new Font("Calibri", Font.BOLD, 12));
         setText(valor);
         setOpaque(false);
         setSelected(true);

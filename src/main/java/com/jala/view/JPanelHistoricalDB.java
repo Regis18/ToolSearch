@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
- * JPanelHistorical class.
+ * JPanelHistoricalDataBase class.
  *
  * @version 0.0.1
  * @autor Cxristian Lujan
