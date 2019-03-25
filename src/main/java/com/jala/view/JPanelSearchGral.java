@@ -45,6 +45,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     private JTableResult tbSearchGral;
     private ArrayList myListPlayer = new ArrayList();
     private Border border;
+    private CustomErrorMessage msgError;
 
     /**
      * Class constructor.
@@ -92,6 +93,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         return btnSearch;
     }
 
+
     /**
      * Gets the advanced search button.
      *
@@ -113,6 +115,15 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     /**
      * The init method will initialize this panel.
      */
+
+    /**
+     * Sets the Message for a pop up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(CustomErrorMessage msgError) {
+        this.msgError = msgError;
+    }
+
     public void init() {
         initComponent();
     }
