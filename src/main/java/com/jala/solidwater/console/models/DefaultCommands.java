@@ -29,6 +29,13 @@ public class DefaultCommands {
     private List<Command> defaultCommands;
 
     /**
+     * The method allows to instance the default commands.
+     */
+    public DefaultCommands() {
+        createDefaultCommands();
+    }
+
+    /**
      * Return the lis of default commands to do search.
      *
      * @return
@@ -42,29 +49,44 @@ public class DefaultCommands {
      *
      * @return the default commands list.
      */
-    public List<Command> createDefaultCommands() {
+    private List<Command> createDefaultCommands() {
         defaultCommands = new ArrayList<>();
-        Command commandForPath = new Command("-p", "path", "Path of the file or directory");
-        Command commandForFileName = new Command("-fn", "fileName", "Name of the file");
-        Command commandForExtension = new Command("-ex", "extension", "Extension of the file");
-        Command commandForSize = new Command("-s", "size", "Size of the file");
-        Command commandForHidden = new Command("-hd", "hidden", "This command allows the values true and false");
-        Command commandForReadOnly = new Command("-ro", "readOnly", "This command allows the values Yes and No");
-        Command commandFromDateCreation = new Command("-fdc", "from date creation",
-                "This command allows set a date to search the file from the date needed in formmat yyyy-mm-dd");
-        Command commandToDateCreation = new Command("-tdc", "to date creation", "");
-        Command commandFromDateModified = new Command("-fdm", "From to date modified", "");
-        Command commandToDateModified = new Command("-tdm", "to date modified", "");
+        Command commandForPath = new Command("-p", "Path",
+                "Path of the file or directory");
+        Command commandForFileName = new Command("-fn", "File Name",
+                "Name of the file");
+        Command commandForExtension = new Command("-ex", "Extension",
+                "Extension of the file");
+        Command commandForSize = new Command("-s", "Size",
+                "Size of the file");
+        Command commandForHidden = new Command("-h", "Hidden",
+                "This command allows the values true and false");
+        Command commandForReadOnly = new Command("-ro", "Read Only",
+                "This command allows the values Yes and No");
+        Command commandCreationDateFrom = new Command("-cdf", "Creation Date From",
+                "Allows search the files from a specific creation date. Format yyyy-mm-dd");
+        Command commandCreationDateTo = new Command("-cdt", "Creation Date To",
+                "Allows search files to a creation date in specific. Format yyyy-mm-dd");
+        Command commandModificationDateFrom = new Command("-mdf", "Modification Date From",
+                "Allows search the files from a modification date specific. Format yyyy-mm-dd");
+        Command commandModificationDateTo = new Command("-mdt", "Modification Date To",
+                "Allows search the to a modification date specific. Format yyyy-mm-dd");
+        Command commandForLastDateFrom = new Command("-ldf", "Last Date From",
+                "Allows search the files from a last date specific. Format yyyy-mm-dd");
+        Command commandForLastDateTo = new Command("-ldt", "Last Date to",
+                "Allows search the files to a last date specific. Format yyyy-mm-dd");
         defaultCommands.add(commandForPath);
         defaultCommands.add(commandForFileName);
         defaultCommands.add(commandForExtension);
         defaultCommands.add(commandForSize);
         defaultCommands.add(commandForHidden);
         defaultCommands.add(commandForReadOnly);
-        defaultCommands.add(commandFromDateCreation);
-        defaultCommands.add(commandToDateCreation);
-        defaultCommands.add(commandFromDateModified);
-        defaultCommands.add(commandToDateModified);
+        defaultCommands.add(commandCreationDateFrom);
+        defaultCommands.add(commandCreationDateTo);
+        defaultCommands.add(commandModificationDateFrom);
+        defaultCommands.add(commandModificationDateTo);
+        defaultCommands.add(commandForLastDateFrom);
+        defaultCommands.add(commandForLastDateTo);
         return defaultCommands;
     }
 }
