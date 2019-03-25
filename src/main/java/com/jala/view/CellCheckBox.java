@@ -79,8 +79,9 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
      * @param column
      */
     public Component getTableCellRendererComponent(JTable table, Object isCellSelected, boolean isSelected, boolean hasFocus, int row, int column) {
-        if (isCellSelected == null)
+        if (isCellSelected == null) {
             return null;
+        }
         return ((JCheckBox)componentCheckBox );
     }
 }
