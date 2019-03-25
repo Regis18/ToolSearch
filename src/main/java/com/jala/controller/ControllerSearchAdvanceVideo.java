@@ -92,7 +92,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      * receive a list of results, and print the results in the UI table.
      * @param criteria has data for search video file
      */
-    private void sendCriteriaToFileVideo(CriteriaSearchMultimedia criteria ) {
+    private void sendCriteriaToFileVideo(CriteriaSearchMultimedia criteria) {
         log.info("Preparing to send criteria to SearchFile multimedia");
         SearchFile searchFile = new SearchFile();
         List<Asset> results = searchFile.search(criteria, true);
@@ -102,10 +102,11 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             AssetVideo data = (AssetVideo) results.get(i);
             String hidden = String.valueOf(data.isHidden());
             String readOnly = String.valueOf(data.isReadOnly());
+            String chanel = getChanel();
             viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i), data.getPath(), data.getFileName(),
                     data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
                     data.getModificationDate(), data.getLastDate(), data.getFrameRate(), data.getVideoCodec(), data.getAudioCodec(),
-                    data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration(),getChanel());
+                    data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration(), chanel);
         }
         log.info("Results implemented in the JTable of the UI");
     }
@@ -116,6 +117,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      */
     private void sendCriteriaToFileAudio(CriteriaSearchMultimedia criteria ) {
         log.info("Preparing to send criteria to SearchFile multimedia");
+        final String SPACE_UNDERSCORE = "-";
         SearchFile searchFile = new SearchFile();
         List<Asset> results = searchFile.search(criteria, false);
         log.info("Information sending and waiting answers");
@@ -126,8 +128,8 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             String readOnly = String.valueOf(data.isReadOnly());
             viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i), data.getPath(), data.getFileName(),
                     data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
-                    data.getModificationDate(), data.getLastDate(), "-", "-", data.getAudioCodec(),
-                    "-", data.getAudioSampleRate(), data.getDuration(),getChanel());
+                    data.getModificationDate(), data.getLastDate(), SPACE_UNDERSCORE, SPACE_UNDERSCORE, data.getAudioCodec(),
+                    SPACE_UNDERSCORE, data.getAudioSampleRate(), data.getDuration(),getChanel());
         }
         log.info("Results implemented in the JTable of the UI");
     }
