@@ -170,8 +170,10 @@ public class ModelConsole {
             return TernaryBooleanEnum.OnlyFalse;
         } else if (setValueIfExistCommand(validCommand, acronymCommand).equals("Yes")) {
             return TernaryBooleanEnum.OnlyTrue;
-        } else {
+        } else if (setValueIfExistCommand(validCommand, acronymCommand).equals("All")){
             return TernaryBooleanEnum.ALL;
+        } else {
+            return TernaryBooleanEnum.OnlyFalse;
         }
     }
 }
