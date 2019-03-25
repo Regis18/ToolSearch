@@ -39,8 +39,6 @@ public class ValidCommand implements IValidable<Command> {
     public boolean validate(Command command) {
         boolean isCommandValid = false;
         if (command.getAcronym().startsWith("-")) {
-            //Create the default commands.
-            defaultCommands.createDefaultCommands();
             Command defaultCommand = new Command();
             for (int i = 0; i < defaultCommands.getDefaultCommands().size(); i++) {
                 defaultCommand = defaultCommands.getDefaultCommands().get(i);
