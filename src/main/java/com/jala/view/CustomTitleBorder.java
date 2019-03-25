@@ -12,13 +12,15 @@
 
 package com.jala.view;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  * This class is Customizer TextField
