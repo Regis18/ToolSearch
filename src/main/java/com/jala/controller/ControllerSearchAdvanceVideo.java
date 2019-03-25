@@ -82,7 +82,8 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             addAttributesMultimedia();
             if (searchVideo.isVideo()) {
                 sendCriteriaToFileVideo(criteriaSearchMultimedia);
-            } else { sendCriteriaToFileAudio(criteriaSearchMultimedia);}
+            } else { sendCriteriaToFileAudio(criteriaSearchMultimedia);
+            }
         }
     }
 
