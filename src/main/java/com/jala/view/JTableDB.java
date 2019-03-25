@@ -14,6 +14,8 @@ package com.jala.view;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  * JTableResult class.
@@ -24,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class JTableDB extends JTable {
     DefaultTableModel defaultTableM = new DefaultTableModel(0, 0);
 
-    String[] header = new String[]{"N.","id", "File Name", "Date"};
+    String[] header = new String[]{"N.", "id", "File Name", "Date"};
 
     /**
      * Constructor that setting the table DefaultTableModel.
@@ -33,6 +35,14 @@ public class JTableDB extends JTable {
         super();
         defaultTableM.setColumnIdentifiers(header);
         this.setModel(defaultTableM);
+        setFont(new Font("Calibri", 0, 12));
+        setGridColor(Color.BLACK);
+        setForeground(Color.WHITE);
+        setBackground(Color.BLACK);
+        this.getTableHeader().setForeground(new Color(255, 255, 255, 0));
+        this.getTableHeader().setFont(new Font("Calibri", 0, 14));
+        this.getTableHeader().setBackground(new Color(141, 145, 141, 140));
+        this.getColumnModel().getColumn(0).setPreferredWidth(30);
         this.getColumnModel().getColumn(0).setPreferredWidth(20);
         this.getColumnModel().getColumn(1).setPreferredWidth(20);
         this.getColumnModel().getColumn(2).setPreferredWidth(500);
@@ -46,13 +56,13 @@ public class JTableDB extends JTable {
     /**
      * Add a row to the table.
      *
-     * @param num number.
-     * @param id file id.
+     * @param num      number.
+     * @param id       file id.
      * @param fileName file name.
-     * @param date file date.
+     * @param date     file date.
      */
-    public void addResultRow(String num,String id, String fileName, String date) {
-        defaultTableM.addRow(new Object[]{num,id , fileName, date, });
+    public void addResultRow(String num, String id, String fileName, String date) {
+        defaultTableM.addRow(new Object[]{num, id, fileName, date,});
     }
 
     /**

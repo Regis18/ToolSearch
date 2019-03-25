@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 
 /**
  * This class is Customizer Label
+ *
  * @author by Cristian Lujan
  * @Version 0.0.1
  */
@@ -30,6 +31,7 @@ public class CustomLabel extends JLabel {
 
     /**
      * Class constructor for all JLabel.
+     *
      * @param text
      */
     public CustomLabel(String text) {

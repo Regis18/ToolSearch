@@ -22,8 +22,8 @@ import javax.swing.border.TitledBorder;
 /**
  * JPanelVideo
  *
- * @version 0.0.3
  * @author Luis Guardia
+ * @version 0.0.3
  */
 public class JPanelVideo extends JPanel {
     private JPanelConverterVideo panelConverterVideo;
@@ -31,6 +31,7 @@ public class JPanelVideo extends JPanel {
 
     /**
      * Gets the panel panelConverterImage
+     *
      * @return panelConverterImage
      */
     public JPanelConverterVideo getJPanelVideo() {
@@ -39,6 +40,7 @@ public class JPanelVideo extends JPanel {
 
     /**
      * Class constructor.
+     *
      * @param layout
      */
     public JPanelVideo(LayoutManager layout) {
@@ -53,7 +55,7 @@ public class JPanelVideo extends JPanel {
         panelConverterVideo = new JPanelConverterVideo(new BorderLayout());
         TitledBorder titleBorderVideo = new CustomTitleBorder("Options Convert: ");
         panelConverterVideo.setBorder(titleBorderVideo);
-        panelConverterVideo.setBackground(new Color(0,0,0,65));
+        panelConverterVideo.setBackground(new Color(172, 175, 177));
         this.add(panelConverterVideo, BorderLayout.NORTH);
     }
 }

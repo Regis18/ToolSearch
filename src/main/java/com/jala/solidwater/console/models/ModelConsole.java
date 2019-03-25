@@ -49,12 +49,45 @@ public class ModelConsole {
      */
     private static final String SIZE_COMMAND = "-s";
 
-    public static final String HIDDEN_COMMAND = "-hd";
-    public static final String READONLY_COMMAND = "-ro";
-    public static final String FROM_DATE_CREATED_COMMAND = "-fdc";
-    public static final String TO_DATE_CREATED_COMMAND = "-tdc";
-    public static final String FROM_DATE_MODIFIED_COMMAND = "-fdm";
-    public static final String TO_DATE_MODIFIED_COMMAND = "-tdm";
+    /**
+     * Constant to get command by hidden acronym.
+     */
+    public static final String COMMAND_HIDDEN = "-h";
+
+    /**
+     * Constant to get command by read only acronym.
+     */
+    public static final String COMMAND_READ_ONLY = "-ro";
+
+    /**
+     * Constant to get command from a creation date acronym.
+     */
+    public static final String COMMAND_CREATION_DATE_FROM = "-cdf";
+
+    /**
+     * Constant to get command to a creation date acronym.
+     */
+    public static final String COMMAND_CREATION_DATE_TO = "-cdt";
+
+    /**
+     * Constant to get command from a modification date acronym.
+     */
+    public static final String COMMAND_MODIFICATION_DATE_FROM = "-mdf";
+
+    /**
+     * Constant to get command to a modification date acronym.
+     */
+    public static final String COMMAND_MODIFICATION_DATE_TO = "-mdt";
+
+    /**
+     * Constant to get command from a last date acronym.
+     */
+    public static final String COMMAND_LAST_DATE_FROM = "-ldf";
+
+    /**
+     * Constant to get command to a last date acronym.
+     */
+    public static final String COMMAND_LAST_DATE_TO = "-ldt";
 
     /**
      * This method return a asset list sending
@@ -70,12 +103,15 @@ public class ModelConsole {
         criteria.setFileName(setValueIfExistCommand(validCommand, FILE_NAME_COMMAND));
         criteria.setExtension(setValueIfExistCommand(validCommand, EXTENSION_COMMAND));
         criteria.setSize(setValueIfExistCommand(validCommand, SIZE_COMMAND));
-        criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, HIDDEN_COMMAND));
-        criteria.setReadOnly(setValueOnHiddenOrReadOnlyCriteria(validCommand, READONLY_COMMAND));
-        criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_CREATED_COMMAND));
-        criteria.setCreationDateTo(setValueIfExistCommand(validCommand, TO_DATE_CREATED_COMMAND));
-        criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, FROM_DATE_MODIFIED_COMMAND));
-        criteria.setModificationDateTo(setValueIfExistCommand(validCommand, TO_DATE_MODIFIED_COMMAND));
+        criteria.setHidden(setValueOnHiddenOrReadOnlyCriteria(validCommand, COMMAND_HIDDEN));
+        criteria.setReadOnly(setValueOnHiddenOrReadOnlyCriteria(validCommand, COMMAND_READ_ONLY));
+        criteria.setCreationDateFrom(setValueIfExistCommand(validCommand, COMMAND_CREATION_DATE_FROM));
+        criteria.setCreationDateTo(setValueIfExistCommand(validCommand, COMMAND_CREATION_DATE_TO));
+        criteria.setModificationDateFrom(setValueIfExistCommand(validCommand, COMMAND_MODIFICATION_DATE_FROM));
+        criteria.setModificationDateTo(setValueIfExistCommand(validCommand, COMMAND_MODIFICATION_DATE_TO));
+        criteria.setLastDateFrom(setValueIfExistCommand(validCommand, COMMAND_LAST_DATE_FROM));
+        criteria.setLastDateTo(setValueIfExistCommand(validCommand, COMMAND_LAST_DATE_TO));
+
 
         SearchFile searchFile = new SearchFile();
         ArrayList<Asset> listFileSearch = new ArrayList<>();
@@ -134,8 +170,10 @@ public class ModelConsole {
             return TernaryBooleanEnum.OnlyFalse;
         } else if (setValueIfExistCommand(validCommand, acronymCommand).equals("Yes")) {
             return TernaryBooleanEnum.OnlyTrue;
-        } else {
+        } else if (setValueIfExistCommand(validCommand, acronymCommand).equals("All")){
             return TernaryBooleanEnum.ALL;
+        } else {
+            return TernaryBooleanEnum.OnlyFalse;
         }
     }
 }
