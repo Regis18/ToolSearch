@@ -12,8 +12,8 @@
 
 package com.jala.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JRadioButton;
+import java.awt.Font;
 
 /**
  * This class is Customizer RadioButton
