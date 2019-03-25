@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 /**
- * JPanelHistorical class.
+ * JPanelHistoricalDataBase class.
  *
  * @version 0.0.1
  * @autor Cxristian Lujan
@@ -57,7 +57,7 @@ public class JPanelHistoricalDB extends JPanel {
      */
     private void initComponent() {
         JPanel pnlHistorical = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Historical DataBase Table");
+        TitledBorder titleBorder = BorderFactory.createTitledBorder(null, "Historical DataBase Table: ");
         pnlHistorical.setBorder(titleBorder);
 
         tbHistoricalDB = new JTableDB();

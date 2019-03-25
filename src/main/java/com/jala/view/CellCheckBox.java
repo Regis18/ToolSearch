@@ -22,10 +22,11 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  * Class CellCheckBox
+ *
  * @version 0.0.1.
  * @author: Luis Guardia
  */
-public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer  {
+public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer {
 
     private JComponent componentCheckBox = new JCheckBox();
     private boolean isCellSelected = false;
@@ -42,7 +43,7 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
      */
     @Override
     public Object getCellEditorValue() {
-        return ((JCheckBox)componentCheckBox).isSelected();
+        return ((JCheckBox) componentCheckBox).isSelected();
     }
 
     /**
@@ -51,26 +52,28 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object cell, boolean isSelected, int row, int column) {
-        ((JCheckBox)componentCheckBox).setBackground(new Color(0,50,255));
-        boolean cellSelect = ((Boolean)cell).booleanValue();
-        ((JCheckBox)componentCheckBox).setSelected(cellSelect);
-        return ((JCheckBox)componentCheckBox);
+        componentCheckBox.setBackground(new Color(0, 30, 145, 201));
+        boolean cellSelect = ((Boolean) cell).booleanValue();
+        ((JCheckBox) componentCheckBox).setSelected(cellSelect);
+        return componentCheckBox;
     }
 
     /**
      * when the cell manipulation is over.
+     *
      * @return a value boolean.
      */
 
     @Override
     public boolean stopCellEditing() {
-        isCellSelected = ((Boolean)getCellEditorValue()).booleanValue();
-        ((JCheckBox)componentCheckBox).setSelected( isCellSelected );
+        isCellSelected = ((Boolean) getCellEditorValue()).booleanValue();
+        ((JCheckBox) componentCheckBox).setSelected(isCellSelected);
         return super.stopCellEditing();
     }
 
     /**
-     * Returns the checkBox component.
+     * Returns the checkBox components.
+     *
      * @param table
      * @param isCellSelected
      * @param isSelected
@@ -79,8 +82,9 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
      * @param column
      */
     public Component getTableCellRendererComponent(JTable table, Object isCellSelected, boolean isSelected, boolean hasFocus, int row, int column) {
-        if (isCellSelected == null)
+        if (isCellSelected == null) {
             return null;
+        }
         return ((JCheckBox)componentCheckBox );
     }
 }

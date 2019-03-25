@@ -20,27 +20,29 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.border.Border;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.JProgressBar;
+import javax.swing.border.Border;
 
 /**
  * Module view, UI/JPanelConverterImage.
+ *
  * @version 0.0.1.
  * @autor Luis Guardia.
  */
 public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     private JLabel lblPathFileOrigin, lblPathFolderDestiny, lblFileName, lblExtension, lblResolutionVideo, lblAudioChannel, lblFrameRate;
-    private JLabel lblSeparatorSpace, lblSeparatorSpace2, lblBitRate, lblSampleRate, lblTypeConversion,  lblProgressBar;
+    private JLabel lblSeparatorSpace, lblSeparatorSpace2, lblBitRate, lblSampleRate, lblTypeConversion, lblProgressBar;
     private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertVideo;
     private ButtonGroup typeOfAudioChannel, selectTypeConverter;
@@ -54,6 +56,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtPathFileOrigin.
+     *
      * @return TxtPathFileOrigin, the content of the TxtPathFileOrigin text field.
      */
     public String getTxtPathFileOrigin() {
@@ -62,6 +65,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtFolderDestiny.
+     *
      * @return TxtFolderDestiny, the content of the TxtFolderDestiny text field.
      */
     public String getTxtFolderDestiny() {
@@ -70,6 +74,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from TxtFileName.
+     *
      * @return TxtFileName, the content of the TxtFileName text field.
      */
     public String getTxtFileName() {
@@ -78,6 +83,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from cmbVideoResolution.
+     *
      * @return cmbVideoResolution, the selected comboBox element.
      */
     public String getCmbVideoResolution() {
@@ -86,6 +92,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from cmbFrameRate.
+     *
      * @return cmbFrameRate, the selected comboBox element.
      */
     public Double getCmbFrameRate() {
@@ -98,6 +105,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from cmbExtension.
+     *
      * @return cmbExtension, the selected comboBox element.
      */
     public String getCmbExtension() {
@@ -106,6 +114,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from cmbBitRate.
+     *
      * @return cmbBitRate, the selected comboBox element.
      */
     public Long getCmbBitRate() {
@@ -118,6 +127,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the content from cmbSampleRate.
+     *
      * @return cmbSampleRate, the selected comboBox element
      */
     public int getCmbSampleRate() {
@@ -130,42 +140,34 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Gets the status from chkOptionAdvanced.
+     *
      * @return boolean value, true if chkOptionAdvanced is active and false if not activated.
      */
     public boolean isAdvanced() {
-        if (chkOptionAdvanced.isSelected()) {
-            return true;
-        } else {
-            return false;
-        }
+        return chkOptionAdvanced.isSelected();
     }
 
     /**
      * Gets the status from radioConvertVideo.
+     *
      * @return boolean value, true if radioConvertVideo is active and false if not activated.
      */
     public boolean isVideo() {
-        if (radioConvertVideo.isSelected()) {
-            return true;
-        } else {
-            return false;
-        }
+        return radioConvertVideo.isSelected();
     }
 
     /**
      * Gets the status from radioStereo.
+     *
      * @return boolean value, true if radioStereo is active and false if not activated.
      */
     public boolean isStereo() {
-        if (radioStereo.isSelected()) {
-            return true;
-        } else {
-            return false;
-        }
+        return radioStereo.isSelected();
     }
 
     /**
      * Get event button Convert Video.
+     *
      * @return btnConvertVideo the even button.
      */
     public JButton getBtnConvertVideo() {
@@ -174,6 +176,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Class constructor.
+     *
      * @param borderLayout
      */
     public JPanelConverterVideo(BorderLayout borderLayout) {
@@ -194,7 +197,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         lblPathFileOrigin = new CustomLabel("Path Origin File: ");
         addComponent(lblPathFileOrigin, 0, 1, 1, 1);
 
-        lblPathFolderDestiny = new CustomLabel("Folder Destiny: ");
+        lblPathFolderDestiny = new CustomLabel("Folder Output: ");
         addComponent(lblPathFolderDestiny, 0, 2, 1, 1);
 
         lblFileName = new CustomLabel("File Name: ");
@@ -225,7 +228,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(lblSampleRate, 3, 7, 1, 1);
 
         lblProgressBar = new JLabel("Progress");
-        addComponent(lblProgressBar, 0,9,1,1);
+        addComponent(lblProgressBar, 0, 9, 1, 1);
 
         txtPathFileOrigin = new JTextField(" ");
         addComponent(txtPathFileOrigin, 1, 1, 4, 1);
@@ -315,21 +318,22 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbSampleRate.addItem("96000 Hz");
         addComponent(cmbSampleRate, 4, 7, 1, 1);
 
-        radioStereo = new JRadioButton("Stereo",true);
+        radioStereo = new CustomRadioButton("Stereo");
         addComponent(radioStereo, 1, 5, 1, 1);
 
-        radioMono = new JRadioButton("Mono",false);
+        radioMono = new CustomRadioButton("Mono");
+        radioMono.setSelected(false);
         addComponent(radioMono, 3, 5, 1, 1);
 
-        radioConvertVideo = new JRadioButton("Video",true);
+        radioConvertVideo = new CustomRadioButton("Video");
         radioConvertVideo.addActionListener(this);
         addComponent(radioConvertVideo, 1, 0, 1, 1);
 
-        radioConvertAudio = new JRadioButton("Audio",false);
+        radioConvertAudio = new CustomRadioButton("Audio");
         radioConvertAudio.addActionListener(this);
         addComponent(radioConvertAudio, 3, 0, 1, 1);
 
-        chkOptionAdvanced = new JCheckBox("Option Advanced", true);
+        chkOptionAdvanced = new CustomCheckBox("Option Advanced");
         chkOptionAdvanced.addActionListener(this);
         addComponent(chkOptionAdvanced, 1, 4, 1, 1);
 
@@ -341,22 +345,28 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         selectTypeConverter.add(radioConvertAudio);
         selectTypeConverter.add(radioConvertVideo);
 
-        btnPathOriginFile = new JButton("Search File");
+        btnPathOriginFile = new CustomButton();
+        btnPathOriginFile.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchFile24.png"));
+        btnPathOriginFile.setToolTipText("Search File");
         btnPathOriginFile.addActionListener(this);
         addComponent(btnPathOriginFile, 6, 1, 1, 1);
 
-        btnPathFolderDestiny = new JButton("Destiny");
+        btnPathFolderDestiny = new CustomButton();
+        btnPathFolderDestiny.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\output24.png"));
+        btnPathFolderDestiny.setToolTipText("Output");
         btnPathFolderDestiny.addActionListener(this);
         addComponent(btnPathFolderDestiny, 6, 2, 1, 1);
 
-        btnConvertVideo = new JButton("Convert Video");
+        btnConvertVideo = new CustomButton();
+        btnConvertVideo.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter36.png"));
+        btnConvertVideo.setToolTipText("Convert");
         btnConvertVideo.addActionListener(this);
         addComponent(btnConvertVideo, 1, 8, 1, 1);
 
         progressBar = new JProgressBar();
         progressBar.setMinimum(0);
         progressBar.setMaximum(100);
-        addComponent(progressBar,1,9,4,1);
+        addComponent(progressBar, 1, 9, 4, 1);
 
     }
 
@@ -371,7 +381,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weighty = 1.0;
         constraints.insets = new Insets(2, 2, 2, 2);
-        this.add(Component , constraints);
+        this.add(Component, constraints);
     }
 
     /**
@@ -480,9 +490,10 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
     /**
      * Set progressBar Value in percentage and draw graphics.
+     *
      * @param percentage read the percentage convert value.
      */
-    public void setProgressBarValue(int percentage){
+    public void setProgressBarValue(int percentage) {
         progressBar.setValue(percentage);
         progressBar.update(progressBar.getGraphics());
         progressBar.setStringPainted(true);

@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 /**
  * This class is Customizer TextField
+ *
  * @author by Cristian Lujan
  * @Version 0.0.1
  */
@@ -24,14 +25,16 @@ public class CustomTextField extends JTextField {
 
     /**
      * Class constructor for all JTextField.
+     *
      * @param valor define the size textBox.
      */
     public CustomTextField(int valor) {
         setColumns(valor);
         init();
     }
+
     /**
-     *  Class constructor for all JTextField.
+     * Class constructor for all JTextField.
      */
     public CustomTextField() {
         init();
