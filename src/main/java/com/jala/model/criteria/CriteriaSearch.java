@@ -141,7 +141,7 @@ public class CriteriaSearch extends Criteria {
     public void loadCriteria() {
         Calendar date = new GregorianCalendar();
         String year = Integer.toString(date.get(Calendar.YEAR));
-        String month = Integer.toString(date.get(Calendar.MONTH));
+        String month = Integer.toString(date.get(Calendar.MONTH) + 1);
         String day = Integer.toString(date.get(Calendar.DAY_OF_MONTH));
         this.setHidden(TernaryBooleanEnum.ALL);
         this.setReadOnly(TernaryBooleanEnum.ALL);
