@@ -72,7 +72,7 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
     }
 
     /**
-     * Returns the checkBox component.
+     * Returns the checkBox components.
      *
      * @param table
      * @param isCellSelected
