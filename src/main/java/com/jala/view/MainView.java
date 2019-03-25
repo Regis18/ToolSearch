@@ -11,11 +11,7 @@
 
 package com.jala.view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -175,8 +171,10 @@ public class MainView extends JFrame implements ActionListener {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(500, 400));
+        ImageIcon ImageIcon = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\moon.png");
+        Image image = ImageIcon.getImage();
+        this.setIconImage(image);
         initComponent();
-
     }
 
     /**
