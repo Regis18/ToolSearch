@@ -74,7 +74,7 @@ public class ConvertVideo implements IConvertible {
                 builder.addOutput(pathDestination);
                 FFmpegProbeResult probeResult = fprobe.probe(criteria.getPath());
                 FFmpegExecutor executor = new FFmpegExecutor(fmpeg, fprobe);
-                ConvertVideoProgress(executor, builder, probeResult);
+                convertVideoProgress(executor, builder, probeResult);
             } else {
                 convertAdvancedVideo(criteria, builder, fmpeg, fprobe);
             }
@@ -114,7 +114,7 @@ public class ConvertVideo implements IConvertible {
             builder.addOutput(outputBuilder);
             FFmpegExecutor executor = new FFmpegExecutor(fmpeg, fprobe);
             FFmpegProbeResult probeResult = fprobe.probe(criteria.getPath());
-            ConvertVideoProgress(executor, builder, probeResult);
+            convertVideoProgress(executor, builder, probeResult);
         } catch (IOException error) {
             log.error("Error in ConvertAdvancedAudio", error);
         }
@@ -127,7 +127,7 @@ public class ConvertVideo implements IConvertible {
      * @param builder  is who do the convert.
      * @param probeResult       is the library.
      */
-    public void ConvertVideoProgress(FFmpegExecutor executor, FFmpegBuilder builder, final FFmpegProbeResult probeResult) {
+    public void convertVideoProgress(FFmpegExecutor executor, FFmpegBuilder builder, final FFmpegProbeResult probeResult) {
         FFmpegJob job = executor.createJob(builder, new ProgressListener() {
             private final double durationNs = probeResult.getFormat().duration * TimeUnit.SECONDS.toNanos(1);
 
