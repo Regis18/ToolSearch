@@ -39,20 +39,16 @@ public class JTableResult extends JTable {
         }
     };
 
-    String[] headerGral = new String[]{"Id", "Path", "File Name", "Extension", "Size",
-            "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access", "Player"};
-
     // add header of the table
     String[] header = new String[]{"N.", "Path", "File Name", "Extension", "Size",
-            "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access "};
+            "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access", "Play"};
 
 
     // add header for search a video or Audio
-    String[] headerVideo = new String[]{"Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
-            "Duration", "Player"};
-
-    //Join both headers for show a table
-    String[] bothHeader = ArrayUtils.addAll(header, headerVideo);
+    String[] headerVideo = new String[]{"Id", "Path", "File Name", "Extension", "Size",
+            "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access",
+            "Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
+            "Duration", "Audio Chanel", "Play"};
 
     /**
      * Constructor that setting the table DefaultTableModel.
@@ -64,7 +60,7 @@ public class JTableResult extends JTable {
         setFont(new Font("Calibri", 0, 12));
 
         loadExtension(extensions);
-        dtm.setColumnIdentifiers(headerGral);
+        dtm.setColumnIdentifiers(header);
         setFont(new java.awt.Font("Calibri", 0, 12));
         setGridColor(Color.WHITE);
         setForeground(Color.black);
@@ -100,7 +96,7 @@ public class JTableResult extends JTable {
     public JTableResult(int withColumn) {
         super();
         loadExtension(extensions);
-        dtm.setColumnIdentifiers(bothHeader);
+        dtm.setColumnIdentifiers(headerVideo);
         setFont(new Font("Calibri", 0, 12));
         setGridColor(Color.WHITE);
         setForeground(Color.black);
@@ -128,8 +124,9 @@ public class JTableResult extends JTable {
         this.getColumnModel().getColumn(14).setPreferredWidth(withColumn);
         this.getColumnModel().getColumn(15).setPreferredWidth(withColumn);
         this.getColumnModel().getColumn(16).setPreferredWidth(withColumn);
-        this.getColumnModel().getColumn(16).setCellEditor(new CellCheckBox());
-        this.getColumnModel().getColumn(16).setCellRenderer(new RenderCheckBox());
+        this.getColumnModel().getColumn(17).setPreferredWidth(withColumn);
+        this.getColumnModel().getColumn(17).setCellEditor(new CellCheckBox());
+        this.getColumnModel().getColumn(17).setCellRenderer(new RenderCheckBox());
         this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
     }
 
@@ -174,10 +171,10 @@ public class JTableResult extends JTable {
                                   String size, String hidden, String readOnly, String dateCreate,
                                   String dateModification, String dateLaterAccess, String frameRate,
                                   String videoCodec, String audioCodec, String aspectRatio,
-                                  String audioSampleRate, String duration) {
+                                  String audioSampleRate, String duration, String chanel) {
         dtm.addRow(new Object[]{id, path, fileName, ext, size, hidden, readOnly,
                 dateCreate, dateModification, dateLaterAccess, frameRate, videoCodec,
-                audioCodec, aspectRatio, audioSampleRate, duration, false});
+                audioCodec, aspectRatio, audioSampleRate, duration, chanel, false});
         centerData();
     }
 
