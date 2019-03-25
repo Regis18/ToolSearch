@@ -12,7 +12,10 @@
 
 package com.jala.view;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import com.jala.view.player.VideoMusicPlayer;
@@ -83,8 +86,6 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
 
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
-
-
     }
 
     /**
