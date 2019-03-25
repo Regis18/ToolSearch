@@ -83,7 +83,7 @@ public class SearchCommon extends SearchBasic {
 				}
 			}
 			if ((! criteria.getLastDateFrom().isEmpty()) && ! criteria.getLastDateTo().isEmpty()) {
-				if ((Date.valueOf(preview.get(i).getLastDate()).before(Date.valueOf(criteria.getLastDateFrom()))) || (Date.valueOf(preview.get(i).getFileName()).after(Date.valueOf(criteria.getLastDateTo())))) {
+				if ((Date.valueOf(preview.get(i).getLastDate()).before(Date.valueOf(criteria.getLastDateFrom()))) || (Date.valueOf(preview.get(i).getLastDate()).after(Date.valueOf(criteria.getLastDateTo())))) {
 					continue;
 				}
 			}
