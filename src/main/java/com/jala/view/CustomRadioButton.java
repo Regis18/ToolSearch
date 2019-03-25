@@ -1,5 +1,5 @@
 /*
- * @(#) CustomJCombo.java Copyright (c) 2019 Jala Foundation.
+ * @(#) CustomRadioButton.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -12,21 +12,23 @@
 
 package com.jala.view;
 
-import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
 import java.awt.Font;
 
 /**
- * This class is Customizer Label
+ * This class is Customizer RadioButton
  *
  * @author by Cristian Lujan
  * @Version 0.0.1
  */
-public class CustomJCombo extends JComboBox {
-
+public class CustomRadioButton extends JRadioButton {
     /**
-     * Class constructor for all JComboBox.
+     * Class constructor for all JLabel.
      */
-    public CustomJCombo() {
-        setFont(new Font("Calibri", Font.PLAIN, 11));
+    public CustomRadioButton(String valor) {
+        setFont(new Font("Calibri", Font.BOLD, 12));
+        setText(valor);
+        setOpaque(false);
+        setSelected(true);
     }
 }

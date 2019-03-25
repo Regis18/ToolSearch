@@ -1,5 +1,5 @@
 /*
- * @(#) CustomJCombo.java Copyright (c) 2019 Jala Foundation.
+ * @(#) CustomCheckBox.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -12,21 +12,25 @@
 
 package com.jala.view;
 
-import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
 import java.awt.Font;
 
 /**
- * This class is Customizer Label
+ * This class is Customizer CheckBox
  *
  * @author by Cristian Lujan
  * @Version 0.0.1
  */
-public class CustomJCombo extends JComboBox {
+class CustomCheckBox extends JCheckBox {
 
     /**
-     * Class constructor for all JComboBox.
+     * Class constructor for all JLabel.
      */
-    public CustomJCombo() {
-        setFont(new Font("Calibri", Font.PLAIN, 11));
+    public CustomCheckBox(String valor) {
+        setFont(new Font("Calibri", Font.BOLD, 12));
+        setText(valor);
+        setOpaque(false);
+        setSelected(true);
     }
+
 }

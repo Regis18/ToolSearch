@@ -21,6 +21,7 @@ import java.awt.LayoutManager;
 
 /**
  * Module view, ui/JPanelConverter.
+ *
  * @version 0.0.1.
  * @autor Luis Guardia.
  */
@@ -31,6 +32,7 @@ public class JPanelConverter extends JPanel {
 
     /**
      * Gets the panel panelConverterImage
+     *
      * @return panelConverterImage
      */
     public JPanelConverterImage getJPanelAdvanced() {
@@ -39,6 +41,7 @@ public class JPanelConverter extends JPanel {
 
     /**
      * Class constructor.
+     *
      * @param layout
      */
     public JPanelConverter(LayoutManager layout) {
@@ -60,7 +63,7 @@ public class JPanelConverter extends JPanel {
         panelConverterImage = new JPanelConverterImage(new BorderLayout());
         TitledBorder titleBorder = new CustomTitleBorder("Options Convert: ");
         panelConverterImage.setBorder(titleBorder);
-        panelConverterImage.setBackground(new Color(0,0,0,65));
-        this.add(panelConverterImage,BorderLayout.NORTH);
+        panelConverterImage.setBackground(new Color(172, 175, 177));
+        this.add(panelConverterImage, BorderLayout.NORTH);
     }
 }
