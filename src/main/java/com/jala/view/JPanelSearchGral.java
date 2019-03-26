@@ -120,8 +120,8 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      * Sets the Message for a pop up
      * @param msgError define the message of error.
      */
-    public void setMsgError(CustomErrorMessage msgError) {
-        this.msgError = msgError;
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
     }
 
     public void init() {
