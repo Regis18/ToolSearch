@@ -12,7 +12,6 @@
 
 package com.jala.view;
 
-
 import javax.swing.JOptionPane;
 
 /**
