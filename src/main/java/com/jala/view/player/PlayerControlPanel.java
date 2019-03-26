@@ -23,6 +23,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
+
+import javafx.scene.media.MediaPlayer;
 import uk.co.caprica.vlcj.binding.LibVlcConst;
 import uk.co.caprica.vlcj.filter.swing.SwingFileFilterFactory;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
@@ -56,6 +58,7 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
     private boolean mousePressedPlaying = false;
     private ArrayList listMusic;
     private MusicActual controlMusic;
+    VideoMusicPlayer listPlayer;
 
     /**
      * Calls the method CreateUI and initialize the executorService to update info.
@@ -160,6 +163,12 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
             mediaPlayer.getMediaPlayer().enableOverlay(false);
             if (JFileChooser.APPROVE_OPTION == fileChooser.showOpenDialog(PlayerControlPanel.this)) {
                 mediaPlayer.getMediaPlayer().playMedia(fileChooser.getSelectedFile().getAbsolutePath());
+                listMusic.clear();
+                listMusic.add(fileChooser.getSelectedFile().getAbsolutePath());
+                listPlayer.loadPlaylist(listMusic);
+                mediaPlayer.getMediaPlayer().playMedia(fileChooser.getSelectedFile().getAbsolutePath());
+                controlMusic.setPlayerMusic(0);
+
             }
             mediaPlayer.getMediaPlayer().enableOverlay(true);
         }

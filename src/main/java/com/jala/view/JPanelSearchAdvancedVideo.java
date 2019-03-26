@@ -12,10 +12,7 @@
 
 package com.jala.view;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import com.jala.view.player.VideoMusicPlayer;
@@ -33,7 +30,7 @@ import java.util.ArrayList;
  * @author Raúl Choque
  * @version 0.0.1
  */
-public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener {
+public class JPanelSearchAdvancedVideo extends JPanel {
 
     private JPanelAdvanced panelAdvanceSearch;
     private JPanelSearchVideo panelSearchVideo;
@@ -101,7 +98,7 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
         pnlSearchAdvanced.setBorder(titleBorder);
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         tblResult = new JTableResult(400);
-        JScrollPane scroll = new JScrollPane(tblResult);
+        JScrollPane scroll = new JScrollPane(tblResult, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
     }
@@ -114,11 +111,6 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
     private JPanel pnlPlayBtn() {
         JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
-        btnPlay = new CustomButton();
-        btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer36.png"));
-        btnPlay.setToolTipText("Play Video");
-        pnlSearchAdvanced.add(btnPlay);
-        btnPlay.addActionListener(this);
         return pnlSearchAdvanced;
     }
 
@@ -158,17 +150,16 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
     }
 
     /**
-     * method that adds action to a button
+     * method that adds audio and video path to an ArrayList
+     * @return ArrayList.
      */
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(btnPlay)) {
-            myListPlayer.clear();
-            for (int i = 0; i < tblResult.getRowCount(); i++) {
-                if (tblResult.getValueAt(i, 17).toString().equals("true")) {
-                    myListPlayer.add(tblResult.getValueAt(i, 1));
-                }
+    public ArrayList getMyListPlayer() {
+        myListPlayer.clear();
+        for (int i = 0; i < tblResult.getRowCount(); i++) {
+            if (tblResult.getValueAt(i, 17).toString().equals("true")) {
+                myListPlayer.add(tblResult.getValueAt(i, 1));
             }
-            VideoMusicPlayer listPlayer = new VideoMusicPlayer(myListPlayer);
         }
+        return myListPlayer;
     }
 }

@@ -24,6 +24,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,11 +42,12 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
 
     private JLabel lblPathFileOrigin, lblPathFolderDestiny, lblFileName, lblExtension, lblSizeWidth, lblSizeHeight;
     private JLabel lblChangeSize, lblSeparatorSpace, lblSeparatorSpace2, lblMaintainProportion, lblOwmer;
-    private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName, txtExtension, txtSizeWidth, txtSizeHeight;
+    private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName, txtSizeWidth, txtSizeHeight;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertFile;
     private ButtonGroup typeOfResize;
     private JRadioButton resizePercentage, resizePixeles;
     private JCheckBox chekMaintainProportion, checkResizeImage;
+    private JComboBox cmbExtension;
     private GridBagLayout esquema;
     private GridBagConstraints constraints;
     private CustomErrorMessage msgError;
@@ -86,12 +88,11 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
     }
 
     /**
-     * Gets the content from TxtExtension.
-     *
-     * @return TxtExtension, the content of the TxtExtension text field.
+     * Gets the content from CmbExtension.
+     * @return TxtExtension, the content of the TxtExtension JcomboBox
      */
     public String getTxtExtension() {
-        return txtExtension.getText();
+        return cmbExtension.getSelectedItem().toString();
     }
 
     /**
@@ -194,8 +195,30 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         txtFileName = new CustomTextField();
         addComponent(txtFileName, 1, 2, 1, 1);
 
-        txtExtension = new CustomTextField();
-        addComponent(txtExtension, 4, 2, 1, 1);
+        cmbExtension = new CustomJCombo();
+        cmbExtension.addItem("ai");
+        cmbExtension.addItem("bmp");
+        cmbExtension.addItem("cdr");
+        cmbExtension.addItem("eps");
+        cmbExtension.addItem("gif");
+        cmbExtension.addItem("jpg");
+        cmbExtension.addItem("jpeg");
+        cmbExtension.addItem("map");
+        cmbExtension.addItem("odg");
+        cmbExtension.addItem("pal");
+        cmbExtension.addItem("pcd");
+        cmbExtension.addItem("pdf");
+        cmbExtension.addItem("png");
+        cmbExtension.addItem("ppm");
+        cmbExtension.addItem("psd");
+        cmbExtension.addItem("raw");
+        cmbExtension.addItem("svg");
+        cmbExtension.addItem("tga");
+        cmbExtension.addItem("tif");
+        cmbExtension.addItem("tiff");
+        cmbExtension.addItem("wbmp");
+        cmbExtension.addItem("webp");
+        addComponent(cmbExtension, 4, 2, 1, 1);
 
         txtSizeWidth = new CustomTextField();
         addComponent(txtSizeWidth, 1, 4, 1, 1);
