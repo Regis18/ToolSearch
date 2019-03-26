@@ -43,7 +43,15 @@ public class JPanelSearchAdvanced extends JPanel {
     private JPanel panelInferior;
     private JButton btnDelete, btnCharge, btnSave, btnPlay;
     private ArrayList myListPlayer = new ArrayList();
+    private CustomErrorMessage msgError;
 
+    /**
+     * Sets the Message Error for a pop-up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
+    }
 
     /**
      * Gets the delete button.
@@ -156,11 +164,9 @@ public class JPanelSearchAdvanced extends JPanel {
         TitledBorder titleBorder = new CustomTitleBorder("List Search Advanced: ");
         pnlSearchAdvanced.setBorder(titleBorder);
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
-
         tbSearchAdvanced = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
+        JScrollPane scroll = new JScrollPane(tbSearchAdvanced, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
-
         return pnlSearchAdvanced;
     }
 
@@ -180,7 +186,6 @@ public class JPanelSearchAdvanced extends JPanel {
         JScrollPane scroll = new JScrollPane(tbDataBase);
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
         pnlSearchGral.add(panelInferior, BorderLayout.SOUTH);
-
         return pnlSearchGral;
     }
 

@@ -12,10 +12,7 @@
 
 package com.jala.view;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import com.jala.view.player.VideoMusicPlayer;
@@ -41,6 +38,7 @@ public class JPanelSearchAdvancedVideo extends JPanel {
     private Border border;
     private ArrayList myListPlayer = new ArrayList();
     private JButton btnPlay;
+    private CustomErrorMessage msgError;
 
     /**
      * The JPanelSearchAdvancedVideo method is the constructor for JPanelSearchAdvancedVideo class,
@@ -100,7 +98,7 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         pnlSearchAdvanced.setBorder(titleBorder);
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         tblResult = new JTableResult(400);
-        JScrollPane scroll = new JScrollPane(tblResult);
+        JScrollPane scroll = new JScrollPane(tblResult, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
     }
@@ -114,6 +112,14 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         return pnlSearchAdvanced;
+    }
+
+    /**
+     * Sets the Message Error for a pop-up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
     }
 
     /**
