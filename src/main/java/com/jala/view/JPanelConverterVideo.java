@@ -51,8 +51,16 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private JCheckBox chkOptionAdvanced;
     private GridBagLayout gridBag;
     private GridBagConstraints constraints;
-    private Border border;
+    private CustomErrorMessage msgError;
     private static JProgressBar progressBar;
+
+    /**
+     * Sets the Message Error for a pop-up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
+    }
 
     /**
      * Gets the content from TxtPathFileOrigin.

@@ -41,6 +41,7 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
     private Border border;
     private ArrayList myListPlayer = new ArrayList();
     private JButton btnPlay;
+    private CustomErrorMessage msgError;
 
     /**
      * The JPanelSearchAdvancedVideo method is the constructor for JPanelSearchAdvancedVideo class,
@@ -119,6 +120,14 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
         pnlSearchAdvanced.add(btnPlay);
         btnPlay.addActionListener(this);
         return pnlSearchAdvanced;
+    }
+
+    /**
+     * Sets the Message Error for a pop-up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
     }
 
     /**

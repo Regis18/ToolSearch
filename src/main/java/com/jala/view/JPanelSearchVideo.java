@@ -43,6 +43,7 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
             cmbAspectRatio, cmbExtension;
     private ButtonGroup typeOfAudioChannel, selectTypeSearch;
     private JRadioButton radioStereo, radioMono, radioVideo, radioAudio;
+    private CustomErrorMessage msgError;
 
     /**
      * The JPanelSearchVideo method is the constructor of ViewConsole class,
@@ -210,6 +211,14 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         constraints.insets = new Insets(2, 2, 2, 2);
         constraints.anchor = align;
         add(component, constraints);
+    }
+
+    /**
+     * Sets the Message Error for a pop-up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
     }
 
     /**
