@@ -155,7 +155,7 @@ public class JPanelSearchAdvancedVideo extends JPanel implements ActionListener 
         if (e.getSource().equals(btnPlay)) {
             myListPlayer.clear();
             for (int i = 0; i < tblResult.getRowCount(); i++) {
-                if (tblResult.getValueAt(i, 16).toString().equals("true")) {
+                if (tblResult.getValueAt(i, 17).toString().equals("true")) {
                     myListPlayer.add(tblResult.getValueAt(i, 1));
                 }
             }

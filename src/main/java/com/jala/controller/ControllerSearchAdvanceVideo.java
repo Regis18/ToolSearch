@@ -11,10 +11,12 @@
  */
 package com.jala.controller;
 
+import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.criteria.CriteriaSearchMultimedia;
 import com.jala.model.search.SearchFile;
 import com.jala.model.search.asset.Asset;
+import com.jala.model.search.asset.AssetAudio;
 import com.jala.model.search.asset.AssetVideo;
 import com.jala.utils.Logs;
 import com.jala.view.JPanelSearchAdvancedVideo;
@@ -71,25 +73,26 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
      */
     @Override
     public void actionPerformed(ActionEvent event) {
-        System.out.println("Event: controller search video:" + event);
         JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
         log.info("It was detected an event on the JPanelSearchAdvancedVideo class ");
         Object source = event.getSource();
         if (source == searchVideo.getBtnSearch()) {
             CriteriaSearch criteriaSearch = super.getCriteria(viewAdvancedVideo.getPanelAdvanceSearch());
             this.criteriaSearchMultimedia = new CriteriaSearchMultimedia(criteriaSearch);
-            System.out.println("Path: " + criteriaSearchMultimedia.getPath());
-            addAttributesOfVideo();
-            sendCriteriaToFile(criteriaSearchMultimedia);
+            addAttributesMultimedia();
+            if (searchVideo.isVideo()) {
+                sendCriteriaToFileVideo(criteriaSearchMultimedia);
+            } else { sendCriteriaToFileAudio(criteriaSearchMultimedia);
+            }
         }
     }
 
     /**
-     * Send criteriaSearch to SearchFile to search files like the filename or extension,
+     * The sendCriteriaToFileVideo method send data to search file video
      * receive a list of results, and print the results in the UI table.
      * @param criteria has data for search video file
      */
-    private void sendCriteriaToFile(CriteriaSearchMultimedia criteria) {
+    private void sendCriteriaToFileVideo(CriteriaSearchMultimedia criteria) {
         log.info("Preparing to send criteria to SearchFile multimedia");
         SearchFile searchFile = new SearchFile();
         List<Asset> results = searchFile.search(criteria, true);
@@ -99,28 +102,67 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             AssetVideo data = (AssetVideo) results.get(i);
             String hidden = String.valueOf(data.isHidden());
             String readOnly = String.valueOf(data.isReadOnly());
+            String chanel = getChanel();
             viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i), data.getPath(), data.getFileName(),
                     data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
                     data.getModificationDate(), data.getLastDate(), data.getFrameRate(), data.getVideoCodec(), data.getAudioCodec(),
-                    data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration());
+                    data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration(), chanel);
+        }
+        log.info("Results implemented in the JTable of the UI");
+    }
+    /**
+     * The sendCriteriaToFileAudio method send data to search file audio
+     * receive a list of results, and print the results in the UI table.
+     * @param criteria has data for search video file
+     */
+    private void sendCriteriaToFileAudio(CriteriaSearchMultimedia criteria ) {
+        log.info("Preparing to send criteria to SearchFile multimedia");
+        final String SPACE_UNDERSCORE = "-";
+        SearchFile searchFile = new SearchFile();
+        List<Asset> results = searchFile.search(criteria, false);
+        log.info("Information sending and waiting answers");
+        viewAdvancedVideo.getTblResult().removeRow();
+        for (int i = 0; i < results.size(); i++) {
+            AssetAudio data = (AssetAudio) results.get(i);
+            String hidden = String.valueOf(data.isHidden());
+            String readOnly = String.valueOf(data.isReadOnly());
+            viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i), data.getPath(), data.getFileName(),
+                    data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
+                    data.getModificationDate(), data.getLastDate(), SPACE_UNDERSCORE, SPACE_UNDERSCORE, data.getAudioCodec(),
+                    SPACE_UNDERSCORE, data.getAudioSampleRate(), data.getDuration(),getChanel());
         }
         log.info("Results implemented in the JTable of the UI");
     }
 
     /**
-     * The addAttributesOfVideo method, upload data in criteriaSearchMultimedia attribute
-     * from this class, for search advanced video.
+     * The addAttributesMultimedia method, upload data in criteriaSearchMultimedia attribute
+     * from this class, for search advanced multimedia video or audio.
      */
-    private void addAttributesOfVideo() {
+    private void addAttributesMultimedia() {
         JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
         log.info("Upload data for criteriaSearchMultimedia attribute");
-        this.criteriaSearchMultimedia.setFrameRate(searchVideo.getCmbFrameRate());
-        this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
         this.criteriaSearchMultimedia.setAudioCodec(searchVideo.getCmbAudioCodec());
         this.criteriaSearchMultimedia.setAudioSampleRate(searchVideo.getTxtAudioSampleRate());
         this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension().toLowerCase());
-        this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
+        this.criteriaSearchMultimedia.setDuration(searchVideo.getTxtDuration());
+        this.criteriaSearchMultimedia.setChannel(getChanel());
+
+        if (searchVideo.isVideo()) {
+            this.criteriaSearchMultimedia.setFrameRate(searchVideo.getCmbFrameRate());
+            this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
+            this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
+            this.criteriaSearchMultimedia.setChannel("");
+        }
         log.info("Information saved on criteriaSearchMultimedia attribute");
+    }
+
+    /**
+     * The getChanel method get the value select on Audio Chanel ButtonGroup.
+     * @return a String of stereo or mono
+     */
+    private String getChanel() {
+        JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
+        return searchVideo.isStereo() ? "stereo" : "mono";
     }
 
     /**
