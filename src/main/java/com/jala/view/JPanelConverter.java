@@ -28,7 +28,6 @@ import java.awt.LayoutManager;
 public class JPanelConverter extends JPanel {
 
     private JPanelConverterImage panelConverterImage;
-    private Border border;
 
     /**
      * Gets the panel panelConverterImage
@@ -65,5 +64,6 @@ public class JPanelConverter extends JPanel {
         panelConverterImage.setBorder(titleBorder);
         panelConverterImage.setBackground(new Color(172, 175, 177));
         this.add(panelConverterImage, BorderLayout.NORTH);
+
     }
 }

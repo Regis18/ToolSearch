@@ -51,14 +51,14 @@ public class CustomButton extends JButton {
 
     /**
      * Method for change color
-     * @param g
+     * @param graphic
      */
     @Override
-    protected void paintComponent(Graphics g) {
-        final Graphics2D graphics2D = (Graphics2D) g.create();
+    protected void paintComponent(Graphics graphic) {
+        final Graphics2D graphics2D = (Graphics2D) graphic.create();
         graphics2D.setPaint(this.color);
         graphics2D.fillRect(50, 50, getWidth(), getHeight());
         graphics2D.dispose();
-        super.paintComponent(g);
+        super.paintComponent(graphic);
     }
 }

@@ -77,8 +77,12 @@ public class ControllerSearchAdvanced implements ActionListener {
         log.info("Action Detected");
         if (event.getSource() == viewAdvanced.getJPanelAdvanced().getBtnSearch()) {
             log.info("BtnSearch from Search Advanced was pressed");
-            saveCriteria(viewAdvanced.getJPanelAdvanced());
-            sendCriteriaToFile();
+            if (viewAdvanced.getJPanelAdvanced().getTxtPath().equals("")) {
+                viewAdvanced.setMsgError("Path value is required!");
+            } else {
+                saveCriteria(viewAdvanced.getJPanelAdvanced());
+                sendCriteriaToFile();
+            }
         }
     }
 
