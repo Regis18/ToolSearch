@@ -18,10 +18,19 @@ import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+/**
+ * This class is Customizer CheckBox
+ *
+ * @author by Cristian Lujan
+ * @Version 0.0.1
+ */
 public class CustomButton extends JButton {
 
     private Color color;
 
+    /**
+     * Class constructor for all Buttons.
+     */
     public CustomButton() {
         setOpaque(true);
         setContentAreaFilled(false);
@@ -30,18 +39,26 @@ public class CustomButton extends JButton {
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
+    /**
+     * Method for change color
+     * @param color
+     */
     public void changeColor(Color color) {
         this.color = color;
         Graphics g = getGraphics();
         paintComponent(g);
     }
 
+    /**
+     * Method for change color
+     * @param graphic
+     */
     @Override
-    protected void paintComponent(Graphics g) {
-        final Graphics2D graphics2D = (Graphics2D) g.create();
+    protected void paintComponent(Graphics graphic) {
+        final Graphics2D graphics2D = (Graphics2D) graphic.create();
         graphics2D.setPaint(this.color);
         graphics2D.fillRect(50, 50, getWidth(), getHeight());
         graphics2D.dispose();
-        super.paintComponent(g);
+        super.paintComponent(graphic);
     }
 }

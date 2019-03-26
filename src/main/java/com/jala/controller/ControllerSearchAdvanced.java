@@ -107,11 +107,17 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setHidden(getEnumHidden(panelAdvanced));
         criteriaSearch.setReadOnly(getEnumReadOnly(panelAdvanced));
         criteriaSearch.setCreationDateFrom(panelAdvanced.getDateCreateStar());
-        criteriaSearch.setCreationDateTo(panelAdvanced.getDateCreateEnd());
+        if (!panelAdvanced.getDateCreateEnd().equals("")) {
+            criteriaSearch.setCreationDateTo(panelAdvanced.getDateCreateEnd());
+        }
         criteriaSearch.setModificationDateFrom(panelAdvanced.getDateLastModBegin());
-        criteriaSearch.setModificationDateTo(panelAdvanced.getDateLastModEnd());
+        if (!panelAdvanced.getDateLastModEnd().equals("")) {
+            criteriaSearch.setModificationDateTo(panelAdvanced.getDateLastModEnd());
+        }
         criteriaSearch.setLastDateFrom(panelAdvanced.getDateLatterAccesBegin());
-        criteriaSearch.setLastDateTo(panelAdvanced.getDateLatterAccesEnd());
+        if (!panelAdvanced.getDateLatterAccesEnd().equals("")) {
+            criteriaSearch.setLastDateTo(panelAdvanced.getDateLatterAccesEnd());
+        }
         criteriaSearch.setSize(convertSize(panelAdvanced));
         criteriaSearch.setSizeCompareOption(!panelAdvanced.isMajorThanFile());
         log.info("Information saved");
@@ -128,11 +134,17 @@ public class ControllerSearchAdvanced implements ActionListener {
         criteriaSearch.setHidden(getEnumHidden(viewAdvanced.getJPanelAdvanced()));
         criteriaSearch.setReadOnly(getEnumReadOnly(viewAdvanced.getJPanelAdvanced()));
         criteriaSearch.setCreationDateFrom(viewAdvanced.getJPanelAdvanced().getDateCreateStar());
-        criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
+        if (!viewAdvanced.getJPanelAdvanced().getDateCreateEnd().equals("")) {
+            criteriaSearch.setCreationDateTo(viewAdvanced.getJPanelAdvanced().getDateCreateEnd());
+        }
         criteriaSearch.setModificationDateFrom(viewAdvanced.getJPanelAdvanced().getDateLastModBegin());
-        criteriaSearch.setModificationDateTo(viewAdvanced.getJPanelAdvanced().getDateLastModEnd());
+        if (!viewAdvanced.getJPanelAdvanced().getDateLastModEnd().equals("")) {
+            criteriaSearch.setModificationDateTo(viewAdvanced.getJPanelAdvanced().getDateLastModEnd());
+        }
         criteriaSearch.setLastDateFrom(viewAdvanced.getJPanelAdvanced().getDateLatterAccesBegin());
-        criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd());
+        if (!viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd().equals("")) {
+            criteriaSearch.setLastDateTo(viewAdvanced.getJPanelAdvanced().getDateLatterAccesEnd());
+        }
         criteriaSearch.setSize(convertSize(viewAdvanced.getJPanelAdvanced()));
         criteriaSearch.setSizeCompareOption(!viewAdvanced.getJPanelAdvanced().isMajorThanFile());
         log.info("Information saved");

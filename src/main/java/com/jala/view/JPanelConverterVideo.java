@@ -20,7 +20,17 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 /**
@@ -42,7 +52,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private GridBagLayout gridBag;
     private GridBagConstraints constraints;
     private Border border;
-    private JProgressBar progressBar;
+    private static JProgressBar progressBar;
 
     /**
      * Gets the content from TxtPathFileOrigin.
@@ -357,7 +367,6 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         progressBar.setMinimum(0);
         progressBar.setMaximum(100);
         addComponent(progressBar, 1, 9, 4, 1);
-
     }
 
     /**
@@ -483,7 +492,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
      *
      * @param percentage read the percentage convert value.
      */
-    public void setProgressBarValue(int percentage) {
+    public static void setProgressBarValue(int percentage) {
         progressBar.setValue(percentage);
         progressBar.update(progressBar.getGraphics());
         progressBar.setStringPainted(true);

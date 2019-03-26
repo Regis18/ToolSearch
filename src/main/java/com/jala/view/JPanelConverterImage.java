@@ -48,7 +48,6 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
     private JCheckBox chekMaintainProportion, checkResizeImage;
     private GridBagLayout esquema;
     private GridBagConstraints constraints;
-    private Border border;
 
     /**
      * Gets the content from TxtPathFileOrigin.

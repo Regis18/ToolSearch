@@ -49,7 +49,6 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
     /**
      * The JCheckBox is selected/deleted according to the cell value.
      */
-
     @Override
     public Component getTableCellEditorComponent(JTable table, Object cell, boolean isSelected, int row, int column) {
         componentCheckBox.setBackground(new Color(0, 30, 145, 201));
@@ -63,7 +62,6 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
      *
      * @return a value boolean.
      */
-
     @Override
     public boolean stopCellEditing() {
         isCellSelected = ((Boolean) getCellEditorValue()).booleanValue();
@@ -72,7 +70,7 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
     }
 
     /**
-     * Returns the checkBox component.
+     * Returns the checkBox components.
      *
      * @param table
      * @param isCellSelected
@@ -82,8 +80,9 @@ public class CellCheckBox extends DefaultCellEditor implements TableCellRenderer
      * @param column
      */
     public Component getTableCellRendererComponent(JTable table, Object isCellSelected, boolean isSelected, boolean hasFocus, int row, int column) {
-        if (isCellSelected == null)
+        if (isCellSelected == null) {
             return null;
-        return componentCheckBox;
+        }
+        return ((JCheckBox)componentCheckBox );
     }
 }
