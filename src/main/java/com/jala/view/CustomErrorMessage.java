@@ -15,10 +15,18 @@ package com.jala.view;
 
 import javax.swing.JOptionPane;
 
+/**
+ * This class is Customizer Message Error
+ *
+ * @author by Cristian Lujan
+ * @Version 0.0.1
+ */
 public class CustomErrorMessage extends JOptionPane {
 
-    public CustomErrorMessage( String message, String title) {
-
-        showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+    /**
+     * Class constructor for all messages Error.
+     */
+    public CustomErrorMessage( String message ) {
+        showMessageDialog(null, message, "Error!!!", JOptionPane.ERROR_MESSAGE);
     }
 }
