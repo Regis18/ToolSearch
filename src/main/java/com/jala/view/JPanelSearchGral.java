@@ -93,7 +93,6 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         return btnSearch;
     }
 
-
     /**
      * Gets the advanced search button.
      *
