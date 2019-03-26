@@ -25,12 +25,17 @@ import uk.co.caprica.vlcj.player.embedded.DefaultFullScreenStrategy;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.player.embedded.FullScreenStrategy;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
+import com.jala.view.CustomTitleBorder;
 import javax.swing.JList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JOptionPane;
+
 import javax.swing.DefaultListModel;
+import javax.swing.JScrollPane;
+import javax.swing.border.TitledBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -45,14 +50,15 @@ public class VideoMusicPlayer {
 
     private static final Logger logger = Logs.getInstance().getLog();
 
-    private final JFrame mainFrame;
-    private final Canvas videoSurface;
-    private final JPanel controlsPanel;
+    private  JFrame mainFrame;
+    private  Canvas videoSurface;
+    private  JPanel controlsPanel;
     private EmbeddedMediaPlayerComponent mediaPlayer;
     private static final String NATIVE_LIBRARY_SEARCH_PATH = "..\\ToolSearch\\src\\main\\resources\\ThirdParty\\VLC";
     private JList playList, playListTitles;
     private DefaultListModel model, modelTitles;
     private MusicActual controlMusic = new MusicActual();
+    private JScrollPane scrollListPlayer, pnlListPlayer;
 
     /**
      * This constructor create the connection with VLClib and the plugins.
@@ -60,6 +66,9 @@ public class VideoMusicPlayer {
      * to add the buttons of play, stop, pause, etc.
      */
     public VideoMusicPlayer(ArrayList listMusic) {
+        init(listMusic);
+    }
+    public void init(ArrayList listMusic) {
         loadPlaylist(listMusic);
         NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), NATIVE_LIBRARY_SEARCH_PATH);
         LibVlc.INSTANCE.libvlc_get_version();
@@ -83,8 +92,9 @@ public class VideoMusicPlayer {
         controlsPanel = new PlayerControlPanel(mediaPlayer, listMusic, controlMusic);
         mainFrame.setLayout(new BorderLayout());
         mainFrame.setBackground(Color.black);
+        pnlListPlayer = pnlPlayer();
         mainFrame.add(videoSurface, BorderLayout.CENTER);
-        mainFrame.add(playListTitles, BorderLayout.EAST);
+        mainFrame.add(pnlListPlayer, BorderLayout.EAST);
         mainFrame.add(controlsPanel, BorderLayout.SOUTH);
         mainFrame.pack();
         mainFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -94,10 +104,12 @@ public class VideoMusicPlayer {
                 mediaPlayer.release();
             }
         });
-
-        mediaPlayer.getMediaPlayer().playMedia(listMusic.get(0).toString());
-        controlMusic.setPlayerMusic(0);
+        if(listMusic.size() > 0) {
+            mediaPlayer.getMediaPlayer().playMedia(listMusic.get(0).toString());
+            controlMusic.setPlayerMusic(0);
+        }
         mainFrame.setVisible(true);
+
     }
 
     /**
@@ -105,8 +117,11 @@ public class VideoMusicPlayer {
      */
     public void playVideo(ArrayList listTitle) {
         try {
+            loadPlaylist(listTitle);
             mediaPlayer.getMediaPlayer().playMedia(listTitle.get(0).toString());
             controlMusic.setPlayerMusic(0);
+            pnlListPlayer = pnlPlayer();
+
             mainFrame.setVisible(true);
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, "Cannot play this file");
@@ -129,7 +144,7 @@ public class VideoMusicPlayer {
      * Method that loads the ArrayList to a JList component
      * where the music and video list is added.
      */
-    private void loadPlaylist(ArrayList listMusic) {
+    public void loadPlaylist(ArrayList listMusic) {
         model = new DefaultListModel();
         modelTitles = new DefaultListModel();
         playList = new JList(model);
@@ -151,5 +166,22 @@ public class VideoMusicPlayer {
                 }
             }
         });
+    }
+
+
+
+    /**
+     * Method that return a JScrollPane and load the ArrayList to a JList.
+     */
+    private JScrollPane pnlPlayer(){
+        JPanel pPlayer = new JPanel(new BorderLayout());
+        TitledBorder titleBorder =  new CustomTitleBorder("List Reproduction: ");
+        pPlayer.setBorder(titleBorder);
+        pPlayer.setBackground(new Color(0,0,0,65));
+        JLabel listTitle = new JLabel("List of Reproduction: ");
+        pPlayer.add(listTitle, BorderLayout.NORTH);
+        pPlayer.add(playListTitles, BorderLayout.CENTER);
+        scrollListPlayer = new JScrollPane(pPlayer);
+        return scrollListPlayer;
     }
 }

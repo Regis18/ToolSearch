@@ -206,15 +206,19 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
                 txtPath.setText("" + chooser.getSelectedFile());
             }
         }
-        if (e.getSource().equals(btnPlay)) {
-            myListPlayer.clear();
-            for (int i = 0; i < tbSearchGral.getRowCount(); i++) {
-                //boolean isMultimedia = (Boolean)tbSearchGral.getValueAt(i,10);
-                if (tbSearchGral.getValueAt(i, 10).toString().equals("true")) {
-                    myListPlayer.add(tbSearchGral.getValueAt(i, 1));
-                }
+    }
+
+    /**
+     * method that adds audio and video path to an ArrayList
+     * @return ArrayList.
+     */
+    public ArrayList getMyListPlayer() {
+        myListPlayer.clear();
+        for (int i = 0; i < tbSearchGral.getRowCount(); i++) {
+            if (tbSearchGral.getValueAt(i, 10).toString().equals("true")) {
+                myListPlayer.add(tbSearchGral.getValueAt(i, 1));
             }
-            VideoMusicPlayer listPlayer = new VideoMusicPlayer(myListPlayer);
         }
+        return myListPlayer;
     }
 }
