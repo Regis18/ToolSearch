@@ -141,7 +141,6 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
         TitledBorder titleBorder = new CustomTitleBorder("Search Advanced: ");
         panelSearchAdvanced.setBorder(titleBorder);
         panelSearchAdvanced.setBackground(new Color(172, 175, 177));
-
         this.add(panelSearchAdvanced, BorderLayout.CENTER);
 
         JPanel pnlTableDB = pnlTableDB();
@@ -181,7 +180,6 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
         pnlSearchGral.setBorder(titleBorder);
         pnlSearchGral.setBackground(new Color(172, 175, 177));
         pnlButtonInferiorDB();
-
         tbDataBase = new JTableDB();
         JScrollPane scroll = new JScrollPane(tbDataBase);
         pnlSearchGral.add(scroll, BorderLayout.CENTER);

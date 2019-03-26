@@ -170,7 +170,7 @@ public class MainView extends JFrame implements ActionListener {
         content.setLayout(new BorderLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(500, 400));
+        setMinimumSize(new Dimension(1150, 900));
         ImageIcon ImageIcon = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\moon.png");
         Image image = ImageIcon.getImage();
         this.setIconImage(image);
