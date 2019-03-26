@@ -11,9 +11,13 @@
 
 package com.jala.view;
 
+import com.jala.view.player.MusicActual;
+import com.jala.view.player.VideoMusicPlayer;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -33,9 +37,8 @@ public class MainView extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenu menuSearch;
     private JMenu menuConverter;
-    private JMenu menuPlayerVideo;
     private JMenuItem menuItemExit, menuItemGeneral, menuItemAdvanced, menuItemConverter, menuItemConverterVideo,
-            menuItemSearchVideo, menuItemVideoPlayer;
+            menuItemSearchVideo, menuPlayerVideo;
     private JPanelSearchGral pnlSearchGral;
     private JPanelSearchAdvanced pnlSearchAdvanced;
     private JPanelSearchAdvancedVideo pnlSearchAdvancedVideo;
@@ -44,6 +47,9 @@ public class MainView extends JFrame implements ActionListener {
     private JPanelHistoricalDB panelHistoricalDB;
     private String currentPanel;
     private Border border;
+    private ArrayList myListPlay = new ArrayList();
+    MusicActual music =new MusicActual();
+    VideoMusicPlayer listPlayer;
 
     ImageIcon imgSearch = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search48.png");
     ImageIcon imgGSearchGral = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\searchGral.png");
@@ -154,15 +160,6 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     /**
-     * Gets the video player menu option.
-     *
-     * @return menuItemVideoPlayer
-     */
-    public JMenuItem getMenuItemVideoPlayer() {
-        return menuItemVideoPlayer;
-    }
-
-    /**
      * Initialize the main window.
      */
     public void init() {
@@ -195,11 +192,12 @@ public class MainView extends JFrame implements ActionListener {
         menuConverter = new JMenu("Converter");
         menuConverter.setIcon(imgConverter);
         menuConverter.setForeground(Color.WHITE);
-        menuPlayerVideo = new JMenu("Video Player");
+        menuPlayerVideo = new JMenuItem("Video Player");
+        menuPlayerVideo.setBackground(new Color(21, 81, 154, 240));
+        menuPlayerVideo.addActionListener(this);
         menuPlayerVideo.setIcon(imgVideoPlayer);
         menuPlayerVideo.setForeground(Color.WHITE);
 
-        //Add a Submenu with an image in the builder
         menuItemGeneral = new JMenuItem("General", imgGSearchGral);
         menuSearch.add(menuItemGeneral);
         menuSearch.addSeparator();
@@ -226,7 +224,7 @@ public class MainView extends JFrame implements ActionListener {
         menuItemExit = new JMenuItem("Exit", imgExitTemp);
         menuSearch.addSeparator();
         menuSearch.add(menuItemExit);
-        //Add a menu with an image in the builder
+
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
         menuBar.add(menuSearch);
@@ -248,7 +246,6 @@ public class MainView extends JFrame implements ActionListener {
 
     /**
      * The method actionPerformed receives the event of MenuItem Search General.
-     *
      * @param event, evento del MenuItem.
      */
     @Override
@@ -275,6 +272,7 @@ public class MainView extends JFrame implements ActionListener {
             }
         }
         if (event.getSource() == menuItemConverter) {
+
             if (currentPanel != "ConverterImage") {
                 panelConverterImage = new JPanelConverter(new BorderLayout());
                 content.removeAll();
@@ -304,14 +302,24 @@ public class MainView extends JFrame implements ActionListener {
                 this.repaint();
             }
         }
-        if (event.getSource() == menuItemVideoPlayer) {
-            if (currentPanel != "VideoPlayer") {
-                pnlSearchAdvancedVideo = new JPanelSearchAdvancedVideo();
-                content.removeAll();
-                content.add(pnlSearchAdvancedVideo, BorderLayout.CENTER);
-                currentPanel = "VideoPlayer";
-                this.validate();
-                this.repaint();
+        if (event.getSource() == menuPlayerVideo) {
+
+            myListPlay.clear();
+            if (currentPanel == "SearchGral") {
+                myListPlay = pnlSearchGral.getMyListPlayer();
+                listPlayer = new VideoMusicPlayer(myListPlay);
+            }
+            if (currentPanel == "SearchAdvanced") {
+                myListPlay = pnlSearchAdvanced.getMyListPlayer();
+                listPlayer = new VideoMusicPlayer(myListPlay);
+            }
+            if (currentPanel == "SearchAdvancedVideo") {
+                myListPlay = pnlSearchAdvancedVideo.getMyListPlayer();
+                listPlayer = new VideoMusicPlayer(myListPlay);
+            }
+            if (currentPanel == "ConverterImage" || currentPanel == "ConverterVideo") {
+                myListPlay.clear();
+                listPlayer = new VideoMusicPlayer(myListPlay);
             }
         }
     }

@@ -35,7 +35,7 @@ import java.util.ArrayList;
  * @version 0.0.1.
  * @autor Melvi Caballero M.
  */
-public class JPanelSearchAdvanced extends JPanel implements ActionListener {
+public class JPanelSearchAdvanced extends JPanel {
     private JTableResult tbSearchAdvanced;
     private Border border;
     private JPanelAdvanced panelSearchAdvanced;
@@ -164,7 +164,7 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
         pnlSearchAdvanced.setBorder(titleBorder);
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         tbSearchAdvanced = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tbSearchAdvanced);
+        JScrollPane scroll = new JScrollPane(tbSearchAdvanced, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
         return pnlSearchAdvanced;
     }
@@ -189,7 +189,6 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
 
     /**
      * Return the instance of center panel with the Advanced button.
-     *
      * @return pnlButtonAdvanced the Advanced button panel.
      */
     private JPanel pnlPlayBtn() {
@@ -199,7 +198,6 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
         btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer36.png"));
         btnPlay.setToolTipText("Play Video");
         pnlSearchAdvanced.add(btnPlay);
-        btnPlay.addActionListener(this);
         return pnlSearchAdvanced;
     }
 
@@ -219,7 +217,6 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
 
     /**
      * Return the instance of south panel with the label messages.
-     *
      * @return pnlMessage the panel for messages.
      */
     private JPanel pnlMessages() {
@@ -229,19 +226,16 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
     }
 
     /**
-     * method that adds action to a button
-     *
-     * @param e
+     * method that adds audio and video path to an ArrayList
+     * @return ArrayList.
      */
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(btnPlay)) {
-            myListPlayer.clear();
-            for (int i = 0; i < tbSearchAdvanced.getRowCount(); i++) {
-                if (tbSearchAdvanced.getValueAt(i, 10).toString().equals("true")) {
-                    myListPlayer.add(tbSearchAdvanced.getValueAt(i, 1));
-                }
+    public ArrayList getMyListPlayer() {
+        myListPlayer.clear();
+        for (int i = 0; i < tbSearchAdvanced.getRowCount(); i++) {
+            if (tbSearchAdvanced.getValueAt(i, 10).toString().equals("true")) {
+                myListPlayer.add(tbSearchAdvanced.getValueAt(i, 1));
             }
-            VideoMusicPlayer listPlayer = new VideoMusicPlayer(myListPlayer);
         }
+        return myListPlayer;
     }
 }

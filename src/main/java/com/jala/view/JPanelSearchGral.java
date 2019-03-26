@@ -194,7 +194,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         pnlSearchGral.setBackground(new Color(172, 175, 177));
 
         tbSearchGral = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tbSearchGral);
+        JScrollPane scroll = new JScrollPane(tbSearchGral, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
         return pnlSearchGral;
     }
@@ -212,15 +212,19 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
                 txtPath.setText("" + chooser.getSelectedFile());
             }
         }
-        if (e.getSource().equals(btnPlay)) {
-            myListPlayer.clear();
-            for (int i = 0; i < tbSearchGral.getRowCount(); i++) {
-                //boolean isMultimedia = (Boolean)tbSearchGral.getValueAt(i,10);
-                if (tbSearchGral.getValueAt(i, 10).toString().equals("true")) {
-                    myListPlayer.add(tbSearchGral.getValueAt(i, 1));
-                }
+    }
+
+    /**
+     * method that adds audio and video path to an ArrayList
+     * @return ArrayList.
+     */
+    public ArrayList getMyListPlayer() {
+        myListPlayer.clear();
+        for (int i = 0; i < tbSearchGral.getRowCount(); i++) {
+            if (tbSearchGral.getValueAt(i, 10).toString().equals("true")) {
+                myListPlayer.add(tbSearchGral.getValueAt(i, 1));
             }
-            VideoMusicPlayer listPlayer = new VideoMusicPlayer(myListPlayer);
         }
+        return myListPlayer;
     }
 }

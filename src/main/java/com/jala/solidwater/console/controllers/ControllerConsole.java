@@ -14,11 +14,15 @@ package com.jala.solidwater.console.controllers;
 
 import com.jala.model.search.asset.Asset;
 import com.jala.solidwater.console.models.CommandLine;
+import com.jala.solidwater.console.models.DefaultCommands;
 import com.jala.solidwater.console.models.ModelConsole;
 import com.jala.solidwater.console.validators.ValidCommandLine;
 import com.jala.solidwater.console.validators.ValidInputParameters;
 import com.jala.solidwater.console.view.ViewConsole;
+import com.jala.solidwater.console.view.ViewDefaultCommands;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -79,9 +83,13 @@ public class ControllerConsole {
      */
     private void searchAsset(CommandLine inputCommandLine) {
 
-        if (validCommandLine.validate(inputCommandLine)) {
+        if (validCommandLine.validate(inputCommandLine) && !validCommandLine.existCommand("-help", inputCommandLine)) {
             List<Asset> assets = modelConsole.getSearch(inputCommandLine);
             viewConsole.showAssets(assets);
+        } else if (validCommandLine.validate(inputCommandLine) && validCommandLine.existCommand("-help", inputCommandLine)) {
+            DefaultCommands defaultCommands = new DefaultCommands();
+            ViewDefaultCommands viewDefaultCommands = new ViewDefaultCommands();
+            viewDefaultCommands.printCommands(defaultCommands.getDefaultCommands());
         } else {
             viewConsole.printMessage(validCommandLine.getMessage());
         }
