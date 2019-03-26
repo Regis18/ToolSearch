@@ -113,17 +113,16 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     }
 
     /**
-     * The init method will initialize this panel.
-     */
-
-    /**
-     * Sets the Message for a pop up
+     * Sets the Message Error for a pop-up
      * @param msgError define the message of error.
      */
     public void setMsgError(String msgError) {
         this.msgError = new CustomErrorMessage(msgError);
     }
 
+    /**
+     * The init method will initialize this panel.
+     */
     public void init() {
         initComponent();
     }

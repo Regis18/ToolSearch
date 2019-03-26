@@ -48,6 +48,15 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
     private JCheckBox chekMaintainProportion, checkResizeImage;
     private GridBagLayout esquema;
     private GridBagConstraints constraints;
+    private CustomErrorMessage msgError;
+
+    /**
+     * Sets the Message Error for a pop-up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
+    }
 
     /**
      * Gets the content from TxtPathFileOrigin.

@@ -43,7 +43,15 @@ public class JPanelSearchAdvanced extends JPanel implements ActionListener {
     private JPanel panelInferior;
     private JButton btnDelete, btnCharge, btnSave, btnPlay;
     private ArrayList myListPlayer = new ArrayList();
+    private CustomErrorMessage msgError;
 
+    /**
+     * Sets the Message Error for a pop-up
+     * @param msgError define the message of error.
+     */
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
+    }
 
     /**
      * Gets the delete button.
