@@ -16,6 +16,7 @@ import com.jala.solidwater.console.validators.ValidCommand;
 import com.jala.solidwater.console.validators.ValidValueOfCommand;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -107,23 +108,36 @@ public class CommandLine {
     private void createCommandLineInput(String[] inputParameters) {
         commands = new ArrayList<>();
         values = new ArrayList<>();
-        for (int i = 0; i < inputParameters.length; i += 2) {
+        List<String> parameterList = convertValueListToPair(inputParameters);
+        for (int i = 0; i < parameterList.size(); i += 2) {
             Command inputCommand = new Command();
             String valueCommand = "";
-            inputCommand.setAcronym(inputParameters[i]);
+            inputCommand.setAcronym(parameterList.get(i));
             ValidCommand validCommand = new ValidCommand();
             if (validCommand.validate(inputCommand)) {
                 commands.add(inputCommand);
-                valueCommand = inputParameters[i + 1];
+                valueCommand = parameterList.get(i+1);
                 ValidValueOfCommand validValueOfCommand = new ValidValueOfCommand();
                 if (validValueOfCommand.validate(valueCommand)) {
                     values.add(valueCommand);
                 } else {
-                    i = inputParameters.length;
+                    i = parameterList.size();
                 }
             } else {
-                i = inputParameters.length;
+                i = parameterList.size();
             }
         }
+    }
+
+    private List<String> convertValueListToPair(String[] inputParameters) {
+        List<String> parameterList = new ArrayList<>();
+        parameterList.addAll(Arrays.asList(inputParameters));
+        
+        if (parameterList.size() % 2 != 0){
+            parameterList.add("");
+        } else {
+            parameterList = parameterList;
+        }
+        return parameterList;
     }
 }

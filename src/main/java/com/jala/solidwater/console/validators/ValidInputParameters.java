@@ -43,14 +43,11 @@ public class ValidInputParameters implements IValidable<String[]> {
     @Override
     public boolean validate(String[] inputParameters) {
         boolean isValidInputParameters = false;
-        if (inputParameters.length > 0 && (inputParameters.length % 2) == 0) {
+        if (inputParameters.length > 0) {
             isValidInputParameters = true;
-        } else if ( inputParameters.length > 0 && inputParameters.length % 2 != 0) {
+        } else {
             isValidInputParameters = isValidInputParameters;
-            setMessage("you enterd a command line invalid");
-        } else if (inputParameters.length == 1) {
-            isValidInputParameters = isValidInputParameters;
-            setMessage("invalid");
+            setMessage("You can enter -help command");
         }
         return isValidInputParameters;
     }
