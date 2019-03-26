@@ -79,9 +79,6 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         panelSearchVideo.setBackground(new Color(172, 175, 177));
         this.add(panelSearchVideo, BorderLayout.WEST);
 
-        JPanel pnlSouth = pnlPlayBtn();
-        this.add(pnlSouth, BorderLayout.EAST);
-
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
     }
@@ -100,17 +97,6 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         tblResult = new JTableResult(400);
         JScrollPane scroll = new JScrollPane(tblResult, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
-        return pnlSearchAdvanced;
-    }
-
-    /**
-     * Return the instance of center panel with the Advanced button.
-     *
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlPlayBtn() {
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         return pnlSearchAdvanced;
     }
 

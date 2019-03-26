@@ -148,9 +148,6 @@ public class JPanelSearchAdvanced extends JPanel {
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.SOUTH);
-
-        JPanel pnlSouth = pnlPlayBtn();
-        this.add(pnlSouth, BorderLayout.EAST);
     }
 
     /**
@@ -185,20 +182,6 @@ public class JPanelSearchAdvanced extends JPanel {
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
         pnlSearchGral.add(panelInferior, BorderLayout.SOUTH);
         return pnlSearchGral;
-    }
-
-    /**
-     * Return the instance of center panel with the Advanced button.
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlPlayBtn() {
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
-        btnPlay = new CustomButton();
-        btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer36.png"));
-        btnPlay.setToolTipText("Play Video");
-        pnlSearchAdvanced.add(btnPlay);
-        return pnlSearchAdvanced;
     }
 
     /**
