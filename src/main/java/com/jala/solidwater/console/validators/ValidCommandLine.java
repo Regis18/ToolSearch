@@ -58,15 +58,19 @@ public class ValidCommandLine implements IValidable<CommandLine> {
     public boolean validate(CommandLine commandLine) {
         boolean validCommandLine = false;
         if (commandLine.getCommands().size() == commandLine.getValueCommands().size()) {
-            if (existCommandPath("-p", commandLine)) {
+            if (existCommand("-p", commandLine)) {
                 validCommandLine = true;
             } else {
                 validCommandLine = validCommandLine;
                 setMessage("The command -p is required");
             }
-        } else {
-            validCommandLine = validCommandLine;
-            setMessage("The size of commands and values in command line are different");
+        } else if (commandLine.getCommands().size() != commandLine.getValueCommands().size()) {
+            if (existCommand("-help", commandLine)) {
+                validCommandLine = true;
+            } else {
+                validCommandLine = validCommandLine;
+                setMessage("The command line isn't valid you can use -help");
+            }
         }
         return validCommandLine;
     }
@@ -74,16 +78,16 @@ public class ValidCommandLine implements IValidable<CommandLine> {
     /**
      * This method validate if the path command exists in command line.
      *
-     * @param commandPath to validate the path.
+     * @param command to validate the path.
      * @param commandLine to search the path command.
      * @return true if command line content path command,
      * false if command line doesn't content path command.
      */
-    private boolean existCommandPath(String commandPath, CommandLine commandLine) {
+    public boolean existCommand(String command, CommandLine commandLine) {
         boolean exist = false;
         for (int j = 0; j < commandLine.getCommands().size(); j++) {
             try {
-                if (commandLine.getCommands().get(j).getAcronym().equals(commandPath)) {
+                if (commandLine.getCommands().get(j).getAcronym().equals(command)) {
                     exist = true;
                     j = commandLine.getCommands().size();
                 } else {
