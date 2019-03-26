@@ -178,8 +178,6 @@ public class VideoMusicPlayer {
         TitledBorder titleBorder =  new CustomTitleBorder("List Reproduction: ");
         pPlayer.setBorder(titleBorder);
         pPlayer.setBackground(new Color(0,0,0,65));
-        JLabel listTitle = new JLabel("List of Reproduction: ");
-        pPlayer.add(listTitle, BorderLayout.NORTH);
         pPlayer.add(playListTitles, BorderLayout.CENTER);
         scrollListPlayer = new JScrollPane(pPlayer);
         return scrollListPlayer;
