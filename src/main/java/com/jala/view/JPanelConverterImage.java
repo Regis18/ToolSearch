@@ -282,7 +282,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             FileNameExtensionFilter filterImage=new FileNameExtensionFilter("Only Image","jpg",
-                    "png","gif","bmp","cdr","eps","map","odg","psd","raw","svg","tif","tiff","wbmp","webp");
+                    "png", "gif", "bmp", "cdr", "eps", "map", "odg", "psd", "raw", "svg", "tif", "tiff", "wbmp", "webp");
             fileChooser.setFileFilter(filterImage);
             int result = fileChooser.showOpenDialog(this);
             if (result != JFileChooser.CANCEL_OPTION) {

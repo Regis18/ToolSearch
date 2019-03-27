@@ -416,7 +416,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         if (event.getSource().equals(btnPathOriginFile)) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-            FileNameExtensionFilter filterVideo=new FileNameExtensionFilter("Only multimedia","Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob", "Mp3", "Wma", "Aac");
+            FileNameExtensionFilter filterVideo=new FileNameExtensionFilter("Only Multimedia","Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob", "Mp3", "Wma", "Aac");
             fileChooser.setFileFilter(filterVideo);
             int result = fileChooser.showOpenDialog(this);
             if (result != JFileChooser.CANCEL_OPTION) {
