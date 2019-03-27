@@ -17,6 +17,7 @@ import com.jala.model.convert.ConvertVideo;
 import com.jala.model.criteria.CriteriaConverterAudio;
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Logs;
+import com.jala.view.CustomErrorMessage;
 import com.jala.view.JPanelConverterVideo;
 import org.apache.log4j.Logger;
 
@@ -62,14 +63,35 @@ public class ControllerConvertVideo implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         log.info("Action Detected");
         if (event.getSource() == viewConvert.getBtnConvertVideo()) {
+            String error = "The fields: File Origin Path, Folder Output, File Name. Are Required";
             if (viewConvert.isVideo()) {
                 log.info("BtnConvert from Search General was pressed");
-                sendPathToConvertVideo();
+                if (areRequiredValue()) {
+                    sendPathToConvertVideo();
+                } else {
+                    viewConvert.setMsgError("error");
+                }
             } else {
                 log.info("BtnConvert from Search General was pressed");
-                sendPathToConvertAudio();
+                if (areRequiredValue()) {
+                    sendPathToConvertAudio();
+                } else {
+                    viewConvert.setMsgError(error);
+                }
             }
         }
+    }
+
+    /**
+     * The areRequiredValue method verify whether we have the data required
+     * @return true or false
+     */
+    private boolean areRequiredValue() {
+        String path = viewConvert.getTxtPathFileOrigin();
+        String output = viewConvert.getTxtFolderDestiny();
+        String fileName = viewConvert.getTxtFileName();
+        System.out.println("Values: " + path + ", "+ output + ", " + fileName);
+        return ((!path.equals(" ")) && (!output.equals("")) && (!fileName.equals("")) ) ? true : false;
     }
 
     /**
