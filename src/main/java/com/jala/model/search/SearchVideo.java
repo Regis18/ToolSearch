@@ -70,19 +70,19 @@ public class SearchVideo extends SearchCommon {
 		log.info("The search for Video is beginning");
 		result = new ArrayList<>();
 		List<Asset> preview = super.search();
-		int sampleRateInt = 0;
+		int sampleRateInt;
 		double frameRateProbe;
 		String aspectRatio;
+		FFprobe ffprobe = null;
+		FFmpegProbeResult ffprobeResult;
+		try {
+			ffprobe = new FFprobe(Common.cleanPath(FFPROBE_PATH));
+		} catch (IOException event) {
+			log.error("Error " + event.getMessage(), event);
+		}
 		for (int i = 0; i < preview.size(); i++) {
-			FFprobe ffprobe;
-			FFmpegProbeResult ffprobeResult = null;
 			try {
-				ffprobe = new FFprobe(Common.cleanPath(FFPROBE_PATH));
 				ffprobeResult = ffprobe.probe(preview.get(i).getPath());
-			} catch (IOException event) {
-				log.error("Error " + event.getMessage(), event);
-			}
-			try {
 				boolean resultSearchVideo = true;
 				Asset asset;
 				List<FFmpegStream> streamList = ffprobeResult.getStreams();
@@ -141,13 +141,17 @@ public class SearchVideo extends SearchCommon {
 					}
 				}
 				if (resultSearchVideo && sampleRateInt > 0) {
+					int duration = new BigDecimal(streamList.get(0).duration).setScale(0, RoundingMode.HALF_EVEN).intValue();
+					int seconds = duration;
+					duration = duration / 60;
+					seconds = seconds - duration * 60 ;
 					asset = AssetFactory.getAsset(preview.get(i),
 							streamList.get(0).codec_long_name,
 							streamList.get(0).codec_long_name,
 							String.valueOf(frameRateProbe),
 							aspectRatio,
 							Integer.toString(sampleRateInt),
-							String.valueOf(streamList.get(0).duration));
+							duration + ":" + seconds);
 					result.add(asset);
 				}
 			} catch (NumberFormatException event) {
@@ -156,6 +160,8 @@ public class SearchVideo extends SearchCommon {
 				log.error("Error out of Bound: ", event);
 			} catch (NullPointerException event) {
 				log.error("Error :", event);
+			} catch (IOException event) {
+				log.error("Error " + event.getMessage(), event);
 			}
 		}
 		log.info("The search for Video finished");
