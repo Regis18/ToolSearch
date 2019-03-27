@@ -531,6 +531,9 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         progressBar.setStringPainted(true);
     }
 
+    /**
+     * Method that clean boxes for audio and video conversion panels.
+     */
     public void cleanBoxes()
     {
         txtPathFileOrigin.setText("");
