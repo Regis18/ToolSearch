@@ -374,7 +374,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
         btnConvertVideo = new CustomButton();
         btnConvertVideo.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter36.png"));
-        btnConvertVideo.setToolTipText("Convert Video");
+        btnConvertVideo.setText("Convert Video");
         btnConvertVideo.addActionListener(this);
         addComponent(btnConvertVideo, 1, 8, 1, 1);
 
@@ -460,6 +460,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 disableOptionsVideo();
                 cmbExtensionVideo.setVisible(false);
                 cmbExtensionAudio.setVisible(true);
+                cleanBoxes();
             }
         }
         if (event.getSource() == radioConvertVideo) {
@@ -470,6 +471,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 enableOptionsAudio();
                 cmbExtensionVideo.setVisible(true);
                 cmbExtensionAudio.setVisible(false);
+                cleanBoxes();
             }
         }
     }
@@ -527,5 +529,18 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         progressBar.setValue(percentage);
         progressBar.update(progressBar.getGraphics());
         progressBar.setStringPainted(true);
+    }
+
+    public void cleanBoxes()
+    {
+        txtPathFileOrigin.setText("");
+        txtFolderDestiny.setText("");
+        txtFileName.setText("");
+        cmbFrameRate.setSelectedIndex(0);
+        cmbVideoResolution.setSelectedIndex(0);
+        cmbBitRate.setSelectedIndex(0);
+        cmbSampleRate.setSelectedIndex(0);
+        cmbExtensionVideo.setSelectedIndex(0);
+        cmbExtensionAudio.setSelectedIndex(0);
     }
 }
