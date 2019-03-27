@@ -16,6 +16,7 @@ import com.jala.model.criteria.CriteriaSearch;
 import com.jala.model.criteria.CriteriaSearchMultimedia;
 import com.jala.model.search.asset.Asset;
 import com.jala.utils.AssetFactory;
+import com.jala.utils.Common;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.probe.FFmpegProbeResult;
@@ -72,7 +73,7 @@ public class SearchVideo extends SearchCommon {
 			FFprobe ffprobe;
 			FFmpegProbeResult ffprobeResult;
 			try {
-				ffprobe = new FFprobe(FFPROBE_PATH);
+				ffprobe = new FFprobe(Common.cleanPath(FFPROBE_PATH));
 				ffprobeResult = ffprobe.probe(preview.get(i).getPath());
 				boolean resultSearchVideo = true;
 				Asset asset;
