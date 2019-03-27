@@ -28,8 +28,6 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.jala.view.player.VideoMusicPlayer;
-
 import java.util.ArrayList;
 
 /**
@@ -93,7 +91,6 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         return btnSearch;
     }
 
-
     /**
      * Gets the advanced search button.
      *
@@ -113,17 +110,16 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
     }
 
     /**
-     * The init method will initialize this panel.
-     */
-
-    /**
-     * Sets the Message for a pop up
+     * Sets the Message Error for a pop-up
      * @param msgError define the message of error.
      */
-    public void setMsgError(CustomErrorMessage msgError) {
-        this.msgError = msgError;
+    public void setMsgError(String msgError) {
+        this.msgError = new CustomErrorMessage(msgError);
     }
 
+    /**
+     * The init method will initialize this panel.
+     */
     public void init() {
         initComponent();
     }
@@ -155,6 +151,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         lblPath.setText("Path :");
         pnlPath.add(lblPath);
         txtPath = new CustomTextField(50);
+        txtPath.setEditable(false);
         pnlPath.add(txtPath);
 
         btnPathFolder = new CustomButton();
@@ -167,24 +164,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         btnSearch.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search24.png"));
         btnSearch.setToolTipText("Search");
         pnlPath.add(btnSearch);
-        pnlPath.add(pnlButtonPlayer());
         return pnlPath;
-    }
-
-    /**
-     * Return the instance of center panel with the Advanced button.
-     *
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlButtonPlayer() {
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.TRAILING));
-        btnPlay = new CustomButton();
-        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
-        btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer36.png"));
-        btnPlay.setToolTipText("Play Video");
-        pnlSearchAdvanced.add(btnPlay);
-        btnPlay.addActionListener(this);
-        return pnlSearchAdvanced;
     }
 
     /**
@@ -199,7 +179,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         pnlSearchGral.setBackground(new Color(172, 175, 177));
 
         tbSearchGral = new JTableResult();
-        JScrollPane scroll = new JScrollPane(tbSearchGral);
+        JScrollPane scroll = new JScrollPane(tbSearchGral, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
         return pnlSearchGral;
     }
@@ -217,15 +197,19 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
                 txtPath.setText("" + chooser.getSelectedFile());
             }
         }
-        if (e.getSource().equals(btnPlay)) {
-            myListPlayer.clear();
-            for (int i = 0; i < tbSearchGral.getRowCount(); i++) {
-                //boolean isMultimedia = (Boolean)tbSearchGral.getValueAt(i,10);
-                if (tbSearchGral.getValueAt(i, 10).toString().equals("true")) {
-                    myListPlayer.add(tbSearchGral.getValueAt(i, 1));
-                }
+    }
+
+    /**
+     * method that adds audio and video path to an ArrayList
+     * @return ArrayList.
+     */
+    public ArrayList getMyListPlayer() {
+        myListPlayer.clear();
+        for (int i = 0; i < tbSearchGral.getRowCount(); i++) {
+            if (tbSearchGral.getValueAt(i, 10).toString().equals("true")) {
+                myListPlayer.add(tbSearchGral.getValueAt(i, 1));
             }
-            VideoMusicPlayer listPlayer = new VideoMusicPlayer(myListPlayer);
         }
+        return myListPlayer;
     }
 }

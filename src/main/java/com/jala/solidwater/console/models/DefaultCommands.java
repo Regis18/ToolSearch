@@ -75,6 +75,8 @@ public class DefaultCommands {
                 "Allows search the files from a last date specific. Format yyyy-mm-dd");
         Command commandForLastDateTo = new Command("-ldt", "Last Date to",
                 "Allows search the files to a last date specific. Format yyyy-mm-dd");
+        Command commandForHelp = new Command("-help", "Help",
+                "Show all command that can be used");
         defaultCommands.add(commandForPath);
         defaultCommands.add(commandForFileName);
         defaultCommands.add(commandForExtension);
@@ -87,6 +89,7 @@ public class DefaultCommands {
         defaultCommands.add(commandModificationDateTo);
         defaultCommands.add(commandForLastDateFrom);
         defaultCommands.add(commandForLastDateTo);
+        defaultCommands.add(commandForHelp);
         return defaultCommands;
     }
 }

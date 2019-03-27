@@ -67,7 +67,11 @@ public class ControllerSearch implements ActionListener {
         log.info("Action Detected");
         if (event.getSource() == viewSearch.getBtnSearch()) {
             log.info("BtnSearch from Search General was pressed");
-            sendPathToSearch(viewSearch.getTxtPath().getText());
+            if (viewSearch.getTxtPath().getText().equals("")) {
+                viewSearch.setMsgError("Path value is required!");
+            } else {
+                sendPathToSearch(viewSearch.getTxtPath().getText());
+            }
         }
     }
 

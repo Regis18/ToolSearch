@@ -19,6 +19,7 @@ import com.jala.model.search.asset.Asset;
 import com.jala.model.search.asset.AssetAudio;
 import com.jala.model.search.asset.AssetVideo;
 import com.jala.utils.Logs;
+import com.jala.view.JPanelAdvanced;
 import com.jala.view.JPanelSearchAdvancedVideo;
 import com.jala.view.JPanelSearchVideo;
 import org.apache.log4j.Logger;
@@ -74,15 +75,21 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
     @Override
     public void actionPerformed(ActionEvent event) {
         JPanelSearchVideo searchVideo = viewAdvancedVideo.getPanelSearchVideo();
+        JPanelAdvanced searchAdvance;
         log.info("It was detected an event on the JPanelSearchAdvancedVideo class ");
         Object source = event.getSource();
         if (source == searchVideo.getBtnSearch()) {
             CriteriaSearch criteriaSearch = super.getCriteria(viewAdvancedVideo.getPanelAdvanceSearch());
             this.criteriaSearchMultimedia = new CriteriaSearchMultimedia(criteriaSearch);
             addAttributesMultimedia();
-            if (searchVideo.isVideo()) {
-                sendCriteriaToFileVideo(criteriaSearchMultimedia);
-            } else { sendCriteriaToFileAudio(criteriaSearchMultimedia);
+            searchAdvance = viewAdvancedVideo.getPanelAdvanceSearch();
+            if (searchAdvance.getTxtPath().equals("")) {
+                searchVideo.setMsgError("Path value is required!");
+            } else {
+                if (searchVideo.isVideo()) {
+                    sendCriteriaToFileVideo(criteriaSearchMultimedia);
+                } else { sendCriteriaToFileAudio(criteriaSearchMultimedia);
+                }
             }
         }
     }
@@ -143,7 +150,6 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
         log.info("Upload data for criteriaSearchMultimedia attribute");
         this.criteriaSearchMultimedia.setAudioCodec(searchVideo.getCmbAudioCodec());
         this.criteriaSearchMultimedia.setAudioSampleRate(searchVideo.getTxtAudioSampleRate());
-        this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension().toLowerCase());
         this.criteriaSearchMultimedia.setDuration(searchVideo.getTxtDuration());
         this.criteriaSearchMultimedia.setChannel(getChanel());
 
@@ -151,7 +157,11 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             this.criteriaSearchMultimedia.setFrameRate(searchVideo.getCmbFrameRate());
             this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
             this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
+            this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtensionVideo().toLowerCase());
             this.criteriaSearchMultimedia.setChannel("");
+        }
+        else {
+            this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtensionAudio().toLowerCase());
         }
         log.info("Information saved on criteriaSearchMultimedia attribute");
     }

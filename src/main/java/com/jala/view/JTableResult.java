@@ -12,12 +12,12 @@
 
 package com.jala.view;
 
-import org.apache.commons.lang3.ArrayUtils;
-
-import javax.swing.*;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 
 /**
@@ -40,12 +40,12 @@ public class JTableResult extends JTable {
     };
 
     // add header of the table
-    String[] header = new String[]{"N.", "Path", "File Name", "Extension", "Size",
+    String[] header = new String[]{"N.", "Path", "File Name", "Extension", "Size (KB)",
             "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access", "Play"};
 
 
     // add header for search a video or Audio
-    String[] headerVideo = new String[]{"Id", "Path", "File Name", "Extension", "Size",
+    String[] headerVideo = new String[]{"Id", "Path", "File Name", "Extension", "Size (KB)",
             "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access",
             "Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
             "Duration", "Audio Chanel", "Play"};
@@ -227,12 +227,15 @@ public class JTableResult extends JTable {
     }
 
     /**
-     *
+     * Method that a cell is a valid extensions.
      */
     public void centerData() {
         DefaultTableCellRenderer centerModel = new DefaultTableCellRenderer();
         centerModel.setHorizontalAlignment(SwingConstants.CENTER);
         this.getColumnModel().getColumn(5).setCellRenderer(centerModel);
         this.getColumnModel().getColumn(6).setCellRenderer(centerModel);
+        this.getColumnModel().getColumn(7).setCellRenderer(centerModel);
+        this.getColumnModel().getColumn(8).setCellRenderer(centerModel);
+        this.getColumnModel().getColumn(9).setCellRenderer(centerModel);
     }
 }
