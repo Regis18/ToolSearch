@@ -150,7 +150,6 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
         log.info("Upload data for criteriaSearchMultimedia attribute");
         this.criteriaSearchMultimedia.setAudioCodec(searchVideo.getCmbAudioCodec());
         this.criteriaSearchMultimedia.setAudioSampleRate(searchVideo.getTxtAudioSampleRate());
-        this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtension().toLowerCase());
         this.criteriaSearchMultimedia.setDuration(searchVideo.getTxtDuration());
         this.criteriaSearchMultimedia.setChannel(getChanel());
 
@@ -158,7 +157,11 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             this.criteriaSearchMultimedia.setFrameRate(searchVideo.getCmbFrameRate());
             this.criteriaSearchMultimedia.setAspectRatio(searchVideo.getCmbAspectRatio());
             this.criteriaSearchMultimedia.setVideoCodec(searchVideo.getCmbVideoCodec());
+            this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtensionVideo().toLowerCase());
             this.criteriaSearchMultimedia.setChannel("");
+        }
+        else {
+            this.criteriaSearchMultimedia.setExtension(searchVideo.getCmbExtensionAudio().toLowerCase());
         }
         log.info("Information saved on criteriaSearchMultimedia attribute");
     }

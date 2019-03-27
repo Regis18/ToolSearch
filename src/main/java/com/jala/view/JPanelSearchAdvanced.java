@@ -17,15 +17,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import com.jala.view.player.VideoMusicPlayer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
@@ -141,7 +137,6 @@ public class JPanelSearchAdvanced extends JPanel {
         TitledBorder titleBorder = new CustomTitleBorder("Search Advanced: ");
         panelSearchAdvanced.setBorder(titleBorder);
         panelSearchAdvanced.setBackground(new Color(172, 175, 177));
-
         this.add(panelSearchAdvanced, BorderLayout.CENTER);
 
         JPanel pnlTableDB = pnlTableDB();
@@ -149,9 +144,6 @@ public class JPanelSearchAdvanced extends JPanel {
 
         JPanel pnlCentral = pnlTableResult();
         this.add(pnlCentral, BorderLayout.SOUTH);
-
-        JPanel pnlSouth = pnlPlayBtn();
-        this.add(pnlSouth, BorderLayout.EAST);
     }
 
     /**
@@ -181,26 +173,11 @@ public class JPanelSearchAdvanced extends JPanel {
         pnlSearchGral.setBorder(titleBorder);
         pnlSearchGral.setBackground(new Color(172, 175, 177));
         pnlButtonInferiorDB();
-
         tbDataBase = new JTableDB();
         JScrollPane scroll = new JScrollPane(tbDataBase);
         pnlSearchGral.add(scroll, BorderLayout.CENTER);
         pnlSearchGral.add(panelInferior, BorderLayout.SOUTH);
         return pnlSearchGral;
-    }
-
-    /**
-     * Return the instance of center panel with the Advanced button.
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlPlayBtn() {
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
-        btnPlay = new CustomButton();
-        btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer36.png"));
-        btnPlay.setToolTipText("Play Video");
-        pnlSearchAdvanced.add(btnPlay);
-        return pnlSearchAdvanced;
     }
 
     /**

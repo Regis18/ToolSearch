@@ -28,8 +28,6 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.jala.view.player.VideoMusicPlayer;
-
 import java.util.ArrayList;
 
 /**
@@ -153,6 +151,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         lblPath.setText("Path :");
         pnlPath.add(lblPath);
         txtPath = new CustomTextField(50);
+        txtPath.setEditable(false);
         pnlPath.add(txtPath);
 
         btnPathFolder = new CustomButton();
@@ -165,24 +164,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         btnSearch.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\search24.png"));
         btnSearch.setToolTipText("Search");
         pnlPath.add(btnSearch);
-        pnlPath.add(pnlButtonPlayer());
         return pnlPath;
-    }
-
-    /**
-     * Return the instance of center panel with the Advanced button.
-     *
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlButtonPlayer() {
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.TRAILING));
-        btnPlay = new CustomButton();
-        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
-        btnPlay.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\videoPlayer36.png"));
-        btnPlay.setToolTipText("Play Video");
-        pnlSearchAdvanced.add(btnPlay);
-        btnPlay.addActionListener(this);
-        return pnlSearchAdvanced;
     }
 
     /**
