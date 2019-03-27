@@ -251,18 +251,19 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(txtPathFileOrigin, 1, 1, 4, 1);
 
         txtFolderDestiny = new JTextField();
+        txtFolderDestiny.setEditable(false);
         addComponent(txtFolderDestiny, 1, 2, 4, 1);
 
         txtFileName = new JTextField();
         addComponent(txtFileName, 1, 3, 1, 1);
 
         cmbExtensionVideo = new CustomJCombo();
-        String[] myExtensionVideo = {"", "Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob"};
+        String[] myExtensionVideo = {"Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob"};
         addItemsComboBox(myExtensionVideo, cmbExtensionVideo);
         addComponent(cmbExtensionVideo, 4, 3, 1, 1);
 
         cmbExtensionAudio = new CustomJCombo();
-        String[] myExtensionAudio = {"", "Mp3", "Wma", "Aac"};
+        String[] myExtensionAudio = {"Mp3", "Wma", "Aac"};
         addItemsComboBox(myExtensionAudio, cmbExtensionAudio);
         addComponent(cmbExtensionAudio, 4, 3, 1, 1);
 
@@ -343,6 +344,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(radioConvertVideo, 1, 0, 1, 1);
 
         radioConvertAudio = new CustomRadioButton("Audio");
+        radioConvertAudio.setSelected(false);
         radioConvertAudio.addActionListener(this);
         addComponent(radioConvertAudio, 3, 0, 1, 1);
 
@@ -372,7 +374,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
         btnConvertVideo = new CustomButton();
         btnConvertVideo.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter36.png"));
-        btnConvertVideo.setToolTipText("Convert");
+        btnConvertVideo.setToolTipText("Convert Video");
         btnConvertVideo.addActionListener(this);
         addComponent(btnConvertVideo, 1, 8, 1, 1);
 

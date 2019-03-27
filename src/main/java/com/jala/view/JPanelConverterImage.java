@@ -190,6 +190,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         addComponent(txtPathFileOrigin, 1, 0, 4, 1);
 
         txtFolderDestiny = new CustomTextField();
+        txtFolderDestiny.setEditable(false);
         addComponent(txtFolderDestiny, 1, 1, 4, 1);
 
         txtFileName = new CustomTextField();
@@ -198,7 +199,6 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         cmbExtension = new CustomJCombo();
         cmbExtension.addItem("jpg");
         cmbExtension.addItem("bmp");
-        cmbExtension.addItem("cdr");
         cmbExtension.addItem("eps");
         cmbExtension.addItem("gif");
         cmbExtension.addItem("map");
