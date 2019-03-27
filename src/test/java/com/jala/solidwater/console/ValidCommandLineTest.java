@@ -56,6 +56,6 @@ public class ValidCommandLineTest {
         CommandLine commandLine = new CommandLine(inputForCommandLine);
         ValidCommandLine validCommandLine = new ValidCommandLine();
         assertEquals(false,validCommandLine.validate(commandLine));
-        assertEquals("The size of commands and values in command line are different",validCommandLine.getMessage());
+        assertEquals("The command line isn't valid you can use -help",validCommandLine.getMessage());
     }
 }
