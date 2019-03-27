@@ -30,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Module view, ui/JPanelConverterImage.
@@ -280,6 +281,9 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         if (e.getSource().equals(btnPathOriginFile)) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            FileNameExtensionFilter filterImage=new FileNameExtensionFilter("Only Image","jpg",
+                    "png", "gif", "bmp", "cdr", "eps", "map", "odg", "psd", "raw", "svg", "tif", "tiff", "wbmp", "webp");
+            fileChooser.setFileFilter(filterImage);
             int result = fileChooser.showOpenDialog(this);
             if (result != JFileChooser.CANCEL_OPTION) {
                 File fileName = fileChooser.getSelectedFile();
