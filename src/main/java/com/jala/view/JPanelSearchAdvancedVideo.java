@@ -34,7 +34,6 @@ public class JPanelSearchAdvancedVideo extends JPanel {
     private JPanelAdvanced panelAdvanceSearch;
     private JPanelSearchVideo panelSearchVideo;
     private JTableResult tblResult;
-    private Border border;
     private ArrayList myListPlayer = new ArrayList();
     private JButton btnPlay;
     private CustomErrorMessage msgError;

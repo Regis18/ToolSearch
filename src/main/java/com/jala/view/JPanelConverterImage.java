@@ -196,9 +196,9 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         addComponent(txtFileName, 1, 2, 1, 1);
 
         cmbExtension = new CustomJCombo();
+        cmbExtension.addItem("");
         cmbExtension.addItem("jpg");
         cmbExtension.addItem("bmp");
-        cmbExtension.addItem("cdr");
         cmbExtension.addItem("eps");
         cmbExtension.addItem("gif");
         cmbExtension.addItem("map");

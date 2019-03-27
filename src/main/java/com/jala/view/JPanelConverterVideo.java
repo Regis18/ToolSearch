@@ -343,6 +343,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(radioConvertVideo, 1, 0, 1, 1);
 
         radioConvertAudio = new CustomRadioButton("Audio");
+        radioConvertAudio.setSelected(false);
         radioConvertAudio.addActionListener(this);
         addComponent(radioConvertAudio, 3, 0, 1, 1);
 
@@ -372,7 +373,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
         btnConvertVideo = new CustomButton();
         btnConvertVideo.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter36.png"));
-        btnConvertVideo.setToolTipText("Convert");
+        btnConvertVideo.setText("Convert Video");
         btnConvertVideo.addActionListener(this);
         addComponent(btnConvertVideo, 1, 8, 1, 1);
 
