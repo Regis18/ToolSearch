@@ -92,10 +92,14 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
     /**
      * Sets the Hidden for the search location.
      *
-     * @param cmbHidden, the location where to search.
+     * @param cmbHiddenn, the location where to search.
      */
-    public void setCmbHidden(String cmbHidden) {
-        this.cmbHidden.setActionCommand(cmbHidden);
+    public void setCmbHidden(String cmbHiddenn) {
+        for (int i = 0; i < cmbHidden.getItemCount(); i++) {
+            if (cmbHiddenn.equals(cmbHidden.getItemAt(i))) {
+                cmbHidden.setSelectedIndex(i);
+            }
+        }
     }
 
     /**
@@ -104,7 +108,11 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
      * @param comboReadOnly, the location where to search.
      */
     public void setComboReadOnly(String comboReadOnly) {
-        this.comboReadOnly.setActionCommand(comboReadOnly);
+        for (int i = 0; i < this.comboReadOnly.getItemCount(); i++) {
+            if (comboReadOnly.equals(this.comboReadOnly.getItemAt(i))) {
+                this.comboReadOnly.setSelectedIndex(i);
+            }
+        }
     }
 
     /**
@@ -114,60 +122,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
      */
     public void setComboTypeSizeFile(String comboTypeSizeFile) {
         this.comboTypeSizeFile.setActionCommand(comboTypeSizeFile);
-    }
-
-    /**
-     * Sets the Date Create for the search location.
-     *
-     * @param dateCreateStar, the location where to search.
-     */
-    public void setDateCreateStar(String dateCreateStar) {
-        this.dateCreateStar.setDateFormatString(dateCreateStar);
-    }
-
-    /**
-     * Sets the Date Create End for the search location.
-     *
-     * @param dateCreateEnd, the location where to search.
-     */
-    public void setDateCreateEnd(String dateCreateEnd) {
-        this.dateCreateEnd.setDateFormatString(dateCreateEnd);
-    }
-
-    /**
-     * Sets the Date Last Begin for the search location.
-     *
-     * @param dateLastModBegin, the location where to search.
-     */
-    public void setDateLastModBegin(String dateLastModBegin) {
-        this.dateLastModBegin.setDateFormatString(dateLastModBegin);
-    }
-
-    /**
-     * Sets the Date Last End for the search location.
-     *
-     * @param dateLastModEnd, the location where to search.
-     */
-    public void setDateLastModEnd(String dateLastModEnd) {
-        this.dateLastModEnd.setDateFormatString(dateLastModEnd);
-    }
-
-    /**
-     * Sets the Date Last Acces Begin for the search location.
-     *
-     * @param dateLatterAccesBegin, the location where to search.
-     */
-    public void setDateLatterAccesBegin(String dateLatterAccesBegin) {
-        this.dateLatterAccesBegin.setDateFormatString(dateLatterAccesBegin);
-    }
-
-    /**
-     * Sets the Date Last Acces End for the search location.
-     *
-     * @param dateLatterAccesEnd, the location where to search.
-     */
-    public void setDateLatterAccesEnd(String dateLatterAccesEnd) {
-        this.dateLatterAccesEnd.setDateFormatString(dateLatterAccesEnd);
     }
 
     /**

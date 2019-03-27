@@ -141,12 +141,6 @@ public class ControllerCriteriaSaved implements ActionListener {
     private void setCriteria() {
         viewAdvanced.getJPanelAdvanced().setTxtPath(criteriaSearch.getPath());
         viewAdvanced.getJPanelAdvanced().setTxtFileName(criteriaSearch.getFileName());
-        viewAdvanced.getJPanelAdvanced().setDateCreateStar(criteriaSearch.getCreationDateFrom());
-        viewAdvanced.getJPanelAdvanced().setDateCreateEnd(criteriaSearch.getCreationDateTo());
-        viewAdvanced.getJPanelAdvanced().setDateLastModBegin(criteriaSearch.getModificationDateFrom());
-        viewAdvanced.getJPanelAdvanced().setDateLastModEnd(criteriaSearch.getModificationDateTo());
-        viewAdvanced.getJPanelAdvanced().setDateLatterAccesBegin(criteriaSearch.getLastDateFrom());
-        viewAdvanced.getJPanelAdvanced().setDateLatterAccesEnd(criteriaSearch.getLastDateTo());
         viewAdvanced.getJPanelAdvanced().setTxtOwner(criteriaSearch.getOwner());
         viewAdvanced.getJPanelAdvanced().setTxtExtension(criteriaSearch.getExtension());
         JCheckBox jCheckBox = new JCheckBox();
