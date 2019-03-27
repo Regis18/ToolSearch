@@ -110,7 +110,7 @@ public class ControllerSearchAdvanceVideo extends ControllerSearchAdvanced imple
             String hidden = String.valueOf(data.isHidden());
             String readOnly = String.valueOf(data.isReadOnly());
             String chanel = getChanel();
-            viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i), data.getPath(), data.getFileName(),
+            viewAdvancedVideo.getTblResult().addResultRowVideo(Integer.toString(i + 1), data.getPath(), data.getFileName(),
                     data.getExtension(), super.getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
                     data.getModificationDate(), data.getLastDate(), data.getFrameRate(), data.getVideoCodec(), data.getAudioCodec(),
                     data.getAspectRatio(), data.getAudioSampleRate(), data.getDuration(), chanel);

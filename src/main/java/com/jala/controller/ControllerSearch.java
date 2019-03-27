@@ -90,7 +90,7 @@ public class ControllerSearch implements ActionListener {
             Asset data = results.get(i);
             String hidden = String.valueOf(data.isHidden());
             String readOnly = String.valueOf(data.isReadOnly());
-            viewSearch.getTbSearchGral().addResultRow(Integer.toString(i), data.getPath(), data.getFileName(),
+            viewSearch.getTbSearchGral().addResultRow(Integer.toString(i + 1), data.getPath(), data.getFileName(),
                     data.getExtension(), getFileSizeInKb(data.getSize()), hidden, readOnly, data.getCreationDate(),
                     data.getModificationDate(), data.getLastDate());
         }
