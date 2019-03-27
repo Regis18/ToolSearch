@@ -31,7 +31,6 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
 /**
  * Module view, UI/JPanelConverterImage.
@@ -46,7 +45,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertVideo;
     private ButtonGroup typeOfAudioChannel, selectTypeConverter;
-    private JComboBox cmbVideoResolution, cmbFrameRate, cmbExtension, cmbBitRate, cmbSampleRate;
+    private JComboBox cmbVideoResolution, cmbFrameRate, cmbExtensionVideo, cmbExtensionAudio, cmbBitRate, cmbSampleRate;
     private JRadioButton radioStereo, radioMono, radioConvertVideo, radioConvertAudio;
     private JCheckBox chkOptionAdvanced;
     private GridBagLayout gridBag;
@@ -112,12 +111,21 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * Gets the content from cmbExtension.
+     * Gets the content from cmbExtensionVideo.
      *
-     * @return cmbExtension, the selected comboBox element.
+     * @return cmbExtensionVideo, the selected comboBox element.
      */
-    public String getCmbExtension() {
-        return cmbExtension.getSelectedItem().toString();
+    public String getCmbExtensionVideo() {
+        return cmbExtensionVideo.getSelectedItem().toString();
+    }
+
+    /**
+     * Gets the content from cmbExtensionAudio.
+     *
+     * @return cmbExtensionAudio, the selected comboBox element.
+     */
+    public String getCmbExtensionAudio() {
+        return cmbExtensionAudio.getSelectedItem().toString();
     }
 
     /**
@@ -239,6 +247,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(lblProgressBar, 0, 9, 1, 1);
 
         txtPathFileOrigin = new JTextField(" ");
+        txtPathFileOrigin.setEditable(false);
         addComponent(txtPathFileOrigin, 1, 1, 4, 1);
 
         txtFolderDestiny = new JTextField();
@@ -247,19 +256,15 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         txtFileName = new JTextField();
         addComponent(txtFileName, 1, 3, 1, 1);
 
-        cmbExtension = new CustomJCombo();
-        cmbExtension.addItem("");
-        cmbExtension.addItem("mp3");
-        cmbExtension.addItem("wma");
-        cmbExtension.addItem("aac");
-        cmbExtension.addItem("flv");
-        cmbExtension.addItem("mpeg");
-        cmbExtension.addItem("avi");
-        cmbExtension.addItem("mp4");
-        cmbExtension.addItem("VOB");
-        cmbExtension.addItem("mkv");
-        cmbExtension.addItem("MOV");
-        addComponent(cmbExtension, 4, 3, 1, 1);
+        cmbExtensionVideo = new CustomJCombo();
+        String[] myExtensionVideo = {"", "Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob"};
+        addItemsComboBox(myExtensionVideo, cmbExtensionVideo);
+        addComponent(cmbExtensionVideo, 4, 3, 1, 1);
+
+        cmbExtensionAudio = new CustomJCombo();
+        String[] myExtensionAudio = {"", "Mp3", "Wma", "Aac"};
+        addItemsComboBox(myExtensionAudio, cmbExtensionAudio);
+        addComponent(cmbExtensionAudio, 4, 3, 1, 1);
 
         cmbVideoResolution = new CustomJCombo();
         cmbVideoResolution.addItem("");
@@ -378,6 +383,18 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
     }
 
     /**
+     * This method addItemsComboBox add myItems into a cmb.
+     *
+     * @param myItems is a string array
+     * @param cmb     is a JComboBox class component
+     */
+    private void addItemsComboBox(String[] myItems, JComboBox cmb) {
+        for (String item : myItems) {
+            cmb.addItem(item);
+        }
+    }
+
+    /**
      * Method that adds components to the GridBagConstraints.
      */
     public void addComponent(Component Component, int sizeX, int sizeY, int sizeFieldX, int sizeFieldY) {
@@ -439,6 +456,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 btnConvertVideo.setText("Convert Audio");
                 enableOptionsAudio();
                 disableOptionsVideo();
+                cmbExtensionVideo.setVisible(false);
+                cmbExtensionAudio.setVisible(true);
             }
         }
         if (event.getSource() == radioConvertVideo) {
@@ -447,6 +466,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 btnConvertVideo.setText("Convert Video");
                 enableOptionsVideo();
                 enableOptionsAudio();
+                cmbExtensionVideo.setVisible(true);
+                cmbExtensionAudio.setVisible(false);
             }
         }
     }

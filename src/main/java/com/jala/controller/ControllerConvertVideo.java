@@ -101,7 +101,7 @@ public class ControllerConvertVideo implements ActionListener {
         String pathOrigin = viewConvert.getTxtPathFileOrigin();
         String pathDestination = viewConvert.getTxtFolderDestiny();
         String fileName = viewConvert.getTxtFileName();
-        String extension = viewConvert.getCmbExtension();
+        String extension = viewConvert.getCmbExtensionVideo();
         String resolution = viewConvert.getCmbVideoResolution();
         double frameRate = viewConvert.getCmbFrameRate();
         double bitRate = viewConvert.getCmbBitRate();
@@ -125,7 +125,7 @@ public class ControllerConvertVideo implements ActionListener {
         String pathOrigin = viewConvert.getTxtPathFileOrigin();
         String pathDestination = viewConvert.getTxtFolderDestiny();
         String fileName = viewConvert.getTxtFileName();
-        String extension = viewConvert.getCmbExtension();
+        String extension = viewConvert.getCmbExtensionAudio();
         double bitRate = viewConvert.getCmbBitRate();
         int sampleRate = viewConvert.getCmbSampleRate();
         String audioChannel = viewConvert.isStereo() ? "Stereo" : "Mono";

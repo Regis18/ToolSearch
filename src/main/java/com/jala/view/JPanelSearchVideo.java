@@ -40,7 +40,7 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     private JTextField txtAudioSampleRate, txtDuration;
     private JButton btnSearch;
     private JComboBox cmbFrameRate, cmbVideoCodec, cmbAudioCodec,
-            cmbAspectRatio, cmbExtension;
+            cmbAspectRatio, cmbExtensionVideo, cmbExtensionAudio;
     private ButtonGroup typeOfAudioChannel, selectTypeSearch;
     private JRadioButton radioStereo, radioMono, radioVideo, radioAudio;
     private CustomErrorMessage msgError;
@@ -104,10 +104,15 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         addItemsComboBox(myAspectRatio, cmbAspectRatio);
         constraintComponent(cmbAspectRatio, 3, 2, GridBagConstraints.WEST);
 
-        cmbExtension = new CustomJCombo();
-        String[] myExtension = {"", "FLV", "AVI", "MOV", "MP4", "MPG", "WMV"};
-        addItemsComboBox(myExtension, cmbExtension);
-        constraintComponent(cmbExtension, 3, 3, GridBagConstraints.WEST);
+        cmbExtensionVideo = new CustomJCombo();
+        String[] myExtensionVideo = {"", "Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpg", "Dat", "Flv"};
+        addItemsComboBox(myExtensionVideo, cmbExtensionVideo);
+        constraintComponent(cmbExtensionVideo, 3, 3, GridBagConstraints.WEST);
+
+        cmbExtensionAudio = new CustomJCombo();
+        String[] myExtensionAudio = {"", "Mp3", "M4a", "Wma", "Wav", "Ogg", "Midi", "Aac"};
+        addItemsComboBox(myExtensionAudio, cmbExtensionAudio);
+        constraintComponent(cmbExtensionAudio, 3, 3, GridBagConstraints.WEST);
 
         lblAudioChannel = new CustomLabel("AudioChannel: ");
         constraintComponent(lblAudioChannel, 4, 1, GridBagConstraints.EAST);
@@ -156,12 +161,16 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
             if (radioVideo.isSelected()) {
                 btnSearch.setToolTipText("Search Video");
                 enableOptionsVideo();
+                cmbExtensionVideo.setVisible(true);
+                cmbExtensionAudio.setVisible(false);
             }
         }
         if (event.getSource() == radioAudio) {
             if (radioAudio.isSelected()) {
                 btnSearch.setToolTipText("Search Audio");
                 disableOptionsVideo();
+                cmbExtensionVideo.setVisible(false);
+                cmbExtensionAudio.setVisible(true);
             }
         }
     }
@@ -301,10 +310,17 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
     }
 
     /**
-     * The getCmbExtension method get String of ComboBox selected.
+     * The getCmbExtensionVideo method get String of ComboBox selected.
      */
-    public String getCmbExtension() {
-        return cmbExtension.getSelectedItem().toString();
+    public String getCmbExtensionVideo() {
+        return cmbExtensionVideo.getSelectedItem().toString();
+    }
+
+    /**
+     * The getCmbExtensionAudio method get String of ComboBox selected.
+     */
+    public String getCmbExtensionAudio() {
+        return cmbExtensionAudio.getSelectedItem().toString();
     }
 
     /**

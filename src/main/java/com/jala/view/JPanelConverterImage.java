@@ -30,7 +30,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
 /**
  * Module view, ui/JPanelConverterImage.
@@ -187,6 +186,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         addComponent(lblSeparatorSpace2, 5, 0, 1, 1);
 
         txtPathFileOrigin = new CustomTextField();
+        txtPathFileOrigin.setEditable(false);
         addComponent(txtPathFileOrigin, 1, 0, 4, 1);
 
         txtFolderDestiny = new CustomTextField();
@@ -196,13 +196,11 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         addComponent(txtFileName, 1, 2, 1, 1);
 
         cmbExtension = new CustomJCombo();
-        cmbExtension.addItem("ai");
+        cmbExtension.addItem("jpg");
         cmbExtension.addItem("bmp");
         cmbExtension.addItem("cdr");
         cmbExtension.addItem("eps");
         cmbExtension.addItem("gif");
-        cmbExtension.addItem("jpg");
-        cmbExtension.addItem("jpeg");
         cmbExtension.addItem("map");
         cmbExtension.addItem("odg");
         cmbExtension.addItem("pal");

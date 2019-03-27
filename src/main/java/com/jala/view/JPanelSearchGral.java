@@ -21,11 +21,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import com.jala.view.player.VideoMusicPlayer;
 
 import java.util.ArrayList;
 
@@ -150,6 +151,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
         lblPath.setText("Path :");
         pnlPath.add(lblPath);
         txtPath = new CustomTextField(50);
+        txtPath.setEditable(false);
         pnlPath.add(txtPath);
 
         btnPathFolder = new CustomButton();

@@ -13,6 +13,7 @@
 package com.jala.view;
 
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -41,7 +42,7 @@ import javax.swing.SpinnerNumberModel;
  */
 public class JPanelAdvanced extends JPanel implements ActionListener {
 
-    private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblTest, lblOwner, lblSeparatorEmpty, lblSeparatorEmpty2, lblSizeFile;
+    private JLabel lblPath, lblFileName, lblExtension, lblHidden, lblReadOnly, lblOwner, lblSeparatorEmpty, lblSeparatorEmpty2, lblSizeFile;
     private JLabel lblDateCreateStar, lblDateCreateEnd, lblDateLastModBegin, lblDateLastModEnd, lblDateLatterAccesBegin, lblDateLatterAccesEnd;
     private JTextField txtPath, txtFileName, txtExtension, txtOwner;
     private JButton btnSearchAdvanced, btnPathSearch, btnSave;
@@ -51,7 +52,6 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
     private GridBagConstraints constraints;
     private JSpinner spinControlSizeFile;
     private JCheckBox fileMajors;
-    private JPanel panelInferior;
 
     /**
      * Sets the path field for the search location.
@@ -433,6 +433,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         lblPath.setText("Path :");
         addComponent(lblPath, 0, 0, 1, 1);
         txtPath = new CustomTextField(0);
+        txtPath.setEditable(false);
         addComponent(txtPath, 1, 0, 5, 1);
         btnPathSearch = new CustomButton();
         btnPathSearch.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\examine24.png"));
@@ -516,26 +517,38 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
         dateCreateStar = new JDateChooser();
+        JTextFieldDateEditor editCreateStar = (JTextFieldDateEditor) dateCreateStar.getDateEditor();
+        editCreateStar.setEditable(false);
         dateCreateStar.setDateFormatString("yyyy-MM-dd");
         addComponent(dateCreateStar, 1, 3, 1, 1);
 
         dateCreateEnd = new JDateChooser();
+        JTextFieldDateEditor editCreateEnd = (JTextFieldDateEditor) dateCreateEnd.getDateEditor();
+        editCreateEnd.setEditable(false);
         dateCreateEnd.setDateFormatString("yyyy-MM-dd");
         addComponent(dateCreateEnd, 5, 3, 1, 1);
 
         dateLastModBegin = new JDateChooser();
+        JTextFieldDateEditor editModBegin = (JTextFieldDateEditor) dateLastModBegin.getDateEditor();
+        editModBegin.setEditable(false);
         dateLastModBegin.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLastModBegin, 1, 4, 1, 1);
 
         dateLastModEnd = new JDateChooser();
+        JTextFieldDateEditor editModEnd = (JTextFieldDateEditor) dateLastModEnd.getDateEditor();
+        editModEnd.setEditable(false);
         dateLastModEnd.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLastModEnd, 5, 4, 1, 1);
 
         dateLatterAccesBegin = new JDateChooser();
+        JTextFieldDateEditor editAccesBegin = (JTextFieldDateEditor) dateLatterAccesBegin.getDateEditor();
+        editAccesBegin.setEditable(false);
         dateLatterAccesBegin.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLatterAccesBegin, 1, 5, 1, 1);
 
         dateLatterAccesEnd = new JDateChooser();
+        JTextFieldDateEditor editAccesEnd = (JTextFieldDateEditor) dateLatterAccesEnd.getDateEditor();
+        editAccesEnd.setEditable(false);
         dateLatterAccesEnd.setDateFormatString("yyyy-MM-dd");
         addComponent(dateLatterAccesEnd, 5, 5, 1, 1);
 
