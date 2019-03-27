@@ -77,9 +77,7 @@ public class VideoMusicPlayer {
         videoSurface.setBackground(Color.black);
         videoSurface.setSize(800, 600);
         JPopupMenu.setDefaultLightWeightPopupEnabled(false);
-
         mainFrame = new JFrame("Reproductions");
-
         FullScreenStrategy fullScreenStrategy = new DefaultFullScreenStrategy(mainFrame);
         mediaPlayer = new EmbeddedMediaPlayerComponent();
         mediaPlayer.getMediaPlayerFactory().newEmbeddedMediaPlayer(fullScreenStrategy);
@@ -88,7 +86,6 @@ public class VideoMusicPlayer {
         mediaPlayer.getMediaPlayer().setPlaySubItems(true);
         mediaPlayer.getMediaPlayer().setEnableKeyInputHandling(false);
         mediaPlayer.getMediaPlayer().setEnableMouseInputHandling(false);
-
         controlsPanel = new PlayerControlPanel(mediaPlayer, listMusic, controlMusic);
         mainFrame.setLayout(new BorderLayout());
         mainFrame.setBackground(Color.black);
@@ -104,28 +101,12 @@ public class VideoMusicPlayer {
                 mediaPlayer.release();
             }
         });
-        if(listMusic.size() > 0) {
+        if (listMusic.size() > 0) {
             mediaPlayer.getMediaPlayer().playMedia(listMusic.get(0).toString());
             controlMusic.setPlayerMusic(0);
         }
         mainFrame.setVisible(true);
 
-    }
-
-    /**
-     * Method that plays a video giving as parameter a ArrayList.
-     */
-    public void playVideo(ArrayList listTitle) {
-        try {
-            loadPlaylist(listTitle);
-            mediaPlayer.getMediaPlayer().playMedia(listTitle.get(0).toString());
-            controlMusic.setPlayerMusic(0);
-            pnlListPlayer = pnlPlayer();
-
-            mainFrame.setVisible(true);
-        } catch (Exception error) {
-            JOptionPane.showMessageDialog(null, "Cannot play this file");
-        }
     }
 
     /**
@@ -149,7 +130,7 @@ public class VideoMusicPlayer {
         modelTitles = new DefaultListModel();
         playList = new JList(model);
         playListTitles = new JList(modelTitles);
-        for(int i=0 ; i< listMusic.size(); i++) {
+        for (int i=0 ; i< listMusic.size(); i++) {
             model.addElement(listMusic.get(i));
             String[] title = listMusic.get(i).toString().split("\\\\");
             modelTitles.addElement(title[title.length-1]);
@@ -168,18 +149,14 @@ public class VideoMusicPlayer {
         });
     }
 
-
-
     /**
      * Method that return a JScrollPane and load the ArrayList to a JList.
      */
-    private JScrollPane pnlPlayer(){
+    private JScrollPane pnlPlayer() {
         JPanel pPlayer = new JPanel(new BorderLayout());
         TitledBorder titleBorder =  new CustomTitleBorder("List Reproduction: ");
         pPlayer.setBorder(titleBorder);
         pPlayer.setBackground(new Color(0,0,0,65));
-        JLabel listTitle = new JLabel("List of Reproduction: ");
-        pPlayer.add(listTitle, BorderLayout.NORTH);
         pPlayer.add(playListTitles, BorderLayout.CENTER);
         scrollListPlayer = new JScrollPane(pPlayer);
         return scrollListPlayer;
