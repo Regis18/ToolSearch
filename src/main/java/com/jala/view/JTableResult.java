@@ -206,7 +206,8 @@ public class JTableResult extends JTable {
         extensions.add("mkv");
         extensions.add("dat");
         extensions.add("mov");
-        extensions.add("asf");
+        extensions.add("ogg");
+        extensions.add("wmv");
     }
 
     /**
