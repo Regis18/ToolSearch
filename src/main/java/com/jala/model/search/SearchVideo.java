@@ -145,13 +145,20 @@ public class SearchVideo extends SearchCommon {
 					int seconds = duration;
 					duration = duration / 60;
 					seconds = seconds - duration * 60 ;
+					String durationString;
+					if (duration == 0) {
+						durationString = streamList.get(0).tags.get("DURATION");
+					} else {
+						durationString = duration + ":" + seconds;
+					}
 					asset = AssetFactory.getAsset(preview.get(i),
 							streamList.get(0).codec_long_name,
 							streamList.get(0).codec_long_name,
 							String.valueOf(frameRateProbe),
 							aspectRatio,
 							Integer.toString(sampleRateInt),
-							duration + ":" + seconds);
+							durationString
+							);
 					result.add(asset);
 				}
 			} catch (NumberFormatException event) {
