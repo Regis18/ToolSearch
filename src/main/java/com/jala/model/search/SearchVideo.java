@@ -20,6 +20,7 @@ import com.jala.utils.Common;
 import com.jala.utils.Logs;
 import net.bramp.ffmpeg.FFprobe;
 import net.bramp.ffmpeg.probe.FFmpegProbeResult;
+import net.bramp.ffmpeg.probe.FFmpegStream;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -69,16 +70,38 @@ public class SearchVideo extends SearchCommon {
 		log.info("The search for Video is beginning");
 		result = new ArrayList<>();
 		List<Asset> preview = super.search();
+		int sampleRateInt;
+		double frameRateProbe;
+		String aspectRatio;
+		FFprobe ffprobe = null;
+		FFmpegProbeResult ffprobeResult;
+		try {
+			ffprobe = new FFprobe(Common.cleanPath(FFPROBE_PATH));
+		} catch (IOException event) {
+			log.error("Error " + event.getMessage(), event);
+		}
 		for (int i = 0; i < preview.size(); i++) {
-			FFprobe ffprobe;
-			FFmpegProbeResult ffprobeResult;
 			try {
-				ffprobe = new FFprobe(Common.cleanPath(FFPROBE_PATH));
 				ffprobeResult = ffprobe.probe(preview.get(i).getPath());
 				boolean resultSearchVideo = true;
 				Asset asset;
-				double frameRateProbe = new BigDecimal(ffprobeResult.getStreams().get(0).
+				List<FFmpegStream> streamList = ffprobeResult.getStreams();
+				frameRateProbe = new BigDecimal(streamList.get(0).
 						avg_frame_rate.doubleValue()).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
+				if (frameRateProbe == 0) {
+					frameRateProbe = new BigDecimal(streamList.get(1).
+							avg_frame_rate.doubleValue()).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
+				}
+				if (streamList.get(0).sample_rate > 0) {
+					sampleRateInt = streamList.get(0).sample_rate;
+				} else {
+					sampleRateInt = streamList.get(1).sample_rate;
+				}
+				if (!streamList.get(0).display_aspect_ratio.equals("")) {
+					aspectRatio = streamList.get(0).display_aspect_ratio;
+				} else {
+					aspectRatio = streamList.get(1).display_aspect_ratio;
+				}
 				if (!criteriaSearchVideo.getFrameRate().equals("")) {
 					double frameRate = Double.parseDouble(criteriaSearchVideo.getFrameRate());
 					if (resultSearchVideo && !(frameRate == frameRateProbe)) {
@@ -86,52 +109,66 @@ public class SearchVideo extends SearchCommon {
 					}
 				}
 				if (!criteriaSearchVideo.getAudioSampleRate().equals("")) {
-					double sampleRate = Double.parseDouble(criteriaSearchVideo.getAudioSampleRate());
-					if (resultSearchVideo && !(sampleRate >= ffprobeResult.getStreams().get(1).sample_rate)) {
+					int sampleRate = Integer.parseInt(criteriaSearchVideo.getAudioSampleRate());
+					if (resultSearchVideo && !(sampleRate >= sampleRateInt)) {
 						resultSearchVideo = false;
 					}
 				}
 				if (!criteriaSearchVideo.getDuration().equals("")) {
 					double durationCriteria = Double.parseDouble(criteriaSearchVideo.getDuration()) * 60;
-					if (resultSearchVideo && !(durationCriteria >= ffprobeResult.getStreams().get(0).duration)) {
+					if (resultSearchVideo && !(durationCriteria >= streamList.get(0).duration)) {
 						resultSearchVideo = false;
 					}
 				}
-				if (resultSearchVideo && !(ffprobeResult.getStreams().get(0).codec_long_name).contains(criteriaSearchVideo.getVideoCodec())) {
+				if (resultSearchVideo && !(streamList.get(0).codec_long_name).contains(criteriaSearchVideo.getVideoCodec())) {
 					if (!criteriaSearchVideo.getVideoCodec().equals("")) {
 						resultSearchVideo = false;
 					}
 				}
-				if (resultSearchVideo && !(ffprobeResult.getStreams().get(0).codec_long_name).contains(criteriaSearchVideo.getAudioCodec())) {
+				if (resultSearchVideo && !(streamList.get(0).codec_long_name).contains(criteriaSearchVideo.getAudioCodec())) {
 					if (!criteriaSearchVideo.getAudioCodec().equals("")) {
 						resultSearchVideo = false;
 					}
 				}
-				if (resultSearchVideo && !(criteriaSearchVideo.getAspectRatio().equals(ffprobeResult.getStreams().get(0).display_aspect_ratio))) {
+				if (resultSearchVideo && !(criteriaSearchVideo.getAspectRatio().equals(aspectRatio))) {
 					if (!criteriaSearchVideo.getAspectRatio().equals("")) {
 						resultSearchVideo = false;
 					}
 				}
-				if (resultSearchVideo && !(criteriaSearchVideo.getChannel().equals(ffprobeResult.getStreams().get(0).channel_layout))) {
+				if (resultSearchVideo && !(criteriaSearchVideo.getChannel().equals(streamList.get(0).channel_layout))) {
 					if (!criteriaSearchVideo.getChannel().equals("")) {
 						resultSearchVideo = false;
 					}
 				}
-				if (resultSearchVideo) {
+				if (resultSearchVideo && sampleRateInt > 0) {
+					int duration = new BigDecimal(streamList.get(0).duration).setScale(0, RoundingMode.HALF_EVEN).intValue();
+					int seconds = duration;
+					duration = duration / 60;
+					seconds = seconds - duration * 60 ;
+					String durationString;
+					if (duration == 0) {
+						durationString = streamList.get(0).tags.get("DURATION");
+					} else {
+						durationString = duration + ":" + seconds;
+					}
 					asset = AssetFactory.getAsset(preview.get(i),
-							ffprobeResult.getStreams().get(0).codec_long_name,
-							ffprobeResult.getStreams().get(0).codec_long_name,
+							streamList.get(0).codec_long_name,
+							streamList.get(0).codec_long_name,
 							String.valueOf(frameRateProbe),
-							ffprobeResult.getStreams().get(0).display_aspect_ratio,
-							Integer.toString(ffprobeResult.getStreams().get(0).sample_rate),
-							String.valueOf(ffprobeResult.getStreams().get(0).duration));
+							aspectRatio,
+							Integer.toString(sampleRateInt),
+							durationString
+							);
 					result.add(asset);
 				}
-
-			} catch (IOException event) {
-				log.error("The criteria values shouldn't be null...", event);
 			} catch (NumberFormatException event) {
 				log.error("Error in conversion in numbers...", event);
+			} catch (IndexOutOfBoundsException event) {
+				log.error("Error out of Bound: ", event);
+			} catch (NullPointerException event) {
+				log.error("Error :", event);
+			} catch (IOException event) {
+				log.error("Error " + event.getMessage(), event);
 			}
 		}
 		log.info("The search for Video finished");

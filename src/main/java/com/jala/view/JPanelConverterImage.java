@@ -190,6 +190,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         addComponent(txtPathFileOrigin, 1, 0, 4, 1);
 
         txtFolderDestiny = new CustomTextField();
+        txtFolderDestiny.setEditable(false);
         addComponent(txtFolderDestiny, 1, 1, 4, 1);
 
         txtFileName = new CustomTextField();

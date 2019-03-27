@@ -251,18 +251,19 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         addComponent(txtPathFileOrigin, 1, 1, 4, 1);
 
         txtFolderDestiny = new JTextField();
+        txtFolderDestiny.setEditable(false);
         addComponent(txtFolderDestiny, 1, 2, 4, 1);
 
         txtFileName = new JTextField();
         addComponent(txtFileName, 1, 3, 1, 1);
 
         cmbExtensionVideo = new CustomJCombo();
-        String[] myExtensionVideo = {"", "Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob"};
+        String[] myExtensionVideo = {"Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob"};
         addItemsComboBox(myExtensionVideo, cmbExtensionVideo);
         addComponent(cmbExtensionVideo, 4, 3, 1, 1);
 
         cmbExtensionAudio = new CustomJCombo();
-        String[] myExtensionAudio = {"", "Mp3", "Wma", "Aac"};
+        String[] myExtensionAudio = {"Mp3", "Wma", "Aac"};
         addItemsComboBox(myExtensionAudio, cmbExtensionAudio);
         addComponent(cmbExtensionAudio, 4, 3, 1, 1);
 

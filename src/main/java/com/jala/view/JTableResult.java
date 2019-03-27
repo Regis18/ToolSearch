@@ -30,7 +30,8 @@ import java.util.ArrayList;
 public class JTableResult extends JTable {
     private ArrayList extensions = new ArrayList();
 
-    DefaultTableModel dtm = new DefaultTableModel(0, 0) {
+    DefaultTableModel dtm = new DefaultTableModel(0,0) {
+
         public boolean isCellEditable(int rowIndex, int columnIndex) {
             boolean isEdit = false;
             if (extensionValid(rowIndex, 3))
@@ -56,35 +57,31 @@ public class JTableResult extends JTable {
     public JTableResult() {
         super();
 
-        dtm.setColumnIdentifiers(header);
-        setFont(new Font("Calibri", 0, 12));
-
         loadExtension(extensions);
         dtm.setColumnIdentifiers(header);
         setFont(new java.awt.Font("Calibri", 0, 12));
         setGridColor(Color.WHITE);
         setForeground(Color.black);
         setBackground(Color.white);
-
         //set model into the table object
         this.setModel(dtm);
-        this.getTableHeader().setForeground(new Color(0, 0, 0, 228));
+        this.getTableHeader().setForeground(Color.black);
         this.getTableHeader().setFont(new Font("Calibri", 0, 14));
-        this.getTableHeader().setBackground(new Color(189, 193, 189, 140));
+        this.getTableHeader().setBackground(new Color(189, 193, 189));
         this.getColumnModel().getColumn(0).setPreferredWidth(30);
-        this.getColumnModel().getColumn(1).setPreferredWidth(500);
-        this.getColumnModel().getColumn(2).setPreferredWidth(400);
-        this.getColumnModel().getColumn(3).setPreferredWidth(200);
-        this.getColumnModel().getColumn(4).setPreferredWidth(150);
-        this.getColumnModel().getColumn(5).setPreferredWidth(150);
-        this.getColumnModel().getColumn(6).setPreferredWidth(150);
+        this.getColumnModel().getColumn(1).setPreferredWidth(300);
+        this.getColumnModel().getColumn(2).setPreferredWidth(200);
+        this.getColumnModel().getColumn(3).setPreferredWidth(80);
+        this.getColumnModel().getColumn(4).setPreferredWidth(80);
+        this.getColumnModel().getColumn(5).setPreferredWidth(80);
+        this.getColumnModel().getColumn(6).setPreferredWidth(80);
         this.getColumnModel().getColumn(7).setPreferredWidth(150);
         this.getColumnModel().getColumn(8).setPreferredWidth(150);
         this.getColumnModel().getColumn(9).setPreferredWidth(150);
-        this.getColumnModel().getColumn(10).setPreferredWidth(150);
+        this.getColumnModel().getColumn(10).setPreferredWidth(50);
         this.getColumnModel().getColumn(10).setCellEditor(new CellCheckBox());
         this.getColumnModel().getColumn(10).setCellRenderer(new RenderCheckBox());
-        this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     }
 
     /**
@@ -104,9 +101,9 @@ public class JTableResult extends JTable {
 
         //set model into the table object
         this.setModel(dtm);
-        this.getTableHeader().setForeground(new Color(0, 0, 0, 228));
+        this.getTableHeader().setForeground(Color.black);
         this.getTableHeader().setFont(new Font("Calibri", 0, 14));
-        this.getTableHeader().setBackground(new Color(189, 193, 189, 140));
+        this.getTableHeader().setBackground(new Color(189, 193, 189));
         this.getColumnModel().getColumn(0).setPreferredWidth(30);
         this.getColumnModel().getColumn(1).setPreferredWidth(withColumn);
         this.getColumnModel().getColumn(2).setPreferredWidth(withColumn);
@@ -127,7 +124,7 @@ public class JTableResult extends JTable {
         this.getColumnModel().getColumn(17).setPreferredWidth(withColumn);
         this.getColumnModel().getColumn(17).setCellEditor(new CellCheckBox());
         this.getColumnModel().getColumn(17).setCellRenderer(new RenderCheckBox());
-        this.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        this.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     }
 
     /**
@@ -206,6 +203,8 @@ public class JTableResult extends JTable {
         extensions.add("mkv");
         extensions.add("dat");
         extensions.add("mov");
+        extensions.add("ogg");
+        extensions.add("wmv");
         extensions.add("asf");
     }
 

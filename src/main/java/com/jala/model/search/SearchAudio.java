@@ -24,6 +24,8 @@ import net.bramp.ffmpeg.probe.FFmpegStream;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,11 +73,15 @@ public class SearchAudio extends SearchCommon {
         log.info("The search for Audio is beginning");
         result = new ArrayList<>();
         List<Asset> preview = super.search();
+        FFprobe ffprobe = null;
+        FFmpegProbeResult ffprobeResult;
+        try {
+            ffprobe = new FFprobe(Common.cleanPath(FFPROBE_PATH));
+        } catch (IOException event) {
+            log.error("Error " + event.getMessage(), event);
+        }
         for (int i = 0; i < preview.size(); i++) {
-            FFprobe ffprobe;
-            FFmpegProbeResult ffprobeResult;
             try {
-                ffprobe = new FFprobe(Common.cleanPath(FFPROBE_PATH));
                 ffprobeResult = ffprobe.probe(preview.get(i).getPath());
                 FFmpegStream fFmpegStream = ffprobeResult.getStreams().get(0);
                 boolean resultSearchAudio = true;
@@ -103,11 +109,15 @@ public class SearchAudio extends SearchCommon {
                     }
                 }
                 if (resultSearchAudio) {
+                    int duration = new BigDecimal(fFmpegStream.duration).setScale(0, RoundingMode.HALF_EVEN).intValue();
+                    int seconds = duration;
+                    duration = duration / 60;
+                    seconds = seconds - duration * 60 ;
                     asset = AssetFactory.getAsset(preview.get(i),
                             fFmpegStream.codec_long_name,
                             fFmpegStream.channel_layout,
                             Integer.toString(fFmpegStream.sample_rate),
-                            String.valueOf(fFmpegStream.duration));
+                            duration + ":" + seconds);
                     result.add(asset);
                 }
             } catch (IOException event) {
