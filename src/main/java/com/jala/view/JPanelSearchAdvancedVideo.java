@@ -12,15 +12,14 @@
 
 package com.jala.view;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
-import com.jala.view.player.VideoMusicPlayer;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -79,9 +78,6 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         panelSearchVideo.setBackground(new Color(172, 175, 177));
         this.add(panelSearchVideo, BorderLayout.WEST);
 
-        JPanel pnlSouth = pnlPlayBtn();
-        this.add(pnlSouth, BorderLayout.EAST);
-
         JPanel jpForTable = pnlTableResult();
         this.add(jpForTable, BorderLayout.SOUTH);
     }
@@ -100,17 +96,6 @@ public class JPanelSearchAdvancedVideo extends JPanel {
         tblResult = new JTableResult(400);
         JScrollPane scroll = new JScrollPane(tblResult, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         pnlSearchAdvanced.add(scroll, BorderLayout.CENTER);
-        return pnlSearchAdvanced;
-    }
-
-    /**
-     * Return the instance of center panel with the Advanced button.
-     *
-     * @return pnlButtonAdvanced the Advanced button panel.
-     */
-    private JPanel pnlPlayBtn() {
-        JPanel pnlSearchAdvanced = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         return pnlSearchAdvanced;
     }
 

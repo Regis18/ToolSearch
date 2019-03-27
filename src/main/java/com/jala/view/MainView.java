@@ -14,7 +14,12 @@ package com.jala.view;
 import com.jala.view.player.MusicActual;
 import com.jala.view.player.VideoMusicPlayer;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -167,7 +172,7 @@ public class MainView extends JFrame implements ActionListener {
         content.setLayout(new BorderLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(500, 400));
+        setMinimumSize(new Dimension(1150, 900));
         ImageIcon ImageIcon = new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\moon.png");
         Image image = ImageIcon.getImage();
         this.setIconImage(image);
