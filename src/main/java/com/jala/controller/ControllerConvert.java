@@ -59,8 +59,20 @@ public class ControllerConvert implements ActionListener {
 		log.info("Action Detected");
 		if (event.getSource() == viewConvert.getJPanelAdvanced().getBtnConvert()) {
 			log.info("BtnConvert from Search General was pressed");
-			sendPathToConvert();
+			if (areRequiredValue()) {
+				sendPathToConvert();
+			} else {
+				viewConvert.getJPanelAdvanced().setMsgError("The files: File Origin Path, Folder Output, File Name. are Required");
+			}
+
 		}
+	}
+
+	private boolean areRequiredValue() {
+		String path = viewConvert.getJPanelAdvanced().getTxtPathFileOrigin();
+		String output = viewConvert.getJPanelAdvanced().getTxtFolderDestiny();
+		String fileName = viewConvert.getJPanelAdvanced().getTxtFileName();
+		return ((path.equals("")) && (output.equals("")) && (fileName.equals("")) ) ? false : true;
 	}
 
 	/**
