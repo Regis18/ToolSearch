@@ -52,7 +52,7 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
     private JLabel lblPlaybackTime;
     private JSlider sldPositionSlider, sldVolumeSlider;
     private JButton btnPreviousTrack, btnRewindTrack, btnStopTrack, btnPauseTrack, btnPlayTrack, btnFastForwardTrack;
-    private JButton btnNextTrack, btnToggleMute, btnLoadTrack, btnFullScreen;
+    private JButton btnNextTrack, btnToggleMute, btnLoadTrack;
     private JFileChooser fileChooser;
     private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private boolean mousePressedPlaying = false;
@@ -111,7 +111,6 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
         btnNextTrack.addActionListener(this);
         btnToggleMute.addActionListener(this);
         btnLoadTrack.addActionListener(this);
-        btnFullScreen.addActionListener(this);
         sldVolumeSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent event) {
@@ -171,9 +170,6 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
 
             }
             mediaPlayer.getMediaPlayer().enableOverlay(true);
-        }
-        if (event.getSource() == btnFullScreen) {
-            mediaPlayer.getMediaPlayer().toggleFullScreen();
         }
     }
 
@@ -238,10 +234,6 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
         FileFilter defaultFilter = SwingFileFilterFactory.newMediaFileFilter();
         fileChooser.addChoosableFileFilter(defaultFilter);
         fileChooser.setFileFilter(defaultFilter);
-
-        btnFullScreen = new JButton();
-        btnFullScreen.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\ThirdParty\\VLC\\icons\\monitor.png"));
-        btnFullScreen.setToolTipText("Full Screen");
     }
 
     /**
@@ -275,7 +267,6 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
         pnlControlButton.add(sldVolumeSlider);
         pnlControlButton.add(btnToggleMute);
         pnlControlButton.add(btnLoadTrack);
-        pnlControlButton.add(btnFullScreen);
         add(pnlControlButton, BorderLayout.SOUTH);
     }
 
@@ -308,8 +299,6 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
         }
         long time = mediaPlayer.getMediaPlayer().getTime();
         int position = (int)(mediaPlayer.getMediaPlayer().getPosition() * 1000.0f);
-        int chapter = mediaPlayer.getMediaPlayer().getChapter();
-        int chapterCount = mediaPlayer.getMediaPlayer().getChapterCount();
         updateTime(time);
         updatePosition(position);
     }
@@ -359,7 +348,7 @@ public class PlayerControlPanel extends JPanel implements ActionListener {
                 @Override
                 public void run() {
                     if (mediaPlayer.getMediaPlayer().isPlaying()) {
-                        if (sldPositionSlider.getValue() >= 990) {
+                        if (mediaPlayer.getMediaPlayer().getTime() >= mediaPlayer.getMediaPlayer().getLength() - 1200) {
                             if (controlMusic.getPlayerMusic() < listMusic.size()-1) {
                                 mediaPlayer.getMediaPlayer().playMedia(listMusic.get(controlMusic.getPlayerMusic() + 1).toString());
                                 controlMusic.setPlayerMusic(controlMusic.getPlayerMusic()+1);
