@@ -41,7 +41,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class JPanelConverterImage extends JPanel implements ActionListener {
 
     private JLabel lblPathFileOrigin, lblPathFolderDestiny, lblFileName, lblExtension, lblSizeWidth, lblSizeHeight;
-    private JLabel lblChangeSize, lblSeparatorSpace, lblSeparatorSpace2, lblMaintainProportion, lblOwmer;
+    private JLabel lblChangeSize, lblSeparatorSpace, lblSeparatorSpace2;
     private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName, txtSizeWidth, txtSizeHeight;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertFile;
     private ButtonGroup typeOfResize;
