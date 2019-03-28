@@ -46,7 +46,7 @@ public class JTableResult extends JTable {
 
 
     // add header for search a video or Audio
-    String[] headerVideo = new String[]{"Id", "Path", "File Name", "Extension", "Size (KB)",
+    String[] headerVideo = new String[]{"N.", "Path", "File Name", "Extension", "Size (KB)",
             "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access",
             "Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
             "Duration", "Audio Chanel", "Play"};
