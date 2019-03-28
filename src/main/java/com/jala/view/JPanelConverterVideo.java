@@ -460,6 +460,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 disableOptionsVideo();
                 cmbExtensionVideo.setVisible(false);
                 cmbExtensionAudio.setVisible(true);
+                cleanBoxes();
             }
         }
         if (event.getSource() == radioConvertVideo) {
@@ -470,6 +471,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 enableOptionsAudio();
                 cmbExtensionVideo.setVisible(true);
                 cmbExtensionAudio.setVisible(false);
+                cleanBoxes();
             }
         }
     }
@@ -528,4 +530,24 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         progressBar.update(progressBar.getGraphics());
         progressBar.setStringPainted(true);
     }
+<<<<<<< HEAD
 }
+=======
+
+    /**
+     * Method that clean boxes for audio and video conversion panels.
+     */
+    public void cleanBoxes()
+    {
+        txtPathFileOrigin.setText("");
+        txtFolderDestiny.setText("");
+        txtFileName.setText("");
+        cmbFrameRate.setSelectedIndex(0);
+        cmbVideoResolution.setSelectedIndex(0);
+        cmbBitRate.setSelectedIndex(0);
+        cmbSampleRate.setSelectedIndex(0);
+        cmbExtensionVideo.setSelectedIndex(0);
+        cmbExtensionAudio.setSelectedIndex(0);
+    }
+}
+>>>>>>> 11878bb03b1b8dd0d39ae6e5dbe228481c98c67d
