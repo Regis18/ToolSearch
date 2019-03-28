@@ -153,7 +153,7 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private JPanel pnlTableResult() {
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = new CustomTitleBorder("List Search Advanced: ");
+        TitledBorder titleBorder = new CustomTitleBorder("Advanced Search List: ");
         pnlSearchAdvanced.setBorder(titleBorder);
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         tbSearchAdvanced = new JTableResult();
@@ -169,7 +169,7 @@ public class JPanelSearchAdvanced extends JPanel {
      */
     private JPanel pnlTableDB() {
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = new CustomTitleBorder("List Search Data Base: ");
+        TitledBorder titleBorder = new CustomTitleBorder("Data Base Search List: ");
         pnlSearchGral.setBorder(titleBorder);
         pnlSearchGral.setBackground(new Color(172, 175, 177));
         pnlButtonInferiorDB();

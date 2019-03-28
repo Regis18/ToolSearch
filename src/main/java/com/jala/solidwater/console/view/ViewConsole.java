@@ -53,6 +53,7 @@ public class ViewConsole {
         sizeColumns.add(10);
         sizeColumns.add(8);
         sizeColumns.add(8);
+        sizeColumns.add(11);
         sizeColumns.add(7);
         rowCounter = 0;
         headTitle.add("Nº");
@@ -64,6 +65,7 @@ public class ViewConsole {
         headTitle.add("Readonly");
         headTitle.add("Created");
         headTitle.add("Modified");
+        headTitle.add("Last Access");
         headTitle.add("Owner");
     }
 
@@ -121,9 +123,10 @@ public class ViewConsole {
         String readonly = row.get(5);
         String dateCreated = row.get(6);
         String dateModified = row.get(7);
-        String owner = row.get(8);
+        String lastAccessDate = row.get(8);
+        String owner = row.get(9);
         System.out.format(leftJustifying, getRowCounter(), path, fileName, extension, size, hidden, readonly,
-                dateCreated, dateModified, owner);
+                dateCreated, dateModified, lastAccessDate, owner);
         System.out.println(lowerLine);
     }
 
@@ -211,10 +214,11 @@ public class ViewConsole {
         String readonly = headTitle.get(6);
         String dateCreated = headTitle.get(7);
         String dateModified = headTitle.get(8);
-        String owner = headTitle.get(9);
+        String lastAccessDate = headTitle.get(9);
+        String owner = headTitle.get(10);
         System.out.println(topLine);
         System.out.format(leftJustifying, nro, path, fileName, extension, size, hidden, readonly,
-                dateCreated, dateModified, owner);
+                dateCreated, dateModified, lastAccessDate, owner);
         System.out.println(lowerLine);
     }
 
@@ -234,6 +238,7 @@ public class ViewConsole {
         row.add(Boolean.toString(asset.isReadOnly()));
         row.add(asset.getCreationDate());
         row.add(asset.getModificationDate());
+        row.add(asset.getLastDate());
         row.add(asset.getOwner());
         return row;
     }
