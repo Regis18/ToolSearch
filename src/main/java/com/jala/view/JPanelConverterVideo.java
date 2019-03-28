@@ -530,9 +530,6 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         progressBar.update(progressBar.getGraphics());
         progressBar.setStringPainted(true);
     }
-<<<<<<< HEAD
-}
-=======
 
     /**
      * Method that clean boxes for audio and video conversion panels.
@@ -550,4 +547,3 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         cmbExtensionAudio.setSelectedIndex(0);
     }
 }
->>>>>>> 11878bb03b1b8dd0d39ae6e5dbe228481c98c67d
