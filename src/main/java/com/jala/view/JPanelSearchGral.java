@@ -174,7 +174,7 @@ public class JPanelSearchGral extends JPanel implements ActionListener {
      */
     private JPanel pnlTableResult() {
         JPanel pnlSearchGral = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = new CustomTitleBorder("List Search General: ");
+        TitledBorder titleBorder = new CustomTitleBorder("General Search List: ");
         pnlSearchGral.setBorder(titleBorder);
         pnlSearchGral.setBackground(new Color(172, 175, 177));
 

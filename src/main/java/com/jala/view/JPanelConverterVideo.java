@@ -211,10 +211,10 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         lblTypeConversion = new CustomLabel("Conversion Type: ");
         addComponent(lblTypeConversion, 0, 0, 1, 1);
 
-        lblPathFileOrigin = new CustomLabel("Path Origin File: ");
+        lblPathFileOrigin = new CustomLabel("Source Path File: ");
         addComponent(lblPathFileOrigin, 0, 1, 1, 1);
 
-        lblPathFolderDestiny = new CustomLabel("Folder Output: ");
+        lblPathFolderDestiny = new CustomLabel("Destination Folder: ");
         addComponent(lblPathFolderDestiny, 0, 2, 1, 1);
 
         lblFileName = new CustomLabel("File Name: ");
