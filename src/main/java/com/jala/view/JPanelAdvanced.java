@@ -465,9 +465,9 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(comboReadOnly, 5, 2, 1, 1);
 
         comboTypeSizeFile = new CustomJCombo();
-        comboTypeSizeFile.addItem("KB");
-        comboTypeSizeFile.addItem("MB");
-        comboTypeSizeFile.addItem("GB");
+        comboTypeSizeFile.addItem("Kb");
+        comboTypeSizeFile.addItem("Mb");
+        comboTypeSizeFile.addItem("Gb");
         addComponent(comboTypeSizeFile, 3, 6, 1, 1);
 
         dateCreateStar = new JDateChooser();
