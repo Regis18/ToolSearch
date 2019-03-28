@@ -419,7 +419,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(lblReadOnly, 3, 2, 1, 1);
 
         lblDateCreateStar = new CustomLabel();
-        lblDateCreateStar.setText("Creation Date From: ");
+        lblDateCreateStar.setText("Creation Date:    From: ");
         addComponent(lblDateCreateStar, 0, 3, 1, 1);
 
         lblDateCreateEnd = new CustomLabel();
