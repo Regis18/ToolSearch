@@ -52,7 +52,7 @@ public class DefaultCommands {
     private List<Command> createDefaultCommands() {
         defaultCommands = new ArrayList<>();
         Command commandForPath = new Command("-p", "Path",
-                "Path of the file or directory");
+                "Path of the directory");
         Command commandForFileName = new Command("-fn", "File Name",
                 "Name of the file");
         Command commandForExtension = new Command("-ex", "Extension",
@@ -60,21 +60,21 @@ public class DefaultCommands {
         Command commandForSize = new Command("-s", "Size",
                 "Size of the file");
         Command commandForHidden = new Command("-h", "Hidden",
-                "This command allows the values true and false");
+                "This command allows the values Yes, No and All");
         Command commandForReadOnly = new Command("-ro", "Read Only",
-                "This command allows the values Yes and No");
+                "This command allows the values Yes, No and All");
         Command commandCreationDateFrom = new Command("-cdf", "Creation Date From",
-                "Allows search the files from a specific creation date. Format yyyy-mm-dd");
+                "Allows to search the files starting from a specific creation date. Format yyyy-mm-dd");
         Command commandCreationDateTo = new Command("-cdt", "Creation Date To",
-                "Allows search files to a creation date in specific. Format yyyy-mm-dd");
+                "Allows to search the files until a specific creation date. Format yyyy-mm-dd");
         Command commandModificationDateFrom = new Command("-mdf", "Modification Date From",
-                "Allows search the files from a modification date specific. Format yyyy-mm-dd");
+                "Allows to search the files starting from a specific modification date. Format yyyy-mm-dd");
         Command commandModificationDateTo = new Command("-mdt", "Modification Date To",
-                "Allows search the to a modification date specific. Format yyyy-mm-dd");
+                "Allows to search the files until a specific modification date. Format yyyy-mm-dd");
         Command commandForLastDateFrom = new Command("-ldf", "Last Date From",
-                "Allows search the files from a last date specific. Format yyyy-mm-dd");
+                "Allows to search the files starting from a specific last access date. Format yyyy-mm-dd");
         Command commandForLastDateTo = new Command("-ldt", "Last Date to",
-                "Allows search the files to a last date specific. Format yyyy-mm-dd");
+                "Allows to search the files starting from a specific last access date. Format yyyy-mm-dd");
         Command commandForHelp = new Command("-help", "Help",
                 "Show all command that can be used");
         defaultCommands.add(commandForPath);
