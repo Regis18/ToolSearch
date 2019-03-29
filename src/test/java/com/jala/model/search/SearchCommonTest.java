@@ -24,6 +24,12 @@ import java.nio.file.attribute.UserPrincipal;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * SearchCommonTest
+ *
+ * @version 0.0.1
+ * @author Regis Hummana
+ */
 public class SearchCommonTest {
 	CriteriaSearch criteriaSearch;
 	@Before
@@ -41,6 +47,10 @@ public class SearchCommonTest {
 		int expected = 6;
 		assertEquals(expected,actual);
 	}
+
+    /**
+     * Path: nothing
+     */
 	@Test
 	public void getResult_ReturnPaths_WhenSentWrongPath() {
 		criteriaSearch.setPath("nothing");
@@ -60,6 +70,10 @@ public class SearchCommonTest {
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		assertEquals(1,search.search().size());
 	}
+
+    /**
+     * Extension:poo
+     */
 	@Test
 	public void getResult_ReturnPaths_WhenSentOnlyWrongExtension() {
 		criteriaSearch.setExtension("poo");
@@ -120,6 +134,11 @@ public class SearchCommonTest {
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		assertEquals(1,search.search().size());
 	}
+
+    /**
+     * Extension: mp4
+     * ReadOnly true
+     */
 	@Test
 	public void getResult_Return_WhenSentPath() {
 		criteriaSearch.setExtension("mp4");
@@ -127,6 +146,11 @@ public class SearchCommonTest {
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		assertEquals(0,search.search().size());
 	}
+
+    /**
+     * Extension: mp4
+     * Hidden: True
+     */
 	@Test
 	public void getResult_ReturnFalse_WhenSentPath() {
 		criteriaSearch.setExtension("mp4");
@@ -223,6 +247,11 @@ public class SearchCommonTest {
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		assertEquals(6,search.search().size());
 	}
+
+    /**
+     * Owner: owner.getName() + "H"
+     * @throws IOException
+     */
 	@Test
 	public void getResult_ReturnOwnerIncorrect_WhenSentPath() throws IOException {
 		Path path = Paths.get("..\\ToolSearch\\src\\test\\java\\com\\jala\\model\\search\\testfiles\\test1.xml");
@@ -231,14 +260,20 @@ public class SearchCommonTest {
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		assertEquals(0,search.search().size());
 	}
+
+    /**
+     * FileName: po
+     */
+
 	@Test
-	public void getResult_ReturnFilenameIncorrect_WhenSentPath() throws IOException {
+	public void getResult_ReturnFilenameIncorrect_WhenSentPath(){
 		criteriaSearch.setFileName("po");
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		assertEquals(0,search.search().size());
 	}
 	/**
-	 * CreationDate: 2019-03-29
+	 * CreationDate: From: "2019-01-15"
+     * To: "2019-01-15"
 	 */
 	@Test
 	public void getResult_ReturnCreationDate_WhenSentPathWrongDate() {
@@ -249,7 +284,8 @@ public class SearchCommonTest {
 	}
 
 	/**
-	 * ModificationDate: 2019-03-29
+	 * ModificationDate: From: "2019-01-15"
+     * To: "2019-01-15"
 	 */
 	@Test
 	public void getResult_ReturnModificationDate_WhenSentPathWrongDate() {
@@ -260,7 +296,8 @@ public class SearchCommonTest {
 	}
 
 	/**
-	 * LastAccessDate: 2019-03-29
+	 * LastAccessDate: From: "2018-01-15"
+     * To: "2018-01-15"
 	 */
 	@Test
 	public void getResult_ReturnLastAccessDate_WhenSentPathWrongDate() {
