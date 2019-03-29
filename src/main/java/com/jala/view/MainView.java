@@ -194,7 +194,7 @@ public class MainView extends JFrame implements ActionListener {
         menuSearch = new JMenu("Search");
         menuSearch.setIcon(imgSearch);
         menuSearch.setForeground(Color.WHITE);
-        menuConverter = new JMenu("Converter");
+        menuConverter = new JMenu("Conversion Options");
         menuConverter.setIcon(imgConverter);
         menuConverter.setForeground(Color.WHITE);
         menuPlayerVideo = new JMenuItem("Video Player");
@@ -217,12 +217,12 @@ public class MainView extends JFrame implements ActionListener {
         menuSearch.add(menuItemSearchVideo);
         menuItemSearchVideo.addActionListener(this);
 
-        menuItemConverter = new JMenuItem("Converter Image", imgImageConverter);
+        menuItemConverter = new JMenuItem("Image Converter", imgImageConverter);
         menuConverter.add(menuItemConverter);
         menuConverter.addSeparator();
         menuItemConverter.addActionListener(this);
 
-        menuItemConverterVideo = new JMenuItem("Converter Video", imgVideoConverter);
+        menuItemConverterVideo = new JMenuItem("Video Converter", imgVideoConverter);
         menuConverter.add(menuItemConverterVideo);
         menuItemConverterVideo.addActionListener(this);
 

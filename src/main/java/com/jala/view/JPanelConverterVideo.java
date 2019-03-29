@@ -208,13 +208,13 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         constraints = new GridBagConstraints();
         setLayout(gridBag);
 
-        lblTypeConversion = new CustomLabel("Type Conversion: ");
+        lblTypeConversion = new CustomLabel("Conversion Type: ");
         addComponent(lblTypeConversion, 0, 0, 1, 1);
 
-        lblPathFileOrigin = new CustomLabel("Path Origin File: ");
+        lblPathFileOrigin = new CustomLabel("Source Path File: ");
         addComponent(lblPathFileOrigin, 0, 1, 1, 1);
 
-        lblPathFolderDestiny = new CustomLabel("Folder Output: ");
+        lblPathFolderDestiny = new CustomLabel("Destination Folder: ");
         addComponent(lblPathFolderDestiny, 0, 2, 1, 1);
 
         lblFileName = new CustomLabel("File Name: ");
@@ -375,7 +375,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
         btnConvertVideo = new CustomButton();
         btnConvertVideo.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter36.png"));
-        btnConvertVideo.setText("Convert Video");
+        btnConvertVideo.setText("Video Converter");
         btnConvertVideo.addActionListener(this);
         addComponent(btnConvertVideo, 1, 8, 1, 1);
 

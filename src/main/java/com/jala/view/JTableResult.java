@@ -42,12 +42,12 @@ public class JTableResult extends JTable {
 
     // add header of the table
     String[] header = new String[]{"N.", "Path", "File Name", "Extension", "Size (KB)",
-            "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access", "Play"};
+            "Hidden", "ReadOnly", "Creation Date", "Modification Date", "Last Access Date", "Play"};
 
 
     // add header for search a video or Audio
-    String[] headerVideo = new String[]{"N.", "Path", "File Name", "Extension", "Size (KB)",
-            "Hidden", "ReadOnly", "Date Create", "Date Modification", "Date Later Access",
+    String[] headerVideo = new String[]{"Id", "Path", "File Name", "Extension", "Size (KB)",
+            "Hidden", "ReadOnly", "Creation Date", "Modification Date", "Last Access Date",
             "Frame Rate", "Video Codec", "Audio Codec", "Aspect Ratio", "Audio Sample Rate",
             "Duration", "Audio Chanel", "Play"};
 

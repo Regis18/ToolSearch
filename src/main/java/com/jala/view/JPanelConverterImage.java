@@ -41,7 +41,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class JPanelConverterImage extends JPanel implements ActionListener {
 
     private JLabel lblPathFileOrigin, lblPathFolderDestiny, lblFileName, lblExtension, lblSizeWidth, lblSizeHeight;
-    private JLabel lblChangeSize, lblSeparatorSpace, lblSeparatorSpace2, lblMaintainProportion, lblOwmer;
+    private JLabel lblChangeSize, lblSeparatorSpace, lblSeparatorSpace2;
     private JTextField txtPathFileOrigin, txtFolderDestiny, txtFileName, txtSizeWidth, txtSizeHeight;
     private JButton btnPathOriginFile, btnPathFolderDestiny, btnConvertFile;
     private ButtonGroup typeOfResize;
@@ -159,10 +159,10 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         constraints = new GridBagConstraints();
         setLayout(esquema);
 
-        lblPathFileOrigin = new CustomLabel("Path Origin File: ");
+        lblPathFileOrigin = new CustomLabel("Source Path File: ");
         addComponent(lblPathFileOrigin, 0, 0, 1, 1);
 
-        lblPathFolderDestiny = new CustomLabel("Folder Output: ");
+        lblPathFolderDestiny = new CustomLabel("Destination Folder: ");
         addComponent(lblPathFolderDestiny, 0, 1, 1, 1);
 
         lblFileName = new CustomLabel("File Name: ");
@@ -174,10 +174,10 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         lblChangeSize = new CustomLabel("Change Size to: ");
         addComponent(lblChangeSize, 0, 3, 1, 1);
 
-        lblSizeWidth = new CustomLabel("Size Width: ");
+        lblSizeWidth = new CustomLabel("Width: ");
         addComponent(lblSizeWidth, 0, 4, 1, 1);
 
-        lblSizeHeight = new CustomLabel("Size Height: ");
+        lblSizeHeight = new CustomLabel("Height: ");
         addComponent(lblSizeHeight, 3, 4, 1, 1);
 
         lblSeparatorSpace = new CustomLabel("   ");
@@ -233,7 +233,7 @@ public class JPanelConverterImage extends JPanel implements ActionListener {
         resizePercentage.setSelected(false);
         addComponent(resizePercentage, 3, 3, 1, 1);
 
-        chekMaintainProportion = new CustomCheckBox("Maintain Proportion");
+        chekMaintainProportion = new CustomCheckBox("Keep Proportion");
         addComponent(chekMaintainProportion, 4, 3, 1, 1);
 
         checkResizeImage = new CustomCheckBox("Resize");

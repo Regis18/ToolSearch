@@ -61,7 +61,7 @@ public class JPanelSearchAdvancedVideo extends JPanel {
     private void initComponent() {
 
         panelAdvanceSearch = new JPanelAdvanced(new BorderLayout());
-        TitledBorder advancedBorder = new CustomTitleBorder("List Search Advanced: ");
+        TitledBorder advancedBorder = new CustomTitleBorder("Advanced Search List: ");
         panelAdvanceSearch.setBorder(advancedBorder);
         panelAdvanceSearch.setBackground(new Color(172, 175, 177));
         panelAdvanceSearch.setBorder(advancedBorder);
@@ -89,7 +89,7 @@ public class JPanelSearchAdvancedVideo extends JPanel {
     private JPanel pnlTableResult() {
 
         JPanel pnlSearchAdvanced = new JPanel(new BorderLayout());
-        TitledBorder titleBorder = new CustomTitleBorder("List Search Video");
+        TitledBorder titleBorder = new CustomTitleBorder("Video Search List");
         pnlSearchAdvanced.setBorder(titleBorder);
         pnlSearchAdvanced.setBackground(new Color(172, 175, 177));
         tblResult = new JTableResult(400);

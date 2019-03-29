@@ -419,7 +419,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(lblReadOnly, 3, 2, 1, 1);
 
         lblDateCreateStar = new CustomLabel();
-        lblDateCreateStar.setText("Creation Date From: ");
+        lblDateCreateStar.setText("Creation Date:    From: ");
         addComponent(lblDateCreateStar, 0, 3, 1, 1);
 
         lblDateCreateEnd = new CustomLabel();
@@ -427,7 +427,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(lblDateCreateEnd, 3, 3, 1, 1);
 
         lblDateLastModBegin = new CustomLabel();
-        lblDateLastModBegin.setText("Modification Date From:  ");
+        lblDateLastModBegin.setText("Modification Date:   From:  ");
         addComponent(lblDateLastModBegin, 0, 4, 1, 1);
 
         lblDateLastModEnd = new CustomLabel();
@@ -435,7 +435,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(lblDateLastModEnd, 3, 4, 1, 1);
 
         lblDateLatterAccesBegin = new CustomLabel();
-        lblDateLatterAccesBegin.setText("Last Date From: ");
+        lblDateLatterAccesBegin.setText("Last Date:     From: ");
         addComponent(lblDateLatterAccesBegin, 0, 5, 1, 1);
 
         lblDateLatterAccesEnd = new CustomLabel();
@@ -449,7 +449,7 @@ public class JPanelAdvanced extends JPanel implements ActionListener {
         addComponent(txtOwner, 1, 7, 3, 1);
 
         lblSizeFile = new CustomLabel();
-        lblSizeFile.setText("Size File: ");
+        lblSizeFile.setText("File Size: ");
         addComponent(lblSizeFile, 0, 6, 1, 1);
 
         cmbHidden = new CustomJCombo();
