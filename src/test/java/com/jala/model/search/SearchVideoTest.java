@@ -15,9 +15,11 @@ package com.jala.model.search;
 import com.jala.model.criteria.CriteriaSearchMultimedia;
 import com.jala.model.search.asset.Asset;
 import com.jala.model.search.asset.AssetVideo;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
+import net.bramp.ffmpeg.FFprobe;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -31,9 +33,12 @@ import static org.junit.Assert.*;
 public class SearchVideoTest {
 	private SearchVideo searchVideo;
 	private CriteriaSearchMultimedia criteria;
+	private static final String IPATH = "src\\test\\java\\com\\jala\\model\\search\\testsearch";
+
 	@Before
+
 	public void setUp() {
-		criteria = new CriteriaSearchMultimedia("C:\\Users\\Admin\\Desktop\\PROG 02\\Videos");
+		criteria = new CriteriaSearchMultimedia(IPATH);
 	}
 
 	/**
@@ -45,10 +50,9 @@ public class SearchVideoTest {
 		criteria.setExtension("mp4");
 		criteria.setChannel("stereo");
 		searchVideo = new SearchVideo(criteria);
-		List<Asset> result = searchVideo.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(result.get(i).getPath());
-		}
+		SearchFile sf = new SearchFile();
+		List<Asset> assetList = sf.search(criteria);
+		assertEquals(1, assetList.size());
 	}
 
 	/**
@@ -58,13 +62,10 @@ public class SearchVideoTest {
 	@Test
 	public void search_returnAudioCodec_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
-		criteria.setAudioCodec("AAC");
+		criteria.setAudioCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetVideo)result.get(i)).getAudioCodec());
-			System.out.println(result.get(i).getPath());
-		}
+		assertEquals(1, result.size());
 	}
 
 	/**
@@ -74,13 +75,10 @@ public class SearchVideoTest {
 	@Test
 	public void search_returnVideoCodec_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
-		criteria.setVideoCodec("H.264");
+		criteria.setVideoCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetVideo)result.get(i)).getVideoCodec());
-			System.out.println(result.get(i).getPath());
-		}
+		assertEquals(1, result.size());
 	}
 
 	/**
@@ -93,10 +91,7 @@ public class SearchVideoTest {
 		criteria.setAudioSampleRate("44100");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetVideo)result.get(i)).getAudioSampleRate());
-			System.out.println(result.get(i).getPath());
-		}
+		assertEquals(1, result.size());
 	}
 
 	/**
@@ -106,13 +101,10 @@ public class SearchVideoTest {
 	@Test
 	public void search_returnAspectRatio_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
-		criteria.setAspectRatio("16:9");
+		criteria.setAspectRatio("320:133");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetVideo)result.get(i)).getAspectRatio());
-			System.out.println(result.get(i).getPath());
-		}
+		assertEquals(1, result.size());
 	}
 
 	/**
@@ -122,13 +114,10 @@ public class SearchVideoTest {
 	@Test
 	public void search_returnFrameRate_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
-		criteria.setFrameRate("29.97");
+		criteria.setFrameRate("23.98");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetVideo)result.get(i)).getFrameRate());
-			System.out.println(result.get(i).getPath());
-		}
+		assertEquals(1, result.size());
 	}
 
 	/**
@@ -138,12 +127,9 @@ public class SearchVideoTest {
 	@Test
 	public void search_returnDuration_WhenSendPathMultimedia() {
 		criteria.setExtension("mp4");
-		criteria.setDuration("10");
+		criteria.setDuration("");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetVideo)result.get(i)).getDuration());
-			System.out.println(result.get(i).getPath());
-		}
+		assertEquals(1, result.size());
 	}
 }

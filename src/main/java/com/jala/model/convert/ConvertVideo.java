@@ -133,6 +133,7 @@ public class ConvertVideo implements IConvertible {
 			@Override
 			public void progress(final Progress progress) {
 				double percentage = progress.out_time_ns / durationNs;
+
 				if ((int) (percentage * 100) <= 100) {
 					JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
 				}
