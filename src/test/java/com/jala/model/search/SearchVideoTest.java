@@ -46,7 +46,7 @@ public class SearchVideoTest {
 	 * Channel: stereo
 	 */
 	@Test
-	public void search_returnMP4_WhenSendPathMultimedia() {
+	public void searchVideoExtensionChannelTest() {
 		criteria.setExtension("mp4");
 		criteria.setChannel("stereo");
 		searchVideo = new SearchVideo(criteria);
@@ -57,12 +57,12 @@ public class SearchVideoTest {
 
 	/**
 	 * Extension : mp4
-	 * AudioCodec: AAC
+	 * AudioCodec: H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	 */
 	@Test
-	public void search_returnAudioCodec_WhenSendPathMultimedia() {
+	public void searchVideoAudioCodecTestExtension() {
 		criteria.setExtension("mp4");
-		criteria.setAudioCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
+			criteria.setAudioCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
 		assertEquals(1, result.size());
@@ -70,12 +70,12 @@ public class SearchVideoTest {
 
 	/**
 	 * Extension : mp4
-	 * VideoCodec: H.264
+	 * VideoCodec: H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
 	 */
 	@Test
-	public void search_returnVideoCodec_WhenSendPathMultimedia() {
+	public void searchVideVideoCodecExtensionTest() {
 		criteria.setExtension("mp4");
-		criteria.setVideoCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
+			criteria.setVideoCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
 		assertEquals(1, result.size());
@@ -86,7 +86,7 @@ public class SearchVideoTest {
 	 * AudioSampleRate: 44100
 	 */
 	@Test
-	public void search_returnSampleRate_WhenSendPathMultimedia() {
+	public void searchVideoSampleRatExtensioneTest() {
 		criteria.setExtension("mp4");
 		criteria.setAudioSampleRate("44100");
 		searchVideo = new SearchVideo(criteria);
@@ -95,24 +95,33 @@ public class SearchVideoTest {
 	}
 
 	/**
-	 * Extension : mp4
-	 * AspectRatio: 16:9
+	 * AspectRatio: 320:133
 	 */
 	@Test
-	public void search_returnAspectRatio_WhenSendPathMultimedia() {
+	public void searchVideoAspectRatioTest() {
+		criteria.setAspectRatio("320:133");
+		searchVideo = new SearchVideo(criteria);
+		List<Asset> result = searchVideo.search();
+		assertEquals(2, result.size());
+	}
+	/**
+	 * Extension : mp4
+	 * AspectRatio: 320:133
+	 */
+	@Test
+	public void searchVideoAspectRatioExtensionTest() {
 		criteria.setExtension("mp4");
 		criteria.setAspectRatio("320:133");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
 		assertEquals(1, result.size());
 	}
-
 	/**
 	 * Extension : mp4
-	 * FrameRate: 29.97
+	 * FrameRate: 23.98
 	 */
 	@Test
-	public void search_returnFrameRate_WhenSendPathMultimedia() {
+	public void searchVideoFrameRateTest() {
 		criteria.setExtension("mp4");
 		criteria.setFrameRate("23.98");
 		searchVideo = new SearchVideo(criteria);
@@ -122,14 +131,40 @@ public class SearchVideoTest {
 
 	/**
 	 * Extension : mp4
-	 * Duration: 10
+	 * Duration: emply
 	 */
 	@Test
-	public void search_returnDuration_WhenSendPathMultimedia() {
+	public void searchVideoDurationTest() {
 		criteria.setExtension("mp4");
 		criteria.setDuration("");
 		searchVideo = new SearchVideo(criteria);
 		List<Asset> result = searchVideo.search();
 		assertEquals(1, result.size());
+	}
+
+	/**
+	 * AspectRatio: 320:133
+	 * AudioSampleRate: 44100
+	 */
+	@Test
+	public void searchVideoAspectRatioAudioSampleRateTest() {
+		criteria.setAspectRatio("320:133");
+		criteria.setAudioSampleRate("44100");
+		searchVideo = new SearchVideo(criteria);
+		List<Asset> result = searchVideo.search();
+		assertEquals(1, result.size());
+	}
+
+	/**
+	 * AspectRatio: 320:133
+	 * AudioSampleRate: 44100
+	 */
+	@Test
+	public void searchVideoFrameRateAudioSampleRateTest() {
+		criteria.setFrameRate("60");
+		criteria.setAudioSampleRate("44100");
+		searchVideo = new SearchVideo(criteria);
+		List<Asset> result = searchVideo.search();
+		assertEquals(3, result.size());
 	}
 }
