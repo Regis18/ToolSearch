@@ -1,0 +1,99 @@
+Cloud computing
+    benefits
+        Cost
+        Global scale
+        Perfomance
+        Productivity
+        Security
+        Speed
+    delivery of
+        computing services
+            like
+                databases
+                intelligence
+                networking
+                server
+                storage
+            over
+                the Internet
+    has
+        Types of cloud computing
+            deployments
+                Hybrid Cloud
+                Private Cloud
+                Public Cloud
+            services
+                IaaS
+                    advantages
+                        better security
+                        eliminates capital expense
+                            and
+                                reduces ongoing cost
+                        gets new apps
+                        improves business continuity
+                            and
+                                disaster recovery
+                        innovate rapidly
+                    can be done
+                        big data analysis
+                        high performance computing
+                        Storage, backup, recovery
+                        test and development
+                        web apps
+                        website hosting
+                    helps
+                        avoid buying & managing
+                            the
+                                physical servers
+                    is a
+                        instant computing infrastructure
+                DaaS
+                    is
+                        virtual desktop
+                            provides
+                                simply access anywhere anytime
+                PaaS
+                    advantages
+                        add development capabilities
+                        Cut coding time
+                        develop multiple platforms
+                        efficiently manage apps
+                        support development teams
+                        use sophisticated tools
+                    allows you
+                        avoid buying & managing
+                            what things?
+                                software licenses
+                    is a complete
+                        develpment and deployment
+                            with resources that
+                                enable deliver apps
+                SaaS
+                    advantages
+                        access app data
+                        free client software
+                        Gain access apps
+                        Mobilize workforce easily
+                        Pay just for using
+                    allows
+                        quickly up organization
+                            and
+                                running apps
+                                    at
+                                        minimal upfront cost
+                    connect users to
+                        cloud based apps
+                            it can be
+                                rent for using
+                            like
+                                calendaring
+                                email
+                                office tools
+    is used for
+        Analize Data
+        Back up Data
+        Create new apps
+        Deliver Software
+        Storage, recover data
+        Stream Video, audio
+        Test, build application
