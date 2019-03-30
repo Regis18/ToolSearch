@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * This class used the FFmpeg app for Convert of format an audio .
  *
- * @author Regis Humana
+ * @author Regis Humana.
  * @version 0.0.3
  */
 public class ConvertAudio implements IConvertible {
