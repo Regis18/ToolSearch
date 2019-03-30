@@ -48,7 +48,7 @@ public class SearchAudioTest {
 		criteria.setChannel("stereo");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
-		Assert.assertTrue(!result.isEmpty());
+		Assert.assertFalse(result.isEmpty());
 	}
 
 	/**
@@ -141,6 +141,7 @@ public class SearchAudioTest {
 		List<Asset> result = searchAudio.search();
 		Assert.assertFalse(result.isEmpty());
 	}
+	
 	/**
 	 * Extension : mp3
 	 * Modification Date: 2021-04-05
