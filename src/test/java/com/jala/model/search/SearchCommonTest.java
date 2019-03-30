@@ -33,7 +33,7 @@ import static org.junit.Assert.assertEquals;
 public class SearchCommonTest {
 
 	/**
-	 *
+	 * It os created to Initialize the class to test.
 	 */
 	private CriteriaSearch criteriaSearch;
 
