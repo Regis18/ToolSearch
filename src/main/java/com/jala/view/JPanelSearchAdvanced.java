@@ -33,7 +33,6 @@ import java.util.ArrayList;
  */
 public class JPanelSearchAdvanced extends JPanel {
     private JTableResult tbSearchAdvanced;
-    private Border border;
     private JPanelAdvanced panelSearchAdvanced;
     private JTableDB tbDataBase;
     private JPanel panelInferior;
