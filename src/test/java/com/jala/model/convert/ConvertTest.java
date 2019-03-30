@@ -15,7 +15,6 @@ package com.jala.model.convert;
 
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Common;
-import com.jala.view.JPanelConverterVideo;
 import org.junit.Before;
 import org.junit.Test;
 

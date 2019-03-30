@@ -1,9 +1,20 @@
+/*
+ * @(#) ConvertAudioTest.java Copyright (c) 2019 Jala Foundation.
+ * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Jala Foundation, ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jala Foundation.
+ */
+
 package com.jala.model.convert;
 
 import com.jala.model.criteria.CriteriaConverterAudio;
-import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Common;
-import com.jala.view.JPanelConverterVideo;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,6 +23,7 @@ import java.io.File;
 import java.nio.file.Files;
 
 import static org.junit.Assert.assertTrue;
+
 
 /**
  * Class Converter Model Test.
