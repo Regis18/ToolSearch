@@ -89,6 +89,53 @@ public class ConvertImageTest {
     }
 
     /**
+     * Test to convert image changing set File Name, set Percentage, set Resize.
+     */
+    @Test
+    public void convert_ReturnJpg_WhenSetProportionTruePdfFile() {
+        ConvertorImage convertImage = new ConvertorImage();
+        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".pdf");
+        convertImage.convert(criteria);
+        criteria.setFileName("test");
+        criteria.setMaintainProportion(true);
+        criteria.setPercentage(true);
+        criteria.setResize(true);
+        assertEquals(1, sizeFolderInit);
+    }
+
+    /**
+     * Test to convert image changing set File Name, setPath, set Percentage, set Resize.
+     */
+    @Test
+    public void convert_ReturnJpg_WhenSetProportionFalsePsdFile() {
+        ConvertorImage convertImage = new ConvertorImage();
+        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".psd");
+        convertImage.convert(criteria);
+        criteria.setFileName("test2");
+        criteria.setMaintainProportion(false);
+        criteria.setPercentage(false);
+        criteria.setWidth(50);
+        criteria.isResize();
+        criteria.setPath(DestinationPath);
+        assertEquals(1, sizeFolderInit);
+    }
+
+    /**
+     * Test to convert image changing set File Name, set Percentage, set Resize.
+     */
+    @Test
+    public void convert_ReturnErrorFile() {
+        ConvertorImage convertImage = new ConvertorImage();
+        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".pdf");
+        convertImage.convert(criteria);
+        criteria.setFileName("test");
+        criteria.setMaintainProportion(true);
+        criteria.setPercentage(true);
+        criteria.setResize(true);
+        assertEquals(1, sizeFolderInit);
+    }
+
+    /**
      * Test to this method returns the folder to the initial state.
      */
     @After
