@@ -34,4 +34,9 @@ public class Common {
            }
         return path;
     }
+
+    /**
+     * For unit test to convert video and audio.
+     */
+    public static boolean useProgressBar = true;
 }
