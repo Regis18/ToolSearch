@@ -264,7 +264,7 @@ public class SearchCommonTest {
      */
     @Test
     public void getResult_ReturnOwner_WhenSentPath() throws IOException {
-        Path path = Paths.get("..\\ToolSearch\\src\\test\\java\\com\\jala\\model\\search\\testfiles\\test1.xml");
+        Path path = Paths.get("..\\ToolSearch\\src\\test\\resources\\testfiles\\test1.xml");
         UserPrincipal owner = Files.getOwner(path);
         criteriaSearch.setOwner(owner.getName());
         criteriaSearch.setSizeCompareOption(true);
@@ -279,7 +279,7 @@ public class SearchCommonTest {
      */
     @Test
     public void getResult_ReturnOwnerIncorrect_WhenSentPath() throws IOException {
-        Path path = Paths.get("..\\ToolSearch\\src\\test\\java\\com\\jala\\model\\search\\testfiles\\test1.xml");
+        Path path = Paths.get("..\\ToolSearch\\src\\test\\resources\\testfiles\\test1.xml");
         UserPrincipal owner = Files.getOwner(path);
         criteriaSearch.setOwner(owner.getName() + "H");
         SearchCommon search = new SearchCommon(criteriaSearch);
