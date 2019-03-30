@@ -30,8 +30,8 @@ import java.util.List;
  * @author Regis Humana
  */
 public class SearchAudioTest {
-	CriteriaSearchMultimedia criteria;
-	SearchAudio searchAudio;
+	private CriteriaSearchMultimedia criteria;
+	private SearchAudio searchAudio;
 	@Before
 	public void setUp() {
 		String path = "..\\ToolSearch\\src\\test\\resources\\audio";
@@ -141,7 +141,7 @@ public class SearchAudioTest {
 		List<Asset> result = searchAudio.search();
 		Assert.assertFalse(result.isEmpty());
 	}
-	
+
 	/**
 	 * Extension : mp3
 	 * Modification Date: 2021-04-05
