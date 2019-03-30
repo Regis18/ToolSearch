@@ -1,5 +1,6 @@
 package com.jala.model.convert;
 
+import com.jala.model.criteria.CriteriaConverterAudio;
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Common;
 import com.jala.view.JPanelConverterVideo;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 public class ConvertAudioTest {
     private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";
     private static final String IPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\mimel.aac";
-    private ConvertVideo convertVideo;
+    private ConvertAudio convertAudio;
 
     /**
      * Setup.
@@ -28,7 +29,7 @@ public class ConvertAudioTest {
      */
     @Before
     public void setUp() throws Exception {
-        convertVideo = new ConvertVideo();
+        convertAudio = new ConvertAudio();
     }
 
     /**
@@ -38,10 +39,10 @@ public class ConvertAudioTest {
      */
     @Test
     public void convertAudio() throws IOException {
-        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".mp3");
-        criteriaConverterVideo.setNewFileName("test");
+        CriteriaConverterAudio criteriaConverterAudio = new CriteriaConverterAudio(IPATH,OPATH,".mp3");
+        criteriaConverterAudio.setNewFileName("test");
         Common.useProgressBar = false;
-        convertVideo.convert(criteriaConverterVideo);
+        convertAudio.convert(criteriaConverterAudio);
         File file = new File(OPATH + "test.mp3");
         assertTrue(file.exists());
         Files.deleteIfExists(file.toPath());
@@ -54,11 +55,11 @@ public class ConvertAudioTest {
      */
     @Test
     public void convertAdvancedAudio() throws IOException {
-        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".aac");
-        criteriaConverterVideo.setNewFileName("test");
-        criteriaConverterVideo.setIsAdvanced(true);
+        CriteriaConverterAudio criteriaConverterAudio = new CriteriaConverterAudio(IPATH,OPATH,".aac");
+        criteriaConverterAudio.setNewFileName("test");
+        criteriaConverterAudio.setAdvanced(true);
         Common.useProgressBar = false;
-        convertVideo.convert(criteriaConverterVideo);
+        convertAudio.convert(criteriaConverterAudio);
         File file = new File(OPATH + "test.aac");
         assertTrue(file.exists());
         Files.deleteIfExists(file.toPath());
