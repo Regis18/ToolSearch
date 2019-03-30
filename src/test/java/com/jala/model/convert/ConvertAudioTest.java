@@ -1,17 +1,4 @@
-/*
- * @(#) ConvertTest.java Copyright (c) 2019 Jala Foundation.
- * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
- * All rights reserved.
- *
- * This software is the confidential and proprietary information of
- * Jala Foundation, ("Confidential Information").  You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Jala Foundation.
- */
-
 package com.jala.model.convert;
-
 
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Common;
@@ -29,10 +16,10 @@ import static org.junit.Assert.assertTrue;
  * Class Converter Model Test.
  * Unit tests to verify the conversion of files by different criteria.
  */
-public class ConvertTest {
-  private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";
-  private static final String IPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\Marvel.mp4";
-  private ConvertVideo convertVideo;
+public class ConvertAudioTest {
+    private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";
+    private static final String IPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\mimel.aac";
+    private ConvertVideo convertVideo;
 
     /**
      * Setup.
@@ -45,34 +32,34 @@ public class ConvertTest {
     }
 
     /**
-     * This test probe the video conversion.
+     * This test probe the audio conversion.
      *
      * @throws IOException if exist a trouble with the ffmpeg
      */
     @Test
-   public void convertVideoData() throws IOException {
-       CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".avi");
-       criteriaConverterVideo.setNewFileName("test");
+    public void convertAudio() throws IOException {
+        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".mp3");
+        criteriaConverterVideo.setNewFileName("test");
         Common.useProgressBar = false;
         convertVideo.convert(criteriaConverterVideo);
-        File file = new File(OPATH + "test.avi");
+        File file = new File(OPATH + "test.mp3");
         assertTrue(file.exists());
         Files.deleteIfExists(file.toPath());
     }
 
     /**
-     * This test probe the video conversion.
+     * This test probe the audio advanced conversion.
      *
      * @throws IOException if exist a trouble with the ffmpeg
      */
     @Test
-    public void convertAdvancedVideo() throws IOException {
-        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".avi");
+    public void convertAdvancedAudio() throws IOException {
+        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".aac");
         criteriaConverterVideo.setNewFileName("test");
         criteriaConverterVideo.setIsAdvanced(true);
         Common.useProgressBar = false;
         convertVideo.convert(criteriaConverterVideo);
-        File file = new File(OPATH + "test.avi");
+        File file = new File(OPATH + "test.aac");
         assertTrue(file.exists());
         Files.deleteIfExists(file.toPath());
         Common.useProgressBar = true;

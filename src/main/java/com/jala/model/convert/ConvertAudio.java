@@ -126,8 +126,10 @@ public class ConvertAudio implements IConvertible {
 			@Override
 			public void progress(final Progress progress) {
 				double percentage = progress.out_time_ns / durationNs;
-				if ((int) (percentage * 100) <= 100) {
-					JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
+				if (Common.useProgressBar) {
+					if ((int) (percentage * 100) <= 100) {
+						JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
+					}
 				}
 			}
 		});
@@ -142,7 +144,9 @@ public class ConvertAudio implements IConvertible {
 			log.error("The Convertion has failed.");
 		}
 		if (job.getState() == FFmpegJob.State.FINISHED) {
-			JPanelConverterVideo.setProgressBarValue(100);
+			if(Common.useProgressBar) {
+				JPanelConverterVideo.setProgressBarValue(100);
+			}
 			convertResult = "The Convertion has finished successfully.";
 			log.info("The Convertion has finished successfully.");
 		}

@@ -54,6 +54,8 @@ public class ConvertVideo implements IConvertible {
 	 */
 	private String convertResult;
 
+
+
 	/**
 	 * Convert formats of video into another extension - basic.
 	 *
@@ -90,7 +92,8 @@ public class ConvertVideo implements IConvertible {
 	 * @param fmpeg    library.
 	 * @param fprobe   library.
 	 */
-	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg, FFprobe fprobe) {
+	private void convertAdvancedVideo(CriteriaConverterVideo criteria, FFmpegBuilder builder, FFmpeg fmpeg,
+									  FFprobe fprobe) {
 		try {
 			FFmpegOutputBuilder outputBuilder = new FFmpegOutputBuilder();
 			outputBuilder.setFilename(pathDestination);
@@ -113,6 +116,7 @@ public class ConvertVideo implements IConvertible {
 			builder.addOutput(outputBuilder);
 			FFmpegExecutor executor = new FFmpegExecutor(fmpeg, fprobe);
 			FFmpegProbeResult probeResult = fprobe.probe(criteria.getPath());
+
 			convertVideoProgress(executor, builder, probeResult);
 		} catch (IOException error) {
 			log.error("Error in ConvertAdvancedAudio", error);
@@ -133,9 +137,10 @@ public class ConvertVideo implements IConvertible {
 			@Override
 			public void progress(final Progress progress) {
 				double percentage = progress.out_time_ns / durationNs;
-
-				if ((int) (percentage * 100) <= 100) {
-					JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
+				if (Common.useProgressBar) {
+					if ((int) (percentage * 100) <= 100) {
+						JPanelConverterVideo.setProgressBarValue((int) (percentage * 100));
+					}
 				}
 			}
 		});
@@ -150,7 +155,8 @@ public class ConvertVideo implements IConvertible {
 			log.error("The Convertion has failed.");
 		}
 		if (job.getState() == FFmpegJob.State.FINISHED) {
-			JPanelConverterVideo.setProgressBarValue(100);
+			if (Common.useProgressBar)
+				JPanelConverterVideo.setProgressBarValue(100);
 			convertResult = "The Conversion has finished successfully.";
 			log.info("The Conversion has finished successfully.");
 		}
