@@ -136,7 +136,7 @@ public class SearchAudioTest {
 	@Test
 	public void search_returnMP3_WhenSendPathMultimediaModificationDate() {
 		criteria.setExtension("mp3");
-		criteria.setModificationDateFrom("2018-04-05");
+		criteria.setModificationDateFrom("2016-11-21");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
 		Assert.assertFalse(result.isEmpty());
@@ -149,7 +149,7 @@ public class SearchAudioTest {
 	@Test
 	public void search_returnError_WhenSendPathMultimediaModificationDate() {
 		criteria.setExtension("mp3");
-		criteria.setModificationDateFrom("2021-04-05");
+		criteria.setModificationDateFrom("2021-11-21");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
 		Assert.assertTrue(result.isEmpty());

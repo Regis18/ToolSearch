@@ -10,19 +10,26 @@
  * with Jala Foundation.
  */
 
-package com.jala.convertor.models;
+package com.jala.model.convert;
 
 import com.jala.model.convert.ConvertorImage;
 import com.jala.model.criteria.CriteriaConvertImage;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Test ConvertImage.
+ * Test Convert Image.
+ *
+ * @version 0.0.1
+ * @author Cristian Lujan
  */
 public class ConvertImageTest {
 
@@ -89,6 +96,19 @@ public class ConvertImageTest {
     }
 
     /**
+     * Test to convert image date.
+     */
+    @Test
+    public void convertReturnJpgImageData() throws IOException {
+        ConvertorImage convertImage = new ConvertorImage();
+        CriteriaConvertImage criteriaImage = new CriteriaConvertImage(OriginPath, DestinationPath+ "\\",".jpg");
+        criteriaImage.setNewFileName("test");
+        convertImage.convert(criteriaImage);
+        File file = new File(DestinationPath + "\\", "test.jpg");
+        assertTrue(file.exists());
+    }
+
+    /**
      * Test to convert image changing set File Name, set Percentage, set Resize.
      */
     @Test
@@ -104,35 +124,19 @@ public class ConvertImageTest {
     }
 
     /**
-     * Test to convert image changing set File Name, setPath, set Percentage, set Resize.
+     * Test to convert image with valor null.
      */
     @Test
-    public void convert_ReturnJpg_WhenSetProportionFalsePsdFile() {
+    public void convert_ReturnNull() {
         ConvertorImage convertImage = new ConvertorImage();
-        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".psd");
-        convertImage.convert(criteria);
-        criteria.setFileName("test2");
-        criteria.setMaintainProportion(false);
-        criteria.setPercentage(false);
-        criteria.setWidth(50);
-        criteria.isResize();
-        criteria.setPath(DestinationPath);
-        assertEquals(1, sizeFolderInit);
-    }
-
-    /**
-     * Test to convert image changing set File Name, set Percentage, set Resize.
-     */
-    @Test
-    public void convert_ReturnErrorFile() {
-        ConvertorImage convertImage = new ConvertorImage();
-        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".pdf");
-        convertImage.convert(criteria);
-        criteria.setFileName("test");
-        criteria.setMaintainProportion(true);
-        criteria.setPercentage(true);
-        criteria.setResize(true);
-        assertEquals(1, sizeFolderInit);
+        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".webp");
+        try {
+            convertImage.convert(criteria);
+            criteria.setFileName(null);
+        }
+        catch (Exception e) {
+            Assert.fail("There is some null data" + e);
+        }
     }
 
     /**
