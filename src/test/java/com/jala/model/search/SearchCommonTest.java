@@ -39,7 +39,7 @@ public class SearchCommonTest {
 
 	@Before
 	public void setUp() {
-		criteriaSearch = new CriteriaSearch("..\\ToolSearch\\src\\test\\java\\com\\jala\\model\\search\\testfiles");
+		criteriaSearch = new CriteriaSearch("..\\ToolSearch\\src\\test\\resources\\testfiles");
 	}
 
 	/**
