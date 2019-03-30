@@ -31,25 +31,32 @@ import static org.junit.Assert.assertEquals;
  * @author Regis Hummana
  */
 public class SearchCommonTest {
-	CriteriaSearch criteriaSearch;
+
+	/**
+	 *
+	 */
+	private CriteriaSearch criteriaSearch;
+
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		criteriaSearch = new CriteriaSearch("..\\ToolSearch\\src\\test\\java\\com\\jala\\model\\search\\testfiles");
 	}
 
 	/**
 	 * Search just path.
+	 * The result is 6.
 	 */
 	@Test
 	public void getResult_ReturnPaths_WhenSentPath() {
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		int actual = search.search().size();
 		int expected = 6;
-		assertEquals(expected,actual);
+		assertEquals(expected, actual);
 	}
 
-    /**
-     * Path: nothing
+	/**
+	 * Search with Path: nothing
+	 * Result zero files.
      */
 	@Test
 	public void getResult_ReturnPaths_WhenSentWrongPath() {
@@ -57,46 +64,50 @@ public class SearchCommonTest {
 		SearchCommon search = new SearchCommon(criteriaSearch);
 		int actual = search.search().size();
 		int expected = 0;
-		assertEquals(expected,actual);
+		assertEquals(expected, actual);
 	}
 
 
 	/**
-	 * Extension : mp4.
+	 * Search with Extension : mp4.
+	 * Result 1 file.
 	 */
 	@Test
 	public void getResult_ReturnPaths_WhenSentOnlyMP4() {
 		criteriaSearch.setExtension("mp4");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(1,search.search().size());
+		assertEquals(1, search.search().size());
 	}
 
-    /**
-     * Extension:poo
+	/**
+	 * Search with Extension:poo.
+	 * Result zero files.
      */
 	@Test
 	public void getResult_ReturnPaths_WhenSentOnlyWrongExtension() {
 		criteriaSearch.setExtension("poo");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
 
 	/**
-	 * Extension : mp4
+	 * Search with Extension : mp4
 	 * Hidden: true
+	 * Result file 1.
 	 */
 	@Test
 	public void getResult_ReturnHidden_WhenSentPath() {
 		criteriaSearch.setExtension("txt");
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(1,search.search().size());
+		assertEquals(1, search.search().size());
 	}
 
 
 	/**
-	 * Extension : mp4
+	 * Search with Extension : mp4
 	 * Hidden: false.
+	 * Result file 1.
 	 */
 	@Test
 	public void getResult_ReturnReadTrue_WhenSentPath() {
@@ -107,9 +118,10 @@ public class SearchCommonTest {
 	}
 
 	/**
-	 * Extension : mp3
+	 * Search with Extension : mp3
 	 * Hidden: true.
 	 * ReadOnly: true.
+	 * Result file 1.
 	 */
 	@Test
 	public void getResult_ReturnReadHiddenTrue_WhenSentPath() {
@@ -117,14 +129,15 @@ public class SearchCommonTest {
 		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyTrue);
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(1,search.search().size());
+		assertEquals(1, search.search().size());
 	}
 
 
 	/**
-	 * Extension : mp4
+	 * Search with Extension : mp4
 	 * Hidden: true.
 	 * ReadOnly: false.
+	 * Result file 1.
 	 */
 	@Test
 	public void getResult_ReturnReadFalseHiddenTrue_WhenSentPath() {
@@ -132,88 +145,96 @@ public class SearchCommonTest {
 		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyFalse);
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(1,search.search().size());
+		assertEquals(1, search.search().size());
 	}
 
-    /**
-     * Extension: mp4
-     * ReadOnly true
+	/**
+	 * Search with Extension: mp4
+	 * ReadOnly true.
+	 * Result 0.
      */
 	@Test
 	public void getResult_Return_WhenSentPath() {
 		criteriaSearch.setExtension("mp4");
 		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
 
-    /**
-     * Extension: mp4
+	/**
+	 * Search with Extension: mp4
      * Hidden: True
+	 * Result 0.
      */
 	@Test
 	public void getResult_ReturnFalse_WhenSentPath() {
 		criteriaSearch.setExtension("mp4");
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
 
 	/**
-	 * Extension : mp4
+	 * Search with Extension : mp4
 	 * Hidden: false.
 	 * ReadOnly: true.
+	 * Result file 1.
 	 */
 	@Test
 	public void getResult_ReturnReadTrueHiddenFalse_WhenSentPath() {
 		criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyTrue);
 		criteriaSearch.setHidden(TernaryBooleanEnum.OnlyFalse);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(1,search.search().size());
+		assertEquals(1, search.search().size());
 	}
 
 	/**
-	 * FileName: test
+	 * Search with FileName: test
+	 * Result 4.
 	 */
 	@Test
 	public void getResult_ReturnFileName_WhenSentPath() {
 		criteriaSearch.setFileName("test");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(4,search.search().size());
+		assertEquals(4, search.search().size());
 	}
 
 	/**
-	 * CreationDate: 2019-03-29
+	 * Search with CreationDate: 2019-03-29
+	 * Result 6.
 	 */
 	@Test
 	public void getResult_ReturnCreationDate_WhenSentPath() {
 		criteriaSearch.setCreationDateFrom("2019-03-29");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(6,search.search().size());
+		assertEquals(6, search.search().size());
 	}
 
 	/**
-	 * ModificationDate: 2019-03-29
+	 * Search with ModificationDate: 2019-03-29
+	 * Result 1.
 	 */
 	@Test
 	public void getResult_ReturnModificationDate_WhenSentPath() {
 		criteriaSearch.setModificationDateFrom("2019-03-10");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(1,search.search().size());
+		assertEquals(1, search.search().size());
 	}
 
 	/**
-	 * LastAccessDate: 2019-03-29
+	 * Search with LastAccessDate: 2019-03-29
+	 * Result 6.
 	 */
 	@Test
 	public void getResult_ReturnLastAccessDate_WhenSentPath() {
 		criteriaSearch.setLastDateFrom("2019-03-10");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(6,search.search().size());
+		assertEquals(6, search.search().size());
 	}
 
 	/**
-	 * LastAccessDate: 2019-03-29
+	 * Search with LastAccessDate: 2019-03-29
+	 * Result 1.
 	 */
 	@Test
 	public void getResult_ReturnSizeMajor_WhenSentPath() {
@@ -221,11 +242,12 @@ public class SearchCommonTest {
 		criteriaSearch.setSize(Integer.toString(size));
 		criteriaSearch.setSizeCompareOption(false);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(1,search.search().size());
+		assertEquals(1, search.search().size());
 	}
 
 	/**
-	 * LastAccessDate: 2019-03-29
+	 * Search with LastAccessDate: 2019-03-29
+	 * Result file 5.
 	 */
 	@Test
 	public void getResult_ReturnSizeMinor_WhenSentPath() {
@@ -233,10 +255,12 @@ public class SearchCommonTest {
 		criteriaSearch.setSize(Integer.toString(size));
 		criteriaSearch.setSizeCompareOption(true);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(5,search.search().size());
+		assertEquals(5, search.search().size());
 	}
+
 	/**
-	 * LastAccessDate: 2019-03-29
+	 * Search with LastAccessDate: 2019-03-29
+	 * Result file 6.
 	 */
 	@Test
 	public void getResult_ReturnOwner_WhenSentPath() throws IOException {
@@ -245,12 +269,13 @@ public class SearchCommonTest {
 		criteriaSearch.setOwner(owner.getName());
 		criteriaSearch.setSizeCompareOption(true);
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(6,search.search().size());
+		assertEquals(6, search.search().size());
 	}
 
-    /**
-     * Owner: owner.getName() + "H"
+	/**
+	 * Search with Owner: owner.getName() + "H"
      * @throws IOException
+	 * Result file 0.
      */
 	@Test
 	public void getResult_ReturnOwnerIncorrect_WhenSentPath() throws IOException {
@@ -258,52 +283,57 @@ public class SearchCommonTest {
 		UserPrincipal owner = Files.getOwner(path);
 		criteriaSearch.setOwner(owner.getName() + "H");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
 
-    /**
-     * FileName: po
+	/**
+	 * Search with FileName: po
+	 * Result file 0
      */
 
 	@Test
 	public void getResult_ReturnFilenameIncorrect_WhenSentPath(){
 		criteriaSearch.setFileName("po");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
+
 	/**
-	 * CreationDate: From: "2019-01-15"
+	 * Search with CreationDate: From: "2019-01-15"
      * To: "2019-01-15"
+	 * Result zero files
 	 */
 	@Test
 	public void getResult_ReturnCreationDate_WhenSentPathWrongDate() {
 		criteriaSearch.setCreationDateFrom("2019-01-15");
 		criteriaSearch.setCreationDateTo("2019-01-15");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
 
 	/**
-	 * ModificationDate: From: "2019-01-15"
+	 * Search with ModificationDate: From: "2019-01-15"
      * To: "2019-01-15"
+	 * Result 0.
 	 */
 	@Test
 	public void getResult_ReturnModificationDate_WhenSentPathWrongDate() {
 		criteriaSearch.setModificationDateFrom("2019-01-15");
 		criteriaSearch.setModificationDateTo("2019-01-15");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
 
 	/**
-	 * LastAccessDate: From: "2018-01-15"
+	 * Search with LastAccessDate: From: "2018-01-15"
      * To: "2018-01-15"
+	 * Result 0
 	 */
 	@Test
 	public void getResult_ReturnLastAccessDate_WhenSentPathWrongDate() {
 		criteriaSearch.setLastDateFrom("2018-01-15");
 		criteriaSearch.setLastDateTo("2018-01-15");
 		SearchCommon search = new SearchCommon(criteriaSearch);
-		assertEquals(0,search.search().size());
+		assertEquals(0, search.search().size());
 	}
 }
