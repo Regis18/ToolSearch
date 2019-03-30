@@ -134,14 +134,13 @@ public class SearchCommonTest {
 
 
     /**
-     * Search with Extension : mp4
+     * Search with
      * Hidden: true.
      * ReadOnly: false.
      * Result file 1.
      */
     @Test
     public void getResult_ReturnReadFalseHiddenTrue_WhenSentPath() {
-        criteriaSearch.setExtension("xml");
         criteriaSearch.setReadOnly(TernaryBooleanEnum.OnlyFalse);
         criteriaSearch.setHidden(TernaryBooleanEnum.OnlyTrue);
         SearchCommon search = new SearchCommon(criteriaSearch);
@@ -212,13 +211,13 @@ public class SearchCommonTest {
 
     /**
      * Search with ModificationDate: 2019-03-29
-     * Result 1.
+     * Result 6.
      */
     @Test
     public void getResult_ReturnModificationDate_WhenSentPath() {
         criteriaSearch.setModificationDateFrom("2019-03-10");
         SearchCommon search = new SearchCommon(criteriaSearch);
-        assertEquals(1, search.search().size());
+        assertEquals(6, search.search().size());
     }
 
     /**
@@ -264,7 +263,7 @@ public class SearchCommonTest {
      */
     @Test
     public void getResult_ReturnOwner_WhenSentPath() throws IOException {
-        Path path = Paths.get("..\\ToolSearch\\src\\test\\java\\com\\jala\\model\\search\\testfiles\\test1.xml");
+        Path path = Paths.get("..\\ToolSearch\\src\\test\\resources\\testfiles\\test1.xml");
         UserPrincipal owner = Files.getOwner(path);
         criteriaSearch.setOwner(owner.getName());
         criteriaSearch.setSizeCompareOption(true);
@@ -279,7 +278,7 @@ public class SearchCommonTest {
      */
     @Test
     public void getResult_ReturnOwnerIncorrect_WhenSentPath() throws IOException {
-        Path path = Paths.get("..\\ToolSearch\\src\\test\\java\\com\\jala\\model\\search\\testfiles\\test1.xml");
+        Path path = Paths.get("..\\ToolSearch\\src\\test\\resources\\testfiles\\test1.xml");
         UserPrincipal owner = Files.getOwner(path);
         criteriaSearch.setOwner(owner.getName() + "H");
         SearchCommon search = new SearchCommon(criteriaSearch);
