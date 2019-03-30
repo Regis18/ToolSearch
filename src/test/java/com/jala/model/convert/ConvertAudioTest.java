@@ -28,8 +28,8 @@ import static org.junit.Assert.assertTrue;
 /**
  * ConvertAudioTest
  *
- * @version 0.0.1
  * @author Melvi Caballero
+ * @version 0.0.1
  */
 public class ConvertAudioTest {
     private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";
@@ -53,7 +53,7 @@ public class ConvertAudioTest {
      */
     @Test
     public void convertAudio() throws IOException {
-        CriteriaConverterAudio criteriaConverterAudio = new CriteriaConverterAudio(IPATH,OPATH,".mp3");
+        CriteriaConverterAudio criteriaConverterAudio = new CriteriaConverterAudio(IPATH, OPATH, ".mp3");
         criteriaConverterAudio.setNewFileName("test");
         Common.useProgressBar = false;
         convertAudio.convert(criteriaConverterAudio);
@@ -69,7 +69,7 @@ public class ConvertAudioTest {
      */
     @Test
     public void convertAdvancedAudio() throws IOException {
-        CriteriaConverterAudio criteriaConverterAudio = new CriteriaConverterAudio(IPATH,OPATH,".aac");
+        CriteriaConverterAudio criteriaConverterAudio = new CriteriaConverterAudio(IPATH, OPATH, ".aac");
         criteriaConverterAudio.setNewFileName("test");
         criteriaConverterAudio.setAdvanced(true);
         Common.useProgressBar = false;

@@ -26,13 +26,13 @@ import static org.junit.Assert.assertTrue;
 /**
  * ConvertTest
  *
- * @version 0.0.1
  * @author Melvi Caballero
+ * @version 0.0.1
  */
 public class ConvertTest {
-  private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";
-  private static final String IPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\Marvel.mp4";
-  private ConvertVideo convertVideo;
+    private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";
+    private static final String IPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\Marvel.mp4";
+    private ConvertVideo convertVideo;
 
     /**
      * Setup.
@@ -50,9 +50,9 @@ public class ConvertTest {
      * @throws IOException if exist a trouble with the ffmpeg
      */
     @Test
-   public void convertVideoData() throws IOException {
-       CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".avi");
-       criteriaConverterVideo.setNewFileName("test");
+    public void convertVideoData() throws IOException {
+        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH, OPATH, ".avi");
+        criteriaConverterVideo.setNewFileName("test");
         Common.useProgressBar = false;
         convertVideo.convert(criteriaConverterVideo);
         File file = new File(OPATH + "test.avi");
@@ -67,7 +67,7 @@ public class ConvertTest {
      */
     @Test
     public void convertAdvancedVideo() throws IOException {
-        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH,OPATH,".avi");
+        CriteriaConverterVideo criteriaConverterVideo = new CriteriaConverterVideo(IPATH, OPATH, ".avi");
         criteriaConverterVideo.setNewFileName("test");
         criteriaConverterVideo.setIsAdvanced(true);
         Common.useProgressBar = false;
