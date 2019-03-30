@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Module view, UI/JPanelConverterImage.
@@ -207,13 +208,13 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         constraints = new GridBagConstraints();
         setLayout(gridBag);
 
-        lblTypeConversion = new CustomLabel("Type Conversion: ");
+        lblTypeConversion = new CustomLabel("Conversion Type: ");
         addComponent(lblTypeConversion, 0, 0, 1, 1);
 
-        lblPathFileOrigin = new CustomLabel("Path Origin File: ");
+        lblPathFileOrigin = new CustomLabel("Source Path File: ");
         addComponent(lblPathFileOrigin, 0, 1, 1, 1);
 
-        lblPathFolderDestiny = new CustomLabel("Folder Output: ");
+        lblPathFolderDestiny = new CustomLabel("Destination Folder: ");
         addComponent(lblPathFolderDestiny, 0, 2, 1, 1);
 
         lblFileName = new CustomLabel("File Name: ");
@@ -374,7 +375,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
 
         btnConvertVideo = new CustomButton();
         btnConvertVideo.setIcon(new ImageIcon("..\\ToolSearch\\src\\main\\resources\\Icons\\converter36.png"));
-        btnConvertVideo.setToolTipText("Convert Video");
+        btnConvertVideo.setText("Video Converter");
         btnConvertVideo.addActionListener(this);
         addComponent(btnConvertVideo, 1, 8, 1, 1);
 
@@ -417,6 +418,8 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         if (event.getSource().equals(btnPathOriginFile)) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            FileNameExtensionFilter filterVideo=new FileNameExtensionFilter("Only Multimedia","Mp4", "Flv", "Avi", "Mov", "Wmv", "Mpeg", "Mkv", "Vob", "Mp3", "Wma", "Aac");
+            fileChooser.setFileFilter(filterVideo);
             int result = fileChooser.showOpenDialog(this);
             if (result != JFileChooser.CANCEL_OPTION) {
                 File fileName = fileChooser.getSelectedFile();
@@ -460,6 +463,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 disableOptionsVideo();
                 cmbExtensionVideo.setVisible(false);
                 cmbExtensionAudio.setVisible(true);
+                cleanBoxes();
             }
         }
         if (event.getSource() == radioConvertVideo) {
@@ -470,6 +474,7 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
                 enableOptionsAudio();
                 cmbExtensionVideo.setVisible(true);
                 cmbExtensionAudio.setVisible(false);
+                cleanBoxes();
             }
         }
     }
@@ -527,5 +532,21 @@ public class JPanelConverterVideo extends JPanel implements ActionListener {
         progressBar.setValue(percentage);
         progressBar.update(progressBar.getGraphics());
         progressBar.setStringPainted(true);
+    }
+
+    /**
+     * Method that clean boxes for audio and video conversion panels.
+     */
+    public void cleanBoxes()
+    {
+        txtPathFileOrigin.setText("");
+        txtFolderDestiny.setText("");
+        txtFileName.setText("");
+        cmbFrameRate.setSelectedIndex(0);
+        cmbVideoResolution.setSelectedIndex(0);
+        cmbBitRate.setSelectedIndex(0);
+        cmbSampleRate.setSelectedIndex(0);
+        cmbExtensionVideo.setSelectedIndex(0);
+        cmbExtensionAudio.setSelectedIndex(0);
     }
 }

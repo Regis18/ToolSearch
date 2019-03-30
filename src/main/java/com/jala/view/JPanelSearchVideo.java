@@ -218,6 +218,7 @@ public class JPanelSearchVideo extends JPanel implements ActionListener {
         constraints.gridx = posX;
         constraints.gridy = posY;
         constraints.insets = new Insets(2, 2, 2, 2);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = align;
         add(component, constraints);
     }

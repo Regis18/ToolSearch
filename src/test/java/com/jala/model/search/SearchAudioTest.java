@@ -15,9 +15,11 @@ package com.jala.model.search;
 import com.jala.model.criteria.CriteriaSearchMultimedia;
 import com.jala.model.search.asset.Asset;
 import com.jala.model.search.asset.AssetAudio;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -28,11 +30,12 @@ import java.util.List;
  * @author Regis Humana
  */
 public class SearchAudioTest {
-	CriteriaSearchMultimedia criteria;
-	SearchAudio searchAudio;
+	private CriteriaSearchMultimedia criteria;
+	private SearchAudio searchAudio;
 	@Before
 	public void setUp() {
-		criteria = new CriteriaSearchMultimedia("C:\\Users\\Admin\\Desktop\\o");
+		String path = "..\\ToolSearch\\src\\test\\resources\\audio";
+		criteria = new CriteriaSearchMultimedia(path);
 	}
 
 	/**
@@ -41,29 +44,24 @@ public class SearchAudioTest {
 	 */
 	@Test
 	public void search_returnMP3_WhenSendPathMultimediaStereo() {
-		//criteria.setExtension("mp3");
-		//criteria.setChannel("stereo");
-		searchAudio = new SearchAudio(criteria);
-		List<Asset> result = searchAudio.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(result.get(i).getPath());
-			System.out.println((new Date()).toString());
-		}
-	}
-
-	/**
-	 * Extension : mp3
-	 * Channel: mono
-	 */
-	@Test
-	public void search_returnMP3_WhenSendPathMultimediaMono() {
 		criteria.setExtension("mp3");
 		criteria.setChannel("stereo");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(result.get(i).getPath());
-		}
+		Assert.assertFalse(result.isEmpty());
+	}
+
+	/**
+	 * Extension : aac
+	 * Channel: mono
+	 */
+	@Test
+	public void search_returnAac_WhenSendPathMultimediaMono() {
+		criteria.setExtension("aac");
+		criteria.setChannel("mono");
+		searchAudio = new SearchAudio(criteria);
+		List<Asset> result = searchAudio.search();
+		Assert.assertFalse(result.isEmpty());
 	}
 
 	/**
@@ -76,10 +74,7 @@ public class SearchAudioTest {
 		criteria.setAudioCodec("MPEG");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetAudio)result.get(i)).getAudioCodec());
-			System.out.println(result.get(i).getPath());
-		}
+		Assert.assertFalse(result.isEmpty());
 	}
 
 	/**
@@ -92,10 +87,7 @@ public class SearchAudioTest {
 		criteria.setAudioSampleRate("44105");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetAudio)result.get(i)).getAudioSampleRate());
-			System.out.println(result.get(i).getPath());
-		}
+		Assert.assertFalse(result.isEmpty());
 	}
 
 	/**
@@ -108,10 +100,7 @@ public class SearchAudioTest {
 		criteria.setDuration("4.5");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetAudio)result.get(i)).getDuration());
-			System.out.println(result.get(i).getPath());
-		}
+		Assert.assertFalse(result.isEmpty());
 	}
 
 	/**
@@ -124,9 +113,45 @@ public class SearchAudioTest {
 		criteria.setDuration("4.5L");
 		searchAudio = new SearchAudio(criteria);
 		List<Asset> result = searchAudio.search();
-		for (int i = 0; i < result.size(); i++) {
-			System.out.println(((AssetAudio)result.get(i)).getDuration());
-			System.out.println(result.get(i).getPath());
-		}
+		Assert.assertTrue(result.isEmpty());
+	}
+
+	/**
+	 * Extension : mp3
+	 * Creation Date: 2019-03-29
+	 */
+	@Test
+	public void search_returnMP3_WhenSendPathMultimediaCreationDate() {
+		criteria.setExtension("mp3");
+		criteria.setCreationDateFrom("2019-03-29");
+		searchAudio = new SearchAudio(criteria);
+		List<Asset> result = searchAudio.search();
+		Assert.assertFalse(result.isEmpty());
+	}
+
+	/**
+	 * Extension : mp3
+	 * Modification Date: 2018-04-05
+	 */
+	@Test
+	public void search_returnMP3_WhenSendPathMultimediaModificationDate() {
+		criteria.setExtension("mp3");
+		criteria.setModificationDateFrom("2016-11-21");
+		searchAudio = new SearchAudio(criteria);
+		List<Asset> result = searchAudio.search();
+		Assert.assertFalse(result.isEmpty());
+	}
+
+	/**
+	 * Extension : mp3
+	 * Modification Date: 2021-04-05
+	 */
+	@Test
+	public void search_returnError_WhenSendPathMultimediaModificationDate() {
+		criteria.setExtension("mp3");
+		criteria.setModificationDateFrom("2021-11-21");
+		searchAudio = new SearchAudio(criteria);
+		List<Asset> result = searchAudio.search();
+		Assert.assertTrue(result.isEmpty());
 	}
 }
