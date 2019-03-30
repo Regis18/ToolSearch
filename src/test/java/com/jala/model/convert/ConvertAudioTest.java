@@ -26,8 +26,10 @@ import static org.junit.Assert.assertTrue;
 
 
 /**
- * Class Converter Model Test.
- * Unit tests to verify the conversion of files by different criteria.
+ * ConvertAudioTest
+ *
+ * @version 0.0.1
+ * @author Melvi Caballero
  */
 public class ConvertAudioTest {
     private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";

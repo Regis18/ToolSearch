@@ -12,7 +12,6 @@
 
 package com.jala.model.convert;
 
-
 import com.jala.model.criteria.CriteriaConverterVideo;
 import com.jala.utils.Common;
 import org.junit.Before;
@@ -25,8 +24,10 @@ import java.nio.file.Files;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Class Converter Model Test.
- * Unit tests to verify the conversion of files by different criteria.
+ * ConvertTest
+ *
+ * @version 0.0.1
+ * @author Melvi Caballero
  */
 public class ConvertTest {
   private static final String OPATH = "src\\test\\java\\com\\jala\\model\\convert\\test\\";
