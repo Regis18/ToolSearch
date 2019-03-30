@@ -144,7 +144,7 @@ public class ConvertAudio implements IConvertible {
 			log.error("The Convertion has failed.");
 		}
 		if (job.getState() == FFmpegJob.State.FINISHED) {
-			if(Common.useProgressBar) {
+			if (Common.useProgressBar) {
 				JPanelConverterVideo.setProgressBarValue(100);
 			}
 			convertResult = "The Convertion has finished successfully.";
