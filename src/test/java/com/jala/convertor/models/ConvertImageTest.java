@@ -17,18 +17,17 @@ import com.jala.model.criteria.CriteriaConvertImage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.File;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test ConvertImage.
  */
 public class ConvertImageTest {
 
-    private final String OriginPath = "C:\\View\\ToolSearch\\src\\test\\resources\\Images\\Origin\\Cacho.jpg";
-    private final String DestinationPath = "C:\\View\\ToolSearch\\src\\test\\resources\\Images\\Destination";
+    private final String OriginPath = "..\\ToolSearch\\src\\test\\resources\\Images\\Origin\\Cacho.jpg";
+    private final String DestinationPath = "..\\ToolSearch\\src\\test\\resources\\Images\\Destination";
     private  File folder;
     int sizeFolderInit;
 
@@ -45,29 +44,48 @@ public class ConvertImageTest {
      * Test to convert image changing format and set file name.
      */
     @Test
-    public void convert_ReturnJPG_WhenSentBasicBmpFile() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void convert_ReturnJpg_WhenSetFileNameBmp() {
         ConvertorImage convertImage = new ConvertorImage();
         CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".bmp");
         convertImage.convert(criteria);
         criteria.setFileName("hi");
-        assertEquals(2, sizeFolderInit);
+        assertEquals(1, sizeFolderInit);
     }
 
     /**
      * Test to convert Jpg only changing format.
      */
     @Test
-    public void convert_ReturnJPG_WhenSentBasicPngFile1() {
-
+    public void convert_ReturnJpg_WhenSentBasicPngFile() {
         ConvertorImage convertImage = new ConvertorImage();
         CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".png");
         convertImage.convert(criteria);
-        assertEquals(2, sizeFolderInit);
+        assertEquals(1, sizeFolderInit);
+    }
+
+    /**
+     * Test to convert image changing size Width and Height.
+     */
+    @Test
+    public void convert_ReturnJpg_WhenSetWidthAndHeightGifFile() {
+        ConvertorImage convertImage = new ConvertorImage();
+        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".gif");
+        convertImage.convert(criteria);
+        criteria.setWidth(100);
+        criteria.setHeight(200);
+        assertEquals(1, sizeFolderInit);
+    }
+
+    /**
+     * Test to convert image changing size Width and Height.
+     */
+    @Test
+    public void convert_ReturnJpg_WhenSetProportionFalseGifFile() {
+        ConvertorImage convertImage = new ConvertorImage();
+        CriteriaConvertImage criteria = new CriteriaConvertImage(OriginPath, DestinationPath + "\\",  ".tif");
+        convertImage.convert(criteria);
+        criteria.setMaintainProportion(false);
+        assertEquals(1, sizeFolderInit);
     }
 
     /**
@@ -79,12 +97,9 @@ public class ConvertImageTest {
             int i = 0;
             while (i< files.length) {
                 String nameFile = files[i];
-                System.out.println("matar : " + nameFile);
                 File file = new File(DestinationPath + "\\" + nameFile);
-                System.out.println("path : " + file.getPath());
                 file.delete();
                 i++;
             }
     }
-
 }
