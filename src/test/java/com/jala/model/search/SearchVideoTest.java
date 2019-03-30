@@ -52,7 +52,7 @@ public class SearchVideoTest {
         searchVideo = new SearchVideo(criteria);
         SearchFile sf = new SearchFile();
         List<Asset> assetList = sf.search(criteria);
-        assertEquals(1, assetList.size());
+        assertEquals(2, assetList.size());
     }
 
     /**
@@ -65,7 +65,7 @@ public class SearchVideoTest {
         criteria.setAudioCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
         searchVideo = new SearchVideo(criteria);
         List<Asset> result = searchVideo.search();
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
     }
 
     /**
@@ -78,7 +78,7 @@ public class SearchVideoTest {
         criteria.setVideoCodec("H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10");
         searchVideo = new SearchVideo(criteria);
         List<Asset> result = searchVideo.search();
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
     }
 
     /**
@@ -91,7 +91,7 @@ public class SearchVideoTest {
         criteria.setAudioSampleRate("44100");
         searchVideo = new SearchVideo(criteria);
         List<Asset> result = searchVideo.search();
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
     }
 
     /**
@@ -102,7 +102,7 @@ public class SearchVideoTest {
         criteria.setAspectRatio("320:133");
         searchVideo = new SearchVideo(criteria);
         List<Asset> result = searchVideo.search();
-        assertEquals(2, result.size());
+        assertEquals(4, result.size());
     }
 
     /**
@@ -115,7 +115,7 @@ public class SearchVideoTest {
         criteria.setAspectRatio("320:133");
         searchVideo = new SearchVideo(criteria);
         List<Asset> result = searchVideo.search();
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
     }
 
     /**
@@ -141,7 +141,7 @@ public class SearchVideoTest {
         criteria.setDuration("");
         searchVideo = new SearchVideo(criteria);
         List<Asset> result = searchVideo.search();
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
     }
 
     /**
@@ -154,7 +154,7 @@ public class SearchVideoTest {
         criteria.setAudioSampleRate("44100");
         searchVideo = new SearchVideo(criteria);
         List<Asset> result = searchVideo.search();
-        assertEquals(1, result.size());
+        assertEquals(4, result.size());
     }
 
     /**
