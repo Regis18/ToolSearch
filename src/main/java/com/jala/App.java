@@ -37,19 +37,6 @@ public class App {
      * @param args that are entered from console.
      */
     public static void main(String[] args) {
-
-        /*tring[] commanl = {"-p","'C:\\Users\\Cxriss7ian\\Desktop\\Tests\\hola'", "-cdf","'2019-03-15'"};
-        if (commanl.length > 0) {
-            //Execute search for console.
-            controllerConsole = new ControllerConsole(commanl);
-        */
-        /*if (args.length > 0) {
-            //Execute search for console.
-            controllerConsole = new ControllerConsole(args);
-        } else {
-            Execute the application with UI
-            runApp = new Run();
-        }*/
         runApp = new Run();
     }
 }
